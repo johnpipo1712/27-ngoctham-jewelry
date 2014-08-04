@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6b3b51e2512d47d794ae77dc3690566c" Name="Diagram1">
+        <EntityTypeShape EntityType="GJSModel.D_ORDER_DETAIL" Width="1.5" PointX="13.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.D_PRODUCT_DETAIL" Width="1.5" PointX="13.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.M_EMPLOYEE" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.M_PAGE" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_BRANCH" Width="1.5" PointX="8" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_CATEGORY_NEWS" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_CATEGORY_PAGE" Width="1.5" PointX="5.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_CATEGORY_PRODUCT" Width="1.5" PointX="8.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_CITIES" Width="1.5" PointX="5.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_CUSTOMER" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_NEWS" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_ORDER" Width="1.5" PointX="11" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_PRODUCT" Width="1.5" PointX="11" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_SEO" Width="1.5" PointX="7.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_USER_CUSTOMER" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_USER_EMPLOYEE" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_USER_PST" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.S_PST" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.S_USER" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.W_PRODUCT" Width="1.5" PointX="10.75" PointY="12.875" IsExpanded="true" />
+        <AssociationConnector Association="GJSModel.FK_D_ORDER_DETAIL_O_ORDER" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_D_ORDER_DETAIL_O_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_D_PRODUCT_DETAIL_O_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_O_ORDER_M_EMPLOYEE" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_O_USER_EMPLOYEE_M_EMPLOYEE" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_O_BRANCH_O_CITIES" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_O_NEWS_O_CATEGORY_NEWS" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_O_USER_CUSTOMER_O_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_O_USER_CUSTOMER_S_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_O_USER_EMPLOYEE_S_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_O_USER_PST_S_PST" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_O_USER_PST_S_USER" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
