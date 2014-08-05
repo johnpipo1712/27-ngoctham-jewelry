@@ -1,7 +1,8 @@
-@font-face {
+/*@font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
   src: url(https://fonts.gstatic.com/s/opensans/v9/u-WUoqrET9fUeobQW7jkRfY6323mHUZFJMgTvxaG2iE.eot);
   src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v9/u-WUoqrET9fUeobQW7jkRfY6323mHUZFJMgTvxaG2iE.eot) format('embedded-opentype'), url(https://fonts.gstatic.com/s/opensans/v9/u-WUoqrET9fUeobQW7jkRT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
-}
+}*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,600&subset=latin,vietnamese);

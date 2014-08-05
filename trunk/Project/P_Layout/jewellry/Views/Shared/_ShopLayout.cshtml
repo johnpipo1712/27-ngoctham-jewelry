@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="Author" content="" />
+
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href='@Url.Content("~/Content")/images/demo/favicon.ico' />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/Script/js/modernize")
+
+    <!--[if lte IE 8]>
+        @Scripts.Render("~/Script/js/ie8")
+        <script src="@Url.Content("~/Content")/plugins/respond.js"></script>
+    <![endif]-->
+</head>
+
+<body class="smoothscroll">
+
+    <div id="wrapper">
+
+        <div id="header">
+            <!-- class="sticky" for sticky menu -->
+            
+            @Html.Partial("_TopBar")
+
+            @Html.Partial("_Menu")
+
+        </div>
+
+        @RenderSection("Slide")
+
+        <!-- CONTENT -->
+        <section>
+            <div class="container">
+                @RenderBody()
+            </div>
+        </section>
+        <!-- /CONTENT -->
+
+        @Html.Partial("_Footer")
+
+        <a href="shop-home-1.html#" id="toTop"></a>
+
+    </div><!-- /#wrapper -->
+    <!-- JAVASCRIPT FILES -->
+    @Scripts.Render("~/Script/js")
+</body>
+</html>

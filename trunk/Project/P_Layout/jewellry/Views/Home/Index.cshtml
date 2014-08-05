@@ -2,30 +2,415 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
+@section Slide {
+    @Html.Partial("_Slide")
+}
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<!-- FEATURED PRODUCTS -->
+<h2 class="owl-featured"><strong>Sản Phẩm</strong> Nổi Bật</h2>
+<div class="owl-carousel featured" data-plugin-options='{"singleItem": false, "stopOnHover":false, "autoPlay":true, "autoHeight": false, "navigation": true, "pagination": false}'>
+    <div>
+        <div class="owl-featured-item">
+            <a class="figure" href="shop-page-full-product.html">
+                <span><i class="fa fa-plus"></i></span>
+                <img alt="" src="@Url.Content("~/Content")/images/demo/fashion/thumb/6.jpg" width="230" />
+            </a>
+            <div class="owl-featured-detail">
+                <a class="featured-title" href="shop-page-full-product.html">Lorem Ipsim Dolor</a>
+                <span class="price"><span class="line-through styleColor">$131.00</span> <strong>$99.00</strong></span>
+                <a href="shop-page-cart_2.html" class="btn btn-warning btn-sm"><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div>
+        <div class="owl-featured-item">
+            <a class="figure" href="shop-page-full-product.html">
+                <span><i class="fa fa-plus"></i></span>
+                <img alt="" src="@Url.Content("~/Content")/images/demo/fashion/thumb/7.jpg" width="230" />
+            </a>
+            <div class="owl-featured-detail">
+                <a class="featured-title" href="shop-page-full-product.html">Lorem Ipsim Dolor</a>
+                <span class="price"><span class="line-through styleColor">$131.00</span> <strong>$99.00</strong></span>
+                <a href="shop-page-cart_2.html" class="btn btn-warning btn-sm"><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div>
+        <div class="owl-featured-item">
+            <a class="figure" href="shop-page-full-product.html">
+                <span><i class="fa fa-plus"></i></span>
+                <img alt="" src="@Url.Content("~/Content")/images/demo/fashion/thumb/8.jpg" width="230" />
+            </a>
+            <div class="owl-featured-detail">
+                <a class="featured-title" href="shop-page-full-product.html">Lorem Ipsim Dolor</a>
+                <span class="price"><span class="line-through styleColor">$131.00</span> <strong>$99.00</strong></span>
+                <a href="shop-page-cart_2.html" class="btn btn-warning btn-sm"><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="owl-featured-item">
+            <a class="figure" href="shop-page-full-product.html">
+                <span><i class="fa fa-plus"></i></span>
+                <img alt="" src="@Url.Content("~/Content")/images/demo/fashion/thumb/1.jpg" width="230" />
+            </a>
+            <div class="owl-featured-detail">
+                <a class="featured-title" href="shop-page-full-product.html">Lorem Ipsim Dolor</a>
+                <span class="price"><span class="line-through styleColor">$131.00</span> <strong>$99.00</strong></span>
+                <a href="shop-page-cart_2.html" class="btn btn-warning btn-sm"><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="owl-featured-item">
+            <a class="figure" href="shop-page-full-product.html">
+                <span><i class="fa fa-plus"></i></span>
+                <img alt="" src="@Url.Content("~/Content")/images/demo/fashion/thumb/3.jpg" width="230" />
+            </a>
+            <div class="owl-featured-detail">
+                <a class="featured-title" href="shop-page-full-product.html">Lorem Ipsim Dolor</a>
+                <span class="price"><span class="line-through styleColor">$131.00</span> <strong>$99.00</strong></span>
+                <a href="shop-page-cart_2.html" class="btn btn-warning btn-sm"><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="owl-featured-item">
+            <a class="figure" href="shop-page-full-product.html">
+                <span><i class="fa fa-plus"></i></span>
+                <img alt="" src="@Url.Content("~/Content")/images/demo/fashion/thumb/5.jpg" width="230" />
+            </a>
+            <div class="owl-featured-detail">
+                <a class="featured-title" href="shop-page-full-product.html">Lorem Ipsim Dolor</a>
+                <span class="price"><span class="line-through styleColor">$131.00</span> <strong>$99.00</strong></span>
+                <a href="shop-page-cart_2.html" class="btn btn-warning btn-sm"><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="owl-featured-item">
+            <a class="figure" href="shop-page-full-product.html">
+                <span><i class="fa fa-plus"></i></span>
+                <img alt="" src="@Url.Content("~/Content")/images/demo/fashion/thumb/2.jpg" width="230" />
+            </a>
+            <div class="owl-featured-detail">
+                <a class="featured-title" href="shop-page-full-product.html">Lorem Ipsim Dolor</a>
+                <span class="price"><span class="line-through styleColor">$131.00</span> <strong>$99.00</strong></span>
+                <a href="shop-page-cart_2.html" class="btn btn-warning btn-sm"><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="owl-featured-item">
+            <a class="figure" href="shop-page-full-product.html">
+                <span><i class="fa fa-plus"></i></span>
+                <img alt="" src="@Url.Content("~/Content")/images/demo/fashion/thumb/4.jpg" width="230" />
+            </a>
+            <div class="owl-featured-detail">
+                <a class="featured-title" href="shop-page-full-product.html">Lorem Ipsim Dolor</a>
+                <span class="price"><span class="line-through styleColor">$131.00</span> <strong>$99.00</strong></span>
+                <a href="shop-page-cart_2.html" class="btn btn-warning btn-sm"><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
+            </div>
+        </div>
     </div>
 </div>
+<!-- /FEATURED PRODUCTS -->
+<!-- PRODUCT LIST -->
+<div class="row margin-top60">
+
+    <div class="col-md-3">
+
+        <!-- SIDE NAV -->
+        <ul class="side-nav list-group" id="sidebar-nav">
+
+            <li class="list-group-item list-toggle">
+                <!-- NOTE: "active" to be open on page load -->
+                <a data-toggle="collapse" data-parent="#sidebar-nav" href="shop-home-1.html#collapse-1">Women</a>
+                <ul id="collapse-1" class="collapse">
+                    <!-- NOTE: "collapse in" to be open on page load -->
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Clothes</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Shoes</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Dress</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Lingerie</a></li>
+                </ul>
+            </li>
+
+            <li class="list-group-item list-toggle">
+                <!-- NOTE: "active" to be open on page load -->
+                <a data-toggle="collapse" data-parent="#sidebar-nav" href="shop-home-1.html#collapse-2">Men</a>
+                <ul id="collapse-2" class="collapse">
+                    <!-- NOTE: "collapse in" to be open on page load -->
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Clothes</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Shoes</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Dress</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Lingerie</a></li>
+                </ul>
+            </li>
+
+            <li class="list-group-item list-toggle">
+                <!-- NOTE: "active" to be open on page load -->
+                <a data-toggle="collapse" data-parent="#sidebar-nav" href="shop-home-1.html#collapse-3">Kids</a>
+                <ul id="collapse-3" class="collapse">
+                    <!-- NOTE: "collapse in" to be open on page load -->
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Clothes</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Shoes</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Dress</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Lingerie</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Toys</a></li>
+                </ul>
+            </li>
+
+            <li class="list-group-item"><a href="shop-page-sidebar.html">Accessories</a></li>
+            <li class="list-group-item"><a href="shop-page-sidebar.html">Jewlery</a></li>
+
+        </ul>
+        <!-- /SIDE NAV -->
+        <!-- BANNER -->
+        <hr class="half-margins invisible" />
+
+        <a class="hidden-sm" href="../../../wrapbootstrap.com/theme/epona-responsive-website-template-WB0464P7N.htm" rel="nofollow" target="_blank">
+            <img class="img-responsive" src="@Url.Content("~/Content")/images/shop_banner.png" alt="" />
+        </a>
+        <!-- /BANNER -->
+        <!-- FACEBOOK -->
+        <div class="hidden-sm">
+            <hr class="half-margins invisible" />
+            <iframe src="../../../www.facebook.com/plugins/likebox.htm" style="border:none; overflow:hidden; width:263px; height:258px;"></iframe>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-9">
+
+        <!-- PRODUCT LIST -->
+        <div class="row">
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="shop-page-full-product.html">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content")/images/demo/shop/4.jpg" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> out of stock
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Lorem ipsum dolor</span>
+                            <span class="bold">$90</span> <span class="line-through">$120</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="shop-page-full-product.html">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content")/images/demo/shop/1.jpg" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-yes">
+                        <!-- stock -->
+                        <i class="fa fa-check"></i> in stock
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Lorem ipsum dolor</span>
+                            <span class="bold">$90</span> <span class="line-through">$120</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="shop-page-full-product.html">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content")/images/demo/shop/2.jpg" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> out of stock
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Lorem ipsum dolor</span>
+                            <span class="bold">$90</span> <span class="line-through">$120</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="shop-page-full-product.html">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content")/images/demo/shop/3.jpg" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-yes">
+                        <!-- stock -->
+                        <i class="fa fa-check"></i> in stock
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Lorem ipsum dolor</span>
+                            <span class="bold">$90</span> <span class="line-through">$120</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="shop-page-full-product.html">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content")/images/demo/shop/5.jpg" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-yes">
+                        <!-- stock -->
+                        <i class="fa fa-check"></i> in stock
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Lorem ipsum dolor</span>
+                            <span class="bold">$90</span> <span class="line-through">$120</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="shop-page-full-product.html">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content")/images/demo/shop/6.jpg" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> out of stock
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Lorem ipsum dolor</span>
+                            <span class="bold">$90</span> <span class="line-through">$120</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="shop-page-full-product.html">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content")/images/demo/shop/2.jpg" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> out of stock
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Lorem ipsum dolor</span>
+                            <span class="bold">$90</span> <span class="line-through">$120</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="shop-page-full-product.html">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content")/images/demo/shop/8.jpg" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> out of stock
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Lorem ipsum dolor</span>
+                            <span class="bold">$90</span> <span class="line-through">$120</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="shop-page-full-product.html">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content")/images/demo/shop/3.jpg" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-yes">
+                        <!-- stock -->
+                        <i class="fa fa-check"></i> in stock
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Lorem ipsum dolor</span>
+                            <span class="bold">$90</span> <span class="line-through">$120</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+        </div>
+        <!-- /PRODUCT LIST -->
+
+    </div>
+
+</div>
+<!-- /PRODUCT LIST -->
+<!-- CALLOUT -->
+<div class="alert alert-default fade in">
+
+    <div class="row">
+
+        <div class="col-md-9 col-sm-9">
+            <!-- left text -->
+            <h4>Purchase <strong>Epona Template</strong></h4>
+            <p>
+                We truly care about our users and our product. Which is why we are constantly improving Epona for our beloved users.
+            </p>
+        </div><!-- /left text -->
+
+
+        <div class="col-md-3 col-sm-3 text-right">
+            <!-- right btn -->
+            <a href="../../../wrapbootstrap.com/theme/epona-responsive-website-template-WB0464P7N.htm" rel="nofollow" target="_blank" class="btn btn-primary btn-lg">PURCHASE NOW</a>
+        </div><!-- /right btn -->
+
+    </div>
+
+</div>
+<!-- /CALLOUT -->

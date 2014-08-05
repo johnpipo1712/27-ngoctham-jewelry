@@ -76,10 +76,10 @@ body.boxed #topBar {
 
 #topNav ul.nav>li a {
 	color:#666;
-	padding: 15px 23px;
+	padding: 14px 13px;
 	position: relative;
 	text-decoration: none;
-	font-size:14px;
+	font-size:12px;
 	line-height:14px;
 	display:block;
 	font-weight:300;
