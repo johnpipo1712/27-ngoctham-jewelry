@@ -8,29 +8,36 @@ namespace jewellry
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
-
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-
-            //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-            //          "~/Scripts/bootstrap.js",
-            //          "~/Scripts/respond.js"));
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
-
-            bundles.Add(new ScriptBundle("~/Scripts/ie8").Include(
-                    "~/Scripts/respond.js"
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                    "~/Content/css/fonts.googleapis.css",
+                    "~/Content/plugins/bootstrap/css/bootstrap.min.css",
+                    "~/Content/css/font-awesome.css",
+                    "~/Content/css/sky-forms.css",
+                    "~/Content/css/weather-icons.min.css",
+                    "~/Content/css/line-icons.css",
+                    "~/Content/plugins/owl-carousel/owl.pack.css",
+                    "~/Content/plugins/magnific-popup/magnific-popup.css",
+                    "~/Content/css/animate.css",
+                    "~/Content/css/flexslider.css",
+                    "~/Content/css/revolution-slider.css",
+                    "~/Content/css/layerslider.css",
+                    "~/Content/css/layout-shop.css",
+                    "~/Content/css/essentials.css",
+                    "~/Content/css/layout.css",
+                    "~/Content/css/header-3.css",
+                    "~/Content/css/footer-default.css",
+                    "~/Content/css/color_scheme/red.css"
                 ));
 
-            bundles.Add(new ScriptBundle("~/Scripts/bottom").Include(
+            bundles.Add(new ScriptBundle("~/Script/js/modernize").Include(
+                    "~/Content/plugins/modernizr.min.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/Script/js/ie8").Include(
+                    "~/Content/plugins/respond.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/Script/js").Include(
                     "~/Content/plugins/jquery-2.1.1.min.js",
                     "~/Content/plugins/jquery.isotope.js",
                     "~/Content/plugins/masonry.js",
@@ -41,35 +48,8 @@ namespace jewellry
                     "~/Content/plugins/flexslider/jquery.flexslider-min.js",
                     "~/Content/plugins/revolution-slider/js/jquery.themepunch.plugins.min.js",
                     "~/Content/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js",
-                    "~/Content/plugins/revolution_slider.js",
                     "~/Scripts/revolution_slider.js",
                     "~/Scripts/scripts.js"
-                ));
-
-            //bundles.Add(new StyleBundle("~/Content/css").Include(
-            //          "~/Content/bootstrap.css",
-            //          "~/Content/site.css"));
-
-            bundles.Add(new StyleBundle("~/Content/plugins").Include(
-                    "~/Content/plugins/bootstrap/css/bootstrap.min.css",
-                    "~/Content/plugins/owl-carousel/owl.pack.css",
-                    "~/Content/plugins/magnific-popup/magnific-popup.css"
-                ));
-
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                    "~/Content/css/font-awesome.css",
-                    "~/Content/css/sky-forms.css",
-                    "~/Content/css/weather-icons.min.css",
-                    "~/Content/css/line-icons.css",
-                    "~/Content/css/animate.css",
-                    "~/Content/css/flexslider.css",
-                    "~/Content/css/revolution-slider.css",
-                    "~/Content/css/layerslider.css",
-                    "~/Content/css/essentials.css",
-                    "~/Content/css/layout.css",
-                    "~/Content/css/header-default.css",
-                    "~/Content/css/footer-default.css",
-                    "~/Content/css/color_scheme/red.css"
                 ));
         }
     }
