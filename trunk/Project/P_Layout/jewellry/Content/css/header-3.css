@@ -19,10 +19,11 @@ body.boxed #topBar {
 	color:#fff;
 }
 #topNav a.logo {
-	margin:3px 15px 3px 0;
-	display:inline-block;
-	min-height:50px;
-	float:left;
+    position:absolute;
+    box-shadow: 0 0 15px #333 inset;
+    padding: 5px 10px;
+    border-radius: 0 0 5px 5px;
+    background: #fff200;
 }
 #topNav a.logo.onepage {
 	display:inline-block;
@@ -59,12 +60,12 @@ body.boxed #topBar {
 }
 
 #topNav div.navbar-collapse {
-	padding:0;
+	padding:0 0 0 115px;
 	float:left;
 }
 #topNav ul.nav>li {
 	color:#666;
-	border-left:#eee 1px solid;
+	border-right:#eee 1px solid;
 	text-align:center;
 	position:relative;
 	margin:0;
