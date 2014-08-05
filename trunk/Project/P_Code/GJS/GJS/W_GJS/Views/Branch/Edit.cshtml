@@ -1,0 +1,84 @@
+﻿@model W_GJS.Models.O_BRANCH
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>O_BRANCH</h4>
+        <hr />
+     
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BRANCH_CODE, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BRANCH_CODE)
+                @Html.ValidationMessageFor(model => model.BRANCH_CODE)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BRANCH_NAME, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BRANCH_NAME)
+                @Html.ValidationMessageFor(model => model.BRANCH_NAME)
+            </div>
+        </div>
+
+     
+        <div class="form-group">
+            @Html.LabelFor(model => model.ADDRESS, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ADDRESS)
+                @Html.ValidationMessageFor(model => model.ADDRESS)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LONGITUDE, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LONGITUDE)
+                @Html.ValidationMessageFor(model => model.LONGITUDE)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LATITUDE, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LATITUDE)
+                @Html.ValidationMessageFor(model => model.LATITUDE)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PHONE, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PHONE)
+                @Html.ValidationMessageFor(model => model.PHONE)
+            </div>
+        </div>
+
+     
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
