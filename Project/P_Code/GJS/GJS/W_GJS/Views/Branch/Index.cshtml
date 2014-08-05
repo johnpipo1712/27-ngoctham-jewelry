@@ -1,0 +1,100 @@
+﻿@model IEnumerable<W_GJS.Models.O_BRANCH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BRANCH_CD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BRANCH_CODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BRANCH_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CITIES_CD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LONGITUDE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LATITUDE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACTIVE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATEDATE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BRANCH_CD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BRANCH_CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BRANCH_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CITIES_CD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADDRESS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LONGITUDE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LATITUDE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ACTIVE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATEDATE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { BRANCH_CD = item.BRANCH_CD }) |
+            @if (item.ACTIVE == false)
+            {
+              @Html.ActionLink("Active", "Active", new { BRANCH_CD = item.BRANCH_CD }) 
+            }
+            else
+            {
+              @Html.ActionLink("Deactive", "Deactive", new { BRANCH_CD = item.BRANCH_CD })
+           }
+        </td>
+    </tr>
+}
+
+</table>

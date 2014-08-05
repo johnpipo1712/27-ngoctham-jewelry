@@ -1,0 +1,88 @@
+﻿@model IEnumerable<W_GJS.Models.O_SEO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HREF_ICON)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TITILE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.META_DES)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.META_KEYWORDS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.META_ROBOTS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.META_REVISIT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACTIVE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATEDATE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HREF_ICON)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TITILE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.META_DES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.META_KEYWORDS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.META_ROBOTS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.META_REVISIT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ACTIVE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATEDATE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
