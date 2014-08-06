@@ -454,6 +454,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Branches.cshtml" />
+    <Content Include="Views\Home\AboutAchievements.cshtml" />
+    <Content Include="Views\Home\AboutCompany.cshtml" />
+    <Content Include="Views\Home\AboutDevelopment.cshtml" />
+    <Content Include="Views\Home\AboutLicense.cshtml" />
+    <Content Include="Views\Home\AboutVision.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\NewsFinancial.cshtml" />
+    <Content Include="Views\Home\NewsGold.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_ShopLayout.cshtml" />
     <Content Include="Views\Shared\_Slide.cshtml" />
