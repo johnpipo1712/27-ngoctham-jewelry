@@ -27,12 +27,16 @@
 </head>
 
 <body class="smoothscroll">
+    <!-- Default Modal For All Pages -->
+    @Html.Partial("_Modal")
+
+    <!-- Additional Modals -->
+    @RenderSection("Modal")
 
     <div id="wrapper">
 
         <div id="header">
             <!-- class="sticky" for sticky menu -->
-            
             @Html.Partial("_TopBar")
 
             @Html.Partial("_Menu")
@@ -48,7 +52,6 @@
             </div>
         </section>
         <!-- /CONTENT -->
-
         @Html.Partial("_Footer")
 
         <a href="shop-home-1.html#" id="toTop"></a>
