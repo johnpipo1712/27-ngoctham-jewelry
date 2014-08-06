@@ -1,0 +1,23 @@
+table {
+margin-bottom: .4em;
+width: 100%;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+.table-stores tr:first-child td {
+background: #ccb776;
+border-right: 1px solid #fff;
+color: #fff;
+font-weight: bold;
+}
+
+.table-stores tr td {
+background: #eeefec;
+padding: 5px 10px 5px 15px;
+border: 1px solid #fff;
+color: #666;
+}
