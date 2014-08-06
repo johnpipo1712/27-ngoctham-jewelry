@@ -6,7 +6,7 @@
 .clear{clear:both;display:block;overflow:hidden;visibility:hidden;width:0;height:0}
 .wrap-sys-store {clear:both;margin-top:15px;}
 
-.table-stores tr:first-child td{background:#ccb776;border-right:1px solid #fff;color:#fff;font-weight:bold;}
+.table-stores tr:first-child td{background:#efc240;border-right:1px solid #fff;color:#fff;font-weight:bold;}
 .table-stores tr td {background:#eeefec;padding:5px 10px 5px 15px;border:1px solid #fff;color:#666;}
 .table-stores tr.even td {background:#e3e4e1;}
 .table-stores tr td.sys1 {width:35%;}
@@ -39,4 +39,8 @@ top: -3px;
 width: 220px;
 color: #666;
 line-height: 16px;
+}
+
+.page-container {
+    margin-top: 2em;
 }
