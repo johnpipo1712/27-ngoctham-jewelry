@@ -16,9 +16,12 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href='@Url.Content("~/Content")/images/favicon.png' />
+    
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/Script/js/modernize")
+    @RenderSection("Styles")
+    @RenderSection("Scripts")
 
     <!--[if lte IE 8]>
         @Scripts.Render("~/Script/js/ie8")
