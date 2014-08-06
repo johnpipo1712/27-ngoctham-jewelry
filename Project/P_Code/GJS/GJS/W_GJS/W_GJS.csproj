@@ -277,6 +277,26 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Branch\Create.cshtml" />
     <Content Include="Views\Branch\Edit.cshtml" />
+    <Content Include="Views\CategoryNews\Create.cshtml" />
+    <Content Include="Views\CategoryNews\Edit.cshtml" />
+    <Content Include="Views\CategoryProduct\Create.cshtml" />
+    <Content Include="Views\CategoryProduct\Edit.cshtml" />
+    <Content Include="Views\Cities\Edit.cshtml" />
+    <Content Include="Views\Cities\Create.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Pst\Create.cshtml" />
+    <Content Include="Views\Pst\Edit.cshtml" />
+    <Content Include="Views\Seo\Create.cshtml" />
+    <Content Include="Views\Seo\Edit.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
