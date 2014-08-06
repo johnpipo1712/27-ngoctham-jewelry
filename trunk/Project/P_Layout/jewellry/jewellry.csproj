@@ -365,11 +365,24 @@
     <Content Include="Content\images\email_template\social_icon2.png" />
     <Content Include="Content\images\email_template\social_icon3.png" />
     <Content Include="Content\images\email_template\social_icon4.png" />
+    <Content Include="Content\images\favicon.png" />
+    <Content Include="Content\images\logo-bg.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo_alt.png" />
     <Content Include="Content\images\logo_footer.png" />
     <Content Include="Content\images\logo_footer_alt.png" />
+    <Content Include="Content\images\products\sp1.png" />
+    <Content Include="Content\images\products\sp2.png" />
+    <Content Include="Content\images\products\sp3.png" />
+    <Content Include="Content\images\products\sp4.png" />
+    <Content Include="Content\images\products\sp5.png" />
     <Content Include="Content\images\shop_banner.png" />
+    <Content Include="Content\images\slide\01.jpg" />
+    <Content Include="Content\images\slide\02.jpg" />
+    <Content Include="Content\images\slide\03.jpg" />
+    <Content Include="Content\images\slide\04.jpg" />
+    <Content Include="Content\images\slide\05.jpg" />
+    <Content Include="Content\images\logo-bg.jpg" />
     <Content Include="Content\images\viLogo.png" />
     <Content Include="Content\plugins\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\plugins\bootstrap\js\bootstrap.min.js" />
@@ -452,6 +465,7 @@
     <Content Include="Views\Shared\_TopBar.cshtml" />
     <Content Include="Views\Shared\_Cart.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Modal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
