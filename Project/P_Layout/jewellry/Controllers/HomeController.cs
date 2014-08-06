@@ -87,5 +87,10 @@ namespace jewellry.Controllers
         {
             return View();
         }
+
+        public ActionResult ProductList()
+        {
+            return View();
+        }
     }
 }

@@ -437,6 +437,10 @@
     <Content Include="Scripts\revolution_slider.js" />
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Self\branches\css\default.css" />
+    <Content Include="Self\branches\images\bg-arrow.png" />
+    <Content Include="Self\branches\images\bg-sys-store.png" />
+    <Content Include="Self\branches\images\button-sys.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -459,6 +463,16 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Modal.cshtml" />
     <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Views\Home\AboutAchievements.cshtml" />
+    <Content Include="Views\Home\AboutCompany.cshtml" />
+    <Content Include="Views\Home\AboutDevelopment.cshtml" />
+    <Content Include="Views\Home\AboutLicense.cshtml" />
+    <Content Include="Views\Home\AboutVision.cshtml" />
+    <Content Include="Views\Home\Branches.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\NewsFinancial.cshtml" />
+    <Content Include="Views\Home\NewsGold.cshtml" />
+    <Content Include="Views\Home\ProductList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
