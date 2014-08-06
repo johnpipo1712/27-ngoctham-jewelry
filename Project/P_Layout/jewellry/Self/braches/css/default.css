@@ -644,7 +644,7 @@ h3.price {text-align:center;color:#8c6000;font-size:16px;padding-bottom:10px;mar
 .sys_stores {clear:both;position:relative;margin-bottom:10px;background:white;border:1px solid #DEDEDE;padding:30px 15px;float:left;width:875px;}
 .img-sys-stores {float:left;margin-right:10px;}
 .sys-store {float:left;width:605px;}
-.choose-sys-store {background:url(images/bg-sys-store.png) repeat-x;padding:10px;border:1px solid #dadada;border-radius:7px;height:32px;}
+.choose-sys-store {background:url(../images/bg-sys-store.png) repeat-x;padding:10px;border:1px solid #dadada;border-radius:7px;height:32px;}
 .choose-type {height: 18px;line-height: 20px; margin: 5px 6px 0 10px; position: relative; width: 230px;float:left;padding:1px 0px;background:white;border:1px solid #999;}
 .tinh {bottom: 1px;color: #666; font-size: 12px;padding:5px 0; height: 20px; position: relative;text-align: left;width: 230px;z-index: 99;}
 .button-label {background: url("images/bg-arrow.png") no-repeat scroll right center transparent; font-size: 12px;height: 16px;right: 2px;line-height: 20px; overflow: hidden;padding:5px 0 5px 5px;position: absolute;text-align: left; top: -3px; width: 220px;color:#666;line-height:16px;}
