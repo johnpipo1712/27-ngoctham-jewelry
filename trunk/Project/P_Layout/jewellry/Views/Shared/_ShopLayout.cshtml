@@ -20,8 +20,8 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/Script/js/modernize")
-    @RenderSection("Styles")
-    @RenderSection("Scripts")
+    @RenderSection("Styles", false)
+    @RenderSection("Scripts", false)
 
     <!--[if lte IE 8]>
         @Scripts.Render("~/Script/js/ie8")
