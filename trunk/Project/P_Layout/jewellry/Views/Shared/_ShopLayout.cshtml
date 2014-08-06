@@ -34,7 +34,7 @@
     @Html.Partial("_Modal")
 
     <!-- Additional Modals -->
-    @RenderSection("Modal")
+    @RenderSection("Modal", false)
 
     <div id="wrapper">
 
@@ -46,7 +46,7 @@
 
         </div>
 
-        @RenderSection("Slide")
+        @RenderSection("Slide", false)
 
         <!-- CONTENT -->
         <section>

@@ -195,6 +195,7 @@
     <Content Include="Content\css\line-icons.css" />
     <Content Include="Content\css\revolution-slider.css" />
     <Content Include="Content\css\sky-forms.css" />
+    <Content Include="Content\css\style.css" />
     <Content Include="Content\css\weather-icons.min.css" />
     <Content Include="Content\images\1x1.png" />
     <Content Include="Content\images\avatar.png" />
@@ -204,6 +205,7 @@
     <Content Include="Content\images\cc\Mastercard.png" />
     <Content Include="Content\images\cc\PayPal.png" />
     <Content Include="Content\images\cc\Visa.png" />
+    <Content Include="Content\images\crossword.png" />
     <Content Include="Content\images\demo\about_1.jpg" />
     <Content Include="Content\images\demo\about_2.jpg" />
     <Content Include="Content\images\demo\blue.jpg" />
