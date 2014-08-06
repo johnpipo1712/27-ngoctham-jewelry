@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+
+@section Slide {
+}
+
+@section Styles {
+    <link href="@Url.Content("~/Content/css/default.css")" rel="stylesheet" type="text/css" />
+}
+
+@section Scripts {
+
+}
+
+@section Modal {
+    <!-- modal dialog -->
+    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <!-- modal header -->
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Default Modal</h4>
+                </div><!-- /modal header -->
+                <!-- modal body -->
+                <div class="modal-body">
+                    <form>
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control">
+                    </form>
+                </div>
+                <!-- /modal body -->
+
+                <div class="modal-footer">
+                    <!-- modal footer -->
+                    <button class="btn btn-default" data-dismiss="modal">Close</button> <button class="btn btn-primary">Save changes</button>
+                </div><!-- /modal footer -->
+
+            </div>
+        </div>
+    </div>
+
+}
+<div class="newsdt-content">
+    <h1 class="newsdt-title">QUÁ TRÌNH PHÁT TRIỂN</h1>
+    <span style="font-size: 16px;">Công ty TNHH vàng bạc đá quý Ngọc Thẫm được thành lập từ năm 2003 với vốn đều lệ 110 tỷ đồng.Tiền thân của công ty Ngọc Thẫm là một cơ sở chuyên gia công các loại trang sức bằng vàng,bạc với 1 cửa hàng chính tại TP.Mỹ Tho tỉnh Tiền Giang.Sau hơn 10 năm phát triển,hiện công ty đã có 1 văn phòng,1 nhà xưởng quy mô với hơn 150 thợ bạc và 8 chinh nhánh tại các tình Tiền Giang,Vĩnh Long,Cần Thơ và An Giang,chuyên gia công và mua bán vàng miếng,các loại nữ trang bằng vàng,bạc và đá quý.</span><br>
+    <br>
+</div>
