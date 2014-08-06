@@ -25,6 +25,42 @@ namespace jewellry.Controllers
             return View();
         }
 
+        public ActionResult AboutCompany()
+        {
+            ViewBag.Message = "Giới thiệu công ty.";
+
+            return View();
+        }
+
+        public ActionResult AboutAchievements()
+        {
+            ViewBag.Message = "Thành tựu.";
+
+            return View();
+        }
+
+        public ActionResult AboutDevelopment()
+        {
+            ViewBag.Messagetham "Quá trình phát triển.";
+
+            return View();
+        }
+
+        public ActionResult AboutLicense()
+        {
+            ViewBag.Message = "Công ty TNHH Ngọc thẩm.";
+
+            return View();
+        }
+
+        public ActionResult AboutVision()
+        {
+            ViewBag.Message = "Tầm nhìn và phát triển.";
+
+            return View();
+        }
+
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
