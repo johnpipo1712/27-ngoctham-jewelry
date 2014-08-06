@@ -23,7 +23,8 @@ body.boxed #topBar {
     box-shadow: 0 0 15px #333 inset;
     padding: 5px 10px;
     border-radius: 0 0 5px 5px;
-    background: #fff200;
+    /*background: #fff200;*/
+    background: url('../images/logo-bg.jpg');
 }
 #topNav a.logo.onepage {
 	display:inline-block;
