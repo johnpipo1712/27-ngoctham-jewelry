@@ -18,6 +18,21 @@ namespace jewellry.Controllers
             return View();
         }
 
+        public ActionResult News()
+        {
+            return View();
+        }
+
+        public ActionResult NewsGold()
+        {
+            return View();
+        }
+
+        public ActionResult NewsFinancial()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -41,7 +56,7 @@ namespace jewellry.Controllers
 
         public ActionResult AboutDevelopment()
         {
-            ViewBag.Messagetham "Quá trình phát triển.";
+            ViewBag.Messagetham = "Quá trình phát triển.";
 
             return View();
         }
