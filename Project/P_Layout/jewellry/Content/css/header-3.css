@@ -20,11 +20,13 @@ body.boxed #topBar {
 }
 #topNav a.logo {
     position:absolute;
-    box-shadow: 0 0 15px #333 inset;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 10px #333;
     padding: 5px 10px;
     border-radius: 0 0 5px 5px;
     /*background: #fff200;*/
-    background: url('../images/logo-bg.jpg');
+    background: url('../images/crossword.png');
 }
 #topNav a.logo.onepage {
 	display:inline-block;
@@ -61,7 +63,7 @@ body.boxed #topBar {
 }
 
 #topNav div.navbar-collapse {
-	padding:0 0 0 115px;
+	padding:0 0 0 120px;
 	float:left;
 }
 #topNav ul.nav>li {

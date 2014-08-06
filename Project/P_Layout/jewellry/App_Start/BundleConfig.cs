@@ -26,7 +26,8 @@ namespace jewellry
                     "~/Content/css/layout.css",
                     "~/Content/css/header-3.css",
                     "~/Content/css/footer-default.css",
-                    "~/Content/css/color_scheme/red.css"
+                    "~/Content/css/color_scheme/red.css",
+                    "~/Content/css/style.css"
                 ));
 
             bundles.Add(new ScriptBundle("~/Script/js/modernize").Include(
