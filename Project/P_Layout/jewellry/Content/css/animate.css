@@ -31,6 +31,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	-ms-animation-duration: 1s;
 	-o-animation-duration: 1s;
 	animation-duration: 1s;
+    /*-webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;*/
 }
 
 @-moz-keyframes flash {
