@@ -22,7 +22,7 @@ margin-right: 10px;
 
 .right-branches {
 float: left;
-width: 605px;
+width: 665px;
 }
 
 .button-label {
@@ -42,5 +42,9 @@ line-height: 16px;
 }
 
 .page-container {
-    margin-top: 2em;
+margin-top: 2em;
+}
+
+#gold-rate-modal {
+font-size:small;
 }

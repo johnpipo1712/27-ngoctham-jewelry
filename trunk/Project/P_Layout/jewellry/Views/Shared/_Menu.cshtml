@@ -260,40 +260,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown mega-menu">
-                        <a class="dropdown-toggle" href="shop-home-1.html#">BẢNG GIÁ VÀNG <span>gold rates</span></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <h3>Shop Pages</h3>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Lorem Ipsum</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Lorem Ipsum</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Lorem Ipsum</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Lorem Ipsum</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Lorem Ipsum</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h3>Shop Components</h3>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-certificate"></i> Lorem Ipsum</a></li>
-                                            <li><a href="#"><i class="fa fa-trophy"></i> Lorem Ipsum</a></li>
-                                            <li><a href="#"><i class="fa fa-code"></i> Lorem Ipsum</a></li>
-                                            <li><a href="#"><i class="fa fa-tags"></i> Lorem Ipsum</a></li>
-                                            <li><a href="#"><i class="fa fa-user"></i> Lorem Ipsum</a></li>
-                                            <li><a href="#"><i class="fa fa-key"></i> Lorem Ipsum</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h3>Widgetized</h3>
-                                        <img class="img-responsive" src="@Url.Content("~/Content")/images/demo/desktop.png" alt="" />
-                                        <p>Epona Megamenu can be 1-4 columns, full width, including widgetized images.</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                    <li data-toggle="modal" data-target="#gold-rate-modal">
+                        <a href="#">BẢNG GIÁ VÀNG <span>gold rates</span></a>
                     </li>
                 </ul>
 
@@ -304,3 +272,96 @@
     </div><!-- /.container -->
 </header>
 <!-- /Top Nav -->
+
+
+<!-- Gold Rates Modal -->
+<div class="modal fade" id="gold-rate-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <table class="table-stores" style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td class="col1" style="text-align:center">
+                                <strong>BẢNG GIÁ VÀNG</strong> <br>
+                                06/08/2014 &nbsp;&nbsp; <span id="then" class="second">21:16:33</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table-stores" style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td class="col1" style="text-align:center">
+                                <strong>
+                                    Mã loại vàng
+                                </strong>
+                            </td>
+                            <td class="col2" style="text-align:center">
+                                <strong>
+                                    Tên loại vàng
+                                </strong>
+                            </td>
+                            <td class="col3" style="text-align:center">
+                                <strong>
+                                    Giá bán
+                                </strong>
+                            </td>
+                            <td class="col4" style="text-align:center">
+                                <strong>
+                                    Giá mua
+                                </strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col1">VT6</td>
+                            <td class="col2">Nữ trang vàng trắng</td>
+                            <td class="col3" style="text-align:right">2.390.000 VND</td>
+                            <td class="col4" style="text-align:center">2.310.000 VND</td>
+                        </tr>
+                        <tr class="even">
+                            <td class="col1">18k75</td>
+                            <td class="col2">Nữ trang 18k75%</td>
+                            <td class="col3" style="text-align:right">2.390.000 VND</td>
+                            <td class="col4" style="text-align:center">2.310.000 VND</td>
+                        </tr>
+                        <tr>
+                            <td class="col1">18k70</td>
+                            <td class="col2">Nữ trang 18k70%</td>
+                            <td class="col3" style="text-align:right">2.231.000 VND</td>
+                            <td class="col4" style="text-align:center">2.151.000 VND</td>
+                        </tr>
+                        <tr class="even">
+                            <td class="col1">SJCLe</td>
+                            <td class="col2">SJC 5 chỉ, 2 chỉ, 1 chỉ, 5 phân</td>
+                            <td class="col3" style="text-align:right">3.688.000 VND</td>
+                            <td class="col4" style="text-align:center">3.600.000 VND</td>
+                        </tr>
+                        <tr>
+                            <td class="col1">SJC</td>
+                            <td class="col2">SJC</td>
+                            <td class="col3" style="text-align:right">3.668.000 VND</td>
+                            <td class="col4" style="text-align:center">3.600.000 VND</td>
+                        </tr>
+                        <tr class="even">
+                            <td class="col1">24K</td>
+                            <td class="col2">Nữ trang 24k</td>
+                            <td class="col3" style="text-align:right">3.265.000 VND</td>
+                            <td class="col4" style="text-align:center">3.220.000 VND</td>
+                        </tr>
+                        <tr>
+                            <td class="col1">N24k</td>
+                            <td class="col2">Nhẩn 24k</td>
+                            <td class="col3" style="text-align:right">3.265.000 VND</td>
+                            <td class="col4" style="text-align:center">3.220.000 VND</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
