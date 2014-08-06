@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create",)
 </p>
 <table class="table">
     <tr>
@@ -84,7 +84,7 @@
             @Html.DisplayFor(modelItem => item.CREATEDATE)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { BRANCH_CD = item.BRANCH_CD }) |
+            @Html.ActionLink("Edit", "Edit",new { BRANCH_CD = item.BRANCH_CD }) |
             @if (item.ACTIVE == false)
             {
               @Html.ActionLink("Active", "Active", new { BRANCH_CD = item.BRANCH_CD }) 

@@ -1,0 +1,61 @@
+﻿@model W_GJS.Models.O_NEWS
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>O_NEWS</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+     
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NEWS_TITLE, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NEWS_TITLE)
+                @Html.ValidationMessageFor(model => model.NEWS_TITLE)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NEWS_CONTENT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NEWS_CONTENT)
+                @Html.ValidationMessageFor(model => model.NEWS_CONTENT)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IMAGE_NEWS, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IMAGE_NEWS)
+                @Html.ValidationMessageFor(model => model.IMAGE_NEWS)
+            </div>
+        </div>
+
+     
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -8,10 +8,10 @@ using System.Web.Mvc;
 using W_GJS.Models;
 namespace W_GJS.Controllers
 {
-    public class BranchController : Controller
+    public class BRANCHController : Controller
     {
         //
-        // GET: /Branch/
+        // GET: /BRANCH/
         public GJSEntities Db_gsj;
         public ActionResult Index()
         {
@@ -27,22 +27,22 @@ namespace W_GJS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(O_BRANCH branch)
+        public ActionResult Create(O_BRANCH BRANCH)
         {
             if (ModelState.IsValid)
             {
                 Db_gsj = new GJSEntities();
-                branch.ACTIVE = true;
-                branch.STATUS = 0;
-                branch.CREATEDATE= DateTime.Now;
-                Db_gsj.Entry(branch).State = EntityState.Added;
+                BRANCH.ACTIVE = true;
+                BRANCH.STATUS = 0;
+                BRANCH.CREATEDATE= DateTime.Now;
+                Db_gsj.Entry(BRANCH).State = EntityState.Added;
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");
      
             }
             else
             {
-                return View(branch);
+                return View(BRANCH);
             }
         }
         [HttpGet]
@@ -53,64 +53,64 @@ namespace W_GJS.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
-            O_BRANCH branch_edit = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == BRANCH_CD);
-            if (branch_edit == null)
+            O_BRANCH BRANCH_edit = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == BRANCH_CD);
+            if (BRANCH_edit == null)
                 return HttpNotFound();
-            return View(branch_edit);
+            return View(BRANCH_edit);
             
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(O_BRANCH branch)
+        public ActionResult Edit(O_BRANCH BRANCH)
         {
             if (ModelState.IsValid)
             {
                 Db_gsj = new GJSEntities();
-                O_BRANCH branch_edit = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == branch.BRANCH_CD);
-                branch_edit.BRANCH_CODE = branch.BRANCH_CODE;
-                branch_edit.BRANCH_NAME = branch.BRANCH_NAME;
-                branch_edit.CITIES_CD = branch.CITIES_CD;
-                branch_edit.ADDRESS = branch.ADDRESS;
-                branch_edit.LATITUDE = branch.LATITUDE;
-                branch_edit.LONGITUDE = branch.LONGITUDE;
-                branch_edit.PHONE = branch.PHONE;
+                O_BRANCH BRANCH_edit = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == BRANCH.BRANCH_CD);
+                BRANCH_edit.BRANCH_CODE = BRANCH.BRANCH_CODE;
+                BRANCH_edit.BRANCH_NAME = BRANCH.BRANCH_NAME;
+                BRANCH_edit.CITIES_CD = BRANCH.CITIES_CD;
+                BRANCH_edit.ADDRESS = BRANCH.ADDRESS;
+                BRANCH_edit.LATITUDE = BRANCH.LATITUDE;
+                BRANCH_edit.LONGITUDE = BRANCH.LONGITUDE;
+                BRANCH_edit.PHONE = BRANCH.PHONE;
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");
 
             }
             else
             {
-                return View(branch);
+                return View(BRANCH);
             }
         }
 
 
-        public ActionResult Deactive([Bind(Include = "BRANCH_CD")]O_BRANCH branch)
+        public ActionResult Deactive([Bind(Include = "BRANCH_CD")]O_BRANCH BRANCH)
         {
-            if (branch == null)
+            if (BRANCH == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
-            branch = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == branch.BRANCH_CD);
-            branch.ACTIVE = false;
-            Db_gsj.Entry(branch).State = EntityState.Modified;
+            BRANCH = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == BRANCH.BRANCH_CD);
+            BRANCH.ACTIVE = false;
+            Db_gsj.Entry(BRANCH).State = EntityState.Modified;
             Db_gsj.SaveChanges();
             return RedirectToAction("Index");
         }
 
 
-        public ActionResult Active([Bind(Include = "BRANCH_CD")]O_BRANCH branch)
+        public ActionResult Active([Bind(Include = "BRANCH_CD")]O_BRANCH BRANCH)
         {
-            if (branch == null)
+            if (BRANCH == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
-            branch = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == branch.BRANCH_CD);
-            branch.ACTIVE = true;
-            Db_gsj.Entry(branch).State = EntityState.Modified;
+            BRANCH = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == BRANCH.BRANCH_CD);
+            BRANCH.ACTIVE = true;
+            Db_gsj.Entry(BRANCH).State = EntityState.Modified;
             Db_gsj.SaveChanges();
             return RedirectToAction("Index");
         }
