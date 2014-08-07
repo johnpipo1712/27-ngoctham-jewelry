@@ -23,6 +23,11 @@ namespace jewellry.Controllers
             return View();
         }
 
+        public ActionResult NewsDetail()
+        {
+            return View();
+        }
+
         public ActionResult NewsGold()
         {
             return View();
