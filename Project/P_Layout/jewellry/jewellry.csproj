@@ -170,6 +170,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\supported.css" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-colorpicker.css" />
     <Content Include="Content\css\bootstrap-form-slider.css" />
@@ -384,6 +385,23 @@
     <Content Include="Content\images\products\sp3.png" />
     <Content Include="Content\images\products\sp4.png" />
     <Content Include="Content\images\products\sp5.png" />
+    <Content Include="Content\images\services\1.bmp" />
+    <Content Include="Content\images\services\3.bmp" />
+    <Content Include="Content\images\services\4.bmp" />
+    <Content Include="Content\images\services\5.bmp" />
+    <Content Include="Content\images\services\7.bmp" />
+    <Content Include="Content\images\services\8.bmp" />
+    <Content Include="Content\images\services\9.bmp" />
+    <Content Include="Content\images\services\amethyst.bmp" />
+    <Content Include="Content\images\services\cut.bmp" />
+    <Content Include="Content\images\services\fancy_colored_diamonds.jpg" />
+    <Content Include="Content\images\services\mau.bmp" />
+    <Content Include="Content\images\services\plot.bmp" />
+    <Content Include="Content\images\services\Taking-Care-Diamond-Jewellery.jpg" />
+    <Content Include="Content\images\services\thang_cat_mai.bmp" />
+    <Content Include="Content\images\services\thang_tinh_khiet.bmp" />
+    <Content Include="Content\images\services\thang_mau.bmp" />
+    <Content Include="Content\images\services\weight.jpg" />
     <Content Include="Content\images\shop_banner.png" />
     <Content Include="Content\images\slide\01.jpg" />
     <Content Include="Content\images\slide\02.jpg" />
@@ -444,6 +462,7 @@
     <Content Include="Scripts\revolution_slider.js" />
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Self\services\css\default.css" />
     <Content Include="Self\branches\css\default.css" />
     <Content Include="Self\branches\images\bg-arrow.png" />
     <Content Include="Self\branches\images\bg-sys-store.png" />
@@ -482,10 +501,14 @@
     <Content Include="Views\Home\ProductDetail.cshtml" />
     <Content Include="Views\Home\ProductList.cshtml" />
     <Content Include="Views\Home\NewsDetail.cshtml" />
+    <Content Include="Views\Home\DiamondAssess.cshtml" />
+    <Content Include="Views\Home\ColoredStonesAssess.cshtml" />
+    <Content Include="Views\Home\LaserInscription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Self\news\images\" />
+    <Folder Include="Self\services\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />

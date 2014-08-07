@@ -18,6 +18,21 @@ namespace jewellry.Controllers
             return View();
         }
 
+        public ActionResult DiamondAssess()
+        {
+            return View();
+        }
+
+        public ActionResult ColoredStonesAssess()
+        {
+            return View();
+        }
+
+        public ActionResult LaserInscription()
+        {
+            return View();
+        }
+
         public ActionResult News()
         {
             return View();
