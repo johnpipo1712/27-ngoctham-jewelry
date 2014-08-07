@@ -938,10 +938,12 @@ section.brands {
 .box-content.thumbnail {
 	position:relative;
 	max-width:255px;
+    height:255px;
 	display:inline-block;
 	margin-bottom:30px;
 	border:0; padding:0;
-	background:rgba(0,0,0,0.03);
+	/*background:rgba(0,0,0,0.03);*/
+    background: #fff;
 }
 .box-content.thumbnail:hover {
 	background:rgba(0,0,0,0.08);

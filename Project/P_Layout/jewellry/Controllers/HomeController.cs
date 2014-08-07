@@ -112,5 +112,15 @@ namespace jewellry.Controllers
         {
             return View();
         }
+
+        public ActionResult ShowAlbum()
+        {
+            return View();
+        }
+
+        public ActionResult Catalog()
+        {
+            return View();
+        }
     }
 }
