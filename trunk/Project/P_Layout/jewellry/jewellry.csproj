@@ -373,6 +373,7 @@
     <Content Include="Content\images\logo_alt.png" />
     <Content Include="Content\images\logo_footer.png" />
     <Content Include="Content\images\logo_footer_alt.png" />
+    <Content Include="Content\images\news\small\PNJ_News_320.jpg" />
     <Content Include="Content\images\products\sp1.png" />
     <Content Include="Content\images\products\sp2.png" />
     <Content Include="Content\images\products\sp3.png" />
@@ -442,6 +443,7 @@
     <Content Include="Self\branches\images\bg-arrow.png" />
     <Content Include="Self\branches\images\bg-sys-store.png" />
     <Content Include="Self\branches\images\button-sys.png" />
+    <Content Include="Self\news\css\mainstyles.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -477,6 +479,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Self\news\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
