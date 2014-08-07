@@ -21,6 +21,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/Script/js/modernize")
     <link href="@Url.Content("~/Content/css/default.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/supported.css")" rel="stylesheet" type="text/css" />
     @RenderSection("Styles", false)
 
     <!--[if lte IE 8]>
@@ -60,6 +61,22 @@
         <a href="shop-home-1.html#" id="toTop"></a>
 
     </div><!-- /#wrapper -->
+
+    <div class="ab_support">
+        <a id="ab_support" href="javascript:void(0)"></a>
+        <div class="support_chat">
+            <span class="sp_title">Hỗ trợ trực tuyến</span><span class="sp_phone">08.3995.9336</span>
+            <div class="support_info">
+                <ul>
+                    <li class="sp_left"><a href="ymsgr:sendIM?hagolden99"><img src="http://opi.yahoo.com/online?u=hagolden99&amp;m=g&amp;t=1"> </a> Hỗ trợ 1</li>
+                    <li class="sp_right"><a href="ymsgr:sendIM?ntthang1988"><img src="http://opi.yahoo.com/online?u=ntthang1988&amp;m=g&amp;t=1">  </a> Hỗ trợ 2</li>
+                    <li class="sp_left"><a href="skype:honganhdo9?chat"><img src="http://mystatus.skype.com/bigclassic/honganhdo9">  </a> Hỗ trợ 3</li>
+                    <li class="sp_right"><a href="skype:selina_nguyenhang?chat"><img src="http://mystatus.skype.com/bigclassic/selina_nguyenhang">  </a> Hỗ trợ 4</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <!-- JAVASCRIPT FILES -->
     @Scripts.Render("~/Script/js")
     @RenderSection("Scripts", false)
