@@ -468,6 +468,7 @@
     <Content Include="Self\branches\images\bg-sys-store.png" />
     <Content Include="Self\branches\images\button-sys.png" />
     <Content Include="Self\news\css\mainstyles.css" />
+    <Content Include="Content\images\services\laser_inscription.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
