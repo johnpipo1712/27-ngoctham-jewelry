@@ -14,6 +14,12 @@ namespace W_GJS.Models
     
     public partial class O_NEWS
     {
+        public O_NEWS()
+        {
+            this.O_NEWS_HIGHLIGHTS = new HashSet<O_NEWS_HIGHLIGHTS>();
+            this.O_NEWS_NEW = new HashSet<O_NEWS_NEW>();
+        }
+    
         public long NEWS_CD { get; set; }
         public string NEWS_TITLE { get; set; }
         public string NEWS_CONTENT { get; set; }
@@ -25,5 +31,7 @@ namespace W_GJS.Models
         public Nullable<System.DateTime> CREATEDATE { get; set; }
     
         public virtual O_CATEGORY_NEWS O_CATEGORY_NEWS { get; set; }
+        public virtual ICollection<O_NEWS_HIGHLIGHTS> O_NEWS_HIGHLIGHTS { get; set; }
+        public virtual ICollection<O_NEWS_NEW> O_NEWS_NEW { get; set; }
     }
 }
