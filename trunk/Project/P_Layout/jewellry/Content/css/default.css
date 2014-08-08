@@ -72,3 +72,26 @@ margin-top: 2em;
 #gold-rate-modal {
 font-size:small;
 }
+
+img.tick { background: url(../images/tick.gif) 10% 10% no-repeat; }
+
+.sb-gdv-disc {
+top: 5px;
+left: 9px;
+}
+.sb-gdv-disc {
+position: absolute !important;
+top: 0px;
+left: 3px;
+}
+.sb-gdv-disc__content {
+width: 45px;
+height: 45px;
+color: white;
+background: url(http://static-02.lazada.vn/cms/icons/sprite-3.png) 0 -238px no-repeat;
+text-align: center;
+padding: 0;
+text-align: center;
+margin: 0;
+padding-top: 10px;
+}
