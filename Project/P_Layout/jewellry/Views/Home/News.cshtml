@@ -11,7 +11,7 @@
 
         <!-- blog search -->
         <div class="widget">
-            <form method="get" action="blog-sidebar-left.html#" class="input-group">
+            <form method="get" action="@Url.Action("News", "Home")" class="input-group">
                 <input type="text" class="form-control" name="s" value="" placeholder="Blog Search" />
                 <span class="input-group-btn">
                     <button class="btn btn-primary"><i class="fa fa-search"></i></button>
@@ -28,12 +28,12 @@
                 <!-- tabs -->
                 <ul class="nav nav-tabs nav-justified">
                     <li class="active">
-                        <a href="blog-sidebar-left.html#tab1" data-toggle="tab">
+                        <a href="@Url.Action("News", "Home")tab1" data-toggle="tab">
                             Nổi bật
                         </a>
                     </li>
                     <li>
-                        <a href="blog-sidebar-left.html#tab2" data-toggle="tab">
+                        <a href="@Url.Action("News", "Home")tab2" data-toggle="tab">
                             Mới nhất
                         </a>
                     </li>
@@ -43,22 +43,22 @@
                 <div class="tab-content">
                     <div id="tab1" class="tab-pane active">
                         <ul>
-                            <li><a href="blog-single-sidebar.html"><i class="fa fa-sign-out"></i> Tin tức 01</a> <small>08/08/2014</small></li>
-                            <li><a href="blog-single-sidebar.html"><i class="fa fa-sign-out"></i> Tin tức 02</a> <small>08/08/2014</small></li>
-                            <li><a href="blog-single-sidebar.html"><i class="fa fa-sign-out"></i> Tin tức 03</a> <small>08/08/2014</small></li>
-                            <li><a href="blog-single-sidebar.html"><i class="fa fa-sign-out"></i> Tin tức 04</a> <small>08/08/2014</small></li>
-                            <li><a href="blog-single-sidebar.html"><i class="fa fa-sign-out"></i> Tin tức 05</a> <small>08/08/2014</small></li>
+                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 01</a> <small>08/08/2014</small></li>
+                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 02</a> <small>08/08/2014</small></li>
+                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 03</a> <small>08/08/2014</small></li>
+                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 04</a> <small>08/08/2014</small></li>
+                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 05</a> <small>08/08/2014</small></li>
                         </ul>
                     </div>
 
                     <div id="tab2" class="tab-pane">
                         <!-- tab content -->
                         <ul>
-                            <li><a href="blog-single-sidebar.html"><i class="fa fa-sign-out"></i> Tin tức 06</a> <small>08/08/2014</small></li>
-                            <li><a href="blog-single-sidebar.html"><i class="fa fa-sign-out"></i> Tin tức 07</a> <small>08/08/2014</small></li>
-                            <li><a href="blog-single-sidebar.html"><i class="fa fa-sign-out"></i> Tin tức 08</a> <small>08/08/2014</small></li>
-                            <li><a href="blog-single-sidebar.html"><i class="fa fa-sign-out"></i> Tin tức 09</a> <small>08/08/2014</small></li>
-                            <li><a href="blog-single-sidebar.html"><i class="fa fa-sign-out"></i> Tin tức 10</a> <small>08/08/2014</small></li>
+                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 06</a> <small>08/08/2014</small></li>
+                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 07</a> <small>08/08/2014</small></li>
+                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 08</a> <small>08/08/2014</small></li>
+                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 09</a> <small>08/08/2014</small></li>
+                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 10</a> <small>08/08/2014</small></li>
                         </ul>
                     </div>
                 </div>
@@ -84,11 +84,11 @@
         <!-- tags -->
         <div class="widget">
             <h4>TAGS</h4>
-            <a class="tag label label-default light" href="blog-sidebar-left.html#"><i class="fa fa-tags"></i> Vàng</a>
-            <a class="tag label label-default light" href="blog-sidebar-left.html#"><i class="fa fa-tags"></i> Bạc</a>
-            <a class="tag label label-default light" href="blog-sidebar-left.html#"><i class="fa fa-tags"></i> Đá Quý</a>
-            <a class="tag label label-default light" href="blog-sidebar-left.html#"><i class="fa fa-tags"></i> Nhẫn</a>
-            <a class="tag label label-default light" href="blog-sidebar-left.html#"><i class="fa fa-tags"></i> Kim cương</a>
+            <a class="tag label label-default light" href="@Url.Action("News", "Home")"><i class="fa fa-tags"></i> Vàng</a>
+            <a class="tag label label-default light" href="@Url.Action("News", "Home")"><i class="fa fa-tags"></i> Bạc</a>
+            <a class="tag label label-default light" href="@Url.Action("News", "Home")"><i class="fa fa-tags"></i> Đá Quý</a>
+            <a class="tag label label-default light" href="@Url.Action("News", "Home")"><i class="fa fa-tags"></i> Nhẫn</a>
+            <a class="tag label label-default light" href="@Url.Action("News", "Home")"><i class="fa fa-tags"></i> Kim cương</a>
         </div>
 
 
@@ -102,11 +102,11 @@
 
             <div class="col-md-9 col-sm-9">
 
-                <h2 class="article-title"><a href="blog-single-sidebar.html">Tin tức <span>Mẫu</span></a></h2>
+                <h2 class="article-title"><a href="@Url.Action("NewsDetail", "Home")">Tin tức <span>Mẫu</span></a></h2>
 
                 <!-- image -->
                 <figure>
-                    <a href="blog-single-sidebar.html">
+                    <a href="@Url.Action("NewsDetail", "Home")">
                         <img src="@Url.Content("~/Content/images/news/01/01.jpg")" class="img-responsive" alt="blog" />
                     </a>
                 </figure>
@@ -118,7 +118,7 @@
 
                 <!-- read more button -->
                 <div class="text-right">
-                    <a href="blog-single-sidebar.html" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
+                    <a href="@Url.Action("NewsDetail", "Home")" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
                 </div>
 
             </div>
@@ -130,7 +130,7 @@
                 <span class="info hidden-xs">
                     <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">ADMIN</a></span>
                     <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="http://theme.stepofweb.com/Epona/v1.0/HTML/blog.html">Danh Mục 01</a></span>
-                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="blog-single-sidebar.html#comments">3 bình luận</a></span>
+                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="@Url.Action("NewsDetail", "Home")#comments">3 bình luận</a></span>
                     
                 </span>
             </div>
@@ -143,11 +143,11 @@
 
             <div class="col-md-9 col-sm-9">
 
-                <h2 class="article-title"><a href="blog-single-sidebar.html">Tin tức <span>Mẫu</span></a></h2>
+                <h2 class="article-title"><a href="@Url.Action("NewsDetail", "Home")">Tin tức <span>Mẫu</span></a></h2>
 
                 <!-- image -->
                 <figure>
-                    <a href="blog-single-sidebar.html">
+                    <a href="@Url.Action("NewsDetail", "Home")">
                         <img src="@Url.Content("~/Content/images/news/01/01.jpg")" class="img-responsive" alt="blog" />
                     </a>
                 </figure>
@@ -159,7 +159,7 @@
 
                 <!-- read more button -->
                 <div class="text-right">
-                    <a href="blog-single-sidebar.html" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
+                    <a href="@Url.Action("NewsDetail", "Home")" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
                 </div>
 
             </div>
@@ -171,7 +171,7 @@
                 <span class="info hidden-xs">
                     <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">ADMIN</a></span>
                     <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="http://theme.stepofweb.com/Epona/v1.0/HTML/blog.html">Danh Mục 01</a></span>
-                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="blog-single-sidebar.html#comments">3 bình luận</a></span>
+                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="@Url.Action("NewsDetail", "Home")#comments">3 bình luận</a></span>
                     
                 </span>
             </div>
@@ -184,11 +184,11 @@
 
             <div class="col-md-9 col-sm-9">
 
-                <h2 class="article-title"><a href="blog-single-sidebar.html">Tin tức <span>Mẫu</span></a></h2>
+                <h2 class="article-title"><a href="@Url.Action("NewsDetail", "Home")">Tin tức <span>Mẫu</span></a></h2>
 
                 <!-- image -->
                 <figure>
-                    <a href="blog-single-sidebar.html">
+                    <a href="@Url.Action("NewsDetail", "Home")">
                         <img src="@Url.Content("~/Content/images/news/01/01.jpg")" class="img-responsive" alt="blog" />
                     </a>
                 </figure>
@@ -200,7 +200,7 @@
 
                 <!-- read more button -->
                 <div class="text-right">
-                    <a href="blog-single-sidebar.html" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
+                    <a href="@Url.Action("NewsDetail", "Home")" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
                 </div>
 
             </div>
@@ -212,7 +212,7 @@
                 <span class="info hidden-xs">
                     <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">ADMIN</a></span>
                     <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="http://theme.stepofweb.com/Epona/v1.0/HTML/blog.html">Danh Mục 01</a></span>
-                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="blog-single-sidebar.html#comments">3 bình luận</a></span>
+                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="@Url.Action("NewsDetail", "Home")#comments">3 bình luận</a></span>
                     
                 </span>
             </div>
@@ -225,11 +225,11 @@
 
             <div class="col-md-9 col-sm-9">
 
-                <h2 class="article-title"><a href="blog-single-sidebar.html">Tin tức <span>Mẫu</span></a></h2>
+                <h2 class="article-title"><a href="@Url.Action("NewsDetail", "Home")">Tin tức <span>Mẫu</span></a></h2>
 
                 <!-- image -->
                 <figure>
-                    <a href="blog-single-sidebar.html">
+                    <a href="@Url.Action("NewsDetail", "Home")">
                         <img src="@Url.Content("~/Content/images/news/01/01.jpg")" class="img-responsive" alt="blog" />
                     </a>
                 </figure>
@@ -241,7 +241,7 @@
 
                 <!-- read more button -->
                 <div class="text-right">
-                    <a href="blog-single-sidebar.html" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
+                    <a href="@Url.Action("NewsDetail", "Home")" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
                 </div>
 
             </div>
@@ -253,7 +253,7 @@
                 <span class="info hidden-xs">
                     <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">ADMIN</a></span>
                     <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="http://theme.stepofweb.com/Epona/v1.0/HTML/blog.html">Danh Mục 01</a></span>
-                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="blog-single-sidebar.html#comments">3 bình luận</a></span>
+                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="@Url.Action("NewsDetail", "Home")#comments">3 bình luận</a></span>
                     
                 </span>
             </div>
@@ -266,11 +266,11 @@
 
             <div class="col-md-9 col-sm-9">
 
-                <h2 class="article-title"><a href="blog-single-sidebar.html">Tin tức <span>Mẫu</span></a></h2>
+                <h2 class="article-title"><a href="@Url.Action("NewsDetail", "Home")">Tin tức <span>Mẫu</span></a></h2>
 
                 <!-- image -->
                 <figure>
-                    <a href="blog-single-sidebar.html">
+                    <a href="@Url.Action("NewsDetail", "Home")">
                         <img src="@Url.Content("~/Content/images/news/01/01.jpg")" class="img-responsive" alt="blog" />
                     </a>
                 </figure>
@@ -282,7 +282,7 @@
 
                 <!-- read more button -->
                 <div class="text-right">
-                    <a href="blog-single-sidebar.html" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
+                    <a href="@Url.Action("NewsDetail", "Home")" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
                 </div>
 
             </div>
@@ -294,7 +294,7 @@
                 <span class="info hidden-xs">
                     <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">ADMIN</a></span>
                     <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="http://theme.stepofweb.com/Epona/v1.0/HTML/blog.html">Danh Mục 01</a></span>
-                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="blog-single-sidebar.html#comments">3 bình luận</a></span>
+                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="@Url.Action("NewsDetail", "Home")#comments">3 bình luận</a></span>
                     
                 </span>
             </div>
@@ -306,13 +306,13 @@
         <div class="text-center">
 
             <ul class="pagination">
-                <li class="disabled"><a href="blog-sidebar-left.html#">&laquo;</a></li>
-                <li class="active"><a href="blog-sidebar-left.html#">1 <span class="sr-only">(current)</span></a></li>
-                <li><a href="blog-sidebar-left.html#">2</a></li>
-                <li><a href="blog-sidebar-left.html#">3</a></li>
-                <li><a href="blog-sidebar-left.html#">4</a></li>
-                <li><a href="blog-sidebar-left.html#">5</a></li>
-                <li><a href="blog-sidebar-left.html#">&raquo;</a></li>
+                <li class="disabled"><a href="@Url.Action("News", "Home")">&laquo;</a></li>
+                <li class="active"><a href="@Url.Action("News", "Home")">1 <span class="sr-only">(current)</span></a></li>
+                <li><a href="@Url.Action("News", "Home")">2</a></li>
+                <li><a href="@Url.Action("News", "Home")">3</a></li>
+                <li><a href="@Url.Action("News", "Home")">4</a></li>
+                <li><a href="@Url.Action("News", "Home")">5</a></li>
+                <li><a href="@Url.Action("News", "Home")">&raquo;</a></li>
             </ul>
 
         </div>
