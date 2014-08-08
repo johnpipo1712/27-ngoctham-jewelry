@@ -18,6 +18,9 @@ namespace W_GJS.Models
         {
             this.D_ORDER_DETAIL = new HashSet<D_ORDER_DETAIL>();
             this.D_PRODUCT_DETAIL = new HashSet<D_PRODUCT_DETAIL>();
+            this.O_PRODUCT_HIGHLIGHTS = new HashSet<O_PRODUCT_HIGHLIGHTS>();
+            this.O_PRODUCT_NEW = new HashSet<O_PRODUCT_NEW>();
+            this.O_PRODUCT_SELLING = new HashSet<O_PRODUCT_SELLING>();
         }
     
         public long PRODUCT_CD { get; set; }
@@ -36,5 +39,8 @@ namespace W_GJS.Models
         public virtual ICollection<D_ORDER_DETAIL> D_ORDER_DETAIL { get; set; }
         public virtual ICollection<D_PRODUCT_DETAIL> D_PRODUCT_DETAIL { get; set; }
         public virtual O_CATEGORY_PRODUCT O_CATEGORY_PRODUCT { get; set; }
+        public virtual ICollection<O_PRODUCT_HIGHLIGHTS> O_PRODUCT_HIGHLIGHTS { get; set; }
+        public virtual ICollection<O_PRODUCT_NEW> O_PRODUCT_NEW { get; set; }
+        public virtual ICollection<O_PRODUCT_SELLING> O_PRODUCT_SELLING { get; set; }
     }
 }

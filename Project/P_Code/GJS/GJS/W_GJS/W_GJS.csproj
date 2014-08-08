@@ -182,13 +182,31 @@
     <Compile Include="Models\O_CUSTOMER.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\O_INFORMATION.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\O_NEWS.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\O_NEWS_HIGHLIGHTS.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\O_NEWS_NEW.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\O_ORDER.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\O_PRODUCT.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\O_PRODUCT_HIGHLIGHTS.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\O_PRODUCT_NEW.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\O_PRODUCT_SELLING.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\O_SEO.cs">

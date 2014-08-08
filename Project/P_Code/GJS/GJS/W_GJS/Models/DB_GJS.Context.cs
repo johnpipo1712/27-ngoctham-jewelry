@@ -35,9 +35,15 @@ namespace W_GJS.Models
         public virtual DbSet<O_CATEGORY_PRODUCT> O_CATEGORY_PRODUCT { get; set; }
         public virtual DbSet<O_CITIES> O_CITIES { get; set; }
         public virtual DbSet<O_CUSTOMER> O_CUSTOMER { get; set; }
+        public virtual DbSet<O_INFORMATION> O_INFORMATION { get; set; }
         public virtual DbSet<O_NEWS> O_NEWS { get; set; }
+        public virtual DbSet<O_NEWS_HIGHLIGHTS> O_NEWS_HIGHLIGHTS { get; set; }
+        public virtual DbSet<O_NEWS_NEW> O_NEWS_NEW { get; set; }
         public virtual DbSet<O_ORDER> O_ORDER { get; set; }
         public virtual DbSet<O_PRODUCT> O_PRODUCT { get; set; }
+        public virtual DbSet<O_PRODUCT_HIGHLIGHTS> O_PRODUCT_HIGHLIGHTS { get; set; }
+        public virtual DbSet<O_PRODUCT_NEW> O_PRODUCT_NEW { get; set; }
+        public virtual DbSet<O_PRODUCT_SELLING> O_PRODUCT_SELLING { get; set; }
         public virtual DbSet<O_SEO> O_SEO { get; set; }
         public virtual DbSet<O_USER_CUSTOMER> O_USER_CUSTOMER { get; set; }
         public virtual DbSet<O_USER_EMPLOYEE> O_USER_EMPLOYEE { get; set; }
