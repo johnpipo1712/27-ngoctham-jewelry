@@ -369,6 +369,7 @@
     <Content Include="Content\images\email_template\social_icon2.png" />
     <Content Include="Content\images\email_template\social_icon3.png" />
     <Content Include="Content\images\email_template\social_icon4.png" />
+    <Content Include="Content\images\facebook-logo.png" />
     <Content Include="Content\images\favicon.png" />
     <Content Include="Content\images\logo-bg.png" />
     <Content Include="Content\images\logo.png" />
@@ -405,6 +406,7 @@
     <Content Include="Content\images\services\thang_mau.bmp" />
     <Content Include="Content\images\services\weight.jpg" />
     <Content Include="Content\images\shop_banner.png" />
+    <Content Include="Content\images\skype-logo.png" />
     <Content Include="Content\images\slide\01.jpg" />
     <Content Include="Content\images\slide\02.jpg" />
     <Content Include="Content\images\slide\03.jpg" />
@@ -412,7 +414,9 @@
     <Content Include="Content\images\slide\05.jpg" />
     <Content Include="Content\images\logo-bg.jpg" />
     <Content Include="Content\images\slogan5.png" />
+    <Content Include="Content\images\support-online.png" />
     <Content Include="Content\images\viLogo.png" />
+    <Content Include="Content\images\yahoo-logo.png" />
     <Content Include="Content\plugins\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\plugins\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\plugins\flexslider\jquery.flexslider-min.js" />
