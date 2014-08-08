@@ -202,6 +202,7 @@
     <Content Include="Content\images\avatar.png" />
     <Content Include="Content\images\big_banner.png" />
     <Content Include="Content\images\big_banner_grey.png" />
+    <Content Include="Content\images\branches\img-bando.png" />
     <Content Include="Content\images\cc\Maestro.png" />
     <Content Include="Content\images\cc\Mastercard.png" />
     <Content Include="Content\images\cc\PayPal.png" />
@@ -385,6 +386,7 @@
     <Content Include="Content\images\products\sp3.png" />
     <Content Include="Content\images\products\sp4.png" />
     <Content Include="Content\images\products\sp5.png" />
+    <Content Include="Content\images\products\sp6.jpg" />
     <Content Include="Content\images\services\1.bmp" />
     <Content Include="Content\images\services\3.bmp" />
     <Content Include="Content\images\services\4.bmp" />
@@ -409,6 +411,7 @@
     <Content Include="Content\images\slide\04.jpg" />
     <Content Include="Content\images\slide\05.jpg" />
     <Content Include="Content\images\logo-bg.jpg" />
+    <Content Include="Content\images\slogan5.png" />
     <Content Include="Content\images\viLogo.png" />
     <Content Include="Content\plugins\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\plugins\bootstrap\js\bootstrap.min.js" />
@@ -448,6 +451,7 @@
     <Content Include="Content\images\demo\Thumbs.db" />
     <Content Include="Content\images\email_template\Thumbs.db" />
     <Content Include="Content\images\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\jewelry.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -507,6 +511,7 @@
     <Content Include="Views\Home\DiamondAssess.cshtml" />
     <Content Include="Views\Home\ColoredStonesAssess.cshtml" />
     <Content Include="Views\Home\LaserInscription.cshtml" />
+    <Content Include="Views\Shared\_Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

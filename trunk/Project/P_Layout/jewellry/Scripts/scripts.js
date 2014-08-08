@@ -668,13 +668,13 @@ function _lightbox() {
 				type: 				'image',
 				fixedContentPos: 	false,
 				fixedBgPos: 		false,
-				mainClass: 			'mfp-no-margins mfp-with-zoom',
+				mainClass: 'mfp-no-margins mfp-with-zoom mfp-fade',
 				image: {
 					verticalFit: 	true
 				},
 
 				zoom: {
-					enabled: 		false,
+					enabled: 		true,
 					duration: 		300
 				},
 
