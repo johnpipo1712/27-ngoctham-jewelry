@@ -122,5 +122,10 @@ namespace jewellry.Controllers
         {
             return View();
         }
+
+        public ActionResult Cart()
+        {
+            return View();
+        }
     }
 }

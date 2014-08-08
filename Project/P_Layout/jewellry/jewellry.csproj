@@ -376,6 +376,7 @@
     <Content Include="Content\images\logo_alt.png" />
     <Content Include="Content\images\logo_footer.png" />
     <Content Include="Content\images\logo_footer_alt.png" />
+    <Content Include="Content\images\news\01\01.jpg" />
     <Content Include="Content\images\news\small\pic1.jpg" />
     <Content Include="Content\images\news\small\pic2.jpg" />
     <Content Include="Content\images\news\small\pic3.jpg" />
@@ -516,6 +517,7 @@
     <Content Include="Views\Home\ColoredStonesAssess.cshtml" />
     <Content Include="Views\Home\LaserInscription.cshtml" />
     <Content Include="Views\Shared\_Chat.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
