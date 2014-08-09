@@ -3,20 +3,15 @@
     <div class="container">
 
         <!-- Logo -->
-        <a class="logo" href="@Url.Action("Index", "Home")">
-            <img src="@Url.Content("~/Content")/images/viLogo.png" height="70" alt="" />
-        </a>
+        @*<a class="logo" href="@Url.Action("Index", "Home")">
+                <img src="@Url.Content("~/Content")/images/viLogo.png" height="75" alt="" />
+            </a>*@
 
         <!-- Mobile Menu Button -->
         <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
             <i class="fa fa-bars"></i>
         </button>
 
-        <!-- Search -->
-        <form class="search" method="get" action="http://theme.stepofweb.com/Epona/v1.0/HTML/search.html">
-            <input type="text" class="form-control" name="s" value="" placeholder="Tìm Kiếm">
-            <button class="fa fa-search"></button>
-        </form>
         <!-- /Search -->
         <!-- Top Nav -->
         <div class="navbar-collapse nav-main-collapse collapse">
@@ -57,7 +52,7 @@
                             <li><a href="@Url.Action("ProductList", "Home")"><i class="fa fa-chevron-right"></i> Nữ trang hộp sáp</a></li>
                         </ul>
                     </li>
-                    
+
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="shop-home-1.html#">DỊCH VỤ <span>services</span></a>
                         <ul class="dropdown-menu">
@@ -85,6 +80,11 @@
                     <li data-toggle="modal" data-target="#gold-rate-modal">
                         <a href="#">BẢNG GIÁ VÀNG <span>gold rates</span></a>
                     </li>
+
+                    <li><a href="#" data-toggle="modal" data-target="#LoginModal">@*<i class="fa fa-angle-right"></i>*@Đăng Nhập <span>login</span></a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#RegisterModal">@*<i class="fa fa-angle-right"></i>*@Đăng Kí <span>register</span></a></li>
+                    <li class="hidden-xs"><a href="shop-home-1.html#">@*<i class="fa fa-angle-right"></i>*@Liên Hệ <span>contact</span></a></li>
+
                 </ul>
 
             </nav>
@@ -95,6 +95,17 @@
 </header>
 <!-- /Top Nav -->
 
+<div id="TopNavBottom">
+    <div class="container">
+        <!-- Search -->
+        <form class="search" method="get" action="http://theme.stepofweb.com/Epona/v1.0/HTML/search.html">
+            <input type="text" class="form-control" name="s" value="" placeholder="Tìm Kiếm">
+            <button class="fa fa-search"></button>
+        </form>
+
+        @Html.Partial("_Cart")
+    </div>
+</div>
 
 <!-- Gold Rates Modal -->
 <div class="modal fade" id="gold-rate-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

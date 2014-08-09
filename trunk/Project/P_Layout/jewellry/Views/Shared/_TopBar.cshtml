@@ -1,28 +1,19 @@
 ﻿<!-- Top Bar -->
 <header id="topBar" class="styleBackgroundColor">
     <div class="container">
-
-        <div class="pull-left fsize13 hide_mobile">
-
-            <div class="block text-right">
-                <!-- social -->
-                <a href="shop-home-1.html#" class="social fa fa-facebook"></a>
-                <a href="shop-home-1.html#" class="social fa fa-twitter"></a>
-                <a href="shop-home-1.html#" class="social fa fa-google-plus"></a>
-                <a href="shop-home-1.html#" class="social fa fa-linkedin"></a>
-                <a href="shop-home-1.html#" class="social fa fa-pinterest"></a>
-            </div><!-- /social -->
-
-        </div>
-
         <div id="barMain">
             <nav class="nav-second">
                 <ul class="nav nav-pills nav-second">
-                    <li><img src="@Url.Content("~/Content/images/slogan5.png")" alt="Slogan" style="width: 400px;position:relative;bottom:5px;right:55px" /></li>
-                    <li><a href="#" data-toggle="modal" data-target="#LoginModal"><i class="fa fa-angle-right"></i> Đăng Nhập</a></li>
+                    <li style="padding-right: 15%">
+                        <a class="logo" href="@Url.Action("Index", "Home")">
+                            <img src="@Url.Content("~/Content")/images/viLogo.png" height="70" alt="" />
+                        </a>
+                    </li>
+                    <li><img src="@Url.Content("~/Content/images/slogan5.png")" alt="Slogan" style="height:46px;position:relative;top:11px;right:0px" /></li>
+                    @*<li><a href="#" data-toggle="modal" data-target="#LoginModal"><i class="fa fa-angle-right"></i> Đăng Nhập</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#RegisterModal"><i class="fa fa-angle-right"></i> Đăng Kí</a></li>
                     <li class="hidden-xs"><a href="shop-home-1.html#"><i class="fa fa-angle-right"></i> Liên Hệ</a></li>
-                    @Html.Partial("_Cart")
+                    @Html.Partial("_Cart")*@
                 </ul>
             </nav>
         </div>

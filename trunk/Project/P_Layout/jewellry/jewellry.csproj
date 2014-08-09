@@ -370,6 +370,7 @@
     <Content Include="Content\images\email_template\social_icon3.png" />
     <Content Include="Content\images\email_template\social_icon4.png" />
     <Content Include="Content\images\facebook-logo.png" />
+    <Content Include="Content\images\facebookbadge.png" />
     <Content Include="Content\images\favicon.png" />
     <Content Include="Content\images\logo-bg.png" />
     <Content Include="Content\images\logo.png" />
@@ -407,6 +408,7 @@
     <Content Include="Content\images\services\thang_mau.bmp" />
     <Content Include="Content\images\services\weight.jpg" />
     <Content Include="Content\images\shop_banner.png" />
+    <Content Include="Content\images\skulls.png" />
     <Content Include="Content\images\skype-logo.png" />
     <Content Include="Content\images\slide\01.jpg" />
     <Content Include="Content\images\slide\02.jpg" />

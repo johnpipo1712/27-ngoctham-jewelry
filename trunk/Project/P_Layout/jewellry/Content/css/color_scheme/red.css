@@ -1,11 +1,12 @@
 /**
-	@Red		#EFC240
-	@Dark Red	#f1c40f
+	@Red		#FDF876
+	@Dark Red	#FDF875
+    @Yello      #FDF876
 */
 
 a,
 .tp-caption a {
-	color:#f1c40f;
+	color:#FDF875;
 }
 
 #footer li a:hover,
@@ -33,7 +34,8 @@ div.mega-price-table .pricing-table i.fa, /* icons */
 .owl-carousel.featured a.figure>span>i,
 .btn-link,
 .styleColor {
-	color:#EFC240;
+	/*color:#FDF876;*/
+    color: #FF3737;
 }
 
 p.dropcap.color:first-letter,
@@ -54,46 +56,46 @@ div.mega-price-table .pricing.popular,
 #topNav ul.nav>li:hover>a:before, 
 #topNav ul.nav>li.active>a:before,
 .styleBackgroundColor {
-	background-color:#EFC240;
+	background-color:#FDF876;
 }
 
 /* icons , boxes */
 i.featured-icon:after,
 div.featured-box.nobg.border-only i.fa {
-	color:#EFC240;
-	border-color:#EFC240;
+	color:#FDF876;
+	border-color:#FDF876;
 }
 section.product-view-colors a:hover,
 section.product-view-colors a.active,
 i.featured-icon {
-	border-color:#EFC240;
+	border-color:#FDF876;
 
 }
 i.featured-icon.empty {
-	color:#EFC240 !important;
-	border-color:#EFC240;
+	color:#FDF876 !important;
+	border-color:#FDF876;
 }
 
 /* Top Nav */
 #topNav ul.nav .dropdown-menu>li.active>a, 
 #topNav ul.nav .dropdown-menu>li:hover>a, 
 #topNav ul.nav .dropdown-menu>li:focus>a {
-	color:#fff !important;
-	background-color:#EFC240;
+	color:#333 !important;
+	background-color:#FDF876;
 }
 
 #topNav ul.dropdown-menu>li:hover>a.dropdown-toggle:after { /* arrow sub-submenu */
-	color:#fff;
+	color:#333;
 }
 
 /* Primary Button */
 .btn-primary {
-	border-color:#f1c40f;
-	background-color:#f1c40f;
+	border-color:#FDF875;
+	background-color:#FDF875;
 }
 
 .btn-white {
-	color:#EFC240 !important;
+	color:#FDF876 !important;
 }
 
 .pagination>.active>a, 
@@ -112,8 +114,8 @@ i.featured-icon.empty {
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:focus {
-	border-color:#EFC240;
-	background-color:#EFC240;
+	border-color:#FDF876;
+	background-color:#FDF876;
 }
 
 
@@ -121,7 +123,8 @@ i.featured-icon.empty {
 section header em,
 h1>em, h2>em, h3>em, h4>em, h5>em, h6>em {
 	font-style:normal;
-	color:#EFC240;
+	/*color:#FDF876;*/
+    color: #FF3737;
 }
 
 /* Top Nav active/hover */
@@ -129,58 +132,58 @@ h1>em, h2>em, h3>em, h4>em, h5>em, h6>em {
 #topNav ul.nav>li.mega-menu>ul li.active>a,
 #topNav ul.nav>li:hover:before,
 #topNav ul.nav>li.active:before {
-	background-color: #EFC240;
+	background-color: #FDF876;
 }
 /* Top Nav color active */
 #topNav .nav-pills.colored>li.active>a, 
 #topNav .nav-pills.colored>li.active>a:hover, 
 #topNav .nav-pills.colored>li.active>a:focus {
-	color:#fff;
-	background-color:#EFC240;
+	color:#333;
+	background-color:#FDF876;
 }
 
 /* Misc */
 .styleBackgroundColor,
 .featured-box-minimal i.fa {
-	background-color:#EFC240;
+	background-color:#FDF876;
 }
 
 ul.list-icon li:before {
-	color:#EFC240;
+	color:#FDF876;
 	font-size:16px;
 }
 body.boxed #topBar {
-	border-top:#EFC240 4px solid;
+	border-top:#FDF876 4px solid;
 }
 
 .panel-epona {
-	border:#EFC240 1px solid;
+	border:#FDF876 1px solid;
 }
 
 .panel-epona>.panel-heading {
-	background-color:#EFC240;
-	color:#fff;
+	background-color:#FDF876;
+	color:#333;
 }
 
 /* Slider Captions */
 .tp-caption.block_styleColor {
-	background-color: #EFC240;
-	color:#fff;
+	background-color: #FDF876;
+	color:#333;
 }
 .tp-caption.block_white {
-	color:#EFC240;
+	color:#FDF876;
 }
 
 /* flex slider */
 .flexslider.flexFull .flex-direction-nav a:hover, 
 .flexslider.flexContent .flex-direction-nav a:hover {
-	background-color: #EFC240;
-	color:#fff;
+	background-color: #FDF876;
+	color:#333;
 }
 
 /* essentials rewrite */
 .alert.alert-default {
-	border-left:#EFC240 3px solid;
+	border-left:#FDF876 3px solid;
 }
 
 /* item box */
@@ -197,10 +200,10 @@ body.boxed #topBar {
 /* normal state */
 /**/
 .sky-form .toggle i:before {
-	background-color: #EFC240;	
+	background-color: #FDF876;	
 }
 .sky-form .button {
-	background-color: #EFC240;
+	background-color: #FDF876;
 }
 
 
@@ -208,17 +211,17 @@ body.boxed #topBar {
 /* checked state */
 /**/
 .sky-form .radio input + i:after {
-	background-color: #EFC240;	
+	background-color: #FDF876;	
 }
 .sky-form .checkbox input + i:after {
-	color: #EFC240;
+	color: #FDF876;
 }
 .sky-form .radio input:checked + i,
 .sky-form .checkbox input:checked + i,
 .sky-form .toggle input:checked + i {
-	border-color: #EFC240;	
+	border-color: #FDF876;	
 }
 .sky-form .rating input:checked ~ label {
-	color: #EFC240;	
+	color: #FDF876;	
 }
 

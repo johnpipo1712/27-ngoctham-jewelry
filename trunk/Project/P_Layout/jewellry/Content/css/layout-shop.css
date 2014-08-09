@@ -12,6 +12,7 @@
 }
 .shop-item-list:hover {
 	border:rgba(0,0,0,0.1) 1px solid;
+    background: rgba(255, 255, 0, 0.3);
 }
 
 .shop-item-list figure {
