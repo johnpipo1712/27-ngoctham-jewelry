@@ -47,7 +47,7 @@
     @RenderSection("Styles", false)
 
     <!--[if lte IE 8]>
-        <script src="@Url.Content("~/Content/plugins/respond.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/respond.js")" type="text/javascript"></script>
     <![endif]-->
 </head>
 
@@ -60,15 +60,15 @@
 
     <div id="wrapper">
 
+        @Html.Partial("_TopBar")
+        @RenderSection("Slide", false)
         <div id="header">
-            <!-- class="sticky" for sticky menu -->
-            @Html.Partial("_TopBar")
+
 
             @Html.Partial("_Menu")
 
         </div>
         @RenderSection("PageTitle", false)
-        @RenderSection("Slide", false)
 
         <!-- CONTENT -->
         <section>
@@ -82,8 +82,22 @@
         <a href="shop-home-1.html#" id="toTop"></a>
 
     </div><!-- /#wrapper -->
-
     @Html.Partial("_Chat")
+    
+    <div class="dathang_theoyeucau">
+
+        <div class="content_dathang">
+            <p style="text-align: left;">
+                <span style="font-family: Arial;">
+                    <span style="font-size: small;">
+                        <strong style="color:#900">DNTT Vàng Bạc Đá Quý Tân Tiến nhận làm các loại nữ trang và trang sức theo yêu cầu của quý khách.</strong><br>
+                        <br>
+                        Quý khách có thể mang mẫu trực tiếp tới công ty tại số 136 Quang Trung P10,Gò Vấp.Tel: 39890609 - 098377 88 889 hoặc gởi hình ảnh qua địa chỉ email: <span style="color: rgb(0, 0, 255);"><strong>tien.vutrung@yahoo.com</strong></span> Nội dung gồm (<strong>Hình ảnh, nguyên liệu, trọng lượng yêu cầu, ni tay, các loại đá chủ, đá tấm</strong>) Công ty sẽ tính chi phí và báo lại cho quý khách ngay tại thời điểm đưa ra yêu cầu.
+                    </span>
+                </span>
+            </p>
+        </div>
+    </div>
 
     <!-- JAVASCRIPT FILES -->
     @*@Scripts.Render("~/Script/js")*@
