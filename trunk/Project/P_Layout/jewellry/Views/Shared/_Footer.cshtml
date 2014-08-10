@@ -6,7 +6,13 @@
 
             <!-- col #1 -->
             <div class="logo_footer dark col-md-3">
-
+                <p style="line-height:none; margin:0 0 0 0;">
+                    <!-- social -->
+                    <a href="#" class="social fa fa-facebook"></a>
+                    <a href="#" class="social fa fa-twitter"></a>
+                    <a href="#" class="social fa fa-google-plus"></a>
+                    <a href="#" class="social fa fa-linkedin"></a>
+                </p><!-- /social -->
                 <img alt="" src="@Url.Content("~/Content")/images/viLogo.png" height="70" class="logo" />
 
                 <p class="block">
@@ -15,14 +21,20 @@
                     Phone: (073) 3 872838<br />
                     Fax: (073) 3 872838<br />
                 </p>
-
                 <p class="block">
-                    <!-- social -->
-                    <a href="#" class="social fa fa-facebook"></a>
-                    <a href="#" class="social fa fa-twitter"></a>
-                    <a href="#" class="social fa fa-google-plus"></a>
-                    <a href="#" class="social fa fa-linkedin"></a>
-                </p><!-- /social -->
+                    <div id="fb-root"></div>
+                    <script>
+                        (function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    <div class="fb-like-box" data-href="http://www.facebook.com/yourpardi?ref=stream" data-layout="button_count" data-width="250" data-height="200" data-show-faces="true" data-stream="false" data-show-border="false" data-header="false"></div>
+
+                </p>
+              
             </div>
             <!-- /col #1 -->
             <!-- col #2 -->
