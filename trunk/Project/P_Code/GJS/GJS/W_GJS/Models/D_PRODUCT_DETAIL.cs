@@ -11,11 +11,12 @@ namespace W_GJS.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;   
     public partial class D_PRODUCT_DETAIL
     {
         public long PRODUCT_DETAIL_CD { get; set; }
         public Nullable<long> PRODUCT_CD { get; set; }
+       
         public string URL_IMAGE { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
