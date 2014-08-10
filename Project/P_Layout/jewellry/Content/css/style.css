@@ -176,7 +176,11 @@ div.slider {
 }
 
 #barMain {
-    background: #FDF876;
+    /*background: #FDF876;*/
+    background: -webkit-linear-gradient(#fffb9c, #ffe832);
+    background: -o-linear-gradient(#fffb9c, #ffe832);
+    background: -moz-linear-gradient(#fffb9c, #ffe832);
+    background: linear-gradient(#fffb9c, #ffe832);
     margin-top: 0;
     padding: 10px;
     border-radius: 0 0 5px 5px;
