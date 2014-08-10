@@ -137,6 +137,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="O_INFORMATION">
+      <EntityTypeMapping TypeName="GJSModel.O_INFORMATION">
+        <MappingFragment StoreEntitySet="O_INFORMATION">
+          <ScalarProperty Name="CD" ColumnName="CD" />
+          <ScalarProperty Name="INFORMATION_YAHOO" ColumnName="INFORMATION_YAHOO" />
+          <ScalarProperty Name="INFORMATION_SKYPE" ColumnName="INFORMATION_SKYPE" />
+          <ScalarProperty Name="INFORMATION_FACBOOK" ColumnName="INFORMATION_FACBOOK" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="O_NEWS">
       <EntityTypeMapping TypeName="GJSModel.O_NEWS">
         <MappingFragment StoreEntitySet="O_NEWS">
@@ -146,6 +159,28 @@
           <ScalarProperty Name="IMAGE_NEWS" ColumnName="IMAGE_NEWS" />
           <ScalarProperty Name="CATEGORY_NEWS_CD" ColumnName="CATEGORY_NEWS_CD" />
           <ScalarProperty Name="TAG_ALT" ColumnName="TAG_ALT" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_NEWS_HIGHLIGHTS">
+      <EntityTypeMapping TypeName="GJSModel.O_NEWS_HIGHLIGHTS">
+        <MappingFragment StoreEntitySet="O_NEWS_HIGHLIGHTS">
+          <ScalarProperty Name="CD" ColumnName="CD" />
+          <ScalarProperty Name="NEWS_CD" ColumnName="NEWS_CD" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_NEWS_NEW">
+      <EntityTypeMapping TypeName="GJSModel.O_NEWS_NEW">
+        <MappingFragment StoreEntitySet="O_NEWS_NEW">
+          <ScalarProperty Name="CD" ColumnName="CD" />
+          <ScalarProperty Name="NEWS_CD" ColumnName="NEWS_CD" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
           <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
@@ -177,6 +212,39 @@
           <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />
           <ScalarProperty Name="TAG_ALT" ColumnName="TAG_ALT" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_PRODUCT_HIGHLIGHTS">
+      <EntityTypeMapping TypeName="GJSModel.O_PRODUCT_HIGHLIGHTS">
+        <MappingFragment StoreEntitySet="O_PRODUCT_HIGHLIGHTS">
+          <ScalarProperty Name="CD" ColumnName="CD" />
+          <ScalarProperty Name="PRODUCT_CD" ColumnName="PRODUCT_CD" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_PRODUCT_NEW">
+      <EntityTypeMapping TypeName="GJSModel.O_PRODUCT_NEW">
+        <MappingFragment StoreEntitySet="O_PRODUCT_NEW">
+          <ScalarProperty Name="CD" ColumnName="CD" />
+          <ScalarProperty Name="PRODUCT_CD" ColumnName="PRODUCT_CD" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_PRODUCT_SELLING">
+      <EntityTypeMapping TypeName="GJSModel.O_PRODUCT_SELLING">
+        <MappingFragment StoreEntitySet="O_PRODUCT_SELLING">
+          <ScalarProperty Name="CD" ColumnName="CD" />
+          <ScalarProperty Name="PRODUCT_CD" ColumnName="PRODUCT_CD" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
           <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />

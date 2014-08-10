@@ -91,8 +91,14 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @if (item.ACTIVE == false)
+            {
+                @Html.ActionLink("Active", "Active", new { PRODUCT_CD = item.PRODUCT_CD })
+            }
+            else
+            {
+                @Html.ActionLink("Deactive", "Deactive", new { PRODUCT_CD = item.PRODUCT_CD })
+            }
         </td>
     </tr>
 }

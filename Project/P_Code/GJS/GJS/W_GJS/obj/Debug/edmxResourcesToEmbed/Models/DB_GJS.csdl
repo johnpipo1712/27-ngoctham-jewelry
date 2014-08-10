@@ -136,6 +136,18 @@
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
     <NavigationProperty Name="O_USER_CUSTOMER" Relationship="Self.FK_O_USER_CUSTOMER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_USER_CUSTOMER" />
   </EntityType>
+  <EntityType Name="O_INFORMATION">
+    <Key>
+      <PropertyRef Name="CD" />
+    </Key>
+    <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="INFORMATION_YAHOO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="INFORMATION_SKYPE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="INFORMATION_FACBOOK" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS" Type="Int64" />
+    <Property Name="ACTIVE" Type="Boolean" />
+    <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+  </EntityType>
   <EntityType Name="O_NEWS">
     <Key>
       <PropertyRef Name="NEWS_CD" />
@@ -150,6 +162,30 @@
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
     <NavigationProperty Name="O_CATEGORY_NEWS" Relationship="Self.FK_O_NEWS_O_CATEGORY_NEWS" FromRole="O_NEWS" ToRole="O_CATEGORY_NEWS" />
+    <NavigationProperty Name="O_NEWS_HIGHLIGHTS" Relationship="Self.FK_O_NEWS_HIGHLIGHTS_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_HIGHLIGHTS" />
+    <NavigationProperty Name="O_NEWS_NEW" Relationship="Self.FK_O_NEWS_NEW_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_NEW" />
+  </EntityType>
+  <EntityType Name="O_NEWS_HIGHLIGHTS">
+    <Key>
+      <PropertyRef Name="CD" />
+    </Key>
+    <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NEWS_CD" Type="Int64" />
+    <Property Name="STATUS" Type="Int64" />
+    <Property Name="ACTIVE" Type="Boolean" />
+    <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="O_NEWS" Relationship="Self.FK_O_NEWS_HIGHLIGHTS_O_NEWS" FromRole="O_NEWS_HIGHLIGHTS" ToRole="O_NEWS" />
+  </EntityType>
+  <EntityType Name="O_NEWS_NEW">
+    <Key>
+      <PropertyRef Name="CD" />
+    </Key>
+    <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NEWS_CD" Type="Int64" />
+    <Property Name="STATUS" Type="Int64" />
+    <Property Name="ACTIVE" Type="Boolean" />
+    <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="O_NEWS" Relationship="Self.FK_O_NEWS_NEW_O_NEWS" FromRole="O_NEWS_NEW" ToRole="O_NEWS" />
   </EntityType>
   <EntityType Name="O_ORDER">
     <Key>
@@ -184,6 +220,42 @@
     <NavigationProperty Name="D_ORDER_DETAIL" Relationship="Self.FK_D_ORDER_DETAIL_O_PRODUCT" FromRole="O_PRODUCT" ToRole="D_ORDER_DETAIL" />
     <NavigationProperty Name="D_PRODUCT_DETAIL" Relationship="Self.FK_D_PRODUCT_DETAIL_O_PRODUCT" FromRole="O_PRODUCT" ToRole="D_PRODUCT_DETAIL" />
     <NavigationProperty Name="O_CATEGORY_PRODUCT" Relationship="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT" FromRole="O_PRODUCT" ToRole="O_CATEGORY_PRODUCT" />
+    <NavigationProperty Name="O_PRODUCT_HIGHLIGHTS" Relationship="Self.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_HIGHLIGHTS" />
+    <NavigationProperty Name="O_PRODUCT_NEW" Relationship="Self.FK_O_PRODUCT_NEW_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_NEW" />
+    <NavigationProperty Name="O_PRODUCT_SELLING" Relationship="Self.FK_O_PRODUCT_SELLING_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_SELLING" />
+  </EntityType>
+  <EntityType Name="O_PRODUCT_HIGHLIGHTS">
+    <Key>
+      <PropertyRef Name="CD" />
+    </Key>
+    <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PRODUCT_CD" Type="Int64" />
+    <Property Name="STATUS" Type="Int64" />
+    <Property Name="ACTIVE" Type="Boolean" />
+    <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="O_PRODUCT" Relationship="Self.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" FromRole="O_PRODUCT_HIGHLIGHTS" ToRole="O_PRODUCT" />
+  </EntityType>
+  <EntityType Name="O_PRODUCT_NEW">
+    <Key>
+      <PropertyRef Name="CD" />
+    </Key>
+    <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PRODUCT_CD" Type="Int64" />
+    <Property Name="STATUS" Type="Int64" />
+    <Property Name="ACTIVE" Type="Boolean" />
+    <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="O_PRODUCT" Relationship="Self.FK_O_PRODUCT_NEW_O_PRODUCT" FromRole="O_PRODUCT_NEW" ToRole="O_PRODUCT" />
+  </EntityType>
+  <EntityType Name="O_PRODUCT_SELLING">
+    <Key>
+      <PropertyRef Name="CD" />
+    </Key>
+    <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PRODUCT_CD" Type="Int64" />
+    <Property Name="STATUS" Type="Int64" />
+    <Property Name="ACTIVE" Type="Boolean" />
+    <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="O_PRODUCT" Relationship="Self.FK_O_PRODUCT_SELLING_O_PRODUCT" FromRole="O_PRODUCT_SELLING" ToRole="O_PRODUCT" />
   </EntityType>
   <EntityType Name="O_SEO">
     <Key>
@@ -384,6 +456,66 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_O_NEWS_HIGHLIGHTS_O_NEWS">
+    <End Role="O_NEWS" Type="Self.O_NEWS" Multiplicity="0..1" />
+    <End Role="O_NEWS_HIGHLIGHTS" Type="Self.O_NEWS_HIGHLIGHTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_NEWS">
+        <PropertyRef Name="NEWS_CD" />
+      </Principal>
+      <Dependent Role="O_NEWS_HIGHLIGHTS">
+        <PropertyRef Name="NEWS_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_NEWS_NEW_O_NEWS">
+    <End Role="O_NEWS" Type="Self.O_NEWS" Multiplicity="0..1" />
+    <End Role="O_NEWS_NEW" Type="Self.O_NEWS_NEW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_NEWS">
+        <PropertyRef Name="NEWS_CD" />
+      </Principal>
+      <Dependent Role="O_NEWS_NEW">
+        <PropertyRef Name="NEWS_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT">
+    <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="0..1" />
+    <End Role="O_PRODUCT_HIGHLIGHTS" Type="Self.O_PRODUCT_HIGHLIGHTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_PRODUCT">
+        <PropertyRef Name="PRODUCT_CD" />
+      </Principal>
+      <Dependent Role="O_PRODUCT_HIGHLIGHTS">
+        <PropertyRef Name="PRODUCT_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_PRODUCT_NEW_O_PRODUCT">
+    <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="0..1" />
+    <End Role="O_PRODUCT_NEW" Type="Self.O_PRODUCT_NEW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_PRODUCT">
+        <PropertyRef Name="PRODUCT_CD" />
+      </Principal>
+      <Dependent Role="O_PRODUCT_NEW">
+        <PropertyRef Name="PRODUCT_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_PRODUCT_SELLING_O_PRODUCT">
+    <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="0..1" />
+    <End Role="O_PRODUCT_SELLING" Type="Self.O_PRODUCT_SELLING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_PRODUCT">
+        <PropertyRef Name="PRODUCT_CD" />
+      </Principal>
+      <Dependent Role="O_PRODUCT_SELLING">
+        <PropertyRef Name="PRODUCT_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_O_USER_CUSTOMER_S_USER">
     <End Role="S_USER" Type="Self.S_USER" Multiplicity="0..1" />
     <End Role="O_USER_CUSTOMER" Type="Self.O_USER_CUSTOMER" Multiplicity="*" />
@@ -443,9 +575,15 @@
     <EntitySet Name="O_CATEGORY_PRODUCT" EntityType="Self.O_CATEGORY_PRODUCT" />
     <EntitySet Name="O_CITIES" EntityType="Self.O_CITIES" />
     <EntitySet Name="O_CUSTOMER" EntityType="Self.O_CUSTOMER" />
+    <EntitySet Name="O_INFORMATION" EntityType="Self.O_INFORMATION" />
     <EntitySet Name="O_NEWS" EntityType="Self.O_NEWS" />
+    <EntitySet Name="O_NEWS_HIGHLIGHTS" EntityType="Self.O_NEWS_HIGHLIGHTS" />
+    <EntitySet Name="O_NEWS_NEW" EntityType="Self.O_NEWS_NEW" />
     <EntitySet Name="O_ORDER" EntityType="Self.O_ORDER" />
     <EntitySet Name="O_PRODUCT" EntityType="Self.O_PRODUCT" />
+    <EntitySet Name="O_PRODUCT_HIGHLIGHTS" EntityType="Self.O_PRODUCT_HIGHLIGHTS" />
+    <EntitySet Name="O_PRODUCT_NEW" EntityType="Self.O_PRODUCT_NEW" />
+    <EntitySet Name="O_PRODUCT_SELLING" EntityType="Self.O_PRODUCT_SELLING" />
     <EntitySet Name="O_SEO" EntityType="Self.O_SEO" />
     <EntitySet Name="O_USER_CUSTOMER" EntityType="Self.O_USER_CUSTOMER" />
     <EntitySet Name="O_USER_EMPLOYEE" EntityType="Self.O_USER_EMPLOYEE" />
@@ -488,6 +626,26 @@
     <AssociationSet Name="FK_O_USER_CUSTOMER_O_CUSTOMER" Association="Self.FK_O_USER_CUSTOMER_O_CUSTOMER">
       <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
       <End Role="O_USER_CUSTOMER" EntitySet="O_USER_CUSTOMER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_NEWS_HIGHLIGHTS_O_NEWS" Association="Self.FK_O_NEWS_HIGHLIGHTS_O_NEWS">
+      <End Role="O_NEWS" EntitySet="O_NEWS" />
+      <End Role="O_NEWS_HIGHLIGHTS" EntitySet="O_NEWS_HIGHLIGHTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_NEWS_NEW_O_NEWS" Association="Self.FK_O_NEWS_NEW_O_NEWS">
+      <End Role="O_NEWS" EntitySet="O_NEWS" />
+      <End Role="O_NEWS_NEW" EntitySet="O_NEWS_NEW" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" Association="Self.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT">
+      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
+      <End Role="O_PRODUCT_HIGHLIGHTS" EntitySet="O_PRODUCT_HIGHLIGHTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_PRODUCT_NEW_O_PRODUCT" Association="Self.FK_O_PRODUCT_NEW_O_PRODUCT">
+      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
+      <End Role="O_PRODUCT_NEW" EntitySet="O_PRODUCT_NEW" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_PRODUCT_SELLING_O_PRODUCT" Association="Self.FK_O_PRODUCT_SELLING_O_PRODUCT">
+      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
+      <End Role="O_PRODUCT_SELLING" EntitySet="O_PRODUCT_SELLING" />
     </AssociationSet>
     <AssociationSet Name="FK_O_USER_CUSTOMER_S_USER" Association="Self.FK_O_USER_CUSTOMER_S_USER">
       <End Role="S_USER" EntitySet="S_USER" />

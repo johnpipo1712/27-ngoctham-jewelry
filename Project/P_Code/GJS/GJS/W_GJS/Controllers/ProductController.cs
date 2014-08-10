@@ -26,7 +26,13 @@ namespace W_GJS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(O_PRODUCT PRODUCT)
+        public ActionResult Create(O_PRODUCT PRODUCT
+            , HttpPostedFileBase filefrist
+            , HttpPostedFileBase file1
+            , HttpPostedFileBase file2
+            , HttpPostedFileBase file3
+            , HttpPostedFileBase file4
+            , HttpPostedFileBase file5)
         {
 
             if (ModelState.IsValid)
@@ -70,6 +76,8 @@ namespace W_GJS.Controllers
                 O_PRODUCT PRODUCT_edit = Db_gsj.O_PRODUCT.Single(t => t.PRODUCT_CD == PRODUCT.PRODUCT_CD);
                 PRODUCT_edit.PRODUCT_CODE = PRODUCT.PRODUCT_CODE;
                 PRODUCT_edit.PRODUCT_NAME = PRODUCT.PRODUCT_NAME;
+                PRODUCT_edit.PRICE = PRODUCT.PRICE;
+                PRODUCT_edit.QUANTITY = PRODUCT.QUANTITY;
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");
 
