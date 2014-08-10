@@ -6,6 +6,16 @@
 
             <!-- col #1 -->
             <div class="logo_footer dark col-md-3">
+                
+                <img alt="" src="@Url.Content("~/Content")/images/viLogo.png" height="70" class="logo" />
+
+                <p class="block" style="line-height: 15px;">
+                    25/2 Nguyễn Huỳnh Đức, Tp.Mỹ Tho<br />
+                    Email: ngocthamso1@gmail.com<br />
+                    Phone: (073) 3 872838<br />
+                    Fax: (073) 3 872838<br />
+                </p>
+
                 <p style="line-height:none; margin:0 0 0 0;">
                     <!-- social -->
                     <a href="#" class="social fa fa-facebook"></a>
@@ -13,28 +23,7 @@
                     <a href="#" class="social fa fa-google-plus"></a>
                     <a href="#" class="social fa fa-linkedin"></a>
                 </p><!-- /social -->
-                <img alt="" src="@Url.Content("~/Content")/images/viLogo.png" height="70" class="logo" />
 
-                <p class="block">
-                    25/2 Nguyễn Huỳnh Đức, Tp.Mỹ Tho<br />
-                    Email: ngocthamso1@gmail.com<br />
-                    Phone: (073) 3 872838<br />
-                    Fax: (073) 3 872838<br />
-                </p>
-                <p class="block">
-                    <div id="fb-root"></div>
-                    <script>
-                        (function (d, s, id) {
-                            var js, fjs = d.getElementsByTagName(s)[0];
-                            if (d.getElementById(id)) return;
-                            js = d.createElement(s); js.id = id;
-                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));</script>
-                    <div class="fb-like-box" data-href="http://www.facebook.com/yourpardi?ref=stream" data-layout="button_count" data-width="250" data-height="200" data-show-faces="true" data-stream="false" data-show-border="false" data-header="false"></div>
-
-                </p>
-              
             </div>
             <!-- /col #1 -->
             <!-- col #2 -->
@@ -58,18 +47,25 @@
             <!-- /col #2 -->
             <!-- col #3 -->
             <div class="spaced col-md-3 col-sm-4">
-                <h4><strong>Bài báo Tweets</strong> gần đây</h4>
-                <ul class="list-unstyled fsize13">
-                    <li>
-                        <i class="fa fa-twitter"></i> <a href="#">Cty Ngọc Thẫm</a> Vàng đang xuống giá đáy <small class="ago">8 phút trước</small>
-                    </li>
-                    <li>
-                        <i class="fa fa-twitter"></i> <a href="#">Cty Ngọc Thẫm</a> Kim cương đang lên ngôi  <small class="ago">1 giờ trước</small>
-                    </li>
-                    <li>
-                        <i class="fa fa-twitter"></i> <a href="#">Cty Ngọc Thẫm</a> Các doanh nghiệp kinh doanh vàng đang phát triển <small class="ago">Ngày 19/10/2013</small>
-                    </li>
-                </ul>
+                <div id="fb-root"></div>
+                <script>
+                    (function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-like-box" 
+                     style="background: #fff"
+                     data-href="http://www.facebook.com/yourpardi?ref=stream" 
+                     data-layout="button_count" 
+                     data-width="250" 
+                     data-height="200" 
+                     data-show-faces="true" 
+                     data-stream="false" 
+                     data-show-border="false" 
+                     data-header="false"></div>
             </div>
             <!-- /col #3 -->
             <!-- col #4 -->
