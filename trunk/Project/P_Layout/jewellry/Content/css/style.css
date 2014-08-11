@@ -177,10 +177,10 @@ div.slider {
 
 #barMain {
     /*background: #FDF876;*/
-    background: -webkit-linear-gradient(#fffb9c, #ffe832);
-    background: -o-linear-gradient(#fffb9c, #ffe832);
-    background: -moz-linear-gradient(#fffb9c, #ffe832);
-    background: linear-gradient(#fffb9c, #ffe832);
+    background: -webkit-linear-gradient(to top, #fffb9c, #ffe832);
+    background: -o-linear-gradient(to top, #fffb9c, #ffe832);
+    background: -moz-linear-gradient(to top, #fffb9c, #ffe832);
+    background: linear-gradient(to top,#fffb9c, #ffe832);
     margin-top: 0;
     padding: 10px;
     border-radius: 0 0 5px 5px;
@@ -263,14 +263,13 @@ div.slider {
 
 .dathang_theoyeucau > div.content_dathang {
     background: none repeat scroll 0 0 #FFFFFF;
-    border: 5px solid #fdf876;
     border-radius: 8px;
     height: 100%;
     margin-left: 46px;
     padding: 5px;
 }
 .dathang_theoyeucau {
-    background: url("../images/facebookbadge.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+    background: url("../images/booking.png") no-repeat scroll left center rgba(0, 0, 0, 0);
     height: 344px;
     margin-right: 3px;
     position: fixed;
@@ -285,7 +284,22 @@ div.slider {
 
 .booking {
     position: fixed;
-    top: 250px;
+    bottom: 0;
     z-index: 100;
-    right: 0;
+    left: 20px;
+}
+
+.booking img {
+    height: 100px;
+}
+
+.counter-wrapper {
+    background: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.counter-people:after {
+    content: " lượt";
 }

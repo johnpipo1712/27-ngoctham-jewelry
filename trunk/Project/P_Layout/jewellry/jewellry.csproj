@@ -202,6 +202,8 @@
     <Content Include="Content\images\avatar.png" />
     <Content Include="Content\images\big_banner.png" />
     <Content Include="Content\images\big_banner_grey.png" />
+    <Content Include="Content\images\booking1.png" />
+    <Content Include="Content\images\booking11.png" />
     <Content Include="Content\images\branches\img-bando.png" />
     <Content Include="Content\images\callus.png" />
     <Content Include="Content\images\cc\Maestro.png" />
@@ -441,6 +443,13 @@
     <Content Include="Content\plugins\magnific-popup\magnific-popup.css" />
     <Content Include="Content\plugins\masonry.js" />
     <Content Include="Content\plugins\modernizr.min.js" />
+    <Content Include="Content\plugins\owl-carousel-latest\AjaxLoader.gif" />
+    <Content Include="Content\plugins\owl-carousel-latest\grabbing.png" />
+    <Content Include="Content\plugins\owl-carousel-latest\owl.carousel.css" />
+    <Content Include="Content\plugins\owl-carousel-latest\owl.carousel.js" />
+    <Content Include="Content\plugins\owl-carousel-latest\owl.carousel.min.js" />
+    <Content Include="Content\plugins\owl-carousel-latest\owl.theme.css" />
+    <Content Include="Content\plugins\owl-carousel-latest\owl.transitions.css" />
     <Content Include="Content\plugins\owl-carousel\owl.carousel.min.js" />
     <Content Include="Content\plugins\owl-carousel\owl.pack.css" />
     <Content Include="Content\plugins\revolution-slider\js\jquery.themepunch.plugins.min.js" />
