@@ -1,11 +1,11 @@
 /**
 	@Light		#FFE344
-	@Dark	#FFEA73
+	@Dark	#FFE345
 */
 
 a,
 .tp-caption a {
-	color:#FFEA73;
+	color:#FFE345;
 }
 
 #footer li a:hover,
@@ -89,8 +89,8 @@ i.featured-icon.empty {
 
 /* Primary Button */
 .btn-primary {
-	border-color:#FFEA73;
-	background-color:#FFEA73;
+	border-color:#FFE345;
+	background-color:#FFE345;
 }
 
 .btn-white {
@@ -231,4 +231,20 @@ body.boxed #topBar {
 h2.owl-featured {
     border-bottom: 2px solid #FFE344;
     color: #FFE344;
+}
+
+.dathang_theoyeucau > div.content_dathang {
+    border: 5px solid #FFE344;
+}
+
+#footer .counter-wrapper h4 {
+    color: #FFE344;
+    -webkit-text-shadow: 1px 2px 1px #555;
+    text-shadow: 1px 2px 1px #555;
+}
+
+.counter-online-now {
+    color: #FFE344;
+    -webkit-text-shadow: 1px 2px 1px #555;
+    text-shadow: 1px 2px 1px #555;
 }

@@ -6,6 +6,12 @@
     @Html.Partial("_Slide")
 }
 
+@section Scripts {
+    <script>
+        window.onload($("#PopupModal").modal());
+    </script>
+}
+
 @section PageTitle {
     @*<section class="page-title">
             <div class="container">
