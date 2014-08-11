@@ -159,7 +159,7 @@
         color: #333 !important;
     }
 
-.owl-item {
+.slider .owl-item {
     padding-top: 100px;
 }
 
@@ -280,5 +280,12 @@ div.slider {
     z-index: 111;
 }
 .dathang_theoyeucau:hover {
+    right: 0;
+}
+
+.booking {
+    position: fixed;
+    top: 250px;
+    z-index: 100;
     right: 0;
 }
