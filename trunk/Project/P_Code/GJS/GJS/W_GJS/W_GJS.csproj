@@ -184,7 +184,13 @@
     <Compile Include="Models\M_PAGE.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\O_ADVERTISEMENT.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\O_BRANCH.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\O_CATEGORY_GRANULES.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\O_CATEGORY_NEWS.cs">
@@ -241,7 +247,13 @@
     <Compile Include="Models\O_USER_PST.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_STATISTICS_VISIT_Result.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\S_PST.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\S_STATISTICS_VISIT.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\S_USER.cs">

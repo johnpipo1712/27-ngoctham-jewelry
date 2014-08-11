@@ -12,15 +12,13 @@ namespace W_GJS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class D_PRODUCT_DETAIL
+    public partial class S_STATISTICS_VISIT
     {
-        public long PRODUCT_DETAIL_CD { get; set; }
-        public Nullable<long> PRODUCT_CD { get; set; }
-        public string URL_IMAGE { get; set; }
+        public long CD { get; set; }
+        public Nullable<long> COUNTER_VISIT { get; set; }
+        public Nullable<System.DateTime> TIME_ONLINE { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
-    
-        public virtual O_PRODUCT O_PRODUCT { get; set; }
     }
 }

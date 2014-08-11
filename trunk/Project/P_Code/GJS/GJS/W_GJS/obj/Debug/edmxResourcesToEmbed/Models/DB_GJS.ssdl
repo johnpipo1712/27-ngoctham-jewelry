@@ -49,6 +49,16 @@
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
   </EntityType>
+  <EntityType Name="O_ADVERTISEMENT">
+    <Key>
+      <PropertyRef Name="CD" />
+    </Key>
+    <Property Name="CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ADVERTISEMENT" Type="nvarchar(max)" />
+    <Property Name="STATUS" Type="bigint" />
+    <Property Name="ACTIVE" Type="bit" />
+    <Property Name="CREATEDATE" Type="datetime" />
+  </EntityType>
   <EntityType Name="O_BRANCH">
     <Key>
       <PropertyRef Name="BRANCH_CD" />
@@ -61,6 +71,18 @@
     <Property Name="LONGITUDE" Type="nvarchar(max)" />
     <Property Name="LATITUDE" Type="nvarchar(max)" />
     <Property Name="PHONE" Type="varchar" MaxLength="50" />
+    <Property Name="STATUS" Type="bigint" />
+    <Property Name="ACTIVE" Type="bit" />
+    <Property Name="CREATEDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="O_CATEGORY_GRANULES">
+    <Key>
+      <PropertyRef Name="CATEGORY_GRANULES_CD" />
+    </Key>
+    <Property Name="CATEGORY_GRANULES_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CATEGORY_GRANULES_NAME" Type="bigint" />
+    <Property Name="CATEGORY_GRANULES_CONTENT" Type="nvarchar(max)" />
+    <Property Name="CATEGORY_GRANULES_WEIGHT" Type="nvarchar(max)" />
     <Property Name="STATUS" Type="bigint" />
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
@@ -194,8 +216,11 @@
     <Property Name="PRODUCT_TITLE" Type="nvarchar(max)" />
     <Property Name="PRODUCT_CONTENT" Type="nvarchar(max)" />
     <Property Name="CATEGORY_PRODUCT_CD" Type="bigint" />
+    <Property Name="CATEGORY_GRANULES_CD" Type="bigint" />
+    <Property Name="WEIGHT" Type="nvarchar(max)" />
     <Property Name="QUANTITY" Type="bigint" />
     <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="WAGES" Type="decimal" Precision="18" Scale="0" />
     <Property Name="TAG_ALT" Type="nvarchar(max)" />
     <Property Name="STATUS" Type="bigint" />
     <Property Name="ACTIVE" Type="bit" />
@@ -286,6 +311,17 @@
     <Property Name="PST_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PST_CODE" Type="nvarchar" MaxLength="50" />
     <Property Name="PST_NAME" Type="nvarchar(max)" />
+    <Property Name="STATUS" Type="bigint" />
+    <Property Name="ACTIVE" Type="bit" />
+    <Property Name="CREATEDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="S_STATISTICS_VISIT">
+    <Key>
+      <PropertyRef Name="CD" />
+    </Key>
+    <Property Name="CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COUNTER_VISIT" Type="bigint" />
+    <Property Name="TIME_ONLINE" Type="datetime" />
     <Property Name="STATUS" Type="bigint" />
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
@@ -432,6 +468,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_O_PRODUCT_O_CATEGORY_GRANULES">
+    <End Role="O_CATEGORY_GRANULES" Type="Self.O_CATEGORY_GRANULES" Multiplicity="0..1" />
+    <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CATEGORY_GRANULES">
+        <PropertyRef Name="CATEGORY_GRANULES_CD" />
+      </Principal>
+      <Dependent Role="O_PRODUCT">
+        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT">
     <End Role="O_CATEGORY_PRODUCT" Type="Self.O_CATEGORY_PRODUCT" Multiplicity="0..1" />
     <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="*" />
@@ -528,12 +576,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="SP_STATISTICS_VISIT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="GJSModelStoreContainer">
     <EntitySet Name="D_ORDER_DETAIL" EntityType="Self.D_ORDER_DETAIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="D_PRODUCT_DETAIL" EntityType="Self.D_PRODUCT_DETAIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="M_EMPLOYEE" EntityType="Self.M_EMPLOYEE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="M_PAGE" EntityType="Self.M_PAGE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_ADVERTISEMENT" EntityType="Self.O_ADVERTISEMENT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_BRANCH" EntityType="Self.O_BRANCH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_CATEGORY_GRANULES" EntityType="Self.O_CATEGORY_GRANULES" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_CATEGORY_NEWS" EntityType="Self.O_CATEGORY_NEWS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_CATEGORY_PAGE" EntityType="Self.O_CATEGORY_PAGE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_CATEGORY_PRODUCT" EntityType="Self.O_CATEGORY_PRODUCT" Schema="dbo" store:Type="Tables" />
@@ -553,6 +604,7 @@
     <EntitySet Name="O_USER_EMPLOYEE" EntityType="Self.O_USER_EMPLOYEE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_USER_PST" EntityType="Self.O_USER_PST" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="S_PST" EntityType="Self.S_PST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="S_STATISTICS_VISIT" EntityType="Self.S_STATISTICS_VISIT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="S_USER" EntityType="Self.S_USER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="W_PRODUCT" EntityType="Self.W_PRODUCT" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_D_ORDER_DETAIL_O_ORDER" Association="Self.FK_D_ORDER_DETAIL_O_ORDER">
@@ -594,6 +646,10 @@
     <AssociationSet Name="FK_O_PRODUCT_NEW_O_PRODUCT" Association="Self.FK_O_PRODUCT_NEW_O_PRODUCT">
       <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
       <End Role="O_PRODUCT_NEW" EntitySet="O_PRODUCT_NEW" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_GRANULES" Association="Self.FK_O_PRODUCT_O_CATEGORY_GRANULES">
+      <End Role="O_CATEGORY_GRANULES" EntitySet="O_CATEGORY_GRANULES" />
+      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
     </AssociationSet>
     <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT" Association="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT">
       <End Role="O_CATEGORY_PRODUCT" EntitySet="O_CATEGORY_PRODUCT" />
