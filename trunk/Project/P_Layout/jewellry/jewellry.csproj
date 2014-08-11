@@ -203,6 +203,7 @@
     <Content Include="Content\images\big_banner.png" />
     <Content Include="Content\images\big_banner_grey.png" />
     <Content Include="Content\images\branches\img-bando.png" />
+    <Content Include="Content\images\callus.png" />
     <Content Include="Content\images\cc\Maestro.png" />
     <Content Include="Content\images\cc\Mastercard.png" />
     <Content Include="Content\images\cc\PayPal.png" />
@@ -372,6 +373,7 @@
     <Content Include="Content\images\facebook-logo.png" />
     <Content Include="Content\images\booking.png" />
     <Content Include="Content\images\favicon.png" />
+    <Content Include="Content\images\livechat.png" />
     <Content Include="Content\images\logo-bg.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo_alt.png" />
