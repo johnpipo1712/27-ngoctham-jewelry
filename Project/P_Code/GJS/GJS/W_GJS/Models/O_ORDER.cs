@@ -23,6 +23,9 @@ namespace W_GJS.Models
         public string ORDER_CODE { get; set; }
         public string ORDER_CONTENT { get; set; }
         public Nullable<long> EMPLOYEE_CD { get; set; }
+        public string PHONE { get; set; }
+        public string EMAIL { get; set; }
+        public string DELIVERY_ADDRESS { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }

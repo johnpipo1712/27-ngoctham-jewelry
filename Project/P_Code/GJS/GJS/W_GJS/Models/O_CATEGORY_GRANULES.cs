@@ -12,15 +12,21 @@ namespace W_GJS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class D_PRODUCT_DETAIL
+    public partial class O_CATEGORY_GRANULES
     {
-        public long PRODUCT_DETAIL_CD { get; set; }
-        public Nullable<long> PRODUCT_CD { get; set; }
-        public string URL_IMAGE { get; set; }
+        public O_CATEGORY_GRANULES()
+        {
+            this.O_PRODUCT = new HashSet<O_PRODUCT>();
+        }
+    
+        public long CATEGORY_GRANULES_CD { get; set; }
+        public Nullable<long> CATEGORY_GRANULES_NAME { get; set; }
+        public string CATEGORY_GRANULES_CONTENT { get; set; }
+        public string CATEGORY_GRANULES_WEIGHT { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
     
-        public virtual O_PRODUCT O_PRODUCT { get; set; }
+        public virtual ICollection<O_PRODUCT> O_PRODUCT { get; set; }
     }
 }

@@ -54,6 +54,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="O_ADVERTISEMENT">
+      <EntityTypeMapping TypeName="GJSModel.O_ADVERTISEMENT">
+        <MappingFragment StoreEntitySet="O_ADVERTISEMENT">
+          <ScalarProperty Name="CD" ColumnName="CD" />
+          <ScalarProperty Name="ADVERTISEMENT" ColumnName="ADVERTISEMENT" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="O_BRANCH">
       <EntityTypeMapping TypeName="GJSModel.O_BRANCH">
         <MappingFragment StoreEntitySet="O_BRANCH">
@@ -65,6 +76,19 @@
           <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
           <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
           <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_CATEGORY_GRANULES">
+      <EntityTypeMapping TypeName="GJSModel.O_CATEGORY_GRANULES">
+        <MappingFragment StoreEntitySet="O_CATEGORY_GRANULES">
+          <ScalarProperty Name="CATEGORY_GRANULES_CD" ColumnName="CATEGORY_GRANULES_CD" />
+          <ScalarProperty Name="CATEGORY_GRANULES_NAME" ColumnName="CATEGORY_GRANULES_NAME" />
+          <ScalarProperty Name="CATEGORY_GRANULES_CONTENT" ColumnName="CATEGORY_GRANULES_CONTENT" />
+          <ScalarProperty Name="CATEGORY_GRANULES_WEIGHT" ColumnName="CATEGORY_GRANULES_WEIGHT" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
           <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
@@ -209,8 +233,11 @@
           <ScalarProperty Name="PRODUCT_TITLE" ColumnName="PRODUCT_TITLE" />
           <ScalarProperty Name="PRODUCT_CONTENT" ColumnName="PRODUCT_CONTENT" />
           <ScalarProperty Name="CATEGORY_PRODUCT_CD" ColumnName="CATEGORY_PRODUCT_CD" />
+          <ScalarProperty Name="CATEGORY_GRANULES_CD" ColumnName="CATEGORY_GRANULES_CD" />
+          <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
           <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="WAGES" ColumnName="WAGES" />
           <ScalarProperty Name="TAG_ALT" ColumnName="TAG_ALT" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
@@ -315,6 +342,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="S_STATISTICS_VISIT">
+      <EntityTypeMapping TypeName="GJSModel.S_STATISTICS_VISIT">
+        <MappingFragment StoreEntitySet="S_STATISTICS_VISIT">
+          <ScalarProperty Name="CD" ColumnName="CD" />
+          <ScalarProperty Name="COUNTER_VISIT" ColumnName="COUNTER_VISIT" />
+          <ScalarProperty Name="TIME_ONLINE" ColumnName="TIME_ONLINE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="S_USER">
       <EntityTypeMapping TypeName="GJSModel.S_USER">
         <MappingFragment StoreEntitySet="S_USER">
@@ -339,5 +378,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_STATISTICS_VISIT" FunctionName="GJSModel.Store.SP_STATISTICS_VISIT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GJSModel.SP_STATISTICS_VISIT_Result">
+          <ScalarProperty Name="COUNTER_VISIT_GN" ColumnName="COUNTER_VISIT_GN" />
+          <ScalarProperty Name="COUNTER_VISIT_HQ" ColumnName="COUNTER_VISIT_HQ" />
+          <ScalarProperty Name="COUNTER_VISIT_WEEK_TN" ColumnName="COUNTER_VISIT_WEEK_TN" />
+          <ScalarProperty Name="COUNTER_VISIT_WEEK_TT" ColumnName="COUNTER_VISIT_WEEK_TT" />
+          <ScalarProperty Name="COUNTER_VISIT_MONTH_TN" ColumnName="COUNTER_VISIT_MONTH_TN" />
+          <ScalarProperty Name="COUNTER_VISIT_MONTH_TT" ColumnName="COUNTER_VISIT_MONTH_TT" />
+          <ScalarProperty Name="COUNTER_VISIT_TOTAL" ColumnName="COUNTER_VISIT_TOTAL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -50,6 +50,17 @@
           <Property Name="PAGE_COTRACT_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PAGE_COTRACT_TITLE" Type="nvarchar(max)" />
           <Property Name="PAGE_COTRACT_CONTENT" Type="nvarchar(max)" />
+          <Property Name="CATEGORY_PAGE_CD" Type="bigint" />
+          <Property Name="STATUS" Type="bigint" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="O_ADVERTISEMENT">
+          <Key>
+            <PropertyRef Name="CD" />
+          </Key>
+          <Property Name="CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADVERTISEMENT" Type="nvarchar(max)" />
           <Property Name="STATUS" Type="bigint" />
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
@@ -66,6 +77,18 @@
           <Property Name="LONGITUDE" Type="nvarchar(max)" />
           <Property Name="LATITUDE" Type="nvarchar(max)" />
           <Property Name="PHONE" Type="varchar" MaxLength="50" />
+          <Property Name="STATUS" Type="bigint" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="O_CATEGORY_GRANULES">
+          <Key>
+            <PropertyRef Name="CATEGORY_GRANULES_CD" />
+          </Key>
+          <Property Name="CATEGORY_GRANULES_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORY_GRANULES_NAME" Type="bigint" />
+          <Property Name="CATEGORY_GRANULES_CONTENT" Type="nvarchar(max)" />
+          <Property Name="CATEGORY_GRANULES_WEIGHT" Type="nvarchar(max)" />
           <Property Name="STATUS" Type="bigint" />
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
@@ -185,6 +208,9 @@
           <Property Name="ORDER_CODE" Type="nvarchar" MaxLength="50" />
           <Property Name="ORDER_CONTENT" Type="nvarchar(max)" />
           <Property Name="EMPLOYEE_CD" Type="bigint" />
+          <Property Name="PHONE" Type="nvarchar(max)" />
+          <Property Name="EMAIL" Type="nvarchar(max)" />
+          <Property Name="DELIVERY_ADDRESS" Type="nvarchar(max)" />
           <Property Name="STATUS" Type="bigint" />
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
@@ -199,8 +225,11 @@
           <Property Name="PRODUCT_TITLE" Type="nvarchar(max)" />
           <Property Name="PRODUCT_CONTENT" Type="nvarchar(max)" />
           <Property Name="CATEGORY_PRODUCT_CD" Type="bigint" />
+          <Property Name="CATEGORY_GRANULES_CD" Type="bigint" />
+          <Property Name="WEIGHT" Type="nvarchar(max)" />
           <Property Name="QUANTITY" Type="bigint" />
           <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="WAGES" Type="decimal" Precision="18" Scale="0" />
           <Property Name="TAG_ALT" Type="nvarchar(max)" />
           <Property Name="STATUS" Type="bigint" />
           <Property Name="ACTIVE" Type="bit" />
@@ -295,6 +324,17 @@
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
         </EntityType>
+        <EntityType Name="S_STATISTICS_VISIT">
+          <Key>
+            <PropertyRef Name="CD" />
+          </Key>
+          <Property Name="CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COUNTER_VISIT" Type="bigint" />
+          <Property Name="TIME_ONLINE" Type="datetime" />
+          <Property Name="STATUS" Type="bigint" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
         <EntityType Name="S_USER">
           <Key>
             <PropertyRef Name="USER_CD" />
@@ -350,6 +390,18 @@
             </Principal>
             <Dependent Role="D_PRODUCT_DETAIL">
               <PropertyRef Name="PRODUCT_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_M_PAGE_O_CATEGORY_PAGE">
+          <End Role="O_CATEGORY_PAGE" Type="Self.O_CATEGORY_PAGE" Multiplicity="0..1" />
+          <End Role="M_PAGE" Type="Self.M_PAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_CATEGORY_PAGE">
+              <PropertyRef Name="CATEGORY_PAGE_CD" />
+            </Principal>
+            <Dependent Role="M_PAGE">
+              <PropertyRef Name="CATEGORY_PAGE_CD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -434,6 +486,18 @@
             </Principal>
             <Dependent Role="O_PRODUCT_NEW">
               <PropertyRef Name="PRODUCT_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_PRODUCT_O_CATEGORY_GRANULES">
+          <End Role="O_CATEGORY_GRANULES" Type="Self.O_CATEGORY_GRANULES" Multiplicity="0..1" />
+          <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_CATEGORY_GRANULES">
+              <PropertyRef Name="CATEGORY_GRANULES_CD" />
+            </Principal>
+            <Dependent Role="O_PRODUCT">
+              <PropertyRef Name="CATEGORY_PRODUCT_CD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -533,12 +597,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_STATISTICS_VISIT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="GJSModelStoreContainer">
           <EntitySet Name="D_ORDER_DETAIL" EntityType="Self.D_ORDER_DETAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="D_PRODUCT_DETAIL" EntityType="Self.D_PRODUCT_DETAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_EMPLOYEE" EntityType="Self.M_EMPLOYEE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_PAGE" EntityType="Self.M_PAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_ADVERTISEMENT" EntityType="Self.O_ADVERTISEMENT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_BRANCH" EntityType="Self.O_BRANCH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_CATEGORY_GRANULES" EntityType="Self.O_CATEGORY_GRANULES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_CATEGORY_NEWS" EntityType="Self.O_CATEGORY_NEWS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_CATEGORY_PAGE" EntityType="Self.O_CATEGORY_PAGE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_CATEGORY_PRODUCT" EntityType="Self.O_CATEGORY_PRODUCT" Schema="dbo" store:Type="Tables" />
@@ -558,6 +625,7 @@
           <EntitySet Name="O_USER_EMPLOYEE" EntityType="Self.O_USER_EMPLOYEE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_USER_PST" EntityType="Self.O_USER_PST" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_PST" EntityType="Self.S_PST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_STATISTICS_VISIT" EntityType="Self.S_STATISTICS_VISIT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_USER" EntityType="Self.S_USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="W_PRODUCT" EntityType="Self.W_PRODUCT" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_D_ORDER_DETAIL_O_ORDER" Association="Self.FK_D_ORDER_DETAIL_O_ORDER">
@@ -571,6 +639,10 @@
           <AssociationSet Name="FK_D_PRODUCT_DETAIL_O_PRODUCT" Association="Self.FK_D_PRODUCT_DETAIL_O_PRODUCT">
             <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
             <End Role="D_PRODUCT_DETAIL" EntitySet="D_PRODUCT_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_M_PAGE_O_CATEGORY_PAGE" Association="Self.FK_M_PAGE_O_CATEGORY_PAGE">
+            <End Role="O_CATEGORY_PAGE" EntitySet="O_CATEGORY_PAGE" />
+            <End Role="M_PAGE" EntitySet="M_PAGE" />
           </AssociationSet>
           <AssociationSet Name="FK_O_BRANCH_O_CITIES" Association="Self.FK_O_BRANCH_O_CITIES">
             <End Role="O_CITIES" EntitySet="O_CITIES" />
@@ -599,6 +671,10 @@
           <AssociationSet Name="FK_O_PRODUCT_NEW_O_PRODUCT" Association="Self.FK_O_PRODUCT_NEW_O_PRODUCT">
             <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
             <End Role="O_PRODUCT_NEW" EntitySet="O_PRODUCT_NEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_GRANULES" Association="Self.FK_O_PRODUCT_O_CATEGORY_GRANULES">
+            <End Role="O_CATEGORY_GRANULES" EntitySet="O_CATEGORY_GRANULES" />
+            <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
           </AssociationSet>
           <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT" Association="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT">
             <End Role="O_CATEGORY_PRODUCT" EntitySet="O_CATEGORY_PRODUCT" />
@@ -688,6 +764,18 @@
           <Property Name="PAGE_COTRACT_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PAGE_COTRACT_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PAGE_COTRACT_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CATEGORY_PAGE_CD" Type="Int64" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="O_CATEGORY_PAGE" Relationship="Self.FK_M_PAGE_O_CATEGORY_PAGE" FromRole="M_PAGE" ToRole="O_CATEGORY_PAGE" />
+        </EntityType>
+        <EntityType Name="O_ADVERTISEMENT">
+          <Key>
+            <PropertyRef Name="CD" />
+          </Key>
+          <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADVERTISEMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="Int64" />
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
@@ -708,6 +796,19 @@
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="O_CITIES" Relationship="Self.FK_O_BRANCH_O_CITIES" FromRole="O_BRANCH" ToRole="O_CITIES" />
+        </EntityType>
+        <EntityType Name="O_CATEGORY_GRANULES">
+          <Key>
+            <PropertyRef Name="CATEGORY_GRANULES_CD" />
+          </Key>
+          <Property Name="CATEGORY_GRANULES_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_GRANULES_NAME" Type="Int64" />
+          <Property Name="CATEGORY_GRANULES_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CATEGORY_GRANULES_WEIGHT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="O_PRODUCT" Relationship="Self.FK_O_PRODUCT_O_CATEGORY_GRANULES" FromRole="O_CATEGORY_GRANULES" ToRole="O_PRODUCT" />
         </EntityType>
         <EntityType Name="O_CATEGORY_NEWS">
           <Key>
@@ -733,6 +834,7 @@
           <Property Name="STATUS" Type="Int64" />
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="M_PAGE" Relationship="Self.FK_M_PAGE_O_CATEGORY_PAGE" FromRole="O_CATEGORY_PAGE" ToRole="M_PAGE" />
         </EntityType>
         <EntityType Name="O_CATEGORY_PRODUCT">
           <Key>
@@ -833,6 +935,9 @@
           <Property Name="ORDER_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ORDER_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EMPLOYEE_CD" Type="Int64" />
+          <Property Name="PHONE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DELIVERY_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="Int64" />
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
@@ -849,14 +954,18 @@
           <Property Name="PRODUCT_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PRODUCT_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CATEGORY_PRODUCT_CD" Type="Int64" />
+          <Property Name="CATEGORY_GRANULES_CD" Type="Int64" />
+          <Property Name="WEIGHT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="QUANTITY" Type="Int64" />
           <Property Name="PRICE" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="WAGES" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="TAG_ALT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="Int64" />
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="D_ORDER_DETAIL" Relationship="Self.FK_D_ORDER_DETAIL_O_PRODUCT" FromRole="O_PRODUCT" ToRole="D_ORDER_DETAIL" />
           <NavigationProperty Name="D_PRODUCT_DETAIL" Relationship="Self.FK_D_PRODUCT_DETAIL_O_PRODUCT" FromRole="O_PRODUCT" ToRole="D_PRODUCT_DETAIL" />
+          <NavigationProperty Name="O_CATEGORY_GRANULES" Relationship="Self.FK_O_PRODUCT_O_CATEGORY_GRANULES" FromRole="O_PRODUCT" ToRole="O_CATEGORY_GRANULES" />
           <NavigationProperty Name="O_CATEGORY_PRODUCT" Relationship="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT" FromRole="O_PRODUCT" ToRole="O_CATEGORY_PRODUCT" />
           <NavigationProperty Name="O_PRODUCT_HIGHLIGHTS" Relationship="Self.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_HIGHLIGHTS" />
           <NavigationProperty Name="O_PRODUCT_NEW" Relationship="Self.FK_O_PRODUCT_NEW_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_NEW" />
@@ -961,6 +1070,17 @@
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="O_USER_PST" Relationship="Self.FK_O_USER_PST_S_PST" FromRole="S_PST" ToRole="O_USER_PST" />
         </EntityType>
+        <EntityType Name="S_STATISTICS_VISIT">
+          <Key>
+            <PropertyRef Name="CD" />
+          </Key>
+          <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER_VISIT" Type="Int64" />
+          <Property Name="TIME_ONLINE" Type="DateTime" Precision="3" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="S_USER">
           <Key>
             <PropertyRef Name="USER_CD" />
@@ -1046,6 +1166,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_M_PAGE_O_CATEGORY_PAGE">
+          <End Role="O_CATEGORY_PAGE" Type="Self.O_CATEGORY_PAGE" Multiplicity="0..1" />
+          <End Role="M_PAGE" Type="Self.M_PAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_CATEGORY_PAGE">
+              <PropertyRef Name="CATEGORY_PAGE_CD" />
+            </Principal>
+            <Dependent Role="M_PAGE">
+              <PropertyRef Name="CATEGORY_PAGE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_O_BRANCH_O_CITIES">
           <End Role="O_CITIES" Type="Self.O_CITIES" Multiplicity="0..1" />
           <End Role="O_BRANCH" Type="Self.O_BRANCH" Multiplicity="*" />
@@ -1055,6 +1187,18 @@
             </Principal>
             <Dependent Role="O_BRANCH">
               <PropertyRef Name="CITIES_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_PRODUCT_O_CATEGORY_GRANULES">
+          <End Role="O_CATEGORY_GRANULES" Type="Self.O_CATEGORY_GRANULES" Multiplicity="0..1" />
+          <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_CATEGORY_GRANULES">
+              <PropertyRef Name="CATEGORY_GRANULES_CD" />
+            </Principal>
+            <Dependent Role="O_PRODUCT">
+              <PropertyRef Name="CATEGORY_PRODUCT_CD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1207,7 +1351,9 @@
           <EntitySet Name="D_PRODUCT_DETAIL" EntityType="Self.D_PRODUCT_DETAIL" />
           <EntitySet Name="M_EMPLOYEE" EntityType="Self.M_EMPLOYEE" />
           <EntitySet Name="M_PAGE" EntityType="Self.M_PAGE" />
+          <EntitySet Name="O_ADVERTISEMENT" EntityType="Self.O_ADVERTISEMENT" />
           <EntitySet Name="O_BRANCH" EntityType="Self.O_BRANCH" />
+          <EntitySet Name="O_CATEGORY_GRANULES" EntityType="Self.O_CATEGORY_GRANULES" />
           <EntitySet Name="O_CATEGORY_NEWS" EntityType="Self.O_CATEGORY_NEWS" />
           <EntitySet Name="O_CATEGORY_PAGE" EntityType="Self.O_CATEGORY_PAGE" />
           <EntitySet Name="O_CATEGORY_PRODUCT" EntityType="Self.O_CATEGORY_PRODUCT" />
@@ -1227,6 +1373,7 @@
           <EntitySet Name="O_USER_EMPLOYEE" EntityType="Self.O_USER_EMPLOYEE" />
           <EntitySet Name="O_USER_PST" EntityType="Self.O_USER_PST" />
           <EntitySet Name="S_PST" EntityType="Self.S_PST" />
+          <EntitySet Name="S_STATISTICS_VISIT" EntityType="Self.S_STATISTICS_VISIT" />
           <EntitySet Name="S_USER" EntityType="Self.S_USER" />
           <EntitySet Name="W_PRODUCT" EntityType="Self.W_PRODUCT" />
           <AssociationSet Name="FK_D_ORDER_DETAIL_O_ORDER" Association="Self.FK_D_ORDER_DETAIL_O_ORDER">
@@ -1249,9 +1396,17 @@
             <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
             <End Role="O_USER_EMPLOYEE" EntitySet="O_USER_EMPLOYEE" />
           </AssociationSet>
+          <AssociationSet Name="FK_M_PAGE_O_CATEGORY_PAGE" Association="Self.FK_M_PAGE_O_CATEGORY_PAGE">
+            <End Role="O_CATEGORY_PAGE" EntitySet="O_CATEGORY_PAGE" />
+            <End Role="M_PAGE" EntitySet="M_PAGE" />
+          </AssociationSet>
           <AssociationSet Name="FK_O_BRANCH_O_CITIES" Association="Self.FK_O_BRANCH_O_CITIES">
             <End Role="O_CITIES" EntitySet="O_CITIES" />
             <End Role="O_BRANCH" EntitySet="O_BRANCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_GRANULES" Association="Self.FK_O_PRODUCT_O_CATEGORY_GRANULES">
+            <End Role="O_CATEGORY_GRANULES" EntitySet="O_CATEGORY_GRANULES" />
+            <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
           </AssociationSet>
           <AssociationSet Name="FK_O_NEWS_O_CATEGORY_NEWS" Association="Self.FK_O_NEWS_O_CATEGORY_NEWS">
             <End Role="O_CATEGORY_NEWS" EntitySet="O_CATEGORY_NEWS" />
@@ -1301,7 +1456,17 @@
             <End Role="S_USER" EntitySet="S_USER" />
             <End Role="O_USER_PST" EntitySet="O_USER_PST" />
           </AssociationSet>
+          <FunctionImport Name="SP_STATISTICS_VISIT" ReturnType="Collection(GJSModel.SP_STATISTICS_VISIT_Result)" />
         </EntityContainer>
+        <ComplexType Name="SP_STATISTICS_VISIT_Result">
+          <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
+          <Property Type="Int64" Name="COUNTER_VISIT_HQ" Nullable="true" />
+          <Property Type="Int64" Name="COUNTER_VISIT_WEEK_TN" Nullable="true" />
+          <Property Type="Int64" Name="COUNTER_VISIT_WEEK_TT" Nullable="true" />
+          <Property Type="Int64" Name="COUNTER_VISIT_MONTH_TN" Nullable="true" />
+          <Property Type="Int64" Name="COUNTER_VISIT_MONTH_TT" Nullable="true" />
+          <Property Type="Int64" Name="COUNTER_VISIT_TOTAL" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1355,6 +1520,18 @@
                 <ScalarProperty Name="PAGE_COTRACT_CD" ColumnName="PAGE_COTRACT_CD" />
                 <ScalarProperty Name="PAGE_COTRACT_TITLE" ColumnName="PAGE_COTRACT_TITLE" />
                 <ScalarProperty Name="PAGE_COTRACT_CONTENT" ColumnName="PAGE_COTRACT_CONTENT" />
+                <ScalarProperty Name="CATEGORY_PAGE_CD" ColumnName="CATEGORY_PAGE_CD" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_ADVERTISEMENT">
+            <EntityTypeMapping TypeName="GJSModel.O_ADVERTISEMENT">
+              <MappingFragment StoreEntitySet="O_ADVERTISEMENT">
+                <ScalarProperty Name="CD" ColumnName="CD" />
+                <ScalarProperty Name="ADVERTISEMENT" ColumnName="ADVERTISEMENT" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
@@ -1372,6 +1549,19 @@
                 <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
                 <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
                 <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_CATEGORY_GRANULES">
+            <EntityTypeMapping TypeName="GJSModel.O_CATEGORY_GRANULES">
+              <MappingFragment StoreEntitySet="O_CATEGORY_GRANULES">
+                <ScalarProperty Name="CATEGORY_GRANULES_CD" ColumnName="CATEGORY_GRANULES_CD" />
+                <ScalarProperty Name="CATEGORY_GRANULES_NAME" ColumnName="CATEGORY_GRANULES_NAME" />
+                <ScalarProperty Name="CATEGORY_GRANULES_CONTENT" ColumnName="CATEGORY_GRANULES_CONTENT" />
+                <ScalarProperty Name="CATEGORY_GRANULES_WEIGHT" ColumnName="CATEGORY_GRANULES_WEIGHT" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
@@ -1501,6 +1691,9 @@
                 <ScalarProperty Name="ORDER_CODE" ColumnName="ORDER_CODE" />
                 <ScalarProperty Name="ORDER_CONTENT" ColumnName="ORDER_CONTENT" />
                 <ScalarProperty Name="EMPLOYEE_CD" ColumnName="EMPLOYEE_CD" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DELIVERY_ADDRESS" ColumnName="DELIVERY_ADDRESS" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
@@ -1516,8 +1709,11 @@
                 <ScalarProperty Name="PRODUCT_TITLE" ColumnName="PRODUCT_TITLE" />
                 <ScalarProperty Name="PRODUCT_CONTENT" ColumnName="PRODUCT_CONTENT" />
                 <ScalarProperty Name="CATEGORY_PRODUCT_CD" ColumnName="CATEGORY_PRODUCT_CD" />
+                <ScalarProperty Name="CATEGORY_GRANULES_CD" ColumnName="CATEGORY_GRANULES_CD" />
+                <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
                 <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
                 <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="WAGES" ColumnName="WAGES" />
                 <ScalarProperty Name="TAG_ALT" ColumnName="TAG_ALT" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
@@ -1622,6 +1818,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="S_STATISTICS_VISIT">
+            <EntityTypeMapping TypeName="GJSModel.S_STATISTICS_VISIT">
+              <MappingFragment StoreEntitySet="S_STATISTICS_VISIT">
+                <ScalarProperty Name="CD" ColumnName="CD" />
+                <ScalarProperty Name="COUNTER_VISIT" ColumnName="COUNTER_VISIT" />
+                <ScalarProperty Name="TIME_ONLINE" ColumnName="TIME_ONLINE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="S_USER">
             <EntityTypeMapping TypeName="GJSModel.S_USER">
               <MappingFragment StoreEntitySet="S_USER">
@@ -1646,6 +1854,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_STATISTICS_VISIT" FunctionName="GJSModel.Store.SP_STATISTICS_VISIT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GJSModel.SP_STATISTICS_VISIT_Result">
+                <ScalarProperty Name="COUNTER_VISIT_GN" ColumnName="COUNTER_VISIT_GN" />
+                <ScalarProperty Name="COUNTER_VISIT_HQ" ColumnName="COUNTER_VISIT_HQ" />
+                <ScalarProperty Name="COUNTER_VISIT_WEEK_TN" ColumnName="COUNTER_VISIT_WEEK_TN" />
+                <ScalarProperty Name="COUNTER_VISIT_WEEK_TT" ColumnName="COUNTER_VISIT_WEEK_TT" />
+                <ScalarProperty Name="COUNTER_VISIT_MONTH_TN" ColumnName="COUNTER_VISIT_MONTH_TN" />
+                <ScalarProperty Name="COUNTER_VISIT_MONTH_TT" ColumnName="COUNTER_VISIT_MONTH_TT" />
+                <ScalarProperty Name="COUNTER_VISIT_TOTAL" ColumnName="COUNTER_VISIT_TOTAL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

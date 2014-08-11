@@ -17,8 +17,11 @@ namespace W_GJS.Models
         public long PAGE_COTRACT_CD { get; set; }
         public string PAGE_COTRACT_TITLE { get; set; }
         public string PAGE_COTRACT_CONTENT { get; set; }
+        public Nullable<long> CATEGORY_PAGE_CD { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
+    
+        public virtual O_CATEGORY_PAGE O_CATEGORY_PAGE { get; set; }
     }
 }

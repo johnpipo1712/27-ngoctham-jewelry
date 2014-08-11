@@ -14,6 +14,11 @@ namespace W_GJS.Models
     
     public partial class O_CATEGORY_PAGE
     {
+        public O_CATEGORY_PAGE()
+        {
+            this.M_PAGE = new HashSet<M_PAGE>();
+        }
+    
         public long CATEGORY_PAGE_CD { get; set; }
         public string CATEGORY_PAGE_CODE { get; set; }
         public string CATEGORY_PAGE_NAME { get; set; }
@@ -21,5 +26,7 @@ namespace W_GJS.Models
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
+    
+        public virtual ICollection<M_PAGE> M_PAGE { get; set; }
     }
 }
