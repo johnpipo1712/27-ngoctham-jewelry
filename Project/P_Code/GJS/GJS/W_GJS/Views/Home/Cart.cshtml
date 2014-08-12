@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Giỏ hàng";
+}
+
+<form class="cartContent clearfix" method="post" action="shop-page-cart.html#">
+
+    <!-- cart content -->
+    <div id="cartContent">
+        <!-- cart header -->
+        <div class="item head">
+            <span class="cart_img"></span>
+            <span class="product_name fsize13 bold">TÊN SẢN PHẨM</span>
+            <span class="remove_item fsize13 bold"></span>
+            <span class="total_price fsize13 bold">TỔNG TIỀN</span>
+            <span class="qty fsize13 bold">SỐ LƯỢNG</span>
+            <div class="clearfix"></div>
+        </div>
+        <!-- /cart header -->
+        <!-- cart item -->
+        <div class="item">
+            <div class="cart_img"><img src="@Url.Content("~/Content/images/products/sp1.png")" alt="" width="60" /></div>
+            <a href="shop-page-full-product.html" class="product_name">
+                <span>Nhẫn kim cương</span>
+                <small>chi tiết phụ</small>
+            </a>
+            <a href="shop-page-cart.html#" class="remove_item"><i class="fa fa-times"></i></a>
+            <div class="total_price"><span>9.000.000</span> VNĐ</div>
+            <div class="qty"><input type="text" value="1" name="qty" maxlength="3" /> &times; 9.000.000 VNĐ</div>
+            <div class="clearfix"></div>
+        </div>
+        <!-- /cart item -->
+        <!-- cart item -->
+        <div class="item">
+            <div class="cart_img"><img src="@Url.Content("~/Content/images/products/sp3.png")" alt="" width="60" /></div>
+            <a href="shop-page-full-product.html" class="product_name">
+                <span>Nhẫn kim cương</span>
+                <small>chi tiết phụ</small>
+            </a>
+            <a href="shop-page-cart.html#" class="remove_item"><i class="fa fa-times"></i></a>
+            <div class="total_price"><span>5.000.000</span> VNĐ</div>
+            <div class="qty"><input type="text" value="1" name="qty" maxlength="3" /> &times; 5.000.000 VNĐ</div>
+            <div class="clearfix"></div>
+        </div>
+        <!-- /cart item -->
+        <!-- cart item -->
+        <div class="item">
+            <div class="cart_img"><img src="@Url.Content("~/Content/images/products/sp5.png")" alt="" width="60" /></div>
+            <a href="shop-page-full-product.html" class="product_name">
+                <span>Nhẫn kim cương</span>
+                <small>chi tiết phụ</small>
+            </a>
+            <a href="shop-page-cart.html#" class="remove_item"><i class="fa fa-times"></i></a>
+            <div class="total_price"><span>6.000.000</span> VNĐ</div>
+            <div class="qty"><input type="text" value="1" name="qty" maxlength="3" /> &times; 6.000.000 VNĐ</div>
+            <div class="clearfix"></div>
+        </div>
+        <!-- /cart item -->
+        <!-- cart total -->
+        <div class="total pull-right">
+
+            <span class="totalToPay">
+                TỔNG CỘNG: 20.000.000 VNĐ
+            </span>
+
+        </div>
+        <!-- /cart total -->
+        <!-- update cart -->
+        <a href="shop-page-cart.html#" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</a>
+        <a href="shop-page-cart.html#" class="btn_update btn btn-default btn-md pull-right">CẬP NHẬT GIỎ HÀNG</a>
+        <!-- /update cart -->
+
+        <div class="clearfix"></div>
+    </div>
+    <!-- /cart content -->
+
+</form>

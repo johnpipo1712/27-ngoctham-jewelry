@@ -48,6 +48,7 @@
           <ScalarProperty Name="PAGE_COTRACT_CD" ColumnName="PAGE_COTRACT_CD" />
           <ScalarProperty Name="PAGE_COTRACT_TITLE" ColumnName="PAGE_COTRACT_TITLE" />
           <ScalarProperty Name="PAGE_COTRACT_CONTENT" ColumnName="PAGE_COTRACT_CONTENT" />
+          <ScalarProperty Name="CATEGORY_PAGE_CD" ColumnName="CATEGORY_PAGE_CD" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
           <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
@@ -214,10 +215,14 @@
     <EntitySetMapping Name="O_ORDER">
       <EntityTypeMapping TypeName="GJSModel.O_ORDER">
         <MappingFragment StoreEntitySet="O_ORDER">
+          <ScalarProperty Name="CUSTOMER_CD" ColumnName="CUSTOMER_CD" />
           <ScalarProperty Name="ORDER_CD" ColumnName="ORDER_CD" />
           <ScalarProperty Name="ORDER_CODE" ColumnName="ORDER_CODE" />
           <ScalarProperty Name="ORDER_CONTENT" ColumnName="ORDER_CONTENT" />
           <ScalarProperty Name="EMPLOYEE_CD" ColumnName="EMPLOYEE_CD" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DELIVERY_ADDRESS" ColumnName="DELIVERY_ADDRESS" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
           <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
