@@ -38,6 +38,7 @@ namespace W_GJS.Models
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
+        public Nullable<long> CATEGORY_PRODUCT_DETAIL_CD { get; set; }
     
         public virtual ICollection<D_ORDER_DETAIL> D_ORDER_DETAIL { get; set; }
         public virtual ICollection<D_PRODUCT_DETAIL> D_PRODUCT_DETAIL { get; set; }
@@ -46,5 +47,6 @@ namespace W_GJS.Models
         public virtual ICollection<O_PRODUCT_HIGHLIGHTS> O_PRODUCT_HIGHLIGHTS { get; set; }
         public virtual ICollection<O_PRODUCT_NEW> O_PRODUCT_NEW { get; set; }
         public virtual ICollection<O_PRODUCT_SELLING> O_PRODUCT_SELLING { get; set; }
+        public virtual O_CATEGORY_PRODUCT_DETAIL O_CATEGORY_PRODUCT_DETAIL { get; set; }
     }
 }

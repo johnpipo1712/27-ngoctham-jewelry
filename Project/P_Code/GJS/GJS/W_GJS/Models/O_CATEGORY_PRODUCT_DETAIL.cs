@@ -12,23 +12,23 @@ namespace W_GJS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class O_CATEGORY_PRODUCT
+    public partial class O_CATEGORY_PRODUCT_DETAIL
     {
-        public O_CATEGORY_PRODUCT()
+        public O_CATEGORY_PRODUCT_DETAIL()
         {
+            this.O_CATEGORY_PRODUCT = new HashSet<O_CATEGORY_PRODUCT>();
             this.O_PRODUCT = new HashSet<O_PRODUCT>();
         }
     
-        public long CATEGORY_PRODUCT_CD { get; set; }
-        public string CATEGORY_PRODUCT_CODE { get; set; }
-        public string CATEGORY_PRODUCT_NAME { get; set; }
+        public long CATEGORY_PRODUCT_DETAIL_CD { get; set; }
+        public string CATEGORY_PRODUCT_DETAIL_CODE { get; set; }
+        public string CATEGORY_PRODUCT_DETAIL_NAME { get; set; }
         public string TAG_ALT { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
-        public Nullable<long> CATEGORY_PRODUCT_DETAIL_CD { get; set; }
     
+        public virtual ICollection<O_CATEGORY_PRODUCT> O_CATEGORY_PRODUCT { get; set; }
         public virtual ICollection<O_PRODUCT> O_PRODUCT { get; set; }
-        public virtual O_CATEGORY_PRODUCT_DETAIL O_CATEGORY_PRODUCT_DETAIL { get; set; }
     }
 }

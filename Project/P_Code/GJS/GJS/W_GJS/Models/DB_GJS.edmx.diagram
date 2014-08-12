@@ -55,6 +55,9 @@
         <AssociationConnector Association="GJSModel.FK_O_USER_PST_S_PST" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_USER_PST_S_USER" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_ORDER_O_CUSTOMER" />
+        <EntityTypeShape EntityType="GJSModel.O_CATEGORY_PRODUCT_DETAIL" Width="1.5" PointX="0.75" PointY="6.875" />
+        <AssociationConnector Association="GJSModel.FK_O_CATEGORY_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" />
+        <AssociationConnector Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
