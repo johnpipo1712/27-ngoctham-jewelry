@@ -139,9 +139,10 @@ namespace W_GJS.Controllers
             O_ORDER ord = (O_ORDER)Session["Cart"];
             if (ord != null)
             {
-                ViewBag.Where = "Điền thông tin thanh toán";
+                ViewBag.Infomation = "Điền thông tin thanh toán";
                 if (User.Identity.IsAuthenticated)
                 {
+
                     //db = new DbWebDNEntities();
                     //NguoiDung nd = db.NguoiDungs.Single(t => t.TenDN == User.Identity.Name);
                     //ord.HoTenNN = nd.HoTen = nd.HoTen;
