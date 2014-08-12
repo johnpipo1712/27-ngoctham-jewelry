@@ -45,6 +45,7 @@
     <Property Name="PAGE_COTRACT_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PAGE_COTRACT_TITLE" Type="nvarchar(max)" />
     <Property Name="PAGE_COTRACT_CONTENT" Type="nvarchar(max)" />
+    <Property Name="CATEGORY_PAGE_CD" Type="bigint" />
     <Property Name="STATUS" Type="bigint" />
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
@@ -202,6 +203,10 @@
     <Property Name="ORDER_CODE" Type="nvarchar" MaxLength="50" />
     <Property Name="ORDER_CONTENT" Type="nvarchar(max)" />
     <Property Name="EMPLOYEE_CD" Type="bigint" />
+    <Property Name="CUSTOMER_CD" Type="bigint" />
+    <Property Name="PHONE" Type="nvarchar(max)" />
+    <Property Name="EMAIL" Type="nvarchar(max)" />
+    <Property Name="DELIVERY_ADDRESS" Type="nvarchar(max)" />
     <Property Name="STATUS" Type="bigint" />
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
@@ -384,6 +389,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_M_PAGE_O_CATEGORY_PAGE">
+    <End Role="O_CATEGORY_PAGE" Type="Self.O_CATEGORY_PAGE" Multiplicity="0..1" />
+    <End Role="M_PAGE" Type="Self.M_PAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CATEGORY_PAGE">
+        <PropertyRef Name="CATEGORY_PAGE_CD" />
+      </Principal>
+      <Dependent Role="M_PAGE">
+        <PropertyRef Name="CATEGORY_PAGE_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_O_BRANCH_O_CITIES">
     <End Role="O_CITIES" Type="Self.O_CITIES" Multiplicity="0..1" />
     <End Role="O_BRANCH" Type="Self.O_BRANCH" Multiplicity="*" />
@@ -441,6 +458,18 @@
       </Principal>
       <Dependent Role="O_ORDER">
         <PropertyRef Name="EMPLOYEE_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_ORDER_O_CUSTOMER">
+    <End Role="O_CUSTOMER" Type="Self.O_CUSTOMER" Multiplicity="0..1" />
+    <End Role="O_ORDER" Type="Self.O_ORDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CUSTOMER">
+        <PropertyRef Name="CUSTOMER_CD" />
+      </Principal>
+      <Dependent Role="O_ORDER">
+        <PropertyRef Name="CUSTOMER_CD" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -619,6 +648,10 @@
       <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
       <End Role="D_PRODUCT_DETAIL" EntitySet="D_PRODUCT_DETAIL" />
     </AssociationSet>
+    <AssociationSet Name="FK_M_PAGE_O_CATEGORY_PAGE" Association="Self.FK_M_PAGE_O_CATEGORY_PAGE">
+      <End Role="O_CATEGORY_PAGE" EntitySet="O_CATEGORY_PAGE" />
+      <End Role="M_PAGE" EntitySet="M_PAGE" />
+    </AssociationSet>
     <AssociationSet Name="FK_O_BRANCH_O_CITIES" Association="Self.FK_O_BRANCH_O_CITIES">
       <End Role="O_CITIES" EntitySet="O_CITIES" />
       <End Role="O_BRANCH" EntitySet="O_BRANCH" />
@@ -637,6 +670,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_O_ORDER_M_EMPLOYEE" Association="Self.FK_O_ORDER_M_EMPLOYEE">
       <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
+      <End Role="O_ORDER" EntitySet="O_ORDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_ORDER_O_CUSTOMER" Association="Self.FK_O_ORDER_O_CUSTOMER">
+      <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
       <End Role="O_ORDER" EntitySet="O_ORDER" />
     </AssociationSet>
     <AssociationSet Name="FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" Association="Self.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT">

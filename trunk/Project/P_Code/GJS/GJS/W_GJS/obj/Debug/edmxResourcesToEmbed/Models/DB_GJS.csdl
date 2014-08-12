@@ -50,9 +50,11 @@
     <Property Name="PAGE_COTRACT_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PAGE_COTRACT_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="PAGE_COTRACT_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CATEGORY_PAGE_CD" Type="Int64" />
     <Property Name="STATUS" Type="Int64" />
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="O_CATEGORY_PAGE" Relationship="Self.FK_M_PAGE_O_CATEGORY_PAGE" FromRole="M_PAGE" ToRole="O_CATEGORY_PAGE" />
   </EntityType>
   <EntityType Name="O_ADVERTISEMENT">
     <Key>
@@ -118,6 +120,7 @@
     <Property Name="STATUS" Type="Int64" />
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="M_PAGE" Relationship="Self.FK_M_PAGE_O_CATEGORY_PAGE" FromRole="O_CATEGORY_PAGE" ToRole="M_PAGE" />
   </EntityType>
   <EntityType Name="O_CATEGORY_PRODUCT">
     <Key>
@@ -158,6 +161,7 @@
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
     <NavigationProperty Name="O_USER_CUSTOMER" Relationship="Self.FK_O_USER_CUSTOMER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_USER_CUSTOMER" />
+    <NavigationProperty Name="O_ORDER" Relationship="GJSModel.FK_O_ORDER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_ORDER" />
   </EntityType>
   <EntityType Name="O_INFORMATION">
     <Key>
@@ -218,11 +222,16 @@
     <Property Name="ORDER_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ORDER_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="EMPLOYEE_CD" Type="Int64" />
+    <Property Name="PHONE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DELIVERY_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="STATUS" Type="Int64" />
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
     <NavigationProperty Name="D_ORDER_DETAIL" Relationship="Self.FK_D_ORDER_DETAIL_O_ORDER" FromRole="O_ORDER" ToRole="D_ORDER_DETAIL" />
     <NavigationProperty Name="M_EMPLOYEE" Relationship="Self.FK_O_ORDER_M_EMPLOYEE" FromRole="O_ORDER" ToRole="M_EMPLOYEE" />
+    <Property Name="CUSTOMER_CD" Type="Int64" />
+    <NavigationProperty Name="O_CUSTOMER" Relationship="GJSModel.FK_O_ORDER_O_CUSTOMER" FromRole="O_ORDER" ToRole="O_CUSTOMER" />
   </EntityType>
   <EntityType Name="O_PRODUCT">
     <Key>
@@ -446,6 +455,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_M_PAGE_O_CATEGORY_PAGE">
+    <End Role="O_CATEGORY_PAGE" Type="Self.O_CATEGORY_PAGE" Multiplicity="0..1" />
+    <End Role="M_PAGE" Type="Self.M_PAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CATEGORY_PAGE">
+        <PropertyRef Name="CATEGORY_PAGE_CD" />
+      </Principal>
+      <Dependent Role="M_PAGE">
+        <PropertyRef Name="CATEGORY_PAGE_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_O_BRANCH_O_CITIES">
     <End Role="O_CITIES" Type="Self.O_CITIES" Multiplicity="0..1" />
     <End Role="O_BRANCH" Type="Self.O_BRANCH" Multiplicity="*" />
@@ -664,6 +685,10 @@
       <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
       <End Role="O_USER_EMPLOYEE" EntitySet="O_USER_EMPLOYEE" />
     </AssociationSet>
+    <AssociationSet Name="FK_M_PAGE_O_CATEGORY_PAGE" Association="Self.FK_M_PAGE_O_CATEGORY_PAGE">
+      <End Role="O_CATEGORY_PAGE" EntitySet="O_CATEGORY_PAGE" />
+      <End Role="M_PAGE" EntitySet="M_PAGE" />
+    </AssociationSet>
     <AssociationSet Name="FK_O_BRANCH_O_CITIES" Association="Self.FK_O_BRANCH_O_CITIES">
       <End Role="O_CITIES" EntitySet="O_CITIES" />
       <End Role="O_BRANCH" EntitySet="O_BRANCH" />
@@ -721,6 +746,10 @@
       <End Role="O_USER_PST" EntitySet="O_USER_PST" />
     </AssociationSet>
     <FunctionImport Name="SP_STATISTICS_VISIT" ReturnType="Collection(GJSModel.SP_STATISTICS_VISIT_Result)" />
+    <AssociationSet Name="FK_O_ORDER_O_CUSTOMER" Association="GJSModel.FK_O_ORDER_O_CUSTOMER">
+      <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
+      <End Role="O_ORDER" EntitySet="O_ORDER" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="SP_STATISTICS_VISIT_Result">
     <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
@@ -731,4 +760,16 @@
     <Property Type="Int64" Name="COUNTER_VISIT_MONTH_TT" Nullable="true" />
     <Property Type="Int64" Name="COUNTER_VISIT_TOTAL" Nullable="true" />
   </ComplexType>
+  <Association Name="FK_O_ORDER_O_CUSTOMER">
+    <End Type="GJSModel.O_CUSTOMER" Role="O_CUSTOMER" Multiplicity="0..1" />
+    <End Type="GJSModel.O_ORDER" Role="O_ORDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CUSTOMER">
+        <PropertyRef Name="CUSTOMER_CD" />
+      </Principal>
+      <Dependent Role="O_ORDER">
+        <PropertyRef Name="CUSTOMER_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
