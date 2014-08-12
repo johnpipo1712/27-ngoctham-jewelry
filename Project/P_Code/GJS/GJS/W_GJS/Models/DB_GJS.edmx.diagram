@@ -21,7 +21,7 @@
         <EntityTypeShape EntityType="GJSModel.O_NEWS" Width="1.5" PointX="10" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_NEWS_HIGHLIGHTS" Width="1.5" PointX="12.25" PointY="13.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_NEWS_NEW" Width="1.5" PointX="12.25" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GJSModel.O_ORDER" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_ORDER" Width="1.5" PointX="6" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_PRODUCT" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_PRODUCT_HIGHLIGHTS" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_PRODUCT_NEW" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
@@ -54,6 +54,7 @@
         <AssociationConnector Association="GJSModel.FK_O_USER_EMPLOYEE_S_USER" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_USER_PST_S_PST" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_USER_PST_S_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="GJSModel.FK_O_ORDER_O_CUSTOMER" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
