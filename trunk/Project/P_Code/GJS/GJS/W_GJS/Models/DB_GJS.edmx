@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="D_ORDER_DETAIL">
           <Key>
             <PropertyRef Name="ORDER_DETAIL_CD" />
@@ -208,6 +208,7 @@
           <Property Name="ORDER_CODE" Type="nvarchar" MaxLength="50" />
           <Property Name="ORDER_CONTENT" Type="nvarchar(max)" />
           <Property Name="EMPLOYEE_CD" Type="bigint" />
+          <Property Name="CUSTOMER_CD" Type="bigint" />
           <Property Name="PHONE" Type="nvarchar(max)" />
           <Property Name="EMAIL" Type="nvarchar(max)" />
           <Property Name="DELIVERY_ADDRESS" Type="nvarchar(max)" />
@@ -465,6 +466,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_O_ORDER_O_CUSTOMER">
+          <End Role="O_CUSTOMER" Type="Self.O_CUSTOMER" Multiplicity="0..1" />
+          <End Role="O_ORDER" Type="Self.O_ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_CUSTOMER">
+              <PropertyRef Name="CUSTOMER_CD" />
+            </Principal>
+            <Dependent Role="O_ORDER">
+              <PropertyRef Name="CUSTOMER_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT">
           <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="0..1" />
           <End Role="O_PRODUCT_HIGHLIGHTS" Type="Self.O_PRODUCT_HIGHLIGHTS" Multiplicity="*" />
@@ -664,6 +677,10 @@
             <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
             <End Role="O_ORDER" EntitySet="O_ORDER" />
           </AssociationSet>
+          <AssociationSet Name="FK_O_ORDER_O_CUSTOMER" Association="Self.FK_O_ORDER_O_CUSTOMER">
+            <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
+            <End Role="O_ORDER" EntitySet="O_ORDER" />
+          </AssociationSet>
           <AssociationSet Name="FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" Association="Self.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT">
             <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
             <End Role="O_PRODUCT_HIGHLIGHTS" EntitySet="O_PRODUCT_HIGHLIGHTS" />
@@ -709,8 +726,7 @@
             <End Role="O_USER_PST" EntitySet="O_USER_PST" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GJSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -875,6 +891,7 @@
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="O_USER_CUSTOMER" Relationship="Self.FK_O_USER_CUSTOMER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_USER_CUSTOMER" />
+          <NavigationProperty Name="O_ORDER" Relationship="GJSModel.FK_O_ORDER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_ORDER" />
         </EntityType>
         <EntityType Name="O_INFORMATION">
           <Key>
@@ -943,6 +960,8 @@
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="D_ORDER_DETAIL" Relationship="Self.FK_D_ORDER_DETAIL_O_ORDER" FromRole="O_ORDER" ToRole="D_ORDER_DETAIL" />
           <NavigationProperty Name="M_EMPLOYEE" Relationship="Self.FK_O_ORDER_M_EMPLOYEE" FromRole="O_ORDER" ToRole="M_EMPLOYEE" />
+          <Property Name="CUSTOMER_CD" Type="Int64" />
+          <NavigationProperty Name="O_CUSTOMER" Relationship="GJSModel.FK_O_ORDER_O_CUSTOMER" FromRole="O_ORDER" ToRole="O_CUSTOMER" />
         </EntityType>
         <EntityType Name="O_PRODUCT">
           <Key>
@@ -1457,6 +1476,10 @@
             <End Role="O_USER_PST" EntitySet="O_USER_PST" />
           </AssociationSet>
           <FunctionImport Name="SP_STATISTICS_VISIT" ReturnType="Collection(GJSModel.SP_STATISTICS_VISIT_Result)" />
+          <AssociationSet Name="FK_O_ORDER_O_CUSTOMER" Association="GJSModel.FK_O_ORDER_O_CUSTOMER">
+            <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
+            <End Role="O_ORDER" EntitySet="O_ORDER" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="SP_STATISTICS_VISIT_Result">
           <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
@@ -1467,6 +1490,18 @@
           <Property Type="Int64" Name="COUNTER_VISIT_MONTH_TT" Nullable="true" />
           <Property Type="Int64" Name="COUNTER_VISIT_TOTAL" Nullable="true" />
         </ComplexType>
+        <Association Name="FK_O_ORDER_O_CUSTOMER">
+          <End Type="GJSModel.O_CUSTOMER" Role="O_CUSTOMER" Multiplicity="0..1" />
+          <End Type="GJSModel.O_ORDER" Role="O_ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_CUSTOMER">
+              <PropertyRef Name="CUSTOMER_CD" />
+            </Principal>
+            <Dependent Role="O_ORDER">
+              <PropertyRef Name="CUSTOMER_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1687,6 +1722,7 @@
           <EntitySetMapping Name="O_ORDER">
             <EntityTypeMapping TypeName="GJSModel.O_ORDER">
               <MappingFragment StoreEntitySet="O_ORDER">
+                <ScalarProperty Name="CUSTOMER_CD" ColumnName="CUSTOMER_CD" />
                 <ScalarProperty Name="ORDER_CD" ColumnName="ORDER_CD" />
                 <ScalarProperty Name="ORDER_CODE" ColumnName="ORDER_CODE" />
                 <ScalarProperty Name="ORDER_CONTENT" ColumnName="ORDER_CONTENT" />

@@ -17,6 +17,7 @@ namespace W_GJS.Models
         public O_CUSTOMER()
         {
             this.O_USER_CUSTOMER = new HashSet<O_USER_CUSTOMER>();
+            this.O_ORDER = new HashSet<O_ORDER>();
         }
     
         public long CUSTOMER_CD { get; set; }
@@ -30,5 +31,6 @@ namespace W_GJS.Models
         public Nullable<System.DateTime> CREATEDATE { get; set; }
     
         public virtual ICollection<O_USER_CUSTOMER> O_USER_CUSTOMER { get; set; }
+        public virtual ICollection<O_ORDER> O_ORDER { get; set; }
     }
 }

@@ -18,6 +18,24 @@ namespace W_GJS.Models
         {
             this.D_ORDER_DETAIL = new HashSet<D_ORDER_DETAIL>();
         }
+    
+        public long ORDER_CD { get; set; }
+        public string ORDER_CODE { get; set; }
+        public string ORDER_CONTENT { get; set; }
+        public Nullable<long> EMPLOYEE_CD { get; set; }
+        public string PHONE { get; set; }
+        public string EMAIL { get; set; }
+        public string DELIVERY_ADDRESS { get; set; }
+        public Nullable<long> STATUS { get; set; }
+        public Nullable<bool> ACTIVE { get; set; }
+        public Nullable<System.DateTime> CREATEDATE { get; set; }
+        public Nullable<long> CUSTOMER_CD { get; set; }
+    
+        public virtual ICollection<D_ORDER_DETAIL> D_ORDER_DETAIL { get; set; }
+        public virtual M_EMPLOYEE M_EMPLOYEE { get; set; }
+        public virtual O_CUSTOMER O_CUSTOMER { get; set; }
+
+
         public int AddCart(O_PRODUCT PRODUCT)
         {
             GJSEntities db = new GJSEntities();
@@ -44,7 +62,7 @@ namespace W_GJS.Models
             }
             else
             {
-                
+
                 Detail_Cart = new D_ORDER_DETAIL
                 {
                     QUANTITY = PRODUCT.QUANTITY,
@@ -84,18 +102,16 @@ namespace W_GJS.Models
                 }
             }
         }
-        public long ORDER_CD { get; set; }
-        public string ORDER_CODE { get; set; }
-        public string ORDER_CONTENT { get; set; }
-        public Nullable<long> EMPLOYEE_CD { get; set; }
-        public string PHONE { get; set; }
-        public string EMAIL { get; set; }
-        public string DELIVERY_ADDRESS { get; set; }
-        public Nullable<long> STATUS { get; set; }
-        public Nullable<bool> ACTIVE { get; set; }
-        public Nullable<System.DateTime> CREATEDATE { get; set; }
-    
-        public virtual ICollection<D_ORDER_DETAIL> D_ORDER_DETAIL { get; set; }
-        public virtual M_EMPLOYEE M_EMPLOYEE { get; set; }
+
+        public static dynamic Price_Total(O_ORDER ord)
+        {
+            decimal? Price_Toatal = 0;
+            foreach (var D_ord in ord.D_ORDER_DETAIL)
+            {
+                Price_Toatal += D_ord.PRICE;
+            }
+            return Price_Toatal;
+        }
+
     }
 }
