@@ -82,7 +82,7 @@
       <PropertyRef Name="CATEGORY_GRANULES_CD" />
     </Key>
     <Property Name="CATEGORY_GRANULES_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CATEGORY_GRANULES_NAME" Type="bigint" />
+    <Property Name="CATEGORY_GRANULES_NAME" Type="nvarchar(max)" />
     <Property Name="CATEGORY_GRANULES_CONTENT" Type="nvarchar(max)" />
     <Property Name="CATEGORY_GRANULES_WEIGHT" Type="nvarchar(max)" />
     <Property Name="STATUS" Type="bigint" />
@@ -240,7 +240,11 @@
     <Property Name="WEIGHT" Type="nvarchar(max)" />
     <Property Name="QUANTITY" Type="bigint" />
     <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PRICE_PROMOTION" Type="decimal" Precision="18" Scale="0" />
     <Property Name="WAGES" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="CURRENCY" Type="nvarchar(max)" />
+    <Property Name="URL_IMAGE" Type="nvarchar(max)" />
+    <Property Name="SIZE" Type="nvarchar(max)" />
     <Property Name="TAG_ALT" Type="nvarchar(max)" />
     <Property Name="STATUS" Type="bigint" />
     <Property Name="ACTIVE" Type="bit" />
@@ -532,7 +536,7 @@
         <PropertyRef Name="CATEGORY_GRANULES_CD" />
       </Principal>
       <Dependent Role="O_PRODUCT">
-        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
+        <PropertyRef Name="CATEGORY_GRANULES_CD" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

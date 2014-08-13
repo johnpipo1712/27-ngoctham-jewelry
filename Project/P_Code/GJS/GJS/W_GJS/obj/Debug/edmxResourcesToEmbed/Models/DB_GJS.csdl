@@ -89,13 +89,14 @@
       <PropertyRef Name="CATEGORY_GRANULES_CD" />
     </Key>
     <Property Name="CATEGORY_GRANULES_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CATEGORY_GRANULES_NAME" Type="Int64" />
+    <Property Name="CATEGORY_GRANULES_NAME" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="CATEGORY_GRANULES_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CATEGORY_GRANULES_WEIGHT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="STATUS" Type="Int64" />
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
     <NavigationProperty Name="O_PRODUCT" Relationship="Self.FK_O_PRODUCT_O_CATEGORY_GRANULES" FromRole="O_CATEGORY_GRANULES" ToRole="O_PRODUCT" />
+    <NavigationProperty Name="O_PRODUCT1" Relationship="GJSModel.FK_O_PRODUCT_O_CATEGORY_GRANULES1" FromRole="O_CATEGORY_GRANULES" ToRole="O_PRODUCT" />
   </EntityType>
   <EntityType Name="O_CATEGORY_NEWS">
     <Key>
@@ -249,6 +250,11 @@
     <Property Name="CATEGORY_PRODUCT_DETAIL_CD" Type="Int64" />
     <NavigationProperty Name="O_CATEGORY_PRODUCT_DETAIL" Relationship="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" FromRole="O_PRODUCT" ToRole="O_CATEGORY_PRODUCT_DETAIL" />
     <NavigationProperty Name="O_CATEGORY_PRODUCT" Relationship="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT" FromRole="O_PRODUCT" ToRole="O_CATEGORY_PRODUCT" />
+    <NavigationProperty Name="O_CATEGORY_GRANULES1" Relationship="GJSModel.FK_O_PRODUCT_O_CATEGORY_GRANULES1" FromRole="O_PRODUCT" ToRole="O_CATEGORY_GRANULES" />
+    <Property Name="URL_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SIZE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PRICE_PROMOTION" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CURRENCY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="O_PRODUCT_HIGHLIGHTS">
     <Key>
@@ -737,6 +743,10 @@
       <End Role="O_CATEGORY_PRODUCT" EntitySet="O_CATEGORY_PRODUCT" />
       <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
     </AssociationSet>
+    <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_GRANULES1" Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_GRANULES1">
+      <End Role="O_CATEGORY_GRANULES" EntitySet="O_CATEGORY_GRANULES" />
+      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="SP_STATISTICS_VISIT_Result">
     <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
@@ -821,6 +831,18 @@
       </Principal>
       <Dependent Role="O_PRODUCT">
         <PropertyRef Name="CATEGORY_PRODUCT_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_PRODUCT_O_CATEGORY_GRANULES1">
+    <End Type="GJSModel.O_CATEGORY_GRANULES" Role="O_CATEGORY_GRANULES" Multiplicity="0..1" />
+    <End Type="GJSModel.O_PRODUCT" Role="O_PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CATEGORY_GRANULES">
+        <PropertyRef Name="CATEGORY_GRANULES_CD" />
+      </Principal>
+      <Dependent Role="O_PRODUCT">
+        <PropertyRef Name="CATEGORY_GRANULES_CD" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
