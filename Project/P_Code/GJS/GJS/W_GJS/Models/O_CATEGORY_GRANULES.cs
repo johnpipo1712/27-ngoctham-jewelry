@@ -17,10 +17,11 @@ namespace W_GJS.Models
         public O_CATEGORY_GRANULES()
         {
             this.O_PRODUCT = new HashSet<O_PRODUCT>();
+            this.O_PRODUCT1 = new HashSet<O_PRODUCT>();
         }
     
         public long CATEGORY_GRANULES_CD { get; set; }
-        public Nullable<long> CATEGORY_GRANULES_NAME { get; set; }
+        public string CATEGORY_GRANULES_NAME { get; set; }
         public string CATEGORY_GRANULES_CONTENT { get; set; }
         public string CATEGORY_GRANULES_WEIGHT { get; set; }
         public Nullable<long> STATUS { get; set; }
@@ -28,5 +29,6 @@ namespace W_GJS.Models
         public Nullable<System.DateTime> CREATEDATE { get; set; }
     
         public virtual ICollection<O_PRODUCT> O_PRODUCT { get; set; }
+        public virtual ICollection<O_PRODUCT> O_PRODUCT1 { get; set; }
     }
 }
