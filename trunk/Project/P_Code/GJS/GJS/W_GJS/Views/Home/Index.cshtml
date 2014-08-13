@@ -1,5 +1,11 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Trang chủ";
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    List<W_GJS.Models.O_PRODUCT_NEW> listproduct_new = gjs.O_PRODUCT_NEW.ToList();
+    List<W_GJS.Models.O_PRODUCT_HIGHLIGHTS> listproduct_hightlights = gjs.O_PRODUCT_HIGHLIGHTS.ToList();
+    List<W_GJS.Models.O_PRODUCT_SELLING> listproduct_selling = gjs.O_PRODUCT_SELLING.ToList();
+    List<W_GJS.Models.O_PRODUCT> listproduct = gjs.O_PRODUCT.Where(t=>t.ACTIVE== true).ToList();
+    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
 }
 
 @section Slide {
@@ -284,38 +290,22 @@
 
         <!-- SIDE NAV -->
         <ul class="side-nav list-group" id="sidebar-nav">
-
-            <li class="list-group-item list-toggle">
-                <!-- NOTE: "active" to be open on page load -->
-                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-1">Nữ trang 18k</a>
-                <ul id="collapse-1" class="collapse">
-                    <!-- NOTE: "collapse in" to be open on page load -->
-                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Nhẫn</a></li>
-                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Kim Cương</a></li>
-                </ul>
-            </li>
-
-            <li class="list-group-item list-toggle">
-                <!-- NOTE: "active" to be open on page load -->
-                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-2">Nữ trang 24k</a>
-                <ul id="collapse-2" class="collapse">
-                    <!-- NOTE: "collapse in" to be open on page load -->
-                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Nhẫn</a></li>
-                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Kim Cương</a></li>
-                </ul>
-            </li>
-
-            <li class="list-group-item list-toggle">
-                <!-- NOTE: "active" to be open on page load -->
-                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-3">Nữ trang NTJ</a>
-                <ul id="collapse-3" class="collapse">
-                    <!-- NOTE: "collapse in" to be open on page load -->
-                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Nhẫn</a></li>
-                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Kim Cương</a></li>
-                </ul>
-            </li>
-
-            <li class="list-group-item"><a href="shop-page-sidebar.html">Nữ trang hộp sáp</a></li>
+            @foreach (var item in listcategory)
+            {
+                <li class="list-group-item list-toggle">
+                    <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-@item.CATEGORY_PRODUCT_CODE">@item.CATEGORY_PRODUCT_NAME</a>
+                    @if (item.O_CATEGORY_PRODUCT_DETAIL != null)
+                    {
+                        <ul id="collapse-@item.CATEGORY_PRODUCT_CODE" class="collapse">
+                            @foreach (var item_detail in item.O_CATEGORY_PRODUCT_DETAIL)
+                            {
+                                <li><a href="@Url.Action("Product_Category_Detail", new { CATEGORY_PRODUCT_DETAIL_CD = item_detail.CATEGORY_PRODUCT_DETAIL_CD })"><i class="fa fa-angle-right"></i> @item_detail.CATEGORY_PRODUCT_DETAIL_NAME</a></li>
+                            }
+                        </ul>
+                    }
+                </li>
+            }
+           
 
         </ul>
         <!-- /SIDE NAV -->

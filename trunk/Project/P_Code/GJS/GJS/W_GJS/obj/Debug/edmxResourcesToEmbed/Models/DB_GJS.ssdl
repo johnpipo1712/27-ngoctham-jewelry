@@ -7,6 +7,7 @@
     <Property Name="ORDER_DETAIL_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ORDER_CD" Type="bigint" />
     <Property Name="PRODUCT_CD" Type="bigint" />
+    <Property Name="SIZE" Type="nvarchar(max)" />
     <Property Name="QUANTITY" Type="bigint" />
     <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
     <Property Name="STATUS" Type="bigint" />
@@ -124,6 +125,19 @@
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
   </EntityType>
+  <EntityType Name="O_CATEGORY_PRODUCT_DETAIL">
+    <Key>
+      <PropertyRef Name="CATEGORY_PRODUCT_DETAIL_CD" />
+    </Key>
+    <Property Name="CATEGORY_PRODUCT_DETAIL_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CATEGORY_PRODUCT_CD" Type="bigint" />
+    <Property Name="CATEGORY_PRODUCT_DETAIL_CODE" Type="nvarchar(max)" />
+    <Property Name="CATEGORY_PRODUCT_DETAIL_NAME" Type="nvarchar(max)" />
+    <Property Name="TAG_ALT" Type="nvarchar(max)" />
+    <Property Name="STATUS" Type="bigint" />
+    <Property Name="ACTIVE" Type="bit" />
+    <Property Name="CREATEDATE" Type="datetime" />
+  </EntityType>
   <EntityType Name="O_CITIES">
     <Key>
       <PropertyRef Name="CITIES_CD" />
@@ -222,6 +236,7 @@
     <Property Name="PRODUCT_CONTENT" Type="nvarchar(max)" />
     <Property Name="CATEGORY_PRODUCT_CD" Type="bigint" />
     <Property Name="CATEGORY_GRANULES_CD" Type="bigint" />
+    <Property Name="CATEGORY_PRODUCT_DETAIL_CD" Type="bigint" />
     <Property Name="WEIGHT" Type="nvarchar(max)" />
     <Property Name="QUANTITY" Type="bigint" />
     <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
@@ -413,6 +428,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT">
+    <End Role="O_CATEGORY_PRODUCT" Type="Self.O_CATEGORY_PRODUCT" Multiplicity="0..1" />
+    <End Role="O_CATEGORY_PRODUCT_DETAIL" Type="Self.O_CATEGORY_PRODUCT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CATEGORY_PRODUCT">
+        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
+      </Principal>
+      <Dependent Role="O_CATEGORY_PRODUCT_DETAIL">
+        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_O_NEWS_HIGHLIGHTS_O_NEWS">
     <End Role="O_NEWS" Type="Self.O_NEWS" Multiplicity="0..1" />
     <End Role="O_NEWS_HIGHLIGHTS" Type="Self.O_NEWS_HIGHLIGHTS" Multiplicity="*" />
@@ -521,6 +548,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL">
+    <End Role="O_CATEGORY_PRODUCT_DETAIL" Type="Self.O_CATEGORY_PRODUCT_DETAIL" Multiplicity="0..1" />
+    <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CATEGORY_PRODUCT_DETAIL">
+        <PropertyRef Name="CATEGORY_PRODUCT_DETAIL_CD" />
+      </Principal>
+      <Dependent Role="O_PRODUCT">
+        <PropertyRef Name="CATEGORY_PRODUCT_DETAIL_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_O_PRODUCT_SELLING_O_PRODUCT">
     <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="0..1" />
     <End Role="O_PRODUCT_SELLING" Type="Self.O_PRODUCT_SELLING" Multiplicity="*" />
@@ -617,6 +656,7 @@
     <EntitySet Name="O_CATEGORY_NEWS" EntityType="Self.O_CATEGORY_NEWS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_CATEGORY_PAGE" EntityType="Self.O_CATEGORY_PAGE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_CATEGORY_PRODUCT" EntityType="Self.O_CATEGORY_PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_CATEGORY_PRODUCT_DETAIL" EntityType="Self.O_CATEGORY_PRODUCT_DETAIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_CITIES" EntityType="Self.O_CITIES" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_CUSTOMER" EntityType="Self.O_CUSTOMER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_INFORMATION" EntityType="Self.O_INFORMATION" Schema="dbo" store:Type="Tables" />
@@ -656,6 +696,10 @@
       <End Role="O_CITIES" EntitySet="O_CITIES" />
       <End Role="O_BRANCH" EntitySet="O_BRANCH" />
     </AssociationSet>
+    <AssociationSet Name="FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT" Association="Self.FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT">
+      <End Role="O_CATEGORY_PRODUCT" EntitySet="O_CATEGORY_PRODUCT" />
+      <End Role="O_CATEGORY_PRODUCT_DETAIL" EntitySet="O_CATEGORY_PRODUCT_DETAIL" />
+    </AssociationSet>
     <AssociationSet Name="FK_O_NEWS_HIGHLIGHTS_O_NEWS" Association="Self.FK_O_NEWS_HIGHLIGHTS_O_NEWS">
       <End Role="O_NEWS" EntitySet="O_NEWS" />
       <End Role="O_NEWS_HIGHLIGHTS" EntitySet="O_NEWS_HIGHLIGHTS" />
@@ -690,6 +734,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT" Association="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT">
       <End Role="O_CATEGORY_PRODUCT" EntitySet="O_CATEGORY_PRODUCT" />
+      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" Association="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL">
+      <End Role="O_CATEGORY_PRODUCT_DETAIL" EntitySet="O_CATEGORY_PRODUCT_DETAIL" />
       <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
     </AssociationSet>
     <AssociationSet Name="FK_O_PRODUCT_SELLING_O_PRODUCT" Association="Self.FK_O_PRODUCT_SELLING_O_PRODUCT">

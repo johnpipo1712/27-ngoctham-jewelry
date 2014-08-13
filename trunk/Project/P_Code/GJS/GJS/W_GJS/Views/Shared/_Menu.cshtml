@@ -1,4 +1,8 @@
 ﻿<!-- Top Nav -->
+@{ 
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    List<W_GJS.Models.O_CATEGORY_PRODUCT> listCategory = gjs.O_CATEGORY_PRODUCT.Where(t=>t.ACTIVE == true).ToList();
+}
 <header id="topNav">
     <div class="container">
 
@@ -46,10 +50,10 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="shop-home-1.html#">SẢN PHẨM <span>products</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("ProductList", "Home")"><i class="fa fa-chevron-right"></i> Nữ trang 18K</a></li>
-                            <li><a href="@Url.Action("ProductList", "Home")"><i class="fa fa-chevron-right"></i> Nữ trang 24K</a></li>
-                            <li><a href="@Url.Action("ProductList", "Home")"><i class="fa fa-chevron-right"></i> Nữ trang NTJ</a></li>
-                            <li><a href="@Url.Action("ProductList", "Home")"><i class="fa fa-chevron-right"></i> Nữ trang hộp sáp</a></li>
+                            @foreach (var item in listCategory)
+                            {
+                               <li>@Html.ActionLink(item.CATEGORY_PRODUCT_NAME, "Product_Category", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD },new{ @alt = item.TAG_ALT })</li>
+                            }
                         </ul>
                     </li>
 
