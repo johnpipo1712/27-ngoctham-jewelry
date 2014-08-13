@@ -39,6 +39,8 @@ namespace W_GJS.Models
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
         public Nullable<long> CATEGORY_PRODUCT_DETAIL_CD { get; set; }
+
+        public string SIZE { get; set; }
     
         public virtual ICollection<D_ORDER_DETAIL> D_ORDER_DETAIL { get; set; }
         public virtual ICollection<D_PRODUCT_DETAIL> D_PRODUCT_DETAIL { get; set; }
