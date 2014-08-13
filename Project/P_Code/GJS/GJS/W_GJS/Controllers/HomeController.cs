@@ -8,11 +8,43 @@ namespace W_GJS.Controllers
 {
     public class HomeController : Controller
     {
+        public const string LOGINED_USER_KEY = "logineduser";
+
         public GJSEntities Db_gsj;
         public ActionResult Index()
         {
             Db_gsj = new GJSEntities();
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string username, string password)
+        {
+            int roleOrFailed = LoginModel.Login(username, password);
+            if (roleOrFailed == 0) // failed
+            {
+                return RedirectToAction("index", "Administrator"); // go to admin index
+            }
+
+            //store session if succeed
+            Session[LOGINED_USER_KEY] = username;
+            return View("Index", "Home");
+        }
+
+        public ActionResult Logout()
+        {
+            // remove session
+            Session[LOGINED_USER_KEY] = null;
+
+            // logout and redirect to index page.
+            LoginModel.Logout();
+            return View("Index", "Home");
+        }
+
+        public ActionResult Register(RegisterModel MODEL)
+        {
+            RegisterModel.Register(MODEL);
+            return View("Index", "Home");
         }
 
         public ActionResult Branches()

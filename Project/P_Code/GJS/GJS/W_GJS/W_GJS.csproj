@@ -165,6 +165,7 @@
     <Compile Include="Models\O_CATEGORY_PRODUCT_DETAIL.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\DB_GJS.Context.cs">
       <AutoGen>True</AutoGen>
