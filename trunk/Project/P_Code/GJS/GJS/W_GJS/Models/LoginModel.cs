@@ -23,5 +23,38 @@ namespace W_GJS.Models
         [Display(Name = "Mật khẩu")]
         public string USER_PASS { get; set; }
 
+        public static int Login(string username, string password)
+        {
+            GJSEntities Db_gsj = new GJSEntities();
+            //check exist user (ensure that no duplicate user)
+            S_USER USER_found = Db_gsj.S_USER.Single(t => t.USER_NAME == username);
+            if (USER_found == null)
+            {
+                return 0;
+            }
+
+            //check active
+            if (USER_found.ACTIVE == false)
+            {
+                return 0;
+            }
+
+            //compare password
+            if (password != USER_found.USER_PASS)
+            {
+                return 0;
+            }
+
+            return (int)USER_found.STATUS;
+            // 0: fail
+            // 1: user normal login
+            // 2: user catalog login
+            // 3: admin login
+        }
+
+        public static void Logout()
+        {
+            // do nothing
+        }
     }
 }
