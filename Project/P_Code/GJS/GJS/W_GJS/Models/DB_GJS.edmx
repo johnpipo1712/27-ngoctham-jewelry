@@ -12,6 +12,7 @@
           <Property Name="ORDER_DETAIL_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ORDER_CD" Type="bigint" />
           <Property Name="PRODUCT_CD" Type="bigint" />
+          <Property Name="SIZE" Type="nvarchar(max)" />
           <Property Name="QUANTITY" Type="bigint" />
           <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
           <Property Name="STATUS" Type="bigint" />
@@ -791,6 +792,7 @@
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="O_ORDER" Relationship="Self.FK_D_ORDER_DETAIL_O_ORDER" FromRole="D_ORDER_DETAIL" ToRole="O_ORDER" />
           <NavigationProperty Name="O_PRODUCT" Relationship="Self.FK_D_ORDER_DETAIL_O_PRODUCT" FromRole="D_ORDER_DETAIL" ToRole="O_PRODUCT" />
+          <Property Name="SIZE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="D_PRODUCT_DETAIL">
           <Key>
@@ -1609,6 +1611,7 @@
           <EntitySetMapping Name="D_ORDER_DETAIL">
             <EntityTypeMapping TypeName="GJSModel.D_ORDER_DETAIL">
               <MappingFragment StoreEntitySet="D_ORDER_DETAIL">
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
                 <ScalarProperty Name="ORDER_DETAIL_CD" ColumnName="ORDER_DETAIL_CD" />
                 <ScalarProperty Name="ORDER_CD" ColumnName="ORDER_CD" />
                 <ScalarProperty Name="PRODUCT_CD" ColumnName="PRODUCT_CD" />
