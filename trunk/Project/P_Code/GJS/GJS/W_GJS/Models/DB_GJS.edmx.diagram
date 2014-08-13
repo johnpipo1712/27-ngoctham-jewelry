@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="GJSModel.O_CATEGORY_GRANULES" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_CATEGORY_NEWS" Width="1.5" PointX="7.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_CATEGORY_PAGE" Width="1.5" PointX="15.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GJSModel.O_CATEGORY_PRODUCT" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_CITIES" Width="1.5" PointX="14.75" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_CUSTOMER" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_INFORMATION" Width="1.5" PointX="10.75" PointY="9.125" IsExpanded="true" />
@@ -43,7 +42,6 @@
         <AssociationConnector Association="GJSModel.FK_O_BRANCH_O_CITIES" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_GRANULES" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_NEWS_O_CATEGORY_NEWS" ManuallyRouted="false" />
-        <AssociationConnector Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_USER_CUSTOMER_O_CUSTOMER" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_NEWS_HIGHLIGHTS_O_NEWS" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_NEWS_NEW_O_NEWS" ManuallyRouted="false" />
@@ -56,8 +54,10 @@
         <AssociationConnector Association="GJSModel.FK_O_USER_PST_S_USER" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_ORDER_O_CUSTOMER" />
         <EntityTypeShape EntityType="GJSModel.O_CATEGORY_PRODUCT_DETAIL" Width="1.5" PointX="0.75" PointY="6.875" />
-        <AssociationConnector Association="GJSModel.FK_O_CATEGORY_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" />
         <AssociationConnector Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" />
+        <EntityTypeShape EntityType="GJSModel.O_CATEGORY_PRODUCT" Width="1.5" PointX="0.75" PointY="8.25" />
+        <AssociationConnector Association="GJSModel.FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT" />
+        <AssociationConnector Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -16,6 +16,7 @@ namespace W_GJS.Models
     {
         public O_CATEGORY_PRODUCT()
         {
+            this.O_CATEGORY_PRODUCT_DETAIL = new HashSet<O_CATEGORY_PRODUCT_DETAIL>();
             this.O_PRODUCT = new HashSet<O_PRODUCT>();
         }
     
@@ -26,9 +27,8 @@ namespace W_GJS.Models
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
-        public Nullable<long> CATEGORY_PRODUCT_DETAIL_CD { get; set; }
     
+        public virtual ICollection<O_CATEGORY_PRODUCT_DETAIL> O_CATEGORY_PRODUCT_DETAIL { get; set; }
         public virtual ICollection<O_PRODUCT> O_PRODUCT { get; set; }
-        public virtual O_CATEGORY_PRODUCT_DETAIL O_CATEGORY_PRODUCT_DETAIL { get; set; }
     }
 }
