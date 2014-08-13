@@ -58,6 +58,7 @@
         <EntityTypeShape EntityType="GJSModel.O_CATEGORY_PRODUCT" Width="1.5" PointX="0.75" PointY="8.25" />
         <AssociationConnector Association="GJSModel.FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT" />
         <AssociationConnector Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT" />
+        <AssociationConnector Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_GRANULES1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
