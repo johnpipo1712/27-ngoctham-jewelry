@@ -4,7 +4,7 @@
     List<W_GJS.Models.O_PRODUCT_NEW> listproduct_new = gjs.O_PRODUCT_NEW.ToList();
     List<W_GJS.Models.O_PRODUCT_HIGHLIGHTS> listproduct_hightlights = gjs.O_PRODUCT_HIGHLIGHTS.ToList();
     List<W_GJS.Models.O_PRODUCT_SELLING> listproduct_selling = gjs.O_PRODUCT_SELLING.ToList();
-    List<W_GJS.Models.O_PRODUCT> listproduct = gjs.O_PRODUCT.Where(t=>t.ACTIVE== true).ToList();
+    List<W_GJS.Models.O_PRODUCT> listproduct = gjs.O_PRODUCT.Where(t => t.ACTIVE == true).ToList().Skip(0).Take(21).ToList();
     List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
 }
 
@@ -44,122 +44,29 @@
 <!-- FEATURED PRODUCTS -->
 <h2 class="owl-featured"><strong>Sản Phẩm</strong> Nổi Bật</h2>
 <div class="owl-carousel featured" data-plugin-options='{"singleItem": false, "stopOnHover":false, "autoPlay":true, "autoHeight": false, "navigation": true, "pagination": false}'>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-            <div class="sb-gdv-disc">
-                <div class="sb-gdv-disc__content">Mới</div>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
+    @foreach (var item in listproduct_hightlights)
+    {
+        <div>
+            <div class="owl-featured-item">
+                <a class="figure" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">
+                    <span><i class="fa fa-plus"></i></span>
+                    <img class="" alt="" src="@Url.Content("~/Content")/images/products/@item.O_PRODUCT.URL_IMAGE" width="230" />
+                </a>
+                <div class="owl-featured-detail">
+                    <a class="featured-title" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">@item.O_PRODUCT.PRODUCT_NAME</a>
+                    <span class="price"><span class="line-through styleColor">@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE)</span> <strong>@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE_PROMOTION)</strong></span>
+                    <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
+                </div>
+                @if (item.O_PRODUCT.O_PRODUCT_NEW != null && item.O_PRODUCT.O_PRODUCT_NEW.ToList().Count > 0)
+                { 
+                <div class="sb-gdv-disc">
+                    <div class="sb-gdv-disc__content">Mới</div>
+                </div>
+                }
             </div>
         </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class=" tick"  alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-            <div class="sb-gdv-disc">
-                <div class="sb-gdv-disc__content">Mới</div>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-            <div class="sb-gdv-disc">
-                <div class="sb-gdv-disc__content">Mới</div>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-            <div class="sb-gdv-disc">
-                <div class="sb-gdv-disc__content">Mới</div>
-            </div>
-        </div>
-    </div>
+
+    }
 </div>
 <!-- /FEATURED PRODUCTS -->
 
@@ -171,110 +78,29 @@
 <!-- FEATURED PRODUCTS -->
 <h2 class="owl-featured"><strong>Sản Phẩm</strong> Bán Chạy</h2>
 <div class="owl-carousel featured" data-plugin-options='{"singleItem": false, "stopOnHover":false, "autoPlay":true, "autoHeight": false, "navigation": true, "pagination": false}'>
+@foreach (var item in listproduct_selling)
+{
     <div>
         <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
+            <a class="figure" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">
                 <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
+                <img class="" alt="" src="@Url.Content("~/Content")/images/products/@item.O_PRODUCT.URL_IMAGE" width="230" />
             </a>
             <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
+                <a class="featured-title" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">@item.O_PRODUCT.PRODUCT_NAME</a>
+                <span class="price"><span class="line-through styleColor">@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE)</span> <strong>@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE_PROMOTION)</strong></span>
                 <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
             </div>
+            @if (item.O_PRODUCT.O_PRODUCT_NEW != null && item.O_PRODUCT.O_PRODUCT_NEW.ToList().Count > 0)
+            {
+                <div class="sb-gdv-disc">
+                    <div class="sb-gdv-disc__content">Mới</div>
+                </div>
+            }
         </div>
     </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="owl-featured-item">
-            <a class="figure" href="@Url.Action("ProductDetail", "Home")">
-                <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/sp2.png" width="230" />
-            </a>
-            <div class="owl-featured-detail">
-                <a class="featured-title" href="@Url.Action("ProductDetail", "Home")">Nhẫn Kim Cương</a>
-                <span class="price"><span class="line-through styleColor">13.100.000 VNĐ</span> <strong>9.900.000 VNĐ</strong></span>
-                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-            </div>
-        </div>
-    </div>
+
+}
 </div>
 <!-- /FEATURED PRODUCTS -->
 
@@ -294,7 +120,7 @@
             {
                 <li class="list-group-item list-toggle">
                     <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-@item.CATEGORY_PRODUCT_CODE">@item.CATEGORY_PRODUCT_NAME</a>
-                    @if (item.O_CATEGORY_PRODUCT_DETAIL != null)
+                    @if (item.O_CATEGORY_PRODUCT_DETAIL != null && item.O_CATEGORY_PRODUCT_DETAIL.ToList().Count > 0)
                     {
                         <ul id="collapse-@item.CATEGORY_PRODUCT_CODE" class="collapse">
                             @foreach (var item_detail in item.O_CATEGORY_PRODUCT_DETAIL)
@@ -305,7 +131,7 @@
                     }
                 </li>
             }
-           
+
 
         </ul>
         <!-- /SIDE NAV -->
@@ -325,232 +151,70 @@
         <!-- PRODUCT LIST -->
         <div id="ProductList" class="row scroll">
 
-            <div class="col-md-4 col-sm-4">
+            @foreach (var item in listproduct)
+            {
+                     <div class="col-md-4 col-sm-4">
                 <!-- item -->
-                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                <a class="shop-item-list" href="@Url.Action("ProductDetail",new { PRODUCT_CD = item.PRODUCT_CD })">
                     <figure>
                         <!-- image -->
-                        <img class="img-responsive" src="@Url.Content("~/Content")/images/products/sp4.png" alt="" />
+                        <img class="img-responsive" src="@Url.Content("~/Content")/images/products/@item.URL_IMAGE" alt="@item.TAG_ALT" />
                     </figure><!-- /image -->
-                    <span class="shop-stock-info stock-no">
+                    @if(item.QUANTITY <= 0)
+                    {
+                        <span class="shop-stock-info stock-no">
                         <!-- stock -->
                         <i class="fa fa-times"></i> hết hàng
                     </span><!-- /stock -->
-                    <div class="product-info">
-                        <!-- title and price -->
-                        <h2>
-                            <span class="product-name">Nhẫn kim cương</span>
-                            <span class="bold">9.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
-                        </h2>
-                    </div><!-- /title and price -->
-
-                </a>
-            </div><!-- /item -->
-
-            <div class="col-md-4 col-sm-4">
-                <!-- item -->
-                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
-                    <figure>
-                        <!-- image -->
-                        <img class="img-responsive" src="@Url.Content("~/Content")/images/products/sp3.png" alt="" />
-                    </figure><!-- /image -->
+                    
+                    }
+                    else
+                    {
                     <span class="shop-stock-info stock-yes">
                         <!-- stock -->
                         <i class="fa fa-check"></i> còn hàng
                     </span><!-- /stock -->
+                        
+                    }
                     <div class="product-info">
                         <!-- title and price -->
                         <h2>
-                            <span class="product-name">Nhẫn kim cương</span>
-                            <span class="bold">9.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
+                            <span class="product-name">@item.PRODUCT_NAME</span>
+                            <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE_PROMOTION)</span> <span class="line-through">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
                         </h2>
                     </div><!-- /title and price -->
-
+                    @if (item.O_PRODUCT_NEW != null && item.O_PRODUCT_NEW.ToList().Count > 0)
+                    {
+                        <div class="sb-gdv-disc">
+                            <div class="sb-gdv-disc__content">Mới</div>
+                        </div>
+                    }
                 </a>
             </div><!-- /item -->
-
-            <div class="col-md-4 col-sm-4">
-                <!-- item -->
-                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
-                    <figure>
-                        <!-- image -->
-                        <img class="img-responsive" src="@Url.Content("~/Content")/images/products/sp5.png" alt="" />
-                    </figure><!-- /image -->
-                    <span class="shop-stock-info stock-no">
-                        <!-- stock -->
-                        <i class="fa fa-times"></i> hết hàng
-                    </span><!-- /stock -->
-                    <div class="product-info">
-                        <!-- title and price -->
-                        <h2>
-                            <span class="product-name">Nhẫn kim cương</span>
-                            <span class="bold">9.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
-                        </h2>
-                    </div><!-- /title and price -->
-
-                </a>
-            </div><!-- /item -->
-
-            <div class="col-md-4 col-sm-4">
-                <!-- item -->
-                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
-                    <figure>
-                        <!-- image -->
-                        <img class="img-responsive" src="@Url.Content("~/Content")/images/products/sp3.png" alt="" />
-                    </figure><!-- /image -->
-                    <span class="shop-stock-info stock-yes">
-                        <!-- stock -->
-                        <i class="fa fa-check"></i> còn hàng
-                    </span><!-- /stock -->
-                    <div class="product-info">
-                        <!-- title and price -->
-                        <h2>
-                            <span class="product-name">Nhẫn kim cương</span>
-                            <span class="bold">9.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
-                        </h2>
-                    </div><!-- /title and price -->
-                    <div class="sb-gdv-disc">
-                        <div class="sb-gdv-disc__content">Mới</div>
-                    </div>
-                </a>
-            </div><!-- /item -->
-
-            <div class="col-md-4 col-sm-4">
-                <!-- item -->
-                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
-                    <figure>
-                        <!-- image -->
-                        <img class="img-responsive" src="@Url.Content("~/Content")/images/products/sp1.png" alt="" />
-                    </figure><!-- /image -->
-                    <span class="shop-stock-info stock-yes">
-                        <!-- stock -->
-                        <i class="fa fa-check"></i> còn hàng
-                    </span><!-- /stock -->
-                    <div class="product-info">
-                        <!-- title and price -->
-                        <h2>
-                            <span class="product-name">Nhẫn kim cương</span>
-                            <span class="bold">9.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
-                        </h2>
-                    </div><!-- /title and price -->
-
-                </a>
-            </div><!-- /item -->
-
-            <div class="col-md-4 col-sm-4">
-                <!-- item -->
-                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
-                    <figure>
-                        <!-- image -->
-                        <img class="img-responsive" src="@Url.Content("~/Content")/images/products/sp5.png" alt="" />
-                    </figure><!-- /image -->
-                    <span class="shop-stock-info stock-no">
-                        <!-- stock -->
-                        <i class="fa fa-times"></i> hết hàng
-                    </span><!-- /stock -->
-                    <div class="product-info">
-                        <!-- title and price -->
-                        <h2>
-                            <span class="product-name">Nhẫn kim cương</span>
-                            <span class="bold">9.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
-                        </h2>
-                    </div><!-- /title and price -->
-                    <div class="sb-gdv-disc">
-                        <div class="sb-gdv-disc__content">Mới</div>
-                    </div>
-                </a>
-            </div><!-- /item -->
-
-            <div class="col-md-4 col-sm-4">
-                <!-- item -->
-                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
-                    <figure>
-                        <!-- image -->
-                        <img class="img-responsive" src="@Url.Content("~/Content")/images/products/sp4.png" alt="" />
-                    </figure><!-- /image -->
-                    <span class="shop-stock-info stock-no">
-                        <!-- stock -->
-                        <i class="fa fa-times"></i> hết hàng
-                    </span><!-- /stock -->
-                    <div class="product-info">
-                        <!-- title and price -->
-                        <h2>
-                            <span class="product-name">Nhẫn kim cương</span>
-                            <span class="bold">9.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
-                        </h2>
-                    </div><!-- /title and price -->
-
-                </a>
-            </div><!-- /item -->
-
-            <div class="col-md-4 col-sm-4">
-                <!-- item -->
-                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
-                    <figure>
-                        <!-- image -->
-                        <img class="img-responsive" src="@Url.Content("~/Content")/images/products/sp3.png" alt="" />
-                    </figure><!-- /image -->
-                    <span class="shop-stock-info stock-no">
-                        <!-- stock -->
-                        <i class="fa fa-times"></i> hết hàng
-                    </span><!-- /stock -->
-                    <div class="product-info">
-                        <!-- title and price -->
-                        <h2>
-                            <span class="product-name">Nhẫn kim cương</span>
-                            <span class="bold">9.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
-                        </h2>
-                    </div><!-- /title and price -->
-
-                </a>
-            </div><!-- /item -->
-
-            <div class="col-md-4 col-sm-4">
-                <!-- item -->
-                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
-                    <figure>
-                        <!-- image -->
-                        <img class="img-responsive" src="@Url.Content("~/Content")/images/products/sp1.png" alt="" />
-                    </figure><!-- /image -->
-                    <span class="shop-stock-info stock-yes">
-                        <!-- stock -->
-                        <i class="fa fa-check"></i> còn hàng
-                    </span><!-- /stock -->
-                    <div class="product-info">
-                        <!-- title and price -->
-                        <h2>
-                            <span class="product-name">Nhẫn kim cương</span>
-                            <span class="bold">9.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
-                        </h2>
-                    </div><!-- /title and price -->
-                    <div class="sb-gdv-disc">
-                        <div class="sb-gdv-disc__content">Mới</div>
-                    </div>
-                </a>
-            </div><!-- /item -->
-
+            }
+            
         </div>
         <!-- /PRODUCT LIST -->
         <!-- PAGINATION -->
         @*<div class="row">
 
-            <div class="col-md-6 text-left">
-                <p class="hidden-xs pull-left nomargin padding20">Hiện 1-16 trên tổng số 38 sản phẩm.</p>
-            </div>
+                <div class="col-md-6 text-left">
+                    <p class="hidden-xs pull-left nomargin padding20">Hiện 1-16 trên tổng số 38 sản phẩm.</p>
+                </div>
 
-            <div class="col-md-6 text-right">
-                <ul class="pagination">
-                    <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-                </ul>
-            </div>
+                <div class="col-md-6 text-right">
+                    <ul class="pagination">
+                        <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                    </ul>
+                </div>
 
-        </div>*@
+            </div>*@
         <!-- /PAGINATION -->
 
     </div>
