@@ -32,7 +32,7 @@ namespace W_GJS.Controllers
                 return RedirectToAction("Index", "Home");
         }
         [HttpGet]
-        public ActionResult AddCart([Bind(Include = "PRODUCT_CD,QUANTITY")]O_PRODUCT pro)
+        public ActionResult AddCart([Bind(Include = "PRODUCT_CD,QUANTITY,SIZE")]O_PRODUCT pro)
         {
             Session["Controller"] = "Cart";
             Session["Action"] = "ViewCart";
@@ -73,7 +73,7 @@ namespace W_GJS.Controllers
             //}
         }
         [HttpPost]
-        public ActionResult AddCartQuantity([Bind(Include = "PRODUCT_CD,QUANTITY")]O_PRODUCT pro)
+        public ActionResult AddCartQuantity([Bind(Include = "PRODUCT_CD,QUANTITY,SIZE")]O_PRODUCT pro)
         {
             Session["Controller"] = "Cart";
             Session["Action"] = "ViewCart";
@@ -104,7 +104,7 @@ namespace W_GJS.Controllers
             //}
         }
         [HttpPost]
-        public ActionResult UpdateCart([Bind(Include = "PRODUCT_CD,QUANTITY")]O_PRODUCT pro)
+        public ActionResult UpdateCart([Bind(Include = "PRODUCT_CD,QUANTITY,SIZE")]O_PRODUCT pro)
         {
   
             O_ORDER ord = (O_ORDER)Session["Cart"];
