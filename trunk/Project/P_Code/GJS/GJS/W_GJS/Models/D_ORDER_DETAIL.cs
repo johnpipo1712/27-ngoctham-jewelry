@@ -22,6 +22,7 @@ namespace W_GJS.Models
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
+        public string SIZE { get; set; }
     
         public virtual O_ORDER O_ORDER { get; set; }
         public virtual O_PRODUCT O_PRODUCT { get; set; }
