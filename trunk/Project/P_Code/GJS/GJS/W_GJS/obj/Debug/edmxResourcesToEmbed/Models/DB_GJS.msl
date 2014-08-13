@@ -87,8 +87,8 @@
     <EntitySetMapping Name="O_CATEGORY_GRANULES">
       <EntityTypeMapping TypeName="GJSModel.O_CATEGORY_GRANULES">
         <MappingFragment StoreEntitySet="O_CATEGORY_GRANULES">
-          <ScalarProperty Name="CATEGORY_GRANULES_CD" ColumnName="CATEGORY_GRANULES_CD" />
           <ScalarProperty Name="CATEGORY_GRANULES_NAME" ColumnName="CATEGORY_GRANULES_NAME" />
+          <ScalarProperty Name="CATEGORY_GRANULES_CD" ColumnName="CATEGORY_GRANULES_CD" />
           <ScalarProperty Name="CATEGORY_GRANULES_CONTENT" ColumnName="CATEGORY_GRANULES_CONTENT" />
           <ScalarProperty Name="CATEGORY_GRANULES_WEIGHT" ColumnName="CATEGORY_GRANULES_WEIGHT" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
@@ -220,6 +220,10 @@
     <EntitySetMapping Name="O_PRODUCT">
       <EntityTypeMapping TypeName="GJSModel.O_PRODUCT">
         <MappingFragment StoreEntitySet="O_PRODUCT">
+          <ScalarProperty Name="CURRENCY" ColumnName="CURRENCY" />
+          <ScalarProperty Name="PRICE_PROMOTION" ColumnName="PRICE_PROMOTION" />
+          <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+          <ScalarProperty Name="URL_IMAGE" ColumnName="URL_IMAGE" />
           <ScalarProperty Name="CATEGORY_PRODUCT_DETAIL_CD" ColumnName="CATEGORY_PRODUCT_DETAIL_CD" />
           <ScalarProperty Name="PRODUCT_CD" ColumnName="PRODUCT_CD" />
           <ScalarProperty Name="PRODUCT_CODE" ColumnName="PRODUCT_CODE" />
