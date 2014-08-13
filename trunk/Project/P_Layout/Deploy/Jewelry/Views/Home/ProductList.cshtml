@@ -1,0 +1,447 @@
+﻿@{
+    ViewBag.Title = "Danh sách sản phẩm";
+}
+
+<h2 class="owl-featured margin-bottom-30 margin-top20"><strong>Danh Sách Sản Phẩm</strong></h2>
+
+<!-- options -->
+<div class="row shop-top-options">
+
+    <div class="col-sm-9 col-md-9">
+
+
+        <h2><strong>Nhẫn gắn đá quý</strong></h2>
+
+        <ul class="breadcrumb">
+            <!-- breadcrumb -->
+            <li><a href="#">Trang chủ</a></li>
+            <li class="active">Danh sách sản phẩm</li>
+        </ul><!-- /breadcrumb -->
+
+    </div>
+
+    <div class=" col-sm-3 col-md-3">
+
+        <select class="form-control pointer fsize13 pull-right" name="orderby">
+            <option value="menu_order" selected="selected">Sắp xếp mặc định</option>
+            <option value="popularity">Sắp xếp theo độ phổ biến</option>
+            <option value="rating">Sắp xếp theo điểm đánh giá</option>
+            <option value="date">Sắp xếp theo thời gian</option>
+            <option value="price">Sắp xếp theo price: thấp tới cao</option>
+            <option value="price-desc">Sắp xếp theo price: cao xuống thấp</option>
+        </select>
+
+    </div>
+</div>
+<!-- /options -->
+
+<div class="row">
+
+    <div class="col-md-3 hidden-sm">
+
+        <!-- SIDE NAV -->
+        <ul class="side-nav list-group" id="sidebar-nav">
+
+            <li class="list-group-item list-toggle">
+                <!-- NOTE: "active" to be open on page load -->
+                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-1">Nữ trang 18k</a>
+                <ul id="collapse-1" class="collapse">
+                    <!-- NOTE: "collapse in" to be open on page load -->
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Nhẫn</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Kim Cương</a></li>
+                </ul>
+            </li>
+
+            <li class="list-group-item list-toggle">
+                <!-- NOTE: "active" to be open on page load -->
+                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-2">Nữ trang 24k</a>
+                <ul id="collapse-2" class="collapse">
+                    <!-- NOTE: "collapse in" to be open on page load -->
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Nhẫn</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Kim Cương</a></li>
+                </ul>
+            </li>
+
+            <li class="list-group-item list-toggle">
+                <!-- NOTE: "active" to be open on page load -->
+                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-3">Nữ trang NTJ</a>
+                <ul id="collapse-3" class="collapse">
+                    <!-- NOTE: "collapse in" to be open on page load -->
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Nhẫn</a></li>
+                    <li><a href="shop-page-sidebar.html"><i class="fa fa-angle-right"></i> Kim Cương</a></li>
+                </ul>
+            </li>
+
+            <li class="list-group-item"><a href="shop-page-sidebar.html">Nữ trang hộp sáp</a></li>
+
+        </ul>
+        <!-- /SIDE NAV -->
+
+        <hr class="half-margins invisible" />
+
+
+        <div class="sky-form shop-filter">
+            <h4>Giá</h4>
+            <label class="radio">
+                <input type="radio" name="radio" checked="checked" />
+                <i></i> Bất kỳ
+            </label>
+            <label class="radio">
+                <input type="radio" name="radio" />
+                <i></i> 0 VNĐ - 1tr VNĐ
+            </label>
+            <label class="radio">
+                <input type="radio" name="radio" />
+                <i></i> 1tr VNĐ - 3tr VNĐ
+            </label>
+            <label class="radio">
+                <input type="radio" name="radio" />
+                <i></i> 3tr VNĐ - 5tr VNĐ
+            </label>
+            <label class="radio">
+                <input type="radio" name="radio" />
+                <i></i> 5tr VNĐ - 10tr VNĐ
+            </label>
+            <label class="radio">
+                <input type="radio" name="radio" />
+                <i></i> 10tr VNĐ - 15tr VNĐ
+            </label>
+            <label class="radio">
+                <input type="radio" name="radio" />
+                <i></i> 20tr VNĐ - 25tr VNĐ
+            </label>
+            <label class="radio">
+                <input type="radio" name="radio" />
+                <i></i> > 25tr VNĐ
+            </label>
+        </div>
+
+        <div class="sky-form shop-filter">
+            <h4>Danh mục</h4>
+            <label class="checkbox">
+                <input type="checkbox" name="checkbox" />
+                <i></i> Vàng 18K
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="checkbox" />
+                <i></i> Vàng 24K
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="checkbox" />
+                <i></i> Vàng 32K
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="checkbox" />
+                <i></i> Vàng 64K
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="checkbox" />
+                <i></i> Vàng 9999
+            </label>
+        </div>
+
+    </div>
+
+    <div class="col-md-9">
+
+
+        <!-- PRODUCT LIST -->
+        <div class="row">
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp5.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> hết hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+                    <div class="sb-gdv-disc">
+                        <div class="sb-gdv-disc__content">Mới</div>
+                    </div>
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp1.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-yes">
+                        <!-- stock -->
+                        <i class="fa fa-check"></i> còn hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000 VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp3.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> hết hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp4.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-yes">
+                        <!-- stock -->
+                        <i class="fa fa-check"></i> còn hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+                    <div class="sb-gdv-disc">
+                        <div class="sb-gdv-disc__content">Mới</div>
+                    </div>
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp1.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-yes">
+                        <!-- stock -->
+                        <i class="fa fa-check"></i> còn hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp4.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> hết hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+                    <div class="sb-gdv-disc">
+                        <div class="sb-gdv-disc__content">Mới</div>
+                    </div>
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp3.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-yes">
+                        <!-- stock -->
+                        <i class="fa fa-check"></i> còn hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp5.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> hết hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp1.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-yes">
+                        <!-- stock -->
+                        <i class="fa fa-check"></i> còn hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp3.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> hết hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp4.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-yes">
+                        <!-- stock -->
+                        <i class="fa fa-check"></i> còn hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+            <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp4.png")" alt="" />
+                    </figure><!-- /image -->
+                    <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> hết hàng
+                    </span><!-- /stock -->
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">Nhẫn kim cương</span>
+                            <span class="bold">2 000 000VNĐ </span> <span class="line-through">1 000 000 VNĐ</span>
+                        </h2>
+                    </div><!-- /title and price -->
+
+                </a>
+            </div><!-- /item -->
+
+        </div>
+        <!-- /PRODUCT LIST -->
+        <!-- PAGINATION -->
+        <div class="row">
+
+            <div class="col-md-6 text-left">
+                <p class="hidden-xs pull-left nomargin padding20">Showing 1-16 of 38 results.</p>
+            </div>
+
+            <div class="col-md-6 text-right">
+                <ul class="pagination">
+                    <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- /PAGINATION -->
+
+    </div>
+
+</div>

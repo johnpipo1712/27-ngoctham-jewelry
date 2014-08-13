@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/Self/branches/css/default.css")" rel="stylesheet" type="text/css" />
+}
+
+<h2 class="owl-featured margin-bottom-30 margin-top20"><strong>HỆ THỐNG CHI NHÁNH</strong></h2>
+
+<div class="page-container">
+    <div class="left-vnmap">
+        <img src="@Url.Content("~/Content")/images/branches/img-bando.png" alt="">
+    </div>
+    <div class="right-branches">
+        <div class="sys-store">
+            <div class="choose-sys-store">
+                <div class="choose-type">
+
+                    <select class="search-type tinh" style="opacity: 0;">
+                        <option value="999991" disabled="disabled" style="background-color:#e0e0e0">Việt Nam</option>
+                        <option value="3">Hà Nội</option>
+                        <option value="1">TP. HCM</option>
+                        <option selected="selected" value="17">Tiền Giang</option>
+                        <option value="40">Cần Thơ</option>
+                        <option value="41">Vĩnh Long</option>
+                        <option value="42">An Giang</option>
+
+                    </select>
+
+
+
+                    <span class="search-label button-label">Tiền Giang</span>
+                </div>
+                <div class="choose-type">
+                    <select name="ctl00$cntMain$ctl00$ddlDistrict" id="ctl00_cntMain_ctl00_ddlDistrict" class="search-type tinh" style="opacity: 0;">
+                        <option selected="selected" value="0">---</option>
+                        <option value="45">Thành phố Mỹ Tho</option>
+
+                    </select>
+                    <span class="search-label button-label">---</span>
+                </div>
+                <a id="ctl00_cntMain_ctl00_btnSearch" class="sys-search" href="javascript:__doPostBack('ctl00$cntMain$ctl00$btnSearch','')">Tìm</a>
+            </div><!--end choose store-->
+            <div class="wrap-sys-store">
+                <table class="table-stores">
+
+                    <tbody>
+                        <tr>
+                            <td class="sys1">Tên chi nhánh </td>
+                            <td class="sys2">Địa chỉ</td>
+                            <td class="sys3">Điện thoại</td>
+                        </tr>
+
+                        <tr>
+                            <td class="sys1"><a class="fancy" href="/GetMap.aspx?id=6" target="_blank">Chi Nhánh 1</a></td>
+                            <td class="sys2">25/2 Nguyễn Huỳnh Đức P8-TP.Mỹ Tho -Tiền Giang</td>
+                            <td class="sys3">(073) 3 872838</td>
+                        </tr>
+
+                        <tr class="even">
+                            <td class="sys1"><a class="fancy" href="/GetMap.aspx?id=5" target="_blank">Chi Nhánh 2</a></td>
+                            <td class="sys2">Trung Tâm Thương Mại Mỹ Tho</td>
+                            <td class="sys3">(073) 3 877858</td>
+                        </tr>
+
+                        <tr>
+                            <td class="sys1"><a class="fancy" href="/GetMap.aspx?id=7" target="_blank">Chi Nhánh 4</a></td>
+                            <td class="sys2">Số 160C Lê Thị Hồng Gấm P6-TP.Mỹ Tho -Tiền Giang</td>
+                            <td class="sys3">(073) 3 874801</td>
+                        </tr>
+
+                        <tr class="even">
+                            <td class="sys1"><a class="fancy" href="/GetMap.aspx?id=8" target="_blank">Chi Nhánh 6</a></td>
+                            <td class="sys2">Số 35 ẤP Bắc (COOP MART) P5-TP.Mỹ Tho-Tiền Giang</td>
+                            <td class="sys3">(073) 3867511</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <!-- AspNetPager 7.3.2  Copyright:2003-2010 BoYang Computer Co., Ltd. (http://en.webdiyer.com) -->
+                <!--AspNetPager is hidden because there're only one page of records-->
+                <!-- AspNetPager 7.3.2  Copyright:2003-2010 BoYang Computer Co., Ltd. (http://en.webdiyer.com) -->
+            </div>
+        </div>
+    </div>
+</div>
