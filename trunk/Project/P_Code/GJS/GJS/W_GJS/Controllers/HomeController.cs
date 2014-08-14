@@ -77,16 +77,12 @@ namespace W_GJS.Controllers
             return View();
         }
 
-        public ActionResult NewsGold()
+        public ActionResult Category_News()
         {
             return View();
         }
 
-        public ActionResult NewsFinancial()
-        {
-            return View();
-        }
-
+       
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
