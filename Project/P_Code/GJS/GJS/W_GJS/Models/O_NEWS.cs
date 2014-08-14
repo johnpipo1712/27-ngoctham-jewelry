@@ -31,6 +31,7 @@ namespace W_GJS.Models
         public Nullable<System.DateTime> CREATEDATE { get; set; }
         public string SOURCE_COPY { get; set; }
         public Nullable<long> EMPLOYEE_CD { get; set; }
+        public string NEW_DESCRIPTIONS { get; set; }
     
         public virtual O_CATEGORY_NEWS O_CATEGORY_NEWS { get; set; }
         public virtual ICollection<O_NEWS_HIGHLIGHTS> O_NEWS_HIGHLIGHTS { get; set; }

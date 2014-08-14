@@ -186,6 +186,7 @@
           </Key>
           <Property Name="NEWS_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NEWS_TITLE" Type="nvarchar(max)" />
+          <Property Name="NEW_DESCRIPTIONS" Type="nvarchar(max)" />
           <Property Name="NEWS_CONTENT" Type="nvarchar(max)" />
           <Property Name="IMAGE_NEWS" Type="nvarchar(max)" />
           <Property Name="CATEGORY_NEWS_CD" Type="bigint" />
@@ -974,7 +975,7 @@
           <Property Name="NEWS_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IMAGE_NEWS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CATEGORY_NEWS_CD" Type="Int64" />
-          <Property Name="TAG_ALT" Type="String" />
+          <Property Name="TAG_ALT" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="STATUS" Type="Int64" />
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
@@ -984,6 +985,7 @@
           <Property Name="SOURCE_COPY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EMPLOYEE_CD" Type="Int64" />
           <NavigationProperty Name="M_EMPLOYEE" Relationship="GJSModel.FK_O_NEWS_M_EMPLOYEE" FromRole="O_NEWS" ToRole="M_EMPLOYEE" />
+          <Property Name="NEW_DESCRIPTIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="O_NEWS_HIGHLIGHTS">
           <Key>
@@ -1837,6 +1839,7 @@
           <EntitySetMapping Name="O_NEWS">
             <EntityTypeMapping TypeName="GJSModel.O_NEWS">
               <MappingFragment StoreEntitySet="O_NEWS">
+                <ScalarProperty Name="NEW_DESCRIPTIONS" ColumnName="NEW_DESCRIPTIONS" />
                 <ScalarProperty Name="TAG_ALT" ColumnName="TAG_ALT" />
                 <ScalarProperty Name="EMPLOYEE_CD" ColumnName="EMPLOYEE_CD" />
                 <ScalarProperty Name="SOURCE_COPY" ColumnName="SOURCE_COPY" />
