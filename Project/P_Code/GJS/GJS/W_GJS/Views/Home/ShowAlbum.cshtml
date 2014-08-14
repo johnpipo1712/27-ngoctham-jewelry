@@ -1,143 +1,25 @@
 ﻿@{
     ViewBag.Title = "ShowAlbum";
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
 }
 
-<h2 class="owl-featured margin-bottom-30 margin-top20"><strong>ALBUM ẢNH CƯỚI</strong></h2>
-
-<div class="row lightbox" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp1.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp1.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp3.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp3.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp5.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp2.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp4.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp4.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp5.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp5.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp1.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp1.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp4.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp4.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp5.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp5.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-</div>
-
-<h2 class="owl-featured margin-bottom-30 margin-top20"><strong>ALBUM NỮ TRANG</strong></h2>
-
-<div class="row lightbox" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp1.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp1.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp3.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp3.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp5.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp2.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp4.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp4.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp5.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp5.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp1.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp1.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp4.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp4.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3">
-        <div class="box-content thumbnail text-center">
-            <a href="@Url.Content("~/Content/images/products/sp5.png")" class="item-image">
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp5.png")" alt="" />
-            </a>
-        </div>
-    </div>
-
-</div>
+@foreach (var item in listcategory)
+{
+    if(item.O_PRODUCT.Count > 0)
+    { 
+      <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>@item.CATEGORY_PRODUCT_NAME</strong></h2>
+      <div class="row lightbox" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
+          @foreach (var itemproduct in item.O_PRODUCT)
+          {
+              <div class="col-sm-3 col-md-3">
+                    <div class="box-content thumbnail text-center">
+                        <a href="@itemproduct.URL_IMAGE" class="item-image">
+                            <img class="img-responsive" src="@itemproduct.URL_IMAGE" alt="" />
+                        </a>
+                    </div>
+                </div>
+          }
+     </div>
+    }
+}

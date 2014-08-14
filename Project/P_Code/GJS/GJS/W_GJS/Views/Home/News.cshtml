@@ -109,7 +109,7 @@
 
             <div class="col-md-9 col-sm-9">
 
-                <h2 class="article-title"><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><span>@item.NEWS_TITLE/span></a></h2>
+                <h2 class="article-title"><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><span>@item.NEWS_TITLE</span></a></h2>
 
                 <!-- image -->
                 <figure>
@@ -135,7 +135,7 @@
                     @String.Format("{0:Ngày dd Tháng MM Năm yyyy}",@item.CREATEDATE)
                 </span>
                 <span class="info hidden-xs">
-                    <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">Admin</a></span>
+                    <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">@item.M_EMPLOYEE.EMPLOYEE_NAME</a></span>
                     <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">@item.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME</a></span>
                 </span>
             </div>

@@ -1,5 +1,8 @@
-﻿@{
+﻿@model W_GJS.Models.O_PRODUCT
+@{
     ViewBag.Title = "ProductDetail";
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    List<W_GJS.Models.O_PRODUCT> ListProduct = gjs.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == Model.CATEGORY_PRODUCT_CD).ToList().Skip(0).Take(3).ToList();
 }
 
 @section Scripts {
@@ -108,12 +111,12 @@
 
         <figure class="product-view-image">
             <!-- product image -->
-            <a href="@Url.Content("~/Content/images/products/sp1.png")" class="lightbox img-thumbnail" data-plugin-options="{&quot;type&quot;:&quot;image&quot;}">
-                <img id="product-main-image" class="img-responsive" src="@Url.Content("~/Content/images/products/sp1.png")" width="620" height="620" alt="" >
+            <a href="@Model.URL_IMAGE" class="lightbox img-thumbnail" data-plugin-options="{&quot;type&quot;:&quot;image&quot;}">
+                <img id="product-main-image" class="img-responsive" src="@Model.URL_IMAGE" width="620" height="620" alt="" >
             </a>
 
             <p class="fsize11 margin-top30">
-                Chi tiết sản phẩm đặt tại đây.
+               @Model.PRODUCT_CONTENT
             </p>
 
         </figure>
@@ -122,51 +125,70 @@
 
     <div class="col-md-8 col-sm-8">
 
-        <h1 class="product-view-title">Nhẫn kim cương</h1>
-        <h3 class="product-view-price"><em>11.000.000 VNĐ</em></h3>
+        <h1 class="product-view-title">@Model.PRODUCT_NAME</h1>
+        <h3 class="product-view-price"><em>@String.Format("{0:0,0 " + Model.CURRENCY + "}", Model.PRICE_PROMOTION)</em></h3>
         <table style="width: 50%;">
             <tr>
                 <th>Mã sản phẩm:</th>
-                <td>SP01</td>
+                <td>@Model.PRODUCT_CODE</td>
             </tr>
             <tr>
-                <th>Loại vàng:</th>
-                <td>9999</td>
+                <th>Loại:</th>
+                <td>@Model.O_CATEGORY_PRODUCT.CATEGORY_PRODUCT_NAME</td>
             </tr>
             <tr>
                 <th>Trọng lượng:</th>
-                <td>@*<input type="number" id="txtWeight" value="" />*@2 chỉ</td>
+                <td>@Model.WEIGHT</td>
             </tr>
             <tr>
                 <th>Loại hột:</th>
-                <td>Kim cương</td>
+                <td>@Model.O_CATEGORY_GRANULES.CATEGORY_GRANULES_NAME</td>
             </tr>
             <tr>
                 <th>Chi tiết hột:</th>
-                <td>Là kim cương nên rất cứng</td>
+                <td>@Model.O_CATEGORY_GRANULES.CATEGORY_GRANULES_CONTENT</td>
             </tr>
             <tr>
                 <th>Cân nặng hột:</th>
-                <td>18 carat</td>
+                <td>@Model.O_CATEGORY_GRANULES.CATEGORY_GRANULES_WEIGHT</td>
             </tr>
             <tr>
                 <th>Tiền công:</th>
-                <td>-</td>
+                <td>@Model.WAGES</td>
             </tr>
         </table>
 
         <hr class="half-margins">
+        @if (Model.QUANTITY <= 0)
+        {
+               <span id="product-view-stock-info" class="shop-stock-info stock-no">
+            <!-- stock -->
+            <i class="fa fa-check"></i> hết hàng
+        </span><!-- /stock -->
 
-        <span id="product-view-stock-info" class="shop-stock-info stock-yes">
+        }
+        else
+        {
+               <span id="product-view-stock-info" class="shop-stock-info stock-yes">
             <!-- stock -->
             <i class="fa fa-check"></i> còn hàng
         </span><!-- /stock -->
+
+        }
+     
         <!-- see the bottom of the page for the script -->
         <section class="product-view-colors">
-            <a data-color="white" data-stock="yes" data-src="@Url.Content("~/Content/images/products/sp1.png")" class="active" href="#"><img src="@Url.Content("~/Content/images/products/sp1.png")" height="70" alt=""></a>
-            <a data-color="black" data-stock="no" data-src="@Url.Content("~/Content/images/products/sp3.png")" href="#"><img src="@Url.Content("~/Content/images/products/sp3.png")" height="70" alt=""></a>
-            <a data-color="pink" data-stock="yes" data-src="@Url.Content("~/Content/images/products/sp4.png")" href="#"><img src="@Url.Content("~/Content/images/products/sp4.png")" height="70" alt=""></a>
-            <a data-color="purple" data-stock="no" data-src="@Url.Content("~/Content/images/products/sp5.png")" href="#"><img src="@Url.Content("~/Content/images/products/sp5.png")" height="70" alt=""></a>
+            @for (int i = 0; i < @Model.D_PRODUCT_DETAIL.Count; i++)
+            {
+              if(i==0)
+              {
+                <a data-color="white" data-stock="yes" data-src="@Model.D_PRODUCT_DETAIL.ToList()[i].URL_IMAGE" class="active" href="#"><img src="@Model.D_PRODUCT_DETAIL.ToList()[i].URL_IMAGE" height="70" alt=""></a>
+              }
+              else
+              { 
+                <a data-color="white" data-stock="yes" data-src="@Model.D_PRODUCT_DETAIL.ToList()[i].URL_IMAGE" href="#"><img src="@Model.D_PRODUCT_DETAIL.ToList()[i].URL_IMAGE" height="70" alt=""></a>
+              }
+            }
         </section>
 
         <form action="shop-page-cart.html" method="get" class="form-inline margin-top30 nopadding clearfix">
@@ -235,75 +257,46 @@
 <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>Sản Phẩm</strong> Liên Quan</h2>
 <!-- PRODUCT LIST -->
 <div class="row">
-
-    <div class="col-md-4 col-sm-4">
-        <!-- item -->
-        <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
-            <figure>
-                <!-- image -->
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp1.png")" alt="">
-            </figure><!-- /image -->
-            <span class="shop-stock-info stock-yes">
-                <!-- stock -->
-                <i class="fa fa-check"></i> còn hàng
-            </span><!-- /stock -->
-            <div class="product-info">
-                <!-- title and price -->
-                <h2>
-                    <span class="product-name">Nhẫn kim cương</span>
-                    <span class="bold">11.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
-                </h2>
-            </div><!-- /title and price -->
-            <div class="sb-gdv-disc">
-                <div class="sb-gdv-disc__content">Mới</div>
-            </div>
-        </a>
-    </div><!-- /item -->
-
-    <div class="col-md-4 col-sm-4">
-        <!-- item -->
-        <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
-            <figure>
-                <!-- image -->
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp4.png")" alt="">
-            </figure><!-- /image -->
-            <span class="shop-stock-info stock-no">
-                <!-- stock -->
-                <i class="fa fa-times"></i> hết hàng
-            </span><!-- /stock -->
-            <div class="product-info">
-                <!-- title and price -->
-                <h2>
-                    <span class="product-name">Nhẫn kim cương</span>
-                    <span class="bold">11.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
-                </h2>
-            </div><!-- /title and price -->
-
-        </a>
-    </div><!-- /item -->
-
-    <div class="col-md-4 col-sm-4">
-        <!-- item -->
-        <a class="shop-item-list" href="@Url.Action("ProductDetail", "Home")">
-            <figure>
-                <!-- image -->
-                <img class="img-responsive" src="@Url.Content("~/Content/images/products/sp3.png")" alt="">
-            </figure><!-- /image -->
-            <span class="shop-stock-info stock-yes">
-                <!-- stock -->
-                <i class="fa fa-check"></i> còn hàng
-            </span><!-- /stock -->
-            <div class="product-info">
-                <!-- title and price -->
-                <h2>
-                    <span class="product-name">Nhẫn kim cương</span>
-                    <span class="bold">11.000.000 VNĐ</span> <span class="line-through">12.000.000 VNĐ</span>
-                </h2>
-            </div><!-- /title and price -->
-            <div class="sb-gdv-disc">
-                <div class="sb-gdv-disc__content">Mới</div>
-            </div>
-        </a>
-    </div><!-- /item -->
-
+    @foreach (var item in ListProduct)
+    {
+       <div class="col-md-4 col-sm-4">
+                <!-- item -->
+                <a class="shop-item-list" href="@Url.Action("ProductDetail",new { PRODUCT_CD = item.PRODUCT_CD })">
+                    <figure>
+                        <!-- image -->
+                        <img class="img-responsive" src="@item.URL_IMAGE" alt="@item.TAG_ALT" />
+                    </figure><!-- /image -->
+                    @if(item.QUANTITY <= 0)
+                    {
+                        <span class="shop-stock-info stock-no">
+                        <!-- stock -->
+                        <i class="fa fa-times"></i> hết hàng
+                    </span><!-- /stock -->
+                    
+                    }
+                    else
+                    {
+                    <span class="shop-stock-info stock-yes">
+                        <!-- stock -->
+                        <i class="fa fa-check"></i> còn hàng
+                    </span><!-- /stock -->
+                        
+                    }
+                    <div class="product-info">
+                        <!-- title and price -->
+                        <h2>
+                            <span class="product-name">@item.PRODUCT_NAME</span>
+                            <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE_PROMOTION)</span> <span class="line-through">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
+                        </h2>
+                    </div><!-- /title and price -->
+                    @if (item.O_PRODUCT_NEW != null && item.O_PRODUCT_NEW.ToList().Count > 0)
+                    {
+                        <div class="sb-gdv-disc">
+                            <div class="sb-gdv-disc__content">Mới</div>
+                        </div>
+                    }
+                </a>
+            </div><!-- /item -->
+    }
+    
 </div>
