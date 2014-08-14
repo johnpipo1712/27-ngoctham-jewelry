@@ -12,10 +12,10 @@
         <EntityTypeShape EntityType="GJSModel.O_ADVERTISEMENT" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_BRANCH" Width="1.5" PointX="17" PointY="13.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_CATEGORY_GRANULES" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="GJSModel.O_CATEGORY_NEWS" Width="1.5" PointX="7.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_CATEGORY_NEWS" Width="1.5" PointX="8.375" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_CATEGORY_PAGE" Width="1.5" PointX="15.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_CITIES" Width="1.5" PointX="14.75" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GJSModel.O_CUSTOMER" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_CUSTOMER" PointX="14.375" PointY="18" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_INFORMATION" Width="1.5" PointX="10.75" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_NEWS" Width="1.5" PointX="10" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_NEWS_HIGHLIGHTS" Width="1.5" PointX="12.25" PointY="13.375" IsExpanded="true" />
@@ -24,7 +24,7 @@
         <EntityTypeShape EntityType="GJSModel.O_PRODUCT" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_PRODUCT_HIGHLIGHTS" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_PRODUCT_NEW" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GJSModel.O_PRODUCT_SELLING" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_PRODUCT_SELLING" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_SEO" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_USER_CUSTOMER" Width="1.5" PointX="13" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_USER_EMPLOYEE" Width="1.5" PointX="13" PointY="1.375" IsExpanded="true" />
@@ -42,7 +42,7 @@
         <AssociationConnector Association="GJSModel.FK_O_BRANCH_O_CITIES" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_GRANULES" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_NEWS_O_CATEGORY_NEWS" ManuallyRouted="false" />
-        <AssociationConnector Association="GJSModel.FK_O_USER_CUSTOMER_O_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="GJSModel.FK_O_USER_CUSTOMER_O_CUSTOMER" />
         <AssociationConnector Association="GJSModel.FK_O_NEWS_HIGHLIGHTS_O_NEWS" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_NEWS_NEW_O_NEWS" ManuallyRouted="false" />
         <AssociationConnector Association="GJSModel.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" ManuallyRouted="false" />

@@ -22,13 +22,16 @@ namespace W_GJS.Models
     
         public long CUSTOMER_CD { get; set; }
         public string CUSTOMER_CODE { get; set; }
-        public string CUSTOMER_NAME { get; set; }
         public string ADDRESS { get; set; }
         public string EMAIL { get; set; }
         public Nullable<System.DateTime> BIRTHDAY { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
+        public string CUSTOMER_FIRST_NAME { get; set; }
+        public string CUSTOMER_LAST_NAME { get; set; }
+        public string SEX { get; set; }
+        public string CUSTOMER_NAME { get; set; }
     
         public virtual ICollection<O_USER_CUSTOMER> O_USER_CUSTOMER { get; set; }
         public virtual ICollection<O_ORDER> O_ORDER { get; set; }
