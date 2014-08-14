@@ -14,7 +14,17 @@
 
 @section Scripts {
     <script>
-        window.onload($("#PopupModal").modal());
+        function showPopup() {
+            var needPopup = @(Session["needPopup"] == null ? "true" : "false");
+            @{
+                Session["needPopup"] = true;
+            }
+            if (needPopup) {
+                $("#PopupModal").modal();
+                needPopup = false;
+            }
+        }
+        window.onload(showPopup());
     </script>
 }
 
@@ -50,7 +60,7 @@
             <div class="owl-featured-item">
                 <a class="figure" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">
                     <span><i class="fa fa-plus"></i></span>
-                    <img class="" alt="" src="@item.O_PRODUCT.URL_IMAGE" width="230" />
+                    <img class="" alt="" src="@Url.Content("~/Content")/images/products/@item.O_PRODUCT.URL_IMAGE" width="230" />
                 </a>
                 <div class="owl-featured-detail">
                     <a class="featured-title" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">@item.O_PRODUCT.PRODUCT_NAME</a>
@@ -84,7 +94,7 @@
         <div class="owl-featured-item">
             <a class="figure" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">
                 <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@item.O_PRODUCT.URL_IMAGE" width="230" />
+                <img class="" alt="" src="@Url.Content("~/Content")/images/products/@item.O_PRODUCT.URL_IMAGE" width="230" />
             </a>
             <div class="owl-featured-detail">
                 <a class="featured-title" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">@item.O_PRODUCT.PRODUCT_NAME</a>
@@ -158,7 +168,7 @@
                 <a class="shop-item-list" href="@Url.Action("ProductDetail",new { PRODUCT_CD = item.PRODUCT_CD })">
                     <figure>
                         <!-- image -->
-                        <img class="img-responsive" src="@item.URL_IMAGE" alt="@item.TAG_ALT" />
+                        <img class="img-responsive" src="@Url.Content("~/Content")/images/products/@item.URL_IMAGE" alt="@item.TAG_ALT" />
                     </figure><!-- /image -->
                     @if(item.QUANTITY <= 0)
                     {
