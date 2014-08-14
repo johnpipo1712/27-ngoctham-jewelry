@@ -1,10 +1,12 @@
 ﻿@{
     ViewBag.Title = "Quá trình phát triển";
+
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    W_GJS.Models.M_PAGE page = gjs.M_PAGE.Single(t => t.CATEGORY_PAGE_CD == 3);
 }
 
 <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>Quá trình phát triển</strong></h2>
 
 <div class="newsdt-content">
-    <span style="font-size: 16px;">Công ty TNHH vàng bạc đá quý Ngọc Thẫm được thành lập từ năm 2003 với vốn đều lệ 110 tỷ đồng.Tiền thân của công ty Ngọc Thẫm là một cơ sở chuyên gia công các loại trang sức bằng vàng,bạc với 1 cửa hàng chính tại TP.Mỹ Tho tỉnh Tiền Giang.Sau hơn 10 năm phát triển,hiện công ty đã có 1 văn phòng,1 nhà xưởng quy mô với hơn 150 thợ bạc và 8 chinh nhánh tại các tình Tiền Giang,Vĩnh Long,Cần Thơ và An Giang,chuyên gia công và mua bán vàng miếng,các loại nữ trang bằng vàng,bạc và đá quý.</span><br>
-    <br>
+    @Html.Raw(page.PAGE_COTRACT_CONTENT)
 </div>

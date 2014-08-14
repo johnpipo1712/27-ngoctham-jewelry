@@ -1,11 +1,13 @@
 ﻿@{
     ViewBag.Title = "Thành tựu";
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    W_GJS.Models.M_PAGE page = gjs.M_PAGE.Single(t => t.CATEGORY_PAGE_CD == 4);
 }
 
 <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>Thành Tựu</strong> Của Công Ty</h2>
 
 <div class="newsdt-content">
-    <span style="font-size: 16px;">Ngọc Thẫm cũng đã vinh dự đạt được chứng nhận hàng Việt Nam chất lượng cao năm 2002,2005,2006.Cúp vàng thương hiệu-nhãn hiệu 2005,2007.Đặc biệt,trong năm 2012,Ngọc Thẫm là một trong số ít doanh nghiệp trong cả nước đủ điều kiện được ngân hàng nhà nước cấp phép kinh doanh vàng miếng.</span><br>
-</div>
+    @Html.Raw(page.PAGE_COTRACT_CONTENT)
+ </div>
 
 
