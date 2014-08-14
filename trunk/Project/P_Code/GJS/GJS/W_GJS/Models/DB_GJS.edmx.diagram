@@ -59,6 +59,7 @@
         <AssociationConnector Association="GJSModel.FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT" />
         <AssociationConnector Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT" />
         <AssociationConnector Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_GRANULES1" />
+        <AssociationConnector Association="GJSModel.FK_O_NEWS_M_EMPLOYEE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
