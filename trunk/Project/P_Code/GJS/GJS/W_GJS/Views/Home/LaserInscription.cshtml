@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "LaserInscription";
     Layout = "~/Views/Shared/_ShopLayout.cshtml";
+
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    W_GJS.Models.M_PAGE page = gjs.M_PAGE.Single(t => t.CATEGORY_PAGE_CD == 8);
 }
 
 @section Styles {
@@ -11,55 +14,5 @@
 <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>DỊCH VỤ KHẮC CHỮ LAZER TRÊN KIM CƯƠNG</strong></h2>
 
 <div class="editor_content">
-    <div style="text-align: center;">
-        <span class="title-article"><strong>KHẮC CHỮ LAZER TRÊN KIM CƯƠNG</strong></span>
-    </div>
-    <div style="text-align: justify;">
-        <span class="title-article"><strong>1. Khắc laser trên kim cương là gì?</strong></span><br>
-        
-    </div>
-    <div style="clear: both; text-align: justify;">
-        &nbsp;
-    </div>
-    <div style="text-align: justify;">
-        Khắc laser trên kim cương là một quá trình dùng tia laser để viết mã số giám định, logo công ty hay tên hoặc một câu có ý nghĩa đặc biệt nào đó của chủ nhân viên kim cương lên bề mặt phần gờ (girdle) của chúng. Sự đốt nóng một cách chính xác của tia laser làm biến đổi một lớp cực kỳ mỏng (dày cỡ vài micron) trên bề mặt từ dạng tinh thể carbon trong suốt (kim cương) sang dạng carbon đen (than chì). Điều này làm cho dòng chữ khắc có dạng không gian 3 chiều (3D) dưới kính hiển vi.
-    </div>
-    <div style="text-align: justify;">
-        Chữ khắc laser được xem như bền vững trừ khi nó chỉ có thể được xóa đi do những chuyên gia cắt mài kim cương. Tốt hơn hết bạn nên xem khắc chữ laser như nghệ thuật xăm mình, hình xăm gần như tồn tại bền vững.
-    </div>
-    <div style="text-align: justify;">
-        Chữ khắc laser rất nhỏ hoàn toàn không thấy được bằng mắt thường mà phải sử dụng kính loupe phóng đại 10 lần.
-    </div>
-    
-
-    <div style="text-align: justify;">
-        <span class="title-article"><strong>2. Tại sao nên khắc laser?</strong></span><br>
-
-    </div>
-    <div style="clear: both; text-align: justify;">
-        &nbsp;
-    </div>
-    <div style="text-align: justify;">
-        Khắc laser hoàn toàn không làm thay đổi cấp độ màu và cấp độ sạch (tinh khiết) của viên kim cương.
-    </div>
-    <div style="text-align: justify;">
-        Thông thường người ta khắc mã số giấy phân cấp viên kim cương vì đây là một cách hiệu quả nhất để chống trộm và tráo đổi, khi đó nó đem đến một kết luận chính xác cho viên kim cương.
-    </div>
-    <div style="text-align: justify;">
-        Tạo nên cảm giác an toàn và tự tin khi bạn có khả năng kiểm tra, nhận diện viên kim cương của bạn bất kỳ lúc nào, nhất là khi bạn cần đem đến thợ kim hoàn làm sạch hoặc sửa chữa món nữ trang của bạn.
-    </div>
-    <div style="text-align: justify;">
-        Tại một số quốc gia như Mỹ …bạn có thể được giảm phí bảo hiểm từ 5% - 10% với nữ trang có gắn các viêm đá được khắc laser.
-    </div>
-    <div style="text-align: justify;">
-        Giúp bạn có thể ghi lại những thông điệp đặc biệt của riêng mình như: thông điệp tình yêu, kỷ niệm ngày cưới hoặc các sự kiện quan trọng, có ý nghĩa đặc biệt trong cuộc đời của bạn lên một vật quý giá, có giá trị bền vững mà thiên nhiên mang đến cho con người.
-    </div>
-    <div style="text-align: justify;">
-        Chúng làm gia tăng gấp nhiều lần ý nghĩa vốn đã quý giá của kim cương như là một tăng phẩm trong tình yêu.
-    </div>
-
-    <div style="text-align: center;">
-        <img alt="" src="@Url.Content("~/Content")/images/services/laser_inscription.jpg" style="width: 420px; height: 232px;"><br>
-        &nbsp;
-    </div>
+    @Html.Raw(page.PAGE_COTRACT_CONTENT)
 </div>
