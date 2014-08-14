@@ -1,5 +1,10 @@
 ﻿@{
     ViewBag.Title = "News";
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    List<W_GJS.Models.O_NEWS> listNews = gjs.O_NEWS.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_NEWS_NEW> listNews_NEW = gjs.O_NEWS_NEW.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_NEWS_HIGHLIGHTS> listNews_Hight_Light = gjs.O_NEWS_HIGHLIGHTS.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_CATEGORY_NEWS> listCategory_News = gjs.O_CATEGORY_NEWS.Where(t => t.ACTIVE == true).ToList();
 }
 
 <h2 class="owl-featured margin-bottom-30 padding-top20"><strong>Tin Tức</strong></h2>
@@ -42,23 +47,23 @@
                 <!-- tabs content -->
                 <div class="tab-content">
                     <div id="tab1" class="tab-pane active">
-                        <ul>
-                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 01</a> <small>08/08/2014</small></li>
-                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 02</a> <small>08/08/2014</small></li>
-                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 03</a> <small>08/08/2014</small></li>
-                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 04</a> <small>08/08/2014</small></li>
-                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 05</a> <small>08/08/2014</small></li>
+                        <ul
+                            @foreach (var item in listNews_NEW)
+                            {
+                               <li><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><i class="fa fa-sign-out"></i> @item.O_NEWS.NEWS_TITLE</a> <small>@String.Format("{0:dd/MM/yyy}",@item.CREATEDATE)</small></li>
+                       
+                            }
                         </ul>
                     </div>
 
                     <div id="tab2" class="tab-pane">
                         <!-- tab content -->
                         <ul>
-                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 06</a> <small>08/08/2014</small></li>
-                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 07</a> <small>08/08/2014</small></li>
-                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 08</a> <small>08/08/2014</small></li>
-                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 09</a> <small>08/08/2014</small></li>
-                            <li><a href="@Url.Action("NewsDetail", "Home")"><i class="fa fa-sign-out"></i> Tin tức 10</a> <small>08/08/2014</small></li>
+                            @foreach (var item in listNews_Hight_Light)
+                            {
+                                <li><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><i class="fa fa-sign-out"></i> @item.O_NEWS.NEWS_TITLE</a> <small>@String.Format("{0:dd/MM/yyy}", @item.CREATEDATE)</small></li>
+
+                            }     
                         </ul>
                     </div>
                 </div>
@@ -73,11 +78,11 @@
             <h4>DANH MỤC TIN TỨC</h4>
 
             <ul class="nav nav-list">
-                <li><a href="#"><i class="fa fa-angle-right"></i> Danh mục 01</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i> Danh mục 02</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i> Danh mục 03</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i> Danh mục 04</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i> Danh mục 05</a></li>
+                @foreach (var item in listCategory_News)
+                {
+                    <li><a  href="@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })"><i class="fa fa-angle-right"></i> @item.CATEGORY_NEWS_NAME</a></li>
+                }
+       
             </ul>
         </div>
 
@@ -98,16 +103,18 @@
     <div class="col-md-9 col-sm-9">
 
         <!-- article - image -->
-        <div class="prev-article row">
+        @foreach (var item in listNews)
+        {
+             <div class="prev-article row">
 
             <div class="col-md-9 col-sm-9">
 
-                <h2 class="article-title"><a href="@Url.Action("NewsDetail", "Home")">Tin tức <span>Mẫu</span></a></h2>
+                <h2 class="article-title"><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><span>@item.NEWS_TITLE/span></a></h2>
 
                 <!-- image -->
                 <figure>
-                    <a href="@Url.Action("NewsDetail", "Home")">
-                        <img src="@Url.Content("~/Content/images/news/01/01.jpg")" class="img-responsive" alt="blog" />
+                    <a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })">
+                        <img src="@item.IMAGE_NEWS" class="img-responsive" alt="blog" />
                     </a>
                 </figure>
 
@@ -118,192 +125,30 @@
 
                 <!-- read more button -->
                 <div class="text-right">
-                    <a href="@Url.Action("NewsDetail", "Home")" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
+                    <a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> Xem thêm </a>
                 </div>
 
             </div>
 
             <div class="blog-prev-date text-left col-md-3 col-sm-3">
                 <span class="date">
-                    Ngày 8 tháng 8 năm 2014
+                    @String.Format("{0:Ngày dd Tháng MM Năm yyyy}",@item.CREATEDATE)
                 </span>
                 <span class="info hidden-xs">
-                    <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">ADMIN</a></span>
-                    <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="http://theme.stepofweb.com/Epona/v1.0/HTML/blog.html">Danh Mục 01</a></span>
-                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="@Url.Action("NewsDetail", "Home")#comments">3 bình luận</a></span>
-                    
+                    <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">Admin</a></span>
+                    <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">@item.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME</a></span>
                 </span>
             </div>
 
         </div>
+        }
+       
         <!-- /article - image -->
 
-        <!-- article - image -->
-        <div class="prev-article row">
-
-            <div class="col-md-9 col-sm-9">
-
-                <h2 class="article-title"><a href="@Url.Action("NewsDetail", "Home")">Tin tức <span>Mẫu</span></a></h2>
-
-                <!-- image -->
-                <figure>
-                    <a href="@Url.Action("NewsDetail", "Home")">
-                        <img src="@Url.Content("~/Content/images/news/01/01.jpg")" class="img-responsive" alt="blog" />
-                    </a>
-                </figure>
-
-                <!-- blog short preview -->
-                <p>
-                    Praesent augue arcu, ornare ut tincidunt eu, mattis a libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In elit purus, ullamcorper vel luctus vitae, venenatis eu odio. Vivamus tincidunt, urna quis consectetur venenatis, quam urna tincidunt mi, quis convallis enim dolor sed elit. Pellentesque ultricies congue lacus, eget elementum erat lobortis et. Sed non velit neque.
-                </p>
-
-                <!-- read more button -->
-                <div class="text-right">
-                    <a href="@Url.Action("NewsDetail", "Home")" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
-                </div>
-
-            </div>
-
-            <div class="blog-prev-date text-left col-md-3 col-sm-3">
-                <span class="date">
-                    Ngày 8 tháng 8 năm 2014
-                </span>
-                <span class="info hidden-xs">
-                    <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">ADMIN</a></span>
-                    <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="http://theme.stepofweb.com/Epona/v1.0/HTML/blog.html">Danh Mục 01</a></span>
-                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="@Url.Action("NewsDetail", "Home")#comments">3 bình luận</a></span>
-                    
-                </span>
-            </div>
-
-        </div>
-        <!-- /article - image -->
-
-        <!-- article - image -->
-        <div class="prev-article row">
-
-            <div class="col-md-9 col-sm-9">
-
-                <h2 class="article-title"><a href="@Url.Action("NewsDetail", "Home")">Tin tức <span>Mẫu</span></a></h2>
-
-                <!-- image -->
-                <figure>
-                    <a href="@Url.Action("NewsDetail", "Home")">
-                        <img src="@Url.Content("~/Content/images/news/01/01.jpg")" class="img-responsive" alt="blog" />
-                    </a>
-                </figure>
-
-                <!-- blog short preview -->
-                <p>
-                    Praesent augue arcu, ornare ut tincidunt eu, mattis a libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In elit purus, ullamcorper vel luctus vitae, venenatis eu odio. Vivamus tincidunt, urna quis consectetur venenatis, quam urna tincidunt mi, quis convallis enim dolor sed elit. Pellentesque ultricies congue lacus, eget elementum erat lobortis et. Sed non velit neque.
-                </p>
-
-                <!-- read more button -->
-                <div class="text-right">
-                    <a href="@Url.Action("NewsDetail", "Home")" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
-                </div>
-
-            </div>
-
-            <div class="blog-prev-date text-left col-md-3 col-sm-3">
-                <span class="date">
-                    Ngày 8 tháng 8 năm 2014
-                </span>
-                <span class="info hidden-xs">
-                    <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">ADMIN</a></span>
-                    <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="http://theme.stepofweb.com/Epona/v1.0/HTML/blog.html">Danh Mục 01</a></span>
-                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="@Url.Action("NewsDetail", "Home")#comments">3 bình luận</a></span>
-                    
-                </span>
-            </div>
-
-        </div>
-        <!-- /article - image -->
-
-        <!-- article - image -->
-        <div class="prev-article row">
-
-            <div class="col-md-9 col-sm-9">
-
-                <h2 class="article-title"><a href="@Url.Action("NewsDetail", "Home")">Tin tức <span>Mẫu</span></a></h2>
-
-                <!-- image -->
-                <figure>
-                    <a href="@Url.Action("NewsDetail", "Home")">
-                        <img src="@Url.Content("~/Content/images/news/01/01.jpg")" class="img-responsive" alt="blog" />
-                    </a>
-                </figure>
-
-                <!-- blog short preview -->
-                <p>
-                    Praesent augue arcu, ornare ut tincidunt eu, mattis a libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In elit purus, ullamcorper vel luctus vitae, venenatis eu odio. Vivamus tincidunt, urna quis consectetur venenatis, quam urna tincidunt mi, quis convallis enim dolor sed elit. Pellentesque ultricies congue lacus, eget elementum erat lobortis et. Sed non velit neque.
-                </p>
-
-                <!-- read more button -->
-                <div class="text-right">
-                    <a href="@Url.Action("NewsDetail", "Home")" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
-                </div>
-
-            </div>
-
-            <div class="blog-prev-date text-left col-md-3 col-sm-3">
-                <span class="date">
-                    Ngày 8 tháng 8 năm 2014
-                </span>
-                <span class="info hidden-xs">
-                    <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">ADMIN</a></span>
-                    <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="http://theme.stepofweb.com/Epona/v1.0/HTML/blog.html">Danh Mục 01</a></span>
-                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="@Url.Action("NewsDetail", "Home")#comments">3 bình luận</a></span>
-                    
-                </span>
-            </div>
-
-        </div>
-        <!-- /article - image -->
-
-        <!-- article - image -->
-        <div class="prev-article row">
-
-            <div class="col-md-9 col-sm-9">
-
-                <h2 class="article-title"><a href="@Url.Action("NewsDetail", "Home")">Tin tức <span>Mẫu</span></a></h2>
-
-                <!-- image -->
-                <figure>
-                    <a href="@Url.Action("NewsDetail", "Home")">
-                        <img src="@Url.Content("~/Content/images/news/01/01.jpg")" class="img-responsive" alt="blog" />
-                    </a>
-                </figure>
-
-                <!-- blog short preview -->
-                <p>
-                    Praesent augue arcu, ornare ut tincidunt eu, mattis a libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In elit purus, ullamcorper vel luctus vitae, venenatis eu odio. Vivamus tincidunt, urna quis consectetur venenatis, quam urna tincidunt mi, quis convallis enim dolor sed elit. Pellentesque ultricies congue lacus, eget elementum erat lobortis et. Sed non velit neque.
-                </p>
-
-                <!-- read more button -->
-                <div class="text-right">
-                    <a href="@Url.Action("NewsDetail", "Home")" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> READ MORE</a>
-                </div>
-
-            </div>
-
-            <div class="blog-prev-date text-left col-md-3 col-sm-3">
-                <span class="date">
-                    Ngày 8 tháng 8 năm 2014
-                </span>
-                <span class="info hidden-xs">
-                    <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">ADMIN</a></span>
-                    <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="http://theme.stepofweb.com/Epona/v1.0/HTML/blog.html">Danh Mục 01</a></span>
-                    <span class="block"><i class="fa fa-comments"></i> Bình luận: <a href="@Url.Action("NewsDetail", "Home")#comments">3 bình luận</a></span>
-                    
-                </span>
-            </div>
-
-        </div>
-        <!-- /article - image -->
-
+       
+     
         <!-- pagination -->
-        <div class="text-center">
+        @*<div class="text-center">
 
             <ul class="pagination">
                 <li class="disabled"><a href="@Url.Action("News", "Home")">&laquo;</a></li>
@@ -315,7 +160,7 @@
                 <li><a href="@Url.Action("News", "Home")">&raquo;</a></li>
             </ul>
 
-        </div>
+        </div>*@
         <!-- /pagination -->
 
 
