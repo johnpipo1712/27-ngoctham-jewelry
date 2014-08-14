@@ -17,12 +17,12 @@ namespace W_GJS.Models
         public long ORDER_DETAIL_CD { get; set; }
         public Nullable<long> ORDER_CD { get; set; }
         public Nullable<long> PRODUCT_CD { get; set; }
+        public string SIZE { get; set; }
         public Nullable<long> QUANTITY { get; set; }
         public Nullable<decimal> PRICE { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
-        public string SIZE { get; set; }
     
         public virtual O_ORDER O_ORDER { get; set; }
         public virtual O_PRODUCT O_PRODUCT { get; set; }

@@ -30,28 +30,27 @@ namespace W_GJS.Models
         public string PRODUCT_CONTENT { get; set; }
         public Nullable<long> CATEGORY_PRODUCT_CD { get; set; }
         public Nullable<long> CATEGORY_GRANULES_CD { get; set; }
+        public Nullable<long> CATEGORY_PRODUCT_DETAIL_CD { get; set; }
         public string WEIGHT { get; set; }
         public Nullable<long> QUANTITY { get; set; }
         public Nullable<decimal> PRICE { get; set; }
+        public Nullable<decimal> PRICE_PROMOTION { get; set; }
         public Nullable<decimal> WAGES { get; set; }
+        public string CURRENCY { get; set; }
+        public string URL_IMAGE { get; set; }
+        public string SIZE { get; set; }
         public string TAG_ALT { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
-        public Nullable<long> CATEGORY_PRODUCT_DETAIL_CD { get; set; }
-        public string URL_IMAGE { get; set; }
-        public string SIZE { get; set; }
-        public Nullable<decimal> PRICE_PROMOTION { get; set; }
-        public string CURRENCY { get; set; }
     
         public virtual ICollection<D_ORDER_DETAIL> D_ORDER_DETAIL { get; set; }
         public virtual ICollection<D_PRODUCT_DETAIL> D_PRODUCT_DETAIL { get; set; }
         public virtual O_CATEGORY_GRANULES O_CATEGORY_GRANULES { get; set; }
+        public virtual O_CATEGORY_PRODUCT O_CATEGORY_PRODUCT { get; set; }
+        public virtual O_CATEGORY_PRODUCT_DETAIL O_CATEGORY_PRODUCT_DETAIL { get; set; }
         public virtual ICollection<O_PRODUCT_HIGHLIGHTS> O_PRODUCT_HIGHLIGHTS { get; set; }
         public virtual ICollection<O_PRODUCT_NEW> O_PRODUCT_NEW { get; set; }
         public virtual ICollection<O_PRODUCT_SELLING> O_PRODUCT_SELLING { get; set; }
-        public virtual O_CATEGORY_PRODUCT_DETAIL O_CATEGORY_PRODUCT_DETAIL { get; set; }
-        public virtual O_CATEGORY_PRODUCT O_CATEGORY_PRODUCT { get; set; }
-        public virtual O_CATEGORY_GRANULES O_CATEGORY_GRANULES1 { get; set; }
     }
 }
