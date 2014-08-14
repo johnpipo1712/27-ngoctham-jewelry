@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="D_ORDER_DETAIL">
           <Key>
             <PropertyRef Name="ORDER_DETAIL_CD" />
@@ -161,8 +161,11 @@
           <Property Name="CUSTOMER_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CUSTOMER_CODE" Type="nvarchar" MaxLength="50" />
           <Property Name="CUSTOMER_NAME" Type="nvarchar(max)" />
+          <Property Name="CUSTOMER_FIRST_NAME" Type="nvarchar(max)" />
+          <Property Name="CUSTOMER_LAST_NAME" Type="nvarchar(max)" />
           <Property Name="ADDRESS" Type="nvarchar(max)" />
           <Property Name="EMAIL" Type="nvarchar(max)" />
+          <Property Name="SEX" Type="nvarchar(max)" />
           <Property Name="BIRTHDAY" Type="datetime" />
           <Property Name="STATUS" Type="bigint" />
           <Property Name="ACTIVE" Type="bit" />
@@ -942,17 +945,20 @@
           <Key>
             <PropertyRef Name="CUSTOMER_CD" />
           </Key>
-          <Property Name="CUSTOMER_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CUSTOMER_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CUSTOMER_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BIRTHDAY" Type="DateTime" Precision="3" />
+          <Property Name="CUSTOMER_CD" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="CUSTOMER_CODE" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="ADDRESS" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="EMAIL" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="BIRTHDAY" Precision="3" Type="DateTime" />
           <Property Name="STATUS" Type="Int64" />
           <Property Name="ACTIVE" Type="Boolean" />
-          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="CREATEDATE" Precision="3" Type="DateTime" />
           <NavigationProperty Name="O_USER_CUSTOMER" Relationship="Self.FK_O_USER_CUSTOMER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_USER_CUSTOMER" />
           <NavigationProperty Name="O_ORDER" Relationship="GJSModel.FK_O_ORDER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_ORDER" />
+          <Property Name="CUSTOMER_FIRST_NAME" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="CUSTOMER_LAST_NAME" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="SEX" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="CUSTOMER_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="O_INFORMATION">
           <Key>
@@ -1306,8 +1312,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_O_USER_CUSTOMER_O_CUSTOMER">
-          <End Role="O_CUSTOMER" Type="Self.O_CUSTOMER" Multiplicity="0..1" />
-          <End Role="O_USER_CUSTOMER" Type="Self.O_USER_CUSTOMER" Multiplicity="*" />
+          <End Type="Self.O_CUSTOMER" Multiplicity="0..1" Role="O_CUSTOMER" />
+          <End Type="Self.O_USER_CUSTOMER" Multiplicity="*" Role="O_USER_CUSTOMER" />
           <ReferentialConstraint>
             <Principal Role="O_CUSTOMER">
               <PropertyRef Name="CUSTOMER_CD" />
@@ -1491,8 +1497,8 @@
             <End Role="O_NEWS" EntitySet="O_NEWS" />
           </AssociationSet>
           <AssociationSet Name="FK_O_USER_CUSTOMER_O_CUSTOMER" Association="Self.FK_O_USER_CUSTOMER_O_CUSTOMER">
-            <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
-            <End Role="O_USER_CUSTOMER" EntitySet="O_USER_CUSTOMER" />
+            <End EntitySet="O_CUSTOMER" Role="O_CUSTOMER" />
+            <End EntitySet="O_USER_CUSTOMER" Role="O_USER_CUSTOMER" />
           </AssociationSet>
           <AssociationSet Name="FK_O_NEWS_HIGHLIGHTS_O_NEWS" Association="Self.FK_O_NEWS_HIGHLIGHTS_O_NEWS">
             <End Role="O_NEWS" EntitySet="O_NEWS" />
@@ -1532,8 +1538,8 @@
           </AssociationSet>
           <FunctionImport Name="SP_STATISTICS_VISIT" ReturnType="Collection(GJSModel.SP_STATISTICS_VISIT_Result)" />
           <AssociationSet Name="FK_O_ORDER_O_CUSTOMER" Association="GJSModel.FK_O_ORDER_O_CUSTOMER">
-            <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
-            <End Role="O_ORDER" EntitySet="O_ORDER" />
+            <End EntitySet="O_CUSTOMER" Role="O_CUSTOMER" />
+            <End EntitySet="O_ORDER" Role="O_ORDER" />
           </AssociationSet>
           <EntitySet Name="O_CATEGORY_PRODUCT_DETAIL" EntityType="GJSModel.O_CATEGORY_PRODUCT_DETAIL" />
           <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL">
@@ -1568,8 +1574,8 @@
           <Property Type="Int64" Name="COUNTER_VISIT_TOTAL" Nullable="true" />
         </ComplexType>
         <Association Name="FK_O_ORDER_O_CUSTOMER">
-          <End Type="GJSModel.O_CUSTOMER" Role="O_CUSTOMER" Multiplicity="0..1" />
-          <End Type="GJSModel.O_ORDER" Role="O_ORDER" Multiplicity="*" />
+          <End Type="GJSModel.O_CUSTOMER" Multiplicity="0..1" Role="O_CUSTOMER" />
+          <End Type="GJSModel.O_ORDER" Multiplicity="*" Role="O_ORDER" />
           <ReferentialConstraint>
             <Principal Role="O_CUSTOMER">
               <PropertyRef Name="CUSTOMER_CD" />
@@ -1811,9 +1817,12 @@
           <EntitySetMapping Name="O_CUSTOMER">
             <EntityTypeMapping TypeName="GJSModel.O_CUSTOMER">
               <MappingFragment StoreEntitySet="O_CUSTOMER">
+                <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="CUSTOMER_LAST_NAME" ColumnName="CUSTOMER_LAST_NAME" />
+                <ScalarProperty Name="CUSTOMER_FIRST_NAME" ColumnName="CUSTOMER_FIRST_NAME" />
                 <ScalarProperty Name="CUSTOMER_CD" ColumnName="CUSTOMER_CD" />
                 <ScalarProperty Name="CUSTOMER_CODE" ColumnName="CUSTOMER_CODE" />
-                <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
                 <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="BIRTHDAY" ColumnName="BIRTHDAY" />
