@@ -98,7 +98,7 @@
           <Key>
             <PropertyRef Name="CATEGORY_NEWS_CD" />
           </Key>
-          <Property Name="CATEGORY_NEWS_CD" Type="bigint" Nullable="false" />
+          <Property Name="CATEGORY_NEWS_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CATEGORY_NEWS_CODE" Type="nvarchar" MaxLength="50" />
           <Property Name="CATEGORY_NEWS_NAME" Type="nvarchar(max)" />
           <Property Name="TAG_ALT" Type="nvarchar(max)" />
@@ -189,7 +189,9 @@
           <Property Name="NEWS_CONTENT" Type="nvarchar(max)" />
           <Property Name="IMAGE_NEWS" Type="nvarchar(max)" />
           <Property Name="CATEGORY_NEWS_CD" Type="bigint" />
-          <Property Name="TAG_ALT" Type="bigint" />
+          <Property Name="SOURCE_COPY" Type="nvarchar(max)" />
+          <Property Name="TAG_ALT" Type="nvarchar(max)" />
+          <Property Name="EMPLOYEE_CD" Type="bigint" />
           <Property Name="STATUS" Type="bigint" />
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
@@ -461,6 +463,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_O_NEWS_M_EMPLOYEE">
+          <End Role="M_EMPLOYEE" Type="Self.M_EMPLOYEE" Multiplicity="0..1" />
+          <End Role="O_NEWS" Type="Self.O_NEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_EMPLOYEE">
+              <PropertyRef Name="EMPLOYEE_CD" />
+            </Principal>
+            <Dependent Role="O_NEWS">
+              <PropertyRef Name="EMPLOYEE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_O_NEWS_NEW_O_NEWS">
           <End Role="O_NEWS" Type="Self.O_NEWS" Multiplicity="0..1" />
           <End Role="O_NEWS_NEW" Type="Self.O_NEWS_NEW" Multiplicity="*" />
@@ -713,6 +727,10 @@
             <End Role="O_NEWS" EntitySet="O_NEWS" />
             <End Role="O_NEWS_HIGHLIGHTS" EntitySet="O_NEWS_HIGHLIGHTS" />
           </AssociationSet>
+          <AssociationSet Name="FK_O_NEWS_M_EMPLOYEE" Association="Self.FK_O_NEWS_M_EMPLOYEE">
+            <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
+            <End Role="O_NEWS" EntitySet="O_NEWS" />
+          </AssociationSet>
           <AssociationSet Name="FK_O_NEWS_NEW_O_NEWS" Association="Self.FK_O_NEWS_NEW_O_NEWS">
             <End Role="O_NEWS" EntitySet="O_NEWS" />
             <End Role="O_NEWS_NEW" EntitySet="O_NEWS_NEW" />
@@ -825,6 +843,7 @@
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="O_ORDER" Relationship="Self.FK_O_ORDER_M_EMPLOYEE" FromRole="M_EMPLOYEE" ToRole="O_ORDER" />
           <NavigationProperty Name="O_USER_EMPLOYEE" Relationship="Self.FK_O_USER_EMPLOYEE_M_EMPLOYEE" FromRole="M_EMPLOYEE" ToRole="O_USER_EMPLOYEE" />
+          <NavigationProperty Name="O_NEWS" Relationship="GJSModel.FK_O_NEWS_M_EMPLOYEE" FromRole="M_EMPLOYEE" ToRole="O_NEWS" />
         </EntityType>
         <EntityType Name="M_PAGE">
           <Key>
@@ -955,13 +974,16 @@
           <Property Name="NEWS_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IMAGE_NEWS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CATEGORY_NEWS_CD" Type="Int64" />
-          <Property Name="TAG_ALT" Type="Int64" />
+          <Property Name="TAG_ALT" Type="String" />
           <Property Name="STATUS" Type="Int64" />
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="O_CATEGORY_NEWS" Relationship="Self.FK_O_NEWS_O_CATEGORY_NEWS" FromRole="O_NEWS" ToRole="O_CATEGORY_NEWS" />
           <NavigationProperty Name="O_NEWS_HIGHLIGHTS" Relationship="Self.FK_O_NEWS_HIGHLIGHTS_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_HIGHLIGHTS" />
           <NavigationProperty Name="O_NEWS_NEW" Relationship="Self.FK_O_NEWS_NEW_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_NEW" />
+          <Property Name="SOURCE_COPY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEE_CD" Type="Int64" />
+          <NavigationProperty Name="M_EMPLOYEE" Relationship="GJSModel.FK_O_NEWS_M_EMPLOYEE" FromRole="O_NEWS" ToRole="M_EMPLOYEE" />
         </EntityType>
         <EntityType Name="O_NEWS_HIGHLIGHTS">
           <Key>
@@ -1529,6 +1551,10 @@
             <End Role="O_CATEGORY_GRANULES" EntitySet="O_CATEGORY_GRANULES" />
             <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
           </AssociationSet>
+          <AssociationSet Name="FK_O_NEWS_M_EMPLOYEE" Association="GJSModel.FK_O_NEWS_M_EMPLOYEE">
+            <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
+            <End Role="O_NEWS" EntitySet="O_NEWS" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="SP_STATISTICS_VISIT_Result">
           <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
@@ -1625,6 +1651,18 @@
             </Principal>
             <Dependent Role="O_PRODUCT">
               <PropertyRef Name="CATEGORY_GRANULES_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_NEWS_M_EMPLOYEE">
+          <End Type="GJSModel.M_EMPLOYEE" Role="M_EMPLOYEE" Multiplicity="0..1" />
+          <End Type="GJSModel.O_NEWS" Role="O_NEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_EMPLOYEE">
+              <PropertyRef Name="EMPLOYEE_CD" />
+            </Principal>
+            <Dependent Role="O_NEWS">
+              <PropertyRef Name="EMPLOYEE_CD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1799,12 +1837,14 @@
           <EntitySetMapping Name="O_NEWS">
             <EntityTypeMapping TypeName="GJSModel.O_NEWS">
               <MappingFragment StoreEntitySet="O_NEWS">
+                <ScalarProperty Name="TAG_ALT" ColumnName="TAG_ALT" />
+                <ScalarProperty Name="EMPLOYEE_CD" ColumnName="EMPLOYEE_CD" />
+                <ScalarProperty Name="SOURCE_COPY" ColumnName="SOURCE_COPY" />
                 <ScalarProperty Name="NEWS_CD" ColumnName="NEWS_CD" />
                 <ScalarProperty Name="NEWS_TITLE" ColumnName="NEWS_TITLE" />
                 <ScalarProperty Name="NEWS_CONTENT" ColumnName="NEWS_CONTENT" />
                 <ScalarProperty Name="IMAGE_NEWS" ColumnName="IMAGE_NEWS" />
                 <ScalarProperty Name="CATEGORY_NEWS_CD" ColumnName="CATEGORY_NEWS_CD" />
-                <ScalarProperty Name="TAG_ALT" ColumnName="TAG_ALT" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
