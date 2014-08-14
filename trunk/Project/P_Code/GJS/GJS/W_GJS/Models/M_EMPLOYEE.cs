@@ -16,9 +16,9 @@ namespace W_GJS.Models
     {
         public M_EMPLOYEE()
         {
+            this.O_NEWS = new HashSet<O_NEWS>();
             this.O_ORDER = new HashSet<O_ORDER>();
             this.O_USER_EMPLOYEE = new HashSet<O_USER_EMPLOYEE>();
-            this.O_NEWS = new HashSet<O_NEWS>();
         }
     
         public long EMPLOYEE_CD { get; set; }
@@ -31,8 +31,8 @@ namespace W_GJS.Models
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
     
+        public virtual ICollection<O_NEWS> O_NEWS { get; set; }
         public virtual ICollection<O_ORDER> O_ORDER { get; set; }
         public virtual ICollection<O_USER_EMPLOYEE> O_USER_EMPLOYEE { get; set; }
-        public virtual ICollection<O_NEWS> O_NEWS { get; set; }
     }
 }

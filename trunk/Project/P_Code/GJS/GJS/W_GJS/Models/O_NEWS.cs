@@ -22,20 +22,20 @@ namespace W_GJS.Models
     
         public long NEWS_CD { get; set; }
         public string NEWS_TITLE { get; set; }
+        public string NEW_DESCRIPTIONS { get; set; }
         public string NEWS_CONTENT { get; set; }
         public string IMAGE_NEWS { get; set; }
         public Nullable<long> CATEGORY_NEWS_CD { get; set; }
+        public string SOURCE_COPY { get; set; }
         public string TAG_ALT { get; set; }
+        public Nullable<long> EMPLOYEE_CD { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
-        public string SOURCE_COPY { get; set; }
-        public Nullable<long> EMPLOYEE_CD { get; set; }
-        public string NEW_DESCRIPTIONS { get; set; }
     
+        public virtual M_EMPLOYEE M_EMPLOYEE { get; set; }
         public virtual O_CATEGORY_NEWS O_CATEGORY_NEWS { get; set; }
         public virtual ICollection<O_NEWS_HIGHLIGHTS> O_NEWS_HIGHLIGHTS { get; set; }
         public virtual ICollection<O_NEWS_NEW> O_NEWS_NEW { get; set; }
-        public virtual M_EMPLOYEE M_EMPLOYEE { get; set; }
     }
 }

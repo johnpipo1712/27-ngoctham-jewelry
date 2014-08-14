@@ -36,6 +36,8 @@ namespace W_GJS.Models
         public virtual DbSet<O_CATEGORY_GRANULES> O_CATEGORY_GRANULES { get; set; }
         public virtual DbSet<O_CATEGORY_NEWS> O_CATEGORY_NEWS { get; set; }
         public virtual DbSet<O_CATEGORY_PAGE> O_CATEGORY_PAGE { get; set; }
+        public virtual DbSet<O_CATEGORY_PRODUCT> O_CATEGORY_PRODUCT { get; set; }
+        public virtual DbSet<O_CATEGORY_PRODUCT_DETAIL> O_CATEGORY_PRODUCT_DETAIL { get; set; }
         public virtual DbSet<O_CITIES> O_CITIES { get; set; }
         public virtual DbSet<O_CUSTOMER> O_CUSTOMER { get; set; }
         public virtual DbSet<O_INFORMATION> O_INFORMATION { get; set; }
@@ -55,8 +57,6 @@ namespace W_GJS.Models
         public virtual DbSet<S_STATISTICS_VISIT> S_STATISTICS_VISIT { get; set; }
         public virtual DbSet<S_USER> S_USER { get; set; }
         public virtual DbSet<W_PRODUCT> W_PRODUCT { get; set; }
-        public virtual DbSet<O_CATEGORY_PRODUCT_DETAIL> O_CATEGORY_PRODUCT_DETAIL { get; set; }
-        public virtual DbSet<O_CATEGORY_PRODUCT> O_CATEGORY_PRODUCT { get; set; }
     
         public virtual ObjectResult<SP_STATISTICS_VISIT_Result> SP_STATISTICS_VISIT()
         {
