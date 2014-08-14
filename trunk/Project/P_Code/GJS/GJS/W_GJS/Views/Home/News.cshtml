@@ -50,7 +50,7 @@
                         <ul
                             @foreach (var item in listNews_NEW)
                             {
-                               <li><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><i class="fa fa-sign-out"></i> @item.O_NEWS.NEWS_TITLE</a> <small>@String.Format("{0:dd/MM/yyy}",@item.CREATEDATE)</small></li>
+                               <li><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><i class="fa fa-sign-out"></i> @item.O_NEWS.NEWS_TITLE</a> <small>@String.Format("{0:dd/MM/yyy}", @item.O_NEWS.CREATEDATE)</small></li>
                        
                             }
                         </ul>
@@ -61,7 +61,7 @@
                         <ul>
                             @foreach (var item in listNews_Hight_Light)
                             {
-                                <li><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><i class="fa fa-sign-out"></i> @item.O_NEWS.NEWS_TITLE</a> <small>@String.Format("{0:dd/MM/yyy}", @item.CREATEDATE)</small></li>
+                                <li><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><i class="fa fa-sign-out"></i> @item.O_NEWS.NEWS_TITLE</a> <small>@String.Format("{0:dd/MM/yyy}", @item.O_NEWS.CREATEDATE)</small></li>
 
                             }     
                         </ul>
@@ -87,14 +87,14 @@
         </div>
 
         <!-- tags -->
-        <div class="widget">
+        @*<div class="widget">
             <h4>TAGS</h4>
             <a class="tag label label-default light" href="@Url.Action("News", "Home")"><i class="fa fa-tags"></i> Vàng</a>
             <a class="tag label label-default light" href="@Url.Action("News", "Home")"><i class="fa fa-tags"></i> Bạc</a>
             <a class="tag label label-default light" href="@Url.Action("News", "Home")"><i class="fa fa-tags"></i> Đá Quý</a>
             <a class="tag label label-default light" href="@Url.Action("News", "Home")"><i class="fa fa-tags"></i> Nhẫn</a>
             <a class="tag label label-default light" href="@Url.Action("News", "Home")"><i class="fa fa-tags"></i> Kim cương</a>
-        </div>
+        </div>*@
 
 
     </div>
