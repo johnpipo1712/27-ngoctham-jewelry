@@ -105,7 +105,7 @@ namespace W_GJS.Models
                 if (PRODUCT.PRODUCT_CD == Detail_Cart.O_PRODUCT.PRODUCT_CD)
                 {
                     Detail_Cart.QUANTITY = PRODUCT.QUANTITY;
-                    Detail_Cart.SIZE = PRODUCT.SIZE;
+                    Detail_Cart.SIZE = Detail_Cart.SIZE;
                     if (Detail_Cart.O_PRODUCT.PRICE_PROMOTION == null)
                         Detail_Cart.PRICE = Detail_Cart.O_PRODUCT.PRICE * Detail_Cart.QUANTITY;
                     else
