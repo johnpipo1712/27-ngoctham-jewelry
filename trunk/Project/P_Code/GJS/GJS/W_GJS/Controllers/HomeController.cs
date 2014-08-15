@@ -216,12 +216,12 @@ namespace W_GJS.Controllers
             
         }
         [HttpPost]
-        public ActionResult UpdateCart([Bind(Include = "PRODUCT_CD,QUANTITY,SIZE")]O_PRODUCT pro)
+        public ActionResult UpdateCart([Bind(Include = "PRODUCT_CD,QUANTITY")]O_PRODUCT pro)
         {
 
             O_ORDER ord = (O_ORDER)Session["Cart"];
             ord.UpdateCart(pro);
-            return RedirectToAction("ViewCart");
+            return RedirectToAction("Cart");
         }
         public ActionResult DeleteCart([Bind(Include = "PRODUCT_CD")]O_PRODUCT pro)
         {
@@ -235,7 +235,7 @@ namespace W_GJS.Controllers
             else
             {
                 ord.DeleteCart(pro);
-                return RedirectToAction("ViewCart");
+                return RedirectToAction("Cart");
             }
 
         }
@@ -252,18 +252,20 @@ namespace W_GJS.Controllers
             if (ord != null)
             {
                 ViewBag.Infomation = "Điền thông tin thanh toán";
-                if (User.Identity.IsAuthenticated)
-                {
+                Db_gsj = new GJSEntities();
+                ord.CUSTOMER_CD = 1;
+                Db_gsj.O_ORDER.Add(ord);
+                Db_gsj.SaveChanges();
 
-                    //db = new DbWebDNEntities();
-                    //NguoiDung nd = db.NguoiDungs.Single(t => t.TenDN == User.Identity.Name);
-                    //ord.HoTenNN = nd.HoTen = nd.HoTen;
-                    //ord.Email = nd.Email;
-                    //ord.DiaChi = nd.DiaChi;
-                    //ord.SDT = nd.SDT;
+                foreach (var item in ord.D_ORDER_DETAIL)
+                {
+                    item.ORDER_CD = ord.ORDER_CD;
+                    Db_gsj.D_ORDER_DETAIL.Add(item);
+                    Db_gsj.SaveChanges();
                 }
-                ViewData.Model = ord;
-                return View();
+                Session["Cart"] = null;
+                return RedirectToAction("Index", "Home");
+                
             }
             else
             {
