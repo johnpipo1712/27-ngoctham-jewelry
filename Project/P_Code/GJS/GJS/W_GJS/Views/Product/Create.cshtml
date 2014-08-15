@@ -47,6 +47,13 @@
             </div>
         </div> 
         <div class="form-group">
+            @Html.LabelFor(model => model.WEIGHT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WEIGHT)
+                @Html.ValidationMessageFor(model => model.WEIGHT)
+            </div>
+        </div> 
+        <div class="form-group">
             @Html.LabelFor(model => model.QUANTITY, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.QUANTITY)
@@ -54,41 +61,86 @@
             </div>
         </div>      
         <div class="form-group">
-            <label class="control-label col-md-2" >Hình ảnh chính</label>
-           
+            @Html.LabelFor(model => model.PRICE, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PRICE)
+                @Html.ValidationMessageFor(model => model.PRICE)
+            </div>
+        </div> 
+        <div class="form-group">
+            @Html.LabelFor(model => model.PRICE_PROMOTION, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PRICE_PROMOTION)
+                @Html.ValidationMessageFor(model => model.PRICE_PROMOTION)
+            </div>
+        </div> 
+        <div class="form-group">
+            @Html.LabelFor(model => model.WAGES, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WAGES)
+                @Html.ValidationMessageFor(model => model.WAGES)
+            </div>
+        </div> 
+        <div class="form-group">
+            @Html.LabelFor(model => model.CURRENCY, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CURRENCY)
+                @Html.ValidationMessageFor(model => model.CURRENCY)
+            </div>
+        </div> 
+        <div class="form-group">
+            @Html.LabelFor(model => model.URL_IMAGE, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.URL_IMAGE)
+                @Html.ValidationMessageFor(model => model.URL_IMAGE)
+            </div>
+        </div> 
+        <div class="form-group">
+            @Html.LabelFor(model => model.SIZE, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SIZE)
+                @Html.ValidationMessageFor(model => model.SIZE)
+            </div>
+        </div> 
+        <div class="form-group">
+            @Html.LabelFor(model => model.TAG_ALT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TAG_ALT)
+                @Html.ValidationMessageFor(model => model.TAG_ALT)
+            </div>
+        </div> 
+        <div class="form-group">
+            @Html.LabelFor(model => model.URL_IMAGE, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="filefrist" id="filefrist" />
             </div>
         </div>   
         <div class="form-group">
-            <label class="control-label col-md-2">Hình ảnh chi tiết 1</label>
+            @Html.LabelFor(model => model.URL_SUBIMAGE_1, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="file1" id="file1" />
             </div>
         </div>   
         <div class="form-group">
-            <label class="control-label col-md-2">Hình ảnh chi tiết 2</label>
+            @Html.LabelFor(model => model.URL_SUBIMAGE_2, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="file2" id="file2" />
             </div>
         </div>      
         <div class="form-group">
-            <label class="control-label col-md-2">Hình ảnh chi tiết 3</label>
-                
+            @Html.LabelFor(model => model.URL_SUBIMAGE_3, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="file3" id="file3" />
             </div>
         </div>   
         <div class="form-group">
-            <label class="control-label col-md-2">Hình ảnh chi tiết 4</label>
-            
+            @Html.LabelFor(model => model.URL_SUBIMAGE_4, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="file4" id="file4" />
             </div>
         </div>   
         <div class="form-group">
-            <label class="control-label col-md-2">Hình ảnh chi tiết 5</label>
-            
+            @Html.LabelFor(model => model.URL_SUBIMAGE_5, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="file5" id="file5" />
             </div>
