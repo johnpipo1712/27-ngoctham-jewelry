@@ -25,14 +25,14 @@
 
     <div class=" col-sm-3 col-md-3">
 
-        <select class="form-control pointer fsize13 pull-right" name="orderby">
+        @*<select class="form-control pointer fsize13 pull-right" name="orderby">
             <option value="menu_order" selected="selected">Sắp xếp mặc định</option>
             <option value="popularity">Sắp xếp theo độ phổ biến</option>
             <option value="rating">Sắp xếp theo điểm đánh giá</option>
             <option value="date">Sắp xếp theo thời gian</option>
             <option value="price">Sắp xếp theo price: thấp tới cao</option>
             <option value="price-desc">Sắp xếp theo price: cao xuống thấp</option>
-        </select>
+        </select>*@
 
     </div>
 </div>
@@ -108,8 +108,16 @@
                             <!-- title and price -->
                             <h2>
                                 <span class="product-name">@item.PRODUCT_NAME</span>
-                                <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE_PROMOTION)</span> <span class="line-through">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
-                            </h2>
+                                @if (item.PRICE_PROMOTION != null)
+                                {
+                                    <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE_PROMOTION)</span> <span class="line-through">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
+
+                                }
+                                else
+                                {
+                                    <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
+
+                                }    </h2>
                         </div><!-- /title and price -->
                         @if (item.O_PRODUCT_NEW != null && item.O_PRODUCT_NEW.ToList().Count > 0)
                         {

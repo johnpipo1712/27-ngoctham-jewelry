@@ -1,39 +1,41 @@
-﻿<ul class="quick-cart-wrapper">
+﻿@{
+    W_GJS.Models.O_ORDER Ord = (W_GJS.Models.O_ORDER)Session["Cart"];
+}
+<ul class="quick-cart-wrapper">
     <li class="quick-cart dropdown pull-right">
-        <a href="shop-home-1.html#" class="dropdown-toggle btn btn-primary"><i class="fa fa-shopping-cart"></i> 3 SẢN PHẨM - 26 000 000 VNĐ <i class="fa fa-angle-down"></i></a>
-        <ul class="dropdown-menu pull-right">
+            @if(Ord == null)
+            {
+                <a href="#" class="dropdown-toggle btn btn-primary"><i class="fa fa-shopping-cart"></i> Chưa có sản phẩm <i class="fa fa-angle-down"></i></a>
+            }
+            else
+            {
+                <a href="#" class="dropdown-toggle btn btn-primary"><i class="fa fa-shopping-cart"></i> @Ord.D_ORDER_DETAIL.Count SẢN PHẨM - @String.Format("{0:0,0 " + Ord.D_ORDER_DETAIL.ToList()[0].O_PRODUCT.CURRENCY + "}", W_GJS.Models.O_ORDER.Price_Total(Ord))<i class="fa fa-angle-down"></i></a>
+          
+            }
+           <ul class="dropdown-menu pull-right">
             <li>
-                <p><i class="fa fa-warning"></i> Ban có 3 sản phẩm trong giỏ hàng</p>
+                @if(Ord == null)
+                {
+                        <p><i class="fa fa-warning"></i> Ban chưa có sản phẩm trong giỏ hàng</p>
+                }
+                else
+                { 
+                <p><i class="fa fa-warning"></i> Ban có @Ord.D_ORDER_DETAIL.Count sản phẩm trong giỏ hàng</p>
 
                 <!-- CART CONTENT -->
                 <div class="quick-cart-content">
-
-                    <a class="quick-cart-item" href="@Url.Action("Cart", "Home")">
+                    @foreach (var item in Ord.D_ORDER_DETAIL)
+                    {
+                        <a class="quick-cart-item" href="@Url.Action("Cart", "Home")">
                         <!-- item 1 -->
-                        <img class="pull-left" src="@Url.Content("~/Content")/images/products/sp5.png" width="40" alt="quick cart">
+                        <img class="pull-left" src="@item.O_PRODUCT.URL_IMAGE" width="40" alt="quick cart">
                         <div class="inline-block">
-                            <span class="title block">Nhẫn trang sức</span>
-                            <span class="price block">2 &times; 5 000 000 VNĐ</span>
+                            <span class="title block">@item.O_PRODUCT.PRODUCT_NAME</span>
+                            <span class="price block">@item.QUANTITY &times; @String.Format("{0:0,0 "  + item.O_PRODUCT.CURRENCY + "}",item.PRICE)</span>
                         </div>
                     </a><!-- /item 1 -->
-
-                    <a class="quick-cart-item" href="@Url.Action("Cart", "Home")">
-                        <!-- item 2 -->
-                        <img class="pull-left" src="@Url.Content("~/Content")/images/products/sp3.png" width="40" alt="quick cart">
-                        <div class="inline-block">
-                            <span class="title block">Kim cương đá quí...</span>
-                            <span class="price block">2 &times; 5 000 000 VNĐ</span>
-                        </div>
-                    </a><!-- /item 2 -->
-
-                    <a class="quick-cart-item" href="@Url.Action("Cart", "Home")">
-                        <!-- item 3 -->
-                        <img class="pull-left" src="@Url.Content("~/Content")/images/products/sp1.png" width="40" alt="quick cart">
-                        <div class="inline-block">
-                            <span class="title block">Nhẫn bạc</span>
-                            <span class="price block">1 &times; 6 000 000 VNĐ</span>
-                        </div>
-                    </a><!-- /item 3 -->
+                    }
+                   
 
                     <div class="row cart-footer">
                         <!-- cart footer -->
@@ -41,13 +43,13 @@
                             <a href="@Url.Action("Cart", "Home")" class="btn btn-primary fullwidth">GIỎ HÀNG</a>
                         </div>
                         <div class="col-md-6 nopadding-left">
-                            <a href="shop-page-checkout.html" class="btn btn-info fullwidth">ĐẶT HÀNG</a>
+                            <a href="@Url.Action("Cart", "Home")" class="btn btn-info fullwidth">ĐẶT HÀNG</a>
                         </div>
                     </div><!-- /cart footer -->
 
                 </div>
                 <!-- /CART CONTENT -->
-
+                    }
             </li>
         </ul>
     </li>
