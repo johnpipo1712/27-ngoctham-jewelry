@@ -29,6 +29,7 @@
                 @*<small>@item.O_PRODUCT.</small>*@
             </a>
             <a href="@Url.Action("DeleteCart",new {PRODUCT_CD = item.PRODUCT_CD})" class="remove_item"><i class="fa fa-times"></i></a>
+            <a href="#" class="remove_item"><i class="fa fa-edit"></i></a>
             <div class="total_price"><span>@String.Format("{0:0,0}",item.PRICE)</span> VNĐ</div>
             <div class="qty"><input type="text" value="@item.QUANTITY" name="qty" maxlength="3" /> @item.QUANTITY </div>
             <div class="qty"><input type="text" value="@item.SIZE" name="size" maxlength="3" /> @item.SIZE </div>
