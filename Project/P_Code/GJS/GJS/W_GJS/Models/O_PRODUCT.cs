@@ -43,11 +43,6 @@ namespace W_GJS.Models
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
-        public string URL_SUBIMAGE_1 { get; set; }
-        public string URL_SUBIMAGE_2 { get; set; }
-        public string URL_SUBIMAGE_3 { get; set; }
-        public string URL_SUBIMAGE_4 { get; set; }
-        public string URL_SUBIMAGE_5 { get; set; }
     
         public virtual ICollection<D_ORDER_DETAIL> D_ORDER_DETAIL { get; set; }
         public virtual ICollection<D_PRODUCT_DETAIL> D_PRODUCT_DETAIL { get; set; }
