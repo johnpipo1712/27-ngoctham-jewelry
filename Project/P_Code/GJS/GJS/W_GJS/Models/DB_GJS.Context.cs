@@ -45,6 +45,7 @@ namespace W_GJS.Models
         public virtual DbSet<O_NEWS_HIGHLIGHTS> O_NEWS_HIGHLIGHTS { get; set; }
         public virtual DbSet<O_NEWS_NEW> O_NEWS_NEW { get; set; }
         public virtual DbSet<O_ORDER> O_ORDER { get; set; }
+        public virtual DbSet<O_PRICE_GOLD> O_PRICE_GOLD { get; set; }
         public virtual DbSet<O_PRODUCT> O_PRODUCT { get; set; }
         public virtual DbSet<O_PRODUCT_HIGHLIGHTS> O_PRODUCT_HIGHLIGHTS { get; set; }
         public virtual DbSet<O_PRODUCT_NEW> O_PRODUCT_NEW { get; set; }

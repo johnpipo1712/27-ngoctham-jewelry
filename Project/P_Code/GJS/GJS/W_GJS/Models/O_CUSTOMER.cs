@@ -30,9 +30,9 @@ namespace W_GJS.Models
         public string SEX { get; set; }
         public Nullable<System.DateTime> BIRTHDAY { get; set; }
         public Nullable<long> STATUS { get; set; }
+        public Nullable<bool> SUBSCRIBE { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
-        public Nullable<bool> SUBSCRIBE { get; set; }
     
         public virtual ICollection<O_ORDER> O_ORDER { get; set; }
         public virtual ICollection<O_USER_CUSTOMER> O_USER_CUSTOMER { get; set; }
