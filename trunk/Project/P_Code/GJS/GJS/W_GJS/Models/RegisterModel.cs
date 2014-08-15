@@ -53,7 +53,7 @@ namespace W_GJS.Models
                 CUSTOMER.CUSTOMER_NAME = MODEL.FIRST_NAME + " " + MODEL.LAST_NAME;
                 CUSTOMER.CUSTOMER_FIRST_NAME = MODEL.FIRST_NAME;
                 CUSTOMER.CUSTOMER_LAST_NAME = MODEL.LAST_NAME;
-                //CUSTOMER.SUBSCRIBE = MODEL.SUBSCRIBE;
+                CUSTOMER.SUBSCRIBE = MODEL.SUBSCRIBE;
                 CUSTOMER.SEX = MODEL.SEX;
                 Db_gsj.Entry(CUSTOMER).State = EntityState.Added;
                 Db_gsj.SaveChanges();
