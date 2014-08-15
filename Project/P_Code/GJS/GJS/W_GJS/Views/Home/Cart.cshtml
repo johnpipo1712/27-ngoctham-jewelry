@@ -1,7 +1,10 @@
 ﻿@{
     ViewBag.Title = "Giỏ hàng";
-}
+    W_GJS.Models.O_ORDER Ord = (W_GJS.Models.O_ORDER)Session["Cart"];
 
+}
+@if(Ord.D_ORDER_DETAIL != null)
+{ 
 <form class="cartContent clearfix" method="post" action="shop-page-cart.html#">
 
     <!-- cart content -->
@@ -13,60 +16,41 @@
             <span class="remove_item fsize13 bold"></span>
             <span class="total_price fsize13 bold">TỔNG TIỀN</span>
             <span class="qty fsize13 bold">SỐ LƯỢNG</span>
+            <span class="qty fsize13 bold">SIZE</span>
             <div class="clearfix"></div>
         </div>
         <!-- /cart header -->
-        <!-- cart item -->
-        <div class="item">
-            <div class="cart_img"><img src="@Url.Content("~/Content/images/products/sp1.png")" alt="" width="60" /></div>
+        @foreach (var item in Ord.D_ORDER_DETAIL)
+        {
+            <div class="item">
+            <div class="cart_img"><img src="@item.O_PRODUCT.URL_IMAGE" alt="" width="60" /></div>
             <a href="shop-page-full-product.html" class="product_name">
-                <span>Nhẫn kim cương</span>
-                <small>chi tiết phụ</small>
+                <span>@item.O_PRODUCT.PRODUCT_NAME</span>
+                @*<small>@item.O_PRODUCT.</small>*@
             </a>
-            <a href="shop-page-cart.html#" class="remove_item"><i class="fa fa-times"></i></a>
-            <div class="total_price"><span>9.000.000</span> VNĐ</div>
-            <div class="qty"><input type="text" value="1" name="qty" maxlength="3" /> &times; 9.000.000 VNĐ</div>
+            <a href="@Url.Action("DeleteCart",new {PRODUCT_CD = item.PRODUCT_CD})" class="remove_item"><i class="fa fa-times"></i></a>
+            <div class="total_price"><span>@String.Format("{0:0,0}",item.PRICE)</span> VNĐ</div>
+            <div class="qty"><input type="text" value="@item.QUANTITY" name="qty" maxlength="3" /> @item.QUANTITY </div>
+            <div class="qty"><input type="text" value="@item.SIZE" name="size" maxlength="3" /> @item.SIZE </div>
             <div class="clearfix"></div>
         </div>
-        <!-- /cart item -->
+        }
         <!-- cart item -->
-        <div class="item">
-            <div class="cart_img"><img src="@Url.Content("~/Content/images/products/sp3.png")" alt="" width="60" /></div>
-            <a href="shop-page-full-product.html" class="product_name">
-                <span>Nhẫn kim cương</span>
-                <small>chi tiết phụ</small>
-            </a>
-            <a href="shop-page-cart.html#" class="remove_item"><i class="fa fa-times"></i></a>
-            <div class="total_price"><span>5.000.000</span> VNĐ</div>
-            <div class="qty"><input type="text" value="1" name="qty" maxlength="3" /> &times; 5.000.000 VNĐ</div>
-            <div class="clearfix"></div>
-        </div>
+        
         <!-- /cart item -->
-        <!-- cart item -->
-        <div class="item">
-            <div class="cart_img"><img src="@Url.Content("~/Content/images/products/sp5.png")" alt="" width="60" /></div>
-            <a href="shop-page-full-product.html" class="product_name">
-                <span>Nhẫn kim cương</span>
-                <small>chi tiết phụ</small>
-            </a>
-            <a href="shop-page-cart.html#" class="remove_item"><i class="fa fa-times"></i></a>
-            <div class="total_price"><span>6.000.000</span> VNĐ</div>
-            <div class="qty"><input type="text" value="1" name="qty" maxlength="3" /> &times; 6.000.000 VNĐ</div>
-            <div class="clearfix"></div>
-        </div>
-        <!-- /cart item -->
+       
         <!-- cart total -->
         <div class="total pull-right">
 
             <span class="totalToPay">
-                TỔNG CỘNG: 20.000.000 VNĐ
+                TỔNG CỘNG: @String.Format("{0:0,0 " + Ord.D_ORDER_DETAIL.ToList()[0].O_PRODUCT.CURRENCY + "}", W_GJS.Models.O_ORDER.Price_Total(Ord))
             </span>
 
         </div>
         <!-- /cart total -->
         <!-- update cart -->
         <a href="shop-page-cart.html#" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</a>
-        <a href="shop-page-cart.html#" class="btn_update btn btn-default btn-md pull-right">CẬP NHẬT GIỎ HÀNG</a>
+        <button type="submit" class="btn_update btn btn-default btn-md pull-right">CẬP NHẬT GIỎ HÀNG</button>
         <!-- /update cart -->
 
         <div class="clearfix"></div>
@@ -74,3 +58,8 @@
     <!-- /cart content -->
 
 </form>
+}
+else
+{
+  Chưa có sản phẩm
+}

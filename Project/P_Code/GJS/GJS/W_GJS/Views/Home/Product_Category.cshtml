@@ -108,8 +108,16 @@
                             <!-- title and price -->
                             <h2>
                                 <span class="product-name">@item.PRODUCT_NAME</span>
-                                <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE_PROMOTION)</span> <span class="line-through">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
-                            </h2>
+                                @if (item.PRICE_PROMOTION != null)
+                                {
+                                    <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE_PROMOTION)</span> <span class="line-through">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
+
+                                }
+                                else
+                                {
+                                    <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
+
+                                }        </h2>
                         </div><!-- /title and price -->
                         @if (item.O_PRODUCT_NEW != null && item.O_PRODUCT_NEW.ToList().Count > 0)
                         {

@@ -126,7 +126,16 @@
     <div class="col-md-8 col-sm-8">
 
         <h1 class="product-view-title">@Model.PRODUCT_NAME</h1>
-        <h3 class="product-view-price"><em>@String.Format("{0:0,0 " + Model.CURRENCY + "}", Model.PRICE_PROMOTION)</em></h3>
+        @if (Model.PRICE_PROMOTION != null)
+        {
+          <h3 class="product-view-price"><em>@String.Format("{0:0,0 " + Model.CURRENCY + "}", Model.PRICE_PROMOTION)</em></h3>
+      
+        }
+        else
+        {
+        <h3 class="product-view-price"><em>@String.Format("{0:0,0 " + Model.CURRENCY + "}", Model.PRICE)</em></h3>
+      
+        }
         <table style="width: 50%;">
             <tr>
                 <th>Mã sản phẩm:</th>
@@ -191,13 +200,15 @@
             }
         </section>
 
-        <form action="shop-page-cart.html" method="get" class="form-inline margin-top30 nopadding clearfix">
-
-            <!-- see the bottom of the page for the script -->
+        @using (Html.BeginForm("AddCartQuantity", "Home", new { PRODUCT_CD = "PRODUCT_CD", QUANTITY = "QUANTITY", SIZE = "SIZE" }, FormMethod.Post, new { @class = "form-inline margin-top30 nopadding clearfix" }))
+        {
+             <!-- see the bottom of the page for the script -->
             <input type="hidden" id="color" name="color" value="white">
-            <input type="hidden" id="qty" name="qty" value="1">
-            <input type="hidden" id="size" name="size" value="">
-            <!-- see the bottom of the page for the script -->
+    <input type="hidden" id="qty"  name="QUANTITY" value="5">
+    <input type="hidden" id="size" name="SIZE" value="5">
+    <input type="hidden" name="PRODUCT_CD" value="@Model.PRODUCT_CD">
+
+                <!-- see the bottom of the page for the script -->
 
             <div class="btn-group pull-left product-opt-size">
                 <button type="button" class="btn btn-default dropdown-toggle product-size-dd" data-toggle="dropdown">
@@ -246,9 +257,9 @@
                 </ul>
             </div><!-- /btn-group -->
 
-            <button class="btn btn-primary pull-left">THÊM VÀO GIỎ HÀNG</button>
+            <button type="submit" class="btn btn-primary pull-left">THÊM VÀO GIỎ HÀNG</button>
 
-        </form>
+        }
 
     </div>
 
