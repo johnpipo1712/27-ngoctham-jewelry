@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="D_ORDER_DETAIL">
           <Key>
             <PropertyRef Name="ORDER_DETAIL_CD" />
@@ -170,6 +170,7 @@
           <Property Name="STATUS" Type="bigint" />
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="SUBSCRIBE" Type="tinyint" />
         </EntityType>
         <EntityType Name="O_INFORMATION">
           <Key>
@@ -800,8 +801,7 @@
             <End Role="O_USER_PST" EntitySet="O_USER_PST" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GJSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -988,6 +988,7 @@
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="O_ORDER" Relationship="Self.FK_O_ORDER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_ORDER" />
           <NavigationProperty Name="O_USER_CUSTOMER" Relationship="Self.FK_O_USER_CUSTOMER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_USER_CUSTOMER" />
+          <Property Name="SUBSCRIBE" Type="Byte" />
         </EntityType>
         <EntityType Name="O_INFORMATION">
           <Key>
@@ -1827,6 +1828,7 @@
           <EntitySetMapping Name="O_CUSTOMER">
             <EntityTypeMapping TypeName="GJSModel.O_CUSTOMER">
               <MappingFragment StoreEntitySet="O_CUSTOMER">
+                <ScalarProperty Name="SUBSCRIBE" ColumnName="SUBSCRIBE" />
                 <ScalarProperty Name="CUSTOMER_CD" ColumnName="CUSTOMER_CD" />
                 <ScalarProperty Name="CUSTOMER_CODE" ColumnName="CUSTOMER_CODE" />
                 <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />

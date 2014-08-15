@@ -16,6 +16,8 @@ namespace W_GJS.Models
 
         public string USER_PASS { get; set; }
 
+        public string USER_RE_PASS { get; set; }
+
         public string EMAIL { get; set; }
 
         public string FIRST_NAME { get; set; }
@@ -23,6 +25,8 @@ namespace W_GJS.Models
         public string LAST_NAME { get; set; }
 
         public string SEX { get; set; }
+
+        //public string SUBSCRIBE { get; set; }
 
         public static bool Register(RegisterModel MODEL)
         {
