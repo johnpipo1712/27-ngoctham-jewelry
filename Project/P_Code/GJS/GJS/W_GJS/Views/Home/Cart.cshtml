@@ -3,64 +3,63 @@
     W_GJS.Models.O_ORDER Ord = (W_GJS.Models.O_ORDER)Session["Cart"];
 
 }
-@if(Ord != null)
-{ 
- <form class="cartContent clearfix" method="post" action="shop-page-cart.html#">
+@if (Ord != null)
+{
+    <div class="cartContent clearfix">
 
-    <!-- cart content -->
-    <div id="cartContent">
-        <!-- cart header -->
-        <div class="item head">
-            <span class="cart_img"></span>
-            <span class="product_name fsize13 bold">TÊN SẢN PHẨM</span>
-            <span class="remove_item fsize13 bold"></span>
-            <span class="total_price fsize13 bold">TỔNG TIỀN</span>
-            <span class="qty fsize13 bold">SỐ LƯỢNG</span>
-            <span class="qty fsize13 bold">SIZE</span>
+        <!-- cart content -->
+        <div id="cartContent">
+            <!-- cart header -->
+            <div class="item head">
+                <span class="cart_img"></span>
+                <span class="product_name fsize13 bold">TÊN SẢN PHẨM</span>
+                <span class="remove_item fsize13 bold"></span>
+                <span class="total_price fsize13 bold">TỔNG TIỀN</span>
+                <span class="qty fsize13 bold">SỐ LƯỢNG</span>
+                <div class="clearfix"></div>
+            </div>
+            <!-- /cart header -->
+            @foreach (var item in Ord.D_ORDER_DETAIL)
+            {
+                using (Html.BeginForm("UpdateCart", "Home", new { PRODUCT_CD = "PRODUCT_CD", QUANTITY = "QUANTITY" }, FormMethod.Post))
+                {
+                    <div class="item">
+                        <div class="cart_img"><img src="@item.O_PRODUCT.URL_IMAGE" alt="" width="60" /></div>
+                        <a href="shop-page-full-product.html" class="product_name">
+                            <span>@item.O_PRODUCT.PRODUCT_NAME</span>
+                            <input type="hidden" name="PRODUCT_CD" value="@item.PRODUCT_CD" />
+                            @*<small>@item.O_PRODUCT.</small>*@
+                        </a>
+                        <a href="@Url.Action("DeleteCart",new {PRODUCT_CD = item.PRODUCT_CD})" class="remove_item"><i class="fa fa-times"></i></a>
+                        <button type="submit" class="remove_item"><i class="fa fa-edit"></i></button>
+                        <div class="total_price"><span>@String.Format("{0:0,0}", item.PRICE)</span> VNĐ</div>
+                        <div class="qty"><input type="text" value="@item.QUANTITY" name="QUANTITY" maxlength="3" /></div>
+                        <div class="clearfix"></div>
+                    </div>
+                }
+            }
+            <!-- cart item -->
+            <!-- /cart item -->
+            <!-- cart total -->
+            <div class="total pull-right">
+
+                <span class="totalToPay">
+                    TỔNG CỘNG: @String.Format("{0:0,0 " + Ord.D_ORDER_DETAIL.ToList()[0].O_PRODUCT.CURRENCY + "}", W_GJS.Models.O_ORDER.Price_Total(Ord))
+                </span>
+
+            </div>
+            <!-- /cart total -->
+            <!-- update cart -->
+            <a href="@Url.Action("Checkout","Home")" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</a>
+            <!-- /update cart -->
+
             <div class="clearfix"></div>
         </div>
-        <!-- /cart header -->
-        @foreach (var item in Ord.D_ORDER_DETAIL)
-        {
-            <div class="item">
-            <div class="cart_img"><img src="@item.O_PRODUCT.URL_IMAGE" alt="" width="60" /></div>
-            <a href="shop-page-full-product.html" class="product_name">
-                <span>@item.O_PRODUCT.PRODUCT_NAME</span>
-                @*<small>@item.O_PRODUCT.</small>*@
-            </a>
-            <a href="@Url.Action("DeleteCart",new {PRODUCT_CD = item.PRODUCT_CD})" class="remove_item"><i class="fa fa-times"></i></a>
-            <a href="#" class="remove_item"><i class="fa fa-edit"></i></a>
-            <div class="total_price"><span>@String.Format("{0:0,0}",item.PRICE)</span> VNĐ</div>
-            <div class="qty"><input type="text" value="@item.QUANTITY" name="qty" maxlength="3" /> @item.QUANTITY </div>
-            <div class="qty"><input type="text" value="@item.SIZE" name="size" maxlength="3" /> @item.SIZE </div>
-            <div class="clearfix"></div>
-        </div>
-        }
-        <!-- cart item -->
+        <!-- /cart content -->
         
-        <!-- /cart item -->
-       
-        <!-- cart total -->
-        <div class="total pull-right">
-
-            <span class="totalToPay">
-                TỔNG CỘNG: @String.Format("{0:0,0 " + Ord.D_ORDER_DETAIL.ToList()[0].O_PRODUCT.CURRENCY + "}", W_GJS.Models.O_ORDER.Price_Total(Ord))
-            </span>
-
-        </div>
-        <!-- /cart total -->
-        <!-- update cart -->
-        <a href="shop-page-cart.html#" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</a>
-        <button type="submit" class="btn_update btn btn-default btn-md pull-right">CẬP NHẬT GIỎ HÀNG</button>
-        <!-- /update cart -->
-
-        <div class="clearfix"></div>
     </div>
-    <!-- /cart content -->
-
-</form>
 }
 else
 {
-  <p>Chưa có sản phẩm</p>
+  <p>Chưa có sản phẩm trong giỏ hàng</p>
 }
