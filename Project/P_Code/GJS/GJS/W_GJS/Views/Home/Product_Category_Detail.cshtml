@@ -1,10 +1,10 @@
-﻿@{
-    ViewBag.Title = "Danh sách sản phẩm";
+﻿@model IEnumerable<W_GJS.Models.O_PRODUCT>
+@{
+    ViewBag.Title = "Product_Category_Detail";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
-    List<W_GJS.Models.O_PRODUCT> listproduct = gjs.O_PRODUCT.Where(t => t.ACTIVE == true).ToList();
     List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
-}
 
+}
 <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>Danh Sách Sản Phẩm</strong></h2>
 
 <!-- options -->
@@ -13,7 +13,7 @@
     <div class="col-sm-9 col-md-9">
 
 
-        <h2><strong>Tất cả</strong></h2>
+        <h2><strong>@Model.ToList()[0].O_CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_NAME</strong></h2>
 
         <ul class="breadcrumb">
             <!-- breadcrumb -->
@@ -79,7 +79,7 @@
         <!-- PRODUCT LIST -->
         <div class="row">
 
-            @foreach (var item in listproduct)
+            @foreach (var item in Model)
             {
                 <div class="col-md-4 col-sm-4">
                     <!-- item -->
@@ -126,25 +126,26 @@
         <!-- PAGINATION -->
         @*<div class="row">
 
-            <div class="col-md-6 text-left">
-                <p class="hidden-xs pull-left nomargin padding20">Showing 1-16 of 38 results.</p>
-            </div>
+                <div class="col-md-6 text-left">
+                    <p class="hidden-xs pull-left nomargin padding20">Showing 1-16 of 38 results.</p>
+                </div>
 
-            <div class="col-md-6 text-right">
-                <ul class="pagination">
-                    <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-                </ul>
-            </div>
+                <div class="col-md-6 text-right">
+                    <ul class="pagination">
+                        <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                    </ul>
+                </div>
 
-        </div>*@
+            </div>*@
         <!-- /PAGINATION -->
 
     </div>
 
 </div>
+
