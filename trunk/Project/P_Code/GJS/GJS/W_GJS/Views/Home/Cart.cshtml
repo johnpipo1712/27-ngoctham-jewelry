@@ -3,9 +3,9 @@
     W_GJS.Models.O_ORDER Ord = (W_GJS.Models.O_ORDER)Session["Cart"];
 
 }
-@if(Ord.D_ORDER_DETAIL != null)
+@if(Ord != null)
 { 
-<form class="cartContent clearfix" method="post" action="shop-page-cart.html#">
+ <form class="cartContent clearfix" method="post" action="shop-page-cart.html#">
 
     <!-- cart content -->
     <div id="cartContent">
@@ -61,5 +61,5 @@
 }
 else
 {
-  Chưa có sản phẩm
+  <p>Chưa có sản phẩm</p>
 }
