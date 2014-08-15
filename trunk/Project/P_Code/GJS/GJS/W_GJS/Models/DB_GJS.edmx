@@ -256,11 +256,6 @@
           <Property Name="WAGES" Type="decimal" Precision="18" Scale="0" />
           <Property Name="CURRENCY" Type="nvarchar(max)" />
           <Property Name="URL_IMAGE" Type="nvarchar(max)" />
-          <Property Name="URL_SUBIMAGE_1" Type="nvarchar(max)" />
-          <Property Name="URL_SUBIMAGE_2" Type="nvarchar(max)" />
-          <Property Name="URL_SUBIMAGE_3" Type="nvarchar(max)" />
-          <Property Name="URL_SUBIMAGE_4" Type="nvarchar(max)" />
-          <Property Name="URL_SUBIMAGE_5" Type="nvarchar(max)" />
           <Property Name="SIZE" Type="nvarchar(max)" />
           <Property Name="TAG_ALT" Type="nvarchar(max)" />
           <Property Name="STATUS" Type="bigint" />
@@ -938,7 +933,7 @@
             <End Role="S_USER" EntitySet="S_USER" />
             <End Role="O_USER_PST" EntitySet="O_USER_PST" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <ComplexType Name="SP_STATISTICS_VISIT_Result">
           <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
           <Property Type="Int64" Name="COUNTER_VISIT_HQ" Nullable="true" />
@@ -1239,11 +1234,6 @@
           <NavigationProperty Name="O_PRODUCT_HIGHLIGHTS" Relationship="GJSModel.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_HIGHLIGHTS" />
           <NavigationProperty Name="O_PRODUCT_NEW" Relationship="GJSModel.FK_O_PRODUCT_NEW_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_NEW" />
           <NavigationProperty Name="O_PRODUCT_SELLING" Relationship="GJSModel.FK_O_PRODUCT_SELLING_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_SELLING" />
-          <Property Name="URL_SUBIMAGE_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="URL_SUBIMAGE_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="URL_SUBIMAGE_3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="URL_SUBIMAGE_4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="URL_SUBIMAGE_5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="O_PRODUCT_HIGHLIGHTS">
           <Key>
@@ -1668,7 +1658,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1940,11 +1930,6 @@
           <EntitySetMapping Name="O_PRODUCT">
             <EntityTypeMapping TypeName="GJSModel.O_PRODUCT">
               <MappingFragment StoreEntitySet="O_PRODUCT">
-                <ScalarProperty Name="URL_SUBIMAGE_5" ColumnName="URL_SUBIMAGE_5" />
-                <ScalarProperty Name="URL_SUBIMAGE_4" ColumnName="URL_SUBIMAGE_4" />
-                <ScalarProperty Name="URL_SUBIMAGE_3" ColumnName="URL_SUBIMAGE_3" />
-                <ScalarProperty Name="URL_SUBIMAGE_2" ColumnName="URL_SUBIMAGE_2" />
-                <ScalarProperty Name="URL_SUBIMAGE_1" ColumnName="URL_SUBIMAGE_1" />
                 <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
                 <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
@@ -2101,7 +2086,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
