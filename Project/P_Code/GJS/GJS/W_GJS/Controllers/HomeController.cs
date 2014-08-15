@@ -72,14 +72,16 @@ namespace W_GJS.Controllers
             return View();
         }
 
-        public ActionResult NewsDetail()
+        public ActionResult NewsDetail([Bind(Include = "NEWS_CD")]O_NEWS NEWS)
         {
-            return View();
+            Db_gsj = new GJSEntities();
+            return View(Db_gsj.O_NEWS.Single(t=>t.NEWS_CD == NEWS.NEWS_CD));
         }
 
-        public ActionResult Category_News()
+        public ActionResult Category_News([Bind(Include = "CATEGORY_NEWS_CD")]O_CATEGORY_NEWS CATEGORY_NEWS)
         {
-            return View();
+            Db_gsj = new GJSEntities();
+            return View(Db_gsj.O_NEWS.Where(t=>t.CATEGORY_NEWS_CD == CATEGORY_NEWS.CATEGORY_NEWS_CD).ToList());
         }
 
        
@@ -133,18 +135,32 @@ namespace W_GJS.Controllers
             return View();
         }
 
-        public ActionResult ProductDetail()
+        public ActionResult ProductDetail([Bind(Include = "PRODUCT_CD")]O_PRODUCT PRODUCT)
         {
-            return View();
+            Db_gsj = new GJSEntities();
+            return View(Db_gsj.O_PRODUCT.Single(t=>t.PRODUCT_CD == PRODUCT.PRODUCT_CD));
         }
 
+        public ActionResult Product_Category([Bind(Include = "CATEGORY_PRODUCT_CD")]O_CATEGORY_PRODUCT CATEGORY_PRODUCT)
+        {
+            Db_gsj = new GJSEntities();
+            return View(Db_gsj.O_PRODUCT.Where(t=>t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD));
+        }
+
+        public ActionResult Product_Category_Detail([Bind(Include = "CATEGORY_PRODUCT_DETAIL_CD")]O_CATEGORY_PRODUCT_DETAIL CATEGORY_PRODUCT_DETAIL)
+        {
+            Db_gsj = new GJSEntities();
+            return View(Db_gsj.O_PRODUCT.Where(t=>t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_CD).ToList());
+        }
         public ActionResult ProductList()
         {
+            
             return View();
         }
 
         public ActionResult ShowAlbum()
         {
+
             return View();
         }
 
