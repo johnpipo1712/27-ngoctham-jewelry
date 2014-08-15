@@ -1,7 +1,9 @@
 ﻿<!-- Top Nav -->
 @{ 
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
-    List<W_GJS.Models.O_CATEGORY_PRODUCT> listCategory = gjs.O_CATEGORY_PRODUCT.Where(t=>t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_CATEGORY_PRODUCT> listCategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_CATEGORY_NEWS> listNews = gjs.O_CATEGORY_NEWS.Where(t => t.ACTIVE == true).ToList();
+
 }
 <header id="topNav">
     <div class="container">
@@ -48,7 +50,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="shop-home-1.html#">SẢN PHẨM <span>products</span></a>
+                        <a class="dropdown-toggle" href="@Url.Action("ProductList", "Home")">SẢN PHẨM <span>products</span></a>
                         <ul class="dropdown-menu">
                             @foreach (var item in listCategory)
                             {
@@ -77,8 +79,11 @@
                     <li class="dropdown">
                         <a href="@Url.Action("News", "Home")">TIN TỨC <span>news</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("NewsFinancial", "Home")">Tin Thị Trường Vàng</a></li>
-                            <li><a href="@Url.Action("NewsFinancial", "Home")">Tin Tài Chính Thế Giới</a></li>
+                            @foreach (var item in listNews)
+                            {
+                              <li><a href="@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">@item.CATEGORY_NEWS_NAME</a></li>
+                                
+                            }
                         </ul>
                     </li>
                     <li data-toggle="modal" data-target="#gold-rate-modal">
