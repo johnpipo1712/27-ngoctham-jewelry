@@ -28,7 +28,7 @@ namespace W_GJS.Controllers
 
             //store session if succeed
             Session[LOGINED_USER_KEY] = username;
-            return View("Index", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Logout()
@@ -38,13 +38,13 @@ namespace W_GJS.Controllers
 
             // logout and redirect to index page.
             LoginModel.Logout();
-            return View("Index", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Register(RegisterModel MODEL)
         {
             RegisterModel.Register(MODEL);
-            return View("Index", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Branches()

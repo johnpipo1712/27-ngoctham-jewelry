@@ -26,7 +26,7 @@ namespace W_GJS.Models
 
         public string SEX { get; set; }
 
-        //public string SUBSCRIBE { get; set; }
+        public bool SUBSCRIBE { get; set; }
 
         public static bool Register(RegisterModel MODEL)
         {
@@ -50,7 +50,11 @@ namespace W_GJS.Models
                 CUSTOMER.STATUS = 1; // henxui
                 CUSTOMER.CREATEDATE = DateTime.Now;
                 CUSTOMER.EMAIL = MODEL.EMAIL;
-                //first name, last name, sex,
+                CUSTOMER.CUSTOMER_NAME = MODEL.FIRST_NAME + " " + MODEL.LAST_NAME;
+                CUSTOMER.CUSTOMER_FIRST_NAME = MODEL.FIRST_NAME;
+                CUSTOMER.CUSTOMER_LAST_NAME = MODEL.LAST_NAME;
+                //CUSTOMER.SUBSCRIBE = MODEL.SUBSCRIBE;
+                CUSTOMER.SEX = MODEL.SEX;
                 Db_gsj.Entry(CUSTOMER).State = EntityState.Added;
                 Db_gsj.SaveChanges();
 
