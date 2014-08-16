@@ -83,7 +83,7 @@
             <div class="owl-featured-item">
                 <a class="figure" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">
                     <span><i class="fa fa-plus"></i></span>
-                    <img class="" alt="" src="@Url.Content("~/Content")/images/products/@item.O_PRODUCT.URL_IMAGE" width="230" />
+                    <img class="" alt="" src="@item.O_PRODUCT.URL_IMAGE" width="230" />
                 </a>
                 <div class="owl-featured-detail">
                     <a class="featured-title" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">@item.O_PRODUCT.PRODUCT_NAME</a>
@@ -117,7 +117,7 @@
         <div class="owl-featured-item">
             <a class="figure" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">
                 <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@Url.Content("~/Content")/images/products/@item.O_PRODUCT.URL_IMAGE" width="230" />
+                <img class="" alt="" src="@item.O_PRODUCT.URL_IMAGE" width="230" />
             </a>
             <div class="owl-featured-detail">
                 <a class="featured-title" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">@item.O_PRODUCT.PRODUCT_NAME</a>

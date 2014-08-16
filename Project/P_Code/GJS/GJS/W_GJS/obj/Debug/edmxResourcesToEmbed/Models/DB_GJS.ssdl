@@ -93,7 +93,7 @@
     <Key>
       <PropertyRef Name="CATEGORY_NEWS_CD" />
     </Key>
-    <Property Name="CATEGORY_NEWS_CD" Type="bigint" Nullable="false" />
+    <Property Name="CATEGORY_NEWS_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CATEGORY_NEWS_CODE" Type="nvarchar" MaxLength="50" />
     <Property Name="CATEGORY_NEWS_NAME" Type="nvarchar(max)" />
     <Property Name="TAG_ALT" Type="nvarchar(max)" />
@@ -105,7 +105,7 @@
     <Key>
       <PropertyRef Name="CATEGORY_PAGE_CD" />
     </Key>
-    <Property Name="CATEGORY_PAGE_CD" Type="bigint" Nullable="false" />
+    <Property Name="CATEGORY_PAGE_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CATEGORY_PAGE_CODE" Type="nvarchar" MaxLength="50" />
     <Property Name="CATEGORY_PAGE_NAME" Type="nvarchar(max)" />
     <Property Name="TAG_ALT" Type="nvarchar(max)" />
@@ -156,10 +156,14 @@
     <Property Name="CUSTOMER_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CUSTOMER_CODE" Type="nvarchar" MaxLength="50" />
     <Property Name="CUSTOMER_NAME" Type="nvarchar(max)" />
+    <Property Name="CUSTOMER_FIRST_NAME" Type="nvarchar(max)" />
+    <Property Name="CUSTOMER_LAST_NAME" Type="nvarchar(max)" />
     <Property Name="ADDRESS" Type="nvarchar(max)" />
     <Property Name="EMAIL" Type="nvarchar(max)" />
+    <Property Name="SEX" Type="nvarchar(max)" />
     <Property Name="BIRTHDAY" Type="datetime" />
     <Property Name="STATUS" Type="bigint" />
+    <Property Name="SUBSCRIBE" Type="bit" />
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
   </EntityType>
@@ -181,10 +185,13 @@
     </Key>
     <Property Name="NEWS_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NEWS_TITLE" Type="nvarchar(max)" />
+    <Property Name="NEW_DESCRIPTIONS" Type="nvarchar(max)" />
     <Property Name="NEWS_CONTENT" Type="nvarchar(max)" />
     <Property Name="IMAGE_NEWS" Type="nvarchar(max)" />
     <Property Name="CATEGORY_NEWS_CD" Type="bigint" />
-    <Property Name="TAG_ALT" Type="bigint" />
+    <Property Name="SOURCE_COPY" Type="nvarchar(max)" />
+    <Property Name="TAG_ALT" Type="nvarchar(max)" />
+    <Property Name="EMPLOYEE_CD" Type="bigint" />
     <Property Name="STATUS" Type="bigint" />
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
@@ -224,6 +231,16 @@
     <Property Name="STATUS" Type="bigint" />
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="O_PRICE_GOLD">
+    <Key>
+      <PropertyRef Name="PRICE_GOLD_CD" />
+    </Key>
+    <Property Name="PRICE_GOLD_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRICE_SALES" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PRICE_BUY" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="GOLD_CODE" Type="nvarchar(max)" />
+    <Property Name="GOLD_NAME" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="O_PRODUCT">
     <Key>
@@ -321,7 +338,7 @@
     <Key>
       <PropertyRef Name="CD" />
     </Key>
-    <Property Name="CD" Type="bigint" Nullable="false" />
+    <Property Name="CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="USER_CD" Type="bigint" />
     <Property Name="PST_CD" Type="bigint" />
     <Property Name="STATUS" Type="bigint" />
@@ -453,6 +470,18 @@
       </Principal>
       <Dependent Role="O_NEWS_HIGHLIGHTS">
         <PropertyRef Name="NEWS_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_NEWS_M_EMPLOYEE">
+    <End Role="M_EMPLOYEE" Type="Self.M_EMPLOYEE" Multiplicity="0..1" />
+    <End Role="O_NEWS" Type="Self.O_NEWS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_EMPLOYEE">
+        <PropertyRef Name="EMPLOYEE_CD" />
+      </Principal>
+      <Dependent Role="O_NEWS">
+        <PropertyRef Name="EMPLOYEE_CD" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -668,6 +697,7 @@
     <EntitySet Name="O_NEWS_HIGHLIGHTS" EntityType="Self.O_NEWS_HIGHLIGHTS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_NEWS_NEW" EntityType="Self.O_NEWS_NEW" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_ORDER" EntityType="Self.O_ORDER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_PRICE_GOLD" EntityType="Self.O_PRICE_GOLD" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_PRODUCT" EntityType="Self.O_PRODUCT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_PRODUCT_HIGHLIGHTS" EntityType="Self.O_PRODUCT_HIGHLIGHTS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_PRODUCT_NEW" EntityType="Self.O_PRODUCT_NEW" Schema="dbo" store:Type="Tables" />
@@ -707,6 +737,10 @@
     <AssociationSet Name="FK_O_NEWS_HIGHLIGHTS_O_NEWS" Association="Self.FK_O_NEWS_HIGHLIGHTS_O_NEWS">
       <End Role="O_NEWS" EntitySet="O_NEWS" />
       <End Role="O_NEWS_HIGHLIGHTS" EntitySet="O_NEWS_HIGHLIGHTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_NEWS_M_EMPLOYEE" Association="Self.FK_O_NEWS_M_EMPLOYEE">
+      <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
+      <End Role="O_NEWS" EntitySet="O_NEWS" />
     </AssociationSet>
     <AssociationSet Name="FK_O_NEWS_NEW_O_NEWS" Association="Self.FK_O_NEWS_NEW_O_NEWS">
       <End Role="O_NEWS" EntitySet="O_NEWS" />

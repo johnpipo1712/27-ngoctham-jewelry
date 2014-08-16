@@ -12,7 +12,7 @@
         <a class="shop-item-list" href="@Url.Action("ProductDetail",new { PRODUCT_CD = item.PRODUCT_CD })">
             <figure>
                 <!-- image -->
-                <img class="img-responsive" src="@Url.Content("~/Content")/images/products/@item.URL_IMAGE" alt="@item.TAG_ALT" />
+                <img class="img-responsive" src="@item.URL_IMAGE" alt="@item.TAG_ALT" />
             </figure><!-- /image -->
             @if (item.QUANTITY <= 0)
             {
