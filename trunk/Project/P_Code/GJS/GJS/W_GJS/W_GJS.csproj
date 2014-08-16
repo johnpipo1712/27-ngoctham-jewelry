@@ -142,7 +142,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BranchController.cs" />
-    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryNewsController.cs" />
     <Compile Include="Controllers\CategoryProductController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
@@ -164,6 +163,9 @@
     <Compile Include="Models\JsonModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\O_CATEGORY_PRODUCT_DETAIL.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\O_PRICE_GOLD.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RegisterModel.cs" />
