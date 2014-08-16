@@ -142,6 +142,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\CategoryGranulesController.cs" />
+    <Compile Include="Controllers\CategoryPageController.cs" />
     <Compile Include="Controllers\CategoryNewsController.cs" />
     <Compile Include="Controllers\CategoryProductController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
@@ -708,6 +710,12 @@
     <Content Include="Views\Home\Test.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Views\Home\ProductLazyList.cshtml" />
+    <Content Include="Views\CategoryGranules\Index.cshtml" />
+    <Content Include="Views\CategoryGranules\Create.cshtml" />
+    <Content Include="Views\CategoryGranules\Edit.cshtml" />
+    <Content Include="Views\CategoryPage\Index.cshtml" />
+    <Content Include="Views\CategoryPage\Create.cshtml" />
+    <Content Include="Views\CategoryPage\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
