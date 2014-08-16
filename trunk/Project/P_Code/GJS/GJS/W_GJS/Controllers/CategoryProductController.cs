@@ -32,6 +32,7 @@ namespace W_GJS.Controllers
             if (ModelState.IsValid)
             {
                 Db_gsj = new GJSEntities();
+                CATEGORY_PRODUCT.TAG_ALT = CATEGORY_PRODUCT.CATEGORY_PRODUCT_NAME;
                 CATEGORY_PRODUCT.ACTIVE = true;
                 CATEGORY_PRODUCT.STATUS = 0;
                 CATEGORY_PRODUCT.CREATEDATE = DateTime.Now;
