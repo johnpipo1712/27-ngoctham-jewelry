@@ -161,6 +161,7 @@
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\ForgotPasswordModel.cs" />
+    <Compile Include="Models\JsonModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\O_CATEGORY_PRODUCT_DETAIL.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
@@ -308,6 +309,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\1x1.png" />
+    <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\avatar.png" />
     <Content Include="Content\images\big_banner.png" />
     <Content Include="Content\images\big_banner_grey.png" />
@@ -703,6 +705,7 @@
     <Content Include="Views\Home\ShowAlbum.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Views\Home\ProductLazyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

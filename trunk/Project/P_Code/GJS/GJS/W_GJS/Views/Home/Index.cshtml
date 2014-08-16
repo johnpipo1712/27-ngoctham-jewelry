@@ -24,7 +24,31 @@
             }
         }
         showPopup();
+
+        var NoMoreData = false;
+        var inProgress = false;
+        var blockNumber = 0;
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= $(document).height() - $(window).height() - 500 && !NoMoreData && !inProgress) {
+
+                inProgress = true;
+                $("#loadingDiv").show();
+            
+                $.post("@Url.Action("GetNext15Products", "Home")", { "blockNumber": blockNumber },
+                        function (data) {
+                        
+                            //BlockNumber = BlockNumber + 1;
+                            NoMoreData = data.NoMoreData;
+                            $("#ProductList").append(data.HTMLString);
+                            $("#loadingDiv").hide();
+                            blockNumber++;
+                            inProgress = false;
+
+                        });
+            }
+        });
     </script>
+
 }
 
 @section PageTitle {
@@ -59,21 +83,12 @@
             <div class="owl-featured-item">
                 <a class="figure" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">
                     <span><i class="fa fa-plus"></i></span>
-                    <img class="" alt="" src="@item.O_PRODUCT.URL_IMAGE" width="230" />
+                    <img class="" alt="" src="@Url.Content("~/Content")/images/products/@item.O_PRODUCT.URL_IMAGE" width="230" />
                 </a>
                 <div class="owl-featured-detail">
                     <a class="featured-title" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">@item.O_PRODUCT.PRODUCT_NAME</a>
-                    @if (item.O_PRODUCT.PRICE_PROMOTION != null)
-                    {
-                        <span class="price"><span class="line-through styleColor">@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE)</span> <strong>@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE_PROMOTION)</strong></span>
-
-                    }
-                    else
-                    {
-                        <span class="price"><strong>@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE)</strong></span>
-
-                    }        
-                 <a href="@Url.Action("AddCart", new { PRODUCT_CD = item.PRODUCT_CD,QUANTITY = 1,SIZE = 7 })" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
+                    <span class="price"><span class="line-through styleColor">@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE)</span> <strong>@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE_PROMOTION)</strong></span>
+                    <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
                 </div>
                 @if (item.O_PRODUCT.O_PRODUCT_NEW != null && item.O_PRODUCT.O_PRODUCT_NEW.ToList().Count > 0)
                 { 
@@ -102,21 +117,12 @@
         <div class="owl-featured-item">
             <a class="figure" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">
                 <span><i class="fa fa-plus"></i></span>
-                <img class="" alt="" src="@item.O_PRODUCT.URL_IMAGE" width="230" />
+                <img class="" alt="" src="@Url.Content("~/Content")/images/products/@item.O_PRODUCT.URL_IMAGE" width="230" />
             </a>
             <div class="owl-featured-detail">
                 <a class="featured-title" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">@item.O_PRODUCT.PRODUCT_NAME</a>
-                @if (item.O_PRODUCT.PRICE_PROMOTION != null)
-                {
-                 <span class="price"><span class="line-through styleColor">@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE)</span> <strong>@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE_PROMOTION)</strong></span>
-           
-                }
-                else
-                {
-                 <span class="price"><strong>@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE)</strong></span>
-           
-                }
-                <a href="@Url.Action("AddCart", new { PRODUCT_CD = item.PRODUCT_CD,QUANTITY = 1,SIZE = 7 })" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
+                <span class="price"><span class="line-through styleColor">@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE)</span> <strong>@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE_PROMOTION)</strong></span>
+                <a href="shop-page-cart_2.html" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
             </div>
             @if (item.O_PRODUCT.O_PRODUCT_NEW != null && item.O_PRODUCT.O_PRODUCT_NEW.ToList().Count > 0)
             {
@@ -172,64 +178,17 @@
         <!-- FACEBOOK -->
 
     </div>
-
+    
     <div class="col-md-9">
 
         <!-- PRODUCT LIST -->
         <div id="ProductList" class="row scroll">
 
-            @foreach (var item in listproduct)
-            {
-                     <div class="col-md-4 col-sm-4">
-                <!-- item -->
-                <a class="shop-item-list" href="@Url.Action("ProductDetail",new { PRODUCT_CD = item.PRODUCT_CD })">
-                    <figure>
-                        <!-- image -->
-                        <img class="img-responsive" src="@item.URL_IMAGE" alt="@item.TAG_ALT" />
-                    </figure><!-- /image -->
-                    @if(item.QUANTITY <= 0)
-                    {
-                        <span class="shop-stock-info stock-no">
-                        <!-- stock -->
-                        <i class="fa fa-times"></i> hết hàng
-                    </span><!-- /stock -->
-                    
-                    }
-                    else
-                    {
-                    <span class="shop-stock-info stock-yes">
-                        <!-- stock -->
-                        <i class="fa fa-check"></i> còn hàng
-                    </span><!-- /stock -->
-                        
-                    }
-                    <div class="product-info">
-                        <!-- title and price -->
-                        <h2>
-                            <span class="product-name">@item.PRODUCT_NAME</span>
-                            @if (item.PRICE_PROMOTION != null)
-                            {
-                                <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE_PROMOTION)</span> <span class="line-through">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
-
-                            }
-                            else
-                            {
-                                <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
-
-                            }
-                        </h2>
-                    </div><!-- /title and price -->
-             
-                    @if (item.O_PRODUCT_NEW != null && item.O_PRODUCT_NEW.ToList().Count > 0)
-                    {
-                        <div class="sb-gdv-disc">
-                            <div class="sb-gdv-disc__content">Mới</div>
-                        </div>
-                    }
-                </a>
-            </div><!-- /item -->
-            }
             
+            
+        </div>
+        <div id="loadingDiv" style="text-align: center; display: none; margin-bottom: 20px;">
+            <img alt="Loading" src="@Url.Content("~/Content/Images/ajax-loader.gif")" />
         </div>
         <!-- /PRODUCT LIST -->
         <!-- PAGINATION -->

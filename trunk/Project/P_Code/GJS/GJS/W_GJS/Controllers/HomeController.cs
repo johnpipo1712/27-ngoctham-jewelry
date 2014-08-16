@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using W_GJS.Models;
 namespace W_GJS.Controllers
 {
@@ -14,7 +16,59 @@ namespace W_GJS.Controllers
         public ActionResult Index()
         {
             Db_gsj = new GJSEntities();
+
             return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult ProductLazyList(List<W_GJS.Models.O_PRODUCT> Model)
+        {
+            return PartialView(Model);
+        }
+
+        [HttpPost]
+        public ActionResult GetNext15Products(int blockNumber)
+        {
+            Db_gsj = new GJSEntities();
+            JsonModel jsonModel = new JsonModel();
+            List<W_GJS.Models.O_PRODUCT> listproduct = new List<W_GJS.Models.O_PRODUCT>();
+            int numItemsInBlock = 15;
+            int totalItems = Db_gsj.O_PRODUCT.Count();
+            // check if out of size.
+            if (totalItems / numItemsInBlock < blockNumber)
+            {
+                jsonModel.NoMoreData = true;
+            }
+            else
+            {
+                jsonModel.NoMoreData = false;
+
+                // calc beginPos
+                int beginPos = numItemsInBlock * blockNumber;
+                listproduct = Db_gsj.O_PRODUCT.Where(t => t.ACTIVE == true).ToList().Skip(beginPos).Take(numItemsInBlock).ToList();
+            }
+
+            
+            jsonModel.HTMLString = RenderPartialViewToString("ProductLazyList", listproduct);
+
+            return Json(jsonModel);
+        }
+
+        protected string RenderPartialViewToString(string viewName, object model)
+        {
+            if (string.IsNullOrEmpty(viewName))
+                viewName = ControllerContext.RouteData.GetRequiredString("action");
+
+            ViewData.Model = model;
+
+            using (StringWriter sw = new StringWriter())
+            {
+                ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+
+                return sw.GetStringBuilder().ToString();
+            }
         }
 
         [HttpPost]
