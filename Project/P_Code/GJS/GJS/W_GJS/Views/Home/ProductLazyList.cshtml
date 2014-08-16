@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "";
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    List<W_GJS.Models.O_PRODUCT> listproduct = this.Model;
+}
+
+
+@foreach (var item in listproduct)
+{
+    <div class="col-md-4 col-sm-4">
+        <!-- item -->
+        <a class="shop-item-list" href="@Url.Action("ProductDetail",new { PRODUCT_CD = item.PRODUCT_CD })">
+            <figure>
+                <!-- image -->
+                <img class="img-responsive" src="@Url.Content("~/Content")/images/products/@item.URL_IMAGE" alt="@item.TAG_ALT" />
+            </figure><!-- /image -->
+            @if (item.QUANTITY <= 0)
+            {
+                <span class="shop-stock-info stock-no">
+                    <!-- stock -->
+                    <i class="fa fa-times"></i> hết hàng
+                </span><!-- /stock -->
+
+            }
+            else
+            {
+                <span class="shop-stock-info stock-yes">
+                    <!-- stock -->
+                    <i class="fa fa-check"></i> còn hàng
+                </span><!-- /stock -->
+
+            }
+            <div class="product-info">
+                <!-- title and price -->
+                <h2>
+                    <span class="product-name">@item.PRODUCT_NAME</span>
+                    <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE_PROMOTION)</span> <span class="line-through">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
+                </h2>
+            </div><!-- /title and price -->
+            @if (item.O_PRODUCT_NEW != null && item.O_PRODUCT_NEW.ToList().Count > 0)
+            {
+                <div class="sb-gdv-disc">
+                    <div class="sb-gdv-disc__content">Mới</div>
+                </div>
+            }
+        </a>
+    </div><!-- /item -->
+}
