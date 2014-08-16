@@ -7,6 +7,7 @@
     <Property Name="ORDER_DETAIL_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ORDER_CD" Type="Int64" />
     <Property Name="PRODUCT_CD" Type="Int64" />
+    <Property Name="SIZE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="QUANTITY" Type="Int64" />
     <Property Name="PRICE" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="STATUS" Type="Int64" />
@@ -14,7 +15,6 @@
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
     <NavigationProperty Name="O_ORDER" Relationship="Self.FK_D_ORDER_DETAIL_O_ORDER" FromRole="D_ORDER_DETAIL" ToRole="O_ORDER" />
     <NavigationProperty Name="O_PRODUCT" Relationship="Self.FK_D_ORDER_DETAIL_O_PRODUCT" FromRole="D_ORDER_DETAIL" ToRole="O_PRODUCT" />
-    <Property Name="SIZE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="D_PRODUCT_DETAIL">
     <Key>
@@ -41,6 +41,7 @@
     <Property Name="STATUS" Type="Int64" />
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="O_NEWS" Relationship="Self.FK_O_NEWS_M_EMPLOYEE" FromRole="M_EMPLOYEE" ToRole="O_NEWS" />
     <NavigationProperty Name="O_ORDER" Relationship="Self.FK_O_ORDER_M_EMPLOYEE" FromRole="M_EMPLOYEE" ToRole="O_ORDER" />
     <NavigationProperty Name="O_USER_EMPLOYEE" Relationship="Self.FK_O_USER_EMPLOYEE_M_EMPLOYEE" FromRole="M_EMPLOYEE" ToRole="O_USER_EMPLOYEE" />
   </EntityType>
@@ -89,20 +90,19 @@
       <PropertyRef Name="CATEGORY_GRANULES_CD" />
     </Key>
     <Property Name="CATEGORY_GRANULES_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CATEGORY_GRANULES_NAME" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CATEGORY_GRANULES_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CATEGORY_GRANULES_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CATEGORY_GRANULES_WEIGHT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="STATUS" Type="Int64" />
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
     <NavigationProperty Name="O_PRODUCT" Relationship="Self.FK_O_PRODUCT_O_CATEGORY_GRANULES" FromRole="O_CATEGORY_GRANULES" ToRole="O_PRODUCT" />
-    <NavigationProperty Name="O_PRODUCT1" Relationship="GJSModel.FK_O_PRODUCT_O_CATEGORY_GRANULES1" FromRole="O_CATEGORY_GRANULES" ToRole="O_PRODUCT" />
   </EntityType>
   <EntityType Name="O_CATEGORY_NEWS">
     <Key>
       <PropertyRef Name="CATEGORY_NEWS_CD" />
     </Key>
-    <Property Name="CATEGORY_NEWS_CD" Type="Int64" Nullable="false" />
+    <Property Name="CATEGORY_NEWS_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CATEGORY_NEWS_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CATEGORY_NEWS_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="TAG_ALT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -115,7 +115,7 @@
     <Key>
       <PropertyRef Name="CATEGORY_PAGE_CD" />
     </Key>
-    <Property Name="CATEGORY_PAGE_CD" Type="Int64" Nullable="false" />
+    <Property Name="CATEGORY_PAGE_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CATEGORY_PAGE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CATEGORY_PAGE_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="TAG_ALT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -123,6 +123,35 @@
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
     <NavigationProperty Name="M_PAGE" Relationship="Self.FK_M_PAGE_O_CATEGORY_PAGE" FromRole="O_CATEGORY_PAGE" ToRole="M_PAGE" />
+  </EntityType>
+  <EntityType Name="O_CATEGORY_PRODUCT">
+    <Key>
+      <PropertyRef Name="CATEGORY_PRODUCT_CD" />
+    </Key>
+    <Property Name="CATEGORY_PRODUCT_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CATEGORY_PRODUCT_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CATEGORY_PRODUCT_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TAG_ALT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS" Type="Int64" />
+    <Property Name="ACTIVE" Type="Boolean" />
+    <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="O_CATEGORY_PRODUCT_DETAIL" Relationship="Self.FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT" FromRole="O_CATEGORY_PRODUCT" ToRole="O_CATEGORY_PRODUCT_DETAIL" />
+    <NavigationProperty Name="O_PRODUCT" Relationship="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT" FromRole="O_CATEGORY_PRODUCT" ToRole="O_PRODUCT" />
+  </EntityType>
+  <EntityType Name="O_CATEGORY_PRODUCT_DETAIL">
+    <Key>
+      <PropertyRef Name="CATEGORY_PRODUCT_DETAIL_CD" />
+    </Key>
+    <Property Name="CATEGORY_PRODUCT_DETAIL_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CATEGORY_PRODUCT_CD" Type="Int64" />
+    <Property Name="CATEGORY_PRODUCT_DETAIL_CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CATEGORY_PRODUCT_DETAIL_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TAG_ALT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS" Type="Int64" />
+    <Property Name="ACTIVE" Type="Boolean" />
+    <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="O_CATEGORY_PRODUCT" Relationship="Self.FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT" FromRole="O_CATEGORY_PRODUCT_DETAIL" ToRole="O_CATEGORY_PRODUCT" />
+    <NavigationProperty Name="O_PRODUCT" Relationship="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" FromRole="O_CATEGORY_PRODUCT_DETAIL" ToRole="O_PRODUCT" />
   </EntityType>
   <EntityType Name="O_CITIES">
     <Key>
@@ -143,14 +172,18 @@
     <Property Name="CUSTOMER_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CUSTOMER_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CUSTOMER_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CUSTOMER_FIRST_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CUSTOMER_LAST_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEX" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="BIRTHDAY" Type="DateTime" Precision="3" />
     <Property Name="STATUS" Type="Int64" />
+    <Property Name="SUBSCRIBE" Type="Boolean" />
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="O_ORDER" Relationship="Self.FK_O_ORDER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_ORDER" />
     <NavigationProperty Name="O_USER_CUSTOMER" Relationship="Self.FK_O_USER_CUSTOMER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_USER_CUSTOMER" />
-    <NavigationProperty Name="O_ORDER" Relationship="GJSModel.FK_O_ORDER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_ORDER" />
   </EntityType>
   <EntityType Name="O_INFORMATION">
     <Key>
@@ -170,13 +203,17 @@
     </Key>
     <Property Name="NEWS_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NEWS_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NEW_DESCRIPTIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="NEWS_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="IMAGE_NEWS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CATEGORY_NEWS_CD" Type="Int64" />
-    <Property Name="TAG_ALT" Type="Int64" />
+    <Property Name="SOURCE_COPY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TAG_ALT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLOYEE_CD" Type="Int64" />
     <Property Name="STATUS" Type="Int64" />
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="M_EMPLOYEE" Relationship="Self.FK_O_NEWS_M_EMPLOYEE" FromRole="O_NEWS" ToRole="M_EMPLOYEE" />
     <NavigationProperty Name="O_CATEGORY_NEWS" Relationship="Self.FK_O_NEWS_O_CATEGORY_NEWS" FromRole="O_NEWS" ToRole="O_CATEGORY_NEWS" />
     <NavigationProperty Name="O_NEWS_HIGHLIGHTS" Relationship="Self.FK_O_NEWS_HIGHLIGHTS_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_HIGHLIGHTS" />
     <NavigationProperty Name="O_NEWS_NEW" Relationship="Self.FK_O_NEWS_NEW_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_NEW" />
@@ -211,6 +248,7 @@
     <Property Name="ORDER_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ORDER_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="EMPLOYEE_CD" Type="Int64" />
+    <Property Name="CUSTOMER_CD" Type="Int64" />
     <Property Name="PHONE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="DELIVERY_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -219,8 +257,17 @@
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
     <NavigationProperty Name="D_ORDER_DETAIL" Relationship="Self.FK_D_ORDER_DETAIL_O_ORDER" FromRole="O_ORDER" ToRole="D_ORDER_DETAIL" />
     <NavigationProperty Name="M_EMPLOYEE" Relationship="Self.FK_O_ORDER_M_EMPLOYEE" FromRole="O_ORDER" ToRole="M_EMPLOYEE" />
-    <Property Name="CUSTOMER_CD" Type="Int64" />
-    <NavigationProperty Name="O_CUSTOMER" Relationship="GJSModel.FK_O_ORDER_O_CUSTOMER" FromRole="O_ORDER" ToRole="O_CUSTOMER" />
+    <NavigationProperty Name="O_CUSTOMER" Relationship="Self.FK_O_ORDER_O_CUSTOMER" FromRole="O_ORDER" ToRole="O_CUSTOMER" />
+  </EntityType>
+  <EntityType Name="O_PRICE_GOLD">
+    <Key>
+      <PropertyRef Name="PRICE_GOLD_CD" />
+    </Key>
+    <Property Name="PRICE_GOLD_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PRICE_SALES" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PRICE_BUY" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="GOLD_CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GOLD_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="O_PRODUCT">
     <Key>
@@ -233,10 +280,15 @@
     <Property Name="PRODUCT_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CATEGORY_PRODUCT_CD" Type="Int64" />
     <Property Name="CATEGORY_GRANULES_CD" Type="Int64" />
+    <Property Name="CATEGORY_PRODUCT_DETAIL_CD" Type="Int64" />
     <Property Name="WEIGHT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="QUANTITY" Type="Int64" />
     <Property Name="PRICE" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PRICE_PROMOTION" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="WAGES" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CURRENCY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="URL_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SIZE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="TAG_ALT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="STATUS" Type="Int64" />
     <Property Name="ACTIVE" Type="Boolean" />
@@ -244,17 +296,11 @@
     <NavigationProperty Name="D_ORDER_DETAIL" Relationship="Self.FK_D_ORDER_DETAIL_O_PRODUCT" FromRole="O_PRODUCT" ToRole="D_ORDER_DETAIL" />
     <NavigationProperty Name="D_PRODUCT_DETAIL" Relationship="Self.FK_D_PRODUCT_DETAIL_O_PRODUCT" FromRole="O_PRODUCT" ToRole="D_PRODUCT_DETAIL" />
     <NavigationProperty Name="O_CATEGORY_GRANULES" Relationship="Self.FK_O_PRODUCT_O_CATEGORY_GRANULES" FromRole="O_PRODUCT" ToRole="O_CATEGORY_GRANULES" />
+    <NavigationProperty Name="O_CATEGORY_PRODUCT" Relationship="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT" FromRole="O_PRODUCT" ToRole="O_CATEGORY_PRODUCT" />
+    <NavigationProperty Name="O_CATEGORY_PRODUCT_DETAIL" Relationship="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" FromRole="O_PRODUCT" ToRole="O_CATEGORY_PRODUCT_DETAIL" />
     <NavigationProperty Name="O_PRODUCT_HIGHLIGHTS" Relationship="Self.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_HIGHLIGHTS" />
     <NavigationProperty Name="O_PRODUCT_NEW" Relationship="Self.FK_O_PRODUCT_NEW_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_NEW" />
     <NavigationProperty Name="O_PRODUCT_SELLING" Relationship="Self.FK_O_PRODUCT_SELLING_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_SELLING" />
-    <Property Name="CATEGORY_PRODUCT_DETAIL_CD" Type="Int64" />
-    <NavigationProperty Name="O_CATEGORY_PRODUCT_DETAIL" Relationship="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" FromRole="O_PRODUCT" ToRole="O_CATEGORY_PRODUCT_DETAIL" />
-    <NavigationProperty Name="O_CATEGORY_PRODUCT" Relationship="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT" FromRole="O_PRODUCT" ToRole="O_CATEGORY_PRODUCT" />
-    <NavigationProperty Name="O_CATEGORY_GRANULES1" Relationship="GJSModel.FK_O_PRODUCT_O_CATEGORY_GRANULES1" FromRole="O_PRODUCT" ToRole="O_CATEGORY_GRANULES" />
-    <Property Name="URL_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="SIZE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PRICE_PROMOTION" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="CURRENCY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="O_PRODUCT_HIGHLIGHTS">
     <Key>
@@ -334,7 +380,7 @@
     <Key>
       <PropertyRef Name="CD" />
     </Key>
-    <Property Name="CD" Type="Int64" Nullable="false" />
+    <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="USER_CD" Type="Int64" />
     <Property Name="PST_CD" Type="Int64" />
     <Property Name="STATUS" Type="Int64" />
@@ -427,6 +473,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_O_NEWS_M_EMPLOYEE">
+    <End Role="M_EMPLOYEE" Type="Self.M_EMPLOYEE" Multiplicity="0..1" />
+    <End Role="O_NEWS" Type="Self.O_NEWS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_EMPLOYEE">
+        <PropertyRef Name="EMPLOYEE_CD" />
+      </Principal>
+      <Dependent Role="O_NEWS">
+        <PropertyRef Name="EMPLOYEE_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_O_ORDER_M_EMPLOYEE">
     <End Role="M_EMPLOYEE" Type="Self.M_EMPLOYEE" Multiplicity="0..1" />
     <End Role="O_ORDER" Type="Self.O_ORDER" Multiplicity="*" />
@@ -483,7 +541,7 @@
         <PropertyRef Name="CATEGORY_GRANULES_CD" />
       </Principal>
       <Dependent Role="O_PRODUCT">
-        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
+        <PropertyRef Name="CATEGORY_GRANULES_CD" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -496,6 +554,54 @@
       </Principal>
       <Dependent Role="O_NEWS">
         <PropertyRef Name="CATEGORY_NEWS_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT">
+    <End Role="O_CATEGORY_PRODUCT" Type="Self.O_CATEGORY_PRODUCT" Multiplicity="0..1" />
+    <End Role="O_CATEGORY_PRODUCT_DETAIL" Type="Self.O_CATEGORY_PRODUCT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CATEGORY_PRODUCT">
+        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
+      </Principal>
+      <Dependent Role="O_CATEGORY_PRODUCT_DETAIL">
+        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT">
+    <End Role="O_CATEGORY_PRODUCT" Type="Self.O_CATEGORY_PRODUCT" Multiplicity="0..1" />
+    <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CATEGORY_PRODUCT">
+        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
+      </Principal>
+      <Dependent Role="O_PRODUCT">
+        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL">
+    <End Role="O_CATEGORY_PRODUCT_DETAIL" Type="Self.O_CATEGORY_PRODUCT_DETAIL" Multiplicity="0..1" />
+    <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CATEGORY_PRODUCT_DETAIL">
+        <PropertyRef Name="CATEGORY_PRODUCT_DETAIL_CD" />
+      </Principal>
+      <Dependent Role="O_PRODUCT">
+        <PropertyRef Name="CATEGORY_PRODUCT_DETAIL_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_ORDER_O_CUSTOMER">
+    <End Role="O_CUSTOMER" Type="Self.O_CUSTOMER" Multiplicity="0..1" />
+    <End Role="O_ORDER" Type="Self.O_ORDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CUSTOMER">
+        <PropertyRef Name="CUSTOMER_CD" />
+      </Principal>
+      <Dependent Role="O_ORDER">
+        <PropertyRef Name="CUSTOMER_CD" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -629,6 +735,8 @@
     <EntitySet Name="O_CATEGORY_GRANULES" EntityType="Self.O_CATEGORY_GRANULES" />
     <EntitySet Name="O_CATEGORY_NEWS" EntityType="Self.O_CATEGORY_NEWS" />
     <EntitySet Name="O_CATEGORY_PAGE" EntityType="Self.O_CATEGORY_PAGE" />
+    <EntitySet Name="O_CATEGORY_PRODUCT" EntityType="Self.O_CATEGORY_PRODUCT" />
+    <EntitySet Name="O_CATEGORY_PRODUCT_DETAIL" EntityType="Self.O_CATEGORY_PRODUCT_DETAIL" />
     <EntitySet Name="O_CITIES" EntityType="Self.O_CITIES" />
     <EntitySet Name="O_CUSTOMER" EntityType="Self.O_CUSTOMER" />
     <EntitySet Name="O_INFORMATION" EntityType="Self.O_INFORMATION" />
@@ -636,6 +744,7 @@
     <EntitySet Name="O_NEWS_HIGHLIGHTS" EntityType="Self.O_NEWS_HIGHLIGHTS" />
     <EntitySet Name="O_NEWS_NEW" EntityType="Self.O_NEWS_NEW" />
     <EntitySet Name="O_ORDER" EntityType="Self.O_ORDER" />
+    <EntitySet Name="O_PRICE_GOLD" EntityType="Self.O_PRICE_GOLD" />
     <EntitySet Name="O_PRODUCT" EntityType="Self.O_PRODUCT" />
     <EntitySet Name="O_PRODUCT_HIGHLIGHTS" EntityType="Self.O_PRODUCT_HIGHLIGHTS" />
     <EntitySet Name="O_PRODUCT_NEW" EntityType="Self.O_PRODUCT_NEW" />
@@ -660,6 +769,10 @@
       <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
       <End Role="D_PRODUCT_DETAIL" EntitySet="D_PRODUCT_DETAIL" />
     </AssociationSet>
+    <AssociationSet Name="FK_O_NEWS_M_EMPLOYEE" Association="Self.FK_O_NEWS_M_EMPLOYEE">
+      <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
+      <End Role="O_NEWS" EntitySet="O_NEWS" />
+    </AssociationSet>
     <AssociationSet Name="FK_O_ORDER_M_EMPLOYEE" Association="Self.FK_O_ORDER_M_EMPLOYEE">
       <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
       <End Role="O_ORDER" EntitySet="O_ORDER" />
@@ -683,6 +796,22 @@
     <AssociationSet Name="FK_O_NEWS_O_CATEGORY_NEWS" Association="Self.FK_O_NEWS_O_CATEGORY_NEWS">
       <End Role="O_CATEGORY_NEWS" EntitySet="O_CATEGORY_NEWS" />
       <End Role="O_NEWS" EntitySet="O_NEWS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT" Association="Self.FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT">
+      <End Role="O_CATEGORY_PRODUCT" EntitySet="O_CATEGORY_PRODUCT" />
+      <End Role="O_CATEGORY_PRODUCT_DETAIL" EntitySet="O_CATEGORY_PRODUCT_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT" Association="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT">
+      <End Role="O_CATEGORY_PRODUCT" EntitySet="O_CATEGORY_PRODUCT" />
+      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" Association="Self.FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL">
+      <End Role="O_CATEGORY_PRODUCT_DETAIL" EntitySet="O_CATEGORY_PRODUCT_DETAIL" />
+      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_ORDER_O_CUSTOMER" Association="Self.FK_O_ORDER_O_CUSTOMER">
+      <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
+      <End Role="O_ORDER" EntitySet="O_ORDER" />
     </AssociationSet>
     <AssociationSet Name="FK_O_USER_CUSTOMER_O_CUSTOMER" Association="Self.FK_O_USER_CUSTOMER_O_CUSTOMER">
       <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
@@ -725,28 +854,6 @@
       <End Role="O_USER_PST" EntitySet="O_USER_PST" />
     </AssociationSet>
     <FunctionImport Name="SP_STATISTICS_VISIT" ReturnType="Collection(GJSModel.SP_STATISTICS_VISIT_Result)" />
-    <AssociationSet Name="FK_O_ORDER_O_CUSTOMER" Association="GJSModel.FK_O_ORDER_O_CUSTOMER">
-      <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
-      <End Role="O_ORDER" EntitySet="O_ORDER" />
-    </AssociationSet>
-    <EntitySet Name="O_CATEGORY_PRODUCT_DETAIL" EntityType="GJSModel.O_CATEGORY_PRODUCT_DETAIL" />
-    <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL">
-      <End Role="O_CATEGORY_PRODUCT_DETAIL" EntitySet="O_CATEGORY_PRODUCT_DETAIL" />
-      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
-    </AssociationSet>
-    <EntitySet Name="O_CATEGORY_PRODUCT" EntityType="GJSModel.O_CATEGORY_PRODUCT" />
-    <AssociationSet Name="FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT" Association="GJSModel.FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT">
-      <End Role="O_CATEGORY_PRODUCT" EntitySet="O_CATEGORY_PRODUCT" />
-      <End Role="O_CATEGORY_PRODUCT_DETAIL" EntitySet="O_CATEGORY_PRODUCT_DETAIL" />
-    </AssociationSet>
-    <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT" Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT">
-      <End Role="O_CATEGORY_PRODUCT" EntitySet="O_CATEGORY_PRODUCT" />
-      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
-    </AssociationSet>
-    <AssociationSet Name="FK_O_PRODUCT_O_CATEGORY_GRANULES1" Association="GJSModel.FK_O_PRODUCT_O_CATEGORY_GRANULES1">
-      <End Role="O_CATEGORY_GRANULES" EntitySet="O_CATEGORY_GRANULES" />
-      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
-    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="SP_STATISTICS_VISIT_Result">
     <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
@@ -757,93 +864,4 @@
     <Property Type="Int64" Name="COUNTER_VISIT_MONTH_TT" Nullable="true" />
     <Property Type="Int64" Name="COUNTER_VISIT_TOTAL" Nullable="true" />
   </ComplexType>
-  <Association Name="FK_O_ORDER_O_CUSTOMER">
-    <End Type="GJSModel.O_CUSTOMER" Role="O_CUSTOMER" Multiplicity="0..1" />
-    <End Type="GJSModel.O_ORDER" Role="O_ORDER" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="O_CUSTOMER">
-        <PropertyRef Name="CUSTOMER_CD" />
-      </Principal>
-      <Dependent Role="O_ORDER">
-        <PropertyRef Name="CUSTOMER_CD" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="O_CATEGORY_PRODUCT_DETAIL">
-    <Key>
-      <PropertyRef Name="CATEGORY_PRODUCT_DETAIL_CD" />
-    </Key>
-    <Property Name="CATEGORY_PRODUCT_DETAIL_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CATEGORY_PRODUCT_DETAIL_CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="CATEGORY_PRODUCT_DETAIL_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="TAG_ALT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="STATUS" Type="Int64" />
-    <Property Name="ACTIVE" Type="Boolean" />
-    <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="O_PRODUCT" Relationship="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL" FromRole="O_CATEGORY_PRODUCT_DETAIL" ToRole="O_PRODUCT" />
-    <Property Name="CATEGORY_PRODUCT_CD" Type="Int64" />
-    <NavigationProperty Name="O_CATEGORY_PRODUCT" Relationship="GJSModel.FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT" FromRole="O_CATEGORY_PRODUCT_DETAIL" ToRole="O_CATEGORY_PRODUCT" />
-  </EntityType>
-  <Association Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT_DETAIL">
-    <End Type="GJSModel.O_CATEGORY_PRODUCT_DETAIL" Role="O_CATEGORY_PRODUCT_DETAIL" Multiplicity="0..1" />
-    <End Type="GJSModel.O_PRODUCT" Role="O_PRODUCT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="O_CATEGORY_PRODUCT_DETAIL">
-        <PropertyRef Name="CATEGORY_PRODUCT_DETAIL_CD" />
-      </Principal>
-      <Dependent Role="O_PRODUCT">
-        <PropertyRef Name="CATEGORY_PRODUCT_DETAIL_CD" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="O_CATEGORY_PRODUCT">
-    <Key>
-      <PropertyRef Name="CATEGORY_PRODUCT_CD" />
-    </Key>
-    <Property Name="CATEGORY_PRODUCT_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CATEGORY_PRODUCT_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="CATEGORY_PRODUCT_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="TAG_ALT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="STATUS" Type="Int64" />
-    <Property Name="ACTIVE" Type="Boolean" />
-    <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="O_CATEGORY_PRODUCT_DETAIL" Relationship="GJSModel.FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT" FromRole="O_CATEGORY_PRODUCT" ToRole="O_CATEGORY_PRODUCT_DETAIL" />
-    <NavigationProperty Name="O_PRODUCT" Relationship="GJSModel.FK_O_PRODUCT_O_CATEGORY_PRODUCT" FromRole="O_CATEGORY_PRODUCT" ToRole="O_PRODUCT" />
-  </EntityType>
-  <Association Name="FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT">
-    <End Type="GJSModel.O_CATEGORY_PRODUCT" Role="O_CATEGORY_PRODUCT" Multiplicity="0..1" />
-    <End Type="GJSModel.O_CATEGORY_PRODUCT_DETAIL" Role="O_CATEGORY_PRODUCT_DETAIL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="O_CATEGORY_PRODUCT">
-        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
-      </Principal>
-      <Dependent Role="O_CATEGORY_PRODUCT_DETAIL">
-        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_O_PRODUCT_O_CATEGORY_PRODUCT">
-    <End Type="GJSModel.O_CATEGORY_PRODUCT" Role="O_CATEGORY_PRODUCT" Multiplicity="0..1" />
-    <End Type="GJSModel.O_PRODUCT" Role="O_PRODUCT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="O_CATEGORY_PRODUCT">
-        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
-      </Principal>
-      <Dependent Role="O_PRODUCT">
-        <PropertyRef Name="CATEGORY_PRODUCT_CD" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_O_PRODUCT_O_CATEGORY_GRANULES1">
-    <End Type="GJSModel.O_CATEGORY_GRANULES" Role="O_CATEGORY_GRANULES" Multiplicity="0..1" />
-    <End Type="GJSModel.O_PRODUCT" Role="O_PRODUCT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="O_CATEGORY_GRANULES">
-        <PropertyRef Name="CATEGORY_GRANULES_CD" />
-      </Principal>
-      <Dependent Role="O_PRODUCT">
-        <PropertyRef Name="CATEGORY_GRANULES_CD" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

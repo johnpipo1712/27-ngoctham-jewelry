@@ -161,17 +161,6 @@
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
-    <Compile Include="Models\ForgotPasswordModel.cs" />
-    <Compile Include="Models\JsonModel.cs" />
-    <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\O_CATEGORY_PRODUCT_DETAIL.cs">
-      <DependentUpon>DB_GJS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\O_PRICE_GOLD.cs">
-      <DependentUpon>DB_GJS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RegisterModel.cs" />
-    <Compile Include="Startup.cs" />
     <Compile Include="Models\DB_GJS.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -193,6 +182,9 @@
     <Compile Include="Models\D_PRODUCT_DETAIL.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ForgotPasswordModel.cs" />
+    <Compile Include="Models\JsonModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\M_EMPLOYEE.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
@@ -217,6 +209,9 @@
     <Compile Include="Models\O_CATEGORY_PRODUCT.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\O_CATEGORY_PRODUCT_DETAIL.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\O_CITIES.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
@@ -236,6 +231,9 @@
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\O_ORDER.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\O_PRICE_GOLD.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\O_PRODUCT.cs">
@@ -262,6 +260,7 @@
     <Compile Include="Models\O_USER_PST.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\SP_STATISTICS_VISIT_Result.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
@@ -277,6 +276,7 @@
     <Compile Include="Models\W_PRODUCT.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -577,6 +577,17 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\images\cc\Thumbs.db" />
+    <Content Include="Content\images\demo\Thumbs.db" />
+    <Content Include="Content\images\email_template\Thumbs.db" />
+    <Content Include="Content\images\Thumbs.db" />
     <EntityDeploy Include="Models\DB_GJS.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DB_GJS.Designer.cs</LastGenOutput>
@@ -594,17 +605,6 @@
       <DependentUpon>DB_GJS.edmx</DependentUpon>
       <LastGenOutput>DB_GJS.cs</LastGenOutput>
     </Content>
-    <Content Include="Content\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\fonts\FontAwesome.otf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\images\cc\Thumbs.db" />
-    <Content Include="Content\images\demo\Thumbs.db" />
-    <Content Include="Content\images\email_template\Thumbs.db" />
-    <Content Include="Content\images\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -702,8 +702,6 @@
     <Content Include="Views\Home\LaserInscription.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\NewsDetail.cshtml" />
-    <Content Include="Views\Home\NewsFinancial.cshtml" />
-    <Content Include="Views\Home\NewsGold.cshtml" />
     <Content Include="Views\Home\ProductDetail.cshtml" />
     <Content Include="Views\Home\ProductList.cshtml" />
     <Content Include="Views\Home\ShowAlbum.cshtml" />
@@ -716,6 +714,9 @@
     <Content Include="Views\CategoryPage\Index.cshtml" />
     <Content Include="Views\CategoryPage\Create.cshtml" />
     <Content Include="Views\CategoryPage\Edit.cshtml" />
+    <Content Include="Views\Home\Category_News.cshtml" />
+    <Content Include="Views\Home\Product_Category.cshtml" />
+    <Content Include="Views\Home\Product_Category_Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
