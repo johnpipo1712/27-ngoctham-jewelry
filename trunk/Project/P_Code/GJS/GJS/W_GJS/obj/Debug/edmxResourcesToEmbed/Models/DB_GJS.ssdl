@@ -171,6 +171,7 @@
     <Property Name="CUSTOMER_NAME" Type="nvarchar(max)" />
     <Property Name="CUSTOMER_FIRST_NAME" Type="nvarchar(max)" />
     <Property Name="CUSTOMER_LAST_NAME" Type="nvarchar(max)" />
+    <Property Name="PHONE" Type="nvarchar" MaxLength="50" />
     <Property Name="ADDRESS" Type="nvarchar(max)" />
     <Property Name="EMAIL" Type="nvarchar(max)" />
     <Property Name="SEX" Type="nvarchar(max)" />
