@@ -386,7 +386,7 @@ namespace W_GJS.Controllers
         public JsonResult GetBrancheslByCityAJAX(long? CITIES_CD)
         {
             Db_gsj = new GJSEntities();
-            return Json(Db_gsj.O_BRANCH.Where(t => t.CITIES_CD == CITIES_CD).ToList().Select(t=> new{t.BRANCH_NAME,t.ADDRESS,t.PHONE}).ToArray());
+            return Json(Db_gsj.O_BRANCH.Where(t => t.CITIES_CD == CITIES_CD).ToList().Select(t=> new{t.BRANCH_NAME,t.ADDRESS,t.PHONE,t.LATITUDE,t.LONGITUDE}).ToArray());
  
         }
 
@@ -395,7 +395,7 @@ namespace W_GJS.Controllers
          public JsonResult GetBrancheslByDCityAJAX(long? CITIES_DETAIL_CD)
          {
              Db_gsj = new GJSEntities();
-             return Json(Db_gsj.O_BRANCH.Where(t => t.CITIES_DETAIL_CD == CITIES_DETAIL_CD).ToList().Select(t => new { t.BRANCH_NAME, t.ADDRESS, t.PHONE }).ToArray());
+             return Json(Db_gsj.O_BRANCH.Where(t => t.CITIES_DETAIL_CD == CITIES_DETAIL_CD).ToList().Select(t => new { t.BRANCH_NAME, t.ADDRESS, t.PHONE, t.LATITUDE, t.LONGITUDE }).ToArray());
 
          }
       
