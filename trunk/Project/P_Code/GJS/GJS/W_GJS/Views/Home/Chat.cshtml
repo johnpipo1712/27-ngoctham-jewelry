@@ -4,13 +4,21 @@
     Layout = "~/Views/Shared/_LayoutManagement.cshtml";
 }
 
-<h2>Demo Chat</h2>
+<h2>Live Chat</h2>
 
 <div class="container">
-    <input type="text" id="message" />
-    <input type="button" id="sendmessage" value="Send" />
+    <div class="row">
+        <div class="col-md-11">
+            <input type="text" id="message" class="form-control" />
+        </div>
+        <div class="col-md-1">
+            <input type="button" id="sendmessage" value="Gửi" class="btn btn-primary" />
+        </div>
+    </div>
     <input type="hidden" value="" id="displayname" />
-    <ul id="discussion"></ul>
+    <div class="row">
+        <ul id="discussion"></ul>
+    </div>
 </div>
 @section scripts {
     <!--Script references. -->
@@ -43,6 +51,14 @@
                     chat.server.send($('#displayname').val(), $('#message').val());
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
+                });
+                $( "#message" ).keypress(function( event ) {
+                    if ( event.which == 13 ) {
+                        // Call the Send method on the hub.
+                        chat.server.send($('#displayname').val(), $('#message').val());
+                        // Clear text box and reset focus for next comment.
+                        $('#message').val('').focus();
+                    }
                 });
             });
         });
