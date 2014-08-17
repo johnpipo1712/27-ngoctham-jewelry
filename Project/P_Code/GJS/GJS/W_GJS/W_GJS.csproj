@@ -717,6 +717,9 @@
     <Content Include="Views\Home\Category_News.cshtml" />
     <Content Include="Views\Home\Product_Category.cshtml" />
     <Content Include="Views\Home\Product_Category_Detail.cshtml" />
+    <Content Include="Views\Shared\_FooterManagement.cshtml" />
+    <Content Include="Views\Shared\_TopBarManagement.cshtml" />
+    <Content Include="Views\Shared\_MenuManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
