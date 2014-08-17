@@ -1,0 +1,2 @@
+San pham :
+  truong Status : 1 moi duoc hien thi ben san pham
