@@ -1,4 +1,7 @@
 ﻿<!-- FOOTER -->
+@{
+    HttpApplicationState application = HttpContext.Current.ApplicationInstance.Application;
+}
 <footer id="footer">
     <div class="container">
 
@@ -44,25 +47,44 @@
                     </li>
                 </ul>*@
                 <div class="counter-wrapper">
-                    <h4 class="text-center"><strong>Thống Kê Truy Cập</strong></h4>
+                    <h4 class="text-center"><strong>Số lượng truy cập</strong></h4>
                     <table>
                         <tr>
-                            <th class="counter-online-now">Đang truy cập:</th>
-                            <td class="counter-people">000123</td>
+                            <th class="counter-online-now">Hiện tại:</th>
+                            <td class="counter-people">@application["VISITORS_ONLINE"]</td>
                         </tr>
                         <tr>
-                            <th>Truy cập trong ngày:</th>
-                            <td class="counter-people">000123</td>
+                            <th>Trong ngày:</th>
+                            <td class="counter-people">@application["COUNTER_VISIT_GN"]</td>
                         </tr>
                         <tr>
-                            <th>Truy cập trong tháng:</th>
-                            <td class="counter-people">000123</td>
+                            <th>Hôm qua:</th>
+                            <td class="counter-people">@application["COUNTER_VISIT_HQ"]</td>
                         </tr>
                         <tr>
-                            <th>Truy cập trong năm:</th>
-                            <td class="counter-people">000123</td>
+                            <th>Tuần này:</th>
+                            <td class="counter-people">@application["COUNTER_VISIT_WEEK_TN"]</td>
                         </tr>
-                    </table>
+                        <tr>
+                            <th>Tuần trước:</th>
+                            <td class="counter-people">@application["COUNTER_VISIT_WEEK_TT"]</td>
+                        </tr>
+                        <tr>
+                            <th>Tháng này:</th>
+                            <td class="counter-people">@application["COUNTER_VISIT_MONTH_TN"]</td>
+                        </tr>
+                        <tr>
+                            <th>Tháng trước:</th>
+                            <td class="counter-people">@application["COUNTER_VISIT_MONTH_TT"]</td>
+                        </tr>
+                        <tr>
+                            <th>Tất cả:</th>
+                            <td class="counter-people">@application["COUNTER_VISIT_MONTH_TOTAL"]</td>
+                        </tr>
+                        
+                        
+                        
+                     </table>
                 </div>
             </div>
             <!-- /col #2 -->
