@@ -1,0 +1,59 @@
+﻿@model IEnumerable<W_GJS.Models.M_PAGE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PAGE_COTRACT_CD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PAGE_COTRACT_TITLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PAGE_COTRACT_CONTENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.O_CATEGORY_PAGE)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PAGE_COTRACT_CD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PAGE_COTRACT_TITLE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PAGE_COTRACT_CONTENT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.O_CATEGORY_PAGE)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD }) |
+                @if (item.ACTIVE == false)
+                    {
+                        @Html.ActionLink("Active", "Active", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Deactive", "Deactive", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
+                    }
+            </td>
+        </tr>
+    }
+
+</table>
