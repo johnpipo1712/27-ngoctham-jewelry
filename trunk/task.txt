@@ -1,0 +1,3 @@
+rất gấp: frame chat, phần giao diện.
+Quan trọng: chỉnh hiệu ứng cho photo.
+Không gấp lắm: chỉnh layout cho administrator.
