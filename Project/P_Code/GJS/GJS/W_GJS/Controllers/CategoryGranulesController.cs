@@ -26,23 +26,23 @@ namespace W_GJS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(O_CATEGORY_GRANULES CATEGORY_NEWS)
+        public ActionResult Create(O_CATEGORY_GRANULES CATEGORY_GRANULES)
         {
             
             if (ModelState.IsValid)
             {
                 Db_gsj = new GJSEntities();
-                CATEGORY_NEWS.ACTIVE = true;
-                CATEGORY_NEWS.STATUS = 0;
-                CATEGORY_NEWS.CREATEDATE = DateTime.Now;
-                Db_gsj.Entry(CATEGORY_NEWS).State = EntityState.Added;
+                CATEGORY_GRANULES.ACTIVE = true;
+                CATEGORY_GRANULES.STATUS = 0;
+                CATEGORY_GRANULES.CREATEDATE = DateTime.Now;
+                Db_gsj.Entry(CATEGORY_GRANULES).State = EntityState.Added;
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");
 
             }
             else
             {
-                return View(CATEGORY_NEWS);
+                return View(CATEGORY_GRANULES);
             }
         }
         [HttpGet]
@@ -82,31 +82,31 @@ namespace W_GJS.Controllers
         }
 
 
-        public ActionResult Deactive([Bind(Include = "CATEGORY_GRANULES_CD")]O_CATEGORY_GRANULES CATEGORY_NEWS)
+        public ActionResult Deactive([Bind(Include = "CATEGORY_GRANULES_CD")]O_CATEGORY_GRANULES CATEGORY_GRANULES)
         {
-            if (CATEGORY_NEWS == null)
+            if (CATEGORY_GRANULES == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
-            CATEGORY_NEWS = Db_gsj.O_CATEGORY_GRANULES.Single(t => t.CATEGORY_GRANULES_CD == CATEGORY_NEWS.CATEGORY_GRANULES_CD);
-            CATEGORY_NEWS.ACTIVE = false;
-            Db_gsj.Entry(CATEGORY_NEWS).State = EntityState.Modified;
+            CATEGORY_GRANULES = Db_gsj.O_CATEGORY_GRANULES.Single(t => t.CATEGORY_GRANULES_CD == CATEGORY_GRANULES.CATEGORY_GRANULES_CD);
+            CATEGORY_GRANULES.ACTIVE = false;
+            Db_gsj.Entry(CATEGORY_GRANULES).State = EntityState.Modified;
             Db_gsj.SaveChanges();
             return RedirectToAction("Index");
         }
 
 
-        public ActionResult Active([Bind(Include = "CATEGORY_GRANULES_CD")]O_CATEGORY_GRANULES CATEGORY_NEWS)
+        public ActionResult Active([Bind(Include = "CATEGORY_GRANULES_CD")]O_CATEGORY_GRANULES CATEGORY_GRANULES)
         {
-            if (CATEGORY_NEWS == null)
+            if (CATEGORY_GRANULES == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
-            CATEGORY_NEWS = Db_gsj.O_CATEGORY_GRANULES.Single(t => t.CATEGORY_GRANULES_CD == CATEGORY_NEWS.CATEGORY_GRANULES_CD);
-            CATEGORY_NEWS.ACTIVE = true;
-            Db_gsj.Entry(CATEGORY_NEWS).State = EntityState.Modified;
+            CATEGORY_GRANULES = Db_gsj.O_CATEGORY_GRANULES.Single(t => t.CATEGORY_GRANULES_CD == CATEGORY_GRANULES.CATEGORY_GRANULES_CD);
+            CATEGORY_GRANULES.ACTIVE = true;
+            Db_gsj.Entry(CATEGORY_GRANULES).State = EntityState.Modified;
             Db_gsj.SaveChanges();
             return RedirectToAction("Index");
         }
