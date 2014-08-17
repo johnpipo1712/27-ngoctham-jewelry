@@ -1,6 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="GJSModelStoreContainer" CdmEntityContainer="GJSEntities">
+    <EntitySetMapping Name="D_CITIES_DETAIL">
+      <EntityTypeMapping TypeName="GJSModel.D_CITIES_DETAIL">
+        <MappingFragment StoreEntitySet="D_CITIES_DETAIL">
+          <ScalarProperty Name="CITIES_DETAIL_CD" ColumnName="CITIES_DETAIL_CD" />
+          <ScalarProperty Name="CITIES_CD" ColumnName="CITIES_CD" />
+          <ScalarProperty Name="CITIES_DETAIL_CODE" ColumnName="CITIES_DETAIL_CODE" />
+          <ScalarProperty Name="CITIES_DETAIL_NAME" ColumnName="CITIES_DETAIL_NAME" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="D_ORDER_DETAIL">
       <EntityTypeMapping TypeName="GJSModel.D_ORDER_DETAIL">
         <MappingFragment StoreEntitySet="D_ORDER_DETAIL">
@@ -74,6 +87,7 @@
           <ScalarProperty Name="BRANCH_CODE" ColumnName="BRANCH_CODE" />
           <ScalarProperty Name="BRANCH_NAME" ColumnName="BRANCH_NAME" />
           <ScalarProperty Name="CITIES_CD" ColumnName="CITIES_CD" />
+          <ScalarProperty Name="CITIES_DETAIL_CD" ColumnName="CITIES_DETAIL_CD" />
           <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
           <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
           <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
@@ -254,6 +268,9 @@
     <EntitySetMapping Name="O_PRICE_GOLD">
       <EntityTypeMapping TypeName="GJSModel.O_PRICE_GOLD">
         <MappingFragment StoreEntitySet="O_PRICE_GOLD">
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="PRICE_GOLD_CD" ColumnName="PRICE_GOLD_CD" />
           <ScalarProperty Name="PRICE_SALES" ColumnName="PRICE_SALES" />
           <ScalarProperty Name="PRICE_BUY" ColumnName="PRICE_BUY" />
@@ -434,5 +451,16 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="O_PRODUCT_CATALOG">
+      <EntityTypeMapping TypeName="GJSModel.O_PRODUCT_CATALOG">
+        <MappingFragment StoreEntitySet="O_PRODUCT_CATALOG">
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="PRODUCT_CD" ColumnName="PRODUCT_CD" />
+          <ScalarProperty Name="CD" ColumnName="CD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

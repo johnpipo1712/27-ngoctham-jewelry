@@ -19,5 +19,8 @@ namespace W_GJS.Models
         public Nullable<decimal> PRICE_BUY { get; set; }
         public string GOLD_CODE { get; set; }
         public string GOLD_NAME { get; set; }
+        public Nullable<long> STATUS { get; set; }
+        public Nullable<bool> ACTIVE { get; set; }
+        public Nullable<System.DateTime> CREATEDATE { get; set; }
     }
 }

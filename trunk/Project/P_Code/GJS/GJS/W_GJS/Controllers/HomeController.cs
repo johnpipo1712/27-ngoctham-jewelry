@@ -101,11 +101,6 @@ namespace W_GJS.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Branches()
-        {
-            return View();
-        }
-
         public ActionResult DiamondAssess()
         {
             return View();
@@ -383,5 +378,51 @@ namespace W_GJS.Controllers
         {
             return View();
         }
+        public ActionResult Branches()
+        {
+            Db_gsj = new GJSEntities();
+            var query = Db_gsj.O_CITIES.Select(t => new { t.CITIES_CD,t.CITIES_NAME} ).ToList();
+            ViewBag.Cities = new SelectList(query.AsEnumerable(), "CITIES_CD", "CITIES_NAME",1);
+            var queryD = Db_gsj.D_CITIES_DETAIL.Where(t=>t.CITIES_CD == 1).ToList();
+            ViewBag.DCities = new SelectList(queryD.AsEnumerable(), "CITIES_DETAIL_CD", "CITIES_DETAIL_NAME",1);
+
+            return View(Db_gsj.O_BRANCH.Where(t => t.CITIES_CD == 1).ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Branches(string CITIES_CD, string CITIES_DETAIL_CD)
+        {
+            Db_gsj = new GJSEntities();
+           
+            return View();
+        }
+        [HttpPost]
+
+        public JsonResult GetDetailByCityAJAX(long? CITIES_CD)
+ 
+        {
+            Db_gsj = new GJSEntities();
+            return Json(Db_gsj.D_CITIES_DETAIL.Where(t => t.CITIES_CD == CITIES_CD).ToList().Select(t => new { t.CITIES_DETAIL_CD, t.CITIES_DETAIL_NAME }).ToArray());
+ 
+        }
+
+         [HttpPost]
+
+        public JsonResult GetBrancheslByCityAJAX(long? CITIES_CD)
+        {
+            Db_gsj = new GJSEntities();
+            return Json(Db_gsj.O_BRANCH.Where(t => t.CITIES_CD == CITIES_CD).ToList().Select(t=> new{t.BRANCH_NAME,t.ADDRESS,t.PHONE}).ToArray());
+ 
+        }
+
+         [HttpPost]
+
+         public JsonResult GetBrancheslByDCityAJAX(long? CITIES_DETAIL_CD)
+         {
+             Db_gsj = new GJSEntities();
+             return Json(Db_gsj.O_BRANCH.Where(t => t.CITIES_DETAIL_CD == CITIES_DETAIL_CD).ToList().Select(t => new { t.BRANCH_NAME, t.ADDRESS, t.PHONE }).ToArray());
+
+         }
+      
     }
 }
