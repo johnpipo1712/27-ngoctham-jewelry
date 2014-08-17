@@ -128,3 +128,7 @@
 #gold-rate-modal {
     font-size: small;
 }
+
+.hand-cursor {
+    cursor: pointer;
+}

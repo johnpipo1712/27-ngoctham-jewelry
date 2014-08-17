@@ -242,7 +242,7 @@
                         {
                             if (i % 2 != 0)
                             {
-                                <tr>
+                                <tr class="hand-cursor" data-toggle="modal" data-target="#mapView">
                                     <td class="sys1">@Model.ToList()[i].BRANCH_NAME</td>
                                     <td class="sys2">@Model.ToList()[i].ADDRESS</td>
                                     <td class="sys3">@Model.ToList()[i].PHONE</td>
@@ -250,7 +250,7 @@
                             }
                             else
                             {
-                                <tr class="even">
+                                <tr class="even hand-cursor " data-toggle="modal" data-target="#mapView">
                                     <td class="sys1">@Model.ToList()[i].BRANCH_NAME</td>
                                     <td class="sys2">@Model.ToList()[i].ADDRESS</td>
                                     <td class="sys3">@Model.ToList()[i].PHONE</td>
@@ -266,6 +266,25 @@
                 <!--AspNetPager is hidden because there're only one page of records-->
                 <!-- AspNetPager 7.3.2  Copyright:2003-2010 BoYang Computer Co., Ltd. (http://en.webdiyer.com) -->
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="mapView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Bản đồ</h4>
+            </div>
+            <div class="modal-body">
+                <!-- Đặt code google map vào đây -->
+            </div>
+            @*<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>*@
         </div>
     </div>
 </div>
