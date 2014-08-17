@@ -141,6 +141,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\CategoryGranulesController.cs" />
     <Compile Include="Controllers\PageController.cs" />
@@ -1030,6 +1031,7 @@
     <Content Include="Self\branches\images\bg-arrow.png" />
     <Content Include="Self\branches\images\bg-sys-store.png" />
     <Content Include="Self\branches\images\button-sys.png" />
+    <Content Include="Self\branches\js\script.js" />
     <Content Include="Self\news\css\mainstyles.css" />
     <Content Include="Self\services\css\default.css" />
     <Content Include="Web.config" />
@@ -1129,6 +1131,7 @@
     <Content Include="Views\Page\Index.cshtml" />
     <Content Include="Views\Page\Create.cshtml" />
     <Content Include="Views\Page\Edit.cshtml" />
+    <Content Include="Views\Administrator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
