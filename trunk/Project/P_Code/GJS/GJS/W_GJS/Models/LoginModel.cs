@@ -23,29 +23,38 @@ namespace W_GJS.Models
         [Display(Name = "Mật khẩu")]
         public string USER_PASS { get; set; }
 
-        public static int Login(string username, string password)
+        public static JsonResultLoginModel Login(string username, string password)
         {
+            JsonResultLoginModel jsonModel = new JsonResultLoginModel();
             GJSEntities Db_gsj = new GJSEntities();
             //check exist user (ensure that no duplicate user)
             S_USER USER_found = Db_gsj.S_USER.Single(t => t.USER_NAME == username);
             if (USER_found == null)
             {
-                return 0;
+                jsonModel.RoleOrFailed = 0;
+                jsonModel.ErrorString = "Username not existing.";
+                return jsonModel;
             }
 
             //check active
             if (USER_found.ACTIVE == false)
             {
-                return 0;
+                jsonModel.RoleOrFailed = 0;
+                jsonModel.ErrorString = "Username not existing.";
+                return jsonModel;
             }
 
             //compare password
             if (password != USER_found.USER_PASS)
             {
-                return 0;
+                jsonModel.RoleOrFailed = 0;
+                jsonModel.ErrorString = "Password is wrong.";
+                return jsonModel;
             }
 
-            return (int)USER_found.STATUS;
+
+            jsonModel.RoleOrFailed = (int)USER_found.STATUS;
+            return jsonModel;
             // 0: fail
             // 1: user normal login
             // 2: user catalog login
