@@ -8,6 +8,7 @@
     <link href="@Url.Content("~/Self/branches/css/default.css")" rel="stylesheet" type="text/css" />
 }
 @section Scripts {
+   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="@Url.Content("~/Self/branches/js/script.js")"></script>
 }
 
@@ -67,18 +68,18 @@
                             <td class="sys3">Điện thoại</td>
                         </tr>
                         @for (int i = 0; i < Model.Count(); i++)
-                        {
-                            if (i % 2 != 0)
-                            {
-                                <tr class="hand-cursor" data-toggle="modal" data-target="#mapView">
-                                    <td class="sys1">@Model.ToList()[i].BRANCH_NAME</td>
-                                    <td class="sys2">@Model.ToList()[i].ADDRESS</td>
-                                    <td class="sys3">@Model.ToList()[i].PHONE</td>
-                                </tr>
-                            }
-                            else
-                            {
-                                <tr class="even hand-cursor" data-toggle="modal" data-target="#mapView">
+{
+    if (i % 2 != 0)
+    {
+        <tr class="hand-cursor" data-toggle="modal" data-target="#mapView" onclick="getgooglegmap(@Model.ToList()[i].LATITUDE,@Model.ToList()[i].LONGITUDE)">
+            <td class="sys1">@Model.ToList()[i].BRANCH_NAME</td>
+            <td class="sys2">@Model.ToList()[i].ADDRESS</td>
+            <td class="sys3">@Model.ToList()[i].PHONE</td>
+        </tr>
+    }
+    else
+    {
+                                <tr class="even hand-cursor" data-toggle="modal" data-target="#mapView" onclick="getgooglegmap(@Model.ToList()[i].LATITUDE,@Model.ToList()[i].LONGITUDE)">
                                     <td class="sys1">@Model.ToList()[i].BRANCH_NAME</td>
                                     <td class="sys2">@Model.ToList()[i].ADDRESS</td>
                                     <td class="sys3">@Model.ToList()[i].PHONE</td>
@@ -107,7 +108,9 @@
                 <h4 class="modal-title" id="myModalLabel">Bản đồ</h4>
             </div>
             <div class="modal-body">
-                <!-- Đặt code google map vào đây -->
+                <div id="map_canvas"  style="width: 100%; height: 480px; ">
+
+                </div>
             </div>
             @*<div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
