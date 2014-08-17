@@ -22,6 +22,12 @@ namespace W_GJS.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            Db_gsj = new GJSEntities();
+            var query = Db_gsj.O_CITIES.Select(t => new { t.CITIES_CD, t.CITIES_NAME }).ToList();
+            ViewBag.Cities = new SelectList(query.AsEnumerable(), "CITIES_CD", "CITIES_NAME", 1);
+            var queryD = Db_gsj.D_CITIES_DETAIL.Where(t => t.CITIES_CD == 1).ToList();
+            ViewBag.DCities = new SelectList(queryD.AsEnumerable(), "CITIES_DETAIL_CD", "CITIES_DETAIL_NAME", 1);
+
             return View();
         }
 
@@ -113,6 +119,14 @@ namespace W_GJS.Controllers
             Db_gsj.Entry(BRANCH).State = EntityState.Modified;
             Db_gsj.SaveChanges();
             return RedirectToAction("Index");
+        }
+        [HttpPost]
+
+        public JsonResult GetDetailByCityAJAX(long? CITIES_CD)
+        {
+            Db_gsj = new GJSEntities();
+            return Json(Db_gsj.D_CITIES_DETAIL.Where(t => t.CITIES_CD == CITIES_CD).ToList().Select(t => new { t.CITIES_DETAIL_CD, t.CITIES_DETAIL_NAME }).ToArray());
+
         }
 	}
 }
