@@ -143,6 +143,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\CategoryGranulesController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\PriceGoldController.cs" />
     <Compile Include="Controllers\CategoryPageController.cs" />
     <Compile Include="Controllers\CategoryNewsController.cs" />
@@ -725,6 +726,9 @@
     <Content Include="Views\PriceGold\Index.cshtml" />
     <Content Include="Views\PriceGold\Create.cshtml" />
     <Content Include="Views\PriceGold\Edit.cshtml" />
+    <Content Include="Views\Page\Index.cshtml" />
+    <Content Include="Views\Page\Create.cshtml" />
+    <Content Include="Views\Page\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
