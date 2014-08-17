@@ -179,6 +179,7 @@
     <EntitySetMapping Name="O_CUSTOMER">
       <EntityTypeMapping TypeName="GJSModel.O_CUSTOMER">
         <MappingFragment StoreEntitySet="O_CUSTOMER">
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
           <ScalarProperty Name="CUSTOMER_CD" ColumnName="CUSTOMER_CD" />
           <ScalarProperty Name="CUSTOMER_CODE" ColumnName="CUSTOMER_CODE" />
           <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />

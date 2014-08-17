@@ -2,9 +2,11 @@
 @{
     ViewBag.Title = "Product_Category_Detail";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
-    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).ToList();
 
 }
+
+
 <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>Danh Sách Sản Phẩm</strong></h2>
 
 <!-- options -->

@@ -176,6 +176,7 @@
           <Property Name="CUSTOMER_NAME" Type="nvarchar(max)" />
           <Property Name="CUSTOMER_FIRST_NAME" Type="nvarchar(max)" />
           <Property Name="CUSTOMER_LAST_NAME" Type="nvarchar(max)" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="50" />
           <Property Name="ADDRESS" Type="nvarchar(max)" />
           <Property Name="EMAIL" Type="nvarchar(max)" />
           <Property Name="SEX" Type="nvarchar(max)" />
@@ -1093,6 +1094,7 @@
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="O_ORDER" Relationship="Self.FK_O_ORDER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_ORDER" />
           <NavigationProperty Name="O_USER_CUSTOMER" Relationship="Self.FK_O_USER_CUSTOMER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_USER_CUSTOMER" />
+          <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="O_INFORMATION">
           <Key>
@@ -2022,6 +2024,7 @@
           <EntitySetMapping Name="O_CUSTOMER">
             <EntityTypeMapping TypeName="GJSModel.O_CUSTOMER">
               <MappingFragment StoreEntitySet="O_CUSTOMER">
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
                 <ScalarProperty Name="CUSTOMER_CD" ColumnName="CUSTOMER_CD" />
                 <ScalarProperty Name="CUSTOMER_CODE" ColumnName="CUSTOMER_CODE" />
                 <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />

@@ -201,6 +201,7 @@
     <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
     <NavigationProperty Name="O_ORDER" Relationship="Self.FK_O_ORDER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_ORDER" />
     <NavigationProperty Name="O_USER_CUSTOMER" Relationship="Self.FK_O_USER_CUSTOMER_O_CUSTOMER" FromRole="O_CUSTOMER" ToRole="O_USER_CUSTOMER" />
+    <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="O_INFORMATION">
     <Key>

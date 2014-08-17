@@ -1,8 +1,34 @@
 ﻿@{
     ViewBag.Title = "ShowAlbum";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
-    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true ).ToList();
 }
+
+@section PageTitle {
+    <section class="page-title">
+        <div class="container">
+
+            <header>
+
+                <ul class="breadcrumb">
+                    <!-- breadcrumb -->
+                    <li><a href="@Url.Action("Index")">Trang Chủ</a></li>
+                    <li class="active">Album</li>
+                </ul><!-- /breadcrumb -->
+
+                <h2>
+                    <!-- Page Title -->
+                     <strong>Album</strong>
+                </h2><!-- /Page Title -->
+
+            </header>
+
+        </div>
+    </section>
+}
+
+
+
 
 @foreach (var item in listcategory)
 {
@@ -12,13 +38,16 @@
       <div class="row lightbox" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
           @foreach (var itemproduct in item.O_PRODUCT)
           {
-              <div class="col-sm-3 col-md-3">
-                    <div class="box-content thumbnail text-center">
-                        <a href="@itemproduct.URL_IMAGE" class="item-image">
-                            <img class="img-responsive" src="@itemproduct.URL_IMAGE" alt="" />
-                        </a>
-                    </div>
-                </div>
+              if (itemproduct.O_PRODUCT_CATALOG != null || itemproduct.O_PRODUCT_CATALOG.Count > 0)
+              { 
+                      <div class="col-sm-3 col-md-3">
+                            <div class="box-content thumbnail text-center">
+                                <a href="@itemproduct.URL_IMAGE" class="item-image">
+                                    <img class="img-responsive" src="@itemproduct.URL_IMAGE" alt="" />
+                                </a>
+                            </div>
+                        </div>
+              }
           }
      </div>
     }

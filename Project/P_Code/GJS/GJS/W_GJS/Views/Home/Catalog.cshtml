@@ -3,6 +3,29 @@
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
     List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
 }
+@section PageTitle {
+    <section class="page-title">
+        <div class="container">
+
+            <header>
+
+                <ul class="breadcrumb">
+                    <!-- breadcrumb -->
+                    <li><a href="@Url.Action("Index")">Trang Chủ</a></li>
+                    <li class="active">Catolog</li>
+                </ul><!-- /breadcrumb -->
+
+                <h2>
+                    <!-- Page Title -->
+                    <strong>Catolog</strong>
+                </h2><!-- /Page Title -->
+
+            </header>
+
+        </div>
+    </section>
+}
+
 
 @foreach (var item in listcategory)
 {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -45,7 +46,7 @@ namespace W_GJS.Controllers
 
                 // calc beginPos
                 int beginPos = numItemsInBlock * blockNumber;
-                listproduct = Db_gsj.O_PRODUCT.Where(t => t.ACTIVE == true).ToList().Skip(beginPos).Take(numItemsInBlock).ToList();
+                listproduct = Db_gsj.O_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).ToList().Skip(beginPos).Take(numItemsInBlock).ToList();
             }
 
             
@@ -193,13 +194,13 @@ namespace W_GJS.Controllers
         public ActionResult Product_Category([Bind(Include = "CATEGORY_PRODUCT_CD")]O_CATEGORY_PRODUCT CATEGORY_PRODUCT)
         {
             Db_gsj = new GJSEntities();
-            return View(Db_gsj.O_PRODUCT.Where(t=>t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD));
+            return View(Db_gsj.O_PRODUCT.Where(t=>t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD && t.STATUS == 1 && t.ACTIVE == true));
         }
 
         public ActionResult Product_Category_Detail([Bind(Include = "CATEGORY_PRODUCT_DETAIL_CD")]O_CATEGORY_PRODUCT_DETAIL CATEGORY_PRODUCT_DETAIL)
         {
             Db_gsj = new GJSEntities();
-            return View(Db_gsj.O_PRODUCT.Where(t=>t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_CD).ToList());
+            return View(Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_CD && t.STATUS == 1 && t.ACTIVE == true).ToList());
         }
         public ActionResult ProductList()
         {
@@ -294,25 +295,40 @@ namespace W_GJS.Controllers
             return RedirectToAction("Index", "Home");
 
         }
-        [HttpGet]
+        [HttpPost]
         public ActionResult Checkout()
         {
             O_ORDER ord = (O_ORDER)Session["Cart"];
             if (ord != null)
             {
-                ViewBag.Infomation = "Điền thông tin thanh toán";
                 Db_gsj = new GJSEntities();
-                ord.CUSTOMER_CD = 1;
-                Db_gsj.O_ORDER.Add(ord);
+                O_ORDER ordcheckout = new O_ORDER();
+                ordcheckout.ACTIVE = true;
+                ordcheckout.STATUS = 0;
+                ordcheckout.CREATEDATE = DateTime.Now;
+                ordcheckout.CUSTOMER_CD = 1;
+                ordcheckout.O_CUSTOMER = Db_gsj.O_CUSTOMER.Single(t=>t.CUSTOMER_CD == 1);
+                ordcheckout.PHONE = ordcheckout.O_CUSTOMER.PHONE;
+                ordcheckout.EMAIL = ordcheckout.O_CUSTOMER.EMAIL;
+                ordcheckout.DELIVERY_ADDRESS = ordcheckout.O_CUSTOMER.ADDRESS;
+                Db_gsj.Entry(ordcheckout).State = EntityState.Added;
                 Db_gsj.SaveChanges();
-
                 foreach (var item in ord.D_ORDER_DETAIL)
                 {
-                    item.ORDER_CD = ord.ORDER_CD;
-                    Db_gsj.D_ORDER_DETAIL.Add(item);
+                    D_ORDER_DETAIL orddetail = new D_ORDER_DETAIL();
+                    orddetail.STATUS = 0;
+                    orddetail.CREATEDATE = DateTime.Now;
+                    orddetail.ACTIVE = true;
+                    orddetail.ORDER_CD = ordcheckout.ORDER_CD;
+                    orddetail.PRODUCT_CD = item.PRODUCT_CD;
+                    orddetail.QUANTITY = item.QUANTITY;
+                    orddetail.SIZE = item.SIZE;
+                    orddetail.PRICE = item.PRICE;
+                    Db_gsj.Entry(orddetail).State = EntityState.Added;
                     Db_gsj.SaveChanges();
                 }
                 Session["Cart"] = null;
+               
                 return RedirectToAction("Index", "Home");
                 
             }
@@ -322,48 +338,7 @@ namespace W_GJS.Controllers
 
             }
         }
-        [HttpPost]
-        public ActionResult Checkout(O_ORDER ord)
-        {
-            return View();
-            if (ModelState.IsValid)
-            {
-                //db = new DbWebDNEntities();
-                //int Maord = 0;
-                //if (db.O_ORDERs.Count() > 0)
-                //{
-                //    O_ORDER Phieudh = db.O_ORDERs.OrderByDescending(t => t.ID).Skip(0).Take(1).FirstOrDefault();
-                //    int dodai = Phieudh.Maord.Length - 3;
-                //    Maord = Convert.ToInt32(Phieudh.Maord.Substring(3, dodai));
-                //}
-                //ord.NgayDH = DateTime.Now;
-                //ord.Maord = "ord" + (Maord + 1).ToString();
-                //if (User.Identity.IsAuthenticated)
-                //    ord.NguoiDung = db.NguoiDungs.Single(t => t.TenDN == User.Identity.Name);
-                //ord.TrangThai = 0;
-                //db.O_ORDERs.Add(ord);
-                //db.SaveChanges();
-                //O_ORDER ord = (O_ORDER)Session["Cart"];
-                //foreach (CTO_ORDER ct in ord.CTO_ORDERs)
-                //{
-                //    CTO_ORDER ctord = new CTO_ORDER();
-                //    ctord.IDord = ord.ID;
-                //    ctord.IDpro = ct.O_PRODUCT.ID;
-                //    ctord.SoLuong = ct.SoLuong;
-                //    ctord.GiaTien = ct.O_PRODUCT.Gia * ct.SoLuong;
-                //    db.CTO_ORDERs.Add(ctord);
-                //    db.SaveChanges();
-                //}
-                //ProcessSendMail.SendMail_ThanhToan(ord);
-                //ProcessSendMail.SendMail_ThongBao(ord);
-                //Session["Cart"] = null;
-                //return RedirectToAction("CheckoutComplete");
-            }
-            else
-            {
-                return View(ord);
-            }
-        }
+        
         public ActionResult CheckoutComplete()
         {
             ViewBag.Where = "Thanh toán thành công";
