@@ -5,11 +5,9 @@
     Layout = "~/Views/Shared/_LayoutManagement.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Danh sách</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -54,7 +52,6 @@
             @Html.DisplayFor(modelItem => item.CREATEDATE)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @if (item.ACTIVE == false)
             {
                 @Html.ActionLink("Active", "Active", new { PST_CD = item.PST_CD })

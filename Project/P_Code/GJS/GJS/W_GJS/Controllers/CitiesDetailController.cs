@@ -9,7 +9,7 @@ using W_GJS.Models;
 
 namespace W_GJS.Controllers
 {
-    public class CITIES_DETAILDetailController : Controller
+    public class CitiesDetailController : Controller
     {
         //
         // GET: /CITIES_DETAIL_Detail/
