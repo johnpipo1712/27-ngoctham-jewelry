@@ -42,33 +42,37 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="@Url.Action("ProductList", "Home")">SẢN PHẨM <span>products</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("DiamondAssess", "Home")">Loại sản phẩm</a></li>
-                            <li><a href="@Url.Action("DiamondAssess", "Home")">Sản phẩm</a></li>
+                            <li><a href="@Url.Action("Index", "CategoryProduct")">Loại sản phẩm</a></li>
+                            <li><a href="@Url.Action("Index", "Product")">Sản phẩm</a></li>
                         </ul>
                     </li>
 
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="shop-home-1.html#">TRANG TĨNH <span>pages</span></a>
+                        <a class="dropdown-toggle" href="#">TRANG TĨNH <span>pages</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("DiamondAssess", "Home")">Loại trang (menu)</a></li>
-                            <li><a href="@Url.Action("ColoredStonesAssess", "Home")">Trang</a></li>
+                            <li><a href="@Url.Action("Index", "CategoryPage")">Loại trang (menu)</a></li>
+                            <li><a href="@Url.Action("Index", "Page")">Trang</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="@Url.Action("Branches", "Home")">HỆ THỐNG CHI NHÁNH <span>branches</span></a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("ShowAlbum", "Home")">ALBUM <span>album</span></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="@Url.Action("News", "Home")">TIN TỨC <span>news</span></a>
+                        <a class="dropdown-toggle" href="#">HỆ THỐNG CHI NHÁNH <span>branches</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("DiamondAssess", "Home")">Loại tin tức</a></li>
-                            <li><a href="@Url.Action("DiamondAssess", "Home")">Tin tức</a></li>
+                            <li><a href="@Url.Action("Index", "Branch")">Chi nhánh</a></li>
+                            <li><a href="@Url.Action("Index", "Cities")">Khu vực</a></li>
+                        </ul>
+                    </li>
+                    @*<li>
+                        <a href="@Url.Action("ShowAlbum", "Home")">ALBUM <span>album</span></a>
+                    </li>*@
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#">TIN TỨC <span>news</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index", "CategoryNews")">Loại tin tức</a></li>
+                            <li><a href="@Url.Action("Index", "News")">Tin tức</a></li>
                         </ul>
                     </li>
                     <li data-toggle="modal" data-target="#gold-rate-modal">
-                        <a href="#">BẢNG GIÁ VÀNG <span>gold rates</span></a>
+                        <a href="@Url.Action("Index", "PriceGold")">BẢNG GIÁ VÀNG <span>gold rates</span></a>
                     </li>
 
                     <!--<li><a href="#" data-toggle="modal" data-target="#LoginModal">@*<i class="fa fa-angle-right"></i>*@Đăng Nhập <span>login</span></a></li>
