@@ -136,6 +136,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Self\news\images\" />
     <Folder Include="Self\services\images\" />
+    <Folder Include="Views\Cities_Detail\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\CategoryGranulesController.cs" />
+    <Compile Include="Controllers\CitiesDetailController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\PriceGoldController.cs" />
     <Compile Include="Controllers\CategoryPageController.cs" />
@@ -1132,6 +1134,8 @@
     <Content Include="Views\Page\Create.cshtml" />
     <Content Include="Views\Page\Edit.cshtml" />
     <Content Include="Views\Administrator\Index.cshtml" />
+    <Content Include="Views\CITIES_DETAILDetail\Create.cshtml" />
+    <Content Include="Views\CITIES_DETAILDetail\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
