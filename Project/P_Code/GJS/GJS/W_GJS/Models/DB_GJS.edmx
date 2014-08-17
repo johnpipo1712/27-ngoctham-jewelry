@@ -4,7 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="D_CITIES_DETAIL">
+          <Key>
+            <PropertyRef Name="CITIES_DETAIL_CD" />
+          </Key>
+          <Property Name="CITIES_DETAIL_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CITIES_CD" Type="bigint" />
+          <Property Name="CITIES_DETAIL_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CITIES_DETAIL_NAME" Type="nvarchar(max)" />
+          <Property Name="STATUS" Type="bigint" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
         <EntityType Name="D_ORDER_DETAIL">
           <Key>
             <PropertyRef Name="ORDER_DETAIL_CD" />
@@ -74,6 +86,7 @@
           <Property Name="BRANCH_CODE" Type="nvarchar" MaxLength="50" />
           <Property Name="BRANCH_NAME" Type="nvarchar(max)" />
           <Property Name="CITIES_CD" Type="bigint" />
+          <Property Name="CITIES_DETAIL_CD" Type="bigint" />
           <Property Name="ADDRESS" Type="nvarchar(max)" />
           <Property Name="LONGITUDE" Type="nvarchar(max)" />
           <Property Name="LATITUDE" Type="nvarchar(max)" />
@@ -167,8 +180,8 @@
           <Property Name="EMAIL" Type="nvarchar(max)" />
           <Property Name="SEX" Type="nvarchar(max)" />
           <Property Name="BIRTHDAY" Type="datetime" />
-          <Property Name="STATUS" Type="bigint" />
           <Property Name="SUBSCRIBE" Type="bit" />
+          <Property Name="STATUS" Type="bigint" />
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
         </EntityType>
@@ -246,6 +259,9 @@
           <Property Name="PRICE_BUY" Type="decimal" Precision="18" Scale="0" />
           <Property Name="GOLD_CODE" Type="nvarchar(max)" />
           <Property Name="GOLD_NAME" Type="nvarchar(max)" />
+          <Property Name="STATUS" Type="bigint" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="O_PRODUCT">
           <Key>
@@ -268,6 +284,16 @@
           <Property Name="URL_IMAGE" Type="nvarchar(max)" />
           <Property Name="SIZE" Type="nvarchar(max)" />
           <Property Name="TAG_ALT" Type="nvarchar(max)" />
+          <Property Name="STATUS" Type="bigint" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="O_PRODUCT_CATALOG">
+          <Key>
+            <PropertyRef Name="CD" />
+          </Key>
+          <Property Name="CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRODUCT_CD" Type="bigint" />
           <Property Name="STATUS" Type="bigint" />
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
@@ -394,6 +420,18 @@
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
         </EntityType>
+        <Association Name="FK_D_CITIES_DETAIL_O_CITIES">
+          <End Role="O_CITIES" Type="Self.O_CITIES" Multiplicity="0..1" />
+          <End Role="D_CITIES_DETAIL" Type="Self.D_CITIES_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_CITIES">
+              <PropertyRef Name="CITIES_CD" />
+            </Principal>
+            <Dependent Role="D_CITIES_DETAIL">
+              <PropertyRef Name="CITIES_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_D_ORDER_DETAIL_O_ORDER">
           <End Role="O_ORDER" Type="Self.O_ORDER" Multiplicity="0..1" />
           <End Role="D_ORDER_DETAIL" Type="Self.D_ORDER_DETAIL" Multiplicity="*" />
@@ -439,6 +477,18 @@
             </Principal>
             <Dependent Role="M_PAGE">
               <PropertyRef Name="CATEGORY_PAGE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_BRANCH_D_CITIES_DETAIL">
+          <End Role="D_CITIES_DETAIL" Type="Self.D_CITIES_DETAIL" Multiplicity="0..1" />
+          <End Role="O_BRANCH" Type="Self.O_BRANCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="D_CITIES_DETAIL">
+              <PropertyRef Name="CITIES_DETAIL_CD" />
+            </Principal>
+            <Dependent Role="O_BRANCH">
+              <PropertyRef Name="CITIES_DETAIL_CD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -535,6 +585,18 @@
             </Principal>
             <Dependent Role="O_ORDER">
               <PropertyRef Name="CUSTOMER_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_PRODUCT_CATALOG_O_PRODUCT">
+          <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="0..1" />
+          <End Role="O_PRODUCT_CATALOG" Type="Self.O_PRODUCT_CATALOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_PRODUCT">
+              <PropertyRef Name="PRODUCT_CD" />
+            </Principal>
+            <Dependent Role="O_PRODUCT_CATALOG">
+              <PropertyRef Name="PRODUCT_CD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -684,6 +746,7 @@
         </Association>
         <Function Name="SP_STATISTICS_VISIT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="GJSModelStoreContainer">
+          <EntitySet Name="D_CITIES_DETAIL" EntityType="Self.D_CITIES_DETAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="D_ORDER_DETAIL" EntityType="Self.D_ORDER_DETAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="D_PRODUCT_DETAIL" EntityType="Self.D_PRODUCT_DETAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_EMPLOYEE" EntityType="Self.M_EMPLOYEE" Schema="dbo" store:Type="Tables" />
@@ -704,6 +767,7 @@
           <EntitySet Name="O_ORDER" EntityType="Self.O_ORDER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_PRICE_GOLD" EntityType="Self.O_PRICE_GOLD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_PRODUCT" EntityType="Self.O_PRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_PRODUCT_CATALOG" EntityType="Self.O_PRODUCT_CATALOG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_PRODUCT_HIGHLIGHTS" EntityType="Self.O_PRODUCT_HIGHLIGHTS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_PRODUCT_NEW" EntityType="Self.O_PRODUCT_NEW" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_PRODUCT_SELLING" EntityType="Self.O_PRODUCT_SELLING" Schema="dbo" store:Type="Tables" />
@@ -715,6 +779,10 @@
           <EntitySet Name="S_STATISTICS_VISIT" EntityType="Self.S_STATISTICS_VISIT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_USER" EntityType="Self.S_USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="W_PRODUCT" EntityType="Self.W_PRODUCT" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_D_CITIES_DETAIL_O_CITIES" Association="Self.FK_D_CITIES_DETAIL_O_CITIES">
+            <End Role="O_CITIES" EntitySet="O_CITIES" />
+            <End Role="D_CITIES_DETAIL" EntitySet="D_CITIES_DETAIL" />
+          </AssociationSet>
           <AssociationSet Name="FK_D_ORDER_DETAIL_O_ORDER" Association="Self.FK_D_ORDER_DETAIL_O_ORDER">
             <End Role="O_ORDER" EntitySet="O_ORDER" />
             <End Role="D_ORDER_DETAIL" EntitySet="D_ORDER_DETAIL" />
@@ -730,6 +798,10 @@
           <AssociationSet Name="FK_M_PAGE_O_CATEGORY_PAGE" Association="Self.FK_M_PAGE_O_CATEGORY_PAGE">
             <End Role="O_CATEGORY_PAGE" EntitySet="O_CATEGORY_PAGE" />
             <End Role="M_PAGE" EntitySet="M_PAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_BRANCH_D_CITIES_DETAIL" Association="Self.FK_O_BRANCH_D_CITIES_DETAIL">
+            <End Role="D_CITIES_DETAIL" EntitySet="D_CITIES_DETAIL" />
+            <End Role="O_BRANCH" EntitySet="O_BRANCH" />
           </AssociationSet>
           <AssociationSet Name="FK_O_BRANCH_O_CITIES" Association="Self.FK_O_BRANCH_O_CITIES">
             <End Role="O_CITIES" EntitySet="O_CITIES" />
@@ -762,6 +834,10 @@
           <AssociationSet Name="FK_O_ORDER_O_CUSTOMER" Association="Self.FK_O_ORDER_O_CUSTOMER">
             <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
             <End Role="O_ORDER" EntitySet="O_ORDER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_PRODUCT_CATALOG_O_PRODUCT" Association="Self.FK_O_PRODUCT_CATALOG_O_PRODUCT">
+            <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
+            <End Role="O_PRODUCT_CATALOG" EntitySet="O_PRODUCT_CATALOG" />
           </AssociationSet>
           <AssociationSet Name="FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" Association="Self.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT">
             <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
@@ -812,11 +888,24 @@
             <End Role="O_USER_PST" EntitySet="O_USER_PST" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GJSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="D_CITIES_DETAIL">
+          <Key>
+            <PropertyRef Name="CITIES_DETAIL_CD" />
+          </Key>
+          <Property Name="CITIES_DETAIL_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CITIES_CD" Type="Int64" />
+          <Property Name="CITIES_DETAIL_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CITIES_DETAIL_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="O_CITIES" Relationship="GJSModel.FK_D_CITIES_DETAIL_O_CITIES" FromRole="D_CITIES_DETAIL" ToRole="O_CITIES" />
+          <NavigationProperty Name="O_BRANCH" Relationship="GJSModel.FK_O_BRANCH_D_CITIES_DETAIL" FromRole="D_CITIES_DETAIL" ToRole="O_BRANCH" />
+        </EntityType>
         <EntityType Name="D_ORDER_DETAIL">
           <Key>
             <PropertyRef Name="ORDER_DETAIL_CD" />
@@ -893,6 +982,7 @@
           <Property Name="BRANCH_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BRANCH_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CITIES_CD" Type="Int64" />
+          <Property Name="CITIES_DETAIL_CD" Type="Int64" />
           <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LONGITUDE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LATITUDE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -901,6 +991,7 @@
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="O_CITIES" Relationship="Self.FK_O_BRANCH_O_CITIES" FromRole="O_BRANCH" ToRole="O_CITIES" />
+          <NavigationProperty Name="D_CITIES_DETAIL" Relationship="GJSModel.FK_O_BRANCH_D_CITIES_DETAIL" FromRole="O_BRANCH" ToRole="D_CITIES_DETAIL" />
         </EntityType>
         <EntityType Name="O_CATEGORY_GRANULES">
           <Key>
@@ -981,6 +1072,7 @@
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="O_BRANCH" Relationship="Self.FK_O_BRANCH_O_CITIES" FromRole="O_CITIES" ToRole="O_BRANCH" />
+          <NavigationProperty Name="D_CITIES_DETAIL" Relationship="GJSModel.FK_D_CITIES_DETAIL_O_CITIES" FromRole="O_CITIES" ToRole="D_CITIES_DETAIL" />
         </EntityType>
         <EntityType Name="O_CUSTOMER">
           <Key>
@@ -1085,6 +1177,9 @@
           <Property Name="PRICE_BUY" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="GOLD_CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="GOLD_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="O_PRODUCT">
           <Key>
@@ -1118,6 +1213,7 @@
           <NavigationProperty Name="O_PRODUCT_HIGHLIGHTS" Relationship="Self.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_HIGHLIGHTS" />
           <NavigationProperty Name="O_PRODUCT_NEW" Relationship="Self.FK_O_PRODUCT_NEW_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_NEW" />
           <NavigationProperty Name="O_PRODUCT_SELLING" Relationship="Self.FK_O_PRODUCT_SELLING_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_SELLING" />
+          <NavigationProperty Name="O_PRODUCT_CATALOG" Relationship="GJSModel.FK_O_PRODUCT_CATALOG_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_CATALOG" />
         </EntityType>
         <EntityType Name="O_PRODUCT_HIGHLIGHTS">
           <Key>
@@ -1543,6 +1639,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="GJSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="D_CITIES_DETAIL" EntityType="Self.D_CITIES_DETAIL" />
           <EntitySet Name="D_ORDER_DETAIL" EntityType="Self.D_ORDER_DETAIL" />
           <EntitySet Name="D_PRODUCT_DETAIL" EntityType="Self.D_PRODUCT_DETAIL" />
           <EntitySet Name="M_EMPLOYEE" EntityType="Self.M_EMPLOYEE" />
@@ -1671,6 +1768,19 @@
             <End Role="O_USER_PST" EntitySet="O_USER_PST" />
           </AssociationSet>
           <FunctionImport Name="SP_STATISTICS_VISIT" ReturnType="Collection(GJSModel.SP_STATISTICS_VISIT_Result)" />
+          <EntitySet Name="O_PRODUCT_CATALOG" EntityType="GJSModel.O_PRODUCT_CATALOG" />
+          <AssociationSet Name="FK_D_CITIES_DETAIL_O_CITIES" Association="GJSModel.FK_D_CITIES_DETAIL_O_CITIES">
+            <End Role="O_CITIES" EntitySet="O_CITIES" />
+            <End Role="D_CITIES_DETAIL" EntitySet="D_CITIES_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_BRANCH_D_CITIES_DETAIL" Association="GJSModel.FK_O_BRANCH_D_CITIES_DETAIL">
+            <End Role="D_CITIES_DETAIL" EntitySet="D_CITIES_DETAIL" />
+            <End Role="O_BRANCH" EntitySet="O_BRANCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_PRODUCT_CATALOG_O_PRODUCT" Association="GJSModel.FK_O_PRODUCT_CATALOG_O_PRODUCT">
+            <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
+            <End Role="O_PRODUCT_CATALOG" EntitySet="O_PRODUCT_CATALOG" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="SP_STATISTICS_VISIT_Result">
           <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
@@ -1681,12 +1791,72 @@
           <Property Type="Int64" Name="COUNTER_VISIT_MONTH_TT" Nullable="true" />
           <Property Type="Int64" Name="COUNTER_VISIT_TOTAL" Nullable="true" />
         </ComplexType>
+        <EntityType Name="O_PRODUCT_CATALOG">
+          <Key>
+            <PropertyRef Name="CD" />
+          </Key>
+          <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRODUCT_CD" Type="Int64" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="O_PRODUCT" Relationship="GJSModel.FK_O_PRODUCT_CATALOG_O_PRODUCT" FromRole="O_PRODUCT_CATALOG" ToRole="O_PRODUCT" />
+        </EntityType>
+        <Association Name="FK_D_CITIES_DETAIL_O_CITIES">
+          <End Type="GJSModel.O_CITIES" Role="O_CITIES" Multiplicity="0..1" />
+          <End Type="GJSModel.D_CITIES_DETAIL" Role="D_CITIES_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_CITIES">
+              <PropertyRef Name="CITIES_CD" />
+            </Principal>
+            <Dependent Role="D_CITIES_DETAIL">
+              <PropertyRef Name="CITIES_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_BRANCH_D_CITIES_DETAIL">
+          <End Type="GJSModel.D_CITIES_DETAIL" Role="D_CITIES_DETAIL" Multiplicity="0..1" />
+          <End Type="GJSModel.O_BRANCH" Role="O_BRANCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="D_CITIES_DETAIL">
+              <PropertyRef Name="CITIES_DETAIL_CD" />
+            </Principal>
+            <Dependent Role="O_BRANCH">
+              <PropertyRef Name="CITIES_DETAIL_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_PRODUCT_CATALOG_O_PRODUCT">
+          <End Type="GJSModel.O_PRODUCT" Role="O_PRODUCT" Multiplicity="0..1" />
+          <End Type="GJSModel.O_PRODUCT_CATALOG" Role="O_PRODUCT_CATALOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_PRODUCT">
+              <PropertyRef Name="PRODUCT_CD" />
+            </Principal>
+            <Dependent Role="O_PRODUCT_CATALOG">
+              <PropertyRef Name="PRODUCT_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GJSModelStoreContainer" CdmEntityContainer="GJSEntities">
+          <EntitySetMapping Name="D_CITIES_DETAIL">
+            <EntityTypeMapping TypeName="GJSModel.D_CITIES_DETAIL">
+              <MappingFragment StoreEntitySet="D_CITIES_DETAIL">
+                <ScalarProperty Name="CITIES_DETAIL_CD" ColumnName="CITIES_DETAIL_CD" />
+                <ScalarProperty Name="CITIES_CD" ColumnName="CITIES_CD" />
+                <ScalarProperty Name="CITIES_DETAIL_CODE" ColumnName="CITIES_DETAIL_CODE" />
+                <ScalarProperty Name="CITIES_DETAIL_NAME" ColumnName="CITIES_DETAIL_NAME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="D_ORDER_DETAIL">
             <EntityTypeMapping TypeName="GJSModel.D_ORDER_DETAIL">
               <MappingFragment StoreEntitySet="D_ORDER_DETAIL">
@@ -1760,6 +1930,7 @@
                 <ScalarProperty Name="BRANCH_CODE" ColumnName="BRANCH_CODE" />
                 <ScalarProperty Name="BRANCH_NAME" ColumnName="BRANCH_NAME" />
                 <ScalarProperty Name="CITIES_CD" ColumnName="CITIES_CD" />
+                <ScalarProperty Name="CITIES_DETAIL_CD" ColumnName="CITIES_DETAIL_CD" />
                 <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
                 <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
                 <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
@@ -1940,6 +2111,9 @@
           <EntitySetMapping Name="O_PRICE_GOLD">
             <EntityTypeMapping TypeName="GJSModel.O_PRICE_GOLD">
               <MappingFragment StoreEntitySet="O_PRICE_GOLD">
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="PRICE_GOLD_CD" ColumnName="PRICE_GOLD_CD" />
                 <ScalarProperty Name="PRICE_SALES" ColumnName="PRICE_SALES" />
                 <ScalarProperty Name="PRICE_BUY" ColumnName="PRICE_BUY" />
@@ -2120,6 +2294,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="O_PRODUCT_CATALOG">
+            <EntityTypeMapping TypeName="GJSModel.O_PRODUCT_CATALOG">
+              <MappingFragment StoreEntitySet="O_PRODUCT_CATALOG">
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PRODUCT_CD" ColumnName="PRODUCT_CD" />
+                <ScalarProperty Name="CD" ColumnName="CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

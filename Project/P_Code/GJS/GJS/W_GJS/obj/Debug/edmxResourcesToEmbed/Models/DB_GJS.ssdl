@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="D_CITIES_DETAIL">
+    <Key>
+      <PropertyRef Name="CITIES_DETAIL_CD" />
+    </Key>
+    <Property Name="CITIES_DETAIL_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CITIES_CD" Type="bigint" />
+    <Property Name="CITIES_DETAIL_CODE" Type="nvarchar" MaxLength="50" />
+    <Property Name="CITIES_DETAIL_NAME" Type="nvarchar(max)" />
+    <Property Name="STATUS" Type="bigint" />
+    <Property Name="ACTIVE" Type="bit" />
+    <Property Name="CREATEDATE" Type="datetime" />
+  </EntityType>
   <EntityType Name="D_ORDER_DETAIL">
     <Key>
       <PropertyRef Name="ORDER_DETAIL_CD" />
@@ -69,6 +81,7 @@
     <Property Name="BRANCH_CODE" Type="nvarchar" MaxLength="50" />
     <Property Name="BRANCH_NAME" Type="nvarchar(max)" />
     <Property Name="CITIES_CD" Type="bigint" />
+    <Property Name="CITIES_DETAIL_CD" Type="bigint" />
     <Property Name="ADDRESS" Type="nvarchar(max)" />
     <Property Name="LONGITUDE" Type="nvarchar(max)" />
     <Property Name="LATITUDE" Type="nvarchar(max)" />
@@ -162,8 +175,8 @@
     <Property Name="EMAIL" Type="nvarchar(max)" />
     <Property Name="SEX" Type="nvarchar(max)" />
     <Property Name="BIRTHDAY" Type="datetime" />
-    <Property Name="STATUS" Type="bigint" />
     <Property Name="SUBSCRIBE" Type="bit" />
+    <Property Name="STATUS" Type="bigint" />
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
   </EntityType>
@@ -241,6 +254,9 @@
     <Property Name="PRICE_BUY" Type="decimal" Precision="18" Scale="0" />
     <Property Name="GOLD_CODE" Type="nvarchar(max)" />
     <Property Name="GOLD_NAME" Type="nvarchar(max)" />
+    <Property Name="STATUS" Type="bigint" />
+    <Property Name="ACTIVE" Type="bit" />
+    <Property Name="CREATEDATE" Type="datetime" />
   </EntityType>
   <EntityType Name="O_PRODUCT">
     <Key>
@@ -263,6 +279,16 @@
     <Property Name="URL_IMAGE" Type="nvarchar(max)" />
     <Property Name="SIZE" Type="nvarchar(max)" />
     <Property Name="TAG_ALT" Type="nvarchar(max)" />
+    <Property Name="STATUS" Type="bigint" />
+    <Property Name="ACTIVE" Type="bit" />
+    <Property Name="CREATEDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="O_PRODUCT_CATALOG">
+    <Key>
+      <PropertyRef Name="CD" />
+    </Key>
+    <Property Name="CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRODUCT_CD" Type="bigint" />
     <Property Name="STATUS" Type="bigint" />
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
@@ -389,6 +415,18 @@
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="CREATEDATE" Type="datetime" />
   </EntityType>
+  <Association Name="FK_D_CITIES_DETAIL_O_CITIES">
+    <End Role="O_CITIES" Type="Self.O_CITIES" Multiplicity="0..1" />
+    <End Role="D_CITIES_DETAIL" Type="Self.D_CITIES_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_CITIES">
+        <PropertyRef Name="CITIES_CD" />
+      </Principal>
+      <Dependent Role="D_CITIES_DETAIL">
+        <PropertyRef Name="CITIES_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_D_ORDER_DETAIL_O_ORDER">
     <End Role="O_ORDER" Type="Self.O_ORDER" Multiplicity="0..1" />
     <End Role="D_ORDER_DETAIL" Type="Self.D_ORDER_DETAIL" Multiplicity="*" />
@@ -434,6 +472,18 @@
       </Principal>
       <Dependent Role="M_PAGE">
         <PropertyRef Name="CATEGORY_PAGE_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_BRANCH_D_CITIES_DETAIL">
+    <End Role="D_CITIES_DETAIL" Type="Self.D_CITIES_DETAIL" Multiplicity="0..1" />
+    <End Role="O_BRANCH" Type="Self.O_BRANCH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="D_CITIES_DETAIL">
+        <PropertyRef Name="CITIES_DETAIL_CD" />
+      </Principal>
+      <Dependent Role="O_BRANCH">
+        <PropertyRef Name="CITIES_DETAIL_CD" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -530,6 +580,18 @@
       </Principal>
       <Dependent Role="O_ORDER">
         <PropertyRef Name="CUSTOMER_CD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_O_PRODUCT_CATALOG_O_PRODUCT">
+    <End Role="O_PRODUCT" Type="Self.O_PRODUCT" Multiplicity="0..1" />
+    <End Role="O_PRODUCT_CATALOG" Type="Self.O_PRODUCT_CATALOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="O_PRODUCT">
+        <PropertyRef Name="PRODUCT_CD" />
+      </Principal>
+      <Dependent Role="O_PRODUCT_CATALOG">
+        <PropertyRef Name="PRODUCT_CD" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -679,6 +741,7 @@
   </Association>
   <Function Name="SP_STATISTICS_VISIT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="GJSModelStoreContainer">
+    <EntitySet Name="D_CITIES_DETAIL" EntityType="Self.D_CITIES_DETAIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="D_ORDER_DETAIL" EntityType="Self.D_ORDER_DETAIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="D_PRODUCT_DETAIL" EntityType="Self.D_PRODUCT_DETAIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="M_EMPLOYEE" EntityType="Self.M_EMPLOYEE" Schema="dbo" store:Type="Tables" />
@@ -699,6 +762,7 @@
     <EntitySet Name="O_ORDER" EntityType="Self.O_ORDER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_PRICE_GOLD" EntityType="Self.O_PRICE_GOLD" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_PRODUCT" EntityType="Self.O_PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_PRODUCT_CATALOG" EntityType="Self.O_PRODUCT_CATALOG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_PRODUCT_HIGHLIGHTS" EntityType="Self.O_PRODUCT_HIGHLIGHTS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_PRODUCT_NEW" EntityType="Self.O_PRODUCT_NEW" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="O_PRODUCT_SELLING" EntityType="Self.O_PRODUCT_SELLING" Schema="dbo" store:Type="Tables" />
@@ -710,6 +774,10 @@
     <EntitySet Name="S_STATISTICS_VISIT" EntityType="Self.S_STATISTICS_VISIT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="S_USER" EntityType="Self.S_USER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="W_PRODUCT" EntityType="Self.W_PRODUCT" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_D_CITIES_DETAIL_O_CITIES" Association="Self.FK_D_CITIES_DETAIL_O_CITIES">
+      <End Role="O_CITIES" EntitySet="O_CITIES" />
+      <End Role="D_CITIES_DETAIL" EntitySet="D_CITIES_DETAIL" />
+    </AssociationSet>
     <AssociationSet Name="FK_D_ORDER_DETAIL_O_ORDER" Association="Self.FK_D_ORDER_DETAIL_O_ORDER">
       <End Role="O_ORDER" EntitySet="O_ORDER" />
       <End Role="D_ORDER_DETAIL" EntitySet="D_ORDER_DETAIL" />
@@ -725,6 +793,10 @@
     <AssociationSet Name="FK_M_PAGE_O_CATEGORY_PAGE" Association="Self.FK_M_PAGE_O_CATEGORY_PAGE">
       <End Role="O_CATEGORY_PAGE" EntitySet="O_CATEGORY_PAGE" />
       <End Role="M_PAGE" EntitySet="M_PAGE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_BRANCH_D_CITIES_DETAIL" Association="Self.FK_O_BRANCH_D_CITIES_DETAIL">
+      <End Role="D_CITIES_DETAIL" EntitySet="D_CITIES_DETAIL" />
+      <End Role="O_BRANCH" EntitySet="O_BRANCH" />
     </AssociationSet>
     <AssociationSet Name="FK_O_BRANCH_O_CITIES" Association="Self.FK_O_BRANCH_O_CITIES">
       <End Role="O_CITIES" EntitySet="O_CITIES" />
@@ -757,6 +829,10 @@
     <AssociationSet Name="FK_O_ORDER_O_CUSTOMER" Association="Self.FK_O_ORDER_O_CUSTOMER">
       <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
       <End Role="O_ORDER" EntitySet="O_ORDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_O_PRODUCT_CATALOG_O_PRODUCT" Association="Self.FK_O_PRODUCT_CATALOG_O_PRODUCT">
+      <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
+      <End Role="O_PRODUCT_CATALOG" EntitySet="O_PRODUCT_CATALOG" />
     </AssociationSet>
     <AssociationSet Name="FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" Association="Self.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT">
       <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />

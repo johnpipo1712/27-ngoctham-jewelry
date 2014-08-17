@@ -12,22 +12,22 @@ namespace W_GJS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class O_BRANCH
+    public partial class D_CITIES_DETAIL
     {
-        public long BRANCH_CD { get; set; }
-        public string BRANCH_CODE { get; set; }
-        public string BRANCH_NAME { get; set; }
+        public D_CITIES_DETAIL()
+        {
+            this.O_BRANCH = new HashSet<O_BRANCH>();
+        }
+    
+        public long CITIES_DETAIL_CD { get; set; }
         public Nullable<long> CITIES_CD { get; set; }
-        public Nullable<long> CITIES_DETAIL_CD { get; set; }
-        public string ADDRESS { get; set; }
-        public string LONGITUDE { get; set; }
-        public string LATITUDE { get; set; }
-        public string PHONE { get; set; }
+        public string CITIES_DETAIL_CODE { get; set; }
+        public string CITIES_DETAIL_NAME { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
     
         public virtual O_CITIES O_CITIES { get; set; }
-        public virtual D_CITIES_DETAIL D_CITIES_DETAIL { get; set; }
+        public virtual ICollection<O_BRANCH> O_BRANCH { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace W_GJS.Models
         public O_CITIES()
         {
             this.O_BRANCH = new HashSet<O_BRANCH>();
+            this.D_CITIES_DETAIL = new HashSet<D_CITIES_DETAIL>();
         }
     
         public long CITIES_CD { get; set; }
@@ -27,5 +28,6 @@ namespace W_GJS.Models
         public Nullable<System.DateTime> CREATEDATE { get; set; }
     
         public virtual ICollection<O_BRANCH> O_BRANCH { get; set; }
+        public virtual ICollection<D_CITIES_DETAIL> D_CITIES_DETAIL { get; set; }
     }
 }

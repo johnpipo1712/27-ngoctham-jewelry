@@ -27,6 +27,7 @@ namespace W_GJS.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<D_CITIES_DETAIL> D_CITIES_DETAIL { get; set; }
         public virtual DbSet<D_ORDER_DETAIL> D_ORDER_DETAIL { get; set; }
         public virtual DbSet<D_PRODUCT_DETAIL> D_PRODUCT_DETAIL { get; set; }
         public virtual DbSet<M_EMPLOYEE> M_EMPLOYEE { get; set; }
@@ -58,6 +59,7 @@ namespace W_GJS.Models
         public virtual DbSet<S_STATISTICS_VISIT> S_STATISTICS_VISIT { get; set; }
         public virtual DbSet<S_USER> S_USER { get; set; }
         public virtual DbSet<W_PRODUCT> W_PRODUCT { get; set; }
+        public virtual DbSet<O_PRODUCT_CATALOG> O_PRODUCT_CATALOG { get; set; }
     
         public virtual ObjectResult<SP_STATISTICS_VISIT_Result> SP_STATISTICS_VISIT()
         {

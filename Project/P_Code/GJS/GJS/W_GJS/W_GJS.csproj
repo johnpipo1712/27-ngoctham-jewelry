@@ -718,6 +718,7 @@
     <Content Include="Views\Home\Category_News.cshtml" />
     <Content Include="Views\Home\Product_Category.cshtml" />
     <Content Include="Views\Home\Product_Category_Detail.cshtml" />
+    <Content Include="Views\CategoryGranules\Index.cshtml" />
     <Content Include="Views\Shared\_FooterManagement.cshtml" />
     <Content Include="Views\Shared\_TopBarManagement.cshtml" />
     <Content Include="Views\Shared\_MenuManagement.cshtml" />
