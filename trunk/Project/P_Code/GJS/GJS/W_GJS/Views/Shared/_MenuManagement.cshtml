@@ -1,0 +1,83 @@
+﻿<!-- Top Nav -->
+@{
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    List<W_GJS.Models.O_CATEGORY_PRODUCT> listCategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_CATEGORY_NEWS> listNews = gjs.O_CATEGORY_NEWS.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_PRICE_GOLD> listPriceGold = gjs.O_PRICE_GOLD.ToList();
+}
+<header id="topNav">
+    <div class="container">
+
+        <!-- Logo -->
+        @*<a class="logo" href="@Url.Action("Index", "Home")">
+                <img src="@Url.Content("~/Content")/images/viLogo.png" height="75" alt="" />
+            </a>*@
+
+        <!-- Mobile Menu Button -->
+        <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <!-- /Search -->
+        <!-- Top Nav -->
+        <div class="navbar-collapse nav-main-collapse collapse">
+            <nav class="nav-main">
+
+                <!--
+                    NOTE
+
+                    For a regular link, remove "dropdown" class from LI tag and "dropdown-toggle" class from the href.
+                    Direct Link Example:
+
+                    <li>
+                        <a href="#">HOME</a>
+                    </li>
+                -->
+                <ul id="topMain" class="nav nav-pills nav-main colored">
+                    <li class="active">
+                        <a href="@Url.Action("Index", "Home")">
+                            TRANG CHỦ <span>home</span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="@Url.Action("ProductList", "Home")">SẢN PHẨM <span>products</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("DiamondAssess", "Home")">Loại sản phẩm</a></li>
+                            <li><a href="@Url.Action("DiamondAssess", "Home")">Sản phẩm</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="shop-home-1.html#">TRANG TĨNH <span>pages</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("DiamondAssess", "Home")">Loại trang (menu)</a></li>
+                            <li><a href="@Url.Action("ColoredStonesAssess", "Home")">Trang</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Branches", "Home")">HỆ THỐNG CHI NHÁNH <span>branches</span></a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ShowAlbum", "Home")">ALBUM <span>album</span></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="@Url.Action("News", "Home")">TIN TỨC <span>news</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("DiamondAssess", "Home")">Loại tin tức</a></li>
+                            <li><a href="@Url.Action("DiamondAssess", "Home")">Tin tức</a></li>
+                        </ul>
+                    </li>
+                    <li data-toggle="modal" data-target="#gold-rate-modal">
+                        <a href="#">BẢNG GIÁ VÀNG <span>gold rates</span></a>
+                    </li>
+
+                    <!--<li><a href="#" data-toggle="modal" data-target="#LoginModal">@*<i class="fa fa-angle-right"></i>*@Đăng Nhập <span>login</span></a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#RegisterModal">@*<i class="fa fa-angle-right"></i>*@Đăng Kí <span>register</span></a></li>-->
+                </ul>
+
+            </nav>
+        </div>
+        <!-- /Top Nav -->
+
+    </div><!-- /.container -->
+</header>
