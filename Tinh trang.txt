@@ -1,2 +1,8 @@
 San pham :
   truong Status : 1 moi duoc hien thi ben san pham
+  
+User Role:
+			// 0: fail
+            // 1: user normal login
+            // 2: user catalog login
+            // 3: admin login
