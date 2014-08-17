@@ -178,6 +178,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB_GJS.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\D_CITIES_DETAIL.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\D_ORDER_DETAIL.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
@@ -239,6 +242,9 @@
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\O_PRODUCT.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\O_PRODUCT_CATALOG.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\O_PRODUCT_HIGHLIGHTS.cs">
