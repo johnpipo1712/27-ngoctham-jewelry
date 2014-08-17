@@ -32,9 +32,9 @@ namespace W_GJS.Controllers
             if (ModelState.IsValid)
             {
                 Db_gsj = new GJSEntities();
-                //PRICE_GOLD.ACTIVE = true;
-                //PRICE_GOLD.STATUS = 0;
-                //PRICE_GOLD.CREATEDATE = DateTime.Now;
+                PRICE_GOLD.ACTIVE = true;
+                PRICE_GOLD.STATUS = 0;
+                PRICE_GOLD.CREATEDATE = DateTime.Now;
                 Db_gsj.Entry(PRICE_GOLD).State = EntityState.Added;
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");
@@ -93,7 +93,7 @@ namespace W_GJS.Controllers
             }
             Db_gsj = new GJSEntities();
             PRICE_GOLD = Db_gsj.O_PRICE_GOLD.Single(t => t.PRICE_GOLD_CD == PRICE_GOLD.PRICE_GOLD_CD);
-            //PRICE_GOLD.ACTIVE = false;
+            PRICE_GOLD.ACTIVE = false;
             Db_gsj.Entry(PRICE_GOLD).State = EntityState.Modified;
             Db_gsj.SaveChanges();
             return RedirectToAction("Index");
@@ -108,7 +108,7 @@ namespace W_GJS.Controllers
             }
             Db_gsj = new GJSEntities();
             PRICE_GOLD = Db_gsj.O_PRICE_GOLD.Single(t => t.PRICE_GOLD_CD == PRICE_GOLD.PRICE_GOLD_CD);
-            //PRICE_GOLD.ACTIVE = true;
+            PRICE_GOLD.ACTIVE = true;
             Db_gsj.Entry(PRICE_GOLD).State = EntityState.Modified;
             Db_gsj.SaveChanges();
             return RedirectToAction("Index");
