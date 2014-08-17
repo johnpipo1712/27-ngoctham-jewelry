@@ -161,6 +161,7 @@
     <Compile Include="Controllers\PstController.cs" />
     <Compile Include="Controllers\SeoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="General\SessionConstants.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +192,7 @@
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ForgotPasswordModel.cs" />
+    <Compile Include="Models\JsonResultLoginModel.cs" />
     <Compile Include="Models\JsonModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\M_EMPLOYEE.cs">
@@ -1028,6 +1030,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\revolution_slider.js" />
     <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\self-scripts.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Self\branches\css\default.css" />
     <Content Include="Self\branches\images\bg-arrow.png" />

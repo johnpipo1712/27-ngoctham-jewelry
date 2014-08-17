@@ -12,7 +12,7 @@
             </div><!-- /modal header -->
 
 
-            <form class="form-horizontal" role="form" action="@Url.Action("Login", "Home")" method="post">
+            <form id="form-login" class="form-horizontal" role="form" action="@Url.Action("Login", "Home")" method="post">
                 <!-- modal body -->
                 <div class="modal-body">
                     <div class="form-group">
@@ -36,17 +36,23 @@
                         </div>
                     </div>
                 </div>*@
+                    <div id="loadingDivLogin" style="text-align: center; display: none; margin-bottom: 20px;">
+                        <img alt="Loading" src="@Url.Content("~/Content/Images/ajax-loader.gif")" />
+                    </div>
+
+                    <div id="error-login">
+
+                    </div>
                 </div>
                 <!-- /modal body -->
 
                 <div class="modal-footer">
                     <!-- modal footer -->
                     <button class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                    <button id="login-button" data-action="@Url.Action("Login", "Home")" type="button" class="btn btn-primary">Đăng nhập</button>
                 </div><!-- /modal footer -->
             </form>
-
-        </div>
+</div>
     </div>
 </div>
 

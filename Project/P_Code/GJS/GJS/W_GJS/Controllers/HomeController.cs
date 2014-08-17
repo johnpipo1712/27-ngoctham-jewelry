@@ -6,12 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using W_GJS.General;
 using W_GJS.Models;
 namespace W_GJS.Controllers
 {
     public class HomeController : Controller
     {
-        public const string LOGINED_USER_KEY = "logineduser";
 
         public GJSEntities Db_gsj;
         public ActionResult Index()
@@ -75,21 +75,25 @@ namespace W_GJS.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            int roleOrFailed = LoginModel.Login(username, password);
-            if (roleOrFailed == 0) // failed
+            Db_gsj = new GJSEntities();
+            JsonResultLoginModel jsonModel = new JsonResultLoginModel();
+
+            jsonModel = LoginModel.Login(username, password);
+            if (jsonModel.RoleOrFailed == 0) // failed
             {
-                return RedirectToAction("index", "Administrator"); // go to admin index
+                return Json(jsonModel);
             }
 
             //store session if succeed
-            Session[LOGINED_USER_KEY] = username;
-            return RedirectToAction("Index", "Home");
+            Session[SessionConstants.LOGINED_USER_KEY] = username;
+            return RedirectToAction("Index", "Administrator");
         }
+
 
         public ActionResult Logout()
         {
             // remove session
-            Session[LOGINED_USER_KEY] = null;
+            Session[SessionConstants.LOGINED_USER_KEY] = null;
 
             // logout and redirect to index page.
             LoginModel.Logout();
