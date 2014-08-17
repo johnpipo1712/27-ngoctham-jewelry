@@ -31,7 +31,7 @@
         <EntityTypeShape EntityType="GJSModel.O_PRODUCT_SELLING" Width="1.5" PointX="7.5" PointY="20.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_SEO" Width="1.5" PointX="4.75" PointY="18" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_USER_CUSTOMER" Width="1.5" PointX="11.25" PointY="24.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GJSModel.O_USER_EMPLOYEE" Width="1.5" PointX="11.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GJSModel.O_USER_EMPLOYEE" Width="1.5" PointX="10.875" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.O_USER_PST" Width="1.5" PointX="11.25" PointY="20.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.S_PST" Width="1.5" PointX="9" PointY="31.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GJSModel.S_STATISTICS_VISIT" Width="1.5" PointX="14.75" PointY="16" IsExpanded="true" />
