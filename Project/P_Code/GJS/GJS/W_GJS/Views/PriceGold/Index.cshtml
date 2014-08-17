@@ -50,14 +50,14 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD }) |
-                @*@if (item.ACTIVE == false)
+                @if (item.ACTIVE == false)
                 {
                     @Html.ActionLink("Active", "Active", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
                 }
                 else
                 {
                     @Html.ActionLink("Deactive", "Deactive", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
-                }*@
+                }
             </td>
         </tr>
     }
