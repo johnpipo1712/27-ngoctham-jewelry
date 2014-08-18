@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = _LayoutManage;
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
 }
 
 <h2>Danh sách</h2>
@@ -54,9 +54,15 @@
             @Html.DisplayFor(modelItem => item.CREATEDATE)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { USER_CD = item.USER_CD }) |
+            @if (item.ACTIVE == false)
+            {
+                @Html.ActionLink("Active", "Active", new { USER_CD = item.USER_CD })
+            }
+            else
+            {
+                @Html.ActionLink("Deactive", "Deactive", new { USER_CD = item.USER_CD })
+            }
         </td>
     </tr>
 }
