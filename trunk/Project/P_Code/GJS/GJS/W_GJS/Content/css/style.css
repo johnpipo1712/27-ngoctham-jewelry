@@ -309,3 +309,11 @@ div.slider {
     content: " lượt";
 }
 
+#error-logi, #error-register {
+    color:red;
+}
+
+#loadingDivLogin img, #loadingDivRegister img {
+    width:30px;
+    height:30px;
+}

@@ -76,17 +76,15 @@ namespace W_GJS.Controllers
         public ActionResult Login(string username, string password)
         {
             Db_gsj = new GJSEntities();
-            JsonResultLoginModel jsonModel = new JsonResultLoginModel();
 
-            jsonModel = LoginModel.Login(username, password);
-            if (jsonModel.RoleOrFailed == 0) // failed
+            JsonResultLoginModel jsonModel = LoginModel.Login(username, password);
+            if (jsonModel.RoleOrFailed != 0) // failed
             {
-                return Json(jsonModel);
+                //store session if succeed
+                Session[SessionConstants.LOGINED_USER_KEY] = username;
             }
 
-            //store session if succeed
-            Session[SessionConstants.LOGINED_USER_KEY] = username;
-            return RedirectToAction("Index", "Administrator");
+            return Json(jsonModel);
         }
 
 
@@ -102,8 +100,18 @@ namespace W_GJS.Controllers
 
         public ActionResult Register(RegisterModel MODEL)
         {
-            RegisterModel.Register(MODEL);
-            return RedirectToAction("Index", "Home");
+            JsonResultRegisterModel jsonModel = new JsonResultRegisterModel();
+            jsonModel.HasError = false;
+
+            Db_gsj = new GJSEntities();
+
+            RegisterModel.checkValidation(MODEL, jsonModel, Db_gsj);
+
+            if (!jsonModel.HasError)
+            {
+                RegisterModel.Register(MODEL, jsonModel, Db_gsj);
+            }
+            return Json(jsonModel);
         }
 
         public ActionResult DiamondAssess()

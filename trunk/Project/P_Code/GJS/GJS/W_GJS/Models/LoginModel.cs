@@ -28,7 +28,7 @@ namespace W_GJS.Models
             JsonResultLoginModel jsonModel = new JsonResultLoginModel();
             GJSEntities Db_gsj = new GJSEntities();
             //check exist user (ensure that no duplicate user)
-            S_USER USER_found = Db_gsj.S_USER.Single(t => t.USER_NAME == username);
+            S_USER USER_found = Db_gsj.S_USER.SingleOrDefault(t => t.USER_NAME == username);
             if (USER_found == null)
             {
                 jsonModel.RoleOrFailed = 0;
