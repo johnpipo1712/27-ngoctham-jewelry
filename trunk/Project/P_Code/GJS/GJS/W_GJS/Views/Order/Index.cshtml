@@ -7,9 +7,9 @@
 
 <h2>Danh sách</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Tạo mới", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -19,13 +19,16 @@
             @Html.DisplayNameFor(model => model.ORDER_CODE)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ORDER_CONTENT)
+            @Html.DisplayNameFor(model => model.O_CUSTOMER.CUSTOMER_NAME)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.)
+            @Html.DisplayNameFor(model => model.PHONE)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.STATUS)
+            @Html.DisplayNameFor(model => model.DELIVERY_ADDRESS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ACTIVE)
@@ -45,13 +48,16 @@
             @Html.DisplayFor(modelItem => item.ORDER_CODE)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ORDER_CONTENT)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.O_CUSTOMER.CUSTOMER_NAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.STATUS)
+            @Html.DisplayFor(modelItem => item.PHONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DELIVERY_ADDRESS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ACTIVE)
