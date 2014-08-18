@@ -36,18 +36,24 @@ namespace W_GJS.Controllers
             int numItemsInBlock = 15;
             int totalItems = Db_gsj.O_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).Count();
             // check if out of size.
-            if (totalItems / numItemsInBlock < blockNumber)
-            {
-                jsonModel.NoMoreData = true;
-            }
-            else
-            {
-                jsonModel.NoMoreData = false;
-
+            //if (totalItems / numItemsInBlock < blockNumber)
+            //{
+            //        jsonModel.NoMoreData = true;
+            //}
+            //else
+            //{
+                if (totalItems / numItemsInBlock < (blockNumber + 1))
+                {
+                    jsonModel.NoMoreData = true;
+                }
+                else
+                {
+                    jsonModel.NoMoreData = false;
+                }
                 // calc beginPos
                 int beginPos = numItemsInBlock * blockNumber;
                 listproduct = Db_gsj.O_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).ToList().Skip(beginPos).Take(numItemsInBlock).ToList();
-            }
+            //}
 
             
             jsonModel.HTMLString = RenderPartialViewToString("ProductLazyList", listproduct);
