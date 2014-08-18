@@ -345,3 +345,8 @@ div.slider {
 .full {
     width: 100% !important;
 }
+
+#checkout-wrap form {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
