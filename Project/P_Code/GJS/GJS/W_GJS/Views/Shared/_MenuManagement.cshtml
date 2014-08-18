@@ -46,12 +46,18 @@
                             <li><a href="@Url.Action("Index", "Product")">Sản phẩm</a></li>
                         </ul>
                     </li>
-
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#">ĐƠN ĐẶT HÀNG <span>order</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index", "Order")">Đơn đặt hàng</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="#">TRANG TĨNH <span>pages</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="@Url.Action("Index", "CategoryPage")">Loại trang (menu)</a></li>
                             <li><a href="@Url.Action("Index", "Page")">Trang</a></li>
+                            <li><a href="@Url.Action("Index", "Advertisement")">Trang quảng cáo</a></li>
                         </ul>
                     </li>
                     <li>
@@ -75,7 +81,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">Người dùng <span>user</span></a>
+                        <a class="dropdown-toggle" href="#">NGƯỜI DÙNG <span>user</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="@Url.Action("Index", "User")">Người dùng</a></li>
                         </ul>

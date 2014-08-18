@@ -22,7 +22,7 @@
             @Html.DisplayNameFor(model => model.ORDER_CONTENT)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EMPLOYEE_CD)
+            @Html.DisplayNameFor(model => model.)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.STATUS)
@@ -48,7 +48,7 @@
             @Html.DisplayFor(modelItem => item.ORDER_CONTENT)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EMPLOYEE_CD)
+            @Html.DisplayFor(modelItem => item.O_CUSTOMER.CUSTOMER_NAME)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.STATUS)
@@ -60,7 +60,7 @@
             @Html.DisplayFor(modelItem => item.CREATEDATE)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
             @if (item.ACTIVE == false)
             {
                 @Html.ActionLink("Active", "Active", new { ORDER_CD = item.ORDER_CD })
