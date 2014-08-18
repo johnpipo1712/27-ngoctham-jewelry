@@ -36,20 +36,19 @@
                         </div>
                     </div>
                 </div>*@
-                    <div id="loadingDivLogin" style="text-align: center; display: none; margin-bottom: 20px;">
-                        <img alt="Loading" src="@Url.Content("~/Content/Images/ajax-loader.gif")" />
-                    </div>
+                    
 
-                    <div id="error-login">
-
-                    </div>
+                    <div id="error-login"></div>
                 </div>
                 <!-- /modal body -->
 
                 <div class="modal-footer">
                     <!-- modal footer -->
+                    <span id="loadingDivLogin" style="text-align: center; display: none; margin-bottom: 20px;">
+                        <img alt="Loading" src="@Url.Content("~/Content/Images/ajax-loader.gif")" />
+                    </span>
                     <button class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button id="login-button" data-action="@Url.Action("Login", "Home")" type="button" class="btn btn-primary">Đăng nhập</button>
+                    <button id="login-button" data-success-action="@Url.Action("Index", "Administrator")" data-action="@Url.Action("Login", "Home")" type="button" class="btn btn-primary">Đăng nhập</button>
                 </div><!-- /modal footer -->
             </form>
 </div>
@@ -69,7 +68,7 @@
             </div><!-- /modal header -->
 
 
-            <form action="@Url.Action("Register", "Home")" method="post" class="sky-form">
+            <form id="form-register" action="@Url.Action("Register", "Home")" method="post" class="sky-form">
 
                 <div class="modal-body">
                     <fieldset>
@@ -93,7 +92,7 @@
                             <label class="input">
                                 <i class="icon-append fa fa-lock"></i>
                                 <input type="password" name="user_pass" placeholder="Mật khẩu">
-                                <b class="tooltip tooltip-bottom-right">Chỉ chấp nhận chữ không dấu và số</b>
+                                <b class="tooltip tooltip-bottom-right">Chỉ chấp nhận từ 6 ký tự trở lên</b>
                             </label>
                         </section>
 
@@ -102,6 +101,14 @@
                                 <i class="icon-append fa fa-lock"></i>
                                 <input type="password" name="user_re_pass" placeholder="Nhập lại mật khẩu">
                                 <b class="tooltip tooltip-bottom-right">Chỉ chấp nhận chữ không dấu và số</b>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="input">
+                                <i class="icon-append fa fa-phone"></i>
+                                <input type="text" name="phone_number" placeholder="Số điện thoại">
+                                <b class="tooltip tooltip-bottom-right">Chỉ chấp nhận số</b>
                             </label>
                         </section>
                     </fieldset>
@@ -119,7 +126,6 @@
                                 </label>
                             </section>
                         </div>
-
                         <section>
                             <label class="select">
                                 <select name="sex">
@@ -133,17 +139,40 @@
                         </section>
 
                         <section>
-                            <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Tôi đồng ý với các điều khoản dịch vụ</label>
+                            @*<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Tôi đồng ý với các điều khoản dịch vụ</label>*@
                             <label class="checkbox"><input type="checkbox" value="1" name="SUBSCRIBE"><i></i>Tôi muốn nhận email thông báo từ website</label>
                         </section>
+                    </fieldset>
+                    <fieldset>
+                        <div id="error-register" class="row"> </div>
                     </fieldset>
                 </div>
                 <div class="modal-footer">
                     <!-- modal footer -->
+                    <span id="loadingDivRegister" style="text-align: center; display: none; margin-bottom: 20px;">
+                        <img alt="Loading" src="@Url.Content("~/Content/Images/ajax-loader.gif")" />
+                    </span>
                     <button class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+                    <button id="register-button" data-success-action="@Url.Action("Index", "Home")" data-action="@Url.Action("Register", "Home")" type="button" class="btn btn-primary">Đăng Nhập</button>
                 </div><!-- /modal footer -->
             </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- modal Register Successfully -->
+<div class="modal fade" id="registerSuccesfully" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 800px; height:600px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: none; border-bottom: none;">
+                <!-- modal header -->
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div><!-- /modal header -->
+            <!-- modal body -->
+            <div class="modal-body">
+                ĐẮNG KÝ TÀI KHOẢN THÀNH CÔNG.
+            </div>
 
         </div>
     </div>

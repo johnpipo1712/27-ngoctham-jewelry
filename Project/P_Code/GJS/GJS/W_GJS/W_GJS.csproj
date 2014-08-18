@@ -192,6 +192,7 @@
     </Compile>
     <Compile Include="Models\ForgotPasswordModel.cs" />
     <Compile Include="Models\JsonResultLoginModel.cs" />
+    <Compile Include="Models\JsonResultRegisterModel.cs" />
     <Compile Include="Models\JsonModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\M_EMPLOYEE.cs">
