@@ -1037,6 +1037,7 @@
     <Content Include="Self\branches\images\bg-sys-store.png" />
     <Content Include="Self\branches\images\button-sys.png" />
     <Content Include="Self\branches\js\script.js" />
+    <Content Include="Self\index_page\js\scripts.js" />
     <Content Include="Self\news\css\mainstyles.css" />
     <Content Include="Self\services\css\default.css" />
     <Content Include="Web.config" />

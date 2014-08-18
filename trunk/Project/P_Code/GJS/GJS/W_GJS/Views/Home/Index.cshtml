@@ -24,19 +24,16 @@
         }
         showPopup();
 
-        
-
-
-
         function loadProducts() {
             inProgress = true;
             $("#loadingDiv").show();
             
             $.post("@Url.Action("GetNext15Products", "Home")", { "blockNumber": blockNumber },
                     function (data) {
-                        
-                        //BlockNumber = BlockNumber + 1;
                         NoMoreData = data.NoMoreData;
+                        if (NoMoreData) {
+                            $("#moreProducts").hide();
+                        }
                         $("#ProductList").append(data.HTMLString);
                         $("#loadingDiv").hide();
                         blockNumber++;
@@ -49,9 +46,8 @@
         var blockNumber = 0;
         loadProducts();
         
-        $(window).scroll(function () {
-            if ($(window).scrollTop() >= $(document).height() - $(window).height() - 500 && !NoMoreData && !inProgress) {
-
+        $( "#moreProducts" ).click(function() {
+            if (!NoMoreData && !inProgress) {
                 loadProducts();
             }
         });
