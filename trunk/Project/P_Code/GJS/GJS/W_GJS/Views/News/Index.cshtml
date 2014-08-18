@@ -72,7 +72,7 @@
             @Html.DisplayFor(modelItem => item.CREATEDATE)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Edit", "Edit", new { NEWS_CD = item.NEWS_CD }) |
             @if (item.ACTIVE == false)
             {
                 @Html.ActionLink("Active", "Active", new { NEWS_CD = item.NEWS_CD })
