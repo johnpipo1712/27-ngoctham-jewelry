@@ -144,6 +144,7 @@
     <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\CategoryGranulesController.cs" />
+    <Compile Include="Controllers\AdvertisementController.cs" />
     <Compile Include="Controllers\CitiesDetailController.cs" />
     <Compile Include="Controllers\NewsNewController.cs" />
     <Compile Include="Controllers\NewsHighlightController.cs" />
@@ -1154,6 +1155,9 @@
     <Content Include="Views\NewsNew\Create.cshtml" />
     <Content Include="Views\NewsNew\Edit.cshtml" />
     <Content Include="Views\CategoryGranules\Index.cshtml" />
+    <Content Include="Views\Advertisement\Index.cshtml" />
+    <Content Include="Views\Advertisement\Create.cshtml" />
+    <Content Include="Views\Advertisement\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
