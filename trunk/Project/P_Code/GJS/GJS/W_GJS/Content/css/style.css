@@ -1,4 +1,13 @@
-﻿.box-content .item-image > img {
+﻿.page-head {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.control-icon img {
+    height: 20px;
+}
+
+.box-content .item-image > img {
     height: 255px;
     width: 255px;
 }
