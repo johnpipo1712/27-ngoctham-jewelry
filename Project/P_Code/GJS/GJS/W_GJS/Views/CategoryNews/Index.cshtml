@@ -5,10 +5,11 @@
     Layout = "~/Views/Shared/_LayoutManagement.cshtml";
 }
 
-<h2>Danh sách</h2>
+<h2 class="page-head">Danh sách</h2>
 
 <p>
-    @Html.ActionLink("Tạo mới", "Create")
+    <a href="@Url.Action("Create", "CategoryNews")" class="btn btn-primary">Tạo Mới</a>
+    @*@Html.ActionLink("Tạo mới", "Create")*@
 </p>
 <table class="table table-bordered table-striped">
     <tr>
@@ -55,20 +56,29 @@
                 @Html.DisplayFor(modelItem => item.STATUS)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ACTIVE)
+                @Html.DisplayFor(modelItem => item.ACTIVE, new { @class = "form-control" })
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CREATEDATE)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD }) |
+                <a class="control-icon" href="@Url.Action("Edit", "CategoryNews", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">
+                    <img src="@Url.Content("~/Content/images/icons/pencil.png")" alt="Edit" />
+                </a>
                 @if (item.ACTIVE == false)
                 {
-                    @Html.ActionLink("Active", "Active", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })
+                    <a class="control-icon" href="@Url.Action("Active", "CategoryNews", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">
+                        <img src="@Url.Content("~/Content/images/icons/activate.png")" alt="Edit" />
+                    </a>
+                    @*@Html.ActionLink("Active", "Active", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })*@
                 }
                 else
                 {
-                    @Html.ActionLink("Deactive", "Deactive", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })
+                    @*@Html.ActionLink("Deactive", "Deactive", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })*@
+
+                    <a class="control-icon" href="@Url.Action("Deactive", "CategoryNews", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">
+                        <img src="@Url.Content("~/Content/images/icons/cancel.png")" alt="Edit" />
+                    </a>
                 }
             </td>
         </tr>
