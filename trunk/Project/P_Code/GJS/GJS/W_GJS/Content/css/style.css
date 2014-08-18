@@ -1,5 +1,18 @@
-﻿#discussion {
-    background: #eee;
+﻿.box-content .item-image > img {
+    height: 255px;
+    width: 255px;
+}
+
+.page-title {
+    background: url('../images/pattern/grey.png');
+}
+
+    .page-title h2 strong {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+#discussion {
     padding: 20px 40px;
 }
 
@@ -273,6 +286,7 @@ div.slider {
     margin-left: 46px;
     padding: 5px;
 }
+
 .dathang_theoyeucau {
     background: url("../images/booking.png") no-repeat scroll left center rgba(0, 0, 0, 0);
     height: 344px;
@@ -283,9 +297,10 @@ div.slider {
     width: 315px;
     z-index: 111;
 }
-.dathang_theoyeucau:hover {
-    right: 0;
-}
+
+    .dathang_theoyeucau:hover {
+        right: 0;
+    }
 
 .booking {
     position: fixed;
@@ -294,9 +309,9 @@ div.slider {
     left: 20px;
 }
 
-.booking img {
-    height: 100px;
-}
+    .booking img {
+        height: 100px;
+    }
 
 .counter-wrapper {
     background: #fff;
@@ -310,12 +325,12 @@ div.slider {
 }
 
 #error-login, #error-register {
-    color:red;
+    color: red;
 }
 
 #loadingDivLogin img, #loadingDivRegister img {
-    width:30px;
-    height:30px;
+    width: 30px;
+    height: 30px;
 }
 
 .full {
