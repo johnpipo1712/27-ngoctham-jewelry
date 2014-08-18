@@ -58,6 +58,8 @@ namespace W_GJS.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
+            var queryD = Db_gsj.D_CITIES_DETAIL.ToList();
+            ViewBag.DCities = new SelectList(queryD.AsEnumerable(), "CITIES_DETAIL_CD", "CITIES_DETAIL_NAME", 1);
             O_BRANCH BRANCH_edit = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == BRANCH_CD);
             if (BRANCH_edit == null)
                 return HttpNotFound();

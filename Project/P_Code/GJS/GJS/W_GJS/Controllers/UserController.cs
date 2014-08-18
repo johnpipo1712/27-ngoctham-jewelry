@@ -16,11 +16,15 @@ namespace W_GJS.Controllers
         public ActionResult Index()
         {
             Db_gsj = new GJSEntities();
-            return View(Db_gsj.O_SEO);
+            return View(Db_gsj.S_USER);
         }
         [HttpGet]
         public ActionResult Create()
         {
+            Db_gsj = new GJSEntities();
+
+            var queryD = Db_gsj.S_PST.ToList();
+            ViewBag.pst = new SelectList(queryD.AsEnumerable(), "PST_CD", "PST_NAME", 1);
             return View();
         }
 
@@ -32,11 +36,21 @@ namespace W_GJS.Controllers
             if (ModelState.IsValid)
             {
                 Db_gsj = new GJSEntities();
+
                 USER.ACTIVE = true;
-                USER.STATUS = 0;
                 USER.CREATEDATE = DateTime.Now;
                 Db_gsj.Entry(USER).State = EntityState.Added;
                 Db_gsj.SaveChanges();
+
+                O_USER_PST USER_PST = new O_USER_PST();
+                USER_PST.ACTIVE = true;
+                USER_PST.STATUS = 0;
+                USER_PST.CREATEDATE = DateTime.Now;
+                USER_PST.PST_CD = USER.STATUS;
+                USER_PST.USER_CD = USER.USER_CD;
+                Db_gsj.Entry(USER_PST).State = EntityState.Added;
+                Db_gsj.SaveChanges();
+
                 return RedirectToAction("Index");
 
             }
@@ -53,6 +67,8 @@ namespace W_GJS.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
+            var queryD = Db_gsj.S_PST.ToList();
+            ViewBag.pst = new SelectList(queryD.AsEnumerable(), "PST_CD", "PST_NAME", 1);
             S_USER USER_edit = Db_gsj.S_USER.Single(t => t.USER_CD == USER_CD);
             if (USER_edit == null)
                 return HttpNotFound();
@@ -70,7 +86,20 @@ namespace W_GJS.Controllers
                 S_USER USER_edit = Db_gsj.S_USER.Single(t => t.USER_CD == USER.USER_CD);
                 USER_edit.USER_PASS = USER.USER_PASS;
                 USER_edit.USER_NAME = USER.USER_NAME;
+                USER_edit.STATUS = USER.STATUS;
                 Db_gsj.SaveChanges();
+
+
+
+                O_USER_PST USER_PST = Db_gsj.O_USER_PST.Single(t => t.USER_CD == USER.USER_CD );
+                USER_PST.ACTIVE = true;
+                USER_PST.STATUS = 0;
+                USER_PST.CREATEDATE = DateTime.Now;
+                USER_PST.PST_CD = USER.STATUS;
+                Db_gsj.Entry(USER_PST).State = EntityState.Modified;
+                Db_gsj.SaveChanges();
+
+
                 return RedirectToAction("Index");
 
             }
