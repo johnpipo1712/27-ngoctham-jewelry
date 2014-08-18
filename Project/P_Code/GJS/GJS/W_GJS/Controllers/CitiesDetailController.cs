@@ -22,6 +22,9 @@ namespace W_GJS.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            Db_gsj = new GJSEntities();
+            var query = Db_gsj.O_CITIES.Select(t => new { t.CITIES_CD, t.CITIES_NAME }).ToList();
+            ViewBag.Cities = new SelectList(query.AsEnumerable(), "CITIES_CD", "CITIES_NAME", 1);
             return View();
         }
 

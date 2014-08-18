@@ -13,30 +13,54 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CITIES_DETAIL_CODE)
+            @Html.DisplayNameFor(model => model.CITIES_DETAIL_CD)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CITIES_DETAIL_CODE)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.CITIES_DETAIL_NAME)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.CITIES_CD)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </th>*@
+        <th>
             @Html.DisplayNameFor(model => model.ACTIVE)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CREATEDATE)
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CITIES_DETAIL_CODE)
+            @Html.DisplayFor(modelItem => item.CITIES_DETAIL_CD)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CITIES_DETAIL_CODE)
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.CITIES_DETAIL_NAME)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.CITIES_CD)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.STATUS)
+        </td>*@
+        <td>
             @Html.DisplayFor(modelItem => item.ACTIVE)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CREATEDATE)
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Edit", "Edit", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD }) |
             @if (item.ACTIVE == false)
             {
                 @Html.ActionLink("Active", "Active", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD })
