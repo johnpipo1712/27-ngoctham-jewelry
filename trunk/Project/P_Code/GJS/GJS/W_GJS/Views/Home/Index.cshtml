@@ -4,7 +4,6 @@
     List<W_GJS.Models.O_PRODUCT_NEW> listproduct_new = gjs.O_PRODUCT_NEW.Where(t=>t.O_PRODUCT.ACTIVE == true && t.STATUS == 1).ToList();
     List<W_GJS.Models.O_PRODUCT_HIGHLIGHTS> listproduct_hightlights = gjs.O_PRODUCT_HIGHLIGHTS.Where(t => t.O_PRODUCT.ACTIVE == true && t.O_PRODUCT.STATUS == 1).ToList();
     List<W_GJS.Models.O_PRODUCT_SELLING> listproduct_selling = gjs.O_PRODUCT_SELLING.Where(t => t.O_PRODUCT.ACTIVE == true && t.O_PRODUCT.STATUS == 1).ToList();
-    List<W_GJS.Models.O_PRODUCT> listproduct = gjs.O_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).ToList().Skip(0).Take(15).ToList();
     List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
 }
 
@@ -25,26 +24,35 @@
         }
         showPopup();
 
+        
+
+
+
+        function loadProducts() {
+            inProgress = true;
+            $("#loadingDiv").show();
+            
+            $.post("@Url.Action("GetNext15Products", "Home")", { "blockNumber": blockNumber },
+                    function (data) {
+                        
+                        //BlockNumber = BlockNumber + 1;
+                        NoMoreData = data.NoMoreData;
+                        $("#ProductList").append(data.HTMLString);
+                        $("#loadingDiv").hide();
+                        blockNumber++;
+                        inProgress = false;
+
+                    });
+        }
+
         var NoMoreData = false;
-        var inProgress = false;
-        var blockNumber = 1;
+        var blockNumber = 0;
+        loadProducts();
+        
         $(window).scroll(function () {
             if ($(window).scrollTop() >= $(document).height() - $(window).height() - 500 && !NoMoreData && !inProgress) {
 
-                inProgress = true;
-                $("#loadingDiv").show();
-            
-                $.post("@Url.Action("GetNext15Products", "Home")", { "blockNumber": blockNumber },
-                        function (data) {
-                        
-                            //BlockNumber = BlockNumber + 1;
-                            NoMoreData = data.NoMoreData;
-                            $("#ProductList").append(data.HTMLString);
-                            $("#loadingDiv").hide();
-                            blockNumber++;
-                            inProgress = false;
-
-                        });
+                loadProducts();
             }
         });
     </script>
@@ -182,8 +190,9 @@
 
         <!-- PRODUCT LIST -->
         <div id="ProductList" class="row scroll">
-            @{Html.RenderAction("ProductLazyList", "Home", new { Model = listproduct });}
+            
         </div>
+        <button id="moreProducts" type="button" class="btn btn-primary">Xem thêm sản phẩm</button>
         <div id="loadingDiv" style="text-align: center; display: none; margin-bottom: 20px;">
             <img alt="Loading" src="@Url.Content("~/Content/Images/ajax-loader.gif")" />
         </div>
