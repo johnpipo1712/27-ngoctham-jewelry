@@ -27,12 +27,11 @@ namespace W_GJS.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(O_PRODUCT PRODUCT
-            , HttpPostedFileBase filefrist
-            , HttpPostedFileBase file1
-            , HttpPostedFileBase file2
-            , HttpPostedFileBase file3
-            , HttpPostedFileBase file4
-            , HttpPostedFileBase file5)
+            , String file1
+            , String file2
+            , String file3
+            , String file4
+            , String file5)
         {
 
             if (ModelState.IsValid)
@@ -43,6 +42,63 @@ namespace W_GJS.Controllers
                 PRODUCT.CREATEDATE = DateTime.Now;
                 Db_gsj.Entry(PRODUCT).State = EntityState.Added;
                 Db_gsj.SaveChanges();
+                if(file1 != "")
+                {
+                    D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
+                    dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
+                    dproudct.O_PRODUCT = PRODUCT;
+                    dproudct.STATUS = 0;
+                    dproudct.ACTIVE = true;
+                    dproudct.CREATEDATE = DateTime.Now;
+                    dproudct.URL_IMAGE = file1;
+                    Db_gsj.SaveChanges();
+
+
+                }
+                if (file2 != "")
+                {
+                    D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
+                    dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
+                    dproudct.O_PRODUCT = PRODUCT;
+                    dproudct.STATUS = 0;
+                    dproudct.ACTIVE = true;
+                    dproudct.CREATEDATE = DateTime.Now;
+                    dproudct.URL_IMAGE = file2;
+                    Db_gsj.SaveChanges();
+                }
+                if (file3 != "")
+                {
+                    D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
+                    dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
+                    dproudct.O_PRODUCT = PRODUCT;
+                    dproudct.STATUS = 0;
+                    dproudct.ACTIVE = true;
+                    dproudct.CREATEDATE = DateTime.Now;
+                    dproudct.URL_IMAGE = file3;
+                    Db_gsj.SaveChanges();
+                }
+                if (file4 != "")
+                {
+                    D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
+                    dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
+                    dproudct.O_PRODUCT = PRODUCT;
+                    dproudct.STATUS = 0;
+                    dproudct.ACTIVE = true;
+                    dproudct.CREATEDATE = DateTime.Now;
+                    dproudct.URL_IMAGE = file4;
+                    Db_gsj.SaveChanges();
+                }
+                if (file5 != "")
+                {
+                    D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
+                    dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
+                    dproudct.O_PRODUCT = PRODUCT;
+                    dproudct.STATUS = 0;
+                    dproudct.ACTIVE = true;
+                    dproudct.CREATEDATE = DateTime.Now;
+                    dproudct.URL_IMAGE = file5;
+                    Db_gsj.SaveChanges();
+                }
                 return RedirectToAction("Index");
 
             }
