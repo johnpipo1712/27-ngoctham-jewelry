@@ -117,7 +117,7 @@ namespace W_GJS.Models
             else
             {
                 // Username must be not existing.
-                S_USER USER_found = Db_gsj.S_USER.SingleOrDefault(t => t.USER_NAME == MODEL.USER_NAME);
+                S_USER USER_found = Db_gsj.S_USER.FirstOrDefault(t => t.USER_NAME == MODEL.USER_NAME);
                 if (USER_found != null)
                 {
                     jsonModel.ErrorString += "<li>Tên đăng nhập phải không được trùng.</li>";
@@ -134,14 +134,22 @@ namespace W_GJS.Models
             else
             {
                 // Kiểm tra dạng email
-
-                // Email must be not existing.
-                O_CUSTOMER CUSTOMER_found = Db_gsj.O_CUSTOMER.SingleOrDefault(t => t.EMAIL == MODEL.EMAIL);
-                if (CUSTOMER_found != null)
+                if (!Regex.IsMatch(MODEL.EMAIL, @"^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$"))
                 {
-                    jsonModel.ErrorString += "<li>Email phải không được trùng.</li>";
+                    jsonModel.ErrorString += "<li>Email không hợp lệ, vui lòng nhập lại email.</li>";
                     jsonModel.HasError = true;
                 }
+                else
+                {
+                    // Email must be not existing.
+                    O_CUSTOMER CUSTOMER_found = Db_gsj.O_CUSTOMER.FirstOrDefault(t => t.EMAIL == MODEL.EMAIL);
+                    if (CUSTOMER_found != null)
+                    {
+                        jsonModel.ErrorString += "<li>Email phải không được trùng.</li>";
+                        jsonModel.HasError = true;
+                    }
+                }
+                
             }
 
             if (String.IsNullOrEmpty(MODEL.USER_PASS))

@@ -14,8 +14,17 @@
                     <li><a href="#" data-toggle="modal" data-target="#RegisterModal"><i class="fa fa-angle-right"></i> Đăng Kí</a></li>
                     <li class="hidden-xs"><a href="shop-home-1.html#"><i class="fa fa-angle-right"></i> Liên Hệ</a></li>
                     @Html.Partial("_Cart")*@
-                    <li><a href="#" data-toggle="modal" data-target="#LoginModal"><i class="fa fa-lock"></i> Đăng Nhập</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#RegisterModal"><i class="fa fa-user"></i> Đăng Kí</a></li>
+                    @if (!String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]))
+                    {
+                        <li><a href="#" data-toggle="modal" data-target="#LoginModal"> Chào @Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="#" data-toggle="modal" data-target="#LoginModal"><i class="fa fa-lock"></i> Đăng Nhập</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#RegisterModal"><i class="fa fa-user"></i> Đăng Kí</a></li>
+                    }
+                    
+                    
                 </ul>
             </nav>
         </div>

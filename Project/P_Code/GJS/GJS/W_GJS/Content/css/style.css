@@ -309,7 +309,7 @@ div.slider {
     content: " lượt";
 }
 
-#error-logi, #error-register {
+#error-login, #error-register {
     color:red;
 }
 
