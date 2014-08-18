@@ -34,10 +34,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.O_CATEGORY_PAGE, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CATEGORY_PAGE_CD, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.O_CATEGORY_PAGE)
-                @Html.ValidationMessageFor(model => model.O_CATEGORY_PAGE)
+                @Html.DropDownList("CATEGORY_PAGE_CD", (SelectList)ViewBag.pageCategory)
             </div>
         </div>
 

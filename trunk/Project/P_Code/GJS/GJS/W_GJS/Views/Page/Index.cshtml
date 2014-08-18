@@ -19,9 +19,6 @@
             @Html.DisplayNameFor(model => model.PAGE_COTRACT_TITLE)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PAGE_COTRACT_CONTENT)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.O_CATEGORY_PAGE)
         </th>
         <th></th>
@@ -37,10 +34,7 @@
                 @Html.DisplayFor(modelItem => item.PAGE_COTRACT_TITLE)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PAGE_COTRACT_CONTENT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.O_CATEGORY_PAGE)
+                @Html.DisplayFor(modelItem => item.O_CATEGORY_PAGE.CATEGORY_PAGE_NAME)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD }) |
