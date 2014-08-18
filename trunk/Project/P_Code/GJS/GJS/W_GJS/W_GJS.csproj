@@ -1040,7 +1040,9 @@
     <Content Include="Self\index_page\js\scripts.js" />
     <Content Include="Self\news\css\mainstyles.css" />
     <Content Include="Self\services\css\default.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

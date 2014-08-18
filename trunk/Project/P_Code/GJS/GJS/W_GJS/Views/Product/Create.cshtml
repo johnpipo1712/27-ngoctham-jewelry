@@ -8,7 +8,7 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm("Create", "Product", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Product", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
@@ -88,13 +88,7 @@
                 @Html.ValidationMessageFor(model => model.CURRENCY)
             </div>
         </div> 
-        <div class="form-group">
-            @Html.LabelFor(model => model.URL_IMAGE, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.URL_IMAGE)
-                @Html.ValidationMessageFor(model => model.URL_IMAGE)
-            </div>
-        </div> 
+ 
         <div class="form-group">
             @Html.LabelFor(model => model.SIZE, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -103,49 +97,43 @@
             </div>
         </div> 
         <div class="form-group">
-            @Html.LabelFor(model => model.TAG_ALT, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.URL_IMAGE, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TAG_ALT)
-                @Html.ValidationMessageFor(model => model.TAG_ALT)
+                @Html.EditorFor(model => model.URL_IMAGE)
+                @Html.ValidationMessageFor(model => model.URL_IMAGE)
             </div>
         </div> 
         <div class="form-group">
-            @Html.LabelFor(model => model.URL_IMAGE, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="filefrist" id="filefrist" />
-            </div>
-        </div>   
-        <div class="form-group">
             <label class="control-label col-md-2">Hình ảnh chi tiết 1</label>
             <div class="col-md-10">
-                <input type="file" name="file1" id="file1" />
+                <input type="text" name="file1" id="file1" />
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-2">Hình ảnh chi tiết 2</label>
             <div class="col-md-10">
-                <input type="file" name="file2" id="file2" />
+                <input type="text" name="file2" id="file2" />
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-2">Hình ảnh chi tiết 3</label>
 
             <div class="col-md-10">
-                <input type="file" name="file3" id="file3" />
+                <input type="text" name="file3" id="file3" />
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-2">Hình ảnh chi tiết 4</label>
 
             <div class="col-md-10">
-                <input type="file" name="file4" id="file4" />
+                <input type="text" name="file4" id="file4" />
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-2">Hình ảnh chi tiết 5</label>
 
             <div class="col-md-10">
-                <input type="file" name="file5" id="file5" />
+                <input type="text" name="file5" id="file5" />
             </div>
         </div>     
         <div class="form-group">
