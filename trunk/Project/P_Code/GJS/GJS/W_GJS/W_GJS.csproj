@@ -162,6 +162,7 @@
     <Compile Include="Controllers\PstController.cs" />
     <Compile Include="Controllers\SeoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="General\Process.cs" />
     <Compile Include="General\SessionConstants.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1047,6 +1048,7 @@
     <Content Include="Self\branches\js\script.js" />
     <Content Include="Self\index_page\js\scripts.js" />
     <Content Include="Self\news\css\mainstyles.css" />
+    <Content Include="Self\product\js\script.js" />
     <Content Include="Self\services\css\default.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1132,7 +1134,6 @@
     <Content Include="Views\Home\Category_News.cshtml" />
     <Content Include="Views\Home\Product_Category.cshtml" />
     <Content Include="Views\Home\Product_Category_Detail.cshtml" />
-    <Content Include="Views\CategoryGranules\Index.cshtml" />
     <Content Include="Views\Shared\_FooterManagement.cshtml" />
     <Content Include="Views\Shared\_TopBarManagement.cshtml" />
     <Content Include="Views\Shared\_MenuManagement.cshtml" />
@@ -1152,6 +1153,7 @@
     <Content Include="Views\NewsNew\Index.cshtml" />
     <Content Include="Views\NewsNew\Create.cshtml" />
     <Content Include="Views\NewsNew\Edit.cshtml" />
+    <Content Include="Views\CategoryGranules\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

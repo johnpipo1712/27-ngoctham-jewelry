@@ -4,6 +4,7 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutManagement.cshtml";
 }
+<script src="~/ckeditor/ckeditor.js" type="text/javascript"></script>
 
 <h2>Thêm</h2>
 
@@ -33,17 +34,22 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.PRODUCT_CONTENT, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PRODUCT_CONTENT)
-                @Html.ValidationMessageFor(model => model.PRODUCT_CONTENT)
-            </div>
-        </div>
-        <div class="form-group">
             @Html.LabelFor(model => model.PRODUCT_TITLE, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PRODUCT_TITLE)
                 @Html.ValidationMessageFor(model => model.PRODUCT_TITLE)
+            </div>
+        </div> 
+        <div class="form-group">
+            @Html.LabelFor(model => model.CATEGORY_PRODUCT_DETAIL_CD, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CATEGORY_PRODUCT_DETAIL_CD", (SelectList)ViewBag.Dropdownlist)
+             </div>
+        </div> 
+        <div class="form-group">
+            @Html.LabelFor(model => model.CATEGORY_GRANULES_CD, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CATEGORY_GRANULES_CD", (SelectList)ViewBag.DropdownlistG)
             </div>
         </div> 
         <div class="form-group">
@@ -88,14 +94,6 @@
                 @Html.ValidationMessageFor(model => model.CURRENCY)
             </div>
         </div> 
- 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SIZE, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SIZE)
-                @Html.ValidationMessageFor(model => model.SIZE)
-            </div>
-        </div> 
         <div class="form-group">
             @Html.LabelFor(model => model.URL_IMAGE, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -135,12 +133,23 @@
             <div class="col-md-10">
                 <input type="text" name="file5" id="file5" />
             </div>
-        </div>     
+        </div>  
+        <div class="form-group">
+            @Html.LabelFor(model => model.PRODUCT_CONTENT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.PRODUCT_CONTENT, new { @id = "ckeContent" })
+                <script type="text/javascript">
+                    CKEDITOR.replace("ckeContent");
+                </script>
+                @Html.ValidationMessageFor(model => model.PRODUCT_CONTENT)
+            </div>
+        </div>   
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Thêm" class="btn btn-default" />
             </div>
         </div>
+       
     </div>
 }
 
