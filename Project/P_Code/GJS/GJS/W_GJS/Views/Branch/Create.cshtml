@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutManagement.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Thêm</h2>
 
 
 @using (Html.BeginForm()) 
@@ -32,18 +32,10 @@
                 @Html.ValidationMessageFor(model => model.BRANCH_NAME)
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CITIES_CD, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("city", (SelectList)ViewBag.Cities, new { onchange = "GetCity();" })
-            </div>
-        </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.CITIES_DETAIL_CD, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Dcity", (SelectList)ViewBag.DCities)
+                @Html.DropDownList("CITIES_DETAIL_CD", (SelectList)ViewBag.DCities)
            </div>
         </div>
 
@@ -95,34 +87,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-   <script type="text/javascript">
-   function GetCity() {
-
-
-        $.ajax({
-            url: '/Branch/GetDetailByCityAJAX',
-
-            type: 'POST',
-
-            data: { CITIES_CD: $("#city").val() },
-
-            dataType: 'json',
-
-            success: function (results) {
-                $('#Dcity').empty();
-                for (var i = 0; i < results.length; i++) {
-                    $("#Dcity").append("<option value=\"" + results[i].CITIES_DETAIL_CD + "\">" + results[i].CITIES_DETAIL_NAME + "</option>");
-                }
-            },
-            error: function (results) {
-                alert('checkloi');
-            }
-
-
-        });
-
-    }
-
-</script>
-
+  
 }
