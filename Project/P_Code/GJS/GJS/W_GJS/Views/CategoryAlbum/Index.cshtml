@@ -28,14 +28,14 @@
         </td>
        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { CATEGORY_ALBUM_CD = item.CATEGORY_ALBUM_CD }) |
+            @Html.ActionLink("Sửa", "Edit", new { CATEGORY_ALBUM_CD = item.CATEGORY_ALBUM_CD }) |
             @if (item.ACTIVE == false)
             {
-                @Html.ActionLink("Active", "Active", new { CATEGORY_ALBUM_CD = item.CATEGORY_ALBUM_CD })
+                @Html.ActionLink("Kích hoạt", "Active", new { CATEGORY_ALBUM_CD = item.CATEGORY_ALBUM_CD })
             }
             else
             {
-                @Html.ActionLink("Deactive", "Deactive", new { CATEGORY_ALBUM_CD = item.CATEGORY_ALBUM_CD })
+                @Html.ActionLink("Xóa", "Deactive", new { CATEGORY_ALBUM_CD = item.CATEGORY_ALBUM_CD })
             }
         </td>
     </tr>

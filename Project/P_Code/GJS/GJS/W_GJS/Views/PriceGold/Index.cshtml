@@ -55,14 +55,14 @@
                 @Html.DisplayFor(modelItem => item.ACTIVE)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD }) |
+                @Html.ActionLink("Sửa", "Edit", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD }) |
                 @if (item.ACTIVE == false)
                 {
-                    @Html.ActionLink("Active", "Active", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
+                    @Html.ActionLink("Kích hoạt", "Active", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
                 }
                 else
                 {
-                    @Html.ActionLink("Deactive", "Deactive", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
+                    @Html.ActionLink("Xóa", "Deactive", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
                 }
             </td>
         </tr>

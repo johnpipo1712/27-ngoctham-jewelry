@@ -72,14 +72,14 @@
             @Html.DisplayFor(modelItem => item.CREATEDATE)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Sửa", "Edit", new { /* id=item.PrimaryKey */ }) |
             @if (item.ACTIVE == false)
             {
-                @Html.ActionLink("Active", "Active", new { CUSTOMER_CD = item.CUSTOMER_CD })
+                @Html.ActionLink("Kích hoạt", "Active", new { CUSTOMER_CD = item.CUSTOMER_CD })
             }
             else
             {
-                @Html.ActionLink("Deactive", "Deactive", new { CUSTOMER_CD = item.CUSTOMER_CD })
+                @Html.ActionLink("Xóa", "Deactive", new { CUSTOMER_CD = item.CUSTOMER_CD })
             }
         </td>
     </tr>

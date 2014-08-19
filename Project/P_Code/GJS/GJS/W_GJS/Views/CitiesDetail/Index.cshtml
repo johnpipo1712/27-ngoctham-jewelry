@@ -42,14 +42,14 @@
             @Html.DisplayFor(modelItem => item.ACTIVE)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD }) |
+            @Html.ActionLink("Sửa", "Edit", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD }) |
             @if (item.ACTIVE == false)
             {
-                @Html.ActionLink("Active", "Active", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD })
+                @Html.ActionLink("Kích hoạt", "Active", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD })
             }
             else
             {
-                @Html.ActionLink("Deactive", "Deactive", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD })
+                @Html.ActionLink("Xóa", "Deactive", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD })
             }
 
 

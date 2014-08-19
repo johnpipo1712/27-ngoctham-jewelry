@@ -40,10 +40,10 @@
         <th>
             @Html.DisplayNameFor(model => model.PRICE_PROMOTION)
         </th>
-        <th>Sản phẩm hiển thị</th>
-        <th>Sản phẩm mới</th>
-        <th>Sản phẩm nổi bật</th>
-        <th>Sản phẩm bán chạy</th>
+        <th>SP hiển thị</th>
+        <th>SP mới</th>
+        <th>SP nổi bật</th>
+        <th>SP bán chạy</th>
         <th></th>
     </tr>
 
@@ -120,14 +120,14 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { PRODUCT_CD = item.PRODUCT_CD }) |
+                @Html.ActionLink("Sửa", "Edit", new { PRODUCT_CD = item.PRODUCT_CD }) |
                 @if (item.ACTIVE == false)
                 {
-                    @Html.ActionLink("Active", "Active", new { PRODUCT_CD = item.PRODUCT_CD })
+                    @Html.ActionLink("Kích hoạt", "Active", new { PRODUCT_CD = item.PRODUCT_CD })
                 }
                 else
                 {
-                    @Html.ActionLink("Deactive", "Deactive", new { PRODUCT_CD = item.PRODUCT_CD })
+                    @Html.ActionLink("Xóa", "Deactive", new { PRODUCT_CD = item.PRODUCT_CD })
                 }
             </td>
         </tr>

@@ -34,14 +34,14 @@
         </td>
        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { ALBUM_CD = item.ALBUM_CD }) |
+            @Html.ActionLink("Sửa", "Edit", new { ALBUM_CD = item.ALBUM_CD }) |
             @if (item.ACTIVE == false)
             {
-                @Html.ActionLink("Active", "Active", new { ALBUM_CD = item.ALBUM_CD })
+                @Html.ActionLink("Kích hoạt", "Active", new { ALBUM_CD = item.ALBUM_CD })
             }
             else
             {
-                @Html.ActionLink("Deactive", "Deactive", new { ALBUM_CD = item.ALBUM_CD })
+                @Html.ActionLink("Xóa", "Deactive", new { ALBUM_CD = item.ALBUM_CD })
             }
         </td>
     </tr>
