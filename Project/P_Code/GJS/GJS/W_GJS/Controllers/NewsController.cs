@@ -78,7 +78,9 @@ namespace W_GJS.Controllers
                 O_NEWS NEWS_edit = Db_gsj.O_NEWS.Single(t => t.NEWS_CD == NEWS.NEWS_CD);
                 NEWS_edit.IMAGE_NEWS = NEWS.IMAGE_NEWS;
                 NEWS_edit.NEWS_CONTENT = NEWS.NEWS_CONTENT;
+                NEWS_edit.NEW_DESCRIPTIONS = NEWS.NEW_DESCRIPTIONS;
                 NEWS_edit.NEWS_TITLE = NEWS.NEWS_TITLE;
+                NEWS_edit.O_CATEGORY_NEWS = NEWS.O_CATEGORY_NEWS;
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");
 
