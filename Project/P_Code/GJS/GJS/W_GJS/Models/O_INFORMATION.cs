@@ -11,12 +11,20 @@ namespace W_GJS.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class O_INFORMATION
     {
+
         public long CD { get; set; }
+        [DataType(DataType.Text)]
+        [Display(Name = "Thông tin yahoo")]
         public string INFORMATION_YAHOO { get; set; }
+        [DataType(DataType.Text)]
+        [Display(Name = "Thông tin skype")]
         public string INFORMATION_SKYPE { get; set; }
+        [DataType(DataType.Text)]
+        [Display(Name = "Thông tin facbook")]
         public string INFORMATION_FACBOOK { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
