@@ -2,15 +2,17 @@
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->
+@{  
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    W_GJS.Models.O_SEO seo = gjs.O_SEO.Single(t => t.CD == 1);
+}
 <html>
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="Author" content="" />
-
+    <title>@seo.TITILE</title>
+    <meta name="keywords" content="@seo.META_KEYWORDS" />
+    <meta name="description" content="@seo.META_DES" />
     <!-- mobile settings -->
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 

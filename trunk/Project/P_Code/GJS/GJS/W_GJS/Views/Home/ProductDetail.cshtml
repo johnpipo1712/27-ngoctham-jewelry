@@ -3,7 +3,8 @@
     ViewBag.Title = "ProductDetail";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
     List<W_GJS.Models.O_PRODUCT> ListProduct = gjs.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == Model.CATEGORY_PRODUCT_CD).ToList().Skip(0).Take(3).ToList();
-}
+    W_GJS.Models.O_INFORMATION Infomation = gjs.O_INFORMATION.Single(t => t.CD == 1);
+    }
 
 @section Scripts {
     <!-- SHOP OPTIONS -->
@@ -282,11 +283,21 @@
                     <li><a data-val="10" href="#">10</a></li>
                 </ul>
             </div><!-- /btn-group -->
-
             <button type="submit" class="btn btn-primary pull-left">THÊM VÀO GIỎ HÀNG</button>
 
         }
-
+        <div>
+            <div id="fb-root"></div>
+            <script>
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+            <div class="fb-comments" data-href="@Infomation.INFORMATION_FACBOOK/Proudct/@Model.PRODUCT_NAME" data-numposts="100" data-colorscheme="light"></div>
+        </div>
     </div>
 
 </div>
