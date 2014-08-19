@@ -376,12 +376,12 @@ namespace W_GJS.Controllers
         public ActionResult Branches()
         {
             Db_gsj = new GJSEntities();
-            var query = Db_gsj.O_CITIES.Select(t => new { t.CITIES_CD,t.CITIES_NAME} ).ToList();
+            var query = Db_gsj.O_CITIES.Where(t => t.ACTIVE == true).Select(t => new { t.CITIES_CD,t.CITIES_NAME} ).ToList();
             ViewBag.Cities = new SelectList(query.AsEnumerable(), "CITIES_CD", "CITIES_NAME",1);
-            var queryD = Db_gsj.D_CITIES_DETAIL.Where(t=>t.CITIES_CD == 1).ToList();
+            var queryD = Db_gsj.D_CITIES_DETAIL.Where(t => t.CITIES_CD == 1 && t.ACTIVE == true).ToList();
             ViewBag.DCities = new SelectList(queryD.AsEnumerable(), "CITIES_DETAIL_CD", "CITIES_DETAIL_NAME",1);
 
-            return View(Db_gsj.O_BRANCH.Where(t => t.CITIES_CD == 1).ToList());
+            return View(Db_gsj.O_BRANCH.Where(t => t.CITIES_CD == 1 && t.ACTIVE == true).ToList());
         }
 
         [HttpPost]
