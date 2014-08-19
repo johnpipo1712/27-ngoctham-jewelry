@@ -4,7 +4,21 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/Admin/_AdminLayout.cshtml";
 }
+@section Breadcrumb {
+    <ul class="breadcrumb breadcrumb-page">
+        <li class="breadcrumb-label text-light-gray">Bạn đang ở đây: </li>
+        <li><a href="#">Trang chủ</a></li>
+        <li class="active"><a href="#">Người dùng</a></li>
+    </ul>
 
+    <div class="page-header">
+
+        <div class="row">
+            <!-- Page header, center on small screens -->
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-users page-header-icon"></i>&nbsp;&nbsp;Người dùng</h1>
+        </div>
+    </div>
+}
 <h2>Sửa</h2>
 
 
