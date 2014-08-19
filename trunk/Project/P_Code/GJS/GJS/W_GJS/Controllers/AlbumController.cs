@@ -6,6 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc;
+using W_GJS.General;
 using W_GJS.Models;
 namespace W_GJS.Controllers
 {
@@ -37,13 +38,24 @@ namespace W_GJS.Controllers
 
             if (ModelState.IsValid)
             {
-                Db_gsj = new GJSEntities();
-                ALBUM.ACTIVE = true;
-                ALBUM.STATUS = 0;
-                ALBUM.CREATEDATE = DateTime.Now;
-                Db_gsj.Entry(ALBUM).State = EntityState.Added;
-                Db_gsj.SaveChanges();
-                return RedirectToAction("Index");
+                bool checkImage = false;
+                checkImage = Process.CheckExtensionImg(ALBUM.URL_IMAGE);
+                if (checkImage == false)
+                {
+                    Db_gsj = new GJSEntities();
+                    ALBUM.ACTIVE = true;
+                    ALBUM.STATUS = 0;
+                    ALBUM.CREATEDATE = DateTime.Now;
+                    Db_gsj.Entry(ALBUM).State = EntityState.Added;
+                    Db_gsj.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Vui lòng kiểm tra đường dẫn hình ảnh");
+
+                    return View(ALBUM);
+                }
 
             }
             else
@@ -76,12 +88,23 @@ namespace W_GJS.Controllers
         {
             if (ModelState.IsValid)
             {
-                Db_gsj = new GJSEntities();
-                O_ALBUM ALBUM_edit = Db_gsj.O_ALBUM.Single(t => t.ALBUM_CD == ALBUM.ALBUM_CD);
-                ALBUM_edit.URL_IMAGE = ALBUM.URL_IMAGE;
-                ALBUM_edit.CATEGORY_ALBUM_CD = ALBUM.CATEGORY_ALBUM_CD;
-                Db_gsj.SaveChanges();
-                return RedirectToAction("Index");
+                bool checkImage = false;
+                checkImage = Process.CheckExtensionImg(ALBUM.URL_IMAGE);
+                if (checkImage == false)
+                {
+                    Db_gsj = new GJSEntities();
+                    O_ALBUM ALBUM_edit = Db_gsj.O_ALBUM.Single(t => t.ALBUM_CD == ALBUM.ALBUM_CD);
+                    ALBUM_edit.URL_IMAGE = ALBUM.URL_IMAGE;
+                    ALBUM_edit.CATEGORY_ALBUM_CD = ALBUM.CATEGORY_ALBUM_CD;
+                    Db_gsj.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Vui lòng kiểm tra đường dẫn hình ảnh");
+
+                    return View(ALBUM);
+                }
 
             }
             else
