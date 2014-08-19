@@ -3,6 +3,11 @@
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
     List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
 }
+
+@section Slide {
+    @Html.Partial("_Slide")
+}
+
 @section PageTitle {
     <section class="page-title">
         <div class="container">

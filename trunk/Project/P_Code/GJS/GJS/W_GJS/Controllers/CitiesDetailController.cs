@@ -57,6 +57,8 @@ namespace W_GJS.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
+            var query = Db_gsj.O_CITIES.Select(t => new { t.CITIES_CD, t.CITIES_NAME }).ToList();
+            ViewBag.Cities = new SelectList(query.AsEnumerable(), "CITIES_CD", "CITIES_NAME", 1);
             D_CITIES_DETAIL CITIES_DETAIL_edit = Db_gsj.D_CITIES_DETAIL.Single(t => t.CITIES_DETAIL_CD == CITIES_DETAIL_CD);
             if (CITIES_DETAIL_edit == null)
                 return HttpNotFound();

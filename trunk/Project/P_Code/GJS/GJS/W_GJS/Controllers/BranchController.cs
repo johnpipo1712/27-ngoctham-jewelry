@@ -40,6 +40,7 @@ namespace W_GJS.Controllers
                 BRANCH.ACTIVE = true;
                 BRANCH.STATUS = 0;
                 BRANCH.CREATEDATE= DateTime.Now;
+                BRANCH.CITIES_CD = Db_gsj.D_CITIES_DETAIL.Single(t => t.CITIES_DETAIL_CD == BRANCH.CITIES_DETAIL_CD).CITIES_CD;
                 Db_gsj.Entry(BRANCH).State = EntityState.Added;
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");
@@ -77,7 +78,9 @@ namespace W_GJS.Controllers
                 O_BRANCH BRANCH_edit = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == BRANCH.BRANCH_CD);
                 BRANCH_edit.BRANCH_CODE = BRANCH.BRANCH_CODE;
                 BRANCH_edit.BRANCH_NAME = BRANCH.BRANCH_NAME;
-                BRANCH_edit.CITIES_CD = BRANCH.CITIES_CD;
+                D_CITIES_DETAIL BRANCHsss_edit = Db_gsj.D_CITIES_DETAIL.Single(t => t.CITIES_DETAIL_CD == BRANCH.CITIES_DETAIL_CD);
+                BRANCH_edit.CITIES_CD = BRANCHsss_edit.CITIES_CD;
+                BRANCH_edit.CITIES_DETAIL_CD = BRANCH.CITIES_DETAIL_CD;
                 BRANCH_edit.ADDRESS = BRANCH.ADDRESS;
                 BRANCH_edit.LATITUDE = BRANCH.LATITUDE;
                 BRANCH_edit.LONGITUDE = BRANCH.LONGITUDE;
