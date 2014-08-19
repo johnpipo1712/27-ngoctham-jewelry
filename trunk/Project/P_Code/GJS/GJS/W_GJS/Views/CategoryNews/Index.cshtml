@@ -70,11 +70,11 @@
                     <a class="control-icon" href="@Url.Action("Active", "CategoryNews", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">
                         <img src="@Url.Content("~/Content/images/icons/activate.png")" alt="Edit" />
                     </a>
-                    @*@Html.ActionLink("Active", "Active", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })*@
+                    @*@Html.ActionLink("Kích hoạt", "Active", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })*@
                 }
                 else
                 {
-                    @*@Html.ActionLink("Deactive", "Deactive", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })*@
+                    @*@Html.ActionLink("Xóa", "Deactive", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })*@
 
                     <a class="control-icon" href="@Url.Action("Deactive", "CategoryNews", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">
                         <img src="@Url.Content("~/Content/images/icons/cancel.png")" alt="Edit" />

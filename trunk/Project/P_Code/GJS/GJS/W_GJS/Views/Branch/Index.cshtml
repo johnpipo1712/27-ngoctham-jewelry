@@ -67,14 +67,14 @@
             @Html.DisplayFor(modelItem => item.PHONE)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit",new { BRANCH_CD = item.BRANCH_CD }) |
+            @Html.ActionLink("Sửa", "Edit",new { BRANCH_CD = item.BRANCH_CD }) |
             @if (item.ACTIVE == false)
             {
-              @Html.ActionLink("Active", "Active", new { BRANCH_CD = item.BRANCH_CD }) 
+              @Html.ActionLink("Kích hoạt", "Active", new { BRANCH_CD = item.BRANCH_CD }) 
             }
             else
             {
-              @Html.ActionLink("Deactive", "Deactive", new { BRANCH_CD = item.BRANCH_CD })
+              @Html.ActionLink("Xóa", "Deactive", new { BRANCH_CD = item.BRANCH_CD })
            }
         </td>
     </tr>

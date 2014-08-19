@@ -35,14 +35,14 @@
                 @Html.DisplayFor(modelItem => item.O_CATEGORY_PAGE.CATEGORY_PAGE_NAME)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD }) |
+                @Html.ActionLink("Sửa", "Edit", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD }) |
                 @if (item.ACTIVE == false)
                     {
-                        @Html.ActionLink("Active", "Active", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
+                        @Html.ActionLink("Kích hoạt", "Active", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
                     }
                     else
                     {
-                        @Html.ActionLink("Deactive", "Deactive", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
+                        @Html.ActionLink("Xóa", "Deactive", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
                     }
             </td>
         </tr>

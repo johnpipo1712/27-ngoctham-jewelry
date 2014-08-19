@@ -46,14 +46,14 @@
                 @Html.DisplayFor(modelItem => item.CREATEDATE)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { CD = item.CD }) |
+                @Html.ActionLink("Sửa", "Edit", new { CD = item.CD }) |
                 @if (item.ACTIVE == false)
                 {
-                    @Html.ActionLink("Active", "Active", new { CD = item.CD })
+                    @Html.ActionLink("Kích hoạt", "Active", new { CD = item.CD })
                 }
                 else
                 {
-                    @Html.ActionLink("Deactive", "Deactive", new { CD = item.CD })
+                    @Html.ActionLink("Xóa", "Deactive", new { CD = item.CD })
                 }
             </td>
         </tr>

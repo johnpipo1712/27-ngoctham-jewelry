@@ -49,14 +49,14 @@
             @Html.DisplayFor(modelItem => item.CREATEDATE)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { CITIES_CD = item.CITIES_CD }) |
+            @Html.ActionLink("Sửa", "Edit", new { CITIES_CD = item.CITIES_CD }) |
             @if (item.ACTIVE == false)
             {
-                @Html.ActionLink("Active", "Active", new { CITIES_CD = item.CITIES_CD })
+                @Html.ActionLink("Kích hoạt", "Active", new { CITIES_CD = item.CITIES_CD })
             }
             else
             {
-                @Html.ActionLink("Deactive", "Deactive", new { CITIES_CD = item.CITIES_CD })
+                @Html.ActionLink("Xóa", "Deactive", new { CITIES_CD = item.CITIES_CD })
             }
         </td>
     </tr>
