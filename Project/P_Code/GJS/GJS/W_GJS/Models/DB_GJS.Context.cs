@@ -60,6 +60,8 @@ namespace W_GJS.Models
         public virtual DbSet<S_USER> S_USER { get; set; }
         public virtual DbSet<W_PRODUCT> W_PRODUCT { get; set; }
         public virtual DbSet<O_PRODUCT_CATALOG> O_PRODUCT_CATALOG { get; set; }
+        public virtual DbSet<O_ALBUM> O_ALBUM { get; set; }
+        public virtual DbSet<O_CATEGORY_ALBUM> O_CATEGORY_ALBUM { get; set; }
     
         public virtual ObjectResult<SP_STATISTICS_VISIT_Result> SP_STATISTICS_VISIT()
         {

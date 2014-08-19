@@ -65,6 +65,9 @@
         <AssociationConnector Association="GJSModel.FK_D_CITIES_DETAIL_O_CITIES" />
         <AssociationConnector Association="GJSModel.FK_O_BRANCH_D_CITIES_DETAIL" />
         <AssociationConnector Association="GJSModel.FK_O_PRODUCT_CATALOG_O_PRODUCT" />
+        <EntityTypeShape EntityType="GJSModel.O_ALBUM" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="GJSModel.O_CATEGORY_ALBUM" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="GJSModel.FK_O_ALBUM_O_CATEGORY_ALBUM" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
