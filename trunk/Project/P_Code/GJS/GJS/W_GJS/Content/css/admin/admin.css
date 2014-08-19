@@ -10,3 +10,7 @@
 .page-header h1 {
     font-weight: 400;
 }
+
+.page-signin .signin-container {
+    margin: 150px auto;
+}
