@@ -67,9 +67,10 @@ namespace W_GJS.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
-            var queryD = Db_gsj.S_PST.ToList();
-            ViewBag.pst = new SelectList(queryD.AsEnumerable(), "PST_CD", "PST_NAME", 1);
+           
             S_USER USER_edit = Db_gsj.S_USER.Single(t => t.USER_CD == USER_CD);
+            var queryD = Db_gsj.S_PST.ToList();
+            ViewBag.pst = new SelectList(queryD.AsEnumerable(), "PST_CD", "PST_NAME", USER_edit.O_USER_PST.ToList()[0].PST_CD);
             if (USER_edit == null)
                 return HttpNotFound();
             return View(USER_edit);
@@ -95,7 +96,6 @@ namespace W_GJS.Controllers
                 USER_PST.ACTIVE = true;
                 USER_PST.STATUS = 0;
                 USER_PST.CREATEDATE = DateTime.Now;
-                USER_PST.PST_CD = USER.STATUS;
                 Db_gsj.Entry(USER_PST).State = EntityState.Modified;
                 Db_gsj.SaveChanges();
 
