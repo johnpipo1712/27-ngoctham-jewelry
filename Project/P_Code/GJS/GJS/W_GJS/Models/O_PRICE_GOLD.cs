@@ -15,7 +15,6 @@ namespace W_GJS.Models
     
     public partial class O_PRICE_GOLD
     {
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Bảng giá vàng")]
         public long PRICE_GOLD_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]

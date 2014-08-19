@@ -19,7 +19,6 @@ namespace W_GJS.Models
         {
             this.M_PAGE = new HashSet<M_PAGE>();
         }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Danh mục trang")]
         public long CATEGORY_PAGE_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
@@ -30,7 +29,6 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Danh mục trang")]
         public string CATEGORY_PAGE_NAME { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Thẻ alt")]
         public string TAG_ALT { get; set; }

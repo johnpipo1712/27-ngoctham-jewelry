@@ -20,7 +20,6 @@ namespace W_GJS.Models
             this.O_BRANCH = new HashSet<O_BRANCH>();
             this.D_CITIES_DETAIL = new HashSet<D_CITIES_DETAIL>();
         }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Khu vực")]
         public long CITIES_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]

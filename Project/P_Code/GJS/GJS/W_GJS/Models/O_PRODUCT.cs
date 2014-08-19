@@ -24,7 +24,6 @@ namespace W_GJS.Models
             this.O_PRODUCT_SELLING = new HashSet<O_PRODUCT_SELLING>();
             this.O_PRODUCT_CATALOG = new HashSet<O_PRODUCT_CATALOG>();
         }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Sản phẩm")]
         public long PRODUCT_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
@@ -43,13 +42,10 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Nội dung")]
         public string PRODUCT_CONTENT { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "DM Sản phẩm")]
         public Nullable<long> CATEGORY_PRODUCT_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Loại hạt")]
         public Nullable<long> CATEGORY_GRANULES_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "CTDM Sản phẩm")]
         public Nullable<long> CATEGORY_PRODUCT_DETAIL_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
@@ -61,12 +57,15 @@ namespace W_GJS.Models
         [Display(Name = "Số lượng")]
         public Nullable<long> QUANTITY { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+        [DisplayFormat(DataFormatString="{0:0,0}")]
         [Display(Name = "Giá bán")]
         public Nullable<decimal> PRICE { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+        [DisplayFormat(DataFormatString = "{0:0,0}")]
         [Display(Name = "Giá khuyến mãi")]
         public Nullable<decimal> PRICE_PROMOTION { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+        [DisplayFormat(DataFormatString = "{0:0,0}")]
         [Display(Name = "Tiền công")]
         public Nullable<decimal> WAGES { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
@@ -77,11 +76,9 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Hình ảnh")]
         public string URL_IMAGE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Kích thước")]
         public string SIZE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Thẻ alt")]
         public string TAG_ALT { get; set; }

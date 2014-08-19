@@ -20,7 +20,6 @@ namespace W_GJS.Models
             this.O_ORDER = new HashSet<O_ORDER>();
             this.O_USER_CUSTOMER = new HashSet<O_USER_CUSTOMER>();
         }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Khách hàng")]
         public long CUSTOMER_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]

@@ -15,7 +15,6 @@ namespace W_GJS.Models
     
     public partial class O_BRANCH
     {
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Chi nhánh")]
         public long BRANCH_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
@@ -26,10 +25,8 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Tên chi nhánh")]
         public string BRANCH_NAME { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Khu vực")]
         public Nullable<long> CITIES_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Thành phố")]
         public Nullable<long> CITIES_DETAIL_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]

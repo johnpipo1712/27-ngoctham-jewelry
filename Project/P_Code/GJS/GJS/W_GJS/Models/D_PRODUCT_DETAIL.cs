@@ -15,13 +15,10 @@ namespace W_GJS.Models
     
     public partial class D_PRODUCT_DETAIL
     {
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Chi tiết sản phẩm")]
         public long PRODUCT_DETAIL_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Tên sản phẩm")]
         public Nullable<long> PRODUCT_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Tên hình")]
         public string URL_IMAGE { get; set; }

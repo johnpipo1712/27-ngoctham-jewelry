@@ -20,7 +20,6 @@ namespace W_GJS.Models
             this.O_PRODUCT = new HashSet<O_PRODUCT>();
         }
 
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Hạt")]
         public long CATEGORY_GRANULES_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
@@ -33,7 +32,7 @@ namespace W_GJS.Models
         public string CATEGORY_GRANULES_CONTENT { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
-        [Display(Name = "Cân năng")]
+        [Display(Name = "Cân nặng")]
         public string CATEGORY_GRANULES_WEIGHT { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }

@@ -19,7 +19,6 @@ namespace W_GJS.Models
         {
             this.O_NEWS = new HashSet<O_NEWS>();
         }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Danh mục tin tức")]
         public long CATEGORY_NEWS_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
@@ -30,7 +29,6 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Tên danh mục tin tức")]
         public string CATEGORY_NEWS_NAME { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Thẻ alt")]
         public string TAG_ALT { get; set; }

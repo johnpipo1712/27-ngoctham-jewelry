@@ -20,7 +20,6 @@ namespace W_GJS.Models
             this.O_NEWS_HIGHLIGHTS = new HashSet<O_NEWS_HIGHLIGHTS>();
             this.O_NEWS_NEW = new HashSet<O_NEWS_NEW>();
         }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Tin tức")]
         public long NEWS_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
@@ -46,7 +45,6 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Nguồn tin")]
         public string SOURCE_COPY { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Thẻ alt")]
         public string TAG_ALT { get; set; }

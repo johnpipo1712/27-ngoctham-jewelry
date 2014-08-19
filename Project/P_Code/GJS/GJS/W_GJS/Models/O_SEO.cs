@@ -19,19 +19,15 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Icon hình")]
         public string HREF_ICON { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Thẻ title")]
         public string TITILE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Thẻ meta description")]
         public string META_DES { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Thẻ meta keywords")]
         public string META_KEYWORDS { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Thẻ meta robots")]
         public string META_ROBOTS { get; set; }

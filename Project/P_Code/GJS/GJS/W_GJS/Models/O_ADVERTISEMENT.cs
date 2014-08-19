@@ -15,7 +15,6 @@ namespace W_GJS.Models
     
     public partial class O_ADVERTISEMENT
     {
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Quảng cáo")]
         public long CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
