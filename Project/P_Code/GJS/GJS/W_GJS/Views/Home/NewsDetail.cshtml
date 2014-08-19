@@ -5,6 +5,7 @@
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
     List<W_GJS.Models.O_NEWS_HIGHLIGHTS> listNews_Hight_Light = gjs.O_NEWS_HIGHLIGHTS.Where(t => t.ACTIVE == true).ToList();
     List<W_GJS.Models.O_NEWS_NEW> listNews_NEW = gjs.O_NEWS_NEW.Where(t => t.ACTIVE == true).ToList();
+    W_GJS.Models.O_INFORMATION Infomation = gjs.O_INFORMATION.Single(t => t.CD == 1);
   
 }
 
@@ -49,6 +50,17 @@
                 @Html.Raw(Model.NEWS_CONTENT)
             </div>
             <div class="enter">
+                <div id="fb-root"></div>
+                <script>
+                    (function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-comments" data-href="@Infomation.INFORMATION_FACBOOK/News/@Model.NEWS_TITLE" data-numposts="100" data-colorscheme="light"></div>
+
             </div>
             <br>
             <div id="tinkhac">

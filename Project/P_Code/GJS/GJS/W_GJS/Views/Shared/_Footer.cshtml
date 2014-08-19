@@ -89,25 +89,30 @@
             </div>
             <!-- /col #2 -->
             <!-- col #3 -->
+            @{
+                W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+                W_GJS.Models.O_INFORMATION infomation = gjs.O_INFORMATION.Single(t => t.CD == 1);
+            }
             <div class="spaced col-md-3 col-sm-4">
                 <div id="fb-root"></div>
                 <script>
+
                     (function (d, s, id) {
                         var js, fjs = d.getElementsByTagName(s)[0];
                         if (d.getElementById(id)) return;
                         js = d.createElement(s); js.id = id;
-                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
                         fjs.parentNode.insertBefore(js, fjs);
                     }(document, 'script', 'facebook-jssdk'));</script>
-                <div class="fb-like-box" 
+                <div class="fb-like-box"
                      style="background: #fff"
-                     data-href="http://www.facebook.com/yourpardi?ref=stream" 
-                     data-layout="button_count" 
-                     data-width="250" 
-                     data-height="200" 
-                     data-show-faces="true" 
-                     data-stream="false" 
-                     data-show-border="false" 
+                     data-href="@infomation.INFORMATION_FACBOOK"
+                     data-layout="button_count"
+                     data-width="250"
+                     data-height="200"
+                     data-show-faces="true"
+                     data-stream="false"
+                     data-show-border="false"
                      data-header="false"></div>
             </div>
             <!-- /col #3 -->

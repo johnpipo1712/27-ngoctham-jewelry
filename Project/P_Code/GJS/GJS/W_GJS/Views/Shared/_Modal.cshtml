@@ -180,6 +180,10 @@
 </div>
 
 <!-- modal Popup -->
+@{ 
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    W_GJS.Models.O_ADVERTISEMENT OAV = gjs.O_ADVERTISEMENT.Single(t => t.CD == 1);
+}
 <div class="modal fade" id="PopupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="width: 800px; height:600px;">
         <div class="modal-content">
@@ -189,8 +193,7 @@
             </div><!-- /modal header -->
             <!-- modal body -->
             <div class="modal-body">
-                Đây là popup.
-                Viết gì vào đây cũng đc.
+                @Html.Raw(OAV.ADVERTISEMENT)
                 <img src="@Url.Content("~/Content/images/slogan55.png")" alt="Popup" />
             </div>
 
