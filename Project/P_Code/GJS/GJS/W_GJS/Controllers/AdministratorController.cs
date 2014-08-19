@@ -17,5 +17,10 @@ namespace W_GJS.Controllers
         {
             return View();
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
 	}
 }
