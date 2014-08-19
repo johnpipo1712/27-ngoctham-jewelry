@@ -88,6 +88,7 @@ namespace W_GJS.Controllers
             {
                 //store session if succeed
                 Session[SessionConstants.LOGINED_USER_KEY] = username;
+                Session[SessionConstants.LOGINED_USER_ROLE_KEY] = jsonModel.RoleOrFailed;
             }
 
             return Json(jsonModel);
