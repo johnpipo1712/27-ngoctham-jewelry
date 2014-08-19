@@ -5,15 +5,13 @@
     Layout = "~/Views/Shared/Admin/_AdminLayout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Tạo</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>O_ALBUM</h4>
-        <hr />
         @Html.ValidationSummary(true)
 
        
@@ -29,8 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CATEGORY_ALBUM_CD, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CATEGORY_ALBUM_CD)
-                @Html.ValidationMessageFor(model => model.CATEGORY_ALBUM_CD)
+                @Html.DropDownList("CATEGORY_ALBUM_CD", (SelectList)ViewBag.category)
             </div>
         </div>
 
