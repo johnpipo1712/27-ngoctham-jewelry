@@ -58,9 +58,10 @@ namespace W_GJS.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
-            var queryD = Db_gsj.O_CATEGORY_NEWS.ToList();
-            ViewBag.categoryNews = new SelectList(queryD.AsEnumerable(), "CATEGORY_NEWS_CD", "CATEGORY_NEWS_NAME", 1);
             O_NEWS NEWS_edit = Db_gsj.O_NEWS.Single(t => t.NEWS_CD == NEWS_CD);
+            var queryD = Db_gsj.O_CATEGORY_NEWS.ToList();
+            ViewBag.categoryNews = new SelectList(queryD.AsEnumerable(), "CATEGORY_NEWS_CD", "CATEGORY_NEWS_NAME", NEWS_edit.CATEGORY_NEWS_CD);
+           
             if (NEWS_edit == null)
                 return HttpNotFound();
             return View(NEWS_edit);
@@ -80,7 +81,9 @@ namespace W_GJS.Controllers
                 NEWS_edit.NEWS_CONTENT = NEWS.NEWS_CONTENT;
                 NEWS_edit.NEW_DESCRIPTIONS = NEWS.NEW_DESCRIPTIONS;
                 NEWS_edit.NEWS_TITLE = NEWS.NEWS_TITLE;
+                NEWS_edit.SOURCE_COPY = NEWS.SOURCE_COPY;
                 NEWS_edit.O_CATEGORY_NEWS = NEWS.O_CATEGORY_NEWS;
+                NEWS_edit.CATEGORY_NEWS_CD = NEWS.CATEGORY_NEWS_CD;
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");
 

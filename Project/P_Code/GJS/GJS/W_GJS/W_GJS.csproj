@@ -148,8 +148,6 @@
     <Compile Include="Controllers\CategoryAlbumController.cs" />
     <Compile Include="Controllers\CategoryGranulesController.cs" />
     <Compile Include="Controllers\CitiesDetailController.cs" />
-    <Compile Include="Controllers\NewsNewController.cs" />
-    <Compile Include="Controllers\NewsHighlightController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\PriceGoldController.cs" />
     <Compile Include="Controllers\CategoryPageController.cs" />
@@ -1197,12 +1195,6 @@
     <Content Include="Views\CitiesDetail\Create.cshtml" />
     <Content Include="Views\CitiesDetail\Edit.cshtml" />
     <Content Include="Views\CitiesDetail\Index.cshtml" />
-    <Content Include="Views\NewsHighlight\Index.cshtml" />
-    <Content Include="Views\NewsHighlight\Create.cshtml" />
-    <Content Include="Views\NewsHighlight\Edit.cshtml" />
-    <Content Include="Views\NewsNew\Index.cshtml" />
-    <Content Include="Views\NewsNew\Create.cshtml" />
-    <Content Include="Views\NewsNew\Edit.cshtml" />
     <Content Include="Views\CategoryGranules\Index.cshtml" />
     <Content Include="Views\Shared\Admin\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\Admin\_MenuLeft.cshtml" />

@@ -38,10 +38,8 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Hình ảnh")]
         public string IMAGE_NEWS { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Loại tin tức")]
         public Nullable<long> CATEGORY_NEWS_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Nguồn tin")]
         public string SOURCE_COPY { get; set; }
@@ -51,6 +49,8 @@ namespace W_GJS.Models
         public Nullable<long> EMPLOYEE_CD { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
+        [Display(Name = "Ngày tạo")]
+        [DisplayFormat(DataFormatString="{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> CREATEDATE { get; set; }
     
         public virtual M_EMPLOYEE M_EMPLOYEE { get; set; }
