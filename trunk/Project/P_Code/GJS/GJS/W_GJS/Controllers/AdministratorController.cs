@@ -22,5 +22,10 @@ namespace W_GJS.Controllers
         {
             return View();
         }
+
+        public ActionResult FormSample()
+        {
+            return View();
+        }
 	}
 }

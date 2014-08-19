@@ -722,9 +722,11 @@
     <Content Include="Content\images\admin\demo\pricing-bg.jpg" />
     <Content Include="Content\images\admin\demo\signin-bg-1.jpg" />
     <Content Include="Content\images\admin\demo\signin-bg-5.jpg" />
+    <Content Include="Content\images\admin\logo.png" />
     <Content Include="Content\images\admin\main-navbar-logo.png" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\avatar.png" />
+    <Content Include="Content\images\avatar\default.jpg" />
     <Content Include="Content\images\big_banner.png" />
     <Content Include="Content\images\big_banner_grey.png" />
     <Content Include="Content\images\booking.png" />
@@ -1200,6 +1202,7 @@
     <Content Include="Views\Advertisement\Edit.cshtml" />
     <Content Include="Views\Advertisement\Index.cshtml" />
     <Content Include="Views\Administrator\Login.cshtml" />
+    <Content Include="Views\Administrator\FormSample.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
