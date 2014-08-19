@@ -35,7 +35,14 @@
 
 
 
-<h2 class="owl-featured"><strong>@Model.ToList()[0].O_CATEGORY_NEWS.CATEGORY_NEWS_NAME</strong></h2>
+<h2 class="owl-featured">
+    <strong>
+        @if (@Model.ToList().Count > 0) 
+        {
+            @Model.ToList()[0].O_CATEGORY_NEWS.CATEGORY_NEWS_NAME
+        }
+    </strong>
+</h2>
 <div class="wrapper" align="center">
     <div id="content" style="margin-top:40px;">
         <!-- InstanceBeginEditable name="ContentThongTin" -->
@@ -43,17 +50,30 @@
             <div class="enter">
             </div>
             <div id="contentTinTuc">
-                @foreach (var item in Model)
+                @if (@Model.ToList().Count > 0)
                 {
-                      <div class="imghomenews"> <img width="300" src="@item.IMAGE_NEWS" align=""> </div>
-                    <div id="tintuc_home_copy" style="width:260px">
-                    <h4><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })">@item.NEWS_TITLE</a></h4>
-                    @item.NEW_DESCRIPTIONS<br>
-                    <div align="right"><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })">Xem thêm</a></div>
-                   </div><div class="enter"><br> <hr noshade="noshade" width="90%"></div>
+                    @Model.ToList()[0].O_CATEGORY_NEWS.CATEGORY_NEWS_NAME
+                    List<W_GJS.Models.O_NEWS> list = Model.ToList();
+                    int count = list.Count;
 
+                    <div class="imghomenews"> <img width="300" src="@list[0].IMAGE_NEWS" align=""> </div>
+                    <div id="tintuc_home_copy" style="width:260px">
+                        <h4><a href="@Url.Action("NewsDetail", new { NEWS_CD = list[0].NEWS_CD })">@list[0].NEWS_TITLE</a></h4>
+                        @list[0].NEW_DESCRIPTIONS<br>
+                        <div align="right"><a href="@Url.Action("NewsDetail", new { NEWS_CD = list[0].NEWS_CD })">Xem thêm</a></div>
+                    </div><div class="enter"><br> <hr noshade="noshade" width="90%"></div>
+
+
+                    for (int index = 1; index < count; index++)
+                    {
+                        <div class="imghomenews"> <img width="100" src="@list[index].IMAGE_NEWS" align=""> </div>
+                        <div id="tintuc_home_copy" style="width:260px">
+                            <h4><a href="@Url.Action("NewsDetail", new { NEWS_CD = list[index].NEWS_CD })">@list[index].NEWS_TITLE</a></h4>
+                            @list[index].NEW_DESCRIPTIONS<br>
+                            <div align="right"><a href="@Url.Action("NewsDetail", new { NEWS_CD = list[index].NEWS_CD })">Xem thêm</a></div>
+                        </div><div class="enter"><br></div>
+                    }
                 }
-              
                
 
             </div>
