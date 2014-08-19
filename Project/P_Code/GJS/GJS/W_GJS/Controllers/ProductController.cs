@@ -88,8 +88,6 @@ namespace W_GJS.Controllers
                         dproudct.URL_IMAGE = file1;
                         Db_gsj.Entry(dproudct).State = EntityState.Added;
                         Db_gsj.SaveChanges();
-
-
                     }
                     if (file2 != "")
                     {
@@ -101,7 +99,6 @@ namespace W_GJS.Controllers
                         dproudct.CREATEDATE = DateTime.Now;
                         dproudct.URL_IMAGE = file2;
                         Db_gsj.Entry(dproudct).State = EntityState.Added;
-                       
                         Db_gsj.SaveChanges();
                     }
                     if (file3 != "")
