@@ -144,13 +144,14 @@ namespace W_GJS.Controllers
         public ActionResult NewsDetail([Bind(Include = "NEWS_CD")]O_NEWS NEWS)
         {
             Db_gsj = new GJSEntities();
+            // Chưa xử lý: lúc active rồi thì hiện page 404
             return View(Db_gsj.O_NEWS.Single(t=>t.NEWS_CD == NEWS.NEWS_CD));
         }
 
         public ActionResult Category_News([Bind(Include = "CATEGORY_NEWS_CD")]O_CATEGORY_NEWS CATEGORY_NEWS)
         {
             Db_gsj = new GJSEntities();
-            return View(Db_gsj.O_NEWS.Where(t=>t.CATEGORY_NEWS_CD == CATEGORY_NEWS.CATEGORY_NEWS_CD).ToList());
+            return View(Db_gsj.O_NEWS.Where(t => t.CATEGORY_NEWS_CD == CATEGORY_NEWS.CATEGORY_NEWS_CD && t.ACTIVE == true).ToList());
         }
 
        

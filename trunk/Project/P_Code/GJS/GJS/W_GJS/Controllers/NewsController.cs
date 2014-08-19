@@ -21,6 +21,9 @@ namespace W_GJS.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            Db_gsj = new GJSEntities();
+            var queryD = Db_gsj.O_CATEGORY_NEWS.ToList();
+            ViewBag.categoryNews = new SelectList(queryD.AsEnumerable(), "CATEGORY_NEWS_CD", "CATEGORY_NEWS_NAME", 1);
             return View();
         }
 
@@ -36,6 +39,7 @@ namespace W_GJS.Controllers
                 NEWS.ACTIVE = true;
                 NEWS.STATUS = 0;
                 NEWS.CREATEDATE = DateTime.Now;
+                NEWS.EMPLOYEE_CD = 1;
                 Db_gsj.Entry(NEWS).State = EntityState.Added;
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");
@@ -54,6 +58,8 @@ namespace W_GJS.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
+            var queryD = Db_gsj.O_CATEGORY_NEWS.ToList();
+            ViewBag.categoryNews = new SelectList(queryD.AsEnumerable(), "CATEGORY_NEWS_CD", "CATEGORY_NEWS_NAME", 1);
             O_NEWS NEWS_edit = Db_gsj.O_NEWS.Single(t => t.NEWS_CD == NEWS_CD);
             if (NEWS_edit == null)
                 return HttpNotFound();
