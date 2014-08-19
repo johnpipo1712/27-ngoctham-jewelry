@@ -19,7 +19,6 @@ namespace W_GJS.Models
         {
             this.O_ALBUM = new HashSet<O_ALBUM>();
         }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
        [Display(Name = "Danh mục Album")]
         public long CATEGORY_ALBUM_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]

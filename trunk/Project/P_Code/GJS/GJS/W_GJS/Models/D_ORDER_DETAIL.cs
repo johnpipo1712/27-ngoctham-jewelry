@@ -15,24 +15,18 @@ namespace W_GJS.Models
     
     public partial class D_ORDER_DETAIL
     {
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Chi tiết đơn hàng")]
         public long ORDER_DETAIL_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Mã đơn hàng")]
         public Nullable<long> ORDER_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Tên sản phẩm")]
         public Nullable<long> PRODUCT_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Kích thước")]
         public string SIZE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Số lượng")]
         public Nullable<long> QUANTITY { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Đơn giá")]
         public Nullable<decimal> PRICE { get; set; }
         public Nullable<long> STATUS { get; set; }

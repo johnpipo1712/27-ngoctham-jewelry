@@ -19,7 +19,6 @@ namespace W_GJS.Models
         {
             this.O_PRODUCT = new HashSet<O_PRODUCT>();
         }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Chi tiết danh mục sản phẩm")]
         public long CATEGORY_PRODUCT_DETAIL_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]

@@ -15,14 +15,12 @@ namespace W_GJS.Models
     
     public partial class O_ALBUM
     {
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Album")]
         public long ALBUM_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Hình ảnh")]
         public string URL_IMAGE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Tên Album")]
         public Nullable<long> CATEGORY_ALBUM_CD { get; set; }

@@ -19,7 +19,6 @@ namespace W_GJS.Models
         {
             this.D_ORDER_DETAIL = new HashSet<D_ORDER_DETAIL>();
         }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Đơn hàng")]
         public long ORDER_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]

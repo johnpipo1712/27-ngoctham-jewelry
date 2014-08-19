@@ -21,7 +21,6 @@ namespace W_GJS.Models
             this.O_PRODUCT = new HashSet<O_PRODUCT>();
         }
 
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Danh mục sản phẩm")]
         public long CATEGORY_PRODUCT_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
@@ -32,7 +31,6 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Tên danh mục sản phẩm")]
         public string CATEGORY_PRODUCT_NAME { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Thẻ alt")]
         public string TAG_ALT { get; set; }

@@ -22,7 +22,6 @@ namespace W_GJS.Models
             this.O_USER_EMPLOYEE = new HashSet<O_USER_EMPLOYEE>();
         }
 
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Nhân viên")]
         public long EMPLOYEE_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]

@@ -15,7 +15,6 @@ namespace W_GJS.Models
     
     public partial class M_PAGE
     {
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Trang")]
         public long PAGE_COTRACT_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
@@ -26,7 +25,6 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Nội dung")]
         public string PAGE_COTRACT_CONTENT { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Danh mục trang")]
         public Nullable<long> CATEGORY_PAGE_CD { get; set; }
