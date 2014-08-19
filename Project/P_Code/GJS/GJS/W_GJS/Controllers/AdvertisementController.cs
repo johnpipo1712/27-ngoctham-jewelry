@@ -25,6 +25,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)] 
         [ValidateAntiForgeryToken]
         public ActionResult Create(O_ADVERTISEMENT ADVERTISEMENT)
         {
@@ -61,6 +62,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)] 
         [ValidateAntiForgeryToken]
         public ActionResult Edit(O_ADVERTISEMENT ADVERTISEMENT)
         {
