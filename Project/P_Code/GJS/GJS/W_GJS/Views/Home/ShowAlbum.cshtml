@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "ShowAlbum";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
-    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_CATEGORY_ALBUM> listcategory = gjs.O_CATEGORY_ALBUM.Where(t => t.ACTIVE == true ).ToList();
 }
 
 @section PageTitle {
@@ -26,77 +26,29 @@
         </div>
     </section>
 }
-<h2 class="owl-featured margin-bottom-30 margin-top20"><strong>Album 1</strong></h2>
-<div class="row">
-    <span class="col-xs-3">
-        <a href="@Url.Content("~/Content/images/products/sp1.png")"
-           data-target="flare"
-           data-flare-gallery="gallery1"
-           data-flare-thumb="@Url.Content("~/Content/images/products/sp1.png")"
-           data-flare-bw="@Url.Content("~/Content/images/products/sp1.png")">
-            <img src="@Url.Content("~/Content/images/products/sp1.png")" alt="project" class="img-responsive" />
-        </a>
-    </span>
-    <span class="col-xs-3">
-        <a href="@Url.Content("~/Content/images/products/sp2.png")"
-           data-target="flare"
-           data-flare-gallery="gallery1"
-           data-flare-thumb="@Url.Content("~/Content/images/products/sp2.png")"
-           data-flare-bw="@Url.Content("~/Content/images/products/sp2.png")">
-            <img src="@Url.Content("~/Content/images/products/sp2.png")" alt="project" class="img-responsive" />
-        </a>
-    </span>
-    <span class="col-xs-3">
-        <a href="@Url.Content("~/Content/images/products/sp3.png")"
-           data-target="flare"
-           data-flare-gallery="gallery1"
-           data-flare-thumb="@Url.Content("~/Content/images/products/sp3.png")"
-           data-flare-bw="@Url.Content("~/Content/images/products/sp3.png")">
-            <img src="@Url.Content("~/Content/images/products/sp3.png")" alt="project" class="img-responsive" />
-        </a>
-    </span>
-</div>
-<h2 class="owl-featured margin-bottom-30 margin-top20"><strong>Album 2</strong></h2>
-<div class="row">
-    <span class="col-xs-3">
-        <a href="@Url.Content("~/Content/images/products/sp1.png")"
-           data-target="flare"
-           data-flare-gallery="gallery2"
-           data-flare-thumb="@Url.Content("~/Content/images/products/sp1.png")"
-           data-flare-bw="@Url.Content("~/Content/images/products/sp1.png")">
-            <img src="@Url.Content("~/Content/images/products/sp1.png")" alt="project" class="img-responsive" />
-        </a>
-    </span>
-    <span class="col-xs-3">
-        <a href="@Url.Content("~/Content/images/products/sp2.png")"
-           data-target="flare"
-           data-flare-gallery="gallery2"
-           data-flare-thumb="@Url.Content("~/Content/images/products/sp2.png")"
-           data-flare-bw="@Url.Content("~/Content/images/products/sp2.png")">
-            <img src="@Url.Content("~/Content/images/products/sp2.png")" alt="project" class="img-responsive" />
-        </a>
-    </span>
-</div>
 
-@*@foreach (var item in listcategory)
+@foreach (var item in listcategory)
+{
+    if(item.O_ALBUM.Where(t => t.ACTIVE== true).ToList().Count != 0)
     {
-        if (item.O_PRODUCT.Count > 0)
+        <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>@item.CATEGORY_ALBUM_NAME</strong></h2>
+        <div class="row">
+        @foreach (var itemimage in item.O_ALBUM)
         {
-            <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>@item.CATEGORY_PRODUCT_NAME</strong></h2>
-    <div class="row lightbox" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
-        @foreach (var itemproduct in item.O_PRODUCT)
-        {
-            if (itemproduct.O_PRODUCT_CATALOG != null || itemproduct.O_PRODUCT_CATALOG.Count > 0)
+            if (itemimage.ACTIVE == true)
             {
-                <div class="col-sm-3 col-md-3">
-                    <div class="box-content thumbnail text-center">
-                        <a href="@itemproduct.URL_IMAGE" class="item-image">
-                            <img class="img-responsive" src="@itemproduct.URL_IMAGE" alt="" />
-                        </a>
-                    </div>
-                </div>
+                 <span class="col-xs-3">
+                    <a href="@itemimage.URL_IMAGE"
+                       data-target="flare"
+                       data-flare-gallery="gallery-@item.CATEGORY_ALBUM_CD"
+                       data-flare-thumb="@itemimage.URL_IMAGE"
+                       data-flare-bw="@itemimage.URL_IMAGE">
+                        <img src="@itemimage.URL_IMAGE" alt="project" class="img-responsive" />
+                    </a>
+                </span>     
             }
+
         }
-    </div>
-        }
-    }*@
+       </div>
+    }
+}
