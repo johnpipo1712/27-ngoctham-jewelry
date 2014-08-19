@@ -16,13 +16,7 @@
         <hr />
         @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ALBUM_CD, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ALBUM_CD)
-                @Html.ValidationMessageFor(model => model.ALBUM_CD)
-            </div>
-        </div>
+       
 
         <div class="form-group">
             @Html.LabelFor(model => model.URL_IMAGE, new { @class = "control-label col-md-2" })
@@ -37,30 +31,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CATEGORY_ALBUM_CD)
                 @Html.ValidationMessageFor(model => model.CATEGORY_ALBUM_CD)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.STATUS, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.STATUS)
-                @Html.ValidationMessageFor(model => model.STATUS)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ACTIVE, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ACTIVE)
-                @Html.ValidationMessageFor(model => model.ACTIVE)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CREATEDATE, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CREATEDATE)
-                @Html.ValidationMessageFor(model => model.CREATEDATE)
             </div>
         </div>
 
