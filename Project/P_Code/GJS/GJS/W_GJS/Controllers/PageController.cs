@@ -58,10 +58,11 @@ namespace W_GJS.Controllers
             }
             Db_gsj = new GJSEntities();
 
-            var queryD = Db_gsj.O_CATEGORY_PAGE.ToList();
-            ViewBag.pageCategory = new SelectList(queryD.AsEnumerable(), "CATEGORY_PAGE_CD", "CATEGORY_PAGE_NAME", 1);
-
+          
             M_PAGE PAGE_edit = Db_gsj.M_PAGE.Single(t => t.PAGE_COTRACT_CD == PAGE_COTRACT_CD);
+            var queryD = Db_gsj.O_CATEGORY_PAGE.ToList();
+            ViewBag.pageCategory = new SelectList(queryD.AsEnumerable(), "CATEGORY_PAGE_CD", "CATEGORY_PAGE_NAME", PAGE_edit.CATEGORY_PAGE_CD);
+
             if (PAGE_edit == null)
                 return HttpNotFound();
             return View(PAGE_edit);

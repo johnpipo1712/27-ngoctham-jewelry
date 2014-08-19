@@ -59,9 +59,10 @@ namespace W_GJS.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
-            var queryD = Db_gsj.D_CITIES_DETAIL.ToList();
-            ViewBag.DCities = new SelectList(queryD.AsEnumerable(), "CITIES_DETAIL_CD", "CITIES_DETAIL_NAME", 1);
             O_BRANCH BRANCH_edit = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == BRANCH_CD);
+            var queryD = Db_gsj.D_CITIES_DETAIL.ToList();
+            ViewBag.DCities = new SelectList(queryD.AsEnumerable(), "CITIES_DETAIL_CD", "CITIES_DETAIL_NAME", BRANCH_edit.CITIES_DETAIL_CD);
+          
             if (BRANCH_edit == null)
                 return HttpNotFound();
             return View(BRANCH_edit);
@@ -78,8 +79,8 @@ namespace W_GJS.Controllers
                 O_BRANCH BRANCH_edit = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == BRANCH.BRANCH_CD);
                 BRANCH_edit.BRANCH_CODE = BRANCH.BRANCH_CODE;
                 BRANCH_edit.BRANCH_NAME = BRANCH.BRANCH_NAME;
-                D_CITIES_DETAIL BRANCHsss_edit = Db_gsj.D_CITIES_DETAIL.Single(t => t.CITIES_DETAIL_CD == BRANCH.CITIES_DETAIL_CD);
-                BRANCH_edit.CITIES_CD = BRANCHsss_edit.CITIES_CD;
+                D_CITIES_DETAIL BRANCHDetail_edit = Db_gsj.D_CITIES_DETAIL.Single(t => t.CITIES_DETAIL_CD == BRANCH.CITIES_DETAIL_CD);
+                BRANCH_edit.CITIES_CD = BRANCHDetail_edit.CITIES_CD;
                 BRANCH_edit.CITIES_DETAIL_CD = BRANCH.CITIES_DETAIL_CD;
                 BRANCH_edit.ADDRESS = BRANCH.ADDRESS;
                 BRANCH_edit.LATITUDE = BRANCH.LATITUDE;
