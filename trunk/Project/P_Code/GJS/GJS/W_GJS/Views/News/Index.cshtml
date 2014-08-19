@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_LayoutManagement.cshtml";
 }
 
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Self/news/js/script.js")"></script>
+
+}
+
 <h2>Danh sách</h2>
 
 <p>
@@ -51,22 +56,22 @@
         <td>
             @if (item.O_NEWS_HIGHLIGHTS.Count == 0 || item.O_NEWS_HIGHLIGHTS == null)
             {
-                <input type="checkbox" onclick="CheckHightlightAjax(@item.NEWS_CD,this)" name="checkboxselling" />
+                <input type="checkbox" onclick="CheckHightlight(@item.NEWS_CD,this)" name="checkboxselling" />
             }
             else
             {
-                <input type="checkbox" checked="checked" onclick="CheckHightlightAjax(@item.NEWS_CD,this)" name="checkboxselling" />
+                <input type="checkbox" checked="checked" onclick="CheckHightlight(@item.NEWS_CD,this)" name="checkboxselling" />
 
             }
         </td>
         <td>
             @if (item.O_NEWS_NEW.Count == 0 || item.O_NEWS_NEW == null)
             {
-                <input type="checkbox" onclick="CheckNewAjax(@item.NEWS_CD,this)" name="checkboxselling" />
+                <input type="checkbox" onclick="CheckNew(@item.NEWS_CD,this)" name="checkboxselling" />
             }
             else
             {
-                <input type="checkbox" checked="checked" onclick="CheckNewAjax(@item.NEWS_CD,this)" name="checkboxselling" />
+                <input type="checkbox" checked="checked" onclick="CheckNew(@item.NEWS_CD,this)" name="checkboxselling" />
 
             }
         </td>
