@@ -1,0 +1,229 @@
+﻿@{
+    ViewBag.Title = "FormSample";
+    Layout = "~/Views/Shared/Admin/_AdminLayout.cshtml";
+}
+
+@section Breadcrumb {
+    <ul class="breadcrumb breadcrumb-page">
+        <li class="breadcrumb-label text-light-gray">Bạn đang ở đây: </li>
+        <li><a href="#">Trang chủ</a></li>
+        <li class="active"><a href="#">Form Elements</a></li>
+    </ul>
+
+    <div class="page-header">
+
+        <div class="row">
+            <!-- Page header, center on small screens -->
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-bolt page-header-icon"></i>&nbsp;&nbsp;Form Elements</h1>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="panel">
+        <div class="panel-heading">
+            <span class="panel-title">Dark form states</span>
+        </div>
+        <div class="panel-body">
+            <!-- Warning -->
+            <div class="form-group has-warning dark">
+                <label for="inputWarning-41" class="control-label">Input with warning</label>
+                <input type="text" id="inputWarning-41" class="form-control">
+                <p class="help-block">Example block-level help text here.</p>
+            </div> <!-- / .form-group -->
+            <!-- Error -->
+            <div class="form-group has-error dark">
+                <label for="inputError-41" class="control-label">Input with error</label>
+                <input type="text" id="inputError-41" class="form-control">
+                <p class="help-block">Example block-level help text here.</p>
+            </div> <!-- / .form-group -->
+            <!-- Success -->
+            <div class="form-group has-success dark">
+                <label for="inputSuccess-41" class="control-label">Input with success</label>
+                <input type="text" id="inputSuccess-41" class="form-control">
+                <p class="help-block">Example block-level help text here.</p>
+            </div> <!-- / .form-group -->
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="panel">
+        <div class="panel-heading">
+            <span class="panel-title">Switchers</span>
+        </div>
+        <div id="switcher-examples" class="panel-body">
+            <div>
+                <div class="switcher"><input type="checkbox" id="switcher-example-1"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                <div class="switcher switcher-theme-square checked"><input type="checkbox" checked="checked" id="switcher-example-2"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on"><span class="fa fa-check"></span></div><div class="switcher-state-off"><span class="fa fa-times"></span></div></div></div>&nbsp;&nbsp;
+                <div class="switcher switcher-theme-modern"><input type="checkbox" id="switcher-example-3"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>
+            </div>
+            <hr class="panel-wide">
+
+            <!-- Colors -->
+            <h6 style="margin:20px 0 10px 0;" class="text-light-gray text-semibold text-xs">COLORS</h6>
+            <div class="form-group-margin" id="switchers-colors-default">
+                <div class="switcher switcher-primary checked"><input type="checkbox" checked="checked" data-class="switcher-primary"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                <div class="switcher switcher-success checked"><input type="checkbox" checked="checked" data-class="switcher-success"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                <div class="switcher switcher-warning checked"><input type="checkbox" checked="checked" data-class="switcher-warning"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                <div class="switcher switcher-danger checked"><input type="checkbox" checked="checked" data-class="switcher-danger"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                <div class="switcher switcher-info checked"><input type="checkbox" checked="checked" data-class="switcher-info"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>
+            </div>
+            <div class="form-group-margin" id="switchers-colors-square">
+                <div class="switcher switcher-theme-square switcher-primary checked"><input type="checkbox" checked="checked" data-class="switcher-primary"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                <div class="switcher switcher-theme-square switcher-success checked"><input type="checkbox" checked="checked" data-class="switcher-success"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                <div class="switcher switcher-theme-square switcher-warning checked"><input type="checkbox" checked="checked" data-class="switcher-warning"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                <div class="switcher switcher-theme-square switcher-danger checked"><input type="checkbox" checked="checked" data-class="switcher-danger"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                <div class="switcher switcher-theme-square switcher-info checked"><input type="checkbox" checked="checked" data-class="switcher-info"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>
+            </div>
+            <div id="switchers-colors-modern">
+                <div class="switcher switcher-theme-modern switcher-primary checked"><input type="checkbox" checked="checked" data-class="switcher-primary"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;&nbsp;
+                <div class="switcher switcher-theme-modern switcher-success checked"><input type="checkbox" checked="checked" data-class="switcher-success"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;&nbsp;
+                <div class="switcher switcher-theme-modern switcher-warning checked"><input type="checkbox" checked="checked" data-class="switcher-warning"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;&nbsp;
+                <div class="switcher switcher-theme-modern switcher-danger checked"><input type="checkbox" checked="checked" data-class="switcher-danger"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;&nbsp;
+                <div class="switcher switcher-theme-modern switcher-info checked"><input type="checkbox" checked="checked" data-class="switcher-info"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>
+            </div>
+            <hr class="panel-wide">
+
+            <!-- Sizes -->
+            <h6 style="margin:20px 0 10px 0;" class="text-light-gray text-semibold text-xs">SIZES</h6>
+            <div id="switchers-sizes">
+                <div class="form-group-margin">
+                    <div class="switcher switcher-lg"><input type="checkbox" class="switcher-example-default" data-class="switcher-lg"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                    <div class="switcher switcher-theme-square switcher-lg"><input type="checkbox" class="switcher-example-square" data-class="switcher-lg"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;&nbsp;
+                    <div class="switcher switcher-theme-modern switcher-lg"><input type="checkbox" class="switcher-example-modern" data-class="switcher-lg"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>
+                </div>
+                <div class="form-group-margin">
+                    <div class="switcher"><input type="checkbox" class="switcher-example-default"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                    <div class="switcher switcher-theme-square"><input type="checkbox" class="switcher-example-square"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;&nbsp;
+                    <div class="switcher switcher-theme-modern"><input type="checkbox" class="switcher-example-modern"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>
+                </div>
+                <div>
+                    <div class="switcher switcher-sm"><input type="checkbox" class="switcher-example-default" data-class="switcher-sm"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                    <div class="switcher switcher-theme-square switcher-sm"><input type="checkbox" class="switcher-example-square" data-class="switcher-sm"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;&nbsp;
+                    <div class="switcher switcher-theme-modern switcher-sm"><input type="checkbox" class="switcher-example-modern" data-class="switcher-sm"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>
+                </div>
+            </div>
+            <hr class="panel-wide">
+
+            <!-- Disabled state -->
+            <h6 style="margin:20px 0 10px 0;" class="text-light-gray text-semibold text-xs">DISABLED STATE</h6>
+            <div id="switchers-disabled">
+                <div class="form-group-margin">
+                    <div class="switcher disabled"><input type="checkbox" disabled="disabled" id="switcher-disabled-default"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;
+                    <div class="switcher switcher-theme-square disabled checked"><input type="checkbox" disabled="disabled" checked="checked" id="switcher-disabled-square"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>&nbsp;&nbsp;&nbsp;
+                    <div class="switcher switcher-theme-modern disabled"><input type="checkbox" disabled="disabled" id="switcher-disabled-modern"><div class="switcher-toggler"></div><div class="switcher-inner"><div class="switcher-state-on">ON</div><div class="switcher-state-off">OFF</div></div></div>
+                </div>
+                <div>
+                    <button id="switcher-enable-all" class="btn btn-success btn-sm">Enable</button>&nbsp;&nbsp;
+                    <button id="switcher-disable-all" class="btn btn-danger btn-sm">Disable</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="panel">
+        <div class="panel-heading">
+            <span class="panel-title">Styled checkboxeds and radios</span>
+        </div>
+        <div class="panel-body no-padding-t">
+            <!-- Checkboxes -->
+            <h6 style="margin:20px 0 10px 0;" class="text-light-gray text-semibold text-xs">CHECKBOXES</h6>
+            <!-- Checkbox styling -->
+            <p>
+                <label class="checkbox-inline">
+                    <input type="checkbox" class="px">
+                    <span class="lbl">One</span>
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" checked="checked" class="px">
+                    <span class="lbl">Two</span>
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" class="px">
+                    <span class="lbl">Three</span>
+                </label>
+            </p>
+            <hr class="panel-wide">
+
+            <!-- Radios -->
+            <h6 style="margin:20px 0 10px 0;" class="text-light-gray text-semibold text-xs">RADIOS</h6>
+            <!-- Radio styling -->
+            <p>
+                <label class="radio">
+                    <input type="radio" class="px" name="styled-r1">
+                    <span class="lbl">One</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" checked="checked" class="px" name="styled-r1">
+                    <span class="lbl">Two</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" class="px" name="styled-r1">
+                    <span class="lbl">Three</span>
+                </label>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="panel">
+        <div class="panel-heading">
+            <span class="panel-title">Flat buttons</span>
+        </div>
+        <div class="panel-body buttons-with-margins">
+            <button class="btn btn-flat">Default</button> &nbsp;&nbsp;
+            <button class="btn btn-primary btn-flat">Primary</button> &nbsp;&nbsp;
+            <button class="btn btn-info btn-flat">Info</button> &nbsp;&nbsp;
+            <button class="btn btn-success btn-flat">Success</button> &nbsp;&nbsp;
+            <button class="btn btn-warning btn-flat">Warning</button> &nbsp;&nbsp;
+            <button class="btn btn-danger btn-flat">Danger</button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="table-primary">
+        <div class="table-header">
+            <div class="table-caption">
+                Table
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>mdo</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>fat</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>twitter</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-footer">
+            Footer
+        </div>
+    </div>
+</div>
