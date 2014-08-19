@@ -51,22 +51,22 @@
         <td>
             @if (item.O_NEWS_HIGHLIGHTS.Count == 0 || item.O_NEWS_HIGHLIGHTS == null)
             {
-                <input type="checkbox" onclick="CheckSelling(@item.NEWS_CD,this)" name="checkboxselling" />
+                <input type="checkbox" onclick="CheckHightlightAjax(@item.NEWS_CD,this)" name="checkboxselling" />
             }
             else
             {
-                <input type="checkbox" checked="checked" onclick="CheckSelling(@item.NEWS_CD,this)" name="checkboxselling" />
+                <input type="checkbox" checked="checked" onclick="CheckHightlightAjax(@item.NEWS_CD,this)" name="checkboxselling" />
 
             }
         </td>
         <td>
             @if (item.O_NEWS_NEW.Count == 0 || item.O_NEWS_NEW == null)
             {
-                <input type="checkbox" onclick="CheckSelling(@item.NEWS_CD,this)" name="checkboxselling" />
+                <input type="checkbox" onclick="CheckNewAjax(@item.NEWS_CD,this)" name="checkboxselling" />
             }
             else
             {
-                <input type="checkbox" checked="checked" onclick="CheckSelling(@item.NEWS_CD,this)" name="checkboxselling" />
+                <input type="checkbox" checked="checked" onclick="CheckNewAjax(@item.NEWS_CD,this)" name="checkboxselling" />
 
             }
         </td>
