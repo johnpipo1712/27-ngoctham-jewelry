@@ -81,7 +81,6 @@ namespace W_GJS.Controllers
                     {
                         D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
                         dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
-                        dproudct.O_PRODUCT = PRODUCT;
                         dproudct.STATUS = 0;
                         dproudct.ACTIVE = true;
                         dproudct.CREATEDATE = DateTime.Now;
@@ -93,7 +92,6 @@ namespace W_GJS.Controllers
                     {
                         D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
                         dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
-                        dproudct.O_PRODUCT = PRODUCT;
                         dproudct.STATUS = 0;
                         dproudct.ACTIVE = true;
                         dproudct.CREATEDATE = DateTime.Now;
@@ -105,7 +103,6 @@ namespace W_GJS.Controllers
                     {
                         D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
                         dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
-                        dproudct.O_PRODUCT = PRODUCT;
                         dproudct.STATUS = 0;
                         dproudct.ACTIVE = true;
                         dproudct.CREATEDATE = DateTime.Now;
@@ -118,7 +115,6 @@ namespace W_GJS.Controllers
                     {
                         D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
                         dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
-                        dproudct.O_PRODUCT = PRODUCT;
                         dproudct.STATUS = 0;
                         dproudct.ACTIVE = true;
                         dproudct.CREATEDATE = DateTime.Now;
@@ -131,7 +127,6 @@ namespace W_GJS.Controllers
                     {
                         D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
                         dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
-                        dproudct.O_PRODUCT = PRODUCT;
                         dproudct.STATUS = 0;
                         dproudct.ACTIVE = true;
                         dproudct.CREATEDATE = DateTime.Now;
@@ -166,7 +161,7 @@ namespace W_GJS.Controllers
             var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.ToList();
             ViewBag.Dropdownlist = new SelectList(query.AsEnumerable(), "CATEGORY_PRODUCT_DETAIL_CD", "CATEGORY_PRODUCT_DETAIL_NAME", PRODUCT_edit.CATEGORY_PRODUCT_DETAIL_CD);
             var queryG = Db_gsj.O_CATEGORY_GRANULES.ToList();
-            ViewBag.DropdownlistG = new SelectList(query.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", PRODUCT_edit.CATEGORY_GRANULES_CD);
+            ViewBag.DropdownlistG = new SelectList(queryG.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", PRODUCT_edit.CATEGORY_GRANULES_CD);
       
             if (PRODUCT_edit == null)
                 return HttpNotFound();
@@ -215,15 +210,27 @@ namespace W_GJS.Controllers
                 O_PRODUCT PRODUCT_edit = Db_gsj.O_PRODUCT.Single(t => t.PRODUCT_CD == PRODUCT.PRODUCT_CD);
                 PRODUCT_edit.PRODUCT_CODE = PRODUCT.PRODUCT_CODE;
                 PRODUCT_edit.PRODUCT_NAME = PRODUCT.PRODUCT_NAME;
+                PRODUCT_edit.CATEGORY_GRANULES_CD = PRODUCT.CATEGORY_GRANULES_CD;
+                PRODUCT_edit.CATEGORY_PRODUCT_DETAIL_CD = PRODUCT.CATEGORY_PRODUCT_DETAIL_CD;
+                PRODUCT_edit.O_CATEGORY_PRODUCT = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Single(t => t.CATEGORY_PRODUCT_DETAIL_CD == PRODUCT.CATEGORY_PRODUCT_DETAIL_CD).O_CATEGORY_PRODUCT;
+                PRODUCT_edit.CATEGORY_PRODUCT_CD = PRODUCT_edit.O_CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD;
+                PRODUCT_edit.CURRENCY = PRODUCT.CURRENCY;
+                PRODUCT_edit.PRICE_PROMOTION = PRODUCT.PRICE_PROMOTION;
+                PRODUCT_edit.PRODUCT_CONTENT = PRODUCT.PRODUCT_CONTENT;
+                PRODUCT_edit.PRODUCT_TITLE = PRODUCT.PRODUCT_TITLE;
+                PRODUCT_edit.URL_IMAGE = PRODUCT.URL_IMAGE;
+                PRODUCT_edit.WAGES = PRODUCT.WAGES;
+                PRODUCT_edit.WEIGHT = PRODUCT.WEIGHT;
                 PRODUCT_edit.PRICE = PRODUCT.PRICE;
                 PRODUCT_edit.QUANTITY = PRODUCT.QUANTITY;
-                Db_gsj.SaveChanges();
+               
                 Db_gsj.D_PRODUCT_DETAIL.RemoveRange(PRODUCT_edit.D_PRODUCT_DETAIL);
+               Db_gsj.SaveChanges();
+
                 if (file1 != "")
                 {
                     D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
                     dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
-                    dproudct.O_PRODUCT = PRODUCT;
                     dproudct.STATUS = 0;
                     dproudct.ACTIVE = true;
                     dproudct.CREATEDATE = DateTime.Now;
@@ -238,7 +245,6 @@ namespace W_GJS.Controllers
                 {
                     D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
                     dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
-                    dproudct.O_PRODUCT = PRODUCT;
                     dproudct.STATUS = 0;
                     dproudct.ACTIVE = true;
                     dproudct.CREATEDATE = DateTime.Now;
@@ -251,7 +257,6 @@ namespace W_GJS.Controllers
                 {
                     D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
                     dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
-                    dproudct.O_PRODUCT = PRODUCT;
                     dproudct.STATUS = 0;
                     dproudct.ACTIVE = true;
                     dproudct.CREATEDATE = DateTime.Now;
@@ -264,7 +269,6 @@ namespace W_GJS.Controllers
                 {
                     D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
                     dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
-                    dproudct.O_PRODUCT = PRODUCT;
                     dproudct.STATUS = 0;
                     dproudct.ACTIVE = true;
                     dproudct.CREATEDATE = DateTime.Now;
@@ -277,7 +281,6 @@ namespace W_GJS.Controllers
                 {
                     D_PRODUCT_DETAIL dproudct = new D_PRODUCT_DETAIL();
                     dproudct.PRODUCT_CD = PRODUCT.PRODUCT_CD;
-                    dproudct.O_PRODUCT = PRODUCT;
                     dproudct.STATUS = 0;
                     dproudct.ACTIVE = true;
                     dproudct.CREATEDATE = DateTime.Now;
