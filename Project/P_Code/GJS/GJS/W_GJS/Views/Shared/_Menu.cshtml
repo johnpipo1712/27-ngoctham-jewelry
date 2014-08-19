@@ -70,9 +70,16 @@
                     <li>
                         <a href="@Url.Action("Branches", "Home")">HỆ THỐNG CHI NHÁNH <span>branches</span></a>
                     </li>
-                    <li>
+                    @if (!String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY])
+                        && (int)Session[W_GJS.General.SessionConstants.LOGINED_USER_ROLE_KEY] == 2)
+                    {
+                        <li>
                         <a href="@Url.Action("Catalog", "Home")">CATALOG <span>catalog</span></a>
-                    </li>
+                        </li>
+                    }
+
+                    
+
                     <li>
                         <a href="@Url.Action("ShowAlbum", "Home")">ALBUM <span>album</span></a>
                     </li>

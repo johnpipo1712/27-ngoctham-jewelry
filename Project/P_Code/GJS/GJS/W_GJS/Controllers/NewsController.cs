@@ -112,5 +112,45 @@ namespace W_GJS.Controllers
             Db_gsj.SaveChanges();
             return RedirectToAction("Index");
         }
+        public JsonResult CheckNewAjax(long? NEWS_CD, String CHECK)
+        {
+            Db_gsj = new GJSEntities();
+            if (CHECK == "true")
+            {
+                O_NEWS NEWS = Db_gsj.O_NEWS.Single(t => t.NEWS_CD == NEWS_CD);
+                O_NEWS_NEW NEWSNEW = new O_NEWS_NEW();
+                NEWSNEW.O_NEWS = NEWS;
+                NEWSNEW.NEWS_CD = NEWS.NEWS_CD;
+                Db_gsj.Entry(NEWSNEW).State = EntityState.Added;
+                Db_gsj.SaveChanges();
+            }
+            else
+            {
+                List<O_NEWS_NEW> NEWSNEW = Db_gsj.O_NEWS_NEW.Where(t => t.NEWS_CD == NEWS_CD).ToList();
+                Db_gsj.O_NEWS_NEW.RemoveRange(NEWSNEW);
+                Db_gsj.SaveChanges();
+            }
+            return Json(1);
+        }
+        public JsonResult CheckHightlightAjax(long? NEWS_CD, String CHECK)
+        {
+            Db_gsj = new GJSEntities();
+            if (CHECK == "true")
+            {
+                O_NEWS NEWS = Db_gsj.O_NEWS.Single(t => t.NEWS_CD == NEWS_CD);
+                O_NEWS_HIGHLIGHTS NEWSHIGHLIGHTS = new O_NEWS_HIGHLIGHTS();
+                NEWSHIGHLIGHTS.O_NEWS = NEWS;
+                NEWSHIGHLIGHTS.NEWS_CD = NEWS.NEWS_CD;
+                Db_gsj.Entry(NEWSHIGHLIGHTS).State = EntityState.Added;
+                Db_gsj.SaveChanges();
+            }
+            else
+            {
+                List<O_NEWS_HIGHLIGHTS> NEWSHIGHLIGHTS = Db_gsj.O_NEWS_HIGHLIGHTS.Where(t => t.NEWS_CD == NEWS_CD).ToList();
+                Db_gsj.O_NEWS_HIGHLIGHTS.RemoveRange(NEWSHIGHLIGHTS);
+                Db_gsj.SaveChanges();
+            }
+            return Json(1);
+        }
     }
 }
