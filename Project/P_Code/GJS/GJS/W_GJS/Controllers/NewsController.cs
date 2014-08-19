@@ -127,6 +127,9 @@ namespace W_GJS.Controllers
                 O_NEWS_NEW NEWSNEW = new O_NEWS_NEW();
                 NEWSNEW.O_NEWS = NEWS;
                 NEWSNEW.NEWS_CD = NEWS.NEWS_CD;
+                NEWSNEW.ACTIVE = true;
+                NEWSNEW.STATUS = 0;
+                NEWSNEW.CREATEDATE = DateTime.Now;
                 Db_gsj.Entry(NEWSNEW).State = EntityState.Added;
                 Db_gsj.SaveChanges();
             }
@@ -147,6 +150,9 @@ namespace W_GJS.Controllers
                 O_NEWS_HIGHLIGHTS NEWSHIGHLIGHTS = new O_NEWS_HIGHLIGHTS();
                 NEWSHIGHLIGHTS.O_NEWS = NEWS;
                 NEWSHIGHLIGHTS.NEWS_CD = NEWS.NEWS_CD;
+                NEWSHIGHLIGHTS.ACTIVE = true;
+                NEWSHIGHLIGHTS.STATUS = 0;
+                NEWSHIGHLIGHTS.CREATEDATE = DateTime.Now;
                 Db_gsj.Entry(NEWSHIGHLIGHTS).State = EntityState.Added;
                 Db_gsj.SaveChanges();
             }

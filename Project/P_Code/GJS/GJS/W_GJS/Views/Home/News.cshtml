@@ -7,6 +7,10 @@
     List<W_GJS.Models.O_CATEGORY_NEWS> listCategory_News = gjs.O_CATEGORY_NEWS.Where(t => t.ACTIVE == true).ToList();
 }
 
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Self/news/js/script.js")"></script>
+}
+
 @section PageTitle {
     <section class="page-title">
         <div class="container">
@@ -59,12 +63,12 @@
                 <!-- tabs -->
                 <ul class="nav nav-tabs nav-justified">
                     <li class="active">
-                        <a href="@Url.Action("News", "Home")tab1" data-toggle="tab">
+                        <a href="#tab1" data-toggle="tab">
                             Nổi bật
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("News", "Home")tab2" data-toggle="tab">
+                        <a href="#tab2" data-toggle="tab">
                             Mới nhất
                         </a>
                     </li>
@@ -73,8 +77,8 @@
                 <!-- tabs content -->
                 <div class="tab-content">
                     <div id="tab1" class="tab-pane active">
-                        <ul
-                            @foreach (var item in listNews_NEW)
+                        <ul>
+                            @foreach (var item in listNews_Hight_Light)
                             {
                                <li><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><i class="fa fa-sign-out"></i> @item.O_NEWS.NEWS_TITLE</a> <small>@String.Format("{0:dd/MM/yyy}", @item.O_NEWS.CREATEDATE)</small></li>
                        
@@ -85,7 +89,7 @@
                     <div id="tab2" class="tab-pane">
                         <!-- tab content -->
                         <ul>
-                            @foreach (var item in listNews_Hight_Light)
+                            @foreach (var item in listNews_NEW)
                             {
                                 <li><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><i class="fa fa-sign-out"></i> @item.O_NEWS.NEWS_TITLE</a> <small>@String.Format("{0:dd/MM/yyy}", @item.O_NEWS.CREATEDATE)</small></li>
 
