@@ -142,7 +142,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministratorController.cs" />
+    <Compile Include="Controllers\AdvertisementController.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\CategoryAlbumController.cs" />
     <Compile Include="Controllers\CategoryGranulesController.cs" />
     <Compile Include="Controllers\CitiesDetailController.cs" />
     <Compile Include="Controllers\NewsNewController.cs" />
@@ -207,7 +210,13 @@
     <Compile Include="Models\O_ADVERTISEMENT.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\O_ALBUM.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\O_BRANCH.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\O_CATEGORY_ALBUM.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\O_CATEGORY_GRANULES.cs">
@@ -1203,6 +1212,12 @@
     <Content Include="Views\Advertisement\Index.cshtml" />
     <Content Include="Views\Administrator\Login.cshtml" />
     <Content Include="Views\Administrator\FormSample.cshtml" />
+    <Content Include="Views\Album\Edit.cshtml" />
+    <Content Include="Views\Album\Create.cshtml" />
+    <Content Include="Views\Album\Index.cshtml" />
+    <Content Include="Views\CategoryAlbum\Index.cshtml" />
+    <Content Include="Views\CategoryAlbum\Create.cshtml" />
+    <Content Include="Views\CategoryAlbum\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
