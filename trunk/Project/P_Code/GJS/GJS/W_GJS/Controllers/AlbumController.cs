@@ -23,6 +23,10 @@ namespace W_GJS.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            Db_gsj = new GJSEntities();
+            var query = Db_gsj.O_CATEGORY_ALBUM.ToList();
+            ViewBag.category = new SelectList(query.AsEnumerable(), "CATEGORY_ALBUM_CD", "CATEGORY_ALBUM_NAME", 1);
+          
             return View();
         }
 
@@ -56,6 +60,10 @@ namespace W_GJS.Controllers
             }
             Db_gsj = new GJSEntities();
             O_ALBUM ALBUM_edit = Db_gsj.O_ALBUM.Single(t => t.ALBUM_CD == ALBUM_CD);
+            Db_gsj = new GJSEntities();
+            var query = Db_gsj.O_CATEGORY_ALBUM.ToList();
+            ViewBag.category = new SelectList(query.AsEnumerable(), "CATEGORY_ALBUM_CD", "CATEGORY_ALBUM_NAME", ALBUM_edit.CATEGORY_ALBUM_CD);
+          
             if (ALBUM_edit == null)
                 return HttpNotFound();
             return View(ALBUM_edit);
@@ -71,6 +79,7 @@ namespace W_GJS.Controllers
                 Db_gsj = new GJSEntities();
                 O_ALBUM ALBUM_edit = Db_gsj.O_ALBUM.Single(t => t.ALBUM_CD == ALBUM.ALBUM_CD);
                 ALBUM_edit.URL_IMAGE = ALBUM.URL_IMAGE;
+                ALBUM_edit.CATEGORY_ALBUM_CD = ALBUM.CATEGORY_ALBUM_CD;
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");
 
