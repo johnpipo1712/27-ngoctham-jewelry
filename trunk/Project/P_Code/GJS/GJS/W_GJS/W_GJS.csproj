@@ -144,7 +144,6 @@
     <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\CategoryGranulesController.cs" />
-    <Compile Include="Controllers\AdvertisementController.cs" />
     <Compile Include="Controllers\CitiesDetailController.cs" />
     <Compile Include="Controllers\NewsNewController.cs" />
     <Compile Include="Controllers\NewsHighlightController.cs" />
@@ -672,6 +671,8 @@
     <Content Include="ckeditor\styles.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\admin\admin-color.css" />
+    <Content Include="Content\css\admin\admin.css" />
     <Content Include="Content\css\admin\bootstrap.min.css" />
     <Content Include="Content\css\admin\pages.min.css" />
     <Content Include="Content\css\admin\pixel-admin.min.css" />
@@ -1193,9 +1194,11 @@
     <Content Include="Views\CategoryGranules\Index.cshtml" />
     <Content Include="Views\Shared\Admin\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\Admin\_MenuLeft.cshtml" />
-    <Content Include="Views\Advertisement\Index.cshtml" />
+    <Content Include="Views\Shared\Admin\_MainNavigation.cshtml" />
     <Content Include="Views\Advertisement\Create.cshtml" />
     <Content Include="Views\Advertisement\Edit.cshtml" />
+    <Content Include="Views\Advertisement\Index.cshtml" />
+    <Content Include="Views\Administrator\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
