@@ -1,9 +1,90 @@
 ﻿
 <ul class="navigation">
     <li>
-        <a href="#"><i class="menu-icon fa fa-dashboard"></i><span class="mm-text">Bảng điều khiển</span></a>
+        <a href="@Url.Action("Index", "Administrator")"><i class="menu-icon fa fa-dashboard"></i><span class="mm-text">Bảng điều khiển</span></a>
     </li>
+
     <li class="mm-dropdown">
+        <a href="pages-blank.html#"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Sản phẩm</span></a>
+        <ul>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "CategoryProduct")"><span class="mm-text">Loại sản phẩm</span><span class="badge badge-danger">12</span><span class="label label-info">21</span></a>
+            </li>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "CategoryGranules")"><span class="mm-text">Loại hạt</span></a>
+            </li>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "Product")"><span class="mm-text">Sản phẩm</span></a>
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="@Url.Action("Index", "Order")"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Đơn đặt hàng</span></a>
+    </li>
+
+    <li class="mm-dropdown">
+        <a href="pages-blank.html#"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Trang tĩnh</span></a>
+        <ul>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "CategoryPage")"><span class="mm-text">Loại trang (menu)</span><span class="badge badge-danger">12</span><span class="label label-info">21</span></a>
+            </li>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "Page")"><span class="mm-text">Trang</span></a>
+            </li>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "Advertisement")"><span class="mm-text">Trang quảng cáo</span></a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="mm-dropdown">
+        <a href="pages-blank.html#"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Hệ thống chi nhánh</span></a>
+        <ul>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "Cities")"><span class="mm-text">Khu vực</span><span class="badge badge-danger">12</span><span class="label label-info">21</span></a>
+            </li>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "CitiesDetail")"><span class="mm-text">Chi tiết khu vực</span></a>
+            </li>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "Branch")"><span class="mm-text">Chi nhánh</span></a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="mm-dropdown">
+        <a href="pages-blank.html#"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Bộ sưu tập</span></a>
+        <ul>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "CategoryAlbum")"><span class="mm-text">Bộ sưu tập</span><span class="badge badge-danger">12</span><span class="label label-info">21</span></a>
+            </li>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "Album")"><span class="mm-text">Hình ảnh trong album</span></a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="mm-dropdown">
+        <a href="pages-blank.html#"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Tin tức</span></a>
+        <ul>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "CategoryNews")"><span class="mm-text">Loại tin tức</span><span class="badge badge-danger">12</span><span class="label label-info">21</span></a>
+            </li>
+            <li>
+                <a tabindex="-1" href="@Url.Action("Index", "News")"><span class="mm-text">Tin tức</span></a>
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="@Url.Action("Index", "PriceGold")"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Bảng giá vàng</span></a>
+    </li>
+
+    <li>
+        <a href="@Url.Action("Index", "User")"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Người dùng</span></a>
+    </li>
+    @*<li class="mm-dropdown">
         <a href="pages-blank.html#"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Menu levels</span><span class="badge badge-primary">6</span></a>
         <ul>
             <li>
@@ -40,10 +121,10 @@
                 </ul>
             </li>
         </ul>
-    </li>
+    </li>*@
 </ul> <!-- / .navigation -->
 
 
-<div class="menu-content">
+@*<div class="menu-content">
     <a href="#" class="btn btn-primary btn-block btn-outline dark">Tạo Hóa Đơn</a>
-</div>
+</div>*@

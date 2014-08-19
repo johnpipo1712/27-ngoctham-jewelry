@@ -48,7 +48,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">ĐƠN ĐẶT HÀNG <span>order</span></a>
+                        <a class="dropdown-toggle" href="#">ĐƠN HÀNG <span>order</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="@Url.Action("Index", "Order")">Đơn đặt hàng</a></li>
                         </ul>
@@ -62,16 +62,20 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="dropdown-toggle" href="#">HỆ THỐNG CHI NHÁNH <span>branches</span></a>
+                        <a class="dropdown-toggle" href="#">CHI NHÁNH <span>branches</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="@Url.Action("Index", "Cities")">Khu vực</a></li>
                             <li><a href="@Url.Action("Index", "CitiesDetail")">Chi tiết khu vực</a></li>
                             <li><a href="@Url.Action("Index", "Branch")">Chi nhánh</a></li>
                         </ul>
                     </li>
-                    @*<li>
-                        <a href="@Url.Action("ShowAlbum", "Home")">ALBUM <span>album</span></a>
-                    </li>*@
+                    <li>
+                        <a class="dropdown-toggle" href="#">BỘ SƯU TẬP <span>albums</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index", "CategoryAlbum")">Bộ sưu tập</a></li>
+                            <li><a href="@Url.Action("Index", "Album")">Hình ảnh trong album</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="#">TIN TỨC <span>news</span></a>
                         <ul class="dropdown-menu">

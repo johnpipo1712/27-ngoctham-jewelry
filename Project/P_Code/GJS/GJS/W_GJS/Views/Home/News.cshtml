@@ -162,7 +162,7 @@
 
             <div class="blog-prev-date text-left col-md-3 col-sm-3">
                 <span class="date">
-                    @String.Format("{0:Ngày dd Tháng MM Năm yyyy}",@item.CREATEDATE)
+                    @String.Format("Ngày {0:dd} Tháng {1:MM} Năm {2:yyyy}", @item.CREATEDATE, @item.CREATEDATE, @item.CREATEDATE)
                 </span>
                 <span class="info hidden-xs">
                     <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">@item.M_EMPLOYEE.EMPLOYEE_NAME</a></span>
