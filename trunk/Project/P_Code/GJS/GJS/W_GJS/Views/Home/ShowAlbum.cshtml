@@ -32,23 +32,25 @@
     if(item.O_ALBUM.Where(t => t.ACTIVE== true).ToList().Count != 0)
     {
         <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>@item.CATEGORY_ALBUM_NAME</strong></h2>
-        <div class="row">
-        @foreach (var itemimage in item.O_ALBUM)
+      
+    <div class="row lightbox" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>  
+    @foreach (var itemimage in item.O_ALBUM)
         {
             if (itemimage.ACTIVE == true)
             {
-                 <span class="col-xs-3">
-                    <a href="@itemimage.URL_IMAGE"
-                       data-target="flare"
-                       data-flare-gallery="gallery-@item.CATEGORY_ALBUM_CD"
-                       data-flare-thumb="@itemimage.URL_IMAGE"
-                       data-flare-bw="@itemimage.URL_IMAGE">
-                        <img src="@itemimage.URL_IMAGE" alt="project" class="img-responsive" />
-                    </a>
-                </span>     
+                   <div class="col-sm-3 col-md-3">
+                        <div class="box-content thumbnail text-center">
+                        <a href="@itemimage.URL_IMAGE" class="item-image">
+                            <img class="img-responsive" src="@itemimage.URL_IMAGE" alt="" />
+                        </a>
+                        </div>
+                   </div>
+                
             }
 
         }
        </div>
     }
 }
+
+
