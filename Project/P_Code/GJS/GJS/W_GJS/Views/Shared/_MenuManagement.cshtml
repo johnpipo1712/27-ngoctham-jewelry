@@ -40,6 +40,9 @@
                         </a>
                     </li>
                     <li class="dropdown">
+                        <a class="dropdown-toggle" href="@Url.Action("Edit", "Employee")">Thông tin <span>user</span></a>
+                    </li>
+                    <li class="dropdown">
                         <a class="dropdown-toggle" href="@Url.Action("ProductList", "Home")">SẢN PHẨM <span>products</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="@Url.Action("Index", "CategoryProduct")">Loại sản phẩm</a></li>
@@ -59,6 +62,8 @@
                             <li><a href="@Url.Action("Index", "CategoryPage")">Loại trang (menu)</a></li>
                             <li><a href="@Url.Action("Index", "Page")">Trang</a></li>
                             <li><a href="@Url.Action("Index", "Advertisement")">Trang quảng cáo</a></li>
+                            <li><a href="@Url.Action("Index", "Banner")">Banner</a></li>
+                            <li><a href="@Url.Action("Index", "SEO")">Thông tin để SEO</a></li>
                         </ul>
                     </li>
                     <li>
@@ -87,10 +92,14 @@
                         <a href="@Url.Action("Index", "PriceGold")">BẢNG GIÁ VÀNG <span>gold rates</span></a>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">NGƯỜI DÙNG <span>user</span></a>
+                        <a class="dropdown-toggle" href="#">KHÁCH HÀNG <span>user</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("Index", "User")">Người dùng</a></li>
+                            <li><a href="@Url.Action("Index", "Customer")">Thông tin</a></li>
                         </ul>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index", "User")">Quyền</a></li>
+                        </ul>
+                       
                     </li>
                     
 

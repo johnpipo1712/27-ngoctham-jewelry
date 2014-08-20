@@ -109,5 +109,12 @@ namespace W_GJS.Controllers
             Db_gsj.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Detail([Bind(Include = "ORDER_CD")]O_ORDER ORDER)
+        {
+            Db_gsj = new GJSEntities();
+            ViewBag.Total = O_ORDER.Price_Total(Db_gsj.O_ORDER.Single(t => t.ORDER_CD == ORDER.ORDER_CD));
+            return View(Db_gsj.D_ORDER_DETAIL.Where(t=>t.ORDER_CD == ORDER.ORDER_CD).ToList());
+        }
     }
 }
