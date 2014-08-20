@@ -21,6 +21,34 @@ namespace W_GJS.Controllers
             return View();
         }
 
+        public ActionResult SearchProducts(string keyword)
+        {
+            Db_gsj = new GJSEntities();
+            SearchResultModel resultModel = new SearchResultModel();
+            List<O_PRODUCT> listproduct = Db_gsj.O_PRODUCT.Where(t => t.STATUS == 1 && t.ACTIVE == true && (
+                t.O_CATEGORY_GRANULES.CATEGORY_GRANULES_CONTENT.Contains(keyword)
+                || t.O_CATEGORY_GRANULES.CATEGORY_GRANULES_NAME.Contains(keyword)
+                || t.O_CATEGORY_GRANULES.CATEGORY_GRANULES_WEIGHT.Contains(keyword)
+
+                || t.O_CATEGORY_PRODUCT.CATEGORY_PRODUCT_CODE.Contains(keyword)
+                || t.O_CATEGORY_PRODUCT.CATEGORY_PRODUCT_NAME.Contains(keyword)
+
+                || t.O_CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_CODE.Contains(keyword)
+                || t.O_CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_NAME.Contains(keyword)
+
+                || t.PRODUCT_CODE.Contains(keyword)
+                || t.PRODUCT_CONTENT.Contains(keyword)
+                || t.PRODUCT_NAME.Contains(keyword)
+                || t.PRODUCT_TITLE.Contains(keyword)
+                || t.SIZE.Contains(keyword)
+                || t.TAG_ALT.Contains(keyword)
+                || t.URL_IMAGE.Contains(keyword)
+                || t.WEIGHT.Contains(keyword)
+                || t.CURRENCY.Contains(keyword))).ToList();
+            string htmlString = RenderPartialViewToString("ProductLazyList", listproduct);
+            return View(resultModel);
+        }
+
         [ChildActionOnly]
         public ActionResult ProductLazyList(List<W_GJS.Models.O_PRODUCT> Model)
         {
