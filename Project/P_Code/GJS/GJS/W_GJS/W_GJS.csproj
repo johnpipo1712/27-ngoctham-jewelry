@@ -175,6 +175,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+	<Compile Include="Models\SearchResultModel.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\DB_GJS.Context.cs">
       <AutoGen>True</AutoGen>
@@ -1232,6 +1233,7 @@
     <Content Include="Views\CategoryAlbum\Edit.cshtml" />
     <Content Include="Views\CategoryProductDetail\Index.cshtml" />
     <Content Include="Views\CategoryProductDetail\Create.cshtml" />
+    <Content Include="Views\Home\SearchProducts.cshtml" />
     <Content Include="Views\CategoryProductDetail\Edit.cshtml" />
     <Content Include="Views\Banner\Create.cshtml" />
     <Content Include="Views\Banner\Edit.cshtml" />
