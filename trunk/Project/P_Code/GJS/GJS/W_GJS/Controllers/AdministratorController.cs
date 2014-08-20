@@ -40,6 +40,13 @@ namespace W_GJS.Controllers
             return View(jsonModel);
         }
 
+        public ActionResult Logout()
+        {
+            // remove session
+            Session[SessionConstants.LOGINED_ADMIN_KEY] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult FormSample()
         {
             return View();
