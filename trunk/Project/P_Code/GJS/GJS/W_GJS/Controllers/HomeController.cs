@@ -28,12 +28,12 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetNext15Products(int blockNumber)
+        public ActionResult GetNext9Products(int blockNumber)
         {
             Db_gsj = new GJSEntities();
             JsonModel jsonModel = new JsonModel();
             List<W_GJS.Models.O_PRODUCT> listproduct = new List<W_GJS.Models.O_PRODUCT>();
-            int numItemsInBlock = 15;
+            int numItemsInBlock = 9;
             int totalItems = Db_gsj.O_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).Count();
             // check if out of size.
             //if (totalItems / numItemsInBlock < blockNumber)
@@ -94,7 +94,7 @@ namespace W_GJS.Controllers
             return Json(jsonModel);
         }
 
-
+        [HttpPost]
         public ActionResult Logout()
         {
             // remove session
