@@ -28,7 +28,7 @@
             inProgress = true;
             $("#loadingDiv").show();
             
-            $.post("@Url.Action("GetNext15Products", "Home")", { "blockNumber": blockNumber },
+            $.post("@Url.Action("GetNext9Products", "Home")", { "blockNumber": blockNumber },
                     function (data) {
                         NoMoreData = data.NoMoreData;
                         if (NoMoreData) {

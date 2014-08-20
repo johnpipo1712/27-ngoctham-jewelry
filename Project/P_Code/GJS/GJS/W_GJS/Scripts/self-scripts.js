@@ -56,7 +56,7 @@ $("#logout-button").click(function () {
         $.post($(this).data("action"),
             function (data) {
                 if (!data.HasError) {
-                    window.location.href = $("#logout-button").data("action");
+                    window.location.href = $("#logout-button").data("success-action");
                 }
                 inProgressLogout = false;
             });
