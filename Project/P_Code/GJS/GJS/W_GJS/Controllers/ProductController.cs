@@ -140,12 +140,21 @@ namespace W_GJS.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Vui lòng kiểm tra các đường dẫn hình ảnh");
-                      
+                    var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.ToList();
+                    ViewBag.Dropdownlist = new SelectList(query.AsEnumerable(), "CATEGORY_PRODUCT_DETAIL_CD", "CATEGORY_PRODUCT_DETAIL_NAME", PRODUCT.CATEGORY_PRODUCT_DETAIL_CD);
+                    var queryG = Db_gsj.O_CATEGORY_GRANULES.ToList();
+                    ViewBag.DropdownlistG = new SelectList(queryG.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", PRODUCT.CATEGORY_GRANULES_CD);
+    
                     return View(PRODUCT);
                 }
             }
             else
             {
+                var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.ToList();
+                ViewBag.Dropdownlist = new SelectList(query.AsEnumerable(), "CATEGORY_PRODUCT_DETAIL_CD", "CATEGORY_PRODUCT_DETAIL_NAME", PRODUCT.CATEGORY_PRODUCT_DETAIL_CD);
+                var queryG = Db_gsj.O_CATEGORY_GRANULES.ToList();
+                ViewBag.DropdownlistG = new SelectList(queryG.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", PRODUCT.CATEGORY_GRANULES_CD);
+    
                 return View(PRODUCT);
             }
         }
@@ -294,12 +303,21 @@ namespace W_GJS.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Vui lòng kiểm tra các đường dẫn hình ảnh");
-
+                    var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.ToList();
+                    ViewBag.Dropdownlist = new SelectList(query.AsEnumerable(), "CATEGORY_PRODUCT_DETAIL_CD", "CATEGORY_PRODUCT_DETAIL_NAME", PRODUCT.CATEGORY_PRODUCT_DETAIL_CD);
+                    var queryG = Db_gsj.O_CATEGORY_GRANULES.ToList();
+                    ViewBag.DropdownlistG = new SelectList(queryG.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", PRODUCT.CATEGORY_GRANULES_CD);
+    
                     return View(PRODUCT);
                 }
             }
             else
             {
+                var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.ToList();
+                ViewBag.Dropdownlist = new SelectList(query.AsEnumerable(), "CATEGORY_PRODUCT_DETAIL_CD", "CATEGORY_PRODUCT_DETAIL_NAME", PRODUCT.CATEGORY_PRODUCT_DETAIL_CD);
+                var queryG = Db_gsj.O_CATEGORY_GRANULES.ToList();
+                ViewBag.DropdownlistG = new SelectList(queryG.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", PRODUCT.CATEGORY_GRANULES_CD);
+    
                 return View(PRODUCT);
             }
         }
