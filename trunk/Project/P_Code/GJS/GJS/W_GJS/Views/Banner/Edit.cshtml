@@ -1,4 +1,4 @@
-﻿@model W_GJS.Models.O_ALBUM
+﻿@model W_GJS.Models.O_BANNER
 
 @{
     ViewBag.Title = "Edit";
@@ -10,7 +10,7 @@
     <ul class="breadcrumb breadcrumb-page">
         <li class="breadcrumb-label text-light-gray">Bạn đang ở đây: </li>
         <li><a href="#">Trang chủ</a></li>
-        <li class="active"><a href="#">Hình ảnh bộ sưu tập</a></li>
+        <li class="active"><a href="#">Banner</a></li>
     </ul>
 
     <div class="page-header">
@@ -38,13 +38,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.URL_IMAGE)
                 @Html.ValidationMessageFor(model => model.URL_IMAGE)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CATEGORY_ALBUM_CD, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CATEGORY_ALBUM_CD", (SelectList)ViewBag.category)
             </div>
         </div>
 

@@ -148,6 +148,7 @@
     <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\AdvertisementController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\CategoryAlbumController.cs" />
     <Compile Include="Controllers\CategoryGranulesController.cs" />
@@ -1232,6 +1233,9 @@
     <Content Include="Views\CategoryProductDetail\Index.cshtml" />
     <Content Include="Views\CategoryProductDetail\Create.cshtml" />
     <Content Include="Views\CategoryProductDetail\Edit.cshtml" />
+    <Content Include="Views\Banner\Create.cshtml" />
+    <Content Include="Views\Banner\Edit.cshtml" />
+    <Content Include="Views\Banner\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
