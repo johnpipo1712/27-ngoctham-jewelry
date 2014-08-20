@@ -1,4 +1,5 @@
-﻿@{
+﻿@model W_GJS.Models.JsonResultLoginModel
+@{
     Layout = null;
 }
 
@@ -23,6 +24,7 @@
     <link href="@Url.Content("~/Content/css/admin")/pages.min.css" rel="stylesheet" type="text/css">
     <link href="@Url.Content("~/Content/css/admin")/rtl.min.css" rel="stylesheet" type="text/css">
     <link href="@Url.Content("~/Content/css/admin")/themes.min.css" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/css/admin")/self-styles.css" rel="stylesheet" type="text/css">
 
     <!--[if lt IE 9]>
         <script src="assets/javascripts/ie.min.js"></script>
@@ -68,20 +70,24 @@
         <div class="signin-form">
 
             <!-- Form -->
-            <form action="index.html" id="signin-form_id">
+            <form action="@Url.Action("Login")" id="signin-form_id" method="post">
                 <div class="signin-text">
                     <span>Đăng nhập vào khu vực quản trị</span>
                 </div> <!-- / .signin-text -->
 
                 <div class="form-group w-icon">
-                    <input type="text" name="signin_username" id="username_id" class="form-control input-lg" placeholder="Tên đăng nhập">
+                    <input type="text" name="username" id="username_id" class="form-control input-lg" placeholder="Tên đăng nhập">
                     <span class="fa fa-user signin-form-icon"></span>
                 </div> <!-- / Username -->
 
                 <div class="form-group w-icon">
-                    <input type="password" name="signin_password" id="password_id" class="form-control input-lg" placeholder="Mật khẩu">
+                    <input type="password" name="password" id="password_id" class="form-control input-lg" placeholder="Mật khẩu">
                     <span class="fa fa-lock signin-form-icon"></span>
                 </div> <!-- / Password -->
+
+                <div class="signin-text">
+                    <span class="error">@Model.ErrorString</span>
+                </div> <!-- / .signin-text -->
 
                 <div class="form-actions">
                     <input type="submit" value="ĐĂNG NHẬP" class="signin-btn bg-primary">

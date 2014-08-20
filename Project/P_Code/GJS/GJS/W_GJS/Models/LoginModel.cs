@@ -23,19 +23,33 @@ namespace W_GJS.Models
         [Display(Name = "Mật khẩu")]
         public string USER_PASS { get; set; }
 
-        public static JsonResultLoginModel Login(string username, string password)
+        public static JsonResultLoginModel Login(string username, string password, bool admin)
         {
             JsonResultLoginModel jsonModel = new JsonResultLoginModel();
             GJSEntities Db_gsj = new GJSEntities();
             //check exist user (ensure that no duplicate user)
-            S_USER USER_found = Db_gsj.S_USER.FirstOrDefault(t => t.USER_NAME == username && (t.STATUS == 2 || t.STATUS == 3));
-            if (USER_found == null)
+            S_USER USER_found = null;
+            if (!admin)
             {
-                jsonModel.RoleOrFailed = 0;
-                jsonModel.ErrorString = "Tên tài khoản không đúng.";
-                return jsonModel;
+                USER_found = Db_gsj.S_USER.FirstOrDefault(t => t.USER_NAME == username && (t.STATUS == 2 || t.STATUS == 3));
+                if (USER_found == null)
+                {
+                    jsonModel.RoleOrFailed = 0;
+                    jsonModel.ErrorString = "Tên tài khoản không đúng.";
+                    return jsonModel;
+                }
             }
+            else
+            {
+                USER_found = Db_gsj.S_USER.FirstOrDefault(t => t.USER_NAME == username && t.STATUS == 1);
+                if (USER_found == null)
+                {
+                    jsonModel.RoleOrFailed = 0;
+                    jsonModel.ErrorString = "Tên tài khoản không đúng.";
+                    return jsonModel;
+                }
 
+            }
             //check active
             if (USER_found.ACTIVE == false)
             {
