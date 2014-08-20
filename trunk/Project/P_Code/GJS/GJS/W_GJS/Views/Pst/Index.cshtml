@@ -29,63 +29,77 @@
     </div>
 }
 
-<h2>Danh sách</h2>
+<div class="row">
+    <div class="table-primary">
+        <div class="table-header">
+            <div class="table-caption">
+                Danh sách
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PST_CD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PST_CODE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PST_NAME)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.STATUS)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ACTIVE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CREATEDATE)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PST_CD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PST_CODE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PST_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.STATUS)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ACTIVE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CREATEDATE)
+                        </td>
+                        <td>
+                            @if (item.ACTIVE == false)
+                            {
+                                @Html.ActionLink("Kích hoạt", "Active", new { PST_CD = item.PST_CD })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Xóa", "Deactive", new { PST_CD = item.PST_CD })
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="table-footer">
+
+        </div>
+    </div>
+</div>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PST_CD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PST_CODE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PST_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STATUS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ACTIVE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CREATEDATE)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PST_CD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PST_CODE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PST_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STATUS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ACTIVE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CREATEDATE)
-        </td>
-        <td>
-            @if (item.ACTIVE == false)
-            {
-                @Html.ActionLink("Kích hoạt", "Active", new { PST_CD = item.PST_CD })
-            }
-            else
-            {
-                @Html.ActionLink("Xóa", "Deactive", new { PST_CD = item.PST_CD })
-            }
-        </td>
-    </tr>
-}
-
-</table>

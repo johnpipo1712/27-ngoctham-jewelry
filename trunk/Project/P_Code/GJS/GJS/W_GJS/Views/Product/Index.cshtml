@@ -33,129 +33,139 @@
     </div>
 }
 
-<h2>Danh sách</h2>
+<div class="row">
+    <div class="table-primary">
+        <div class="table-header">
+            <div class="table-caption">
+                Danh sách
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PRODUCT_CODE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PRODUCT_NAME)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CATEGORY_PRODUCT_CD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CATEGORY_PRODUCT_DETAIL_CD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CATEGORY_GRANULES_CD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.QUANTITY)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PRICE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PRICE_PROMOTION)
+                    </th>
+                    <th>SP hiển thị</th>
+                    <th>SP mới</th>
+                    <th>SP nổi bật</th>
+                    <th>SP bán chạy</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PRODUCT_CODE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PRODUCT_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.O_CATEGORY_PRODUCT.CATEGORY_PRODUCT_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.O_CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.O_CATEGORY_GRANULES.CATEGORY_GRANULES_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QUANTITY)
+                        </td>
 
-<p>
-    @Html.ActionLink("Tạo mới", "Create")
-</p>
-<table class="table">
-    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PRICE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PRICE_PROMOTION)
+                        </td>
+                        <td>
+                            @if (item.STATUS == 0)
+                            {
+                                <input type="checkbox" onclick="CheckDisplay(@item.PRODUCT_CD,this)" name="checkboxdisplay" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" checked="checked" onclick="CheckDisplay(@item.PRODUCT_CD,this)" name="checkboxdisplay" />
 
-        <th>
-            @Html.DisplayNameFor(model => model.PRODUCT_CODE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PRODUCT_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CATEGORY_PRODUCT_CD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CATEGORY_PRODUCT_DETAIL_CD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CATEGORY_GRANULES_CD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QUANTITY)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PRICE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PRICE_PROMOTION)
-        </th>
-        <th>SP hiển thị</th>
-        <th>SP mới</th>
-        <th>SP nổi bật</th>
-        <th>SP bán chạy</th>
-        <th></th>
-    </tr>
+                            }
+                        </td>
+                        <td>
+                            @if (item.O_PRODUCT_NEW.Count == 0 || item.O_PRODUCT_NEW == null)
+                            {
+                                <input type="checkbox" onclick="CheckNew(@item.PRODUCT_CD,this)" name="checkboxnew" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" checked="checked" onclick="CheckNew(@item.PRODUCT_CD,this)" name="checkboxnew" />
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PRODUCT_CODE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PRODUCT_NAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.O_CATEGORY_PRODUCT.CATEGORY_PRODUCT_NAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.O_CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_NAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.O_CATEGORY_GRANULES.CATEGORY_GRANULES_NAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QUANTITY)
-            </td>
+                            }
+                        </td>
+                        <td>
+                            @if (item.O_PRODUCT_HIGHLIGHTS.Count == 0 || item.O_PRODUCT_HIGHLIGHTS == null)
+                            {
+                                <input type="checkbox" onclick="CheckHightlight(@item.PRODUCT_CD,this)" name="checkboxhightlight" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" checked="checked" onclick="CheckHightlight(@item.PRODUCT_CD,this)" name="checkboxhightlight" />
 
-            <td>
-                @Html.DisplayFor(modelItem => item.PRICE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PRICE_PROMOTION)
-            </td>
-            <td>
-                @if (item.STATUS == 0)
-                {
-                    <input type="checkbox" onclick="CheckDisplay(@item.PRODUCT_CD,this)" name="checkboxdisplay" />
-                }
-                else
-                {
-                    <input type="checkbox" checked="checked" onclick="CheckDisplay(@item.PRODUCT_CD,this)" name="checkboxdisplay" />
+                            }
+                        </td>
+                        <td>
+                            @if (item.O_PRODUCT_SELLING.Count == 0 || item.O_PRODUCT_SELLING == null)
+                            {
+                                <input type="checkbox" onclick="CheckSelling(@item.PRODUCT_CD,this)" name="checkboxselling" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" checked="checked" onclick="CheckSelling(@item.PRODUCT_CD,this)" name="checkboxselling" />
 
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { PRODUCT_CD = item.PRODUCT_CD }) |
+                            @if (item.ACTIVE == false)
+                            {
+                                @Html.ActionLink("Kích hoạt", "Active", new { PRODUCT_CD = item.PRODUCT_CD })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Xóa", "Deactive", new { PRODUCT_CD = item.PRODUCT_CD })
+                            }
+                        </td>
+                    </tr>
                 }
-            </td>
-            <td>
-                @if (item.O_PRODUCT_NEW.Count == 0 || item.O_PRODUCT_NEW == null)
-                {
-                    <input type="checkbox" onclick="CheckNew(@item.PRODUCT_CD,this)" name="checkboxnew" />
-                }
-                else
-                {
-                    <input type="checkbox" checked="checked" onclick="CheckNew(@item.PRODUCT_CD,this)" name="checkboxnew" />
+            </tbody>
+        </table>
+        <div class="table-footer">
 
-                }
-            </td>
-            <td>
-                @if (item.O_PRODUCT_HIGHLIGHTS.Count == 0 || item.O_PRODUCT_HIGHLIGHTS == null)
-                {
-                    <input type="checkbox" onclick="CheckHightlight(@item.PRODUCT_CD,this)" name="checkboxhightlight" />
-                }
-                else
-                {
-                    <input type="checkbox" checked="checked" onclick="CheckHightlight(@item.PRODUCT_CD,this)" name="checkboxhightlight" />
+        </div>
+    </div>
+</div>
 
-                }
-            </td>
-            <td>
-                @if (item.O_PRODUCT_SELLING.Count == 0 || item.O_PRODUCT_SELLING == null)
-                {
-                    <input type="checkbox" onclick="CheckSelling(@item.PRODUCT_CD,this)" name="checkboxselling" />
-                }
-                else
-                {
-                    <input type="checkbox" checked="checked" onclick="CheckSelling(@item.PRODUCT_CD,this)" name="checkboxselling" />
 
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Sửa", "Edit", new { PRODUCT_CD = item.PRODUCT_CD }) |
-                @if (item.ACTIVE == false)
-                {
-                    @Html.ActionLink("Kích hoạt", "Active", new { PRODUCT_CD = item.PRODUCT_CD })
-                }
-                else
-                {
-                    @Html.ActionLink("Xóa", "Deactive", new { PRODUCT_CD = item.PRODUCT_CD })
-                }
-            </td>
-        </tr>
-    }
-
-</table>

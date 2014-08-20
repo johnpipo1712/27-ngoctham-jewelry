@@ -29,58 +29,70 @@
     </div>
 }
 
-<h2>Danh sách</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ADVERTISEMENT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STATUS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ACTIVE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CREATEDATE)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CD)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ADVERTISEMENT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.STATUS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ACTIVE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CREATEDATE)
-            </td>
-            <td>
-                @Html.ActionLink("Sửa", "Edit", new { CD = item.CD }) |
-                @if (item.ACTIVE == false)
+<div class="row">
+    <div class="table-primary">
+        <div class="table-header">
+            <div class="table-caption">
+                Danh sách
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ADVERTISEMENT)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.STATUS)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ACTIVE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CREATEDATE)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
                 {
-                    @Html.ActionLink("Kích hoạt", "Active", new { CD = item.CD })
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ADVERTISEMENT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.STATUS)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ACTIVE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CREATEDATE)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { CD = item.CD }) |
+                            @if (item.ACTIVE == false)
+                            {
+                                @Html.ActionLink("Kích hoạt", "Active", new { CD = item.CD })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Xóa", "Deactive", new { CD = item.CD })
+                            }
+                        </td>
+                    </tr>
                 }
-                else
-                {
-                    @Html.ActionLink("Xóa", "Deactive", new { CD = item.CD })
-                }
-            </td>
-        </tr>
-    }
+            </tbody>
+        </table>
+        <div class="table-footer">
 
-</table>
+        </div>
+    </div>
+</div>
