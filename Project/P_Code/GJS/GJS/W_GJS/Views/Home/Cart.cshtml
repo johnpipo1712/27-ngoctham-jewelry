@@ -74,11 +74,19 @@
             </div>
             <!-- /cart total -->
             <!-- update cart -->
-            @using (Html.BeginForm("Checkout", "Home", FormMethod.Post))
-            {
-                <button type="submit" onclick="return confirm('Bạn có chắc muốn thanh toán !!!');" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</button>
-            <!-- /update cart -->
-            }
+                    @if (!String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]))
+                    {
+                        using (Html.BeginForm("Checkout", "Home", FormMethod.Post))
+                        {
+                            <button type="submit" onclick="return confirm('Bạn có chắc muốn thanh toán !!!');" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</button>
+                        <!-- /update cart -->
+                        }
+                    }
+                    else
+                    {
+                       <a href="@Url.Action("Login")" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</a>
+                  
+                    }
             <div class="clearfix"></div>
         </div>
         <!-- /cart content -->
