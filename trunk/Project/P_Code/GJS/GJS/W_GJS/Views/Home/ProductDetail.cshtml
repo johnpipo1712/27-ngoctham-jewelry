@@ -266,7 +266,7 @@
 
             <div class="btn-group pull-left product-opt-qty">
                 <button type="button" class="btn btn-default dropdown-toggle product-qty-dd" data-toggle="dropdown">
-                    Số Lượng <small id="product-selected-qty">(<span>5</span>)</small>
+                    Số Lượng <small id="product-selected-qty">(<span>1</span>)</small>
                     <span class="caret"></span>
                 </button>
 
@@ -283,7 +283,15 @@
                     <li><a data-val="10" href="#">10</a></li>
                 </ul>
             </div><!-- /btn-group -->
-            <button type="submit" class="btn btn-primary pull-left">THÊM VÀO GIỎ HÀNG</button>
+            if (!String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]))
+            {
+                <button type="submit" class="btn btn-primary pull-left">THÊM VÀO GIỎ HÀNG</button>
+            }
+            else
+            {
+                <button data-navigate="@Url.Action("Login")" class="btn btn-primary btn-sm add-cart"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</button>
+            }
+            
 
         }
         <div>
