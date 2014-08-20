@@ -1,14 +1,19 @@
 /** Shop
 **************************************************************** **/
+.addtocart {
+    position: absolute;
+    top: 320px;
+}
 .shop-item-list {
 	display:block;
-	height:308px;
+	height:370px;
 	overflow:hidden;
 	position:relative;
 	border:transparent 1px solid;
 	padding:8px;
 	text-decoration:none !important;
-	margin-bottom:80px;
+	margin-bottom:30px;
+    background: #eeefff;
 }
 .shop-item-list:hover {
 	border:rgba(0,0,0,0.1) 1px solid;
