@@ -45,3 +45,20 @@ $( "#register-button" ).click(function() {
         });
     }
 });
+
+
+
+// LOGOUT
+inProgressLogout = false;
+$("#logout-button").click(function () {
+    if (!inProgressLogout) {
+        inProgressLogout = true;
+        $.post($(this).data("action"),
+            function (data) {
+                if (!data.HasError) {
+                    window.location.href = $("#logout-button").data("action");
+                }
+                inProgressLogout = false;
+            });
+    }
+});

@@ -99,10 +99,11 @@ namespace W_GJS.Controllers
         {
             // remove session
             Session[SessionConstants.LOGINED_USER_KEY] = null;
+            Session[SessionConstants.LOGINED_USER_ROLE_KEY] = null;
 
-            // logout and redirect to index page.
-            LoginModel.Logout();
-            return RedirectToAction("Index", "Home");
+            JsonResultLogoutModel jsonModel = new JsonResultLogoutModel();
+            jsonModel.HasError = false;
+            return Json(jsonModel);
         }
 
         public ActionResult Register(RegisterModel MODEL)
