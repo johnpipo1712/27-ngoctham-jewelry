@@ -33,7 +33,7 @@ namespace W_GJS.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Create(O_PRODUCT PRODUCT
             , String file1
             , String file2
@@ -180,7 +180,7 @@ namespace W_GJS.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Edit(O_PRODUCT PRODUCT
             , String file1
             , String file2

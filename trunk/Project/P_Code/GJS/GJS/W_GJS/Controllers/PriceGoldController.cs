@@ -25,7 +25,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Create(O_PRICE_GOLD PRICE_GOLD)
         {
             
@@ -61,7 +61,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Edit(O_PRICE_GOLD PRICE_GOLD)
         {
             if (ModelState.IsValid)

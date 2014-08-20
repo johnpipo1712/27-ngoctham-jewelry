@@ -29,7 +29,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Create(O_CATEGORY_PRODUCT_DETAIL CATEGORY_PRODUCT_DETAIL)
         {
 
@@ -73,7 +73,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Edit(O_CATEGORY_PRODUCT_DETAIL CATEGORY_PRODUCT_DETAIL)
         {
             if (ModelState.IsValid)

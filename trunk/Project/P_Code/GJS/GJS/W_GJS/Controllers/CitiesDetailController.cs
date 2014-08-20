@@ -29,7 +29,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Create(D_CITIES_DETAIL CITIES_DETAIL)
         {
 
@@ -71,7 +71,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Edit(D_CITIES_DETAIL CITIES_DETAIL)
         {
             if (ModelState.IsValid)

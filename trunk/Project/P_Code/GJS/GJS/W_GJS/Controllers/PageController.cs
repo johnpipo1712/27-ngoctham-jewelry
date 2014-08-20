@@ -29,7 +29,7 @@ namespace W_GJS.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Create(M_PAGE PAGE)
         {
 
@@ -73,7 +73,7 @@ namespace W_GJS.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Edit(M_PAGE PAGE)
         {
             if (ModelState.IsValid)

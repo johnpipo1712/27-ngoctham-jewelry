@@ -29,7 +29,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Create(S_USER USER)
         {
 
@@ -78,7 +78,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Edit(S_USER USER)
         {
             if (ModelState.IsValid)
