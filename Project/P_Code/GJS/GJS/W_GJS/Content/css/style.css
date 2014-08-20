@@ -404,6 +404,8 @@ div.slider {
 }
 
 .my-btn-edit {
+    background: -o-linear-gradient(center top , #fe1a00 5%, #ce0100 100%) repeat scroll 0 0 #fe1a00;
+    background: -webkit-linear-gradient(center top , #fe1a00 5%, #ce0100 100%) repeat scroll 0 0 #fe1a00;
     background: -moz-linear-gradient(center top , #fe1a00 5%, #ce0100 100%) repeat scroll 0 0 #fe1a00;
     background: linear-gradient(center top , #fe1a00 5%, #ce0100 100%) repeat scroll 0 0 #fe1a00;
     color: #fff !important;
