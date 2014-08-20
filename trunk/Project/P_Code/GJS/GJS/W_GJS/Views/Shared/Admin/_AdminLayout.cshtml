@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@if (String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_KEY]))
+{
+    Response.Redirect(Url.Action("Index", "Home"));
+}
+
+<!DOCTYPE html>
 <!--[if IE 8]>         <html class="ie8"> <![endif]-->
 <!--[if IE 9]>         <html class="ie9 gt-ie8"> <![endif]-->
 <!--[if gt IE 9]><!-->
@@ -67,7 +72,7 @@
             <div id="main-menu-inner">
                 <div class="menu-content top" id="menu-content-demo">
                     <div>
-                        <div class="text-bg"><span class="text-slim">Xin chào,</span> <span class="text-semibold">Anh</span></div>
+                        <div class="text-bg"><span class="text-slim">Xin chào,</span> <span class="text-semibold">@Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_KEY]</span></div>
 
                         <img src="@Url.Content("~/Content/images/avatar")/default.jpg" alt="" class="">
                         <div class="btn-group">

@@ -83,7 +83,7 @@ namespace W_GJS.Controllers
         {
             Db_gsj = new GJSEntities();
 
-            JsonResultLoginModel jsonModel = LoginModel.Login(username, password);
+            JsonResultLoginModel jsonModel = LoginModel.Login(username, password, false);
             if (jsonModel.RoleOrFailed != 0) // failed
             {
                 //store session if succeed
