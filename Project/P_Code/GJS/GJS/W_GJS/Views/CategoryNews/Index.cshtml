@@ -54,32 +54,21 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                    
                         <td>
                             @Html.DisplayFor(modelItem => item.CATEGORY_NEWS_CODE)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CATEGORY_NEWS_NAME)
                         </td>
-                       
                         <td>
-                            <a class="control-icon" href="@Url.Action("Edit", "CategoryNews", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">
-                                <img src="@Url.Content("~/Content/images/icons/pencil.png")" alt="Edit" />
-                            </a>
+                            @Html.ActionLink("Sửa", "Edit", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD }) |
                             @if (item.ACTIVE == false)
                             {
-                                <a class="control-icon" href="@Url.Action("Active", "CategoryNews", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">
-                                    <img src="@Url.Content("~/Content/images/icons/activate.png")" alt="Edit" />
-                                </a>
-                                @*@Html.ActionLink("Kích hoạt", "Active", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })*@
+                                @Html.ActionLink("Kích hoạt", "Active", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })
                             }
                             else
                             {
-                                @*@Html.ActionLink("Xóa", "Deactive", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })*@
-
-                                <a class="control-icon" href="@Url.Action("Deactive", "CategoryNews", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">
-                                    <img src="@Url.Content("~/Content/images/icons/cancel.png")" alt="Edit" />
-                                </a>
+                                @Html.ActionLink("Xóa", "Deactive", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })
                             }
                         </td>
                     </tr>
