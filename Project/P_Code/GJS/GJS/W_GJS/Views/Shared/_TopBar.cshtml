@@ -17,7 +17,7 @@
                     @if (!String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]))
                     {
 
-                        <li>Chào @Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY], <button id="logout-button" data-success-action="@Url.Action("Index", "Home")" data-action="@Url.Action("Logout", "Home")" class=" btn btn-primary my-btn-edit">ĐĂNG XUẤT</button></li>
+                        <li><div>Chào @Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]</div>, <button id="logout-button" data-success-action="@Url.Action("Index", "Home")" data-action="@Url.Action("Logout", "Home")" class=" btn btn-primary my-btn-edit">ĐĂNG XUẤT</button></li>
 
                     }
                     else
