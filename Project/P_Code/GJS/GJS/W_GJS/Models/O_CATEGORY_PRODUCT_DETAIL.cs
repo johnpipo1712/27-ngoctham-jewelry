@@ -32,7 +32,6 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Tên ctdm sản phẩm")]
         public string CATEGORY_PRODUCT_DETAIL_NAME { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Thẻ alt")]
         public string TAG_ALT { get; set; }
