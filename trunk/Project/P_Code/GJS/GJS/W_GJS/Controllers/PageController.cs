@@ -46,6 +46,8 @@ namespace W_GJS.Controllers
             }
             else
             {
+                var queryD = Db_gsj.O_CATEGORY_PAGE.ToList();
+                ViewBag.pageCategory = new SelectList(queryD.AsEnumerable(), "CATEGORY_PAGE_CD", "CATEGORY_PAGE_NAME", PAGE.CATEGORY_PAGE_CD);
                 return View(PAGE);
             }
         }
@@ -87,6 +89,9 @@ namespace W_GJS.Controllers
             }
             else
             {
+                var queryD = Db_gsj.O_CATEGORY_PAGE.ToList();
+                ViewBag.pageCategory = new SelectList(queryD.AsEnumerable(), "CATEGORY_PAGE_CD", "CATEGORY_PAGE_NAME", PAGE.CATEGORY_PAGE_CD);
+       
                 return View(PAGE);
             }
         }
