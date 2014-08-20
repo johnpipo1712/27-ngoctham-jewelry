@@ -27,7 +27,9 @@ namespace W_GJS.Models
         public string SIZE { get; set; }
         [Display(Name = "Số lượng")]
         public Nullable<long> QUANTITY { get; set; }
+        
         [Display(Name = "Đơn giá")]
+        [DisplayFormat(DataFormatString = "{0:0,0}")]
         public Nullable<decimal> PRICE { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }

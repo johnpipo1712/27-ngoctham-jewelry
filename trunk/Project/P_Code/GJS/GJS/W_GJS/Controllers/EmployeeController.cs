@@ -71,8 +71,10 @@ namespace W_GJS.Controllers
                 M_EMPLOYEE EMPLOYEE_edit = Db_gsj.M_EMPLOYEE.Single(t => t.EMPLOYEE_CD == EMPLOYEE.EMPLOYEE_CD);
                 EMPLOYEE_edit.EMPLOYEE_CODE = EMPLOYEE.EMPLOYEE_CODE;
                 EMPLOYEE_edit.EMPLOYEE_NAME = EMPLOYEE.EMPLOYEE_NAME;
+                EMPLOYEE_edit.EMAIL = EMPLOYEE.EMAIL;
+                EMPLOYEE_edit.ADDRESS = EMPLOYEE.ADDRESS;
                 Db_gsj.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", new { EMPLOYEE_CD = 1 });
 
             }
             else

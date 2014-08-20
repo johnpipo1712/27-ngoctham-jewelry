@@ -22,11 +22,8 @@ namespace W_GJS.Models
         }
         [Display(Name = "Khách hàng")]
         public long CUSTOMER_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
-        [Display(Name = "Mã khách hàng")]
         public string CUSTOMER_CODE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Tên khách hàng")]
         public string CUSTOMER_NAME { get; set; }
@@ -40,7 +37,6 @@ namespace W_GJS.Models
         [Display(Name = "Địa chỉ")]
         public string ADDRESS { get; set; }
         [DataType(DataType.Text)]
-        [RegularExpression(@"^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$", ErrorMessage = "Vui lòng nhập đúng Email")]
         [Display(Name = "Email")]
         public string EMAIL { get; set; }
         [DataType(DataType.Text)]

@@ -49,15 +49,15 @@
                         Tên đăng nhập
                     </th>
                     <th>
+                        @Html.DisplayNameFor(model => model.PHONE)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.ADDRESS)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.EMAIL)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.BIRTHDAY)
-                    </th>
-                  
+                    
                     <th></th>
                 </tr>
             </thead>
@@ -76,14 +76,15 @@
                             @Html.DisplayFor(modelItem => item.O_USER_CUSTOMER.ToList()[0].S_USER.USER_NAME)
                         </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.PHONE)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.ADDRESS)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.EMAIL)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BIRTHDAY)
-                        </td>
+                     
                         
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { CUSTOMER_CD = item.CUSTOMER_CD }) |

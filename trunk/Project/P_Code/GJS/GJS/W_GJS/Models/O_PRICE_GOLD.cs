@@ -18,9 +18,11 @@ namespace W_GJS.Models
         [Display(Name = "Bảng giá vàng")]
         public long PRICE_GOLD_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+        [DisplayFormat(DataFormatString = "{0:0,0}")]
         [Display(Name = "Giá bán")]
         public Nullable<decimal> PRICE_SALES { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+        [DisplayFormat(DataFormatString = "{0:0,0}")]
         [Display(Name = "Giá mua")]
         public Nullable<decimal> PRICE_BUY { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]

@@ -17,8 +17,6 @@ namespace W_GJS.Models
     {
         [Display(Name = "Quảng cáo")]
         public long CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
-        [DataType(DataType.Text)]
         [Display(Name = "Nội dung quảng cáo")]
         public string ADVERTISEMENT { get; set; }
         public Nullable<long> STATUS { get; set; }

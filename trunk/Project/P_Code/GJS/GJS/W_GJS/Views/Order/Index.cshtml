@@ -40,10 +40,7 @@
                 <tr>
                    
                     <th>
-                        @Html.DisplayNameFor(model => model.ORDER_CODE)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.O_CUSTOMER.CUSTOMER_NAME)
+                        Tên khách hàng
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.PHONE)
@@ -63,12 +60,6 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ORDER_CD)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ORDER_CODE)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.O_CUSTOMER.CUSTOMER_NAME)
                         </td>
                         <td>
@@ -82,14 +73,14 @@
                         </td>
                        
                         <td>
-                            @*@Html.ActionLink("Sửa", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                            @Html.ActionLink("Chi tiết", "Detail", new { ORDER_CD = item.ORDER_CD }) |
                             @if (item.ACTIVE == false)
                             {
-                                @Html.ActionLink("Kích hoạt", "Active", new { ORDER_CD = item.ORDER_CD })
+                                @Html.ActionLink("Duyệt", "Active", new { ORDER_CD = item.ORDER_CD })
                             }
                             else
                             {
-                                @Html.ActionLink("Xóa", "Deactive", new { ORDER_CD = item.ORDER_CD })
+                                @Html.ActionLink("Không duyệt", "Deactive", new { ORDER_CD = item.ORDER_CD })
                             }
                         </td>
                     </tr>
