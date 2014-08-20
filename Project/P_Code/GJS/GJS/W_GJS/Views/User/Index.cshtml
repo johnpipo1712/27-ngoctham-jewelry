@@ -20,7 +20,6 @@
             <div class="col-xs-12 col-sm-8">
                 <div class="row">
                     <hr class="visible-xs no-grid-gutter-h">
-                    <div class="pull-right col-xs-12 col-sm-auto"><a style="width: 100%;" class="btn btn-primary btn-labeled" href="@Url.Action("Create", "User")"><span class="btn-label icon fa fa-plus"></span>Tạo mới</a></div>
                     <!-- Margin -->
                     <div class="visible-xs clearfix form-group-margin"></div>
                 </div>
@@ -39,9 +38,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.USER_CD)
-                    </th>
+                   
                     <th>
                         @Html.DisplayNameFor(model => model.USER_NAME)
                     </th>
@@ -49,13 +46,7 @@
                         @Html.DisplayNameFor(model => model.USER_PASS)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.STATUS)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ACTIVE)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CREATEDATE)
+                        Quyền 
                     </th>
                     <th></th>
                 </tr>
@@ -64,9 +55,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.USER_CD)
-                        </td>
+                       
                         <td>
                             @Html.DisplayFor(modelItem => item.USER_NAME)
                         </td>
@@ -74,13 +63,7 @@
                             @Html.DisplayFor(modelItem => item.USER_PASS)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.STATUS)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ACTIVE)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CREATEDATE)
+                            @Html.DisplayFor(modelItem => item.O_USER_PST.ToList()[0].S_PST.PST_NAME)
                         </td>
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { USER_CD = item.USER_CD }) |

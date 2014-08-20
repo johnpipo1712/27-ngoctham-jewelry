@@ -38,9 +38,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CITIES_DETAIL_CD)
-                    </th>
+                 
                     <th>
                         @Html.DisplayNameFor(model => model.CITIES_DETAIL_NAME)
                     </th>
@@ -57,18 +55,14 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CITIES_DETAIL_CD)
-                        </td>
+                       
                         <td>
                             @Html.DisplayFor(modelItem => item.CITIES_DETAIL_NAME)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CITIES_CD)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ACTIVE)
-                        </td>
+                       
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD }) |
                             @if (item.ACTIVE == false)

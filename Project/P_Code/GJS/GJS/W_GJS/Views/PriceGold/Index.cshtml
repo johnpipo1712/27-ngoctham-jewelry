@@ -39,9 +39,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PRICE_GOLD_CD)
-                    </th>
+                   
                     <th>
                         @Html.DisplayNameFor(model => model.PRICE_SALES)
                     </th>
@@ -54,9 +52,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.GOLD_NAME)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ACTIVE)
-                    </th>
+                   
                     <th></th>
                 </tr>
             </thead>
@@ -64,9 +60,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PRICE_GOLD_CD)
-                        </td>
+                        
                         <td>
                             @Html.DisplayFor(modelItem => item.PRICE_SALES)
                         </td>
@@ -79,9 +73,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.GOLD_NAME)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ACTIVE)
-                        </td>
+                       
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD }) |
                             @if (item.ACTIVE == false)

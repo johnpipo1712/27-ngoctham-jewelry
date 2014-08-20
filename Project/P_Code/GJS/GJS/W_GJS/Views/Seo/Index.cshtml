@@ -20,8 +20,7 @@
             <div class="col-xs-12 col-sm-8">
                 <div class="row">
                     <hr class="visible-xs no-grid-gutter-h">
-                    <div class="pull-right col-xs-12 col-sm-auto"><a style="width: 100%;" class="btn btn-primary btn-labeled" href="@Url.Action("Create", "Seo")"><span class="btn-label icon fa fa-plus"></span>Tạo mới</a></div>
-                    <!-- Margin -->
+                     <!-- Margin -->
                     <div class="visible-xs clearfix form-group-margin"></div>
                 </div>
             </div>
@@ -39,12 +38,8 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CD)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.HREF_ICON)
-                    </th>
+                    
+                
                     <th>
                         @Html.DisplayNameFor(model => model.TITILE)
                     </th>
@@ -55,20 +50,7 @@
                         @Html.DisplayNameFor(model => model.META_KEYWORDS)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.META_ROBOTS)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.META_REVISIT)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.STATUS)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ACTIVE)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CREATEDATE)
-                    </th>
+                    
                     <th></th>
                 </tr>
             </thead>
@@ -76,12 +58,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CD)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.HREF_ICON)
-                        </td>
+                        
                         <td>
                             @Html.DisplayFor(modelItem => item.TITILE)
                         </td>
@@ -91,21 +68,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.META_KEYWORDS)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.META_ROBOTS)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.META_REVISIT)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.STATUS)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ACTIVE)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CREATEDATE)
-                        </td>
+                       
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { /* id=item.PrimaryKey */ }) |
                             @if (item.ACTIVE == false)
