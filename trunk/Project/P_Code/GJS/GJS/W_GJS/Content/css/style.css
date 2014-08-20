@@ -351,3 +351,62 @@ div.slider {
     padding-right: 0px !important;
 }
 
+.sun-flower-button {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  height: 60px;
+  padding: 0;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #f1c40f;
+  border: 0;
+  border-bottom: 2px solid #e2b607;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #e2b607;
+  box-shadow: inset 0 -2px #e2b607;
+}
+.sun-flower-button:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+
+.my-btn {
+    background: -moz-linear-gradient(center top , #fe1a00 5%, #ce0100 100%) repeat scroll 0 0 #fe1a00;
+    border: 1px solid #d83526;
+    border-radius: 0;
+    box-shadow: 0 1px 0 0 #f29c93 inset;
+    color: #ffffff;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    text-shadow: 1px 1px 0 #b23e35;
+    width: 125px;
+}
+.my-btn:hover {
+    background: -moz-linear-gradient(center top , #ce0100 5%, #fe1a00 100%) repeat scroll 0 0 #ce0100;
+}
+.my-btn:active {
+    position: relative;
+    top: 1px;
+}
+
+.my-btn-edit {
+    background: -moz-linear-gradient(center top , #fe1a00 5%, #ce0100 100%) repeat scroll 0 0 #fe1a00;
+    background: linear-gradient(center top , #fe1a00 5%, #ce0100 100%) repeat scroll 0 0 #fe1a00;
+    color: #fff !important;
+    padding: 9px !important;
+    font-weight: bold;
+}
