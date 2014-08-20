@@ -4,7 +4,13 @@
     List<W_GJS.Models.O_CATEGORY_PRODUCT> listCategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
     List<W_GJS.Models.O_CATEGORY_NEWS> listNews = gjs.O_CATEGORY_NEWS.Where(t => t.ACTIVE == true).ToList();
     List<W_GJS.Models.O_PRICE_GOLD> listPriceGold = gjs.O_PRICE_GOLD.ToList();
+
+    string currentController = (string)ViewContext.Controller.ValueProvider.GetValue("controller").RawValue;
+    string currentAction = (string)ViewContext.Controller.ValueProvider.GetValue("action").RawValue;
 }
+@*@currentAction - @currentController
+    @if (currentController == "Home" && currentAction == "Index")
+    { <p>asd</p> }*@
 <header id="topNav">
     <div class="container">
 
@@ -34,65 +40,183 @@
                     </li>
                 -->
                 <ul id="topMain" class="nav nav-pills nav-main colored">
-                    <li class="active">
-                        <a href="@Url.Action("Index", "Home")">
-                            TRANG CHỦ <span>home</span>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="shop-home-1.html#">GIỚI THIỆU <span>about us</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("AboutCompany", "Home")"><i class="fa fa-chevron-right"></i> Giới thiệu công ty</a></li>
-                            <li><a href="@Url.Action("AboutVision", "Home")"><i class="fa fa-chevron-right"></i> Tầm nhìn & Sứ mệnh</a></li>
-                            <li><a href="@Url.Action("AboutDevelopment", "Home")"><i class="fa fa-chevron-right"></i> Quá trình phát triển</a></li>
-                            <li><a href="@Url.Action("AboutAchievements", "Home")"><i class="fa fa-chevron-right"></i> Thành tựu</a></li>
-                            <li><a href="@Url.Action("AboutLicense", "Home")"><i class="fa fa-chevron-right"></i> Công ty TNHH Ngọc Thẫm</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="@Url.Action("ProductList", "Home")">SẢN PHẨM <span>products</span></a>
-                        <ul class="dropdown-menu">
-                            @foreach (var item in listCategory)
-                            {
-                                <li>@Html.ActionLink(item.CATEGORY_PRODUCT_NAME, "Product_Category", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD }, new { @alt = item.TAG_ALT })</li>
-                            }
-                        </ul>
-                    </li>
 
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="shop-home-1.html#">DỊCH VỤ <span>services</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("DiamondAssess", "Home")">Giám định kiêm cương</a></li>
-                            <li><a href="@Url.Action("ColoredStonesAssess", "Home")">Giám định các loại đá màu</a></li>
-                            <li><a href="@Url.Action("LaserInscription", "Home")">Khắc chữ lazer trên kim cương</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Branches", "Home")">HỆ THỐNG CHI NHÁNH <span>branches</span></a>
-                    </li>
-                    @if (!String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY])
-                        && (int)Session[W_GJS.General.SessionConstants.LOGINED_USER_ROLE_KEY] == 2)
+                    @if (currentController == "Home" && currentAction == "Index")
+                    {
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Home")">
+                                TRANG CHỦ <span>home</span>
+                            </a>
+                        </li>
+                    }
+                    else
                     {
                         <li>
-                        <a href="@Url.Action("Catalog", "Home")">CATALOG <span>catalog</span></a>
+                            <a href="@Url.Action("Index", "Home")">
+                                TRANG CHỦ <span>home</span>
+                            </a>
                         </li>
                     }
 
-                    
+                    @if (currentController == "Home")
+                    {
+                        if (currentAction == "AboutCompany" ||
+                                currentAction == "AboutVision" ||
+                                currentAction == "AboutDevelopment" ||
+                                currentAction == "AboutAchievements" ||
+                                currentAction == "AboutLicense")
+                        {
+                            <li class="dropdown active">
+                                <a class="dropdown-toggle" href="shop-home-1.html#">GIỚI THIỆU <span>about us</span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("AboutCompany", "Home")"><i class="fa fa-chevron-right"></i> Giới thiệu công ty</a></li>
+                                    <li><a href="@Url.Action("AboutVision", "Home")"><i class="fa fa-chevron-right"></i> Tầm nhìn & Sứ mệnh</a></li>
+                                    <li><a href="@Url.Action("AboutDevelopment", "Home")"><i class="fa fa-chevron-right"></i> Quá trình phát triển</a></li>
+                                    <li><a href="@Url.Action("AboutAchievements", "Home")"><i class="fa fa-chevron-right"></i> Thành tựu</a></li>
+                                    <li><a href="@Url.Action("AboutLicense", "Home")"><i class="fa fa-chevron-right"></i> Công ty TNHH Ngọc Thẫm</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="shop-home-1.html#">GIỚI THIỆU <span>about us</span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("AboutCompany", "Home")"><i class="fa fa-chevron-right"></i> Giới thiệu công ty</a></li>
+                                    <li><a href="@Url.Action("AboutVision", "Home")"><i class="fa fa-chevron-right"></i> Tầm nhìn & Sứ mệnh</a></li>
+                                    <li><a href="@Url.Action("AboutDevelopment", "Home")"><i class="fa fa-chevron-right"></i> Quá trình phát triển</a></li>
+                                    <li><a href="@Url.Action("AboutAchievements", "Home")"><i class="fa fa-chevron-right"></i> Thành tựu</a></li>
+                                    <li><a href="@Url.Action("AboutLicense", "Home")"><i class="fa fa-chevron-right"></i> Công ty TNHH Ngọc Thẫm</a></li>
+                                </ul>
+                            </li>
+                        }
+                    }
 
-                    <li>
-                        <a href="@Url.Action("ShowAlbum", "Home")">ALBUM <span>album</span></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="@Url.Action("News", "Home")">TIN TỨC <span>news</span></a>
-                        <ul class="dropdown-menu">
-                            @foreach (var item in listNews)
-                            {
-                                <li><a href="@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">@item.CATEGORY_NEWS_NAME</a></li>
+                    @if (currentController == "Home" && currentAction == "Product_Category")
+                    {
+                        <li class="dropdown active">
+                            <a class="dropdown-toggle" href="@Url.Action("ProductList", "Home")">SẢN PHẨM <span>products</span></a>
+                            <ul class="dropdown-menu">
+                                @foreach (var item in listCategory)
+                                {
+                                    <li>@Html.ActionLink(item.CATEGORY_PRODUCT_NAME, "Product_Category", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD }, new { @alt = item.TAG_ALT })</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="@Url.Action("ProductList", "Home")">SẢN PHẨM <span>products</span></a>
+                            <ul class="dropdown-menu">
+                                @foreach (var item in listCategory)
+                                {
+                                    <li>@Html.ActionLink(item.CATEGORY_PRODUCT_NAME, "Product_Category", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD }, new { @alt = item.TAG_ALT })</li>
+                                }
+                            </ul>
+                        </li>
+                    }
 
-                            }
-                        </ul>
-                    </li>
+                    @if (currentController == "Home")
+                    {
+                        if (currentAction == "DiamondAssess" ||
+                                currentAction == "ColoredStonesAssess" ||
+                                currentAction == "LaserInscription")
+                        {
+                            <li class="active dropdown">
+                                <a class="dropdown-toggle" href="shop-home-1.html#">DỊCH VỤ <span>services</span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("DiamondAssess", "Home")">Giám định kim cương</a></li>
+                                    <li><a href="@Url.Action("ColoredStonesAssess", "Home")">Giám định các loại đá màu</a></li>
+                                    <li><a href="@Url.Action("LaserInscription", "Home")">Khắc chữ lazer trên kim cương</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="shop-home-1.html#">DỊCH VỤ <span>services</span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("DiamondAssess", "Home")">Giám định kim cương</a></li>
+                                    <li><a href="@Url.Action("ColoredStonesAssess", "Home")">Giám định các loại đá màu</a></li>
+                                    <li><a href="@Url.Action("LaserInscription", "Home")">Khắc chữ lazer trên kim cương</a></li>
+                                </ul>
+                            </li>
+                        }
+                    }
+
+                    @if (currentController == "Home" && currentAction == "Branches")
+                    {
+                        <li class="active">
+                            <a href="@Url.Action("Branches", "Home")">HỆ THỐNG CHI NHÁNH <span>branches</span></a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Url.Action("Branches", "Home")">HỆ THỐNG CHI NHÁNH <span>branches</span></a>
+                        </li>
+                    }
+
+                    @if (!String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY])
+                        && (int)Session[W_GJS.General.SessionConstants.LOGINED_USER_ROLE_KEY] == 2)
+                    {
+
+                        if (currentController == "Home" && currentAction == "Catalog")
+                        {
+                            <li class="active">
+                                <a href="@Url.Action("Catalog", "Home")">CATALOG <span>catalog</span></a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("Catalog", "Home")">CATALOG <span>catalog</span></a>
+                            </li>
+                        }
+                    }
+
+                    @if (currentController == "Home" && currentAction == "ShowAlbum")
+                    {
+                        <li class="active">
+                            <a href="@Url.Action("ShowAlbum", "Home")">ALBUM <span>album</span></a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Url.Action("ShowAlbum", "Home")">ALBUM <span>album</span></a>
+                        </li>
+                    }
+
+                    @if ((currentController == "Home" && currentAction == "News") ||
+                        (currentController == "Home" && currentAction == "Category_News"))
+                    {
+                        <li class="active dropdown">
+                            <a href="@Url.Action("News", "Home")">TIN TỨC <span>news</span></a>
+                            <ul class="dropdown-menu">
+                                @foreach (var item in listNews)
+                                {
+                                    <li><a href="@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">@item.CATEGORY_NEWS_NAME</a></li>
+
+                                }
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="dropdown">
+                            <a href="@Url.Action("News", "Home")">TIN TỨC <span>news</span></a>
+                            <ul class="dropdown-menu">
+                                @foreach (var item in listNews)
+                                {
+                                    <li><a href="@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">@item.CATEGORY_NEWS_NAME</a></li>
+
+                                }
+                            </ul>
+                        </li>
+                    }
+
                     <li data-toggle="modal" data-target="#gold-rate-modal">
                         <a href="#">BẢNG GIÁ VÀNG <span>gold rates</span></a>
                     </li>
@@ -100,7 +224,6 @@
                     <!--<li><a href="#" data-toggle="modal" data-target="#LoginModal">@*<i class="fa fa-angle-right"></i>*@Đăng Nhập <span>login</span></a></li>
                     <li><a href="#" data-toggle="modal" data-target="#RegisterModal">@*<i class="fa fa-angle-right"></i>*@Đăng Kí <span>register</span></a></li>-->
                 </ul>
-
             </nav>
         </div>
         <!-- /Top Nav -->
