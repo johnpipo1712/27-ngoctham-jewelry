@@ -25,7 +25,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Create(S_PST PST)
         {
 
@@ -61,7 +61,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Edit(S_PST PST)
         {
             if (ModelState.IsValid)

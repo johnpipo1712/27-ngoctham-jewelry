@@ -89,6 +89,16 @@
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
         </EntityType>
+        <EntityType Name="O_BANNER">
+          <Key>
+            <PropertyRef Name="CD" />
+          </Key>
+          <Property Name="CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="URL_IMAGE" Type="nvarchar(max)" />
+          <Property Name="STATUS" Type="bigint" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
         <EntityType Name="O_BRANCH">
           <Key>
             <PropertyRef Name="BRANCH_CD" />
@@ -787,6 +797,7 @@
           <EntitySet Name="M_PAGE" EntityType="Self.M_PAGE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_ADVERTISEMENT" EntityType="Self.O_ADVERTISEMENT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_ALBUM" EntityType="Self.O_ALBUM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_BANNER" EntityType="Self.O_BANNER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_BRANCH" EntityType="Self.O_BRANCH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_CATEGORY_ALBUM" EntityType="Self.O_CATEGORY_ALBUM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_CATEGORY_GRANULES" EntityType="Self.O_CATEGORY_GRANULES" Schema="dbo" store:Type="Tables" />
@@ -1828,6 +1839,7 @@
             <End Role="O_CATEGORY_ALBUM" EntitySet="O_CATEGORY_ALBUM" />
             <End Role="O_ALBUM" EntitySet="O_ALBUM" />
           </AssociationSet>
+          <EntitySet Name="O_BANNER" EntityType="GJSModel.O_BANNER" />
         </EntityContainer>
         <ComplexType Name="SP_STATISTICS_VISIT_Result">
           <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
@@ -1920,6 +1932,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="O_BANNER">
+          <Key>
+            <PropertyRef Name="CD" />
+          </Key>
+          <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="URL_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2408,6 +2430,17 @@
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="CATEGORY_ALBUM_NAME" ColumnName="CATEGORY_ALBUM_NAME" />
                 <ScalarProperty Name="CATEGORY_ALBUM_CD" ColumnName="CATEGORY_ALBUM_CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_BANNER">
+            <EntityTypeMapping TypeName="GJSModel.O_BANNER">
+              <MappingFragment StoreEntitySet="O_BANNER">
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="URL_IMAGE" ColumnName="URL_IMAGE" />
+                <ScalarProperty Name="CD" ColumnName="CD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

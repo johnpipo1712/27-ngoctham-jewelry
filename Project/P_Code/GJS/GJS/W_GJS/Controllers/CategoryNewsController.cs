@@ -25,7 +25,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Create(O_CATEGORY_NEWS CATEGORY_NEWS)
         {
             
@@ -61,7 +61,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Edit(O_CATEGORY_NEWS CATEGORY_NEWS)
         {
             if (ModelState.IsValid)

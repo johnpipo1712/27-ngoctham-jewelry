@@ -26,7 +26,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Create(M_EMPLOYEE EMPLOYEE)
         {
 
@@ -62,7 +62,7 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+   
         public ActionResult Edit(M_EMPLOYEE EMPLOYEE)
         {
             if (ModelState.IsValid)

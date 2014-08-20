@@ -217,6 +217,9 @@
     <Compile Include="Models\O_ALBUM.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\O_BANNER.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\O_BRANCH.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>

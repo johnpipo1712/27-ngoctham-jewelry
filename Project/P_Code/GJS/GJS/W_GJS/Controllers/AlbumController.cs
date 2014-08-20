@@ -31,7 +31,6 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(O_ALBUM ALBUM)
         {
 
@@ -82,7 +81,6 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(O_ALBUM ALBUM)
         {
             if (ModelState.IsValid)

@@ -31,7 +31,6 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(O_BRANCH BRANCH)
         {
             if (ModelState.IsValid)
@@ -73,7 +72,6 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(O_BRANCH BRANCH)
         {
             if (ModelState.IsValid)

@@ -25,7 +25,6 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(O_CATEGORY_GRANULES CATEGORY_GRANULES)
         {
             
@@ -61,7 +60,6 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(O_CATEGORY_GRANULES CATEGORY_GRANULES)
         {
             if (ModelState.IsValid)
