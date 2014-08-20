@@ -20,8 +20,7 @@
             <div class="col-xs-12 col-sm-8">
                 <div class="row">
                     <hr class="visible-xs no-grid-gutter-h">
-                    <div class="pull-right col-xs-12 col-sm-auto"><a style="width: 100%;" class="btn btn-primary btn-labeled" href="@Url.Action("Create", "Customer")"><span class="btn-label icon fa fa-plus"></span>Tạo mới</a></div>
-                    <!-- Margin -->
+                     <!-- Margin -->
                     <div class="visible-xs clearfix form-group-margin"></div>
                 </div>
             </div>
@@ -39,14 +38,15 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CUSTOMER_CD)
-                    </th>
+                 
                     <th>
                         @Html.DisplayNameFor(model => model.CUSTOMER_CODE)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.CUSTOMER_NAME)
+                    </th>
+                    <th>
+                        Tên đăng nhập
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.ADDRESS)
@@ -57,15 +57,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.BIRTHDAY)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.STATUS)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ACTIVE)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CREATEDATE)
-                    </th>
+                  
                     <th></th>
                 </tr>
             </thead>
@@ -73,14 +65,15 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CUSTOMER_CD)
-                        </td>
+                       
                         <td>
                             @Html.DisplayFor(modelItem => item.CUSTOMER_CODE)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CUSTOMER_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.O_USER_CUSTOMER.ToList()[0].S_USER.USER_NAME)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ADDRESS)
@@ -91,15 +84,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.BIRTHDAY)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.STATUS)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ACTIVE)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CREATEDATE)
-                        </td>
+                        
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { CUSTOMER_CD = item.CUSTOMER_CD }) |
                             @if (item.ACTIVE == false)

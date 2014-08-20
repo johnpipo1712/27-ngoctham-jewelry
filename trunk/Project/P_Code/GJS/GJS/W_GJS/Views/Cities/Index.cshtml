@@ -68,15 +68,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.CITIES_NAME)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.STATUS)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ACTIVE)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CREATEDATE)
-                        </td>
+                    
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { CITIES_CD = item.CITIES_CD }) |
                             @if (item.ACTIVE == false)
