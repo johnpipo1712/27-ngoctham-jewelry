@@ -43,11 +43,19 @@
                             <a href="@Url.Action("Cart", "Home")" class="btn btn-primary fullwidth">GIỎ HÀNG</a>
                         </div>
                         <div class="col-md-6 nopadding-left" id="checkout-wrap">
-                            @using (Html.BeginForm("Checkout", "Home", FormMethod.Post))
+                        @if (!String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]))
+                        {
+                            using (Html.BeginForm("Checkout", "Home", FormMethod.Post))
                             {
-                            <button type="submit" onclick="return confirm('Bạn có chắc muốn thanh toán !!!');" class="btn btn-info fullwidth">THANH TOÁN</button>
+                               <button type="submit" onclick="return confirm('Bạn có chắc muốn thanh toán !!!');" class="btn btn-info fullwidth">THANH TOÁN</button>
                             <!-- /update cart -->
                             }
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Login")" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</a>
+
+                        }
                         </div>
                     </div><!-- /cart footer -->
 
