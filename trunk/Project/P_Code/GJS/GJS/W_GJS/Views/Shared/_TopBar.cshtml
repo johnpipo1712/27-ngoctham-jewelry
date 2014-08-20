@@ -16,7 +16,7 @@
                     @Html.Partial("_Cart")*@
                     @if (!String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]))
                     {
-                        <li>Chào @Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY], <button id="logout-button" data-action="@Url.Action("Logout", "Home")" class=" btn btn-primary">ĐĂNG XUẤT</button></li>
+                        <li>Chào @Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY], <button id="logout-button" data-action="@Url.Action("Logout", "Home")" class="btn btn-primary my-btn-edit">ĐĂNG XUẤT</button></li>
                     }
                     else
                     {

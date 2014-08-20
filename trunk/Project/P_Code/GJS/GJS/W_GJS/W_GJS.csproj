@@ -694,6 +694,16 @@
     <Content Include="Content\css\daterangepicker-bs3.css" />
     <Content Include="Content\css\default.css" />
     <Content Include="Content\css\essentials.css" />
+    <Content Include="Content\css\flare\bootstrap\bootstrap.min.js" />
+    <Content Include="Content\css\flare\jquery.js" />
+    <Content Include="Content\css\flare\jquery.pixelentity.flare.min.css" />
+    <Content Include="Content\css\flare\jquery.pixelentity.flare.min.js" />
+    <Content Include="Content\css\flare\prettify.css" />
+    <Content Include="Content\css\flare\prettify.js" />
+    <Content Include="Content\css\flare\themes\default\img\close.png" />
+    <Content Include="Content\css\flare\themes\default\img\next.png" />
+    <Content Include="Content\css\flare\themes\default\img\prev.png" />
+    <Content Include="Content\css\flare\themes\default\img\thumbs.png" />
     <Content Include="Content\css\flexslider.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\fonts.googleapis.css" />
@@ -1067,6 +1077,7 @@
     <Content Include="Content\css\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\images\admin\demo\avatars\Thumbs.db" />
     <Content Include="Content\images\admin\demo\Thumbs.db" />
+    <Content Include="Content\css\flare\themes\default\img\Thumbs.db" />
     <None Include="Properties\PublishProfiles\GJS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
