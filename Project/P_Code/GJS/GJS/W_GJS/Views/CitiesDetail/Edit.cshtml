@@ -19,47 +19,56 @@
         </div>
     </div>
 }
-<h2>Sửa</h2>
+<div class="row">
+    <div class="col-sm-12">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>D_CITIES_DETAIL</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-       
-        <div class="form-group">
-            @Html.LabelFor(model => model.CITIES_DETAIL_CODE, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CITIES_DETAIL_CODE)
-                @Html.ValidationMessageFor(model => model.CITIES_DETAIL_CODE)
-            </div>
-        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="panel form-horizontal">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CITIES_DETAIL_NAME, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CITIES_DETAIL_NAME)
-                @Html.ValidationMessageFor(model => model.CITIES_DETAIL_NAME)
-            </div>
-        </div>
+                <div class="panel-heading">
+                    <span class="panel-title">Sửa</span>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CITIES_CD, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CITIES_CD", (SelectList)ViewBag.Cities)
-            </div>
-        </div>
+                @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Lưu" class="btn btn-default" />
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CITIES_DETAIL_CODE, new { @class = "control-label col-md-2" })
+                        <div class="col-sm-10">
+                            @Html.EditorFor(model => model.CITIES_DETAIL_CODE)
+                            @Html.ValidationMessageFor(model => model.CITIES_DETAIL_CODE)
+                        </div>
+                    </div> <!-- / .form-group -->
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CITIES_DETAIL_NAME, new { @class = "control-label col-md-2" })
+                        <div class="col-sm-10">
+                            @Html.EditorFor(model => model.CITIES_DETAIL_NAME)
+                            @Html.ValidationMessageFor(model => model.CITIES_DETAIL_NAME)
+                        </div>
+                    </div> <!-- / .form-group -->
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CITIES_CD, new { @class = "control-label col-md-2" })
+                        <div class="col-sm-10">
+                            @Html.DropDownList("CITIES_CD", (SelectList)ViewBag.Cities)
+                        </div>
+                    </div> <!-- / .form-group -->
+
+
+                    <div style="margin-bottom: 0;" class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" value="Sửa" class="btn btn-default" />
+                        </div>
+                    </div> <!-- / .form-group -->
+                </div>
             </div>
-        </div>
+        }
     </div>
-}
+</div>
+
 
 <div>
     @Html.ActionLink("Trở về danh sách", "Index")
