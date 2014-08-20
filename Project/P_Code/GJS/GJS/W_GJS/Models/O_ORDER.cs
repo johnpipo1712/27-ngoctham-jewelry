@@ -37,7 +37,6 @@ namespace W_GJS.Models
         [Display(Name = "Email")]
         public string EMAIL { get; set; }
         [DataType(DataType.Text)]
-        [RegularExpression(@"^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$", ErrorMessage = "Vui lòng nhập đúng Email")]
         [Display(Name = "Địa chỉ giao hàng")]
         public string DELIVERY_ADDRESS { get; set; }
         public Nullable<long> STATUS { get; set; }

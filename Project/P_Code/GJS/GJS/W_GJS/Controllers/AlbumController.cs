@@ -51,13 +51,18 @@ namespace W_GJS.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Vui lòng kiểm tra đường dẫn hình ảnh");
-
+                    var query = Db_gsj.O_CATEGORY_ALBUM.ToList();
+                    ViewBag.category = new SelectList(query.AsEnumerable(), "CATEGORY_ALBUM_CD", "CATEGORY_ALBUM_NAME", ALBUM.CATEGORY_ALBUM_CD);
+ 
                     return View(ALBUM);
                 }
 
             }
             else
             {
+                var query = Db_gsj.O_CATEGORY_ALBUM.ToList();
+                 
+                ViewBag.category = new SelectList(query.AsEnumerable(), "CATEGORY_ALBUM_CD", "CATEGORY_ALBUM_NAME", ALBUM.CATEGORY_ALBUM_CD);
                 return View(ALBUM);
             }
         }
@@ -99,13 +104,16 @@ namespace W_GJS.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Vui lòng kiểm tra đường dẫn hình ảnh");
-
+                    var query = Db_gsj.O_CATEGORY_ALBUM.ToList();
+                    ViewBag.category = new SelectList(query.AsEnumerable(), "CATEGORY_ALBUM_CD", "CATEGORY_ALBUM_NAME", ALBUM.CATEGORY_ALBUM_CD);
                     return View(ALBUM);
                 }
 
             }
             else
             {
+                var query = Db_gsj.O_CATEGORY_ALBUM.ToList();
+                ViewBag.category = new SelectList(query.AsEnumerable(), "CATEGORY_ALBUM_CD", "CATEGORY_ALBUM_NAME", ALBUM.CATEGORY_ALBUM_CD);
                 return View(ALBUM);
             }
         }
