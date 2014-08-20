@@ -161,8 +161,14 @@
     <script>
         $("#PopupModalChat").modal();
         function setvalue() {
-            var displayname = $('#Name').val() + '-' + $('#Email').val() + '-' + $('#Phone').val();
-            $('#displayname').val(displayname);
+            var name = $.trim($('#Name').val())
+            var email =  $.trim($('#Email').val())
+            var phone =  $.trim($('#Phone').val())
+            var displayname = name + ' ' + email + ' ' + phone;
+           
+           
+           
+            $('#displayname').val($.trim(displayname));
         }
         $(function () {
 
