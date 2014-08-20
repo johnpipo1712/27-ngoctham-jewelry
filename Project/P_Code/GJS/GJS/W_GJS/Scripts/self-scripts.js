@@ -62,3 +62,9 @@ $("#logout-button").click(function () {
             });
     }
 });
+
+// ADD CART with ROLEs
+$(".add-cart").click(function () {
+    $("#LoginModal").modal('show');
+    //$("#loginModelShow").show();
+});
