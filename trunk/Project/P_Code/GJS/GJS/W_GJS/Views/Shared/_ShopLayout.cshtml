@@ -80,7 +80,10 @@
         @*@ViewContext.Controller.ValueProvider.GetValue("controller").RawValue -
         @ViewContext.Controller.ValueProvider.GetValue("action").RawValue*@
         @Html.Partial("_TopBar")
-        @RenderSection("Slide", false)
+        @*@RenderSection("Slide", false)*@
+
+        @Html.Partial("_Slide")
+
         <div id="header">
 
 
