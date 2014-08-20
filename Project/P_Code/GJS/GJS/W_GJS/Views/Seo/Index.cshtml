@@ -29,88 +29,103 @@
     </div>
 }
 
-<h2>Danh sách</h2>
+<div class="row">
+    <div class="table-primary">
+        <div class="table-header">
+            <div class="table-caption">
+                Danh sách
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HREF_ICON)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TITILE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.META_DES)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.META_KEYWORDS)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.META_ROBOTS)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.META_REVISIT)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.STATUS)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ACTIVE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CREATEDATE)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HREF_ICON)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TITILE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.META_DES)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.META_KEYWORDS)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.META_ROBOTS)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.META_REVISIT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.STATUS)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ACTIVE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CREATEDATE)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @if (item.ACTIVE == false)
+                            {
+                                @Html.ActionLink("Kích hoạt", "Active", new { CD = item.CD })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Xóa", "Deactive", new { CD = item.CD })
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="table-footer">
+
+        </div>
+    </div>
+</div>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HREF_ICON)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TITILE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.META_DES)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.META_KEYWORDS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.META_ROBOTS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.META_REVISIT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STATUS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ACTIVE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CREATEDATE)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HREF_ICON)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TITILE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.META_DES)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.META_KEYWORDS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.META_ROBOTS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.META_REVISIT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STATUS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ACTIVE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CREATEDATE)
-        </td>
-        <td>
-            @Html.ActionLink("Sửa", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @if (item.ACTIVE == false)
-            {
-                @Html.ActionLink("Kích hoạt", "Active", new { CD = item.CD })
-            }
-            else
-            {
-                @Html.ActionLink("Xóa", "Deactive", new { CD = item.CD })
-            }
-        </td>
-    </tr>
-}
-
-</table>

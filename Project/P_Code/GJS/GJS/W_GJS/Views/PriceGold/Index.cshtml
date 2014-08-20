@@ -29,67 +29,77 @@
     </div>
 }
 
-<h2>Danh sách</h2>
-
-<p>
-    @Html.ActionLink("Tạo mới", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PRICE_GOLD_CD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PRICE_SALES)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PRICE_BUY)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GOLD_CODE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GOLD_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ACTIVE)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PRICE_GOLD_CD)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PRICE_SALES)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PRICE_BUY)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GOLD_CODE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GOLD_NAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ACTIVE)
-            </td>
-            <td>
-                @Html.ActionLink("Sửa", "Edit", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD }) |
-                @if (item.ACTIVE == false)
+<div class="row">
+    <div class="table-primary">
+        <div class="table-header">
+            <div class="table-caption">
+                Danh sách
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PRICE_GOLD_CD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PRICE_SALES)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PRICE_BUY)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GOLD_CODE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GOLD_NAME)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ACTIVE)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
                 {
-                    @Html.ActionLink("Kích hoạt", "Active", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PRICE_GOLD_CD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PRICE_SALES)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PRICE_BUY)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GOLD_CODE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GOLD_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ACTIVE)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD }) |
+                            @if (item.ACTIVE == false)
+                            {
+                                @Html.ActionLink("Kích hoạt", "Active", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Xóa", "Deactive", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
+                            }
+                        </td>
+                    </tr>
                 }
-                else
-                {
-                    @Html.ActionLink("Xóa", "Deactive", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
-                }
-            </td>
-        </tr>
-    }
+            </tbody>
+        </table>
+        <div class="table-footer">
 
-</table>
+        </div>
+    </div>
+</div>
+

@@ -28,57 +28,66 @@
         </div>
     </div>
 }
+<div class="row">
+    <div class="table-primary">
+        <div class="table-header">
+            <div class="table-caption">
+                Danh sách
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CITIES_DETAIL_CD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CITIES_DETAIL_NAME)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CITIES_CD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ACTIVE)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CITIES_DETAIL_CD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CITIES_DETAIL_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CITIES_CD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ACTIVE)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD }) |
+                            @if (item.ACTIVE == false)
+                            {
+                                @Html.ActionLink("Kích hoạt", "Active", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Xóa", "Deactive", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD })
+                            }
 
-<h2>Danh sách</h2>
 
-<p>
-    @Html.ActionLink("Tạo mới", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CITIES_DETAIL_CD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CITIES_DETAIL_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CITIES_CD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ACTIVE)
-        </th>
-        <th></th>
-    </tr>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="table-footer">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CITIES_DETAIL_CD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CITIES_DETAIL_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CITIES_CD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ACTIVE)
-        </td>
-        <td>
-            @Html.ActionLink("Sửa", "Edit", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD }) |
-            @if (item.ACTIVE == false)
-            {
-                @Html.ActionLink("Kích hoạt", "Active", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD })
-            }
-            else
-            {
-                @Html.ActionLink("Xóa", "Deactive", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD })
-            }
-
-
-        </td>
-    </tr>
-}
-
-</table>
+        </div>
+    </div>
+</div>
