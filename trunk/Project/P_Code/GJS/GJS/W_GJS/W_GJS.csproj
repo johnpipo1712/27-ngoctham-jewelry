@@ -147,6 +147,7 @@
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\CategoryAlbumController.cs" />
     <Compile Include="Controllers\CategoryGranulesController.cs" />
+    <Compile Include="Controllers\CategoryProductDetailController.cs" />
     <Compile Include="Controllers\CitiesDetailController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\PriceGoldController.cs" />
@@ -1220,6 +1221,9 @@
     <Content Include="Views\CategoryAlbum\Index.cshtml" />
     <Content Include="Views\CategoryAlbum\Create.cshtml" />
     <Content Include="Views\CategoryAlbum\Edit.cshtml" />
+    <Content Include="Views\CategoryProductDetail\Index.cshtml" />
+    <Content Include="Views\CategoryProductDetail\Create.cshtml" />
+    <Content Include="Views\CategoryProductDetail\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
