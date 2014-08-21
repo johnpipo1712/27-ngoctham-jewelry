@@ -37,15 +37,14 @@
             <div class="item head">
                 <span class="cart_img"></span>
                 <span class="product_name fsize13 bold">TÊN SẢN PHẨM</span>
-                <span class="remove_item fsize13 bold"></span>
-                <span class="total_price fsize13 bold">TỔNG TIỀN</span>
                 <span class="qty fsize13 bold">SỐ LƯỢNG</span>
+                <span class="total_price fsize13 bold">TỔNG TIỀN</span>
                 <div class="clearfix"></div>
             </div>
             <!-- /cart header -->
             @foreach (var item in Ord.D_ORDER_DETAIL)
             {
-                using (Html.BeginForm("UpdateCart", "Home", new { PRODUCT_CD = "PRODUCT_CD", QUANTITY = "QUANTITY" }, FormMethod.Post))
+                using (Html.BeginForm("UpdateCart", "Home", new { PRODUCT_CD = "PRODUCT_CD", QUANTITY = "QUANTITY" }, FormMethod.Post, new { @class= "form-cart" }))
                 {
                     <div class="item">
                         <div class="cart_img"><img src="@item.O_PRODUCT.URL_IMAGE" alt="" width="60" /></div>
@@ -54,39 +53,39 @@
                             <input type="hidden" name="PRODUCT_CD" value="@item.PRODUCT_CD" />
                             @*<small>@item.O_PRODUCT.</small>*@
                         </a>
+                        <div class="qty"><input type="text" value="@item.QUANTITY" name="QUANTITY" maxlength="3" /></div>
+                        <div class="total_price"><span>@String.Format("{0:0,0}", item.PRICE)</span> VNĐ</div>
                         <a href="@Url.Action("DeleteCart",new {PRODUCT_CD = item.PRODUCT_CD})" class="remove_item"><i class="fa fa-times"></i></a>
                         <button type="submit" class="remove_item"><i class="fa fa-edit"></i></button>
-                        <div class="total_price"><span>@String.Format("{0:0,0}", item.PRICE)</span> VNĐ</div>
-                        <div class="qty"><input type="text" value="@item.QUANTITY" name="QUANTITY" maxlength="3" /></div>
                         <div class="clearfix"></div>
                     </div>
                 }
             }
             <!-- cart item -->
-            <!-- /cart item -->
+            <!-- /cart item -->            
+            <!-- update cart -->
+            @if (!String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]))
+            {
+                using (Html.BeginForm("Checkout", "Home", FormMethod.Post))
+                {
+                    <button type="submit" onclick="return confirm('Bạn có chắc muốn thanh toán !!!');" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</button>
+                        <!-- /update cart -->
+                }
+            }
+            else
+            {
+                <a href="#" data-toggle="modal" data-target="#LoginModal" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</a>
+
+            }
             <!-- cart total -->
             <div class="total pull-right">
 
                 <span class="totalToPay">
-                    TỔNG CỘNG: @String.Format("{0:0,0 " + Ord.D_ORDER_DETAIL.ToList()[0].O_PRODUCT.CURRENCY + "}", W_GJS.Models.O_ORDER.Price_Total(Ord))
+                    TỔNG CỘNG: <span style="color: #ff3c28">@String.Format("{0:0,0 " + Ord.D_ORDER_DETAIL.ToList()[0].O_PRODUCT.CURRENCY + "}", W_GJS.Models.O_ORDER.Price_Total(Ord))</span>
                 </span>
 
             </div>
             <!-- /cart total -->
-            <!-- update cart -->
-                    @if (!String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]))
-                    {
-                        using (Html.BeginForm("Checkout", "Home", FormMethod.Post))
-                        {
-                            <button type="submit" onclick="return confirm('Bạn có chắc muốn thanh toán !!!');" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</button>
-                        <!-- /update cart -->
-                        }
-                    }
-                    else
-                    {
-                       <a href="#" data-toggle="modal" data-target="#LoginModal" class="btn_update btn btn-primary btn-md pull-right">THANH TOÁN</a>
-
-                    }
             <div class="clearfix"></div>
         </div>
         <!-- /cart content -->

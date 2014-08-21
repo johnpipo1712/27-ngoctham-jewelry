@@ -30,6 +30,7 @@ a,
     #blog a > span,
     #blog h1 > span,
     .cartContent a.remove_item:hover,
+    .cartContent button.remove_item:hover,
     .owl-carousel.featured a.figure > span > i,
     .btn-link,
     .styleColor {
