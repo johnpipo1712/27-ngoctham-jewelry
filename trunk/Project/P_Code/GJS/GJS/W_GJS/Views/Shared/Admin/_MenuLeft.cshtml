@@ -4,7 +4,7 @@
         <a href="@Url.Action("Index", "Administrator")"><i class="menu-icon fa fa-dashboard"></i><span class="mm-text">Bảng điều khiển</span></a>
     </li>
     <li>
-        <a href="@Url.Action("Edit", "Employee", new { EMPLOYEE_CD = 1 })"><i class="menu-icon fa fa-dashboard"></i><span class="mm-text">Thông tin Admin</span></a>
+        <a href="@Url.Action("Edit", "Employee", new { EMPLOYEE_CD = 1 })"><i class="menu-icon fa fa-user"></i><span class="mm-text">Thông tin Admin</span></a>
     </li>
     <li class="mm-dropdown">
         <a href="pages-blank.html#"><i class="menu-icon fa fa-suitcase"></i><span class="mm-text">Sản phẩm</span></a>
@@ -93,7 +93,7 @@
     </li>
 
     <li class="mm-dropdown">
-        <a href="pages-blank.html#"><i class="menu-icon fa fa-info-circle"></i><span class="mm-text">Khách hàng</span></a>
+        <a href="pages-blank.html#"><i class="menu-icon fa fa-users"></i><span class="mm-text">Khách hàng</span></a>
         <ul>
             <li>
                 <a tabindex="-1" href="@Url.Action("Index", "Customer")"><span class="mm-text">Thông tin</span></a>
@@ -104,7 +104,8 @@
             
         </ul>
     </li>
-@*<li class="mm-dropdown">
+
+    @*<li class="mm-dropdown">
         <a href="pages-blank.html#"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Menu levels</span><span class="badge badge-primary">6</span></a>
         <ul>
             <li>
@@ -142,6 +143,7 @@
             </li>
         </ul>
     </li>*@
+
 </ul> <!-- / .navigation -->
 
 
