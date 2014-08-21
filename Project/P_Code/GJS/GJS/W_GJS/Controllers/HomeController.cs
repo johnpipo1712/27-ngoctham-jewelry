@@ -47,7 +47,8 @@ namespace W_GJS.Controllers
                 || t.URL_IMAGE.Contains(keyword)
                 || t.WEIGHT.Contains(keyword)
                 || t.CURRENCY.Contains(keyword))).ToList();
-            if ((int)Session[SessionConstants.LOGINED_USER_ROLE_KEY] == 1)
+            if (Session[SessionConstants.LOGINED_USER_ROLE_KEY] != null
+                && (int)Session[SessionConstants.LOGINED_USER_ROLE_KEY] == 1)
             {
                 listproduct.Where(t => t.STATUS == 1);
             }
@@ -288,7 +289,15 @@ namespace W_GJS.Controllers
         public ActionResult Product_Category_Detail([Bind(Include = "CATEGORY_PRODUCT_DETAIL_CD")]O_CATEGORY_PRODUCT_DETAIL CATEGORY_PRODUCT_DETAIL)
         {
             Db_gsj = new GJSEntities();
-            return View(Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_CD && t.STATUS == 1 && t.ACTIVE == true).ToList());
+            ProductCategoryDetailModel detailModel = new ProductCategoryDetailModel();
+            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_CD && t.STATUS == 1 && t.ACTIVE == true).ToList();
+            detailModel.HtmlProductListString = RenderPartialViewToString("ProductLazyList", productList);
+            if (productList.Count > 0)
+            {
+                detailModel.ProductCategoryDetailName = productList[0].O_CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_NAME;
+            }
+            
+            return View(detailModel);
         }
         public ActionResult ProductList()
         {
