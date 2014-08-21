@@ -2,11 +2,15 @@
 **************************************************************** **/
 .addtocart {
     position: absolute;
-    top: 320px;
+    top: 310px;
+}
+.form-cart {
+    padding-left: 0;
+    padding-right: 0;
 }
 .shop-item-list {
 	display:block;
-	height:370px;
+	height:360px;
 	overflow:hidden;
 	position:relative;
 	border:transparent 1px solid;
@@ -265,7 +269,7 @@ button.product-size-dd .caret {
 		color:rgba(0,0,0,0.5);
 	}
 .cartContent .qty {
-	float:right;
+	float:left;
 	width:250px;
 	font-size:15px;
 	padding:10px;
@@ -278,7 +282,7 @@ button.product-size-dd .caret {
 	text-align:center;
 }
 .cartContent .total_price {
-	float:right;
+	float:left;
 	width:180px;
 	font-size:15px;
 	padding:10px;
@@ -291,7 +295,7 @@ button.product-size-dd .caret {
 	padding:5px 5px 5px 7px;
 	width:30px; margin-right:8px;
 }
-.cartContent a.remove_item {
+.cartContent a.remove_item, .cartContent button.remove_item {
 	background:#fff;
 	border:#eee 1px solid;
 	padding-top:0;
@@ -309,7 +313,7 @@ button.product-size-dd .caret {
 	font-weight:bold;
 	padding:10px 0;
 	text-align:right;
-	width:200px;
+	width:400px;
 }
 .cartContent .total small {
 	font-weight:normal;
@@ -321,7 +325,7 @@ button.product-size-dd .caret {
 	display:block;
 }
 .cartContent .btn_update {
-	margin-top:20px;
+	margin-top:12px;
 }
 
 .cartContent .cart_totals {
