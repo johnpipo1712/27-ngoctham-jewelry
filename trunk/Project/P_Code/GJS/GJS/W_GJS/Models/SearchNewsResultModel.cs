@@ -5,10 +5,11 @@ using System.Web;
 
 namespace W_GJS.Models
 {
-    public class SearchResultModel
+    public class SearchNewsResultModel
     {
-        public string HtmlString { get; set; }
+        public List<O_NEWS> ResultList { get; set; }
         public int NumberOfItemFound {  get; set; }
+        public bool IsSearching { get; set; }
 
     }
 }
