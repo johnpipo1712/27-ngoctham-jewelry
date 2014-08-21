@@ -131,6 +131,7 @@ namespace W_GJS.Controllers
                 //store session if succeed
                 Session[SessionConstants.LOGINED_USER_KEY] = username;
                 Session[SessionConstants.LOGINED_USER_ROLE_KEY] = jsonModel.RoleOrFailed;
+                Response.Redirect(Request.UrlReferrer.AbsoluteUri);
             }
 
             return Json(jsonModel);
@@ -160,6 +161,9 @@ namespace W_GJS.Controllers
             if (!jsonModel.HasError)
             {
                 RegisterModel.Register(MODEL, jsonModel, Db_gsj);
+                Session[SessionConstants.LOGINED_USER_KEY] = MODEL.USER_NAME;
+                Session[SessionConstants.LOGINED_USER_ROLE_KEY] = 3;
+                Response.Redirect(Request.UrlReferrer.AbsoluteUri);
             }
             return Json(jsonModel);
         }
