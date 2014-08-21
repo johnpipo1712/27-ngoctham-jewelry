@@ -175,6 +175,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Models\ProductCategoryDetailModel.cs" />
     <Compile Include="Models\SearchNewsResultModel.cs" />
     <Compile Include="Models\SearchResultModel.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
