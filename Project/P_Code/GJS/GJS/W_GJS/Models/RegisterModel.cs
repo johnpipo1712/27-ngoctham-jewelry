@@ -68,10 +68,10 @@ namespace W_GJS.Models
             
             try
             {
-                // store user entity: username, password, active = 1, create date = now, status = 1 (user normal always)
+                // store user entity: username, password, active = 1, create date = now, status = 3 (user normal always)
                 S_USER USER = new S_USER();
                 USER.ACTIVE = true;
-                USER.STATUS = 1;
+                USER.STATUS = 3;
                 USER.CREATEDATE = DateTime.Now;
                 USER.USER_NAME = MODEL.USER_NAME;
                 USER.USER_PASS = MODEL.USER_PASS;
@@ -82,7 +82,7 @@ namespace W_GJS.Models
                 // store customer entity: email, first name, last name, sex, active = 1, create date = now
                 O_CUSTOMER CUSTOMER = new O_CUSTOMER();
                 CUSTOMER.ACTIVE = true;
-                CUSTOMER.STATUS = 1; // henxui
+                CUSTOMER.STATUS = 0;
                 CUSTOMER.CREATEDATE = DateTime.Now;
                 CUSTOMER.EMAIL = MODEL.EMAIL;
                 CUSTOMER.PHONE = MODEL.PHONE_NUMBER;
@@ -95,15 +95,25 @@ namespace W_GJS.Models
                 Db_gsj.Entry(CUSTOMER).State = EntityState.Added;
                 Db_gsj.SaveChanges();
 
+
                 // link user and customer
                 O_USER_CUSTOMER USER_CUSTOMER = new O_USER_CUSTOMER();
                 USER_CUSTOMER.ACTIVE = true;
-                USER_CUSTOMER.STATUS = 1; // henxui
+                USER_CUSTOMER.STATUS = 0;
                 USER_CUSTOMER.CREATEDATE = DateTime.Now;
                 USER_CUSTOMER.CUSTOMER_CD = CUSTOMER.CUSTOMER_CD; // Tu co???
                 USER_CUSTOMER.USER_CD = USER.USER_CD; // Tu co???
-
                 Db_gsj.Entry(USER_CUSTOMER).State = EntityState.Added;
+                Db_gsj.SaveChanges();
+
+                // link quyền
+                O_USER_PST USER_PST = new O_USER_PST();
+                USER_PST.ACTIVE = true;
+                USER_PST.STATUS = 0;
+                USER_PST.CREATEDATE = DateTime.Now;
+                USER_PST.PST_CD = 3;
+                USER_PST.USER_CD = USER.USER_CD; 
+                Db_gsj.Entry(USER_PST).State = EntityState.Added;
                 Db_gsj.SaveChanges();
             }
             catch (Exception e)
