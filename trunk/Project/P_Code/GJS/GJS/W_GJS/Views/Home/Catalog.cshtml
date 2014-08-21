@@ -4,9 +4,9 @@
     List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
 }
 
-@section Slide {
+@*section Slide {
     @Html.Partial("_Slide")
-}
+}*@
 
 @section PageTitle {
     <section class="page-title">
@@ -77,8 +77,11 @@
                         </div>
                     }
                 </a>
+                <a href="@Url.Action("AddCart", new { PRODUCT_CD = itemproduct.PRODUCT_CD, QUANTITY = "1", SIZE = "5" })" class="btn btn-primary btn-sm addtocart"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
+
             </div><!-- /item -->
             }
+
         </div>
     }
 }
