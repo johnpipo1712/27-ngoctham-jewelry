@@ -27,6 +27,11 @@
         </div>
     </div>
 }
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Self/customer/js/script.js")"></script>
+
+}
+
 
 <div class="row">
     <div class="table-primary">
@@ -39,15 +44,14 @@
             <thead>
                 <tr>
                  
-                    <th>
-                        @Html.DisplayNameFor(model => model.CUSTOMER_CODE)
-                    </th>
+                 
                     <th>
                         @Html.DisplayNameFor(model => model.CUSTOMER_NAME)
                     </th>
                     <th>
                         Tên đăng nhập
                     </th>
+                 
                     <th>
                         @Html.DisplayNameFor(model => model.PHONE)
                     </th>
@@ -57,7 +61,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.EMAIL)
                     </th>
-                    
+                    <th>
+                        Phân quyền
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -66,15 +72,14 @@
                 {
                     <tr>
                        
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CUSTOMER_CODE)
-                        </td>
+                       
                         <td>
                             @Html.DisplayFor(modelItem => item.CUSTOMER_NAME)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.O_USER_CUSTOMER.ToList()[0].S_USER.USER_NAME)
+                            @item.O_USER_CUSTOMER.ToList()[0].S_USER.USER_NAME
                         </td>
+                      
                         <td>
                             @Html.DisplayFor(modelItem => item.PHONE)
                         </td>
@@ -84,8 +89,17 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.EMAIL)
                         </td>
-                     
-                        
+                        <th>
+                            @if (item.O_USER_CUSTOMER.ToList()[0].S_USER.O_USER_PST.ToList()[0].PST_CD == 3)
+                            {
+                                <input type="checkbox" onclick="CheckPst(@item.CUSTOMER_CD,this)" name="checpst" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" checked="checked" onclick="CheckPst(@item.CUSTOMER_CD,this)" name="checkpst" />
+
+                            }
+                        </th>
                         <td>
                             @*@Html.ActionLink("Sửa", "Edit", new { CUSTOMER_CD = item.CUSTOMER_CD }) |
                            @if (item.ACTIVE == false)

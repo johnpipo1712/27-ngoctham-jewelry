@@ -7,7 +7,7 @@
         <a href="@Url.Action("Edit", "Employee", new { EMPLOYEE_CD = 1 })"><i class="menu-icon fa fa-user"></i><span class="mm-text">Thông tin Admin</span></a>
     </li>
     <li class="mm-dropdown">
-        <a href="pages-blank.html#"><i class="menu-icon fa fa-suitcase"></i><span class="mm-text">Sản phẩm</span></a>
+        <a href="#"><i class="menu-icon fa fa-suitcase"></i><span class="mm-text">Sản phẩm</span></a>
         <ul>
             <li>
                 <a tabindex="-1" href="@Url.Action("Index", "CategoryProduct")"><span class="mm-text">Loại sản phẩm</span></a>
@@ -29,7 +29,7 @@
     </li>
 
     <li class="mm-dropdown">
-        <a href="pages-blank.html#"><i class="menu-icon fa fa-home"></i><span class="mm-text">Trang tĩnh</span></a>
+        <a href="#"><i class="menu-icon fa fa-home"></i><span class="mm-text">Trang tĩnh</span></a>
         <ul>
             <li>
                 <a tabindex="-1" href="@Url.Action("Index", "CategoryPage")"><span class="mm-text">Loại trang (menu)</span></a>
@@ -50,7 +50,7 @@
     </li>
 
     <li class="mm-dropdown">
-        <a href="pages-blank.html#"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Hệ thống chi nhánh</span></a>
+        <a href="#"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Hệ thống chi nhánh</span></a>
         <ul>
             <li>
                 <a tabindex="-1" href="@Url.Action("Index", "Cities")"><span class="mm-text">Khu vực</span></a>
@@ -65,7 +65,7 @@
     </li>
 
     <li class="mm-dropdown">
-        <a href="pages-blank.html#"><i class="menu-icon fa fa-picture-o"></i><span class="mm-text">Bộ sưu tập</span></a>
+        <a href="#"><i class="menu-icon fa fa-picture-o"></i><span class="mm-text">Bộ sưu tập</span></a>
         <ul>
             <li>
                 <a tabindex="-1" href="@Url.Action("Index", "CategoryAlbum")"><span class="mm-text">Bộ sưu tập</span></a>
@@ -77,7 +77,7 @@
     </li>
 
     <li class="mm-dropdown">
-        <a href="pages-blank.html#"><i class="menu-icon fa fa-info-circle"></i><span class="mm-text">Tin tức</span></a>
+        <a href="#"><i class="menu-icon fa fa-info-circle"></i><span class="mm-text">Tin tức</span></a>
         <ul>
             <li>
                 <a tabindex="-1" href="@Url.Action("Index", "CategoryNews")"><span class="mm-text">Loại tin tức</span></a>
@@ -93,16 +93,8 @@
     </li>
 
     <li class="mm-dropdown">
-        <a href="pages-blank.html#"><i class="menu-icon fa fa-users"></i><span class="mm-text">Khách hàng</span></a>
-        <ul>
-            <li>
-                <a tabindex="-1" href="@Url.Action("Index", "Customer")"><span class="mm-text">Thông tin</span></a>
-            </li>
-            <li>
-                <a tabindex="-1" href="@Url.Action("Index", "User")"><span class="mm-text">Quyền</span></a>
-            </li>
-            
-        </ul>
+        <a href="@Url.Action("Index", "Customer")"><i class="menu-icon fa fa-users"></i><span class="mm-text">Khách hàng</span></a>
+      
     </li>
 
     @*<li class="mm-dropdown">

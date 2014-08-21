@@ -138,7 +138,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
-    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Self\news\images\" />
     <Folder Include="Self\services\images\" />
   </ItemGroup>
@@ -1092,6 +1091,7 @@
     <Content Include="Content\images\admin\demo\avatars\Thumbs.db" />
     <Content Include="Content\images\admin\demo\Thumbs.db" />
     <Content Include="Content\css\flare\themes\default\img\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\WEB.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1116,6 +1116,7 @@
     <Content Include="Self\branches\images\bg-sys-store.png" />
     <Content Include="Self\branches\images\button-sys.png" />
     <Content Include="Self\branches\js\script.js" />
+    <Content Include="Self\customer\js\script.js" />
     <Content Include="Self\index_page\js\scripts.js" />
     <Content Include="Self\news\css\mainstyles.css" />
     <Content Include="Self\news\js\script.js" />
