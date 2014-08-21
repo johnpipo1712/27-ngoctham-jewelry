@@ -61,21 +61,21 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        [ValidateInput(false)] 
-        public ActionResult Edit(O_ADVERTISEMENT ADVERTISEMENT)
+        [ValidateInput(false)]
+        public ActionResult Edit(O_ADVERTISEMENT ADVERTISEMENT_CONTENT)
         {
             if (ModelState.IsValid)
             {
                 Db_gsj = new GJSEntities();
-                O_ADVERTISEMENT ADVERTISEMENT_edit = Db_gsj.O_ADVERTISEMENT.Single(t => t.CD == ADVERTISEMENT.CD);
-                ADVERTISEMENT_edit.ADVERTISEMENT = ADVERTISEMENT.ADVERTISEMENT;
+                O_ADVERTISEMENT ADVERTISEMENT_edit = Db_gsj.O_ADVERTISEMENT.Single(t => t.CD == ADVERTISEMENT_CONTENT.CD);
+                ADVERTISEMENT_edit.ADVERTISEMENT = ADVERTISEMENT_CONTENT.ADVERTISEMENT;
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");
 
             }
             else
             {
-                return View(ADVERTISEMENT);
+                return View(ADVERTISEMENT_CONTENT);
             }
         }
 
