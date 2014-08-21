@@ -47,6 +47,10 @@ namespace W_GJS.Controllers
             }
             else
             {
+                Db_gsj = new GJSEntities();
+                var queryD = Db_gsj.O_CATEGORY_NEWS.ToList();
+                ViewBag.categoryNews = new SelectList(queryD.AsEnumerable(), "CATEGORY_NEWS_CD", "CATEGORY_NEWS_NAME", NEWS.CATEGORY_NEWS_CD);
+           
                 return View(NEWS);
             }
         }
@@ -90,6 +94,10 @@ namespace W_GJS.Controllers
             }
             else
             {
+                Db_gsj = new GJSEntities();
+                var queryD = Db_gsj.O_CATEGORY_NEWS.ToList();
+                ViewBag.categoryNews = new SelectList(queryD.AsEnumerable(), "CATEGORY_NEWS_CD", "CATEGORY_NEWS_NAME", NEWS.CATEGORY_NEWS_CD);
+           
                 return View(NEWS);
             }
         }

@@ -87,15 +87,15 @@
                      
                         
                         <td>
-                            @Html.ActionLink("Sửa", "Edit", new { CUSTOMER_CD = item.CUSTOMER_CD }) |
-                            @if (item.ACTIVE == false)
+                            @*@Html.ActionLink("Sửa", "Edit", new { CUSTOMER_CD = item.CUSTOMER_CD }) |
+                           @if (item.ACTIVE == false)
                             {
                                 @Html.ActionLink("Kích hoạt", "Active", new { CUSTOMER_CD = item.CUSTOMER_CD })
                             }
                             else
                             {
                                 @Html.ActionLink("Xóa", "Deactive", new { CUSTOMER_CD = item.CUSTOMER_CD })
-                            }
+                            }*@
                         </td>
                     </tr>
                 }

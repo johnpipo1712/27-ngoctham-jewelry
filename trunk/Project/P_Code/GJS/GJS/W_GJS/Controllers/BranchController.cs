@@ -47,6 +47,8 @@ namespace W_GJS.Controllers
             }
             else
             {
+                Db_gsj = new GJSEntities();
+              
                 var queryD = Db_gsj.D_CITIES_DETAIL.ToList();
                 ViewBag.DCities = new SelectList(queryD.AsEnumerable(), "CITIES_DETAIL_CD", "CITIES_DETAIL_NAME", BRANCH.CITIES_DETAIL_CD);
         
@@ -93,6 +95,8 @@ namespace W_GJS.Controllers
             }
             else
             {
+                Db_gsj = new GJSEntities();
+              
                 var queryD = Db_gsj.D_CITIES_DETAIL.ToList();
                 ViewBag.DCities = new SelectList(queryD.AsEnumerable(), "CITIES_DETAIL_CD", "CITIES_DETAIL_NAME", BRANCH.CITIES_DETAIL_CD);
         

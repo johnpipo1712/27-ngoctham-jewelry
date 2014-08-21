@@ -29,11 +29,10 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Tên đăng nhập")]
         public string USER_NAME { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Password)]
         [Display(Name = "Mật khẩu")]
         public string USER_PASS { get; set; }
-        
+        [Display(Name = "Quyền")]
         public Nullable<long> STATUS { get; set; }
         
         public Nullable<bool> ACTIVE { get; set; }

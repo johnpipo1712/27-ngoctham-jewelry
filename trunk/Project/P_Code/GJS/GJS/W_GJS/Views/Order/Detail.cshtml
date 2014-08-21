@@ -37,7 +37,9 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                 
+                    <th>
+                        Hình ảnh 
+                    </th>
                     <th>
                         @Html.DisplayNameFor(model => model.PRODUCT_CD)
                     </th>
@@ -58,16 +60,19 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
+                        <td align="center">
+                            <img src="@item.O_PRODUCT.URL_IMAGE" height="50" width="50" />
+                        </td>
+                        <td valign="middle">
                             @Html.DisplayFor(modelItem => item.O_PRODUCT.PRODUCT_NAME)
                         </td>
-                        <td>
+                        <td valign="middle">
                             @Html.DisplayFor(modelItem => item.SIZE)
                         </td>
-                        <td>
+                        <td valign="middle">
                             @Html.DisplayFor(modelItem => item.QUANTITY)
                         </td>
-                        <td>
+                        <td valign="middle">
                             @Html.DisplayFor(modelItem => item.PRICE)
                         </td>
 

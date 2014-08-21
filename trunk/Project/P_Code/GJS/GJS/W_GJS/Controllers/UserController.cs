@@ -57,6 +57,7 @@ namespace W_GJS.Controllers
             }
             else
             {
+                Db_gsj = new GJSEntities();
                 var queryD = Db_gsj.S_PST.Where(t => t.PST_CD != 1).ToList();
                 ViewBag.pst = new SelectList(queryD.AsEnumerable(), "PST_CD", "PST_NAME", USER.STATUS);
                 return View(USER);
@@ -106,6 +107,7 @@ namespace W_GJS.Controllers
             }
             else
             {
+                Db_gsj = new GJSEntities();
                 var queryD = Db_gsj.S_PST.Where(t => t.PST_CD != 1).ToList();
                 ViewBag.pst = new SelectList(queryD.AsEnumerable(), "PST_CD", "PST_NAME", USER.STATUS);
           
