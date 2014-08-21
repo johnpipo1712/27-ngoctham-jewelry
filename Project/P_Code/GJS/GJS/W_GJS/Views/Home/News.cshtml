@@ -131,14 +131,15 @@
     </div>
     <!-- /BLOG SIDEBAR -->
     <!-- BLOG ARTICLE LIST -->
-    @if (Model.IsSearching) 
-    {
-    <h2 class="owl-featured-item"><strong>Đã tìm thấy @Model.NumberOfItemFound kết quả</strong></h2>
-    }
-    @*<div class="spacing"></div>*@
+    
+    
 
     <div class="col-md-9 col-sm-9">
-
+        @if (Model.IsSearching)
+        {
+            <h2 class="search-result-title"><strong>Đã tìm thấy @Model.NumberOfItemFound kết quả</strong></h2>
+        }
+        @*<div class="spacing"></div>*@
         <!-- article - image -->
         @foreach (var item in listNews)
         {
