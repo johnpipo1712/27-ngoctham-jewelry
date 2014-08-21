@@ -5,8 +5,8 @@
 }
 
 @*section Slide {
-    @Html.Partial("_Slide")
-}*@
+        @Html.Partial("_Slide")
+    }*@
 
 @section PageTitle {
     <section class="page-title">
@@ -31,77 +31,63 @@
     </section>
 }
 
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Self/catalog/js/script.js")"></script>
+}
 
 @foreach (var item in listcategory)
 {
-    if (item.O_PRODUCT.Count > 0)
+    <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>@item.CATEGORY_PRODUCT_NAME</strong></h2>
+    if (item.O_PRODUCT.Count == 0)
     {
-        <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>@item.CATEGORY_PRODUCT_NAME</strong></h2>
-       <div class="row">
-            @foreach (var itemproduct in item.O_PRODUCT)
-            {
-                <div class="col-md-4 col-sm-4">
-                <!-- item -->
-                <a class="shop-item-list" href="@Url.Action("ProductDetail", new { PRODUCT_CD = itemproduct.PRODUCT_CD })">
-                    <figure>
-                        <!-- image -->
-                        <img class="img-responsive" src="@itemproduct.URL_IMAGE" alt="@item.TAG_ALT" />
-                    </figure><!-- /image -->
-                    @if (itemproduct.QUANTITY <= 0)
-                    {
-                        <span class="shop-stock-info stock-no">
-                        <!-- stock -->
-                        <i class="fa fa-times"></i> hết hàng
-                    </span><!-- /stock -->
-                    
-                    }
-                    else
-                    {
-                    <span class="shop-stock-info stock-yes">
-                        <!-- stock -->
-                        <i class="fa fa-check"></i> còn hàng
-                    </span><!-- /stock -->
-                        
-                    }
-                    <div class="product-info">
-                        <!-- title and price -->
-                        <h2>
-                            <span class="product-name">@itemproduct.PRODUCT_NAME</span>
-                            <span class="bold">@String.Format("{0:0,0 " + itemproduct.CURRENCY + "}", itemproduct.PRICE_PROMOTION)</span> <span class="line-through">@String.Format("{0:0,0 " + itemproduct.CURRENCY + "}", itemproduct.PRICE)</span>
-                        </h2>
-                    </div><!-- /title and price -->
-                    @if (itemproduct.O_PRODUCT_NEW != null && itemproduct.O_PRODUCT_NEW.ToList().Count > 0)
-                    {
-                        <div class="sb-gdv-disc">
-                            <div class="sb-gdv-disc__content">Mới</div>
-                        </div>
-                    }
-                </a>
-                <a href="@Url.Action("AddCart", new { PRODUCT_CD = itemproduct.PRODUCT_CD, QUANTITY = "1", SIZE = "5" })" class="btn btn-primary btn-sm addtocart"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
+        <p>Không tìm thấy sản phẩm nào.</p>
+    }
+    else
+    {
+        <div id="ProductList-@item.CATEGORY_PRODUCT_CD"></div>
+    
+    
+<script>
+    var identified = "@item.CATEGORY_PRODUCT_CD";
+    function loadProducts(currentPage) {
+        inProgress = true;
+        $("#loadingDiv-" + identified).show();
 
-            </div><!-- /item -->
-            }
+        $.post("@Url.Action("CategoryProductListPaging", "Home")", { "CATEGORY_PRODUCT_CD": @item.CATEGORY_PRODUCT_CD, "numberOfItemsInPage": 10, "currentPage": currentPage },
+    function (data) {
+        $("#ProductList-" + identified).append(data);
+        $("#loadingDiv-" + identified).hide();
+        inProgress = false;
+    });
+    }
 
-        </div>
+    //$(document).ready(function () {
+        loadProducts(1);
+    //});
+
+            
+</script>
+
+    
     }
 }
 
 
 
 @*<div class="row">
-    <div class="col-md-6">
-        Hiện 6 trên tổng số 10 sản phẩm
-    </div>
-    <div class="col-md-6">
-        <ul class="pagination pull-right">
-            <li class="disabled"><a href="@Url.Action("ProductList", "Home")">&laquo;</a></li>
-            <li class="active"><a href="@Url.Action("ProductList", "Home")">1 <span class="sr-only">(current)</span></a></li>
-            <li><a href="@Url.Action("ProductList", "Home")">2</a></li>
-            <li><a href="@Url.Action("ProductList", "Home")">3</a></li>
-            <li><a href="@Url.Action("ProductList", "Home")">4</a></li>
-            <li><a href="@Url.Action("ProductList", "Home")">5</a></li>
-            <li><a href="@Url.Action("ProductList", "Home")">&raquo;</a></li>
-        </ul>
-    </div>
-</div>*@
+        <div class="col-md-6">
+            Hiện 6 trên tổng số 10 sản phẩm
+        </div>
+        <div class="col-md-6">
+            <ul class="pagination pull-right">
+                <li class="disabled"><a href="@Url.Action("ProductList", "Home")">&laquo;</a></li>
+                <li class="active"><a href="@Url.Action("ProductList", "Home")">1 <span class="sr-only">(current)</span></a></li>
+                <li><a href="@Url.Action("ProductList", "Home")">2</a></li>
+                <li><a href="@Url.Action("ProductList", "Home")">3</a></li>
+                <li><a href="@Url.Action("ProductList", "Home")">4</a></li>
+                <li><a href="@Url.Action("ProductList", "Home")">5</a></li>
+                <li><a href="@Url.Action("ProductList", "Home")">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>*@
 

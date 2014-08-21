@@ -138,6 +138,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
+    <Folder Include="Self\catalog\css\" />
+    <Folder Include="Self\catalog\images\" />
     <Folder Include="Self\news\images\" />
     <Folder Include="Self\services\images\" />
   </ItemGroup>
@@ -175,6 +177,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Models\ProductCategoryModel.cs" />
     <Compile Include="Models\ProductCategoryDetailModel.cs" />
     <Compile Include="Models\SearchNewsResultModel.cs" />
     <Compile Include="Models\SearchResultModel.cs" />
@@ -1111,6 +1114,7 @@
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\self-scripts.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Self\catalog\js\script.js" />
     <Content Include="Self\branches\css\default.css" />
     <Content Include="Self\branches\images\bg-arrow.png" />
     <Content Include="Self\branches\images\bg-sys-store.png" />
@@ -1243,6 +1247,7 @@
     <Content Include="Views\Banner\Index.cshtml" />
     <Content Include="Views\Order\Detail.cshtml" />
     <Content Include="Views\Home\NewsList.cshtml" />
+    <Content Include="Views\Home\CategoryProductListPaging.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
