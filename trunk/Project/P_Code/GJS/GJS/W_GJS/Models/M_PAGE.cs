@@ -17,11 +17,11 @@ namespace W_GJS.Models
     {
         [Display(Name = "Trang")]
         public long PAGE_COTRACT_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+       
         [DataType(DataType.Text)]
         [Display(Name = "Tiêu đề ")]
         public string PAGE_COTRACT_TITLE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+        
         [DataType(DataType.Text)]
         [Display(Name = "Nội dung")]
         public string PAGE_COTRACT_CONTENT { get; set; }

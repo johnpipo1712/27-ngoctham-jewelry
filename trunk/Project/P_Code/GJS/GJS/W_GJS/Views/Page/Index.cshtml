@@ -43,9 +43,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.PAGE_COTRACT_TITLE)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CATEGORY_PAGE_CD)
-                    </th>
+                   
                     <th></th>
                 </tr>
             </thead>
@@ -58,18 +56,15 @@
                             @Html.DisplayFor(modelItem => item.PAGE_COTRACT_TITLE)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.O_CATEGORY_PAGE.CATEGORY_PAGE_NAME)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Sửa", "Edit", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD }) |
-                            @if (item.ACTIVE == false)
+                            @Html.ActionLink("Sửa", "Edit", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD }) 
+                            @*@if (item.ACTIVE == false)
                             {
                                 @Html.ActionLink("Kích hoạt", "Active", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
                             }
                             else
                             {
                                 @Html.ActionLink("Xóa", "Deactive", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
-                            }
+                            }*@
                         </td>
                     </tr>
                 }

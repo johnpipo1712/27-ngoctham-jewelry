@@ -5,6 +5,7 @@
 @{  
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
     W_GJS.Models.O_SEO seo = gjs.O_SEO.Single(t => t.CD == 1);
+    W_GJS.Models.M_PAGE popup = gjs.M_PAGE.Single(t => t.PAGE_COTRACT_CD == 9);
 }
 <html>
 <!--<![endif]-->
@@ -114,15 +115,8 @@
     <div class="dathang_theoyeucau">
 
         <div class="content_dathang">
-            <p style="text-align: left;">
-                <span style="font-family: Arial;">
-                    <span style="font-size: small;">
-                        <strong style="color:#900">Công ty TNHH Vàng Bạc Đá Quý Ngọc Thẫm nhận làm các loại nữ trang và trang sức theo yêu cầu của quý khách.</strong><br>
-                        <br>
-                        Quý khách có thể mang mẫu trực tiếp tới công ty tại số ..............Tel: ........................ hoặc gởi hình ảnh qua địa chỉ email: <span style="color: rgb(0, 0, 255);"><strong>............yahoo.com</strong></span> Nội dung gồm (<strong>Hình ảnh, nguyên liệu, trọng lượng yêu cầu, ni tay, các loại đá chủ, đá tấm</strong>) Công ty sẽ tính chi phí và báo lại cho quý khách ngay tại thời điểm đưa ra yêu cầu.
-                    </span>
-                </span>
-            </p>
+           @Html.Raw(popup.PAGE_COTRACT_CONTENT) 
+           
         </div>
     </div>
 
