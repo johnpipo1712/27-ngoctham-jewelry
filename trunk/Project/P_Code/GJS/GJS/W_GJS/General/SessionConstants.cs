@@ -11,5 +11,6 @@ namespace W_GJS.General
 
         public const string LOGINED_USER_KEY = "logineduser";
         public const string LOGINED_USER_ROLE_KEY = "logineduserrole";
+        public const string LOGINED_CUSTOMER_CD_KEY = "loginedcustomercd";
     }
 }
