@@ -1,9 +1,9 @@
-﻿@model IEnumerable<W_GJS.Models.O_PRODUCT>
+﻿@model W_GJS.Models.ProductCategoryDetailModel
 @{
     ViewBag.Title = "Product_Category_Detail";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
     List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).ToList();
-
+    
 }
 
 
@@ -14,9 +14,7 @@
 
     <div class="col-sm-9 col-md-9">
 
-
-        <h2><strong>@Model.ToList()[0].O_CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_NAME</strong></h2>
-
+        <h2><strong>@Model.ProductCategoryDetailName</strong></h2>
         <ul class="breadcrumb">
             <!-- breadcrumb -->
             <li><a href="#">Trang chủ</a></li>
@@ -81,55 +79,7 @@
         <!-- PRODUCT LIST -->
         <div class="row">
 
-            @foreach (var item in Model)
-            {
-                <div class="col-md-4 col-sm-4">
-                    <!-- item -->
-                    <a class="shop-item-list" href="@Url.Action("ProductDetail",new { PRODUCT_CD = item.PRODUCT_CD })">
-                        <figure>
-                            <!-- image -->
-                            <img class="img-responsive" src="@item.URL_IMAGE" alt="@item.TAG_ALT" />
-                        </figure><!-- /image -->
-                        @if (item.QUANTITY <= 0)
-                        {
-                            <span class="shop-stock-info stock-no">
-                                <!-- stock -->
-                                <i class="fa fa-times"></i> hết hàng
-                            </span><!-- /stock -->
-
-                        }
-                        else
-                        {
-                            <span class="shop-stock-info stock-yes">
-                                <!-- stock -->
-                                <i class="fa fa-check"></i> còn hàng
-                            </span><!-- /stock -->
-
-                        }
-                        <div class="product-info">
-                            <!-- title and price -->
-                            <h2>
-                                <span class="product-name">@item.PRODUCT_NAME</span>
-                                @if (item.PRICE_PROMOTION != null)
-                                {
-                                    <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE_PROMOTION)</span> <span class="line-through">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
-
-                                }
-                                else
-                                {
-                                    <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
-
-                                }    </h2>
-                        </div><!-- /title and price -->
-                        @if (item.O_PRODUCT_NEW != null && item.O_PRODUCT_NEW.ToList().Count > 0)
-                        {
-                            <div class="sb-gdv-disc">
-                                <div class="sb-gdv-disc__content">Mới</div>
-                            </div>
-                        }
-                    </a>
-                </div><!-- /item -->
-            }
+            @Html.Raw(Model.HtmlProductListString)
 
         </div>
         <!-- /PRODUCT LIST -->
