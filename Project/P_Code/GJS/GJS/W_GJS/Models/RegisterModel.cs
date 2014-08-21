@@ -53,7 +53,12 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Giới tính")]
         public string SEX { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn giới tính")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Địa chỉ")]
+        public string ADDRESS { get; set; }
 
+       
         public string PHONE_NUMBER { get; set; }
 
         public bool SUBSCRIBE { get; set; }
@@ -84,6 +89,7 @@ namespace W_GJS.Models
                 CUSTOMER.CUSTOMER_NAME = MODEL.FIRST_NAME + " " + MODEL.LAST_NAME;
                 CUSTOMER.CUSTOMER_FIRST_NAME = MODEL.FIRST_NAME;
                 CUSTOMER.CUSTOMER_LAST_NAME = MODEL.LAST_NAME;
+                CUSTOMER.ADDRESS = MODEL.ADDRESS;
                 CUSTOMER.SUBSCRIBE = MODEL.SUBSCRIBE;
                 CUSTOMER.SEX = MODEL.SEX;
                 Db_gsj.Entry(CUSTOMER).State = EntityState.Added;
@@ -129,6 +135,11 @@ namespace W_GJS.Models
             if (String.IsNullOrEmpty(MODEL.EMAIL))
             {
                 jsonModel.ErrorString += "<li>Vui lòng nhập email.</li>";
+                jsonModel.HasError = true;
+            }
+            if (String.IsNullOrEmpty(MODEL.ADDRESS))
+            {
+                jsonModel.ErrorString += "<li>Vui lòng nhập địa chỉ.</li>";
                 jsonModel.HasError = true;
             }
             else

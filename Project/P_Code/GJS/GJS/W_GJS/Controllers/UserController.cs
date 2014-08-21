@@ -88,8 +88,6 @@ namespace W_GJS.Controllers
             {
                 Db_gsj = new GJSEntities();
                 S_USER USER_edit = Db_gsj.S_USER.Single(t => t.USER_CD == USER.USER_CD);
-                USER_edit.USER_PASS = USER.USER_PASS;
-                USER_edit.USER_NAME = USER.USER_NAME;
                 USER_edit.STATUS = USER.STATUS;
                 Db_gsj.SaveChanges();
 
