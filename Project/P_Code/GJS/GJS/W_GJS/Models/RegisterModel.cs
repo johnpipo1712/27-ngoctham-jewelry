@@ -94,7 +94,9 @@ namespace W_GJS.Models
                 CUSTOMER.SEX = MODEL.SEX;
                 Db_gsj.Entry(CUSTOMER).State = EntityState.Added;
                 Db_gsj.SaveChanges();
-
+                CUSTOMER.CUSTOMER_CODE = "KH" + CUSTOMER.CUSTOMER_CD.ToString();
+                Db_gsj.Entry(CUSTOMER).State = EntityState.Modified;
+                Db_gsj.SaveChanges();
 
                 // link user and customer
                 O_USER_CUSTOMER USER_CUSTOMER = new O_USER_CUSTOMER();
