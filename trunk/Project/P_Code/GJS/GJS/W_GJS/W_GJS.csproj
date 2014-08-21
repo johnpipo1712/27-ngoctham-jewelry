@@ -1031,6 +1031,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="SGallery\js\css\demo-styles.css" />
+    <Content Include="SGallery\js\css\styles.css" />
+    <Content Include="SGallery\js\hammer.js" />
+    <Content Include="SGallery\js\images\controls-dark.png" />
+    <Content Include="SGallery\js\images\controls-light.png" />
+    <Content Include="SGallery\js\images\controls-light2.png" />
+    <Content Include="SGallery\js\jquery-1.8.2.min.js" />
+    <Content Include="SGallery\js\plugins.js" />
+    <Content Include="SGallery\js\screenfull.min.js" />
+    <Content Include="SGallery\js\scripts.js" />
     <Content Include="Scripts\admin\bootstrap.min.js" />
     <Content Include="Scripts\admin\demo-mock.js" />
     <Content Include="Scripts\admin\jquery.mockjax.js" />
@@ -1094,6 +1104,7 @@
     <Content Include="Content\images\admin\demo\avatars\Thumbs.db" />
     <Content Include="Content\images\admin\demo\Thumbs.db" />
     <Content Include="Content\css\flare\themes\default\img\Thumbs.db" />
+    <Content Include="SGallery\js\images\Thumbs.db" />
     <None Include="Properties\PublishProfiles\WEB.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
