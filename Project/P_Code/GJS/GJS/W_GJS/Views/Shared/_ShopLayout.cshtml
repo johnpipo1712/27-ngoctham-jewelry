@@ -54,6 +54,7 @@
 
     @*@Scripts.Render("~/Script/js/modernize")*@
     <script src="@Url.Content("~/Content/plugins/modernizr.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/jquery-2.1.1.min.js")" type="text/javascript"></script>
 
     <link href="@Url.Content("~/Content/css/default.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/css/supported.css")" rel="stylesheet" type="text/css" />
@@ -71,11 +72,11 @@
     <!-- Additional Modals -->
     @RenderSection("Modal", false)
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         jQuery(function ($) {
             $('a[data-target="flare"]').peFlareLightbox();
         });
-    </script>
+    </script>*@
 
     <div id="wrapper">
         @*@ViewContext.Controller.ValueProvider.GetValue("controller").RawValue -
@@ -124,7 +125,7 @@
     @*@Scripts.Render("~/Script/js")*@
     
 
-    <script src="@Url.Content("~/Content/plugins/jquery-2.1.1.min.js")" type="text/javascript"></script>
+    
     @*<script src="@Url.Content("~/Content/css/flare/jquery.js")" type="text/javascript"></script>*@
     @*<script src="@Url.Content("~/Content/css/flare/prettify.js")" type="text/javascript"></script>*@
     @*<script src="@Url.Content("~/Content/css/flare/bootstrap/bootstrap.min.js")" type="text/javascript"></script>*@
