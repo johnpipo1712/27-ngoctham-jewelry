@@ -412,3 +412,7 @@ div.slider {
     padding: 9px !important;
     font-weight: bold;
 }
+
+.spacing {
+    margin-top: 1em;
+}

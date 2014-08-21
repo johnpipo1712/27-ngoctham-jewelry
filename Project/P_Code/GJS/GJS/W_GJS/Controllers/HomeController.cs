@@ -45,7 +45,8 @@ namespace W_GJS.Controllers
                 || t.URL_IMAGE.Contains(keyword)
                 || t.WEIGHT.Contains(keyword)
                 || t.CURRENCY.Contains(keyword))).ToList();
-            string htmlString = RenderPartialViewToString("ProductLazyList", listproduct);
+            resultModel.HtmlString = RenderPartialViewToString("ProductLazyList", listproduct);
+            resultModel.NumberOfItemFound = listproduct.Count;
             return View(resultModel);
         }
 

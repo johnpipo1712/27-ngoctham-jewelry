@@ -28,4 +28,6 @@
     </section>
 }
 
-@Model.HtmlString
+<h2 class="owl-featured"><strong>Đã tìm thấy @Model.NumberOfItemFound kết quả</strong></h2>
+<div class="spacing"></div>
+@Html.Raw(Model.HtmlString)
