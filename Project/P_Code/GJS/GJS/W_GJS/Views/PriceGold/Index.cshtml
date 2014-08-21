@@ -39,19 +39,19 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                   
-                    <th>
-                        @Html.DisplayNameFor(model => model.PRICE_SALES)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PRICE_BUY)
-                    </th>
                     <th>
                         @Html.DisplayNameFor(model => model.GOLD_CODE)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.GOLD_NAME)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PRICE_SALES)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PRICE_BUY)
+                    </th>
+                   
                    
                     <th></th>
                 </tr>
@@ -60,20 +60,20 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PRICE_SALES)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PRICE_BUY)
-                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.GOLD_CODE)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.GOLD_NAME)
                         </td>
-                       
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PRICE_SALES)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PRICE_BUY)
+                        </td>
+                        
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD }) |
                             @if (item.ACTIVE == false)

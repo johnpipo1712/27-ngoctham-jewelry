@@ -43,19 +43,20 @@
                     </div> <!-- / .form-group -->
 
                     <div class="form-group">
-                  
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.STATUS, new { @class = "control-label col-md-2" })
-                        <div class="col-sm-10">
-                            @Html.DropDownList("STATUS", (SelectList)ViewBag.pst)
-                        </div>
-                    </div> <!-- / .form-group -->
 
-                    <div style="margin-bottom: 0;" class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <input type="submit" value="Sửa" class="btn btn-default" />
-                        </div>
-                    </div> <!-- / .form-group -->
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.STATUS, new { @class = "control-label col-md-2" })
+                            <div class="col-sm-10">
+                                @Html.DropDownList("STATUS", (SelectList)ViewBag.pst)
+                            </div>
+                        </div> <!-- / .form-group -->
+
+                        <div style="margin-bottom: 0;" class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" value="Sửa" class="btn btn-default" />
+                            </div>
+                        </div> <!-- / .form-group -->
+                    </div>
                 </div>
             </div>
         }

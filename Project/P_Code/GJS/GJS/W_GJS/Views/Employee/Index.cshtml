@@ -80,7 +80,7 @@
                         </td>
                       
                         <td>
-                            @Html.ActionLink("Sửa", "Edit", new { EMPLOYEE_CD = item.EMPLOYEE_CD }) |
+                            @*@Html.ActionLink("Sửa", "Edit", new { EMPLOYEE_CD = item.EMPLOYEE_CD }) |
                             @if (item.ACTIVE == false)
                             {
                                 @Html.ActionLink("Kích hoạt", "Active", new { EMPLOYEE_CD = item.EMPLOYEE_CD })
@@ -88,7 +88,7 @@
                             else
                             {
                                 @Html.ActionLink("Xóa", "Deactive", new { EMPLOYEE_CD = item.EMPLOYEE_CD })
-                            }
+                            }*@
                         </td>
                     </tr>
                 }
