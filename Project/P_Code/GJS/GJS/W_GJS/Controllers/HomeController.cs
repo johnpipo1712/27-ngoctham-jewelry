@@ -129,6 +129,8 @@ namespace W_GJS.Controllers
             if (jsonModel.RoleOrFailed != 0) // failed
             {
                 //store session if succeed
+                S_USER user = Db_gsj.S_USER.Single(t => t.USER_NAME == username);
+                Session[SessionConstants.LOGINED_CUSTOMER_CD_KEY] = user.O_USER_CUSTOMER.ToList()[0].CUSTOMER_CD;
                 Session[SessionConstants.LOGINED_USER_KEY] = username;
                 Session[SessionConstants.LOGINED_USER_ROLE_KEY] = jsonModel.RoleOrFailed;
                 Response.Redirect(Request.UrlReferrer.AbsoluteUri);

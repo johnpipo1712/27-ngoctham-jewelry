@@ -137,11 +137,7 @@ namespace W_GJS.Models
                 jsonModel.ErrorString += "<li>Vui lòng nhập email.</li>";
                 jsonModel.HasError = true;
             }
-            if (String.IsNullOrEmpty(MODEL.ADDRESS))
-            {
-                jsonModel.ErrorString += "<li>Vui lòng nhập địa chỉ.</li>";
-                jsonModel.HasError = true;
-            }
+            
             else
             {
                 // Kiểm tra dạng email
@@ -198,6 +194,11 @@ namespace W_GJS.Models
                 }
             }
 
+            if (String.IsNullOrEmpty(MODEL.ADDRESS))
+            {
+                jsonModel.ErrorString += "<li>Vui lòng nhập địa chỉ.</li>";
+                jsonModel.HasError = true;
+            }
 
             if (String.IsNullOrEmpty(MODEL.FIRST_NAME))
             {
