@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "News";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
-    List<W_GJS.Models.O_NEWS> listNews = gjs.O_NEWS.Where(t => t.ACTIVE == true).ToList();
+
+    List<W_GJS.Models.O_NEWS> listNews = Model.ResultList;
     List<W_GJS.Models.O_NEWS_NEW> listNews_NEW = gjs.O_NEWS_NEW.Where(t => t.ACTIVE == true).ToList();
     List<W_GJS.Models.O_NEWS_HIGHLIGHTS> listNews_Hight_Light = gjs.O_NEWS_HIGHLIGHTS.Where(t => t.ACTIVE == true).ToList();
     List<W_GJS.Models.O_CATEGORY_NEWS> listCategory_News = gjs.O_CATEGORY_NEWS.Where(t => t.ACTIVE == true).ToList();
@@ -46,8 +47,8 @@
 
         <!-- blog search -->
         <div class="widget">
-            <form method="get" action="@Url.Action("News", "Home")" class="input-group">
-                <input type="text" class="form-control" name="s" value="" placeholder="Blog Search" />
+            <form method="get" action="@Url.Action("SearchNews", "Home")" class="input-group">
+                <input type="text" class="form-control" name="keyword" value="" placeholder="Tìm Kiếm Bài Viết" />
                 <span class="input-group-btn">
                     <button class="btn btn-primary"><i class="fa fa-search"></i></button>
                 </span>
@@ -130,6 +131,12 @@
     </div>
     <!-- /BLOG SIDEBAR -->
     <!-- BLOG ARTICLE LIST -->
+    @if (Model.IsSearching) 
+    {
+    <h2 class="owl-featured-item"><strong>Đã tìm thấy @Model.NumberOfItemFound kết quả</strong></h2>
+    }
+    @*<div class="spacing"></div>*@
+
     <div class="col-md-9 col-sm-9">
 
         <!-- article - image -->

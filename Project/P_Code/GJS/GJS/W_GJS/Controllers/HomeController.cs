@@ -21,11 +21,13 @@ namespace W_GJS.Controllers
             return View();
         }
 
+        
+
         public ActionResult SearchProducts(string keyword)
         {
             Db_gsj = new GJSEntities();
             SearchResultModel resultModel = new SearchResultModel();
-            List<O_PRODUCT> listproduct = Db_gsj.O_PRODUCT.Where(t => t.STATUS == 1 && t.ACTIVE == true && (
+            List<O_PRODUCT> listproduct = Db_gsj.O_PRODUCT.Where(t => t.ACTIVE == true && (
                 t.O_CATEGORY_GRANULES.CATEGORY_GRANULES_CONTENT.Contains(keyword)
                 || t.O_CATEGORY_GRANULES.CATEGORY_GRANULES_NAME.Contains(keyword)
                 || t.O_CATEGORY_GRANULES.CATEGORY_GRANULES_WEIGHT.Contains(keyword)
@@ -45,6 +47,10 @@ namespace W_GJS.Controllers
                 || t.URL_IMAGE.Contains(keyword)
                 || t.WEIGHT.Contains(keyword)
                 || t.CURRENCY.Contains(keyword))).ToList();
+            if ((int)Session[SessionConstants.LOGINED_USER_ROLE_KEY] == 1)
+            {
+                listproduct.Where(t => t.STATUS == 1);
+            }
             resultModel.HtmlString = RenderPartialViewToString("ProductLazyList", listproduct);
             resultModel.NumberOfItemFound = listproduct.Count;
             return View(resultModel);
@@ -52,6 +58,12 @@ namespace W_GJS.Controllers
 
         [ChildActionOnly]
         public ActionResult ProductLazyList(List<W_GJS.Models.O_PRODUCT> Model)
+        {
+            return PartialView(Model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult NewsList(List<W_GJS.Models.O_PRODUCT> Model)
         {
             return PartialView(Model);
         }
@@ -168,7 +180,33 @@ namespace W_GJS.Controllers
 
         public ActionResult News()
         {
-            return View();
+            Db_gsj = new GJSEntities();
+            SearchNewsResultModel resultModel = new SearchNewsResultModel();
+            List<O_NEWS> list = Db_gsj.O_NEWS.Where(t => t.ACTIVE == true).ToList();
+            resultModel.ResultList = list;
+            resultModel.IsSearching = false;
+            resultModel.NumberOfItemFound = list.Count;
+            return View(resultModel);
+        }
+
+        public ActionResult SearchNews(string keyword)
+        {
+            Db_gsj = new GJSEntities();
+            SearchNewsResultModel resultModel = new SearchNewsResultModel();
+            List<O_NEWS> list = Db_gsj.O_NEWS.Where(t => t.ACTIVE == true && (
+                t.IMAGE_NEWS.Contains(keyword)
+                || t.NEW_DESCRIPTIONS.Contains(keyword)
+                || t.NEWS_CONTENT.Contains(keyword)
+                || t.NEWS_TITLE.Contains(keyword)
+                || t.SOURCE_COPY.Contains(keyword)
+                || t.TAG_ALT.Contains(keyword)
+                || t.M_EMPLOYEE.EMPLOYEE_NAME.Contains(keyword)
+                || t.O_CATEGORY_NEWS.CATEGORY_NEWS_CODE.Contains(keyword)
+                || t.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME.Contains(keyword))).ToList();
+            resultModel.ResultList = list;
+            resultModel.IsSearching = true;
+            resultModel.NumberOfItemFound = list.Count;
+            return View("News", resultModel);
         }
 
         public ActionResult NewsDetail([Bind(Include = "NEWS_CD")]O_NEWS NEWS)
