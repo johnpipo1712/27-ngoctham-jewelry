@@ -64,7 +64,30 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        public ActionResult CategoryProductListPaging(long CATEGORY_PRODUCT_DETAIL_CD, long numberOfItemsInPage, long currentPage)
+        public ActionResult CategoryProductListPaging(long CATEGORY_PRODUCT_CD, long numberOfItemsInPage, long currentPage)
+        {
+            Db_gsj = new GJSEntities();
+            ProductCategoryModel model = new ProductCategoryModel();
+            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).ToList();
+
+            model.Identified = CATEGORY_PRODUCT_CD;
+            model.TotalItems = productList.Count;
+            model.CurrentPage = currentPage;
+            model.TotalPages = productList.Count / numberOfItemsInPage;
+            if (productList.Count % numberOfItemsInPage != 0)
+            {
+                model.TotalPages++;
+            }
+            model.ItemOrderFrom = (currentPage - 1) * numberOfItemsInPage;
+            List<W_GJS.Models.O_PRODUCT> list = productList.Skip((int)model.ItemOrderFrom).Take((int)numberOfItemsInPage).ToList();
+            model.ItemOrderTo = model.ItemOrderFrom + list.Count;
+            model.ItemOrderFrom++;
+            model.HtmlListString = RenderPartialViewToString("ProductLazyList", list);
+
+            return PartialView(model);
+        }
+        [HttpPost]
+        public ActionResult CategoryProducDetailtListPaging(long CATEGORY_PRODUCT_DETAIL_CD, long numberOfItemsInPage, long currentPage)
         {
             Db_gsj = new GJSEntities();
             ProductCategoryModel model = new ProductCategoryModel();
@@ -86,7 +109,6 @@ namespace W_GJS.Controllers
 
             return PartialView(model);
         }
-
         [HttpPost]
         public ActionResult NewsHomePaging(long numberOfItemsInPage, long currentPage)
         {
@@ -389,12 +411,15 @@ namespace W_GJS.Controllers
             return View();
         }
 
-        public ActionResult Catalog(long CATEGORY_PRODUCT_CD)
+        public ActionResult Catalog()
+        {
+            return View();
+        }
+        public ActionResult CatalogDetail(long CATEGORY_PRODUCT_CD)
         {
             Db_gsj = new GJSEntities();
-            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t=>t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).ToList());
+            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).ToList());
         }
-
         public ActionResult Cart()
         {
             return View();
