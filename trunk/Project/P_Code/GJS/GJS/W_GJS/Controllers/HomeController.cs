@@ -64,13 +64,13 @@ namespace W_GJS.Controllers
         }
 
         [HttpPost]
-        public ActionResult CategoryProductListPaging(long CATEGORY_PRODUCT_CD, long numberOfItemsInPage, long currentPage)
+        public ActionResult CategoryProductListPaging(long CATEGORY_PRODUCT_DETAIL_CD, long numberOfItemsInPage, long currentPage)
         {
             Db_gsj = new GJSEntities();
             ProductCategoryModel model = new ProductCategoryModel();
-            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).ToList();
+            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL_CD).ToList();
 
-            model.Identified = CATEGORY_PRODUCT_CD;
+            model.Identified = CATEGORY_PRODUCT_DETAIL_CD;
             model.TotalItems = productList.Count;
             model.CurrentPage = currentPage;
             model.TotalPages = productList.Count / numberOfItemsInPage;
@@ -389,9 +389,10 @@ namespace W_GJS.Controllers
             return View();
         }
 
-        public ActionResult Catalog()
+        public ActionResult Catalog(long CATEGORY_PRODUCT_CD)
         {
-            return View();
+            Db_gsj = new GJSEntities();
+            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t=>t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).ToList());
         }
 
         public ActionResult Cart()
