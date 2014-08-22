@@ -110,6 +110,29 @@ namespace W_GJS.Controllers
             return PartialView(model);
         }
 
+        [HttpPost]
+        public ActionResult CategoryNewsPaging(long CATEGORY_NEWS_CD, long numberOfItemsInPage, long currentPage)
+        {
+            Db_gsj = new GJSEntities();
+            CategoryNewsModel model = new CategoryNewsModel();
+            List<W_GJS.Models.O_NEWS> newsList = Db_gsj.O_NEWS.Where(t => t.CATEGORY_NEWS_CD == CATEGORY_NEWS_CD && t.ACTIVE == true).ToList();
+            newsList = newsList.Skip(1).ToList();
+            model.TotalItems = newsList.Count;
+            model.CurrentPage = currentPage;
+            model.TotalPages = newsList.Count / numberOfItemsInPage;
+            if (newsList.Count % numberOfItemsInPage != 0)
+            {
+                model.TotalPages++;
+            }
+            model.ItemOrderFrom = (currentPage - 1) * numberOfItemsInPage;
+            List<W_GJS.Models.O_NEWS> list = newsList.Skip((int)model.ItemOrderFrom).Take((int)numberOfItemsInPage).ToList();
+            model.ItemOrderTo = model.ItemOrderFrom + list.Count;
+            model.ItemOrderFrom++;
+            model.NewsList = list;
+
+            return PartialView(model);
+        }
+
         [ChildActionOnly]
         public ActionResult NewsList(List<W_GJS.Models.O_PRODUCT> Model)
         {
