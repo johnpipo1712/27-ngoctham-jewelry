@@ -22,11 +22,11 @@ namespace W_GJS.Models
         }
         [Display(Name = "Khu vực")]
         public long CITIES_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Mã khu vực")]
+        
         public string CITIES_CODE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+    
         [DataType(DataType.Text)]
         [Display(Name = "Tên khu vực")]
         public string CITIES_NAME { get; set; }
