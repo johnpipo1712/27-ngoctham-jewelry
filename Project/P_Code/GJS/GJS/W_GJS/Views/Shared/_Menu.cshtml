@@ -67,7 +67,7 @@
                                 currentAction == "AboutLicense")
                         {
                             <li class="dropdown active">
-                                <a class="dropdown-toggle" href="shop-home-1.html#">GIỚI THIỆU <span>about us</span></a>
+                                <a class="dropdown-toggle" href="#">GIỚI THIỆU <span>about us</span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="@Url.Action("AboutCompany", "Home")"><i class="fa fa-chevron-right"></i> Giới thiệu công ty</a></li>
                                     <li><a href="@Url.Action("AboutVision", "Home")"><i class="fa fa-chevron-right"></i> Tầm nhìn & Sứ mệnh</a></li>
@@ -80,7 +80,7 @@
                         else
                         {
                             <li class="dropdown">
-                                <a class="dropdown-toggle" href="shop-home-1.html#">GIỚI THIỆU <span>about us</span></a>
+                                <a class="dropdown-toggle" href="#">GIỚI THIỆU <span>about us</span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="@Url.Action("AboutCompany", "Home")"><i class="fa fa-chevron-right"></i> Giới thiệu công ty</a></li>
                                     <li><a href="@Url.Action("AboutVision", "Home")"><i class="fa fa-chevron-right"></i> Tầm nhìn & Sứ mệnh</a></li>
@@ -95,7 +95,7 @@
                     @if (currentController == "Home" && currentAction == "Product_Category")
                     {
                         <li class="dropdown active">
-                            <a class="dropdown-toggle" href="@Url.Action("ProductList", "Home")">SẢN PHẨM <span>products</span></a>
+                            <a href="@Url.Action("Index", "Home")">SẢN PHẨM <span>products</span></a>
                             <ul class="dropdown-menu">
                                 @foreach (var item in listCategory)
                                 {
@@ -107,7 +107,7 @@
                     else
                     {
                         <li class="dropdown">
-                            <a class="dropdown-toggle" href="@Url.Action("ProductList", "Home")">SẢN PHẨM <span>products</span></a>
+                            <a href="@Url.Action("Index", "Home")">SẢN PHẨM <span>products</span></a>
                             <ul class="dropdown-menu">
                                 @foreach (var item in listCategory)
                                 {
@@ -162,14 +162,15 @@
                         && (int)Session[W_GJS.General.SessionConstants.LOGINED_USER_ROLE_KEY] == 2)
                     {
 
-                        if (currentController == "Home" && currentAction == "Catalog")
+                        if ((currentController == "Home" && currentAction == "Catalog")
+                            || (currentController == "Home" && currentAction == "CatalogDetail"))
                         {
                             <li class="active dropdown">
-                                <a class="dropdown-toggle" href="#">CATALOG <span>catalog</span></a>
+                                <a href="@Url.Action("Catalog", "Home")">CATALOG <span>catalog</span></a>
                                 <ul class="dropdown-menu">
                                     @foreach (var item in listCategory)
                                     {
-                                        <li><a href="@Url.Action("Catalog", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a></li>
+                                        <li><a href="@Url.Action("CatalogDetail", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a></li>
 
                                     }
                                 </ul>
@@ -178,12 +179,12 @@
                         }
                         else
                         {
-                            <li class="active dropdown">
-                                <a class="dropdown-toggle" href="#">CATALOG <span>catalog</span></a>
+                            <li class="dropdown">
+                                <a href="@Url.Action("Catalog", "Home")">CATALOG <span>catalog</span></a>
                                 <ul class="dropdown-menu">
                                     @foreach (var item in listCategory)
                                     {
-                                        <li><a href="@Url.Action("Catalog", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a></li>
+                                        <li><a href="@Url.Action("CatalogDetail", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a></li>
 
                                     }
                                 </ul>
