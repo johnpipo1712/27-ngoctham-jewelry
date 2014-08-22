@@ -34,11 +34,10 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Tên sản phẩm")]
         public string PRODUCT_NAME { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Tiêu đề")]
         public string PRODUCT_TITLE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+     
         [DataType(DataType.Text)]
         [Display(Name = "Nội dung")]
         public string PRODUCT_CONTENT { get; set; }
@@ -47,12 +46,12 @@ namespace W_GJS.Models
         [Display(Name = "Loại hạt")]
         public Nullable<long> CATEGORY_GRANULES_CD { get; set; }
         [Display(Name = "CTDM Sản phẩm")]
+        
         public Nullable<long> CATEGORY_PRODUCT_DETAIL_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Cân nặng")]
         public string WEIGHT { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+        
         [DataType(DataType.Text)]
         [Display(Name = "Số lượng")]
         public Nullable<long> QUANTITY { get; set; }
@@ -60,19 +59,18 @@ namespace W_GJS.Models
         [DisplayFormat(DataFormatString="{0:0,0}")]
         [Display(Name = "Giá bán")]
         public Nullable<decimal> PRICE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+        
         [DisplayFormat(DataFormatString = "{0:0,0}")]
         [Display(Name = "Giá khuyến mãi")]
         public Nullable<decimal> PRICE_PROMOTION { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+        
         [DisplayFormat(DataFormatString = "{0:0,0}")]
         [Display(Name = "Tiền công")]
         public Nullable<decimal> WAGES { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+        
         [DataType(DataType.Text)]
         [Display(Name = "Đơn vị")]
         public string CURRENCY { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Hình ảnh")]
         public string URL_IMAGE { get; set; }

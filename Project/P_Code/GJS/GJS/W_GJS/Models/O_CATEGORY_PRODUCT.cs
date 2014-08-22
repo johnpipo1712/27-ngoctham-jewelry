@@ -23,11 +23,9 @@ namespace W_GJS.Models
 
         [Display(Name = "Danh mục sản phẩm")]
         public long CATEGORY_PRODUCT_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Mã danh mục sản phẩm")]
         public string CATEGORY_PRODUCT_CODE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Tên danh mục sản phẩm")]
         public string CATEGORY_PRODUCT_NAME { get; set; }

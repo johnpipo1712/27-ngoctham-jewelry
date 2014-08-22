@@ -26,11 +26,10 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Tên hạt")]
         public string CATEGORY_GRANULES_NAME { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+     
         [DataType(DataType.Text)]
         [Display(Name = "Nội dung")]
         public string CATEGORY_GRANULES_CONTENT { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Cân nặng")]
         public string CATEGORY_GRANULES_WEIGHT { get; set; }

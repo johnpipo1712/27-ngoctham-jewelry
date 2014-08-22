@@ -21,11 +21,9 @@ namespace W_GJS.Models
         }
         [Display(Name = "Danh mục trang")]
         public long CATEGORY_PAGE_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Mã danh mục trang")]
         public string CATEGORY_PAGE_CODE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
         [Display(Name = "Danh mục trang")]
         public string CATEGORY_PAGE_NAME { get; set; }

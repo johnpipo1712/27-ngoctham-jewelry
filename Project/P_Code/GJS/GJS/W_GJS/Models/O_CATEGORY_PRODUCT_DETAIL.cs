@@ -21,7 +21,6 @@ namespace W_GJS.Models
         }
         [Display(Name = "Chi tiết danh mục sản phẩm")]
         public long CATEGORY_PRODUCT_DETAIL_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [Display(Name = "Danh mục sản phẩm")]
         public Nullable<long> CATEGORY_PRODUCT_CD { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
