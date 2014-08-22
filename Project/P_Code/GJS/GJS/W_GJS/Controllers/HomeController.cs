@@ -70,12 +70,14 @@ namespace W_GJS.Controllers
             ProductCategoryModel model = new ProductCategoryModel();
             List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).ToList();
 
+            model.Identified = CATEGORY_PRODUCT_CD;
             model.TotalItems = productList.Count;
             model.CurrentPage = 1;
             model.TotalPages = productList.Count / numberOfItemsInPage + 1;
             model.ItemOrderFrom = (currentPage - 1) * numberOfItemsInPage;
             List<W_GJS.Models.O_PRODUCT> list = productList.Skip((int)model.ItemOrderFrom).Take((int)numberOfItemsInPage).ToList();
             model.ItemOrderTo = model.ItemOrderFrom + list.Count;
+            model.ItemOrderFrom++;
             model.HtmlProductListString = RenderPartialViewToString("ProductLazyList", list);
 
             return PartialView(model);

@@ -45,27 +45,33 @@
     else
     {
         <div id="ProductList-@item.CATEGORY_PRODUCT_CD"></div>
-    
-    
-<script>
-    var identified = "@item.CATEGORY_PRODUCT_CD";
-    function loadProducts(currentPage) {
-        inProgress = true;
-        $("#loadingDiv-" + identified).show();
 
-        $.post("@Url.Action("CategoryProductListPaging", "Home")", { "CATEGORY_PRODUCT_CD": @item.CATEGORY_PRODUCT_CD, "numberOfItemsInPage": 10, "currentPage": currentPage },
-    function (data) {
-        $("#ProductList-" + identified).append(data);
-        $("#loadingDiv-" + identified).hide();
-        inProgress = false;
-    });
+
+<script>
+
+    function loadProducts_@(item.CATEGORY_PRODUCT_CD)(currentPage) {
+        inProgress_@(item.CATEGORY_PRODUCT_CD) = true;
+        $("#loadingDiv-@(@item.CATEGORY_PRODUCT_CD)").show();
+
+        $.post("@Url.Action("CategoryProductListPaging", "Home")", { "CATEGORY_PRODUCT_CD": @item.CATEGORY_PRODUCT_CD, "numberOfItemsInPage": 6, "currentPage": currentPage },
+        function (data) {
+            $("#ProductList-@(item.CATEGORY_PRODUCT_CD)").html(data);
+            $("#loadingDiv-@(item.CATEGORY_PRODUCT_CD)").hide();
+            inProgress_@(item.CATEGORY_PRODUCT_CD) = false;
+        });
     }
 
     //$(document).ready(function () {
-        loadProducts(1);
+    loadProducts_@(item.CATEGORY_PRODUCT_CD)(1);
     //});
 
-            
+    @*$(".paging-@(item.CATEGORY_PRODUCT_CD)").click(function () {
+        if (!inProgress@(item.CATEGORY_PRODUCT_CD)) {
+            loadProducts@(@item.CATEGORY_PRODUCT_CD)();
+        }
+    });*@
+
+
 </script>
 
     

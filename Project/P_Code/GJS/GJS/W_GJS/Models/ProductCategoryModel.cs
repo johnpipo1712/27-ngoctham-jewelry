@@ -7,7 +7,7 @@ namespace W_GJS.Models
 {
     public class ProductCategoryModel
     {
-        public string Identified { get; set; }
+        public long Identified { get; set; }
         public string HtmlProductListString { get; set; }
         public long ItemOrderFrom { get; set; }
         public long ItemOrderTo { get; set; }
