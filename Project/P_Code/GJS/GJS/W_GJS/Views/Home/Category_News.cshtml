@@ -64,15 +64,24 @@
                     </div><div class="enter"><br> <hr noshade="noshade" width="90%"></div>
 
 
-                    for (int index = 1; index < count; index++)
-                    {
-                        <div class="imghomenews"> <img width="100" src="@list[index].IMAGE_NEWS" align=""> </div>
-                        <div id="tintuc_home_copy" style="width:260px">
-                            <h4><a href="@Url.Action("NewsDetail", new { NEWS_CD = list[index].NEWS_CD })">@list[index].NEWS_TITLE</a></h4>
-                            @list[index].NEW_DESCRIPTIONS<br>
-                            <div align="right"><a href="@Url.Action("NewsDetail", new { NEWS_CD = list[index].NEWS_CD })">Xem thêm</a></div>
-                        </div><div class="enter"><br></div>
-                    }
+                    <div id="news-sub-list"></div>
+
+    <script>
+    function loadNews(currentPage) {
+        inProgress = true;
+        $("#loadingDiv").show();
+
+        $.post("@Url.Action("CategoryNewsPaging", "Home")", { "CATEGORY_NEWS_CD": @if (@Model.ToList().Count > 0){@Model.ToList()[0].O_CATEGORY_NEWS.CATEGORY_NEWS_CD}, "numberOfItemsInPage": 3, "currentPage": currentPage },
+            function (data) {
+                $("#news-sub-list").html(data);
+                $("#loadingDiv").hide();
+                inProgress = false;
+            });
+        }
+
+        loadNews(1);
+    </script>
+                    
                 }
                
 
