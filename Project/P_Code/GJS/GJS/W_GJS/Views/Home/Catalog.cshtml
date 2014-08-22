@@ -1,7 +1,8 @@
-﻿@{
+﻿@model IEnumerable<W_GJS.Models.O_CATEGORY_PRODUCT_DETAIL>
+@{
     ViewBag.Title = "Catalog";
-    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
-    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
+    //W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    //List<W_GJS.Models.O_CATEGORY_PRODUCT_DETAIL> listcategory = gjs.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true && t.CATEGORY_PRODUCT_CD == ViewBag.CATEGORY_PRODUCT_CD).ToList();
 }
 
 @*section Slide {
@@ -35,34 +36,34 @@
     <script type="text/javascript" src="@Url.Content("~/Self/catalog/js/script.js")"></script>
 }
 
-@foreach (var item in listcategory)
+@foreach (var item in Model)
 {
-    <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>@item.CATEGORY_PRODUCT_NAME</strong></h2>
+    <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>@item.CATEGORY_PRODUCT_DETAIL_NAME</strong></h2>
     if (item.O_PRODUCT.Count == 0)
     {
         <p>Không tìm thấy sản phẩm nào.</p>
     }
     else
     {
-        <div id="ProductList-@item.CATEGORY_PRODUCT_CD"></div>
+        <div id="ProductList-@item.CATEGORY_PRODUCT_DETAIL_CD"></div>
 
 
 <script>
 
-    function loadProducts_@(item.CATEGORY_PRODUCT_CD)(currentPage) {
-        inProgress_@(item.CATEGORY_PRODUCT_CD) = true;
-        $("#loadingDiv-@(@item.CATEGORY_PRODUCT_CD)").show();
+    function loadProducts_@(item.CATEGORY_PRODUCT_DETAIL_CD)(currentPage) {
+        inProgress_@(item.CATEGORY_PRODUCT_DETAIL_CD) = true;
+        $("#loadingDiv-@(@item.CATEGORY_PRODUCT_DETAIL_CD)").show();
 
-        $.post("@Url.Action("CategoryProductListPaging", "Home")", { "CATEGORY_PRODUCT_CD": @item.CATEGORY_PRODUCT_CD, "numberOfItemsInPage": 6, "currentPage": currentPage },
+        $.post("@Url.Action("CategoryProductListPaging", "Home")", { "CATEGORY_PRODUCT_DETAIL_CD": @item.CATEGORY_PRODUCT_DETAIL_CD ,"numberOfItemsInPage": 6, "currentPage": currentPage },
         function (data) {
-            $("#ProductList-@(item.CATEGORY_PRODUCT_CD)").html(data);
-            $("#loadingDiv-@(item.CATEGORY_PRODUCT_CD)").hide();
-            inProgress_@(item.CATEGORY_PRODUCT_CD) = false;
+            $("#ProductList-@(item.CATEGORY_PRODUCT_DETAIL_CD)").html(data);
+            $("#loadingDiv-@(item.CATEGORY_PRODUCT_DETAIL_CD)").hide();
+            inProgress_@(item.CATEGORY_PRODUCT_DETAIL_CD) = false;
         });
     }
 
     //$(document).ready(function () {
-    loadProducts_@(item.CATEGORY_PRODUCT_CD)(1);
+    loadProducts_@(item.CATEGORY_PRODUCT_DETAIL_CD)(1);
     //});
 
     @*$(".paging-@(item.CATEGORY_PRODUCT_CD)").click(function () {

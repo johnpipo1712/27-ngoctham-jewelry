@@ -124,7 +124,7 @@
                                 currentAction == "LaserInscription")
                         {
                             <li class="active dropdown">
-                                <a class="dropdown-toggle" href="shop-home-1.html#">DỊCH VỤ <span>services</span></a>
+                                <a class="dropdown-toggle" href="#">DỊCH VỤ <span>services</span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="@Url.Action("DiamondAssess", "Home")">Giám định kim cương</a></li>
                                     <li><a href="@Url.Action("ColoredStonesAssess", "Home")">Giám định các loại đá màu</a></li>
@@ -135,7 +135,7 @@
                         else
                         {
                             <li class="dropdown">
-                                <a class="dropdown-toggle" href="shop-home-1.html#">DỊCH VỤ <span>services</span></a>
+                                <a class="dropdown-toggle" href="#">DỊCH VỤ <span>services</span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="@Url.Action("DiamondAssess", "Home")">Giám định kim cương</a></li>
                                     <li><a href="@Url.Action("ColoredStonesAssess", "Home")">Giám định các loại đá màu</a></li>
@@ -164,15 +164,31 @@
 
                         if (currentController == "Home" && currentAction == "Catalog")
                         {
-                            <li class="active">
-                                <a href="@Url.Action("Catalog", "Home")">CATALOG <span>catalog</span></a>
+                            <li class="active dropdown">
+                                <a class="dropdown-toggle" href="#">CATALOG <span>catalog</span></a>
+                                <ul class="dropdown-menu">
+                                    @foreach (var item in listCategory)
+                                    {
+                                        <li><a href="@Url.Action("Catalog", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a></li>
+
+                                    }
+                                </ul>
                             </li>
+
                         }
                         else
                         {
-                            <li>
-                                <a href="@Url.Action("Catalog", "Home")">CATALOG <span>catalog</span></a>
+                            <li class="active dropdown">
+                                <a class="dropdown-toggle" href="#">CATALOG <span>catalog</span></a>
+                                <ul class="dropdown-menu">
+                                    @foreach (var item in listCategory)
+                                    {
+                                        <li><a href="@Url.Action("Catalog", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a></li>
+
+                                    }
+                                </ul>
                             </li>
+
                         }
                     }
 
@@ -187,9 +203,9 @@
                                     <li><a href="@Url.Action("ShowCategoryAlbum", new { CATEGORY_ALBUM_CD =item.CATEGORY_ALBUM_CD })">@item.CATEGORY_ALBUM_NAME</a></li>
 
                                 }
-                             </ul>
+                            </ul>
                         </li>
-                       
+
                     }
                     else
                     {
@@ -198,12 +214,12 @@
                             <ul class="dropdown-menu">
                                 @foreach (var item in listCatagoryAlbum)
                                 {
-                                   <li><a href="@Url.Action("ShowCategoryAlbum", new { CATEGORY_ALBUM_CD =item.CATEGORY_ALBUM_CD })">@item.CATEGORY_ALBUM_NAME</a></li>
-                            
+                                    <li><a href="@Url.Action("ShowCategoryAlbum", new { CATEGORY_ALBUM_CD =item.CATEGORY_ALBUM_CD })">@item.CATEGORY_ALBUM_NAME</a></li>
+
                                 }
-                           </ul>
+                            </ul>
                         </li>
-                       
+
                     }
 
                     @if ((currentController == "Home" && currentAction == "News") ||
