@@ -481,8 +481,9 @@ namespace W_GJS.Controllers
                 ordcheckout.ACTIVE = true;
                 ordcheckout.STATUS = 0;
                 ordcheckout.CREATEDATE = DateTime.Now;
-                ordcheckout.CUSTOMER_CD = 1;
-                ordcheckout.O_CUSTOMER = Db_gsj.O_CUSTOMER.Single(t=>t.CUSTOMER_CD == 1);
+                long LOGINED_CUSTOMER_CD = (long)Session[SessionConstants.LOGINED_CUSTOMER_CD_KEY];
+                ordcheckout.CUSTOMER_CD = LOGINED_CUSTOMER_CD;
+                ordcheckout.O_CUSTOMER = Db_gsj.O_CUSTOMER.Single(t => t.CUSTOMER_CD == LOGINED_CUSTOMER_CD);
                 ordcheckout.PHONE = ordcheckout.O_CUSTOMER.PHONE;
                 ordcheckout.EMAIL = ordcheckout.O_CUSTOMER.EMAIL;
                 ordcheckout.DELIVERY_ADDRESS = ordcheckout.O_CUSTOMER.ADDRESS;
