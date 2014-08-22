@@ -109,27 +109,40 @@ namespace W_GJS.Controllers
             Db_gsj.SaveChanges();
             return RedirectToAction("Index");
         }
-        public JsonResult CheckPstAjax(long? CUSTOMER_CD, String CHECK)
+        //public JsonResult CheckPstAjax(long? CUSTOMER_CD, String CHECK)
+        //{
+        //    Db_gsj = new GJSEntities();
+        //    if (CHECK == "true")
+        //    {
+        //        O_USER_CUSTOMER User = Db_gsj.O_USER_CUSTOMER.Single(t => t.CUSTOMER_CD == CUSTOMER_CD);
+        //        O_USER_PST Pst = Db_gsj.O_USER_PST.Single(t => t.USER_CD == User.USER_CD);
+        //        S_USER user_edit = Db_gsj.S_USER.Single(t => t.USER_CD == User.USER_CD);
+        //        Pst.PST_CD = 2;
+        //        user_edit.STATUS = 2;
+        //        Db_gsj.SaveChanges();
+        //    }
+        //    else
+        //    {
+        //        O_USER_CUSTOMER User = Db_gsj.O_USER_CUSTOMER.Single(t => t.CUSTOMER_CD == CUSTOMER_CD);
+        //        O_USER_PST Pst = Db_gsj.O_USER_PST.Single(t => t.USER_CD == User.USER_CD);
+        //        S_USER user_edit = Db_gsj.S_USER.Single(t => t.USER_CD == User.USER_CD);
+        //        Pst.PST_CD = 3;
+        //        user_edit.STATUS = 3;
+        //        Db_gsj.SaveChanges();
+        //    }
+        //    return Json(1);
+        //}
+
+        public JsonResult ChangePstAjax(long? CUSTOMER_CD, long? change)
         {
             Db_gsj = new GJSEntities();
-            if (CHECK == "true")
-            {
-                O_USER_CUSTOMER User = Db_gsj.O_USER_CUSTOMER.Single(t => t.CUSTOMER_CD == CUSTOMER_CD);
-                O_USER_PST Pst = Db_gsj.O_USER_PST.Single(t => t.USER_CD == User.USER_CD);
-                S_USER user_edit = Db_gsj.S_USER.Single(t => t.USER_CD == User.USER_CD);
-                Pst.PST_CD = 2;
-                user_edit.STATUS = 2;
-                Db_gsj.SaveChanges();
-            }
-            else
-            {
-                O_USER_CUSTOMER User = Db_gsj.O_USER_CUSTOMER.Single(t => t.CUSTOMER_CD == CUSTOMER_CD);
-                O_USER_PST Pst = Db_gsj.O_USER_PST.Single(t => t.USER_CD == User.USER_CD);
-                S_USER user_edit = Db_gsj.S_USER.Single(t => t.USER_CD == User.USER_CD);
-                Pst.PST_CD = 3;
-                user_edit.STATUS = 3;
-                Db_gsj.SaveChanges();
-            }
+            O_USER_CUSTOMER User = Db_gsj.O_USER_CUSTOMER.Single(t => t.CUSTOMER_CD == CUSTOMER_CD);
+            O_USER_PST Pst = Db_gsj.O_USER_PST.Single(t => t.USER_CD == User.USER_CD);
+            S_USER user_edit = Db_gsj.S_USER.Single(t => t.USER_CD == User.USER_CD);
+            Pst.PST_CD = change;
+            user_edit.STATUS = change;
+            Db_gsj.SaveChanges();
+           
             return Json(1);
         }
     }
