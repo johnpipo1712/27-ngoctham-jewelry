@@ -14,10 +14,14 @@ namespace W_GJS.Controllers
     {
 
         public GJSEntities Db_gsj;
+
         public ActionResult Index()
         {
-            Db_gsj = new GJSEntities();
-
+            return View();
+        }
+        public ActionResult ProductDisplay()
+        {
+           
             return View();
         }
 
@@ -438,7 +442,7 @@ namespace W_GJS.Controllers
 
             }
             else
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ProductDisplay", "Home");
         }
         [HttpGet]
         public ActionResult AddCart([Bind(Include = "PRODUCT_CD,QUANTITY,SIZE")]O_PRODUCT pro)
@@ -449,8 +453,8 @@ namespace W_GJS.Controllers
             int ketqua = ord.AddCart(pro);
             Session.Add("Cart", ord);
             Response.Redirect(Request.UrlReferrer.AbsoluteUri);
-            
-            return RedirectToAction("Index", "Home");
+
+            return RedirectToAction("ProductDisplay", "Home");
             
         }
         [HttpPost]
@@ -463,7 +467,7 @@ namespace W_GJS.Controllers
             int ketqua = ord.AddCart(pro);
             Session.Add("Cart", ord);
             Response.Redirect(Request.UrlReferrer.AbsoluteUri);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ProductDisplay", "Home");
             
         }
         [HttpPost]
@@ -481,7 +485,7 @@ namespace W_GJS.Controllers
             if (ord.D_ORDER_DETAIL.Count == 1)
             {
                 Session["Cart"] = null;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ProductDisplay", "Home");
             }
             else
             {
@@ -493,7 +497,7 @@ namespace W_GJS.Controllers
         public ActionResult DeleteAllCart()
         {
             Session["Cart"] = null;
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ProductDisplay", "Home");
 
         }
         [HttpPost]
@@ -530,13 +534,13 @@ namespace W_GJS.Controllers
                     Db_gsj.SaveChanges();
                 }
                 Session["Cart"] = null;
-               
-                return RedirectToAction("Index", "Home");
+
+                return RedirectToAction("ProductDisplay", "Home");
                 
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ProductDisplay", "Home");
 
             }
         }
