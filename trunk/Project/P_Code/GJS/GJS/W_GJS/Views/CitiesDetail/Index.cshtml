@@ -45,9 +45,6 @@
                     <th>
                         @Html.DisplayNameFor(model => model.CITIES_CD)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ACTIVE)
-                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -60,7 +57,7 @@
                             @Html.DisplayFor(modelItem => item.CITIES_DETAIL_NAME)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.CITIES_CD)
+                            @Html.DisplayFor(modelItem => item.O_CITIES.CITIES_NAME)
                         </td>
                        
                         <td>
