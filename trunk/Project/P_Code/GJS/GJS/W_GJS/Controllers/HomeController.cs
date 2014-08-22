@@ -72,8 +72,12 @@ namespace W_GJS.Controllers
 
             model.Identified = CATEGORY_PRODUCT_CD;
             model.TotalItems = productList.Count;
-            model.CurrentPage = 1;
-            model.TotalPages = productList.Count / numberOfItemsInPage + 1;
+            model.CurrentPage = currentPage;
+            model.TotalPages = productList.Count / numberOfItemsInPage;
+            if (productList.Count % numberOfItemsInPage != 0)
+            {
+                model.TotalPages++;
+            }
             model.ItemOrderFrom = (currentPage - 1) * numberOfItemsInPage;
             List<W_GJS.Models.O_PRODUCT> list = productList.Skip((int)model.ItemOrderFrom).Take((int)numberOfItemsInPage).ToList();
             model.ItemOrderTo = model.ItemOrderFrom + list.Count;
