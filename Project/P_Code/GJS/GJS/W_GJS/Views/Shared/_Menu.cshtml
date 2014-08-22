@@ -4,7 +4,7 @@
     List<W_GJS.Models.O_CATEGORY_PRODUCT> listCategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
     List<W_GJS.Models.O_CATEGORY_NEWS> listNews = gjs.O_CATEGORY_NEWS.Where(t => t.ACTIVE == true).ToList();
     List<W_GJS.Models.O_PRICE_GOLD> listPriceGold = gjs.O_PRICE_GOLD.ToList();
-
+    List<W_GJS.Models.O_CATEGORY_ALBUM> listCatagoryAlbum = gjs.O_CATEGORY_ALBUM.ToList();
     string currentController = (string)ViewContext.Controller.ValueProvider.GetValue("controller").RawValue;
     string currentAction = (string)ViewContext.Controller.ValueProvider.GetValue("action").RawValue;
 }
@@ -176,17 +176,34 @@
                         }
                     }
 
-                    @if (currentController == "Home" && currentAction == "ShowAlbum")
+                    @if ((currentController == "Home" && currentAction == "ShowAlbum") ||
+                         (currentController == "Home" && currentAction == "ShowCategoryAlbum"))
                     {
-                        <li class="active">
-                            <a href="@Url.Action("ShowAlbum", "Home")">BỘ SƯU TẬP <span>album</span></a>
+                        <li class="active dropdown">
+                            <a href="@Url.Action("ShowAlbum", "Home")">BỘ SƯU TẬP <span>services</span></a>
+                            <ul class="dropdown-menu">
+                                @foreach (var item in listCatagoryAlbum)
+                                {
+                                    <li><a href="@Url.Action("ShowCategoryAlbum", new { CATEGORY_ALBUM_CD =item.CATEGORY_ALBUM_CD })">@item.CATEGORY_ALBUM_NAME</a></li>
+
+                                }
+                             </ul>
                         </li>
+                       
                     }
                     else
                     {
-                        <li>
-                            <a href="@Url.Action("ShowAlbum", "Home")">BỘ SƯU TẬP <span>album</span></a>
+                        <li class="dropdown">
+                            <a href="@Url.Action("ShowAlbum", "Home")">BỘ SƯU TẬP <span>services</span></a>
+                            <ul class="dropdown-menu">
+                                @foreach (var item in listCatagoryAlbum)
+                                {
+                                   <li><a href="@Url.Action("ShowCategoryAlbum", new { CATEGORY_ALBUM_CD =item.CATEGORY_ALBUM_CD })">@item.CATEGORY_ALBUM_NAME</a></li>
+                            
+                                }
+                           </ul>
                         </li>
+                       
                     }
 
                     @if ((currentController == "Home" && currentAction == "News") ||
