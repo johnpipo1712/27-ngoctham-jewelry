@@ -82,7 +82,30 @@ namespace W_GJS.Controllers
             List<W_GJS.Models.O_PRODUCT> list = productList.Skip((int)model.ItemOrderFrom).Take((int)numberOfItemsInPage).ToList();
             model.ItemOrderTo = model.ItemOrderFrom + list.Count;
             model.ItemOrderFrom++;
-            model.HtmlProductListString = RenderPartialViewToString("ProductLazyList", list);
+            model.HtmlListString = RenderPartialViewToString("ProductLazyList", list);
+
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult NewsHomePaging(long numberOfItemsInPage, long currentPage)
+        {
+            Db_gsj = new GJSEntities();
+            NewsHomeModel model = new NewsHomeModel();
+            List<W_GJS.Models.O_NEWS> newsList = Db_gsj.O_NEWS.Where(t => t.ACTIVE == true).ToList();
+
+            model.TotalItems = newsList.Count;
+            model.CurrentPage = currentPage;
+            model.TotalPages = newsList.Count / numberOfItemsInPage;
+            if (newsList.Count % numberOfItemsInPage != 0)
+            {
+                model.TotalPages++;
+            }
+            model.ItemOrderFrom = (currentPage - 1) * numberOfItemsInPage;
+            List<W_GJS.Models.O_NEWS> list = newsList.Skip((int)model.ItemOrderFrom).Take((int)numberOfItemsInPage).ToList();
+            model.ItemOrderTo = model.ItemOrderFrom + list.Count;
+            model.ItemOrderFrom++;
+            model.NewsList = list;
 
             return PartialView(model);
         }
