@@ -92,10 +92,11 @@
                         }
                     }
 
-                    @if (currentController == "Home" && currentAction == "Product_Category")
+                    @if ((currentController == "Home" && currentAction == "Product_Category") ||
+                        (currentController == "Home" && currentAction == "ProductDisplay" ))
                     {
                         <li class="dropdown active">
-                            <a href="@Url.Action("Index", "Home")">SẢN PHẨM <span>products</span></a>
+                            <a href="@Url.Action("ProductDisplay", "Home")">SẢN PHẨM <span>products</span></a>
                             <ul class="dropdown-menu">
                                 @foreach (var item in listCategory)
                                 {
@@ -107,7 +108,7 @@
                     else
                     {
                         <li class="dropdown">
-                            <a href="@Url.Action("Index", "Home")">SẢN PHẨM <span>products</span></a>
+                            <a href="@Url.Action("ProductDisplay", "Home")">SẢN PHẨM <span>products</span></a>
                             <ul class="dropdown-menu">
                                 @foreach (var item in listCategory)
                                 {

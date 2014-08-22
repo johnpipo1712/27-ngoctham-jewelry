@@ -1267,6 +1267,7 @@
     <Content Include="Views\Home\ShowCategoryAlbum.cshtml" />
     <Content Include="Views\Home\CatalogDetail.cshtml" />
     <Content Include="Views\Home\CategoryProducDetailtListPaging.cshtml" />
+    <Content Include="Views\Home\ProductDisplay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
