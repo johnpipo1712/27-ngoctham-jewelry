@@ -359,6 +359,8 @@ namespace W_GJS.Controllers
         public ActionResult Product_Category([Bind(Include = "CATEGORY_PRODUCT_CD")]O_CATEGORY_PRODUCT CATEGORY_PRODUCT)
         {
             Db_gsj = new GJSEntities();
+            ViewBag.Name = Db_gsj.O_CATEGORY_PRODUCT.Single(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD).CATEGORY_PRODUCT_NAME;
+          
             return View(Db_gsj.O_PRODUCT.Where(t=>t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD && t.STATUS == 1 && t.ACTIVE == true));
         }
 
@@ -570,6 +572,12 @@ namespace W_GJS.Controllers
              Db_gsj = new GJSEntities();
              return Json(Db_gsj.O_BRANCH.Where(t => t.CITIES_DETAIL_CD == CITIES_DETAIL_CD).ToList().Select(t => new { t.BRANCH_NAME, t.ADDRESS, t.PHONE, t.LATITUDE, t.LONGITUDE }).ToArray());
 
+         }
+         public ActionResult ShowCategoryAlbum(long CATEGORY_ALBUM_CD)
+         {
+             Db_gsj = new GJSEntities();
+             ViewBag.Name = Db_gsj.O_CATEGORY_ALBUM.Single(t => t.CATEGORY_ALBUM_CD == CATEGORY_ALBUM_CD).CATEGORY_ALBUM_NAME;
+             return View(Db_gsj.O_ALBUM.Where(t => t.CATEGORY_ALBUM_CD == CATEGORY_ALBUM_CD).ToList());
          }
       
     }
