@@ -177,6 +177,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Models\PagingModel.cs" />
+    <Compile Include="Models\NewsHomeModel.cs" />
     <Compile Include="Models\ProductCategoryModel.cs" />
     <Compile Include="Models\ProductCategoryDetailModel.cs" />
     <Compile Include="Models\SearchNewsResultModel.cs" />
@@ -1259,6 +1261,7 @@
     <Content Include="Views\Order\Detail.cshtml" />
     <Content Include="Views\Home\NewsList.cshtml" />
     <Content Include="Views\Home\CategoryProductListPaging.cshtml" />
+    <Content Include="Views\Home\NewsHomePaging.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

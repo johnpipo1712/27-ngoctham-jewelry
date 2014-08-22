@@ -147,45 +147,23 @@
         }
         else 
         {
-            foreach (var item in listNews)
-            {
-                 <div class="prev-article row">
+            <div id="news-home-list"></div>
+<script>
 
-                <div class="col-md-9 col-sm-9">
+    function loadNews(currentPage) {
+        inProgress = true;
+        $("#loadingDiv").show();
 
-                    <h2 class="article-title"><a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })"><span>@item.NEWS_TITLE</span></a></h2>
+        $.post("@Url.Action("NewsHomePaging", "Home")", { "numberOfItemsInPage": 3, "currentPage": currentPage },
+        function (data) {
+            $("#news-home-list").html(data);
+            $("#loadingDiv").hide();
+            inProgress = false;
+        });
+    }
 
-                    <!-- image -->
-                    <figure>
-                        <a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })">
-                            <img src="@item.IMAGE_NEWS" class="img-responsive" alt="blog" />
-                        </a>
-                    </figure>
-
-                    <!-- blog short preview -->
-                    <p>
-                        @item.NEW_DESCRIPTIONS
-                    </p>
-
-                    <!-- read more button -->
-                    <div class="text-right">
-                        <a href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })" class="read-more btn btn-xs"><i class="fa fa-sign-out"></i> Xem thêm </a>
-                    </div>
-
-                </div>
-
-                <div class="blog-prev-date text-left col-md-3 col-sm-3">
-                    <span class="date">
-                        @String.Format("Ngày {0:dd} Tháng {1:MM} Năm {2:yyyy}", @item.CREATEDATE, @item.CREATEDATE, @item.CREATEDATE)
-                    </span>
-                    <span class="info hidden-xs">
-                        <span class="block"><i class="fa fa-user"></i> Được đăng bởi <a href="blog-without-sidebar.html">@item.M_EMPLOYEE.EMPLOYEE_NAME</a></span>
-                        <span class="block"><i class="fa fa-folder-open-o"></i> Danh mục: <a href="@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.CATEGORY_NEWS_CD })">@item.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME</a></span>
-                    </span>
-                </div>
-
-            </div>
-            }
+    loadNews(1);
+</script>
         }
         <!-- /article - image -->
 

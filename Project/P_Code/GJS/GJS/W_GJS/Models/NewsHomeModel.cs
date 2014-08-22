@@ -5,8 +5,8 @@ using System.Web;
 
 namespace W_GJS.Models
 {
-    public class ProductCategoryModel : PagingModel
+    public class NewsHomeModel : PagingModel
     {
-        public long Identified { get; set; }
+        public List<O_NEWS> NewsList { get; set; }
     }
 }
