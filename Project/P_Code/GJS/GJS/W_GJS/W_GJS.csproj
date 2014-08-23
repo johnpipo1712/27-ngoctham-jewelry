@@ -1039,6 +1039,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery.carouFredSel-6.2.0-packed.js" />
     <Content Include="SGallery\js\css\demo-styles.css" />
     <Content Include="SGallery\js\css\styles.css" />
     <Content Include="SGallery\js\hammer.js" />

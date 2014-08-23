@@ -69,6 +69,7 @@
     <link href="@Url.Content("~/Content/css/responsive568.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/css/responsive480.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/css/responsive320.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/nh/css/style218.css")" rel="stylesheet" type="text/css" />
 
     <!--[if lte IE 8]>
         <script src="@Url.Content("~/Scripts/respond.js")" type="text/javascript"></script>
@@ -95,137 +96,231 @@
         </div>
 
         <!-- CONTENT -->
-        <!-- ABOUT -->
-        <section id="about">
-            <div class="container">
-                <header>
-                    <h2>
-                        Chào mừng bạn đã đến website
-                        <span class="word-rotator active" style="height: 42px;">
-                            <!-- word rotator -->
-                            <span class="items bold" style="top: -84px;">
-                                <span><em>Ngọc Thẫm</em></span>
-                                <span><em>Cửa hàng vàng bạc đá quý</em></span>
-                                <span><em>Công ty TNHH Ngọc Thẫm</em></span>
-                            </span>
-                        </span><!-- /word rotator -->
-                    </h2>
-                    <div class="divider half-margins onepage"><!-- lines divider --></div>
-                </header>
 
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et.</p>
-                <hr class="half-margins invisible"><!-- 60px spacer -->
-                <div class="row text-left">
-                    <!-- Passion -->
-                    <div class="col-md-4">
-                        <h3>Uy tín</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Etiam suscipit nisl eget lorem pellentesque quis iaculis mi mattis.</p>
-                    </div>
 
-                    <!-- Precision -->
-                    <div class="col-md-4">
-                        <h3>Tận tình</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Etiam suscipit nisl eget lorem pellentesque quis iaculis mi mattis.</p>
-                    </div>
+        <div class="container">
+            <div id="slideWel">
+                <div id="welcome">
 
-                    <!-- Simplicity -->
-                    <div class="col-md-4">
-                        <h3>Chu đáo</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Etiam suscipit nisl eget lorem pellentesque quis iaculis mi mattis.</p>
-                    </div>
-                </div>
+                    <div class="welBox">
+                        <div class="left">
+                            <p>Trong lĩnh vực nghệ thuật nói chung và nhiếp ảnh nói riêng thì sự tìm tòi càng có ý nghĩa quan trọng. Bởi lẽ nghệ thuật luôn mới mẽ thay dổi theo từng thời khắcvà theo sự thay ðổi của nhân sinh quan. Vâng! Thực tế là như vậy, với Huy nghệ thuật là không có sự hoàn hảo, là không có điểm dừng, nghệ thuật là niềm đam mê sáng tạo, là một phần tô điểm cho cuộc sống ngày càng tốt đẹp.</p>
+                            <h1>Nhiếp ảnh gia Ngọc Huy  <a href="https://www.facebook.com/ngochuystudiosaigon" target="_blank">(facebook.com/studiongochuy)</a></h1>
+                        </div><!--end left-->
+                        <div class="right">
+                            <li style="background-image:url(http://ngochuyphoto.com/multidata/1-917.jpg);"></li>
+                            <label></label>
+                        </div><!--end right-->
+                    </div><!--end welBox-->
 
-            </div>
-        </section>
-
-        <!-- HOT NEWS -->
-        <section id="hotNews" class="alternate">
-            <div class="container">
-                <!-- FEATURED PRODUCTS -->
-                <h2 class="owl-featured"><strong>Tin Tức</strong> Mới Nhất</h2>
-                <div class="owl-carousel featured" data-plugin-options='{"itemsDesktop":[1199,4], "itemsDesktopSmall":[980,3], "itemsTablet":[684,2], "itemsMobile":[490,1], "singleItem": false, "stopOnHover":false, "autoPlay":true, "autoHeight": false, "navigation": true, "pagination": false}'>
-                   @foreach (var item in listNews_NEW)
-                   {
-                       <div>
-                        <div class="owl-featured-item">
-                            <a class="figure" href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })">
-                                <span><i class="fa fa-plus"></i></span>
-                                <img alt="" src="@item.O_NEWS.IMAGE_NEWS" width="230" />
-                            </a>
-                            <div class="owl-featured-detail">
-                                <a class="featured-title" href="@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })">@item.O_NEWS.NEWS_TITLE. </a>
-                            </div>
-                        </div>
-                    </div>
-                   }
-                     
-                </div>
-                <!-- /FEATURED PRODUCTS -->
-            </div>
-        </section>
-
-        <!-- WORK -->
-        <section class="" id="work">
-            <div class="container">
-                <header class="text-center">
-                    <h1>
-                        <strong style="font-weight: bold;">NHỮNG SẢN PHẨM NỔI BẬT</strong> CỦA CHÚNG TÔI
-                    </h1>
-                    <div class="divider half-margins onepage center"><!-- lines divider --></div>
-                </header>
-
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et.</p>
-
-                <div id="portfolio">
-                    <ul data-option-key="filter" data-sort-id="isotope-list" class="nav nav-pills isotope-filter isotope-filter noborder">
-                        <li class="active" data-option-value="*"><a href="onepage.html#">Tất cả</a></li>
-
-                        @foreach (var item in listCategoryProduct)
-                        {
-                            if(item.O_PRODUCT.Where(t=>t.ACTIVE == true && t.STATUS==1 && t.O_PRODUCT_HIGHLIGHTS.Count > 0).ToList().Count > 0)
-                            { 
-                                <li data-option-value=".@item.CATEGORY_PRODUCT_CD" class=""><a href="onepage.html#">@item.CATEGORY_PRODUCT_NAME</a></li>
-                            }
-                        }
-                      
+                    <div class="welBox">
+                        <div class="left">
+                            <p>Với những thao tác đơn giản, khách hàng có thể chủ động lựa chọn thời gian đến gặp hoặc tư vấn các dịch vụ. Điều này sẽ giúp các bạn có thể chủ động sắp xếp công việc và lựa chọn thời gian phù hợp cho mình.</p>
+                            <h1>Đặt hẹn trực tuyến  <a href="dat-hen-truc-tuyen.htm">(Tiến hành Đặt hẹn)</a></h1>
+                        </div><!--end left-->
+                        <div class="right">
+                            <li style="background-image:url(http://ngochuyphoto.com/multidata/00-748.jpg);"></li>
+                            <label></label>
+                        </div><!--end right-->
+                    </div><!--end welBox-->
+                </div><!--end welcome-->
+                <div class="pagiWel"></div>
+                <span id="angleWel">angleWel</span>
+                <div class="clr"></div>
+                <script type="text/javascript">
+                    jQuery(document).ready(function () {
+                        var $welcome = $('#welcome');
+                        $welcome.imagesLoaded(function () {
+                            $("#welcome").carouFredSel({
+                                circular: false,
+                                infinite: true,
+                                responsive: true,
+                                pagination: '.pagiWel',
+                                auto: { pauseDuration: 5000, pauseOnHover: true, duration: 1000 },
+                                scroll: { fx: "crossfade", items: "page", },
+                                prev: false,
+                                next: false,
+                                swipe: { onMouse: true, onTouch: true },
+                                items: {
+                                    height: "variable",
+                                    visible: { min: 1, max: 1 }
+                                }
+                            });
+                        });
+                    });
+                </script>
+            </div><!--end slideWel-->
+            <div id="homeAlbumMain">
+                <div id="albumDesc">
+                    <div class="navBox" id="homeAlbumNav"><a href="ngochuyphoto_default_2.html#" class="prev">Prev</a><a href="ngochuyphoto_default_2.html#" class="next">Next</a></div>
+                    <ul>
+                        <h1><a href="album.htm">ALBUM ẢNH NGỌC HUY THỰC HIỆN.</a></h1>
+                        <p> Với Ngọc Huy nhiếp ảnh là một môn nghệ thuật đòi hỏi người nghệ sỹ phải luôn sáng tạo không ngừng. Và chỉ có niềm đam mê bất tận mới có thể khiến người nghệ sỹ không ngừng nghỉ tìm tòi, học hỏi, nỗ lực và cố gắng.</p>
+                        <li class="listTags">
+                            <a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a><a href='anh-nghe-thuat-sab.htm' title='Ảnh Nghệ Thuật'>Ảnh Nghệ Thuật</a><a href='anh-tap-chi-sab.htm' title='Ảnh Tạp Chí'>Ảnh Tạp Chí</a><a href='anh-cuoi-nghe-sy-sab.htm' title='Ảnh Cưới Nghệ Sỹ'>Ảnh Cưới Nghệ Sỹ</a><a href='trang-diem-sab.htm' title='Trang Điểm'>Trang Điểm</a><a href='ao-cuoi-sab.htm' title='Áo Cưới'>Áo Cưới</a>
+                        </li>
                     </ul>
-
-                    <div class="row">
-                        <ul data-sort-id="isotope-list" class="sort-destination isotope fadeIn" style="position: relative; overflow: hidden; height: 698px;">
-                            @foreach (var item in listproduct_hightlights)
-                            {
-                                 <li class="sotope-item col-sm-6 col-md-3 col-xs-12 @item.O_PRODUCT.CATEGORY_PRODUCT_CD isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); opacity: 1;">
-                                <!-- item -->
-                                <div class="item-box">
-                                    <figure>
-                                        <a href="@Url.Action("ProductDetail",new { PRODUCT_CD = item.PRODUCT_CD })" class="item-hover">
-                                            <span class="overlay color2"></span>
-                                            <span class="inner">
-                                                <span class="block fa fa-plus fsize20"></span>
-                                                <strong>Chi Tiết</strong> Sản Phẩm
-                                            </span>
-                                        </a>
-                                        <img width="260" height="260" alt="" src="@item.O_PRODUCT.URL_IMAGE" class="img-responsive">
-                                    </figure>
-                                    <div class="item-box-desc">
-                                        <h4>@item.O_PRODUCT.PRODUCT_NAME</h4>
-                                    </div>
-                                </div>
+                    <a href="album.htm" class="viewmore">Xem thêm</a>
+                </div><!--end albumDesc-->
+                <div id="homeAlbum">
+                    <div class="homeAlbum">
+                        <ul>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/album-tinh-yeu-cong-so-01.jpg);' class='first'>
+                                <ul>
+                                    <img src='resizemultidata/album-tinh-yeu-cong-so-01.jpg' alt='Album cưới Tình yêu công sở' />
+                                    <h1><a href='album-cuoi-tinh-yeu-cong-so-sab-c1.htm' title='Album cưới Tình yêu công sở'>Album cưới Tình yêu công sở</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
                             </li>
-                            } 
-                           
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/12-150.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/12-150.jpg' alt='Ảnh Cưới Nước' />
+                                    <h1><a href='anh-cuoi-nuoc-sab-c1.htm' title='Ảnh Cưới Nước'>Ảnh Cưới Nước</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/11-504.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/11-504.jpg' alt='Tình yêu của nắng' />
+                                    <h1><a href='tinh-yeu-cua-nang-sab-c1.htm' title='Tình yêu của nắng'>Tình yêu của nắng</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/1-947.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/1-947.jpg' alt='Ảnh Cưới Graffiti' />
+                                    <h1><a href='anh-cuoi-graffiti-sab-c1.htm' title='Ảnh Cưới Graffiti'>Ảnh Cưới Graffiti</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-sieu-de-thuong-01.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/anh-cuoi-sieu-de-thuong-01.jpg' alt='Ảnh cưới siêu dễ thương' />
+                                    <h1><a href='anh-cuoi-sieu-de-thuong-sab-c1.htm' title='Ảnh cưới siêu dễ thương'>Ảnh cưới siêu dễ thương</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-dep-o-resort-00.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/anh-cuoi-dep-o-resort-00.jpg' alt='Ảnh cưới đẹp ở Resort' />
+                                    <h1><a href='anh-cuoi-dep-o-resort-sab-c1.htm' title='Ảnh cưới đẹp ở Resort'>Ảnh cưới đẹp ở Resort</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                        </ul><ul>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-ngoai-canh-dep-tu-nhien-01.jpg);' class='first'>
+                                <ul>
+                                    <img src='resizemultidata/anh-cuoi-ngoai-canh-dep-tu-nhien-01.jpg' alt='Ảnh cưới ngoại cảnh đẹp tự nhiên' />
+                                    <h1><a href='anh-cuoi-ngoai-canh-dep-tu-nhien-sab-c1.htm' title='Ảnh cưới ngoại cảnh đẹp tự nhiên'>Ảnh cưới ngoại cảnh đẹp tự nhiên</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-phim-truong-orange-01.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/anh-cuoi-phim-truong-orange-01.jpg' alt='Ảnh cưới phim trường Orange' />
+                                    <h1><a href='anh-cuoi-phim-truong-orange-sab-c1.htm' title='Ảnh cưới phim trường Orange'>Ảnh cưới phim trường Orange</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/album-cuoi-anh-va-em-01.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/album-cuoi-anh-va-em-01.jpg' alt='Album cưới Anh và Em' />
+                                    <h1><a href='album-cuoi-anh-va-em-sab-c1.htm' title='Album cưới Anh và Em'>Album cưới Anh và Em</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-dep-trong-phim-truong-01-731.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/anh-cuoi-dep-trong-phim-truong-01-731.jpg' alt='Ảnh cưới đẹp trong phim trường' />
+                                    <h1><a href='anh-cuoi-dep-trong-phim-truong-sab-c1.htm' title='Ảnh cưới đẹp trong phim trường'>Ảnh cưới đẹp trong phim trường</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/album-cuoi-ngay-chung-doi-01.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/album-cuoi-ngay-chung-doi-01.jpg' alt='Album cưới Ngày chung đôi' />
+                                    <h1><a href='album-cuoi-ngay-chung-doi-sab-c1.htm' title='Album cưới Ngày chung đôi'>Album cưới Ngày chung đôi</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-dep-nhat-2014-01.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/anh-cuoi-dep-nhat-2014-01.jpg' alt='Ảnh cưới đẹp nhất 2014' />
+                                    <h1><a href='anh-cuoi-dep-nhat-2014-sab-c1.htm' title='Ảnh cưới đẹp nhất 2014'>Ảnh cưới đẹp nhất 2014</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                        </ul><ul>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/album-cuoi-lang-man-ben-bo-ho-01.jpg);' class='first'>
+                                <ul>
+                                    <img src='resizemultidata/album-cuoi-lang-man-ben-bo-ho-01.jpg' alt='Album cưới lãng mạn bên bờ hồ' />
+                                    <h1><a href='album-cuoi-lang-man-ben-bo-ho-sab-c1.htm' title='Album cưới lãng mạn bên bờ hồ'>Album cưới lãng mạn bên bờ hồ</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/chup-anh-cuoi-tren-dong-co-01-112.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/chup-anh-cuoi-tren-dong-co-01-112.jpg' alt='Chụp ảnh cưới trên đồng cỏ' />
+                                    <h1><a href='chup-anh-cuoi-tren-dong-co-sab-c1.htm' title='Chụp ảnh cưới trên đồng cỏ'>Chụp ảnh cưới trên đồng cỏ</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-dep-co-dien-01.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/anh-cuoi-dep-co-dien-01.jpg' alt='Ảnh cưới đẹp cổ điển' />
+                                    <h1><a href='anh-cuoi-dep-co-dien-sab-c1.htm' title='Ảnh cưới đẹp cổ điển'>Ảnh cưới đẹp cổ điển</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-voi-ao-dai-trang-01.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/anh-cuoi-voi-ao-dai-trang-01.jpg' alt='Ảnh cưới với áo dài trắng' />
+                                    <h1><a href='anh-cuoi-voi-ao-dai-trang-sab-c1.htm' title='Ảnh cưới với áo dài trắng'>Ảnh cưới với áo dài trắng</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/album-cuoi-bai-bien-dep-nhu-mo-01.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/album-cuoi-bai-bien-dep-nhu-mo-01.jpg' alt='Album cưới bãi biển đẹp như mơ' />
+                                    <h1><a href='album-cuoi-bai-bien-dep-nhu-mo-sab-c1.htm' title='Album cưới bãi biển đẹp như mơ'>Album cưới bãi biển đẹp như mơ</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
+                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-vui-nhon-cung-phan-mau-01.jpg);'>
+                                <ul>
+                                    <img src='resizemultidata/anh-cuoi-vui-nhon-cung-phan-mau-01.jpg' alt='Ảnh cưới vui nhộn cùng phấn màu' />
+                                    <h1><a href='anh-cuoi-vui-nhon-cung-phan-mau-sab-c1.htm' title='Ảnh cưới vui nhộn cùng phấn màu'>Ảnh cưới vui nhộn cùng phấn màu</a></h1>
+                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                </ul>
+                            </li>
                         </ul>
-                    </div><!-- /.masonry-container -->
-                </div>
-
-            </div>
-        </section>
-
-
-
-
-
-
+                    </div><!--end .homeAlbum-->
+                    <div class="clr"></div>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function () {
+                            var $homeAlbum = $('.homeAlbum');
+                            $homeAlbum.imagesLoaded(function () {
+                                $(".homeAlbum").carouFredSel({
+                                    circular: true,
+                                    infinite: true,
+                                    responsive: true,
+                                    auto: { pauseDuration: 6000, pauseOnHover: true, duration: 1000 },
+                                    scroll: { fx: "crossfade", items: "page", duration: 1000 },
+                                    prev: "#homeAlbumNav .prev",
+                                    next: "#homeAlbumNav .next",
+                                    swipe: { onMouse: true, onTouch: true },
+                                    items: {
+                                        height: "variable",
+                                        visible: { min: 1, max: 1 }
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+                </div><!--end homeAlbum-->
+                <div class="clr"></div>
+            </div><!--end homeAlbumMain-->
+        </div><!--end content-->
 
         <!-- /CONTENT -->
         @Html.Partial("_Footer")
@@ -264,6 +359,8 @@
     <script src="@Url.Content("~/Scripts/scripts.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/self-scripts.js")" type="text/javascript"></script>
 
+    <script src="@Url.Content("~/Content/nh/js/jquery.carouFredSel-6.2.0-packed.js")" type="text/javascript"></script>
+
     <script>
         $("#topMain li a").click(function () {
             $('li').removeClass('active');
@@ -275,7 +372,7 @@
             $(this).parent().parent().parent().addClass('active');
         });
 
-        
+
         function showPopup() {
             var needPopup = @(Session["needPopup"] == null ? "true" : "false");
             @{
