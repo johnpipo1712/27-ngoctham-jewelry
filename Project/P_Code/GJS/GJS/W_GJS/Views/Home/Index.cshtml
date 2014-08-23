@@ -178,7 +178,7 @@
 
                         @foreach (var item in listCategoryProduct)
                         {
-                            if(item.O_PRODUCT.Count > 0)
+                            if(item.O_PRODUCT.Where(t=>t.ACTIVE == true && t.STATUS==1 && t.O_PRODUCT_HIGHLIGHTS.Count > 0).ToList().Count > 0)
                             { 
                                 <li data-option-value=".@item.CATEGORY_PRODUCT_CD" class=""><a href="onepage.html#">@item.CATEGORY_PRODUCT_NAME</a></li>
                             }
