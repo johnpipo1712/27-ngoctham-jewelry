@@ -25,8 +25,6 @@ namespace W_GJS.Controllers
             return View();
         }
 
-        
-
         public ActionResult SearchProducts(string keyword)
         {
             Db_gsj = new GJSEntities();
