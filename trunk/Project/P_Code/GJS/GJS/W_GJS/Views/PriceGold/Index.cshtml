@@ -17,6 +17,8 @@
         <div class="row">
             <!-- Page header, center on small screens -->
             <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-money page-header-icon"></i>&nbsp;&nbsp;Bảng giá vàng</h1>
+            @if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 1)
+            {
             <div class="col-xs-12 col-sm-8">
                 <div class="row">
                     <hr class="visible-xs no-grid-gutter-h">
@@ -25,6 +27,7 @@
                     <div class="visible-xs clearfix form-group-margin"></div>
                 </div>
             </div>
+            }
         </div>
     </div>
 }
@@ -75,14 +78,19 @@
                         </td>
                         
                         <td>
-                            @Html.ActionLink("Sửa", "Edit", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD }) |
-                            @if (item.ACTIVE == false)
+                            @Html.ActionLink("Sửa", "Edit", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
+                            |
+                            @if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 1)
                             {
-                                @Html.ActionLink("Kích hoạt", "Active", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
-                            }
-                            else
-                            {
-                                @Html.ActionLink("Xóa", "Deactive", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
+                                
+                                if (item.ACTIVE == false)
+                                {
+                                    @Html.ActionLink("Kích hoạt", "Active", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Xóa", "Deactive", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
+                                }
                             }
                         </td>
                     </tr>

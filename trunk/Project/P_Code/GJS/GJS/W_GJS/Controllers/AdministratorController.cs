@@ -34,6 +34,7 @@ namespace W_GJS.Controllers
             {
                 //store session if succeed
                 Session[SessionConstants.LOGINED_ADMIN_KEY] = username;
+                Session[SessionConstants.LOGINED_ADMIN_ROLE_KEY] = jsonModel.RoleOrFailed;
                 return RedirectToAction("Index");
             }
 

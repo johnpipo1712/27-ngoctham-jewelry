@@ -34,6 +34,39 @@
                 @Html.ValidationSummary(true)
 
                 <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GOLD_CODE, new { @class = "control-label col-md-2" })
+                        <div class="col-sm-10">
+
+                            @if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 1)
+                            {
+                                @Html.EditorFor(model => model.GOLD_CODE)
+                                @Html.ValidationMessageFor(model => model.GOLD_CODE)
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(model => model.GOLD_CODE, new { disabled = "disabled", @readonly = "readonly" })
+                            }
+                        </div>
+                    </div> <!-- / .form-group -->
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GOLD_NAME, new { @class = "control-label col-md-2" })
+                        <div class="col-sm-10">
+
+                            @if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 1)
+                            {
+                                @Html.EditorFor(model => model.GOLD_NAME)
+                                @Html.ValidationMessageFor(model => model.GOLD_NAME)
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(model => model.GOLD_NAME, new { disabled = "disabled", @readonly = "readonly" })
+                            }
+                        </div>
+                    </div> <!-- / .form-group -->
+
                     <div class="form-group">
                         @Html.LabelFor(model => model.PRICE_SALES, new { @class = "control-label col-md-2" })
                         <div class="col-sm-10">
@@ -50,21 +83,7 @@
                         </div>
                     </div> <!-- / .form-group -->
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.GOLD_CODE, new { @class = "control-label col-md-2" })
-                        <div class="col-sm-10">
-                            @Html.EditorFor(model => model.GOLD_CODE)
-                            @Html.ValidationMessageFor(model => model.GOLD_CODE)
-                        </div>
-                    </div> <!-- / .form-group -->
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.GOLD_NAME, new { @class = "control-label col-md-2" })
-                        <div class="col-sm-10">
-                            @Html.EditorFor(model => model.GOLD_NAME)
-                            @Html.ValidationMessageFor(model => model.GOLD_NAME)
-                        </div>
-                    </div> <!-- / .form-group -->
+                    
 
                     <div style="margin-bottom: 0;" class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">

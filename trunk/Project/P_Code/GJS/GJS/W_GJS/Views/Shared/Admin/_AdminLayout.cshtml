@@ -1,4 +1,5 @@
-﻿@if (String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_KEY]))
+﻿
+@if (String.IsNullOrEmpty((string)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_KEY]))
 {
     Response.Redirect(Url.Action("Index", "Home"));
 }
@@ -76,7 +77,10 @@
                         <img src="@Url.Content("~/Content/images/avatar")/default.jpg" alt="" class="">
                         <div class="btn-group">
                             <a href="https://mail.google.com/mail/" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-envelope"></i></a>
-                            <a href="@Url.Action("Edit", "Employee", new { EMPLOYEE_CD = 1 })" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-user"></i></a>
+                            @if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 1)
+                            {
+                                <a href="@Url.Action("Edit", "Employee", new { EMPLOYEE_CD = 1 })" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-user"></i></a>
+                            }
                             <a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-cog"></i></a>
                             <a href="@Url.Action("Logout","Administrator")" class="btn btn-xs btn-danger btn-outline dark"><i class="fa fa-power-off"></i></a>
                         </div>
