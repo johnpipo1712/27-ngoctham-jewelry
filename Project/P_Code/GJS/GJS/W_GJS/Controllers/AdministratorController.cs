@@ -30,7 +30,7 @@ namespace W_GJS.Controllers
             Db_gsj = new GJSEntities();
 
             JsonResultLoginModel jsonModel = LoginModel.Login(username, password, true);
-            if (jsonModel.RoleOrFailed == 1) // admin logined
+            if (jsonModel.RoleOrFailed == 1 || jsonModel.RoleOrFailed == 4) // admin logined
             {
                 //store session if succeed
                 Session[SessionConstants.LOGINED_ADMIN_KEY] = username;
