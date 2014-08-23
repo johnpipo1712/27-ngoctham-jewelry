@@ -44,7 +44,7 @@ namespace W_GJS.Hubs
                 {
 
                     //now we encounter ordinary user which needs userGroup and at this step, system assigns the first of free Admin among UsersList
-                    var strg = (from s in UsersList where (s.tpflag == "1") && (s.freeflag == "1") select s).First();
+                    UserModel strg = UsersList.Where(t => t.freeflag == "1" && t.tpflag == "1").FirstOrDefault();
                     userGroup = strg.UserGroup;
 
                     //Admin becomes busy so we assign zero to freeflag which is shown admin is busy
@@ -66,14 +66,14 @@ namespace W_GJS.Hubs
                         //now add ADMIN to UsersList
                         UsersList.Add(new UserModel { ConnectionId = id, AdminID = User.USER_CD, UserName = Name, UserGroup = User.USER_CD.ToString(), freeflag = "1", tpflag = "1" });
                         //whether it is Admin or User now both of them has userGroup and I Join this user or admin to specific group 
-                        Groups.Add(Context.ConnectionId, User.STATUS.ToString());
-                        Clients.Caller.onConnected(id, Name, User.USER_CD, User.USER_CD.ToString());
+                        Groups.Add(Context.ConnectionId, User.USER_CD.ToString());
+                        Clients.Caller.onConnected(id, Name, User.USER_CD,User.USER_CD.ToString());
 
                     }
                     else
                     {
                         //now we encounter ordinary user which needs userGroup and at this step, system assigns the first of free Admin among UsersList
-                        var strg = (from s in UsersList where (s.tpflag == "1") && (s.freeflag == "1") select s).First();
+                        UserModel strg = UsersList.Where(t => t.freeflag == "1" && t.tpflag == "1").FirstOrDefault();
                         userGroup = strg.UserGroup;
 
                         //Admin becomes busy so we assign zero to freeflag which is shown admin is busy
@@ -113,7 +113,7 @@ namespace W_GJS.Hubs
 
             if (UsersList.Count != 0)
             {
-                var strg = (from s in UsersList where (s.UserName == userName) select s).First();
+                UserModel strg = UsersList.Where(t => t.UserName == userName).FirstOrDefault();
                 MessageList.Add(new MessageModel { UserName = userName, Message = message, UserGroup = strg.UserGroup });
                 string strgroup = strg.UserGroup;
                 // If you want to Broadcast message to all UsersList use below line
