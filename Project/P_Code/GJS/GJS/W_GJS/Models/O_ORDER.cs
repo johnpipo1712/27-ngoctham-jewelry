@@ -41,6 +41,8 @@ namespace W_GJS.Models
         public string DELIVERY_ADDRESS { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
+        [DataType(DataType.Text)]
+        [Display(Name = "Ngày đặt hàng")]
         public Nullable<System.DateTime> CREATEDATE { get; set; }
         public Nullable<long> CUSTOMER_CD { get; set; }
     
