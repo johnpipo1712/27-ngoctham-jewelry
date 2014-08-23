@@ -223,13 +223,14 @@
         function loadClientMethods(objHub) {
 
             objHub.client.NoExistAdmin = function () {
-                var divNoExist = $('<div><p>Các người dùng đang bận vui lòng chờ</p></div>');
+                 var divNoExist = $('<div style="color : red">Tất cả các hổ trợ viên đang bận,vui lòng quay lai sau !!!</div>');
                 $("#divChat").hide();
                 $("#PopupModalChat").modal();
 
                 $(divNoExist).hide();
                 $('#divalarm').prepend(divNoExist);
-                $(divNoExist).fadeIn(900).delay(9000).fadeOut(900);
+                $(divNoExist).fadeIn(900).delay(10000).fadeOut(900);
+                
             }
 
             objHub.client.getMessages = function (userName, message) {
@@ -244,8 +245,8 @@
             objHub.client.onConnected = function (id, userName, UserID, userGroup) {
 
 
-                var strWelcome = 'Chào :' + +userName;
-                $('#welcome').append('<div><p>Chào :' + userName + '</p></div>');
+                var strWelcome = 'Xin chào :' + userName;
+                $('#welcome').append('<div><p> Xin chào :' + userName + '</p></div>');
                 $('#hId').val(id);
                 $('#hUserId').val(UserID);
                 $('#hUserName').val(userName);
