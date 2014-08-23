@@ -14,16 +14,6 @@
 
 @section Scripts {
     <script>
-        function showPopup() {
-            var needPopup = @(Session["needPopup"] == null ? "true" : "false");
-            @{
-                Session["needPopup"] = true;
-            }
-            if (needPopup) {
-                $("#PopupModal").modal();
-            }
-        }
-        showPopup();
 
         function loadProducts() {
             inProgress = true;
