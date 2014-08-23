@@ -38,7 +38,6 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.GOLD_CODE, new { @class = "control-label col-md-2" })
                         <div class="col-sm-10">
-
                             @if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 1)
                             {
                                 @Html.EditorFor(model => model.GOLD_CODE)
@@ -46,7 +45,9 @@
                             }
                             else
                             {
-                                @Html.TextBoxFor(model => model.GOLD_CODE, new { disabled = "disabled", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model.GOLD_CODE)
+                               
+                                @Html.DisplayFor(model=>model.GOLD_CODE)
                             }
                         </div>
                     </div> <!-- / .form-group -->
@@ -54,7 +55,6 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.GOLD_NAME, new { @class = "control-label col-md-2" })
                         <div class="col-sm-10">
-
                             @if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 1)
                             {
                                 @Html.EditorFor(model => model.GOLD_NAME)
@@ -62,7 +62,8 @@
                             }
                             else
                             {
-                                @Html.TextBoxFor(model => model.GOLD_NAME, new { disabled = "disabled", @readonly = "readonly" })
+                                @Html.HiddenFor(model=>model.GOLD_NAME)
+                                 @Html.DisplayFor(model => model.GOLD_NAME)
                             }
                         </div>
                     </div> <!-- / .form-group -->
