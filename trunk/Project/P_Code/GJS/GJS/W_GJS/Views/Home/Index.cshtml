@@ -65,6 +65,10 @@
 
     <link href="@Url.Content("~/Content/css/default.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/css/supported.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/responsive768.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/responsive568.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/responsive480.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/responsive320.css")" rel="stylesheet" type="text/css" />
 
     <!--[if lte IE 8]>
         <script src="@Url.Content("~/Scripts/respond.js")" type="text/javascript"></script>
@@ -190,7 +194,7 @@
                         <ul data-sort-id="isotope-list" class="sort-destination isotope fadeIn" style="position: relative; overflow: hidden; height: 698px;">
                             @foreach (var item in listproduct_hightlights)
                             {
-                                 <li class="sotope-item col-sm-6 col-md-4 @item.O_PRODUCT.CATEGORY_PRODUCT_CD isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); opacity: 1;">
+                                 <li class="sotope-item col-sm-6 col-md-3 col-xs-12 @item.O_PRODUCT.CATEGORY_PRODUCT_CD isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); opacity: 1;">
                                 <!-- item -->
                                 <div class="item-box">
                                     <figure>
@@ -270,6 +274,18 @@
             $('li').removeClass('active');
             $(this).parent().parent().parent().addClass('active');
         });
+
+        
+        function showPopup() {
+            var needPopup = @(Session["needPopup"] == null ? "true" : "false");
+            @{
+                Session["needPopup"] = true;
+            }
+            if (needPopup) {
+                $("#PopupModal").modal();
+            }
+        }
+        showPopup();
     </script>
 </body>
 </html>
