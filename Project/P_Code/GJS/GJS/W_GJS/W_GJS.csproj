@@ -178,7 +178,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Hubs\MyHub.cs" />
     <Compile Include="Models\CategoryNewsModel.cs" />
+    <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\PagingModel.cs" />
     <Compile Include="Models\NewsHomeModel.cs" />
     <Compile Include="Models\ProductCategoryModel.cs" />
@@ -316,6 +318,7 @@
     <Compile Include="Models\S_USER.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\W_PRODUCT.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
@@ -1273,6 +1276,7 @@
     <Content Include="Views\Home\CatalogDetail.cshtml" />
     <Content Include="Views\Home\CategoryProducDetailtListPaging.cshtml" />
     <Content Include="Views\Home\ProductDisplay.cshtml" />
+    <Content Include="Views\Home\NewChat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

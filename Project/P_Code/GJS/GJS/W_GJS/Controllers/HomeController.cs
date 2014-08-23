@@ -557,6 +557,11 @@ namespace W_GJS.Controllers
         {
             return View();
         }
+
+        public ActionResult NewChat()
+        {
+            return View();
+        }
         public ActionResult Branches()
         {
             Db_gsj = new GJSEntities();
