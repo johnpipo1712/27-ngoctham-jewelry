@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Text.RegularExpressions;
+using W_GJS.General;
 
 
 namespace W_GJS.Models
@@ -94,7 +95,7 @@ namespace W_GJS.Models
                 CUSTOMER.SEX = MODEL.SEX;
                 Db_gsj.Entry(CUSTOMER).State = EntityState.Added;
                 Db_gsj.SaveChanges();
-                CUSTOMER.CUSTOMER_CODE = "KH" + CUSTOMER.CUSTOMER_CD.ToString();
+                CUSTOMER.CUSTOMER_CODE = CodeConstants.CUSTOMER_CODE + CUSTOMER.CUSTOMER_CD.ToString();
                 Db_gsj.Entry(CUSTOMER).State = EntityState.Modified;
                 Db_gsj.SaveChanges();
 

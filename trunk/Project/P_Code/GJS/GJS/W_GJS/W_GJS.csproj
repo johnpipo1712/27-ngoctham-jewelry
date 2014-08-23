@@ -172,6 +172,7 @@
     <Compile Include="Controllers\PstController.cs" />
     <Compile Include="Controllers\SeoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="General\CodeConstants.cs" />
     <Compile Include="General\Process.cs" />
     <Compile Include="General\SessionConstants.cs" />
     <Compile Include="Global.asax.cs">
