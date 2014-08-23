@@ -517,6 +517,9 @@ namespace W_GJS.Controllers
                 ordcheckout.DELIVERY_ADDRESS = ordcheckout.O_CUSTOMER.ADDRESS;
                 Db_gsj.Entry(ordcheckout).State = EntityState.Added;
                 Db_gsj.SaveChanges();
+                ordcheckout.ORDER_CODE = CodeConstants.ORDER_CODE + ordcheckout.ORDER_CODE.ToString();
+                Db_gsj.Entry(ordcheckout).State = EntityState.Modified;
+                Db_gsj.SaveChanges();
                 foreach (var item in ord.D_ORDER_DETAIL)
                 {
                     D_ORDER_DETAIL orddetail = new D_ORDER_DETAIL();
@@ -532,9 +535,7 @@ namespace W_GJS.Controllers
                     Db_gsj.SaveChanges();
                 }
                 Session["Cart"] = null;
-
                 return RedirectToAction("ProductDisplay", "Home");
-                
             }
             else
             {
