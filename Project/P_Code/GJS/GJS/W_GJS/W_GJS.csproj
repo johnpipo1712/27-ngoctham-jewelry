@@ -138,6 +138,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Self\catalog\css\" />
     <Folder Include="Self\catalog\images\" />
     <Folder Include="Self\news\images\" />
@@ -1108,7 +1109,14 @@
     <Content Include="Content\images\admin\demo\Thumbs.db" />
     <Content Include="Content\css\flare\themes\default\img\Thumbs.db" />
     <Content Include="SGallery\js\images\Thumbs.db" />
-    <None Include="Properties\PublishProfiles\WEB.pubxml" />
+    <Content Include="Content\fonts\Open_Sans\OpenSans-Bold.ttf" />
+    <Content Include="Content\fonts\Open_Sans\OpenSans-BoldItalic.ttf" />
+    <Content Include="Content\fonts\Open_Sans\OpenSans-Italic.ttf" />
+    <Content Include="Content\fonts\Open_Sans\OpenSans-Light.ttf" />
+    <Content Include="Content\fonts\Open_Sans\OpenSans-LightItalic.ttf" />
+    <Content Include="Content\fonts\Open_Sans\OpenSans-Regular.ttf" />
+    <Content Include="Content\fonts\Open_Sans\OpenSans-Semibold.ttf" />
+    <Content Include="Content\fonts\Open_Sans\OpenSans-SemiboldItalic.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

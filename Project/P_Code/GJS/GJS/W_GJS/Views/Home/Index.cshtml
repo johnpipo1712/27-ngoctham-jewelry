@@ -1,1 +1,408 @@
-﻿
+﻿@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+@{
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    W_GJS.Models.O_SEO seo = gjs.O_SEO.Single(t => t.CD == 1);
+    W_GJS.Models.M_PAGE popup = gjs.M_PAGE.Single(t => t.PAGE_COTRACT_CD == 9);
+}
+<html>
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>@seo.TITILE</title>
+    <meta name="keywords" content="@seo.META_KEYWORDS" />
+    <meta name="description" content="@seo.META_DES" />
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href='@Url.Content("~/Content")/images/favicon.png' />
+
+
+    @*@Styles.Render("~/Content/css")*@
+    @*<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&subset=latin,vietnamese' rel='stylesheet' type='text/css'>*@
+    <link href="@Url.Content("~/Content/css/fonts.googleapis.css")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Content/css/flare/prettify.css")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Content/plugins/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/font-awesome.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/sky-forms.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/weather-icons.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/line-icons.css")" rel="stylesheet" type="text/css" />
+    @*<link href="@Url.Content("~/Content/plugins/owl-carousel/owl.pack.css")" rel="stylesheet" type="text/css" />*@
+    <link href="@Url.Content("~/Content/plugins/owl-carousel-latest/owl.carousel.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/plugins/owl-carousel-latest/owl.theme.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/plugins/owl-carousel-latest/owl.transitions.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/plugins/magnific-popup/magnific-popup.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/animate.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/flexslider.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/revolution-slider.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/layerslider.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/layout-shop.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/essentials.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/layout.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/header-3.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/footer-default.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/color_scheme/red.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet" type="text/css" />
+
+    <script src="@Url.Content("~/Content/plugins/modernizr.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/jquery-2.1.1.min.js")" type="text/javascript"></script>
+
+    <link href="@Url.Content("~/Content/css/default.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/supported.css")" rel="stylesheet" type="text/css" />
+
+    <!--[if lte IE 8]>
+        <script src="@Url.Content("~/Scripts/respond.js")" type="text/javascript"></script>
+    <![endif]-->
+</head>
+
+<body class="smoothscroll">
+    <!-- Default Modal For All Pages -->
+    @Html.Partial("_Modal")
+
+    <div id="wrapper">
+        @*@ViewContext.Controller.ValueProvider.GetValue("controller").RawValue -
+            @ViewContext.Controller.ValueProvider.GetValue("action").RawValue*@
+        @Html.Partial("_TopBar")
+        @*@RenderSection("Slide", false)*@
+
+        @Html.Partial("_Slide")
+
+        <div id="header">
+
+
+            @Html.Partial("_Menu")
+
+        </div>
+
+        <!-- CONTENT -->
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="container">
+                <header>
+                    <h2>
+                        Chào mừng bạn đã đến website
+                        <span class="word-rotator active" style="height: 42px;">
+                            <!-- word rotator -->
+                            <span class="items bold" style="top: -84px;">
+                                <span><em>Ngọc Thẫm</em></span>
+                                <span><em>Cửa hàng vàng bạc đá quý</em></span>
+                                <span><em>Công ty TNHH Ngọc Thẫm</em></span>
+                            </span>
+                        </span><!-- /word rotator -->
+                    </h2>
+                    <div class="divider half-margins onepage"><!-- lines divider --></div>
+                </header>
+
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et.</p>
+                <hr class="half-margins invisible"><!-- 60px spacer -->
+                <div class="row text-left">
+                    <!-- Passion -->
+                    <div class="col-md-4">
+                        <h3>Uy tín</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Etiam suscipit nisl eget lorem pellentesque quis iaculis mi mattis.</p>
+                    </div>
+
+                    <!-- Precision -->
+                    <div class="col-md-4">
+                        <h3>Tận tình</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Etiam suscipit nisl eget lorem pellentesque quis iaculis mi mattis.</p>
+                    </div>
+
+                    <!-- Simplicity -->
+                    <div class="col-md-4">
+                        <h3>Chu đáo</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Etiam suscipit nisl eget lorem pellentesque quis iaculis mi mattis.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- HOT NEWS -->
+        <section id="hotNews" class="alternate">
+            <div class="container">
+                <!-- FEATURED PRODUCTS -->
+                <h2 class="owl-featured"><strong>Tin Tức</strong> Mới Nhất</h2>
+                <div class="owl-carousel featured" data-plugin-options='{"itemsDesktop":[1199,4], "itemsDesktopSmall":[980,3], "itemsTablet":[684,2], "itemsMobile":[490,1], "singleItem": false, "stopOnHover":false, "autoPlay":true, "autoHeight": false, "navigation": true, "pagination": false}'>
+                    <div>
+                        <div class="owl-featured-item">
+                            <a class="figure" href="@Url.Action("News", "Home")">
+                                <span><i class="fa fa-plus"></i></span>
+                                <img alt="" src="@Url.Content("~/Content/images/news/01/01.jpg")" width="230" />
+                            </a>
+                            <div class="owl-featured-detail">
+                                <a class="featured-title" href="page-article.html">Cras justo odio, dapibus ac facilisis in, egestas eget quam. </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="owl-featured-item">
+                            <a class="figure" href="@Url.Action("News", "Home")">
+                                <span><i class="fa fa-plus"></i></span>
+                                <img alt="" src="@Url.Content("~/Content/images/news/01/01.jpg")" width="230" />
+                            </a>
+                            <div class="owl-featured-detail">
+                                <a class="featured-title" href="page-article.html">Cras justo odio, dapibus ac facilisis in, egestas eget quam. </a>
+                            </div>
+                        </div>
+                    </div><div>
+                        <div class="owl-featured-item">
+                            <a class="figure" href="@Url.Action("News", "Home")">
+                                <span><i class="fa fa-plus"></i></span>
+                                <img alt="" src="@Url.Content("~/Content/images/news/01/01.jpg")" width="230" />
+                            </a>
+                            <div class="owl-featured-detail">
+                                <a class="featured-title" href="page-article.html">Cras justo odio, dapibus ac facilisis in, egestas eget quam. </a>
+                            </div>
+                        </div>
+                    </div><div>
+                        <div class="owl-featured-item">
+                            <a class="figure" href="@Url.Action("News", "Home")">
+                                <span><i class="fa fa-plus"></i></span>
+                                <img alt="" src="@Url.Content("~/Content/images/news/01/01.jpg")" width="230" />
+                            </a>
+                            <div class="owl-featured-detail">
+                                <a class="featured-title" href="page-article.html">Cras justo odio, dapibus ac facilisis in, egestas eget quam. </a>
+                            </div>
+                        </div>
+                    </div><div>
+                        <div class="owl-featured-item">
+                            <a class="figure" href="@Url.Action("News", "Home")">
+                                <span><i class="fa fa-plus"></i></span>
+                                <img alt="" src="@Url.Content("~/Content/images/news/01/01.jpg")" width="230" />
+                            </a>
+                            <div class="owl-featured-detail">
+                                <a class="featured-title" href="page-article.html">Cras justo odio, dapibus ac facilisis in, egestas eget quam. </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="owl-featured-item">
+                            <a class="figure" href="@Url.Action("News", "Home")">
+                                <span><i class="fa fa-plus"></i></span>
+                                <img alt="" src="@Url.Content("~/Content/images/news/01/01.jpg")" width="230" />
+                            </a>
+                            <div class="owl-featured-detail">
+                                <a class="featured-title" href="page-article.html">Cras justo odio, dapibus ac facilisis in, egestas eget quam. </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="owl-featured-item">
+                            <a class="figure" href="@Url.Action("News", "Home")">
+                                <span><i class="fa fa-plus"></i></span>
+                                <img alt="" src="@Url.Content("~/Content/images/news/01/01.jpg")" width="230" />
+                            </a>
+                            <div class="owl-featured-detail">
+                                <a class="featured-title" href="page-article.html">Cras justo odio, dapibus ac facilisis in, egestas eget quam. </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /FEATURED PRODUCTS -->
+            </div>
+        </section>
+
+        <!-- WORK -->
+        <section class="" id="work">
+            <div class="container">
+                <header class="text-center">
+                    <h1>
+                        <strong style="font-weight: bold;">NHỮNG SẢN PHẨM NỔI BẬT</strong> CỦA CHÚNG TÔI
+                    </h1>
+                    <div class="divider half-margins onepage center"><!-- lines divider --></div>
+                </header>
+
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et.</p>
+
+                <div id="portfolio">
+                    <ul data-option-key="filter" data-sort-id="isotope-list" class="nav nav-pills isotope-filter isotope-filter noborder">
+                        <li class="active" data-option-value="*"><a href="onepage.html#">Tất cả</a></li>
+                        <li data-option-value=".18k" class=""><a href="onepage.html#">Nữ trang 18K</a></li>
+                        <li data-option-value=".24k" class=""><a href="onepage.html#">Nữ trang 24k</a></li>
+                        <li data-option-value=".9999" class=""><a href="onepage.html#">Vàng 9999</a></li>
+                    </ul>
+
+                    <div class="row">
+                        <ul data-sort-id="isotope-list" class="sort-destination isotope fadeIn" style="position: relative; overflow: hidden; height: 698px;">
+                            <li class="sotope-item col-sm-6 col-md-4 18k isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); opacity: 1;">
+                                <!-- item -->
+                                <div class="item-box">
+                                    <figure>
+                                        <a href="@Url.Action("ProductDetail", "Home", "id")" class="item-hover">
+                                            <span class="overlay color2"></span>
+                                            <span class="inner">
+                                                <span class="block fa fa-plus fsize20"></span>
+                                                <strong>Chi Tiết</strong> Sản Phẩm
+                                            </span>
+                                        </a>
+                                        <img width="260" height="260" alt="" src="@Url.Content("~/Content/images/products/18k-01.jpg")" class="img-responsive">
+                                    </figure>
+                                    <div class="item-box-desc">
+                                        <h4>18k-01</h4>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="sotope-item col-sm-6 col-md-4 24k isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(390px, 0px, 0px) scale3d(1, 1, 1); opacity: 1;">
+                                <!-- item 2 -->
+                                <div class="item-box">
+                                    <figure>
+                                        <a href="@Url.Action("ProductDetail", "Home", "id")" class="item-hover">
+                                            <span class="overlay color2"></span>
+                                            <span class="inner">
+                                                <span class="block fa fa-plus fsize20"></span>
+                                                <strong>Chi Tiết</strong> Sản Phẩm
+                                            </span>
+                                        </a>
+                                        <img width="260" height="260" alt="" src="@Url.Content("~/Content/images/products/18k-02.jpg")" class="img-responsive">
+                                    </figure>
+                                    <div class="item-box-desc">
+                                        <h4>24k-02</h4>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="sotope-item col-sm-6 col-md-4 9999 isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(780px, 0px, 0px) scale3d(1, 1, 1); opacity: 1;">
+                                <!-- item 3 -->
+                                <div class="item-box">
+                                    <figure>
+                                        <a href="@Url.Action("ProductDetail", "Home", "id")" class="item-hover">
+                                            <span class="overlay color2"></span>
+                                            <span class="inner">
+                                                <span class="block fa fa-plus fsize20"></span>
+                                                <strong>Chi Tiết</strong> Sản Phẩm
+                                            </span>
+                                        </a>
+                                        <img width="260" height="260" alt="" src="@Url.Content("~/Content/images/products/18k-02.jpg")" class="img-responsive">
+                                    </figure>
+                                    <div class="item-box-desc">
+                                        <h4>9999-01</h4>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="sotope-item col-sm-6 col-md-4 24k isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 349px, 0px) scale3d(1, 1, 1); opacity: 1;">
+                                <!-- item 4 -->
+                                <div class="item-box">
+                                    <figure>
+                                        <a href="@Url.Action("ProductDetail", "Home", "id")" class="item-hover">
+                                            <span class="overlay color2"></span>
+                                            <span class="inner">
+                                                <span class="block fa fa-plus fsize20"></span>
+                                                <strong>Chi Tiết</strong> Sản Phẩm
+                                            </span>
+                                        </a>
+                                        <img width="260" height="260" alt="" src="@Url.Content("~/Content/images/products/18k-01.jpg")" class="img-responsive">
+                                    </figure>
+                                    <div class="item-box-desc">
+                                        <h4>24k-02</h4>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="sotope-item col-sm-6 col-md-4 18k isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(390px, 349px, 0px) scale3d(1, 1, 1); opacity: 1;">
+                                <!-- item 5 -->
+                                <div class="item-box">
+                                    <figure>
+                                        <a href="@Url.Action("ProductDetail", "Home", "id")" class="item-hover">
+                                            <span class="overlay color2"></span>
+                                            <span class="inner">
+                                                <span class="block fa fa-plus fsize20"></span>
+                                                <strong>Chi Tiết</strong> Sản Phẩm
+                                            </span>
+                                        </a>
+                                        <img width="260" height="260" alt="" src="@Url.Content("~/Content/images/products/18k-01.jpg")" class="img-responsive">
+                                    </figure>
+                                    <div class="item-box-desc">
+                                        <h4>18k-02</h4>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="sotope-item col-sm-6 col-md-4 9999 isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(780px, 349px, 0px) scale3d(1, 1, 1); opacity: 1;">
+                                <!-- item 6 -->
+                                <div class="item-box">
+                                    <figure>
+                                        <a href="@Url.Action("ProductDetail", "Home", "id")" class="item-hover">
+                                            <span class="overlay color2"></span>
+                                            <span class="inner">
+                                                <span class="block fa fa-plus fsize20"></span>
+                                                <strong>Chi Tiết</strong> Sản Phẩm
+                                            </span>
+                                        </a>
+                                        <img width="260" height="260" alt="" src="@Url.Content("~/Content/images/products/18k-01.jpg")" class="img-responsive">
+                                    </figure>
+                                    <div class="item-box-desc">
+                                        <h4>9999-02</h4>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- /.masonry-container -->
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
+
+
+        <!-- /CONTENT -->
+        @Html.Partial("_Footer")
+
+        <a href="shop-home-1.html#" id="toTop"></a>
+
+    </div><!-- /#wrapper -->
+
+
+    <a href="#" class="booking" data-toggle="modal" data-target="#BookingModal">
+        <img src="@Url.Content("~/Content/images/booking1.png")" alt="Booking" />
+    </a>
+
+    <div class="dathang_theoyeucau">
+
+        <div class="content_dathang">
+            @Html.Raw(popup.PAGE_COTRACT_CONTENT)
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FILES -->
+
+    <script src="@Url.Content("~/Content/plugins/jquery.isotope.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/masonry.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/magnific-popup/jquery.magnific-popup.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/owl-carousel-latest/owl.carousel.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/knob/js/jquery.knob.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/flexslider/jquery.flexslider-min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/revolution-slider/js/jquery.themepunch.plugins.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/revolution_slider.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.lazyload.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.infinitescroll.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/scripts.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/self-scripts.js")" type="text/javascript"></script>
+
+    <script>
+        $("#topMain li a").click(function () {
+            $('li').removeClass('active');
+            $(this).parent().addClass('active');
+        });
+
+        $("#topMain .dropdown-menu li a").click(function () {
+            $('li').removeClass('active');
+            $(this).parent().parent().parent().addClass('active');
+        });
+    </script>
+</body>
+</html>
