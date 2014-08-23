@@ -26,7 +26,6 @@
     <link href="@Url.Content("~/Content/css/admin")/themes.min.css" rel="stylesheet" type="text/css">
     <link href="@Url.Content("~/Content/css/admin")/admin.css" rel="stylesheet" type="text/css">
     <link href="@Url.Content("~/Content/css/admin")/admin-color.css" rel="stylesheet" type="text/css">
-
     <!--[if lt IE 9]>
         <script src="@Url.Content("~/Scripts/admin/")/ie.min.js"></script>
     <![endif]-->
@@ -115,7 +114,12 @@
     <!-- Pixel Admin's javascripts -->
     <script src="@Url.Content("~/Scripts/admin/")/bootstrap.min.js"></script>
     <script src="@Url.Content("~/Scripts/admin/")/pixel-admin.min.js"></script>
-
+    <script src="@Url.Content("~/Scripts/admin/jQuery.FilterTable")/jquery.filtertable.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('table').filterTable({ label: 'Tìm kiếm', placeholder: 'Từ khóa...' }); // apply filterTable to all tables on this page
+        });
+    </script>
     <script type="text/javascript">
         init.push(function () {
             // Javascript code here
