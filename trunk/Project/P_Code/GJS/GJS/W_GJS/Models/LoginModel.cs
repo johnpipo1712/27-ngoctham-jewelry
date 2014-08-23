@@ -41,7 +41,7 @@ namespace W_GJS.Models
             }
             else
             {
-                USER_found = Db_gsj.S_USER.FirstOrDefault(t => t.USER_NAME == username && t.STATUS == 1);
+                USER_found = Db_gsj.S_USER.FirstOrDefault(t => t.USER_NAME == username && (t.STATUS == 1 || t.STATUS == 4));
                 if (USER_found == null)
                 {
                     jsonModel.RoleOrFailed = 0;
