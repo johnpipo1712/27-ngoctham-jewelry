@@ -1,4 +1,8 @@
-﻿.page-head {
+﻿#about {
+    padding-top: 20px;
+}
+
+.page-head {
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -377,7 +381,7 @@ div.slider {
 
 
 .my-btn {
-    background: -moz-linear-linear-gradient(top , #fe1a00 5%, #ce0100 100%) repeat scroll 0 0 #fe1a00
+    background: -moz-linear-linear-gradient(top , #fe1a00 5%, #ce0100 100%) repeat scroll 0 0 #fe1a00;
     border: 1px solid #d83526;
     border-radius: 0;
     box-shadow: 0 1px 0 0 #f29c93 inset;
