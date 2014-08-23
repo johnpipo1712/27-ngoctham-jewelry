@@ -64,15 +64,23 @@ namespace W_GJS.Controllers
    
         public ActionResult Edit(O_PRICE_GOLD PRICE_GOLD)
         {
+            if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 4)
+            {
+                PRICE_GOLD.GOLD_CODE = "";
+                PRICE_GOLD.GOLD_NAME = "";
+            }
             if (ModelState.IsValid)
             {
                 Db_gsj = new GJSEntities();
                 O_PRICE_GOLD PRICE_GOLD_edit = Db_gsj.O_PRICE_GOLD.Single(t => t.PRICE_GOLD_CD == PRICE_GOLD.PRICE_GOLD_CD);
                 PRICE_GOLD_edit.PRICE_GOLD_CD = PRICE_GOLD.PRICE_GOLD_CD;
+                if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] != 4)
+                {
+                    PRICE_GOLD_edit.GOLD_CODE = PRICE_GOLD.GOLD_CODE;
+                    PRICE_GOLD_edit.GOLD_NAME = PRICE_GOLD.GOLD_NAME;
+                }
                 PRICE_GOLD_edit.PRICE_SALES = PRICE_GOLD.PRICE_SALES;
                 PRICE_GOLD_edit.PRICE_BUY = PRICE_GOLD.PRICE_BUY;
-                PRICE_GOLD_edit.GOLD_CODE = PRICE_GOLD.GOLD_CODE;
-                PRICE_GOLD_edit.GOLD_NAME = PRICE_GOLD.GOLD_NAME;
                 
                 Db_gsj.SaveChanges();
                 return RedirectToAction("Index");

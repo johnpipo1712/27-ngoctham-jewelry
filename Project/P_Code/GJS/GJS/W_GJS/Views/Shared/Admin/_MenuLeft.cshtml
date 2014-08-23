@@ -1,4 +1,14 @@
-﻿
+﻿@if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 4)
+{
+    <ul class="navigation">
+        <li>
+            <a href="@Url.Action("Index", "PriceGold")"><i class="menu-icon fa fa-money"></i><span class="mm-text">Bảng giá vàng</span></a>
+        </li>
+    </ul>
+}
+else if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 1)
+{
+
 <ul class="navigation">
     <li>
         <a href="@Url.Action("Index", "Administrator")"><i class="menu-icon fa fa-dashboard"></i><span class="mm-text">Bảng điều khiển</span></a>
@@ -142,3 +152,5 @@
 @*<div class="menu-content">
     <a href="#" class="btn btn-primary btn-block btn-outline dark">Tạo Hóa Đơn</a>
 </div>*@
+    
+}
