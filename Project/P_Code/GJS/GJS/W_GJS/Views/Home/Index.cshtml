@@ -12,10 +12,13 @@
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
     W_GJS.Models.O_SEO seo = gjs.O_SEO.Single(t => t.CD == 1);
     W_GJS.Models.M_PAGE popup = gjs.M_PAGE.Single(t => t.PAGE_COTRACT_CD == 9);
+    W_GJS.Models.M_PAGE content = gjs.M_PAGE.Single(t => t.PAGE_COTRACT_CD == 11);
     List<W_GJS.Models.O_CATEGORY_PRODUCT> listCategoryProduct = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
 
     List<W_GJS.Models.O_PRODUCT_HIGHLIGHTS> listproduct_hightlights = gjs.O_PRODUCT_HIGHLIGHTS.Where(t => t.O_PRODUCT.ACTIVE == true && t.O_PRODUCT.STATUS == 1).ToList();
     List<W_GJS.Models.O_NEWS_NEW> listNews_NEW = gjs.O_NEWS_NEW.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_HOME_GROUP_PHOTO> listGroup = gjs.O_HOME_GROUP_PHOTO.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_HOME_INTRODUCTION> listIntrodution = gjs.O_HOME_INTRODUCTION.Where(t => t.ACTIVE == true).ToList();
 
 }
 <html>
@@ -101,28 +104,21 @@
         <div class="container">
             <div id="slideWel">
                 <div id="welcome">
-
-                    <div class="welBox">
+                   @foreach (var item in listIntrodution)
+                   {
+                        <div class="welBox">
                         <div class="left">
-                            <p>Trong lĩnh vực nghệ thuật nói chung và nhiếp ảnh nói riêng thì sự tìm tòi càng có ý nghĩa quan trọng. Bởi lẽ nghệ thuật luôn mới mẽ thay dổi theo từng thời khắcvà theo sự thay ðổi của nhân sinh quan. Vâng! Thực tế là như vậy, với Huy nghệ thuật là không có sự hoàn hảo, là không có điểm dừng, nghệ thuật là niềm đam mê sáng tạo, là một phần tô điểm cho cuộc sống ngày càng tốt đẹp.</p>
-                            <h1>Nhiếp ảnh gia Ngọc Huy  <a href="https://www.facebook.com/ngochuystudiosaigon" target="_blank">(facebook.com/studiongochuy)</a></h1>
+                            <p>@Html.Raw(item.O_HOME_INTRODUCTION_CONTENT)</p>
+                            <h1>Người thực hiện  <a href="#" target="_blank">@item.O_HOME_INTRODUCTION_AUTHOR</a></h1>
                         </div><!--end left-->
                         <div class="right">
-                            <li style="background-image:url(http://ngochuyphoto.com/multidata/1-917.jpg);"></li>
+                            <li style='background-image:url("@item.O_HOME_INTRODUCTION_PHOTO");'></li>
                             <label></label>
                         </div><!--end right-->
                     </div><!--end welBox-->
+                   }
+                   
 
-                    <div class="welBox">
-                        <div class="left">
-                            <p>Với những thao tác đơn giản, khách hàng có thể chủ động lựa chọn thời gian đến gặp hoặc tư vấn các dịch vụ. Điều này sẽ giúp các bạn có thể chủ động sắp xếp công việc và lựa chọn thời gian phù hợp cho mình.</p>
-                            <h1>Đặt hẹn trực tuyến  <a href="dat-hen-truc-tuyen.htm">(Tiến hành Đặt hẹn)</a></h1>
-                        </div><!--end left-->
-                        <div class="right">
-                            <li style="background-image:url(http://ngochuyphoto.com/multidata/00-748.jpg);"></li>
-                            <label></label>
-                        </div><!--end right-->
-                    </div><!--end welBox-->
                 </div><!--end welcome-->
                 <div class="pagiWel"></div>
                 <span id="angleWel">angleWel</span>
@@ -152,148 +148,53 @@
             </div><!--end slideWel-->
             <div id="homeAlbumMain">
                 <div id="albumDesc">
-                    <div class="navBox" id="homeAlbumNav"><a href="ngochuyphoto_default_2.html#" class="prev">Prev</a><a href="ngochuyphoto_default_2.html#" class="next">Next</a></div>
+                    <div class="navBox" id="homeAlbumNav"><a href="#" class="prev">Quay về</a><a href="#" class="next">Tiếp theo</a></div>
                     <ul>
-                        <h1><a href="album.htm">ALBUM ẢNH NGỌC HUY THỰC HIỆN.</a></h1>
-                        <p> Với Ngọc Huy nhiếp ảnh là một môn nghệ thuật đòi hỏi người nghệ sỹ phải luôn sáng tạo không ngừng. Và chỉ có niềm đam mê bất tận mới có thể khiến người nghệ sỹ không ngừng nghỉ tìm tòi, học hỏi, nỗ lực và cố gắng.</p>
-                        <li class="listTags">
-                            <a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a><a href='anh-nghe-thuat-sab.htm' title='Ảnh Nghệ Thuật'>Ảnh Nghệ Thuật</a><a href='anh-tap-chi-sab.htm' title='Ảnh Tạp Chí'>Ảnh Tạp Chí</a><a href='anh-cuoi-nghe-sy-sab.htm' title='Ảnh Cưới Nghệ Sỹ'>Ảnh Cưới Nghệ Sỹ</a><a href='trang-diem-sab.htm' title='Trang Điểm'>Trang Điểm</a><a href='ao-cuoi-sab.htm' title='Áo Cưới'>Áo Cưới</a>
-                        </li>
+                        <h1><a href="#">Giới thiệu.</a></h1>
+                        <p>@Html.Raw(content.PAGE_COTRACT_CONTENT)</p>
+                      
                     </ul>
-                    <a href="album.htm" class="viewmore">Xem thêm</a>
+                    
                 </div><!--end albumDesc-->
                 <div id="homeAlbum">
                     <div class="homeAlbum">
+                    @foreach (var item in listGroup)
+                    {
                         <ul>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/album-tinh-yeu-cong-so-01.jpg);' class='first'>
+                      
+                            <li style='background-image:url("@item.PHOTO_URL_1");' class='first'>
                                 <ul>
-                                    <img src='resizemultidata/album-tinh-yeu-cong-so-01.jpg' alt='Album cưới Tình yêu công sở' />
-                                    <h1><a href='album-cuoi-tinh-yeu-cong-so-sab-c1.htm' title='Album cưới Tình yêu công sở'>Album cưới Tình yêu công sở</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                    <img src='@item.PHOTO_URL_1'  />
                                 </ul>
                             </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/12-150.jpg);'>
+                            <li style='background-image: url("@item.PHOTO_URL_2");'>
                                 <ul>
-                                    <img src='resizemultidata/12-150.jpg' alt='Ảnh Cưới Nước' />
-                                    <h1><a href='anh-cuoi-nuoc-sab-c1.htm' title='Ảnh Cưới Nước'>Ảnh Cưới Nước</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                    <img src='@item.PHOTO_URL_2'  />
                                 </ul>
                             </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/11-504.jpg);'>
+                            <li style='background-image: url("@item.PHOTO_URL_3");'>
                                 <ul>
-                                    <img src='resizemultidata/11-504.jpg' alt='Tình yêu của nắng' />
-                                    <h1><a href='tinh-yeu-cua-nang-sab-c1.htm' title='Tình yêu của nắng'>Tình yêu của nắng</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                    <img src='@item.PHOTO_URL_3'  />
                                 </ul>
                             </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/1-947.jpg);'>
+                            <li style='background-image: url("@item.PHOTO_URL_4");'>
                                 <ul>
-                                    <img src='resizemultidata/1-947.jpg' alt='Ảnh Cưới Graffiti' />
-                                    <h1><a href='anh-cuoi-graffiti-sab-c1.htm' title='Ảnh Cưới Graffiti'>Ảnh Cưới Graffiti</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                    <img src='@item.PHOTO_URL_4' />
                                 </ul>
                             </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-sieu-de-thuong-01.jpg);'>
+                            <li style='background-image: url("@item.PHOTO_URL_5");'>
                                 <ul>
-                                    <img src='resizemultidata/anh-cuoi-sieu-de-thuong-01.jpg' alt='Ảnh cưới siêu dễ thương' />
-                                    <h1><a href='anh-cuoi-sieu-de-thuong-sab-c1.htm' title='Ảnh cưới siêu dễ thương'>Ảnh cưới siêu dễ thương</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                    <img src='@item.PHOTO_URL_5' />
                                 </ul>
                             </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-dep-o-resort-00.jpg);'>
+                            <li style='background-image: url("@item.PHOTO_URL_6");'>
                                 <ul>
-                                    <img src='resizemultidata/anh-cuoi-dep-o-resort-00.jpg' alt='Ảnh cưới đẹp ở Resort' />
-                                    <h1><a href='anh-cuoi-dep-o-resort-sab-c1.htm' title='Ảnh cưới đẹp ở Resort'>Ảnh cưới đẹp ở Resort</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                        </ul><ul>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-ngoai-canh-dep-tu-nhien-01.jpg);' class='first'>
-                                <ul>
-                                    <img src='resizemultidata/anh-cuoi-ngoai-canh-dep-tu-nhien-01.jpg' alt='Ảnh cưới ngoại cảnh đẹp tự nhiên' />
-                                    <h1><a href='anh-cuoi-ngoai-canh-dep-tu-nhien-sab-c1.htm' title='Ảnh cưới ngoại cảnh đẹp tự nhiên'>Ảnh cưới ngoại cảnh đẹp tự nhiên</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-phim-truong-orange-01.jpg);'>
-                                <ul>
-                                    <img src='resizemultidata/anh-cuoi-phim-truong-orange-01.jpg' alt='Ảnh cưới phim trường Orange' />
-                                    <h1><a href='anh-cuoi-phim-truong-orange-sab-c1.htm' title='Ảnh cưới phim trường Orange'>Ảnh cưới phim trường Orange</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/album-cuoi-anh-va-em-01.jpg);'>
-                                <ul>
-                                    <img src='resizemultidata/album-cuoi-anh-va-em-01.jpg' alt='Album cưới Anh và Em' />
-                                    <h1><a href='album-cuoi-anh-va-em-sab-c1.htm' title='Album cưới Anh và Em'>Album cưới Anh và Em</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-dep-trong-phim-truong-01-731.jpg);'>
-                                <ul>
-                                    <img src='resizemultidata/anh-cuoi-dep-trong-phim-truong-01-731.jpg' alt='Ảnh cưới đẹp trong phim trường' />
-                                    <h1><a href='anh-cuoi-dep-trong-phim-truong-sab-c1.htm' title='Ảnh cưới đẹp trong phim trường'>Ảnh cưới đẹp trong phim trường</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/album-cuoi-ngay-chung-doi-01.jpg);'>
-                                <ul>
-                                    <img src='resizemultidata/album-cuoi-ngay-chung-doi-01.jpg' alt='Album cưới Ngày chung đôi' />
-                                    <h1><a href='album-cuoi-ngay-chung-doi-sab-c1.htm' title='Album cưới Ngày chung đôi'>Album cưới Ngày chung đôi</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-dep-nhat-2014-01.jpg);'>
-                                <ul>
-                                    <img src='resizemultidata/anh-cuoi-dep-nhat-2014-01.jpg' alt='Ảnh cưới đẹp nhất 2014' />
-                                    <h1><a href='anh-cuoi-dep-nhat-2014-sab-c1.htm' title='Ảnh cưới đẹp nhất 2014'>Ảnh cưới đẹp nhất 2014</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                        </ul><ul>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/album-cuoi-lang-man-ben-bo-ho-01.jpg);' class='first'>
-                                <ul>
-                                    <img src='resizemultidata/album-cuoi-lang-man-ben-bo-ho-01.jpg' alt='Album cưới lãng mạn bên bờ hồ' />
-                                    <h1><a href='album-cuoi-lang-man-ben-bo-ho-sab-c1.htm' title='Album cưới lãng mạn bên bờ hồ'>Album cưới lãng mạn bên bờ hồ</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/chup-anh-cuoi-tren-dong-co-01-112.jpg);'>
-                                <ul>
-                                    <img src='resizemultidata/chup-anh-cuoi-tren-dong-co-01-112.jpg' alt='Chụp ảnh cưới trên đồng cỏ' />
-                                    <h1><a href='chup-anh-cuoi-tren-dong-co-sab-c1.htm' title='Chụp ảnh cưới trên đồng cỏ'>Chụp ảnh cưới trên đồng cỏ</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-dep-co-dien-01.jpg);'>
-                                <ul>
-                                    <img src='resizemultidata/anh-cuoi-dep-co-dien-01.jpg' alt='Ảnh cưới đẹp cổ điển' />
-                                    <h1><a href='anh-cuoi-dep-co-dien-sab-c1.htm' title='Ảnh cưới đẹp cổ điển'>Ảnh cưới đẹp cổ điển</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-voi-ao-dai-trang-01.jpg);'>
-                                <ul>
-                                    <img src='resizemultidata/anh-cuoi-voi-ao-dai-trang-01.jpg' alt='Ảnh cưới với áo dài trắng' />
-                                    <h1><a href='anh-cuoi-voi-ao-dai-trang-sab-c1.htm' title='Ảnh cưới với áo dài trắng'>Ảnh cưới với áo dài trắng</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/album-cuoi-bai-bien-dep-nhu-mo-01.jpg);'>
-                                <ul>
-                                    <img src='resizemultidata/album-cuoi-bai-bien-dep-nhu-mo-01.jpg' alt='Album cưới bãi biển đẹp như mơ' />
-                                    <h1><a href='album-cuoi-bai-bien-dep-nhu-mo-sab-c1.htm' title='Album cưới bãi biển đẹp như mơ'>Album cưới bãi biển đẹp như mơ</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
-                                </ul>
-                            </li>
-                            <li style='background-image:url(http://ngochuyphoto.com/resizemultidata/anh-cuoi-vui-nhon-cung-phan-mau-01.jpg);'>
-                                <ul>
-                                    <img src='resizemultidata/anh-cuoi-vui-nhon-cung-phan-mau-01.jpg' alt='Ảnh cưới vui nhộn cùng phấn màu' />
-                                    <h1><a href='anh-cuoi-vui-nhon-cung-phan-mau-sab-c1.htm' title='Ảnh cưới vui nhộn cùng phấn màu'>Ảnh cưới vui nhộn cùng phấn màu</a></h1>
-                                    <h2><a href='anh-cuoi-ngoai-canh-sab.htm' title='Ảnh Cưới Ngoại Cảnh'>Ảnh Cưới Ngoại Cảnh</a></h2>
+                                    <img src='@item.PHOTO_URL_6' />
                                 </ul>
                             </li>
                         </ul>
+                    }
+                        
                     </div><!--end .homeAlbum-->
                     <div class="clr"></div>
                     <script type="text/javascript">
