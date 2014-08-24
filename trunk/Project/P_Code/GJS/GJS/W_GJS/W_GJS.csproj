@@ -192,6 +192,9 @@
     <Compile Include="Models\O_HOME_INTRODUCTION.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\O_NEWS_HOME.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PagingModel.cs" />
     <Compile Include="Models\NewsHomeModel.cs" />
     <Compile Include="Models\ProductCategoryModel.cs" />

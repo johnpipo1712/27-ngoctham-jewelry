@@ -57,5 +57,6 @@ namespace W_GJS.Models
         public virtual O_CATEGORY_NEWS O_CATEGORY_NEWS { get; set; }
         public virtual ICollection<O_NEWS_HIGHLIGHTS> O_NEWS_HIGHLIGHTS { get; set; }
         public virtual ICollection<O_NEWS_NEW> O_NEWS_NEW { get; set; }
+        public virtual ICollection<O_NEWS_HOME> O_NEWS_HOME { get; set; }
     }
 }
