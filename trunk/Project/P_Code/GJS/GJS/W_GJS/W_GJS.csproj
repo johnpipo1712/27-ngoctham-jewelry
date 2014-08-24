@@ -184,6 +184,7 @@
     <Compile Include="Hubs\MyHub.cs" />
     <Compile Include="Models\CategoryNewsModel.cs" />
     <Compile Include="Models\ContractModel.cs" />
+    <Compile Include="Models\JsonResultContactModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\O_HOME_GROUP_PHOTO.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>

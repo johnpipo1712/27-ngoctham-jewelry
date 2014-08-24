@@ -642,9 +642,19 @@ namespace W_GJS.Controllers
          [HttpPost]
          public ActionResult SendContract(ContractModel contract)
          {
-             Process.ProcessSendMail.SendMail_Contract(contract);
-             Response.Redirect(Request.UrlReferrer.AbsoluteUri);
-             return View();
+             JsonResultContactModel jsonModel = new JsonResultContactModel();
+             jsonModel.HasError = false;
+
+             Db_gsj = new GJSEntities();
+
+             ContractModel.checkValidation(contract, jsonModel, Db_gsj);
+
+             if (!jsonModel.HasError)
+             {
+                 Process.ProcessSendMail.SendMail_Contract(contract);
+                 //Response.Redirect(Request.UrlReferrer.AbsoluteUri);
+             }
+             return Json(jsonModel);
          }
       
     }
