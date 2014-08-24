@@ -217,6 +217,33 @@
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
         </EntityType>
+        <EntityType Name="O_HOME_GROUP_PHOTO">
+          <Key>
+            <PropertyRef Name="HOME_GROUP_PHOTO_CD" />
+          </Key>
+          <Property Name="HOME_GROUP_PHOTO_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PHOTO_URL_1" Type="nvarchar(max)" />
+          <Property Name="PHOTO_URL_2" Type="nvarchar(max)" />
+          <Property Name="PHOTO_URL_3" Type="nvarchar(max)" />
+          <Property Name="PHOTO_URL_4" Type="nvarchar(max)" />
+          <Property Name="PHOTO_URL_5" Type="nvarchar(max)" />
+          <Property Name="PHOTO_URL_6" Type="nvarchar(max)" />
+          <Property Name="STATUS" Type="bigint" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="O_HOME_INTRODUCTION">
+          <Key>
+            <PropertyRef Name="O_HOME_INTRODUCTION_CD" />
+          </Key>
+          <Property Name="O_HOME_INTRODUCTION_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="O_HOME_INTRODUCTION_CONTENT" Type="nvarchar(max)" />
+          <Property Name="O_HOME_INTRODUCTION_AUTHOR" Type="nvarchar(max)" />
+          <Property Name="O_HOME_INTRODUCTION_PHOTO" Type="nvarchar(max)" />
+          <Property Name="STATUS" Type="bigint" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
         <EntityType Name="O_INFORMATION">
           <Key>
             <PropertyRef Name="CD" />
@@ -807,6 +834,8 @@
           <EntitySet Name="O_CATEGORY_PRODUCT_DETAIL" EntityType="Self.O_CATEGORY_PRODUCT_DETAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_CITIES" EntityType="Self.O_CITIES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_CUSTOMER" EntityType="Self.O_CUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_HOME_GROUP_PHOTO" EntityType="Self.O_HOME_GROUP_PHOTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_HOME_INTRODUCTION" EntityType="Self.O_HOME_INTRODUCTION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_INFORMATION" EntityType="Self.O_INFORMATION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_NEWS" EntityType="Self.O_NEWS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_NEWS_HIGHLIGHTS" EntityType="Self.O_NEWS_HIGHLIGHTS" Schema="dbo" store:Type="Tables" />
@@ -1840,6 +1869,8 @@
             <End Role="O_ALBUM" EntitySet="O_ALBUM" />
           </AssociationSet>
           <EntitySet Name="O_BANNER" EntityType="GJSModel.O_BANNER" />
+          <EntitySet Name="O_HOME_GROUP_PHOTO" EntityType="GJSModel.O_HOME_GROUP_PHOTO" />
+          <EntitySet Name="O_HOME_INTRODUCTION" EntityType="GJSModel.O_HOME_INTRODUCTION" />
         </EntityContainer>
         <ComplexType Name="SP_STATISTICS_VISIT_Result">
           <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
@@ -1938,6 +1969,33 @@
           </Key>
           <Property Name="CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="URL_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="O_HOME_GROUP_PHOTO">
+          <Key>
+            <PropertyRef Name="HOME_GROUP_PHOTO_CD" />
+          </Key>
+          <Property Name="HOME_GROUP_PHOTO_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PHOTO_URL_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHOTO_URL_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHOTO_URL_3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHOTO_URL_4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHOTO_URL_5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHOTO_URL_6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="O_HOME_INTRODUCTION">
+          <Key>
+            <PropertyRef Name="O_HOME_INTRODUCTION_CD" />
+          </Key>
+          <Property Name="O_HOME_INTRODUCTION_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="O_HOME_INTRODUCTION_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="O_HOME_INTRODUCTION_AUTHOR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="O_HOME_INTRODUCTION_PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="Int64" />
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
@@ -2441,6 +2499,35 @@
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="URL_IMAGE" ColumnName="URL_IMAGE" />
                 <ScalarProperty Name="CD" ColumnName="CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_HOME_GROUP_PHOTO">
+            <EntityTypeMapping TypeName="GJSModel.O_HOME_GROUP_PHOTO">
+              <MappingFragment StoreEntitySet="O_HOME_GROUP_PHOTO">
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PHOTO_URL_6" ColumnName="PHOTO_URL_6" />
+                <ScalarProperty Name="PHOTO_URL_5" ColumnName="PHOTO_URL_5" />
+                <ScalarProperty Name="PHOTO_URL_4" ColumnName="PHOTO_URL_4" />
+                <ScalarProperty Name="PHOTO_URL_3" ColumnName="PHOTO_URL_3" />
+                <ScalarProperty Name="PHOTO_URL_2" ColumnName="PHOTO_URL_2" />
+                <ScalarProperty Name="PHOTO_URL_1" ColumnName="PHOTO_URL_1" />
+                <ScalarProperty Name="HOME_GROUP_PHOTO_CD" ColumnName="HOME_GROUP_PHOTO_CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_HOME_INTRODUCTION">
+            <EntityTypeMapping TypeName="GJSModel.O_HOME_INTRODUCTION">
+              <MappingFragment StoreEntitySet="O_HOME_INTRODUCTION">
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="O_HOME_INTRODUCTION_PHOTO" ColumnName="O_HOME_INTRODUCTION_PHOTO" />
+                <ScalarProperty Name="O_HOME_INTRODUCTION_AUTHOR" ColumnName="O_HOME_INTRODUCTION_AUTHOR" />
+                <ScalarProperty Name="O_HOME_INTRODUCTION_CONTENT" ColumnName="O_HOME_INTRODUCTION_CONTENT" />
+                <ScalarProperty Name="O_HOME_INTRODUCTION_CD" ColumnName="O_HOME_INTRODUCTION_CD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
