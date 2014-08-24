@@ -1,17 +1,9 @@
-#welcome li {
+#homeAlbumMain li, #serRight li, #homeNews li, #welcome li, .homeAlbum li {
     list-style-type: none;
 }
 
-.homeAlbum li {
-    list-style-type: none;
-}
-
-#homeAlbumMain li {
-    list-style-type: none;
-}
-
-.homeAlbum ul {
-    margin-bottom: 0;
+#serRight ul, .homeAlbum ul, #homeNews ul {
+    margin: 0;
 }
 /*@import "font.css";*/
 /*body {
