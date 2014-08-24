@@ -69,6 +69,8 @@
         <EntityTypeShape EntityType="GJSModel.O_CATEGORY_ALBUM" Width="1.5" PointX="0.75" PointY="1" />
         <AssociationConnector Association="GJSModel.FK_O_ALBUM_O_CATEGORY_ALBUM" />
         <EntityTypeShape EntityType="GJSModel.O_BANNER" Width="1.5" PointX="8.375" PointY="8.75" />
+        <EntityTypeShape EntityType="GJSModel.O_HOME_GROUP_PHOTO" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GJSModel.O_HOME_INTRODUCTION" Width="1.5" PointX="15.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

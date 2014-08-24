@@ -63,6 +63,8 @@ namespace W_GJS.Models
         public virtual DbSet<O_ALBUM> O_ALBUM { get; set; }
         public virtual DbSet<O_CATEGORY_ALBUM> O_CATEGORY_ALBUM { get; set; }
         public virtual DbSet<O_BANNER> O_BANNER { get; set; }
+        public virtual DbSet<O_HOME_GROUP_PHOTO> O_HOME_GROUP_PHOTO { get; set; }
+        public virtual DbSet<O_HOME_INTRODUCTION> O_HOME_INTRODUCTION { get; set; }
     
         public virtual ObjectResult<SP_STATISTICS_VISIT_Result> SP_STATISTICS_VISIT()
         {
