@@ -150,11 +150,11 @@
             <div id="news-home-list"></div>
 <script>
 
-    function loadNews(currentPage) {
+    function loadNews(currentPage, keyword) {
         inProgress = true;
         $("#loadingDiv").show();
 
-        $.post("@Url.Action("NewsHomePaging", "Home")", { "numberOfItemsInPage": 3, "currentPage": currentPage },
+        $.post("@Url.Action("NewsHomePaging", "Home")", { "numberOfItemsInPage": 3, "currentPage": currentPage, "keyword": keyword },
         function (data) {
             $("#news-home-list").html(data);
             $("#loadingDiv").hide();
@@ -162,7 +162,7 @@
         });
     }
 
-    loadNews(1);
+    loadNews(1, "@Model.keyword");
 </script>
         }
         <!-- /article - image -->

@@ -10,6 +10,7 @@ namespace W_GJS.Models
         public List<O_NEWS> ResultList { get; set; }
         public int NumberOfItemFound {  get; set; }
         public bool IsSearching { get; set; }
+        public string keyword { get; set; }
 
     }
 }
