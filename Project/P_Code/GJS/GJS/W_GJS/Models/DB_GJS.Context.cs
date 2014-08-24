@@ -33,7 +33,10 @@ namespace W_GJS.Models
         public virtual DbSet<M_EMPLOYEE> M_EMPLOYEE { get; set; }
         public virtual DbSet<M_PAGE> M_PAGE { get; set; }
         public virtual DbSet<O_ADVERTISEMENT> O_ADVERTISEMENT { get; set; }
+        public virtual DbSet<O_ALBUM> O_ALBUM { get; set; }
+        public virtual DbSet<O_BANNER> O_BANNER { get; set; }
         public virtual DbSet<O_BRANCH> O_BRANCH { get; set; }
+        public virtual DbSet<O_CATEGORY_ALBUM> O_CATEGORY_ALBUM { get; set; }
         public virtual DbSet<O_CATEGORY_GRANULES> O_CATEGORY_GRANULES { get; set; }
         public virtual DbSet<O_CATEGORY_NEWS> O_CATEGORY_NEWS { get; set; }
         public virtual DbSet<O_CATEGORY_PAGE> O_CATEGORY_PAGE { get; set; }
@@ -41,13 +44,16 @@ namespace W_GJS.Models
         public virtual DbSet<O_CATEGORY_PRODUCT_DETAIL> O_CATEGORY_PRODUCT_DETAIL { get; set; }
         public virtual DbSet<O_CITIES> O_CITIES { get; set; }
         public virtual DbSet<O_CUSTOMER> O_CUSTOMER { get; set; }
+        public virtual DbSet<O_HOME_GROUP_PHOTO> O_HOME_GROUP_PHOTO { get; set; }
+        public virtual DbSet<O_HOME_INTRODUCTION> O_HOME_INTRODUCTION { get; set; }
         public virtual DbSet<O_INFORMATION> O_INFORMATION { get; set; }
-        public virtual DbSet<O_NEWS> O_NEWS { get; set; }
         public virtual DbSet<O_NEWS_HIGHLIGHTS> O_NEWS_HIGHLIGHTS { get; set; }
+        public virtual DbSet<O_NEWS_HOME> O_NEWS_HOME { get; set; }
         public virtual DbSet<O_NEWS_NEW> O_NEWS_NEW { get; set; }
         public virtual DbSet<O_ORDER> O_ORDER { get; set; }
         public virtual DbSet<O_PRICE_GOLD> O_PRICE_GOLD { get; set; }
         public virtual DbSet<O_PRODUCT> O_PRODUCT { get; set; }
+        public virtual DbSet<O_PRODUCT_CATALOG> O_PRODUCT_CATALOG { get; set; }
         public virtual DbSet<O_PRODUCT_HIGHLIGHTS> O_PRODUCT_HIGHLIGHTS { get; set; }
         public virtual DbSet<O_PRODUCT_NEW> O_PRODUCT_NEW { get; set; }
         public virtual DbSet<O_PRODUCT_SELLING> O_PRODUCT_SELLING { get; set; }
@@ -59,12 +65,7 @@ namespace W_GJS.Models
         public virtual DbSet<S_STATISTICS_VISIT> S_STATISTICS_VISIT { get; set; }
         public virtual DbSet<S_USER> S_USER { get; set; }
         public virtual DbSet<W_PRODUCT> W_PRODUCT { get; set; }
-        public virtual DbSet<O_PRODUCT_CATALOG> O_PRODUCT_CATALOG { get; set; }
-        public virtual DbSet<O_ALBUM> O_ALBUM { get; set; }
-        public virtual DbSet<O_CATEGORY_ALBUM> O_CATEGORY_ALBUM { get; set; }
-        public virtual DbSet<O_BANNER> O_BANNER { get; set; }
-        public virtual DbSet<O_HOME_GROUP_PHOTO> O_HOME_GROUP_PHOTO { get; set; }
-        public virtual DbSet<O_HOME_INTRODUCTION> O_HOME_INTRODUCTION { get; set; }
+        public virtual DbSet<O_NEWS> O_NEWS { get; set; }
     
         public virtual ObjectResult<SP_STATISTICS_VISIT_Result> SP_STATISTICS_VISIT()
         {

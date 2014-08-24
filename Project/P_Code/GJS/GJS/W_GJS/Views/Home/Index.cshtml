@@ -20,6 +20,8 @@
     List<W_GJS.Models.O_HOME_GROUP_PHOTO> listGroup = gjs.O_HOME_GROUP_PHOTO.Where(t => t.ACTIVE == true).ToList();
     List<W_GJS.Models.O_HOME_INTRODUCTION> listIntrodution = gjs.O_HOME_INTRODUCTION.Where(t => t.ACTIVE == true).ToList();
 
+    List<W_GJS.Models.O_NEWS_HOME> listNews_HOME = gjs.O_NEWS_HOME.Where(t => t.ACTIVE == true).ToList();
+
 }
 <html>
 <!--<![endif]-->
@@ -225,13 +227,15 @@
 
             <div id="homeNewsMain">
                 <div class="titleBox">
-                    <h1><a href="ngochuyphoto_default_2.html#">TIN TỨC & SỰ KIỆN CƯỚI.</a></h1>
+                    <h1><a href="ngochuyphoto_default_2.html#">TIN TỨC & SỰ KIỆN.</a></h1>
                     <div class="navBox" id="homeNewsNav"><a href="ngochuyphoto_default_2.html#" class="prev">Prev</a><a href="ngochuyphoto_default_2.html#" class="next">Next</a></div>
                     <a href="tin-tuc.htm" class="viewmore">Xem tất cả</a>
                     <div class="clr"></div>
                 </div><!--end titleBox-->
                 <div id="homeNews">
                     <ul class="homeNews">
+                        @foreach (var item in listNews_HOME)
+                        {
                         <li class='oneNews'>
                             <ul class='desc'>
                                 <h1><a href='album-cuoi-phong-cach-han-quoc-chup-ngay-tai-studio-snw.htm' title='Album cưới phong cách Hàn Quốc chụp ngay tại Studio'>Album cưới phong cách Hàn Quốc chụp ngay tại Studio</a></h1>
@@ -246,104 +250,7 @@
                                 </span>
                             </ul>
                         </li>
-                        <li class='oneNews'>
-                            <ul class='desc'>
-                                <h1><a href='ghi-dau-khoanh-khac-dep-voi-ngoc-huy-studio-snw.htm' title='Ghi dấu khoảnh khắc đẹp với Ngọc Huy Studio'>Ghi dấu khoảnh khắc đẹp với Ngọc Huy Studio</a></h1>
-                                <p>Ngọc Huy Studio luôn phấn đấu không ngừng trên con đường nghệ thuật, sáng tạo ra những hình ảnh đẹp, đánh dấu một mốc son quan trọng.</p>
-                            </ul>
-                            <ul class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/ghi-dau-khoang-khac-dep-voi-ngoc-huy-studio-01.jpg);'>
-                                <img src='multidata/ghi-dau-khoang-khac-dep-voi-ngoc-huy-studio-01.jpg' width='300' alt='Ghi dấu khoảnh khắc đẹp với Ngọc Huy Studio' />
-                                <span>
-                                    <li><a href='ngoc-huy-studio-tags-snpw.htm'>Ngọc Huy Studio</a>, <a href='ngoc-huy-tags-snpw.htm'>Ngọc Huy</a>, <a href='nhiep-anh-tags-snpw.htm'>nhiếp ảnh</a>, <a href='chup-hinh-cuoi-tags-snpw.htm'>chụp hình cưới</a>, <a href='chup-hinh-cuoi-tags-snpw.htm'>chup hinh cuoi</a>, <a href='chup-hinh-cuoi-sai-gon-tags-snpw.htm'>chup hinh cuoi sai gon</a>, <a href='chup-hinh-cuoi-dep-tags-snpw.htm'>chụp hình cưới đẹp</a></li>
-                                    <a href='ghi-dau-khoanh-khac-dep-voi-ngoc-huy-studio-snw.htm' class='icon view' title='Xem chi tiết'></a>
-                                    <a href='ghi-dau-khoanh-khac-dep-voi-ngoc-huy-studio-spv.htm' class='icon fancybox.ajax zoom' title='Xem nhanh'></a>
-                                </span>
-                            </ul>
-                        </li>
-                        <li class='oneNews'>
-                            <ul class='desc'>
-                                <h1><a href='tong-hop-mau-giay-cuoi-dep-2014-snw.htm' title='Tổng hợp mẫu giày cưới đẹp 2014'>Tổng hợp mẫu giày cưới đẹp 2014</a></h1>
-                                <p>Những tuyệt phẩm giày cưới 2014 dưới đây chắc chẳn sẽ khiến các cô dâu "lặng người" trước vẻ đẹp lãng mạn và chắc hẳn ai cũng muốn sở hữu.</p>
-                            </ul>
-                            <ul class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/tong-hop-mau-giay-cuoi-dep-2014-01.jpg);'>
-                                <img src='multidata/tong-hop-mau-giay-cuoi-dep-2014-01.jpg' width='300' alt='Tổng hợp mẫu giày cưới đẹp 2014' />
-                                <span>
-                                    <li><a href='giay-cuoi-2014-tags-snpw.htm'>giày cưới 2014</a>, <a href='giay-cuoi-dep-2014-tags-snpw.htm'>giày cưới đẹp 2014</a>, <a href='giay-cuoi-2014-tags-snpw.htm'>giay cuoi 2014</a>, <a href='giay-co-dau-tags-snpw.htm'>giày cô dâu</a>, <a href='giay-dep-tags-snpw.htm'>giày đẹp</a></li>
-                                    <a href='tong-hop-mau-giay-cuoi-dep-2014-snw.htm' class='icon view' title='Xem chi tiết'></a>
-                                    <a href='tong-hop-mau-giay-cuoi-dep-2014-spv.htm' class='icon fancybox.ajax zoom' title='Xem nhanh'></a>
-                                </span>
-                            </ul>
-                        </li>
-                        <li class='oneNews'>
-                            <ul class='desc'>
-                                <h1><a href='luu-y-de-co-bo-anh-cuoi-bien-dep-tu-nhien-snw.htm' title='Lưu ý để có bộ ảnh cưới biển đẹp tự nhiên'>Lưu ý để có bộ ảnh cưới biển đẹp tự nhiên</a></h1>
-                                <p>Để bộ ảnh cưới ở biển đẹp tự nhiên, cô dâu chú rể nên lưu ý chọn thời điểm và trang phục phù hợp. </p>
-                            </ul>
-                            <ul class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/luu-y-de-co-bo-anh-cuoi-bien-dep-tu-nhien-00.jpg);'>
-                                <img src='multidata/luu-y-de-co-bo-anh-cuoi-bien-dep-tu-nhien-00.jpg' width='300' alt='Lưu ý để có bộ ảnh cưới biển đẹp tự nhiên' />
-                                <span>
-                                    <li><a href='anh-cuoi-bien-tags-snpw.htm'>ảnh cưới biển</a>, <a href='anh-cuoi-bien-tags-snpw.htm'>anh cuoi bien</a>, <a href='anh-cuoi-bien-dep-tags-snpw.htm'>ảnh cưới biển đẹp</a>, <a href='chup-anh-cuoi-o-bien-tags-snpw.htm'>chụp ảnh cưới ở biển</a>, <a href='anh-cuoi-dep-tu-nhien-tags-snpw.htm'>ảnh cưới đẹp tự nhiên</a>, <a href='chup-hinh-cuoi-bien-tags-snpw.htm'>chụp hình cưới biển</a></li>
-                                    <a href='luu-y-de-co-bo-anh-cuoi-bien-dep-tu-nhien-snw.htm' class='icon view' title='Xem chi tiết'></a>
-                                    <a href='luu-y-de-co-bo-anh-cuoi-bien-dep-tu-nhien-spv.htm' class='icon fancybox.ajax zoom' title='Xem nhanh'></a>
-                                </span>
-                            </ul>
-                        </li>
-                        <li class='oneNews'>
-                            <ul class='desc'>
-                                <h1><a href='top-10-miss-ngoi-sao-thanh-nhan-lung-linh-trong-bo-anh-cuoi-snw.htm' title='Top 10 Miss Ngôi Sao Thanh Nhàn lung linh trong bộ ảnh cưới'>Top 10 Miss Ngôi Sao Thanh Nhàn lung linh trong bộ ảnh cưới</a></h1>
-                                <p>Rạng rỡ trong ngày vui, cô dâu xinh xắn với những chiếc váy trắng nhẹ nhàng tươi tắn bên cạnh chú rể chỉnh chu và thanh lịch.</p>
-                            </ul>
-                            <ul class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/top-10-miss-ngoi-sao-lung-linh-trong-bo-anh-cuoi-01.jpg);'>
-                                <img src='multidata/top-10-miss-ngoi-sao-lung-linh-trong-bo-anh-cuoi-01.jpg' width='300' alt='Top 10 Miss Ngôi Sao Thanh Nhàn lung linh trong bộ ảnh cưới' />
-                                <span>
-                                    <li><a href='top-10-miss-ngoi-sao-tags-snpw.htm'>top 10 Miss Ngôi Sao</a>, <a href='thanh-nhan-tags-snpw.htm'>Thanh Nhàn</a>, <a href='miss-ngoi-sao-tags-snpw.htm'>Miss Ngôi Sao</a>, <a href='bo-anh-cuoi-tags-snpw.htm'>bộ ảnh cưới</a>, <a href='anh-cuoi-dep-tags-snpw.htm'>ảnh cưới đẹp</a>, <a href='ngoc-huy-studio-tags-snpw.htm'>Ngọc Huy Studio</a></li>
-                                    <a href='top-10-miss-ngoi-sao-thanh-nhan-lung-linh-trong-bo-anh-cuoi-snw.htm' class='icon view' title='Xem chi tiết'></a>
-                                    <a href='top-10-miss-ngoi-sao-thanh-nhan-lung-linh-trong-bo-anh-cuoi-spv.htm' class='icon fancybox.ajax zoom' title='Xem nhanh'></a>
-                                </span>
-                            </ul>
-                        </li>
-                        <li class='oneNews'>
-                            <ul class='desc'>
-                                <h1><a href='huong-dan-cach-bo-hoa-cuoi-tu-nhien-snw.htm' title='Hướng dẫn cách bó hoa cưới tự nhiên'>Hướng dẫn cách bó hoa cưới tự nhiên</a></h1>
-                                <p>Thay vì tìm đến dịch vụ cung cấp hoa cưới chuyên nghiệp thì cô dâu hoàn toàn có thể tự mình bó hoa cầm tay cho chính bản thân một cách đơn giản nhé.</p>
-                            </ul>
-                            <ul class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/huong-dan-cach-bo-hoa-cuoi-tu-nhien-01.jpg);'>
-                                <img src='multidata/huong-dan-cach-bo-hoa-cuoi-tu-nhien-01.jpg' width='300' alt='Hướng dẫn cách bó hoa cưới tự nhiên' />
-                                <span>
-                                    <li><a href='tu-bo-hoa-cuoi-tags-snpw.htm'>tự bó hoa cưới</a>, <a href='tu-bo-hoa-cuoi-tags-snpw.htm'>tu bo hoa cuoi</a>, <a href='tu-lam-hoa-cuoi-tags-snpw.htm'>tự làm hoa cưới</a>, <a href='huong-dan-bo-hoa-cuoi-tags-snpw.htm'>hướng dẫn bó hoa cưới</a>, <a href='hoa-cuoi-tu-nhien-tags-snpw.htm'>hoa cưới tự nhiên</a>, <a href='hoa-cuoi-2014-tags-snpw.htm'>hoa cưới 2014</a>, <a href='bo-hoa-cuoi-tu-nhien-tags-snpw.htm'>bo hoa cuoi tu nhien</a>, <a href='cach-bo-hoa-cuoi-tags-snpw.htm'>cách bó hoa cưới</a></li>
-                                    <a href='huong-dan-cach-bo-hoa-cuoi-tu-nhien-snw.htm' class='icon view' title='Xem chi tiết'></a>
-                                    <a href='huong-dan-cach-bo-hoa-cuoi-tu-nhien-spv.htm' class='icon fancybox.ajax zoom' title='Xem nhanh'></a>
-                                </span>
-                            </ul>
-                        </li>
-                        <li class='oneNews'>
-                            <ul class='desc'>
-                                <h1><a href='bi-quyet-mac-ao-cuoi-ho-lung-dep-snw.htm' title='Bí quyết mặc áo cưới hở lưng đẹp'>Bí quyết mặc áo cưới hở lưng đẹp</a></h1>
-                                <p>Với dáng áo cưới hở lưng, cô dâu nên tránh để tóc xõa tự nhiên, che đi các nét đẹp của cơ thể cũng như điểm nhấn độc đáo của chiếc váy.</p>
-                            </ul>
-                            <ul class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/bi-quyet-mac-ao-cuoi-ho-lung-dep-01.jpg);'>
-                                <img src='multidata/bi-quyet-mac-ao-cuoi-ho-lung-dep-01.jpg' width='300' alt='Bí quyết mặc áo cưới hở lưng đẹp' />
-                                <span>
-                                    <li><a href='ao-cuoi-ho-lung-tags-snpw.htm'>áo cưới hở lưng</a>, <a href='ao-cuoi-ho-lung-tags-snpw.htm'>ao cuoi ho lung</a>, <a href='mac-ao-cuoi-ho-lung-dep-tags-snpw.htm'>mặc áo cưới hở lưng đẹp</a>, <a href='bi-quyet-mac-ao-cuoi-dep-tags-snpw.htm'>bí quyết mặc áo cưới đẹp</a>, <a href='ao-cuoi-khoe-lung-tags-snpw.htm'>áo cưới khoe lưng</a>, <a href='ao-cuoi-goi-cam-tags-snpw.htm'>áo cưới gợi cảm</a>, <a href='ao-cuoi-dep-tags-snpw.htm'>áo cưới đẹp</a>, <a href='ao-cuoi-dep-tags-snpw.htm'>ao cuoi dep</a></li>
-                                    <a href='bi-quyet-mac-ao-cuoi-ho-lung-dep-snw.htm' class='icon view' title='Xem chi tiết'></a>
-                                    <a href='bi-quyet-mac-ao-cuoi-ho-lung-dep-spv.htm' class='icon fancybox.ajax zoom' title='Xem nhanh'></a>
-                                </span>
-                            </ul>
-                        </li>
-                        <li class='oneNews'>
-                            <ul class='desc'>
-                                <h1><a href='mua-cuoi-2014-ao-cuoi-vai-ngang-len-ngoi-snw.htm' title='Mùa cưới 2014 - Áo cưới vai ngang lên ngôi'>Mùa cưới 2014 - Áo cưới vai ngang lên ngôi</a></h1>
-                                <p>Áo cưới vai ngang luôn là một trong những kiểu dáng được đông đảo các cô dâu yêu thích bởi nét đẹp nửa kín nửa hở đầy gợi cảm của nó.</p>
-                            </ul>
-                            <ul class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/mua-cuoi-2014-ao-cuoi-vai-ngang-len-ngoi-01.jpg);'>
-                                <img src='multidata/mua-cuoi-2014-ao-cuoi-vai-ngang-len-ngoi-01.jpg' width='300' alt='Mùa cưới 2014 - Áo cưới vai ngang lên ngôi' />
-                                <span>
-                                    <li><a href='ao-cuoi-vai-ngang-tags-snpw.htm'>áo cưới vai ngang</a>, <a href='ao-cuoi-vai-ngang-tags-snpw.htm'>ao cuoi vai ngang</a>, <a href='ao-cuoi-tre-vai-tags-snpw.htm'>áo cưới trễ vai</a>, <a href='ao-cuoi-tre-vai-tags-snpw.htm'>ao cuoi tre vai</a>, <a href='ao-cuoi-dep-2014-tags-snpw.htm'>áo cưới đẹp 2014</a>, <a href='xu-huong-ao-cuoi-tags-snpw.htm'>xu hướng áo cưới</a>, <a href='ao-cuoi-dep-tags-snpw.htm'>ao cuoi dep</a></li>
-                                    <a href='mua-cuoi-2014-ao-cuoi-vai-ngang-len-ngoi-snw.htm' class='icon view' title='Xem chi tiết'></a>
-                                    <a href='mua-cuoi-2014-ao-cuoi-vai-ngang-len-ngoi-spv.htm' class='icon fancybox.ajax zoom' title='Xem nhanh'></a>
-                                </span>
-                            </ul>
-                        </li>
+                        }
                     </ul><!--end .homeNews-->
                 </div><!--end homeNews-->
                 <div class="clr"></div>
