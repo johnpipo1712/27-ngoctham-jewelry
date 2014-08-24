@@ -1,6 +1,8 @@
 ﻿@{
     ViewBag.Title = "Chat";
     Layout = null;
+    W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
+    W_GJS.Models.O_SEO seo = gjs.O_SEO.Single(t => t.CD == 1);
 }
 
 <!DOCTYPE html>
@@ -11,9 +13,9 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
-    <meta name="keywords" content="seo.META_KEYWORDS" />
-    <meta name="description" content="seo.META_DES" />
+    <title>@seo.Title</title>
+    <meta name="keywords" content="@seo.META_KEYWORDS" />
+    <meta name="description" content="@seo.META_DES" />
     <!-- mobile settings -->
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
@@ -57,6 +59,12 @@
 </head>
 <body>
     <div class="container">
+       
+        <input type="hidden" value="" id="displayname" />
+
+        <div style="height: 350px; overflow-y: scroll;" class="row">
+            <ul id="discussion"></ul>
+        </div>
         <div class="row well">
             <div class="col-md-11">
                 <input type="text" id="message" class="form-control" />
@@ -64,10 +72,6 @@
             <div class="col-md-1">
                 <input type="button" id="sendmessage" value="Gửi" class="btn btn-primary" />
             </div>
-        </div>
-        <input type="hidden" value="" id="displayname" />
-        <div class="row">
-            <ul id="discussion"></ul>
         </div>
     </div>
     <div class="modal fade" id="PopupModalChat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
