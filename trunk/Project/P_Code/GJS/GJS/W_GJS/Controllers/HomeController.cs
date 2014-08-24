@@ -112,12 +112,28 @@ namespace W_GJS.Controllers
             return PartialView(model);
         }
         [HttpPost]
-        public ActionResult NewsHomePaging(long numberOfItemsInPage, long currentPage)
+        public ActionResult NewsHomePaging(long numberOfItemsInPage, long currentPage, string keyword)
         {
             Db_gsj = new GJSEntities();
             NewsHomeModel model = new NewsHomeModel();
-            List<W_GJS.Models.O_NEWS> newsList = Db_gsj.O_NEWS.Where(t => t.ACTIVE == true).ToList();
-
+            List<W_GJS.Models.O_NEWS> newsList = null;
+            if (String.IsNullOrEmpty(keyword))
+            {
+                newsList = Db_gsj.O_NEWS.Where(t => t.ACTIVE == true).ToList();
+            }
+            else
+	        {
+                newsList = Db_gsj.O_NEWS.Where(t => t.ACTIVE == true && (
+                        t.IMAGE_NEWS.Contains(keyword)
+                        || t.NEW_DESCRIPTIONS.Contains(keyword)
+                        || t.NEWS_CONTENT.Contains(keyword)
+                        || t.NEWS_TITLE.Contains(keyword)
+                        || t.SOURCE_COPY.Contains(keyword)
+                        || t.TAG_ALT.Contains(keyword)
+                        || t.M_EMPLOYEE.EMPLOYEE_NAME.Contains(keyword)
+                        || t.O_CATEGORY_NEWS.CATEGORY_NEWS_CODE.Contains(keyword)
+                        || t.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME.Contains(keyword))).ToList();
+	        }
             model.TotalItems = newsList.Count;
             model.CurrentPage = currentPage;
             model.TotalPages = newsList.Count / numberOfItemsInPage;
@@ -307,6 +323,7 @@ namespace W_GJS.Controllers
             resultModel.ResultList = list;
             resultModel.IsSearching = true;
             resultModel.NumberOfItemFound = list.Count;
+            resultModel.keyword = keyword;
             return View("News", resultModel);
         }
 
