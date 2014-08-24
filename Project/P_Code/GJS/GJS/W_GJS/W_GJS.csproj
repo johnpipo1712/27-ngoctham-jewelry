@@ -181,6 +181,7 @@
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Hubs\MyHub.cs" />
     <Compile Include="Models\CategoryNewsModel.cs" />
+    <Compile Include="Models\ContractModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\PagingModel.cs" />
     <Compile Include="Models\NewsHomeModel.cs" />
