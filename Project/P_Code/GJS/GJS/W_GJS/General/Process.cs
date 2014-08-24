@@ -19,17 +19,17 @@ namespace W_GJS.General
                 string str = "<html>"
                            + "Xin chào,Chúng tôi xin gửi thông tin đơn đặt hàng theo yêu cầu từ khách hàng như sau :"
 
-                           + "<P>Tên người gửi  là : " + contract.Name + "</P></br>"
+                           + "<P>Tên người gửi : " + contract.Name + "</P></br>"
 
-                           + "<P>Tên công ty là : " + contract.Company + "</P></br>"
+                           + "<P>Tên công ty : " + contract.Company + "</P></br>"
 
-                           + "<P>Địa chỉ là : " + contract.Address + "</P></br>"
+                           + "<P>Địa chỉ : " + contract.Address + "</P></br>"
 
-                           + "<P>Số điện thoại là : " + contract.Phone + "</P></br>"
+                           + "<P>Số điện thoại : " + contract.Phone + "</P></br>"
 
-                           + "<P>Email là : " + contract.Email + "</P></br>"
+                           + "<P>Email : " + contract.Email + "</P></br>"
 
-                           + "<P>Nội dung đặt hàng là : " + contract.Note + "</P></br>"
+                           + "<P>Nội dung đặt hàng : " + contract.Note + "</P></br>"
 
                            + "</html>";
 

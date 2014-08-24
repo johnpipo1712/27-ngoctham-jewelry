@@ -1,4 +1,5 @@
-﻿<!-- ATTENTION -->
+﻿
+<!-- ATTENTION -->
 <!-- This page is used for default modals that will be included in every page only -->
 <!-- modal Login -->
 <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -140,7 +141,6 @@
                                     <option value="0" selected="" disabled="">Giới tính</option>
                                     <option value="1">Nam</option>
                                     <option value="2">Nữ</option>
-                                    <option value="3">Khác</option>
                                 </select>
                                 <i></i>
                             </label>
@@ -187,6 +187,26 @@
     </div>
 </div>
 
+
+<!-- modal Contact Successfully -->
+<div class="modal fade" id="contactSuccesfully" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 800px; height:600px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: none; border-bottom: none;">
+                <!-- modal header -->
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div><!-- /modal header -->
+            <!-- modal body -->
+            <div class="modal-body">
+                <h2 class="owl-fade-out"><strong>Email của bạn đã được gửi.</strong></h2>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 <!-- modal Popup -->
 @{ 
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
@@ -209,7 +229,7 @@
     </div>
 </div>
 
-<!-- modal Đặt hàng theo yêu cầu -->
+<!-- modal Liện Hệ -->
 <div class="modal fade" id="BookingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -217,11 +237,11 @@
             <div class="modal-header">
                 <!-- modal header -->
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Đặt Hàng Theo Yêu Cầu</h4>
+                <h4 class="modal-title" id="myModalLabel">Liên Hệ</h4>
             </div><!-- /modal header -->
 
 
-            @using (Html.BeginForm("SendContract","Home",FormMethod.Post))
+            @using (Html.BeginForm("SendContract", "Home", FormMethod.Post, new { id = "form-contact" }))
             {
                 <!-- modal body -->
                 <div class="modal-body">
@@ -255,9 +275,17 @@
                             <span class="field-validation-valid" data-valmsg-for="Note" data-valmsg-replace="true"></span>
 
                         </div>
+                        <div class="form-group">
+                            <div id="error-contact" class="row"> </div>
+                            <span class="field-validation-valid" data-valmsg-for="Note" data-valmsg-replace="true"></span>
+
+                        </div>
                     </div>
                     <div class="row text-center" style="border-bottom: 2px solid #ddd; padding-bottom: 20px; margin-bottom: 20px;">
-                        <button type="submit" class="btn btn-primary">Gửi</button>
+                        <span id="loadingDivContact" style="display: none;">
+                            <img alt="Loading" src="@Url.Content("~/Content/Images/ajax-loader.gif")" />
+                        </span>
+                        <button type="button" data-action="@Url.Action("SendContract", "Home")" id="contact-button" class="btn btn-primary">Gửi</button>
                     </div>
                     <div class="row">
                         <div class="col-xs-4">

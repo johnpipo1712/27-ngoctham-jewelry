@@ -46,6 +46,29 @@ $( "#register-button" ).click(function() {
     }
 });
 
+// CONTACT
+inProgressContact = false;
+$("#contact-button").click(function () {
+    if (!inProgressContact) {
+        inProgressContact = true;
+        $("#loadingDivContact").show();
+        $("#error-contact").hide();
+        $.post($(this).data("action"), $('#form-contact').serialize(),
+            function (data) {
+                if (data.HasError) {
+                    $("#error-contact").html(data.ErrorString);
+                    $("#loadingDivContact").hide();
+                    inProgressContact = false;
+                    $("#error-contact").show();
+
+                } else {
+                    $("#loadingDivContact").hide();
+                    $("#BookingModal").modal('hide');
+                    $("#ContactSuccesfully").modal('show');
+                }
+            });
+    }
+});
 
 
 // LOGOUT

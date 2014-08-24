@@ -337,11 +337,15 @@ div.slider {
     content: " lượt";
 }
 
-#error-login, #error-register {
+#error-login, #error-register, #error-contact {
     color: red;
 }
 
-#loadingDivLogin img, #loadingDivRegister img {
+#error-contact {
+    margin-left: 1em;
+}
+
+#loadingDivLogin img, #loadingDivRegister img, #loadingDivContact img {
     width: 30px;
     height: 30px;
 }
