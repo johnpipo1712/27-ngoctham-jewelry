@@ -67,26 +67,28 @@
                                 currentAction == "AboutLicense")
                         {
                             <li class="dropdown active">
-                                <a class="dropdown-toggle" href="#">GIỚI THIỆU <span>about us</span></a>
+                                <a href="@Url.Action("AboutCompany", "Home")">GIỚI THIỆU <span>about us</span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="@Url.Action("AboutCompany", "Home")"><i class="fa fa-chevron-right"></i> Giới thiệu công ty</a></li>
                                     <li><a href="@Url.Action("AboutVision", "Home")"><i class="fa fa-chevron-right"></i> Tầm nhìn & Sứ mệnh</a></li>
                                     <li><a href="@Url.Action("AboutDevelopment", "Home")"><i class="fa fa-chevron-right"></i> Quá trình phát triển</a></li>
                                     <li><a href="@Url.Action("AboutAchievements", "Home")"><i class="fa fa-chevron-right"></i> Thành tựu</a></li>
                                     <li><a href="@Url.Action("AboutLicense", "Home")"><i class="fa fa-chevron-right"></i> Công ty TNHH Ngọc Thẫm</a></li>
+                                    <li><a href="@Url.Action("Recruitment", "Home")"><i class="fa fa-chevron-right"></i> Tuyển dụng</a></li>
                                 </ul>
                             </li>
                         }
                         else
                         {
                             <li class="dropdown">
-                                <a class="dropdown-toggle" href="#">GIỚI THIỆU <span>about us</span></a>
+                                <a href="@Url.Action("AboutCompany", "Home")">GIỚI THIỆU <span>about us</span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="@Url.Action("AboutCompany", "Home")"><i class="fa fa-chevron-right"></i> Giới thiệu công ty</a></li>
                                     <li><a href="@Url.Action("AboutVision", "Home")"><i class="fa fa-chevron-right"></i> Tầm nhìn & Sứ mệnh</a></li>
                                     <li><a href="@Url.Action("AboutDevelopment", "Home")"><i class="fa fa-chevron-right"></i> Quá trình phát triển</a></li>
                                     <li><a href="@Url.Action("AboutAchievements", "Home")"><i class="fa fa-chevron-right"></i> Thành tựu</a></li>
                                     <li><a href="@Url.Action("AboutLicense", "Home")"><i class="fa fa-chevron-right"></i> Công ty TNHH Ngọc Thẫm</a></li>
+                                    <li><a href="@Url.Action("Recruitment", "Home")"><i class="fa fa-chevron-right"></i> Tuyển dụng</a></li>
                                 </ul>
                             </li>
                         }

@@ -331,6 +331,13 @@ namespace W_GJS.Controllers
             return View();
         }
 
+        public ActionResult Recruitment()
+        {
+            ViewBag.Message = "Tuyển dụng.";
+
+            return View();
+        }
+
         public ActionResult AboutCompany()
         {
             ViewBag.Message = "Giới thiệu công ty.";
