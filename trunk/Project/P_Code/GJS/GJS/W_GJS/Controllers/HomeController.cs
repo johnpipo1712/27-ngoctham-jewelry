@@ -638,6 +638,14 @@ namespace W_GJS.Controllers
              ViewBag.Name = Db_gsj.O_CATEGORY_ALBUM.Single(t => t.CATEGORY_ALBUM_CD == CATEGORY_ALBUM_CD).CATEGORY_ALBUM_NAME;
              return View(Db_gsj.O_ALBUM.Where(t => t.CATEGORY_ALBUM_CD == CATEGORY_ALBUM_CD).ToList());
          }
+
+         [HttpPost]
+         public ActionResult SendContract(ContractModel contract)
+         {
+             Process.ProcessSendMail.SendMail_Contract(contract);
+             Response.Redirect(Request.UrlReferrer.AbsoluteUri);
+             return View();
+         }
       
     }
 }
