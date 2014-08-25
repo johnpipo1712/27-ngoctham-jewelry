@@ -1,4 +1,9 @@
-﻿#about {
+﻿.owl-item img {
+    width: 100%;
+    height: 600px;
+}
+
+#about {
     padding-top: 20px;
 }
 
@@ -191,7 +196,7 @@
     }
 
 .slider .owl-item {
-    padding-top: 100px;
+    padding-top: 0;
 }
 
 div.slider {

@@ -2,8 +2,14 @@
     list-style-type: none;
 }
 
+.homeNews {
+    padding: 0;
+    margin: 0;
+}
+
 #serRight ul, .homeAlbum ul, #homeNews ul {
     margin: 0;
+    padding: 0;
 }
 
 /*@import "font.css";*/
@@ -570,7 +576,7 @@ img { border: none;}
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 52%;
+	width: 50%;
 	height: 250px;
 	z-index: 20;
 	background: #444;
