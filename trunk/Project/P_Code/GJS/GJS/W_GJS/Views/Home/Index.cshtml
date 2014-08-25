@@ -20,7 +20,6 @@
     List<W_GJS.Models.O_HOME_GROUP_PHOTO> listGroup = gjs.O_HOME_GROUP_PHOTO.Where(t => t.ACTIVE == true).ToList();
     List<W_GJS.Models.O_HOME_INTRODUCTION> listIntrodution = gjs.O_HOME_INTRODUCTION.Where(t => t.ACTIVE == true).ToList();
 
-    List<W_GJS.Models.O_NEWS_HOME> listNews_HOME = gjs.O_NEWS_HOME.Where(t => t.ACTIVE == true).ToList();
     List<W_GJS.Models.O_HOME_SERVICE_DETAIL> listService_DETAIL = gjs.O_HOME_SERVICE_DETAIL.Where(t => t.ACTIVE == true).ToList();
     W_GJS.Models.O_HOME_SERVICE homeService = gjs.O_HOME_SERVICE.Single(t => t.ACTIVE == true && t.O_HOME_SERVICE_CD == 1);
 }
@@ -235,7 +234,7 @@
                 </div><!--end titleBox-->
                 <div id="homeNews">
                     <ul class="homeNews">
-                        @foreach (var item in listNews_HOME)
+                        @foreach (var item in listNews_NEW)
                         {
                         <li class='oneNews'>
                             <ul class='desc'>
@@ -284,7 +283,7 @@
                 </script>
             </div><!--end homeNewsMain-->
 
-            <div id="homeSer">
+            @*<div id="homeSer">
                 <div id="serLeft">
                     <div class="navBox" id="serRightNav"><a href="ngochuyphoto_default_2.html#" class="prev">Prev</a><a href="ngochuyphoto_default_2.html#" class="next">Next</a></div>
                     <a href="#" class="thumb" style="background-image:url(@homeService.O_HOME_SERVICE_PHOTO);"><img src="@homeService.O_HOME_SERVICE_PHOTO" width="300" alt="" /><span></span></a>
@@ -356,7 +355,7 @@
                     <div class="clr"></div>
                 </div><!--end serRight-->
                 <div class="clr"></div>
-            </div><!--end homeSer-->
+            </div><!--end homeSer-->*@
             <div class="clr"></div>
         </div><!--end content-->
         <!-- /CONTENT -->
