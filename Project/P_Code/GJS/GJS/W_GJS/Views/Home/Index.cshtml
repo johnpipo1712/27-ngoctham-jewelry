@@ -239,20 +239,18 @@
                         <li class='oneNews'>
                             <ul class='desc'>
                                 <li>
-                                    <h1><a href='@(Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD }))' title='@(item.O_NEWS.NEWS_TITLE)'></a></h1>
+                                    <h1><a href='@(Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD }))' title='@(item.O_NEWS.NEWS_TITLE)'>@(item.O_NEWS.NEWS_TITLE)</a></h1>
                                     <p>@(item.O_NEWS.NEW_DESCRIPTIONS)</p>
                                 </li>
                             </ul>
-                            <ul class='thumb' style='background-image:url(@(item.O_NEWS.IMAGE_NEWS));'>
-
-
-                                <div style="width:300px; height:300px">
+                            <ul class='thumb' @*style='background-image:url(@(item.O_NEWS.IMAGE_NEWS));'*@>
+                                <img src='@(item.O_NEWS.IMAGE_NEWS)' width="300" />
                                     <span>
                                         <li><a href='@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.O_NEWS.O_CATEGORY_NEWS.CATEGORY_NEWS_CD})'>@item.O_NEWS.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME</a></li>
                                         <a href='@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })' class='icon view' title='Xem chi tiết'></a>
                                         <a href='@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })' class='icon fancybox.ajax zoom' title='Xem nhanh'></a>
                                     </span>
-                                </div>
+
                             </ul>
                         </li>
                         }
