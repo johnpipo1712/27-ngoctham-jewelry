@@ -1038,8 +1038,11 @@
     <Content Include="Content\nh\images\fancybox\jquery.fancybox.css" />
     <Content Include="Content\nh\images\fancybox\jquery.fancybox.js" />
     <Content Include="Content\nh\images\fb-share.png" />
+    <Content Include="Content\nh\images\icon-folder.png" />
     <Content Include="Content\nh\images\navBox-next.png" />
     <Content Include="Content\nh\images\navBox-prev.png" />
+    <Content Include="Content\nh\images\news-view.png" />
+    <Content Include="Content\nh\images\news-zoom.png" />
     <Content Include="Content\nh\images\pinext.png" />
     <Content Include="Content\nh\images\wel-h1.png" />
     <Content Include="Content\nh\js\addthis_widget.js" />
