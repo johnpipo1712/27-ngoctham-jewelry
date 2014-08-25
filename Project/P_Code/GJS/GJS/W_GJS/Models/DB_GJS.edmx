@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="D_CITIES_DETAIL">
           <Key>
             <PropertyRef Name="CITIES_DETAIL_CD" />
@@ -862,6 +862,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Report_Order" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_STATISTICS_VISIT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="GJSModelStoreContainer">
           <EntitySet Name="D_CITIES_DETAIL" EntityType="Self.D_CITIES_DETAIL" Schema="dbo" store:Type="Tables" />
@@ -1185,6 +1186,7 @@
             <End Role="S_USER" EntitySet="S_USER" />
             <End Role="O_USER_PST" EntitySet="O_USER_PST" />
           </AssociationSet>
+          <FunctionImport Name="Report_Order" ReturnType="Collection(GJSModel.Report_Order_Result)" />
           </EntityContainer>
         <ComplexType Name="SP_STATISTICS_VISIT_Result">
           <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
@@ -2110,6 +2112,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="Report_Order_Result">
+          <Property Type="String" Name="ORDER_CODE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CUSTOMER_NAME" Nullable="true" />
+          <Property Type="String" Name="PRODUCT_CODE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRODUCT_NAME" Nullable="true" />
+          <Property Type="String" Name="URL_IMAGE" Nullable="true" />
+          <Property Type="String" Name="PHONE" Nullable="true" />
+          <Property Type="String" Name="EMAIL" Nullable="true" />
+          <Property Type="String" Name="DELIVERY_ADDRESS" Nullable="true" />
+          <Property Type="String" Name="SIZE" Nullable="true" />
+          <Property Type="Int64" Name="QUANTITY" Nullable="true" />
+          <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2679,6 +2694,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Report_Order" FunctionName="GJSModel.Store.Report_Order">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GJSModel.Report_Order_Result">
+                <ScalarProperty Name="ORDER_CODE" ColumnName="ORDER_CODE" />
+                <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
+                <ScalarProperty Name="PRODUCT_CODE" ColumnName="PRODUCT_CODE" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="URL_IMAGE" ColumnName="URL_IMAGE" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DELIVERY_ADDRESS" ColumnName="DELIVERY_ADDRESS" />
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

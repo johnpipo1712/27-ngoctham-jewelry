@@ -73,5 +73,10 @@ namespace W_GJS.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_STATISTICS_VISIT_Result>("SP_STATISTICS_VISIT");
         }
+    
+        public virtual ObjectResult<Report_Order_Result> Report_Order()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Report_Order_Result>("Report_Order");
+        }
     }
 }
