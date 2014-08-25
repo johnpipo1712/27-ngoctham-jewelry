@@ -1,4 +1,5 @@
-﻿@if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 4)
+﻿@if (Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY]  != null
+    && (int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 4)
 {
     <ul class="navigation">
         <li>
@@ -6,7 +7,8 @@
         </li>
     </ul>
 }
-else if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 1)
+else if (Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY]  != null
+    && (int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 1)
 {
 
 <ul class="navigation">

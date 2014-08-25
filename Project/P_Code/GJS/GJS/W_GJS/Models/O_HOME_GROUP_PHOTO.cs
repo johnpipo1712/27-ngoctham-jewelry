@@ -16,17 +16,17 @@ namespace W_GJS.Models
     public partial class O_HOME_GROUP_PHOTO
     {
         public long HOME_GROUP_PHOTO_CD { get; set; }
-        [Display(Name = "Khách hàng")]
-        public string PHOTO_URL_1 { get; set; }
         [Display(Name = "Hình ảnh 1")]
-        public string PHOTO_URL_2 { get; set; }
+        public string PHOTO_URL_1 { get; set; }
         [Display(Name = "Hình ảnh 2")]
-        public string PHOTO_URL_3 { get; set; }
+        public string PHOTO_URL_2 { get; set; }
         [Display(Name = "Hình ảnh 3")]
-        public string PHOTO_URL_4 { get; set; }
+        public string PHOTO_URL_3 { get; set; }
         [Display(Name = "Hình ảnh 4")]
-        public string PHOTO_URL_5 { get; set; }
+        public string PHOTO_URL_4 { get; set; }
         [Display(Name = "Hình ảnh 5")]
+        public string PHOTO_URL_5 { get; set; }
+        [Display(Name = "Hình ảnh 6")]
         public string PHOTO_URL_6 { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
