@@ -205,6 +205,9 @@
     <Compile Include="Models\NewsHomeModel.cs" />
     <Compile Include="Models\ProductCategoryModel.cs" />
     <Compile Include="Models\ProductCategoryDetailModel.cs" />
+    <Compile Include="Models\Report_Order_Result.cs">
+      <DependentUpon>DB_GJS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SearchNewsResultModel.cs" />
     <Compile Include="Models\SearchResultModel.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
