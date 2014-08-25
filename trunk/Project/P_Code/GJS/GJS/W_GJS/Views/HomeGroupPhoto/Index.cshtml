@@ -39,22 +39,7 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.PHOTO_URL_1)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PHOTO_URL_2)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PHOTO_URL_3)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PHOTO_URL_4)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PHOTO_URL_5)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PHOTO_URL_6)
+                        Thứ tự nhóm hình.
                     </th>
                     <th></th>
                 </tr>
@@ -64,24 +49,8 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.PHOTO_URL_1)
+                            @Html.DisplayFor(modelItem => item.HOME_GROUP_PHOTO_CD)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PHOTO_URL_2)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PHOTO_URL_3)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PHOTO_URL_4)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PHOTO_URL_5)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PHOTO_URL_6)
-                        </td>
-
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { HOME_GROUP_PHOTO_CD = item.HOME_GROUP_PHOTO_CD })
                     </tr>
