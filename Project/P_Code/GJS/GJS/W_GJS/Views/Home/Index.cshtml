@@ -21,7 +21,8 @@
     List<W_GJS.Models.O_HOME_INTRODUCTION> listIntrodution = gjs.O_HOME_INTRODUCTION.Where(t => t.ACTIVE == true).ToList();
 
     List<W_GJS.Models.O_NEWS_HOME> listNews_HOME = gjs.O_NEWS_HOME.Where(t => t.ACTIVE == true).ToList();
-
+    List<W_GJS.Models.O_HOME_SERVICE_DETAIL> listService_DETAIL = gjs.O_HOME_SERVICE_DETAIL.Where(t => t.ACTIVE == true).ToList();
+    W_GJS.Models.O_HOME_SERVICE homeService = gjs.O_HOME_SERVICE.Single(t => t.ACTIVE == true && t.O_HOME_SERVICE_CD == 1);
 }
 <html>
 <!--<![endif]-->
@@ -248,7 +249,7 @@
 
                                 <div style="width:300px; height:300px">
                                     <span>
-                                        <li><a href='@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.O_NEWS.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME})'>@item.O_NEWS.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME</a></li>
+                                        <li><a href='@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.O_NEWS.O_CATEGORY_NEWS.CATEGORY_NEWS_CD})'>@item.O_NEWS.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME</a></li>
                                         <a href='@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })' class='icon view' title='Xem chi tiết'></a>
                                         <a href='@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })' class='icon fancybox.ajax zoom' title='Xem nhanh'></a>
                                     </span>
@@ -286,64 +287,50 @@
             <div id="homeSer">
                 <div id="serLeft">
                     <div class="navBox" id="serRightNav"><a href="ngochuyphoto_default_2.html#" class="prev">Prev</a><a href="ngochuyphoto_default_2.html#" class="next">Next</a></div>
-                    <a href="dich-vu.htm" class="thumb" style="background-image:url(http://ngochuyphoto.com/multidata/dich-vu-ngoc-huy.jpg);"><img src="multidata/dich-vu-ngoc-huy.jpg" width="300" alt="" /><span></span></a>
+                    <a href="#" class="thumb" style="background-image:url(@homeService.O_HOME_SERVICE_PHOTO);"><img src="@homeService.O_HOME_SERVICE_PHOTO" width="300" alt="" /><span></span></a>
                     <ul>
-                        <h1>Dịch vụ Ngọc Huy.</h1>
-                        <h2><a href="dich-vu.htm">Cung cấp các <br />dịch vụ tốt nhất</a></h2>
-                        <p>Với Ngọc Huy nhiếp ảnh là một môn nghệ thuật đòi hỏi người nghệ sỹ phải luôn sáng tạo không ngừng. Và chỉ có niềm đam mê bất tận mới có thể khiến người nghệ sỹ không ngừng nghỉ tìm tòi, học hỏi, nỗ lực và cố gắng.</p>
-                    </ul>	        <a href="dich-vu.htm" class="viewmore">Xem tất cả</a>
+                        <h1>Dịch vụ Ngọc Thẫm.</h1>
+                        <h2><a href="#">@homeService.O_HOME_SERVICE_TITLE</a></h2>
+                        <p>@homeService.O_HOME_SERVICE_DESCRIPTION</p>
+                    </ul>
                 </div><!--end serLeft-->
                 <div id="serRight">
                     <div class="serRight">
+                        @for (int i = 2; i < listService_DETAIL.Count; i+=2)
+                        {
                         <ul class='serRightCol'>
                             <li class='oneSer'>
-                                <a href='cuoi-tron-goi-sdv.htm' class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/cuoi-tron-goi-01.jpg);'><img src='multidata/cuoi-tron-goi-01.jpg' width='300' alt='Cưới trọn gói' /><span></span></a>
+                                <a href='@listService_DETAIL[i-2].HOME_SERVICE_DETAIL_ACTION' class='thumb' style='background-image:url(@listService_DETAIL[i-2].HOME_SERVICE_DETAIL_PHOTO);'><img src='@listService_DETAIL[i-2].HOME_SERVICE_DETAIL_PHOTO' width='300' alt='@listService_DETAIL[i].HOME_SERVICE_DETAIL_TITLE' /><span></span></a>
                                 <ul>
-                                    <h1><a href='cuoi-tron-goi-sdv.htm' title='Cưới trọn gói'>Cưới trọn gói</a></h1>
-                                    <p>Với dịch vụ cưới trọn gói, các cô dâu chú rể sẽ đỡ vất vả hơn trong việc chuẩn bị cho mình một đám cưới hoàn hảo.</p>
+                                    <h1><a href='@listService_DETAIL[i-2].HOME_SERVICE_DETAIL_ACTION' title='Cưới trọn gói'>@listService_DETAIL[i - 2].HOME_SERVICE_DETAIL_TITLE</a></h1>
+                                    <p>@listService_DETAIL[i-2].HOME_SERVICE_DETAIL_DESCRIPTION</p>
                                 </ul>
                                 <div class='clr'></div>
-                                <a href='cuoi-tron-goi-sdv.htm' class='viewmore'>Xem thêm</a>
+                                <a href='@listService_DETAIL[i-2].HOME_SERVICE_DETAIL_ACTION' class='viewmore'>Xem thêm</a>
                             </li>
                             <li class='oneSer'>
-                                <a href='chup-hinh-cuoi-sdv.htm' class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/chup-hinh-cuoi.jpg);'><img src='multidata/chup-hinh-cuoi.jpg' width='300' alt='Chụp hình Cưới' /><span></span></a>
+                                <a href='@listService_DETAIL[i-1].HOME_SERVICE_DETAIL_ACTION' class='thumb' style='background-image:url(@listService_DETAIL[i-1].HOME_SERVICE_DETAIL_PHOTO);'><img src='@listService_DETAIL[i-1].HOME_SERVICE_DETAIL_PHOTO' width='300' alt='@listService_DETAIL[i-1].HOME_SERVICE_DETAIL_TITLE' /><span></span></a>
                                 <ul>
-                                    <h1><a href='chup-hinh-cuoi-sdv.htm' title='Chụp hình Cưới'>Chụp hình Cưới</a></h1>
-                                    <p>Các cô dâu chú rể có thể dễ dàng nhận thấy sự đa dạng trong phong cách chụp hình cưới từ lãng mạn, cổ điển, đến hiện đại, tinh nghịch, phá cách...</p>
+                                    <h1><a href='@listService_DETAIL[i-1].HOME_SERVICE_DETAIL_ACTION' title='@listService_DETAIL[i-1].HOME_SERVICE_DETAIL_TITLE'>@listService_DETAIL[i - 1].HOME_SERVICE_DETAIL_TITLE</a></h1>
+                                    <p>@listService_DETAIL[i-1].HOME_SERVICE_DETAIL_DESCRIPTION</p>
                                 </ul>
                                 <div class='clr'></div>
-                                <a href='chup-hinh-cuoi-sdv.htm' class='viewmore'>Xem thêm</a>
-                            </li>
-                        </ul><ul class='serRightCol'>
-                            <li class='oneSer'>
-                                <a href='trang-diem-co-dau-sdv.htm' class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/trang-diem-co-dau-89.jpg);'><img src='multidata/trang-diem-co-dau-89.jpg' width='300' alt='Trang điểm cô dâu' /><span></span></a>
-                                <ul>
-                                    <h1><a href='trang-diem-co-dau-sdv.htm' title='Trang điểm cô dâu'>Trang điểm cô dâu</a></h1>
-                                    <p>Đến với Ngọc Huy, bạn sẽ được tư vấn về cách trang điểm cô dâu như thế nào để phải hòa hợp và đẹp nổi bật.... </p>
-                                </ul>
-                                <div class='clr'></div>
-                                <a href='trang-diem-co-dau-sdv.htm' class='viewmore'>Xem thêm</a>
-                            </li>
-                            <li class='oneSer'>
-                                <a href='ban-cho-thue-ao-cuoi-sdv.htm' class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/ban-va-cho-thue-ao-cuoi-01.jpg);'><img src='multidata/ban-va-cho-thue-ao-cuoi-01.jpg' width='300' alt='Bán & cho thuê áo cưới' /><span></span></a>
-                                <ul>
-                                    <h1><a href='ban-cho-thue-ao-cuoi-sdv.htm' title='Bán & cho thuê áo cưới'>Bán & cho thuê áo cưới</a></h1>
-                                    <p>Khi đến với chúng tôi bạn sẽ dễ dàng lựa chọn được những mẫu áo cưới đẹp và phù hợp trong ngày vui ý nghĩa của mình.</p>
-                                </ul>
-                                <div class='clr'></div>
-                                <a href='ban-cho-thue-ao-cuoi-sdv.htm' class='viewmore'>Xem thêm</a>
-                            </li>
-                        </ul><ul class='serRightCol'>
-                            <li class='oneSer'>
-                                <a href='chup-hinh-nghe-thuat-sdv.htm' class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/chup-hinh-nghe-thuat-01.jpg);'><img src='multidata/chup-hinh-nghe-thuat-01.jpg' width='300' alt='Chụp hình nghệ thuật' /><span></span></a>
-                                <ul>
-                                    <h1><a href='chup-hinh-nghe-thuat-sdv.htm' title='Chụp hình nghệ thuật'>Chụp hình nghệ thuật</a></h1>
-                                    <p>Sự kết hợp ăn ý giữa người mẫu và người chụp hình nghệ thuật là vô cùng quan trọng để có thể làm nổi bật nét đẹp của...</p>
-                                </ul>
-                                <div class='clr'></div>
-                                <a href='chup-hinh-nghe-thuat-sdv.htm' class='viewmore'>Xem thêm</a>
+                                <a href='@listService_DETAIL[i-1].HOME_SERVICE_DETAIL_ACTION' class='viewmore'>Xem thêm</a>
                             </li>
                         </ul>
+                        }
+                        @if (listService_DETAIL.Count % 2 == 1)
+                        {
+                            <li class='oneSer'>
+                                <a href='@listService_DETAIL[listService_DETAIL.Count - 1].HOME_SERVICE_DETAIL_ACTION class=' thumb' style='background-image:url(@listService_DETAIL[listService_DETAIL.Count - 1].HOME_SERVICE_DETAIL_PHOTO);'><img src='@listService_DETAIL[listService_DETAIL.Count - 1].HOME_SERVICE_DETAIL_PHOTO' width='300' alt='@listService_DETAIL[listService_DETAIL.Count - 1].HOME_SERVICE_DETAIL_TITLE' /><span></span></a>
+                                <ul>
+                                    <h1><a href='@listService_DETAIL[listService_DETAIL.Count - 1].HOME_SERVICE_DETAIL_ACTION' title='@listService_DETAIL[listService_DETAIL.Count - 1].HOME_SERVICE_DETAIL_TITLE'>@listService_DETAIL[listService_DETAIL.Count - 1].HOME_SERVICE_DETAIL_TITLE</a></h1>
+                                    <p>@listService_DETAIL[listService_DETAIL.Count - 1].HOME_SERVICE_DETAIL_DESCRIPTION</p>
+                                </ul>
+                                <div class='clr'></div>
+                                <a href='@listService_DETAIL[listService_DETAIL.Count - 1].HOME_SERVICE_DETAIL_ACTION' class='viewmore'>Xem thêm</a>
+                            </li>
+                        }
                     </div><!--end serRight-->
                     <script type="text/javascript">
                         jQuery(document).ready(function () {

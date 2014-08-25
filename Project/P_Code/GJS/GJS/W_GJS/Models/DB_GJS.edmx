@@ -244,6 +244,31 @@
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="CREATEDATE" Type="datetime" />
         </EntityType>
+        <EntityType Name="O_HOME_SERVICE">
+          <Key>
+            <PropertyRef Name="O_HOME_SERVICE_CD" />
+          </Key>
+          <Property Name="O_HOME_SERVICE_CD" Type="bigint" Nullable="false" />
+          <Property Name="O_HOME_SERVICE_DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="O_HOME_SERVICE_TITLE" Type="nvarchar(max)" />
+          <Property Name="O_HOME_SERVICE_PHOTO" Type="nvarchar(max)" />
+          <Property Name="STATUS" Type="bigint" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="O_HOME_SERVICE_DETAIL">
+          <Key>
+            <PropertyRef Name="HOME_SERVICE_DETAIL_CD" />
+          </Key>
+          <Property Name="HOME_SERVICE_DETAIL_CD" Type="bigint" Nullable="false" />
+          <Property Name="HOME_SERVICE_DETAIL_PHOTO" Type="nvarchar(max)" />
+          <Property Name="HOME_SERVICE_DETAIL_DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="HOME_SERVICE_DETAIL_ACTION" Type="nvarchar(max)" />
+          <Property Name="HOME_SERVICE_DETAIL_TITLE" Type="nvarchar(max)" />
+          <Property Name="STATUS" Type="bigint" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
         <EntityType Name="O_INFORMATION">
           <Key>
             <PropertyRef Name="CD" />
@@ -858,6 +883,8 @@
           <EntitySet Name="O_CUSTOMER" EntityType="Self.O_CUSTOMER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_HOME_GROUP_PHOTO" EntityType="Self.O_HOME_GROUP_PHOTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_HOME_INTRODUCTION" EntityType="Self.O_HOME_INTRODUCTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_HOME_SERVICE" EntityType="Self.O_HOME_SERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_HOME_SERVICE_DETAIL" EntityType="Self.O_HOME_SERVICE_DETAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_INFORMATION" EntityType="Self.O_INFORMATION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_NEWS" EntityType="Self.O_NEWS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="O_NEWS_HIGHLIGHTS" EntityType="Self.O_NEWS_HIGHLIGHTS" Schema="dbo" store:Type="Tables" />
@@ -1020,7 +1047,10 @@
           <EntitySet Name="O_CUSTOMER" EntityType="GJSModel.O_CUSTOMER" />
           <EntitySet Name="O_HOME_GROUP_PHOTO" EntityType="GJSModel.O_HOME_GROUP_PHOTO" />
           <EntitySet Name="O_HOME_INTRODUCTION" EntityType="GJSModel.O_HOME_INTRODUCTION" />
+          <EntitySet Name="O_HOME_SERVICE" EntityType="GJSModel.O_HOME_SERVICE" />
+          <EntitySet Name="O_HOME_SERVICE_DETAIL" EntityType="GJSModel.O_HOME_SERVICE_DETAIL" />
           <EntitySet Name="O_INFORMATION" EntityType="GJSModel.O_INFORMATION" />
+          <EntitySet Name="O_NEWS" EntityType="GJSModel.O_NEWS" />
           <EntitySet Name="O_NEWS_HIGHLIGHTS" EntityType="GJSModel.O_NEWS_HIGHLIGHTS" />
           <EntitySet Name="O_NEWS_HOME" EntityType="GJSModel.O_NEWS_HOME" />
           <EntitySet Name="O_NEWS_NEW" EntityType="GJSModel.O_NEWS_NEW" />
@@ -1059,6 +1089,10 @@
             <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
             <End Role="D_PRODUCT_DETAIL" EntitySet="D_PRODUCT_DETAIL" />
           </AssociationSet>
+          <AssociationSet Name="FK_O_NEWS_M_EMPLOYEE" Association="GJSModel.FK_O_NEWS_M_EMPLOYEE">
+            <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
+            <End Role="O_NEWS" EntitySet="O_NEWS" />
+          </AssociationSet>
           <AssociationSet Name="FK_O_ORDER_M_EMPLOYEE" Association="GJSModel.FK_O_ORDER_M_EMPLOYEE">
             <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
             <End Role="O_ORDER" EntitySet="O_ORDER" />
@@ -1083,6 +1117,10 @@
             <End Role="O_CATEGORY_GRANULES" EntitySet="O_CATEGORY_GRANULES" />
             <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
           </AssociationSet>
+          <AssociationSet Name="FK_O_NEWS_O_CATEGORY_NEWS" Association="GJSModel.FK_O_NEWS_O_CATEGORY_NEWS">
+            <End Role="O_CATEGORY_NEWS" EntitySet="O_CATEGORY_NEWS" />
+            <End Role="O_NEWS" EntitySet="O_NEWS" />
+          </AssociationSet>
           <AssociationSet Name="FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT" Association="GJSModel.FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT">
             <End Role="O_CATEGORY_PRODUCT" EntitySet="O_CATEGORY_PRODUCT" />
             <End Role="O_CATEGORY_PRODUCT_DETAIL" EntitySet="O_CATEGORY_PRODUCT_DETAIL" />
@@ -1102,6 +1140,18 @@
           <AssociationSet Name="FK_O_USER_CUSTOMER_O_CUSTOMER" Association="GJSModel.FK_O_USER_CUSTOMER_O_CUSTOMER">
             <End Role="O_CUSTOMER" EntitySet="O_CUSTOMER" />
             <End Role="O_USER_CUSTOMER" EntitySet="O_USER_CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_NEWS_HIGHLIGHTS_O_NEWS" Association="GJSModel.FK_O_NEWS_HIGHLIGHTS_O_NEWS">
+            <End Role="O_NEWS" EntitySet="O_NEWS" />
+            <End Role="O_NEWS_HIGHLIGHTS" EntitySet="O_NEWS_HIGHLIGHTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_NEWS_HOME_O_NEWS" Association="GJSModel.FK_O_NEWS_HOME_O_NEWS">
+            <End Role="O_NEWS" EntitySet="O_NEWS" />
+            <End Role="O_NEWS_HOME" EntitySet="O_NEWS_HOME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_NEWS_NEW_O_NEWS" Association="GJSModel.FK_O_NEWS_NEW_O_NEWS">
+            <End Role="O_NEWS" EntitySet="O_NEWS" />
+            <End Role="O_NEWS_NEW" EntitySet="O_NEWS_NEW" />
           </AssociationSet>
           <AssociationSet Name="FK_O_PRODUCT_CATALOG_O_PRODUCT" Association="GJSModel.FK_O_PRODUCT_CATALOG_O_PRODUCT">
             <End Role="O_PRODUCT" EntitySet="O_PRODUCT" />
@@ -1134,27 +1184,6 @@
           <AssociationSet Name="FK_O_USER_PST_S_USER" Association="GJSModel.FK_O_USER_PST_S_USER">
             <End Role="S_USER" EntitySet="S_USER" />
             <End Role="O_USER_PST" EntitySet="O_USER_PST" />
-          </AssociationSet>
-          <EntitySet Name="O_NEWS" EntityType="GJSModel.O_NEWS" />
-          <AssociationSet Name="FK_O_NEWS_M_EMPLOYEE" Association="GJSModel.FK_O_NEWS_M_EMPLOYEE">
-            <End Role="M_EMPLOYEE" EntitySet="M_EMPLOYEE" />
-            <End Role="O_NEWS" EntitySet="O_NEWS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_O_NEWS_O_CATEGORY_NEWS" Association="GJSModel.FK_O_NEWS_O_CATEGORY_NEWS">
-            <End Role="O_CATEGORY_NEWS" EntitySet="O_CATEGORY_NEWS" />
-            <End Role="O_NEWS" EntitySet="O_NEWS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_O_NEWS_HIGHLIGHTS_O_NEWS" Association="GJSModel.FK_O_NEWS_HIGHLIGHTS_O_NEWS">
-            <End Role="O_NEWS" EntitySet="O_NEWS" />
-            <End Role="O_NEWS_HIGHLIGHTS" EntitySet="O_NEWS_HIGHLIGHTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_O_NEWS_HOME_O_NEWS" Association="GJSModel.FK_O_NEWS_HOME_O_NEWS">
-            <End Role="O_NEWS" EntitySet="O_NEWS" />
-            <End Role="O_NEWS_HOME" EntitySet="O_NEWS_HOME" />
-          </AssociationSet>
-          <AssociationSet Name="FK_O_NEWS_NEW_O_NEWS" Association="GJSModel.FK_O_NEWS_NEW_O_NEWS">
-            <End Role="O_NEWS" EntitySet="O_NEWS" />
-            <End Role="O_NEWS_NEW" EntitySet="O_NEWS_NEW" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_STATISTICS_VISIT_Result">
@@ -1221,9 +1250,9 @@
           <Property Name="STATUS" Type="Int64" />
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="O_NEWS" Relationship="GJSModel.FK_O_NEWS_M_EMPLOYEE" FromRole="M_EMPLOYEE" ToRole="O_NEWS" />
           <NavigationProperty Name="O_ORDER" Relationship="GJSModel.FK_O_ORDER_M_EMPLOYEE" FromRole="M_EMPLOYEE" ToRole="O_ORDER" />
           <NavigationProperty Name="O_USER_EMPLOYEE" Relationship="GJSModel.FK_O_USER_EMPLOYEE_M_EMPLOYEE" FromRole="M_EMPLOYEE" ToRole="O_USER_EMPLOYEE" />
-          <NavigationProperty Name="O_NEWS" Relationship="GJSModel.FK_O_NEWS_M_EMPLOYEE" FromRole="M_EMPLOYEE" ToRole="O_NEWS" />
         </EntityType>
         <EntityType Name="M_PAGE">
           <Key>
@@ -1429,6 +1458,31 @@
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="O_HOME_SERVICE">
+          <Key>
+            <PropertyRef Name="O_HOME_SERVICE_CD" />
+          </Key>
+          <Property Name="O_HOME_SERVICE_CD" Type="Int64" Nullable="false" />
+          <Property Name="O_HOME_SERVICE_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="O_HOME_SERVICE_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="O_HOME_SERVICE_PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="O_HOME_SERVICE_DETAIL">
+          <Key>
+            <PropertyRef Name="HOME_SERVICE_DETAIL_CD" />
+          </Key>
+          <Property Name="HOME_SERVICE_DETAIL_CD" Type="Int64" Nullable="false" />
+          <Property Name="HOME_SERVICE_DETAIL_PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HOME_SERVICE_DETAIL_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HOME_SERVICE_DETAIL_ACTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HOME_SERVICE_DETAIL_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="O_INFORMATION">
           <Key>
             <PropertyRef Name="CD" />
@@ -1440,6 +1494,28 @@
           <Property Name="STATUS" Type="Int64" />
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="O_NEWS">
+          <Key>
+            <PropertyRef Name="NEWS_CD" />
+          </Key>
+          <Property Name="NEWS_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NEWS_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NEW_DESCRIPTIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NEWS_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE_NEWS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CATEGORY_NEWS_CD" Type="Int64" />
+          <Property Name="SOURCE_COPY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TAG_ALT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEE_CD" Type="Int64" />
+          <Property Name="STATUS" Type="Int64" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="M_EMPLOYEE" Relationship="GJSModel.FK_O_NEWS_M_EMPLOYEE" FromRole="O_NEWS" ToRole="M_EMPLOYEE" />
+          <NavigationProperty Name="O_CATEGORY_NEWS" Relationship="GJSModel.FK_O_NEWS_O_CATEGORY_NEWS" FromRole="O_NEWS" ToRole="O_CATEGORY_NEWS" />
+          <NavigationProperty Name="O_NEWS_HIGHLIGHTS" Relationship="GJSModel.FK_O_NEWS_HIGHLIGHTS_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_HIGHLIGHTS" />
+          <NavigationProperty Name="O_NEWS_HOME" Relationship="GJSModel.FK_O_NEWS_HOME_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_HOME" />
+          <NavigationProperty Name="O_NEWS_NEW" Relationship="GJSModel.FK_O_NEWS_NEW_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_NEW" />
         </EntityType>
         <EntityType Name="O_NEWS_HIGHLIGHTS">
           <Key>
@@ -1746,6 +1822,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_O_NEWS_M_EMPLOYEE">
+          <End Type="GJSModel.M_EMPLOYEE" Role="M_EMPLOYEE" Multiplicity="0..1" />
+          <End Type="GJSModel.O_NEWS" Role="O_NEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_EMPLOYEE">
+              <PropertyRef Name="EMPLOYEE_CD" />
+            </Principal>
+            <Dependent Role="O_NEWS">
+              <PropertyRef Name="EMPLOYEE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_O_ORDER_M_EMPLOYEE">
           <End Type="GJSModel.M_EMPLOYEE" Role="M_EMPLOYEE" Multiplicity="0..1" />
           <End Type="GJSModel.O_ORDER" Role="O_ORDER" Multiplicity="*" />
@@ -1818,6 +1906,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_O_NEWS_O_CATEGORY_NEWS">
+          <End Type="GJSModel.O_CATEGORY_NEWS" Role="O_CATEGORY_NEWS" Multiplicity="0..1" />
+          <End Type="GJSModel.O_NEWS" Role="O_NEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_CATEGORY_NEWS">
+              <PropertyRef Name="CATEGORY_NEWS_CD" />
+            </Principal>
+            <Dependent Role="O_NEWS">
+              <PropertyRef Name="CATEGORY_NEWS_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_O_CATEGORY_PRODUCT_DETAIL_O_CATEGORY_PRODUCT">
           <End Type="GJSModel.O_CATEGORY_PRODUCT" Role="O_CATEGORY_PRODUCT" Multiplicity="0..1" />
           <End Type="GJSModel.O_CATEGORY_PRODUCT_DETAIL" Role="O_CATEGORY_PRODUCT_DETAIL" Multiplicity="*" />
@@ -1875,6 +1975,42 @@
             </Principal>
             <Dependent Role="O_USER_CUSTOMER">
               <PropertyRef Name="CUSTOMER_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_NEWS_HIGHLIGHTS_O_NEWS">
+          <End Type="GJSModel.O_NEWS" Role="O_NEWS" Multiplicity="0..1" />
+          <End Type="GJSModel.O_NEWS_HIGHLIGHTS" Role="O_NEWS_HIGHLIGHTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_NEWS">
+              <PropertyRef Name="NEWS_CD" />
+            </Principal>
+            <Dependent Role="O_NEWS_HIGHLIGHTS">
+              <PropertyRef Name="NEWS_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_NEWS_HOME_O_NEWS">
+          <End Type="GJSModel.O_NEWS" Role="O_NEWS" Multiplicity="0..1" />
+          <End Type="GJSModel.O_NEWS_HOME" Role="O_NEWS_HOME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_NEWS">
+              <PropertyRef Name="NEWS_CD" />
+            </Principal>
+            <Dependent Role="O_NEWS_HOME">
+              <PropertyRef Name="NEWS_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_NEWS_NEW_O_NEWS">
+          <End Type="GJSModel.O_NEWS" Role="O_NEWS" Multiplicity="0..1" />
+          <End Type="GJSModel.O_NEWS_NEW" Role="O_NEWS_NEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_NEWS">
+              <PropertyRef Name="NEWS_CD" />
+            </Principal>
+            <Dependent Role="O_NEWS_NEW">
+              <PropertyRef Name="NEWS_CD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1971,88 +2107,6 @@
             </Principal>
             <Dependent Role="O_USER_PST">
               <PropertyRef Name="USER_CD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="O_NEWS">
-          <Key>
-            <PropertyRef Name="NEWS_CD" />
-          </Key>
-          <Property Name="NEWS_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NEWS_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NEW_DESCRIPTIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NEWS_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IMAGE_NEWS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CATEGORY_NEWS_CD" Type="Int64" />
-          <Property Name="SOURCE_COPY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TAG_ALT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="EMPLOYEE_CD" Type="Int64" />
-          <Property Name="STATUS" Type="Int64" />
-          <Property Name="ACTIVE" Type="Boolean" />
-          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="M_EMPLOYEE" Relationship="GJSModel.FK_O_NEWS_M_EMPLOYEE" FromRole="O_NEWS" ToRole="M_EMPLOYEE" />
-          <NavigationProperty Name="O_CATEGORY_NEWS" Relationship="GJSModel.FK_O_NEWS_O_CATEGORY_NEWS" FromRole="O_NEWS" ToRole="O_CATEGORY_NEWS" />
-          <NavigationProperty Name="O_NEWS_HIGHLIGHTS" Relationship="GJSModel.FK_O_NEWS_HIGHLIGHTS_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_HIGHLIGHTS" />
-          <NavigationProperty Name="O_NEWS_HOME" Relationship="GJSModel.FK_O_NEWS_HOME_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_HOME" />
-          <NavigationProperty Name="O_NEWS_NEW" Relationship="GJSModel.FK_O_NEWS_NEW_O_NEWS" FromRole="O_NEWS" ToRole="O_NEWS_NEW" />
-        </EntityType>
-        <Association Name="FK_O_NEWS_M_EMPLOYEE">
-          <End Type="GJSModel.M_EMPLOYEE" Role="M_EMPLOYEE" Multiplicity="0..1" />
-          <End Type="GJSModel.O_NEWS" Role="O_NEWS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="M_EMPLOYEE">
-              <PropertyRef Name="EMPLOYEE_CD" />
-            </Principal>
-            <Dependent Role="O_NEWS">
-              <PropertyRef Name="EMPLOYEE_CD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_O_NEWS_O_CATEGORY_NEWS">
-          <End Type="GJSModel.O_CATEGORY_NEWS" Role="O_CATEGORY_NEWS" Multiplicity="0..1" />
-          <End Type="GJSModel.O_NEWS" Role="O_NEWS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="O_CATEGORY_NEWS">
-              <PropertyRef Name="CATEGORY_NEWS_CD" />
-            </Principal>
-            <Dependent Role="O_NEWS">
-              <PropertyRef Name="CATEGORY_NEWS_CD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_O_NEWS_HIGHLIGHTS_O_NEWS">
-          <End Type="GJSModel.O_NEWS" Role="O_NEWS" Multiplicity="0..1" />
-          <End Type="GJSModel.O_NEWS_HIGHLIGHTS" Role="O_NEWS_HIGHLIGHTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="O_NEWS">
-              <PropertyRef Name="NEWS_CD" />
-            </Principal>
-            <Dependent Role="O_NEWS_HIGHLIGHTS">
-              <PropertyRef Name="NEWS_CD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_O_NEWS_HOME_O_NEWS">
-          <End Type="GJSModel.O_NEWS" Role="O_NEWS" Multiplicity="0..1" />
-          <End Type="GJSModel.O_NEWS_HOME" Role="O_NEWS_HOME" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="O_NEWS">
-              <PropertyRef Name="NEWS_CD" />
-            </Principal>
-            <Dependent Role="O_NEWS_HOME">
-              <PropertyRef Name="NEWS_CD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_O_NEWS_NEW_O_NEWS">
-          <End Type="GJSModel.O_NEWS" Role="O_NEWS" Multiplicity="0..1" />
-          <End Type="GJSModel.O_NEWS_NEW" Role="O_NEWS_NEW" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="O_NEWS">
-              <PropertyRef Name="NEWS_CD" />
-            </Principal>
-            <Dependent Role="O_NEWS_NEW">
-              <PropertyRef Name="NEWS_CD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2333,6 +2387,33 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="O_HOME_SERVICE">
+            <EntityTypeMapping TypeName="GJSModel.O_HOME_SERVICE">
+              <MappingFragment StoreEntitySet="O_HOME_SERVICE">
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="O_HOME_SERVICE_PHOTO" ColumnName="O_HOME_SERVICE_PHOTO" />
+                <ScalarProperty Name="O_HOME_SERVICE_TITLE" ColumnName="O_HOME_SERVICE_TITLE" />
+                <ScalarProperty Name="O_HOME_SERVICE_DESCRIPTION" ColumnName="O_HOME_SERVICE_DESCRIPTION" />
+                <ScalarProperty Name="O_HOME_SERVICE_CD" ColumnName="O_HOME_SERVICE_CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_HOME_SERVICE_DETAIL">
+            <EntityTypeMapping TypeName="GJSModel.O_HOME_SERVICE_DETAIL">
+              <MappingFragment StoreEntitySet="O_HOME_SERVICE_DETAIL">
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="HOME_SERVICE_DETAIL_TITLE" ColumnName="HOME_SERVICE_DETAIL_TITLE" />
+                <ScalarProperty Name="HOME_SERVICE_DETAIL_ACTION" ColumnName="HOME_SERVICE_DETAIL_ACTION" />
+                <ScalarProperty Name="HOME_SERVICE_DETAIL_DESCRIPTION" ColumnName="HOME_SERVICE_DETAIL_DESCRIPTION" />
+                <ScalarProperty Name="HOME_SERVICE_DETAIL_PHOTO" ColumnName="HOME_SERVICE_DETAIL_PHOTO" />
+                <ScalarProperty Name="HOME_SERVICE_DETAIL_CD" ColumnName="HOME_SERVICE_DETAIL_CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="O_INFORMATION">
             <EntityTypeMapping TypeName="GJSModel.O_INFORMATION">
               <MappingFragment StoreEntitySet="O_INFORMATION">
@@ -2343,6 +2424,24 @@
                 <ScalarProperty Name="INFORMATION_SKYPE" ColumnName="INFORMATION_SKYPE" />
                 <ScalarProperty Name="INFORMATION_YAHOO" ColumnName="INFORMATION_YAHOO" />
                 <ScalarProperty Name="CD" ColumnName="CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_NEWS">
+            <EntityTypeMapping TypeName="GJSModel.O_NEWS">
+              <MappingFragment StoreEntitySet="O_NEWS">
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="EMPLOYEE_CD" ColumnName="EMPLOYEE_CD" />
+                <ScalarProperty Name="TAG_ALT" ColumnName="TAG_ALT" />
+                <ScalarProperty Name="SOURCE_COPY" ColumnName="SOURCE_COPY" />
+                <ScalarProperty Name="CATEGORY_NEWS_CD" ColumnName="CATEGORY_NEWS_CD" />
+                <ScalarProperty Name="IMAGE_NEWS" ColumnName="IMAGE_NEWS" />
+                <ScalarProperty Name="NEWS_CONTENT" ColumnName="NEWS_CONTENT" />
+                <ScalarProperty Name="NEW_DESCRIPTIONS" ColumnName="NEW_DESCRIPTIONS" />
+                <ScalarProperty Name="NEWS_TITLE" ColumnName="NEWS_TITLE" />
+                <ScalarProperty Name="NEWS_CD" ColumnName="NEWS_CD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2577,24 +2676,6 @@
                 <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
                 <ScalarProperty Name="PRODUCT_CD" ColumnName="PRODUCT_CD" />
                 <ScalarProperty Name="CD" ColumnName="CD" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="O_NEWS">
-            <EntityTypeMapping TypeName="GJSModel.O_NEWS">
-              <MappingFragment StoreEntitySet="O_NEWS">
-                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
-                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
-                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
-                <ScalarProperty Name="EMPLOYEE_CD" ColumnName="EMPLOYEE_CD" />
-                <ScalarProperty Name="TAG_ALT" ColumnName="TAG_ALT" />
-                <ScalarProperty Name="SOURCE_COPY" ColumnName="SOURCE_COPY" />
-                <ScalarProperty Name="CATEGORY_NEWS_CD" ColumnName="CATEGORY_NEWS_CD" />
-                <ScalarProperty Name="IMAGE_NEWS" ColumnName="IMAGE_NEWS" />
-                <ScalarProperty Name="NEWS_CONTENT" ColumnName="NEWS_CONTENT" />
-                <ScalarProperty Name="NEW_DESCRIPTIONS" ColumnName="NEW_DESCRIPTIONS" />
-                <ScalarProperty Name="NEWS_TITLE" ColumnName="NEWS_TITLE" />
-                <ScalarProperty Name="NEWS_CD" ColumnName="NEWS_CD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -46,7 +46,10 @@ namespace W_GJS.Models
         public virtual DbSet<O_CUSTOMER> O_CUSTOMER { get; set; }
         public virtual DbSet<O_HOME_GROUP_PHOTO> O_HOME_GROUP_PHOTO { get; set; }
         public virtual DbSet<O_HOME_INTRODUCTION> O_HOME_INTRODUCTION { get; set; }
+        public virtual DbSet<O_HOME_SERVICE> O_HOME_SERVICE { get; set; }
+        public virtual DbSet<O_HOME_SERVICE_DETAIL> O_HOME_SERVICE_DETAIL { get; set; }
         public virtual DbSet<O_INFORMATION> O_INFORMATION { get; set; }
+        public virtual DbSet<O_NEWS> O_NEWS { get; set; }
         public virtual DbSet<O_NEWS_HIGHLIGHTS> O_NEWS_HIGHLIGHTS { get; set; }
         public virtual DbSet<O_NEWS_HOME> O_NEWS_HOME { get; set; }
         public virtual DbSet<O_NEWS_NEW> O_NEWS_NEW { get; set; }
@@ -65,7 +68,6 @@ namespace W_GJS.Models
         public virtual DbSet<S_STATISTICS_VISIT> S_STATISTICS_VISIT { get; set; }
         public virtual DbSet<S_USER> S_USER { get; set; }
         public virtual DbSet<W_PRODUCT> W_PRODUCT { get; set; }
-        public virtual DbSet<O_NEWS> O_NEWS { get; set; }
     
         public virtual ObjectResult<SP_STATISTICS_VISIT_Result> SP_STATISTICS_VISIT()
         {
