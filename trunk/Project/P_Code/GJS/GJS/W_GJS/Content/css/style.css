@@ -1,4 +1,8 @@
-﻿.owl-item img {
+﻿body {
+    background: url(../images/pattern/skulls.png);
+}
+
+.owl-item img {
     width: 100%;
     height: 600px;
 }

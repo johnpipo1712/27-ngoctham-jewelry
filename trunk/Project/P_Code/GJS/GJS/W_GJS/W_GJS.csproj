@@ -988,6 +988,7 @@
     <Content Include="Content\images\pattern\crossword.png" />
     <Content Include="Content\images\pattern\floral.png" />
     <Content Include="Content\images\pattern\grey.png" />
+    <Content Include="Content\images\pattern\p6.png" />
     <Content Include="Content\images\pattern\paper.png" />
     <Content Include="Content\images\pattern\skulls.png" />
     <Content Include="Content\images\pattern\tweed.png" />

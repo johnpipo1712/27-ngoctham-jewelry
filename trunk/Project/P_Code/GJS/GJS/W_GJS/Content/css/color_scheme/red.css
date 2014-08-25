@@ -3,6 +3,10 @@
 	@Dark	#FFE345
 */
 
+.spaced small strong {
+    color: #fff;
+}
+
 a,
 .tp-caption a {
     color: #FFE345;
