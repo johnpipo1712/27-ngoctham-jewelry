@@ -227,9 +227,9 @@
 
             <div id="homeNewsMain">
                 <div class="titleBox">
-                    <h1><a href="ngochuyphoto_default_2.html#">TIN TỨC & SỰ KIỆN.</a></h1>
-                    <div class="navBox" id="homeNewsNav"><a href="ngochuyphoto_default_2.html#" class="prev">Prev</a><a href="ngochuyphoto_default_2.html#" class="next">Next</a></div>
-                    <a href="tin-tuc.htm" class="viewmore">Xem tất cả</a>
+                    <h1><a href="@Url.Action("News", "Home")">TIN TỨC & SỰ KIỆN.</a></h1>
+                    <div class="navBox" id="homeNewsNav"><a href="#" class="prev">Prev</a><a href="#" class="next">Next</a></div>
+                    <a href="@Url.Action("News", "Home")" class="viewmore">Xem tất cả</a>
                     <div class="clr"></div>
                 </div><!--end titleBox-->
                 <div id="homeNews">
@@ -238,16 +238,21 @@
                         {
                         <li class='oneNews'>
                             <ul class='desc'>
-                                <h1><a href='album-cuoi-phong-cach-han-quoc-chup-ngay-tai-studio-snw.htm' title='Album cưới phong cách Hàn Quốc chụp ngay tại Studio'>Album cưới phong cách Hàn Quốc chụp ngay tại Studio</a></h1>
-                                <p>Với không gian thiết kế lãng mạn Ngọc Huy sẽ đem đến cho các uyên ương những album cưới theo phong cách Hàn Quốc đặc trưng nhất.</p>
+                                <li>
+                                    <h1><a href='@(Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD }))' title='@(item.O_NEWS.NEWS_TITLE)'></a></h1>
+                                    <p>@(item.O_NEWS.NEW_DESCRIPTIONS)</p>
+                                </li>
                             </ul>
-                            <ul class='thumb' style='background-image:url(http://ngochuyphoto.com/multidata/album-cuoi-phong-cach-han-quoc-chuptai-studio-5.jpg);'>
-                                <img src='multidata/album-cuoi-phong-cach-han-quoc-chuptai-studio-5.jpg' width='300' alt='Album cưới phong cách Hàn Quốc chụp ngay tại Studio' />
-                                <span>
-                                    <li><a href='album-cuoi-phong-cach-han-quoc-tags-snpw.htm'>album cưới phong cách Hàn Quốc</a>, <a href='chup-hinh-cuoi-han-quoc-tags-snpw.htm'>chụp hình cưới Hàn Quốc</a>, <a href='chup-hinh-cuoi-studio-tags-snpw.htm'>chụp hình cưới studio</a>, <a href='studio-ngoc-huy-tags-snpw.htm'>studio Ngọc Huy</a></li>
-                                    <a href='album-cuoi-phong-cach-han-quoc-chup-ngay-tai-studio-snw.htm' class='icon view' title='Xem chi tiết'></a>
-                                    <a href='album-cuoi-phong-cach-han-quoc-chup-ngay-tai-studio-spv.htm' class='icon fancybox.ajax zoom' title='Xem nhanh'></a>
-                                </span>
+                            <ul class='thumb' style='background-image:url(@(item.O_NEWS.IMAGE_NEWS));'>
+
+
+                                <div style="width:300px; height:300px">
+                                    <span>
+                                        <li><a href='@Url.Action("Category_News", new { CATEGORY_NEWS_CD = item.O_NEWS.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME})'>@item.O_NEWS.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME</a></li>
+                                        <a href='@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })' class='icon view' title='Xem chi tiết'></a>
+                                        <a href='@Url.Action("NewsDetail", new { NEWS_CD = item.NEWS_CD })' class='icon fancybox.ajax zoom' title='Xem nhanh'></a>
+                                    </span>
+                                </div>
                             </ul>
                         </li>
                         }
