@@ -137,5 +137,17 @@ namespace W_GJS.Controllers
             Db_gsj.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Delete([Bind(Include = "CD")]O_BANNER BANNER)
+        {
+            if (BANNER == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Db_gsj = new GJSEntities();
+            O_BANNER BANNER_delete = Db_gsj.O_BANNER.Single(t => t.CD == BANNER.CD);
+            Db_gsj.Entry(BANNER_delete).State = EntityState.Deleted;
+            Db_gsj.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
