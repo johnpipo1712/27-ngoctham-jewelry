@@ -39,7 +39,16 @@ else
                     <!-- title and price -->
                     <h2>
                         <span class="product-name">@item.PRODUCT_NAME</span>
-                        <span class="bold">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE_PROMOTION)</span> <span class="line-through">@String.Format("{0:0,0 " + item.CURRENCY + "}", item.PRICE)</span>
+                        @if (item.PRICE_PROMOTION != null)
+                        {
+                            <span class="bold">@item.PRICE_PROMOTION)</span> <span class="line-through">@item.PRICE</span>
+
+                        }
+                        else
+                        {
+                            <span class="bold">@item.PRICE</span>
+
+                        }       
                     </h2>
                 
                 </div><!-- /title and price -->

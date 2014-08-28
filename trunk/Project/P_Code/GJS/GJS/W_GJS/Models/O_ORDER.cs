@@ -73,10 +73,7 @@ namespace W_GJS.Models
             {
                 Detail_Cart.QUANTITY += PRODUCT.QUANTITY;
                 Detail_Cart.SIZE = PRODUCT.SIZE;
-                if (Detail_Cart.O_PRODUCT.PRICE_PROMOTION == null)
-                   Detail_Cart.PRICE = Detail_Cart.O_PRODUCT.PRICE * Detail_Cart.QUANTITY;
-                else
-                    Detail_Cart.PRICE = Detail_Cart.O_PRODUCT.PRICE_PROMOTION * Detail_Cart.QUANTITY;
+                Detail_Cart.PRICE = 0;
                 return 1;
             }
             else
@@ -90,11 +87,9 @@ namespace W_GJS.Models
                     PRODUCT_CD = PRODUCT.PRODUCT_CD
                 };
 
-                if (Detail_Cart.O_PRODUCT.PRICE_PROMOTION == null)
-                    Detail_Cart.PRICE = Detail_Cart.O_PRODUCT.PRICE * Detail_Cart.QUANTITY;
-                else
-                    Detail_Cart.PRICE = Detail_Cart.O_PRODUCT.PRICE_PROMOTION * Detail_Cart.QUANTITY;
               
+                Detail_Cart.PRICE = 0;
+               
 
                 D_ORDER_DETAIL.Add(Detail_Cart);
                 return 1;
@@ -121,11 +116,8 @@ namespace W_GJS.Models
                 {
                     Detail_Cart.QUANTITY = PRODUCT.QUANTITY;
                     Detail_Cart.SIZE = Detail_Cart.SIZE;
-                    if (Detail_Cart.O_PRODUCT.PRICE_PROMOTION == null)
-                        Detail_Cart.PRICE = Detail_Cart.O_PRODUCT.PRICE * Detail_Cart.QUANTITY;
-                    else
-                        Detail_Cart.PRICE = Detail_Cart.O_PRODUCT.PRICE_PROMOTION * Detail_Cart.QUANTITY;
-                    break;
+                    Detail_Cart.PRICE = 0;
+                     break;
                 }
             }
         }
