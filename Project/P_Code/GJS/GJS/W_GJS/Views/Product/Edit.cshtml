@@ -199,7 +199,16 @@
                             }
                         </div>
                     </div> <!-- / .form-group -->
-
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.QUANTITY_GRANULES, new { @class = "control-label col-md-2" })
+                        <div class="col-sm-10">
+                            @Html.TextAreaFor(model => model.QUANTITY_GRANULES, new { @id = "ckeContent" })
+                            <script type="text/javascript">
+                                CKEDITOR.replace("ckeContent");
+                            </script>
+                            @Html.ValidationMessageFor(model => model.PRODUCT_CONTENT)
+                        </div>
+                    </div> <!-- / .form-group -->
                     <div class="form-group">
                         @Html.LabelFor(model => model.PRODUCT_CONTENT, new { @class = "control-label col-md-2" })
                         <div class="col-sm-10">
