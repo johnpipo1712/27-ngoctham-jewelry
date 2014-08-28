@@ -65,14 +65,14 @@
                      
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { CATEGORY_PAGE_CD = item.CATEGORY_PAGE_CD }) |
-                            @if (item.ACTIVE == false)
+                            @*@if (item.ACTIVE == false)
                             {
                                 @Html.ActionLink("Kích hoạt", "Active", new { CATEGORY_PAGE_CD = item.CATEGORY_PAGE_CD })
                             }
                             else
                             {
                                 @Html.ActionLink("Xóa", "Deactive", new { CATEGORY_PAGE_CD = item.CATEGORY_PAGE_CD })
-                            }
+                            }*@
                         </td>
                     </tr>
                 }
