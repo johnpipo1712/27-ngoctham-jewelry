@@ -49,10 +49,8 @@
                     <th>
                         @Html.DisplayNameFor(model => model.QUANTITY)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PRICE)
-                    </th>
-
+            
+                  
                     <th></th>
                 </tr>
             </thead>
@@ -72,16 +70,13 @@
                         <td valign="middle">
                             @Html.DisplayFor(modelItem => item.QUANTITY)
                         </td>
-                        <td valign="middle">
-                            @Html.DisplayFor(modelItem => item.PRICE)
-                        </td>
+                     
 
                     </tr>
                 }
             </tbody>
         </table>
         <div class="table-footer">
-            <p>Tổng tiền đơn hàng : @String.Format("{0:0,0}",ViewBag.Total) VNĐ</p>
         </div>
     </div>
 </div>

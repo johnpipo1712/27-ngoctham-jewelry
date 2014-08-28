@@ -37,7 +37,7 @@
             <div class="item head">
                 <span class="cart_img"></span>
                 <span class="product_name fsize13 bold">TÊN SẢN PHẨM</span>
-                <span class="qty fsize13 bold">Giá</span>
+                <span class="qty fsize13 bold">Kích thước</span>
                 <span class="total_price fsize13 bold">SỐ LƯỢNG</span>
                 <div class="clearfix"></div>
             </div>
@@ -53,7 +53,7 @@
                             <input type="hidden" name="PRODUCT_CD" value="@item.PRODUCT_CD" />
                             @*<small>@item.O_PRODUCT.</small>*@
                         </a>
-                        <div class="total_price"><span>@item.O_PRODUCT.PRICE</span></div>
+                        <div class="total_price"><span>@item.SIZE</span></div>
                         <div class="qty"><input type="text" value="@item.QUANTITY" name="QUANTITY" maxlength="3" /></div>
                         <a href="@Url.Action("DeleteCart",new {PRODUCT_CD = item.PRODUCT_CD})" class="remove_item"><i class="fa fa-times"></i></a>
                         <button type="submit" class="remove_item"><i class="fa fa-edit"></i></button>
