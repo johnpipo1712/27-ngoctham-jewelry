@@ -9,7 +9,7 @@
             }
             else
             {
-                <a href="#" class="dropdown-toggle btn btn-primary"><i class="fa fa-shopping-cart"></i> @Ord.D_ORDER_DETAIL.Count SẢN PHẨM - @String.Format("{0:0,0 " + Ord.D_ORDER_DETAIL.ToList()[0].O_PRODUCT.CURRENCY + "}", W_GJS.Models.O_ORDER.Price_Total(Ord))<i class="fa fa-angle-down"></i></a>
+                <a href="#" class="dropdown-toggle btn btn-primary"><i class="fa fa-shopping-cart"></i> @Ord.D_ORDER_DETAIL.Count SẢN PHẨM @*- @String.Format("{0:0,0 " + Ord.D_ORDER_DETAIL.ToList()[0].O_PRODUCT.CURRENCY + "}", W_GJS.Models.O_ORDER.Price_Total(Ord))*@<i class="fa fa-angle-down"></i></a>
           
             }
            <ul class="dropdown-menu pull-right">
@@ -31,7 +31,7 @@
                         <img class="pull-left" src="@item.O_PRODUCT.URL_IMAGE" width="40" alt="quick cart">
                         <div class="inline-block">
                             <span class="title block">@item.O_PRODUCT.PRODUCT_NAME</span>
-                            <span class="price block">@item.QUANTITY &times; @item.SIZE)</span>
+                            <span class="price block">@item.QUANTITY)</span>
                         </div>
                     </a><!-- /item 1 -->
                     }
