@@ -48,10 +48,10 @@
             {
                 <li class="list-group-item list-toggle">
                     <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-@item.CATEGORY_PRODUCT_CODE">@item.CATEGORY_PRODUCT_NAME</a>
-                    @if (item.O_CATEGORY_PRODUCT_DETAIL != null && item.O_CATEGORY_PRODUCT_DETAIL.ToList().Count > 0)
+                    @if (item.O_CATEGORY_PRODUCT_DETAIL != null && item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList().Count > 0)
                     {
                         <ul id="collapse-@item.CATEGORY_PRODUCT_CODE" class="collapse">
-                            @foreach (var item_detail in item.O_CATEGORY_PRODUCT_DETAIL)
+                            @foreach (var item_detail in item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList())
                             {
                                 <li><a href="@Url.Action("Product_Category_Detail", new { CATEGORY_PRODUCT_DETAIL_CD = item_detail.CATEGORY_PRODUCT_DETAIL_CD })"><i class="fa fa-angle-right"></i> @item_detail.CATEGORY_PRODUCT_DETAIL_NAME</a></li>
                             }
