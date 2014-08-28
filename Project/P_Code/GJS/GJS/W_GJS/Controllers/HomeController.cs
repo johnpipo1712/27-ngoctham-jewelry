@@ -64,7 +64,11 @@ namespace W_GJS.Controllers
         {
             return PartialView(Model);
         }
-
+        [ChildActionOnly]
+        public ActionResult ProductLazyCatalogList(List<W_GJS.Models.O_PRODUCT> Model)
+        {
+            return PartialView(Model);
+        }
         [HttpPost]
         public ActionResult CategoryProductListPaging(long CATEGORY_PRODUCT_CD, long numberOfItemsInPage, long currentPage)
         {
@@ -84,7 +88,7 @@ namespace W_GJS.Controllers
             List<W_GJS.Models.O_PRODUCT> list = productList.Skip((int)model.ItemOrderFrom).Take((int)numberOfItemsInPage).ToList();
             model.ItemOrderTo = model.ItemOrderFrom + list.Count;
             model.ItemOrderFrom++;
-            model.HtmlListString = RenderPartialViewToString("ProductLazyList", list);
+            model.HtmlListString = RenderPartialViewToString("ProductLazyCatalogList", list);
 
             return PartialView(model);
         }
@@ -107,7 +111,7 @@ namespace W_GJS.Controllers
             List<W_GJS.Models.O_PRODUCT> list = productList.Skip((int)model.ItemOrderFrom).Take((int)numberOfItemsInPage).ToList();
             model.ItemOrderTo = model.ItemOrderFrom + list.Count;
             model.ItemOrderFrom++;
-            model.HtmlListString = RenderPartialViewToString("ProductLazyList", list);
+            model.HtmlListString = RenderPartialViewToString("ProductLazyCatalogList", list);
 
             return PartialView(model);
         }
@@ -403,7 +407,11 @@ namespace W_GJS.Controllers
             Db_gsj = new GJSEntities();
             return View(Db_gsj.O_PRODUCT.Single(t=>t.PRODUCT_CD == PRODUCT.PRODUCT_CD));
         }
-
+        public ActionResult ProductDetailCatalog([Bind(Include = "PRODUCT_CD")]O_PRODUCT PRODUCT)
+        {
+            Db_gsj = new GJSEntities();
+            return View(Db_gsj.O_PRODUCT.Single(t => t.PRODUCT_CD == PRODUCT.PRODUCT_CD));
+        }
         public ActionResult Product_Category([Bind(Include = "CATEGORY_PRODUCT_CD")]O_CATEGORY_PRODUCT CATEGORY_PRODUCT)
         {
             Db_gsj = new GJSEntities();

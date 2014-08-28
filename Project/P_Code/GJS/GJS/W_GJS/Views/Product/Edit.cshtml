@@ -202,9 +202,9 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.QUANTITY_GRANULES, new { @class = "control-label col-md-2" })
                         <div class="col-sm-10">
-                            @Html.TextAreaFor(model => model.QUANTITY_GRANULES, new { @id = "ckeContent" })
+                            @Html.TextAreaFor(model => model.QUANTITY_GRANULES, new { @id = "ckeContentQuantity" })
                             <script type="text/javascript">
-                                CKEDITOR.replace("ckeContent");
+                                CKEDITOR.replace("ckeContentQuantity");
                             </script>
                             @Html.ValidationMessageFor(model => model.PRODUCT_CONTENT)
                         </div>

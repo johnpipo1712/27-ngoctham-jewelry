@@ -1599,9 +1599,9 @@
           <Property Name="CATEGORY_PRODUCT_DETAIL_CD" Type="Int64" />
           <Property Name="WEIGHT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="QUANTITY" Type="Int64" />
-          <Property Name="PRICE" Type="Decimal" />
-          <Property Name="PRICE_PROMOTION" Type="Decimal" />
-          <Property Name="WAGES" Type="Decimal" />
+          <Property Name="PRICE" Type="String" />
+          <Property Name="PRICE_PROMOTION" Type="String" />
+          <Property Name="WAGES" Type="String" />
           <Property Name="CURRENCY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="URL_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SIZE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
