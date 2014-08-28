@@ -370,10 +370,11 @@
           <Property Name="CATEGORY_GRANULES_CD" Type="bigint" />
           <Property Name="CATEGORY_PRODUCT_DETAIL_CD" Type="bigint" />
           <Property Name="WEIGHT" Type="nvarchar(max)" />
+          <Property Name="QUANTITY_GRANULES" Type="nvarchar(max)" />
           <Property Name="QUANTITY" Type="bigint" />
-          <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="PRICE_PROMOTION" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="WAGES" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PRICE" Type="nvarchar(max)" />
+          <Property Name="PRICE_PROMOTION" Type="nvarchar(max)" />
+          <Property Name="WAGES" Type="nvarchar(max)" />
           <Property Name="CURRENCY" Type="nvarchar(max)" />
           <Property Name="URL_IMAGE" Type="nvarchar(max)" />
           <Property Name="SIZE" Type="nvarchar(max)" />
@@ -1598,9 +1599,9 @@
           <Property Name="CATEGORY_PRODUCT_DETAIL_CD" Type="Int64" />
           <Property Name="WEIGHT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="QUANTITY" Type="Int64" />
-          <Property Name="PRICE" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="PRICE_PROMOTION" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="WAGES" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PRICE" Type="Decimal" />
+          <Property Name="PRICE_PROMOTION" Type="Decimal" />
+          <Property Name="WAGES" Type="Decimal" />
           <Property Name="CURRENCY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="URL_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SIZE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1617,6 +1618,7 @@
           <NavigationProperty Name="O_PRODUCT_HIGHLIGHTS" Relationship="GJSModel.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_HIGHLIGHTS" />
           <NavigationProperty Name="O_PRODUCT_NEW" Relationship="GJSModel.FK_O_PRODUCT_NEW_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_NEW" />
           <NavigationProperty Name="O_PRODUCT_SELLING" Relationship="GJSModel.FK_O_PRODUCT_SELLING_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_SELLING" />
+          <Property Name="QUANTITY_GRANULES" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="O_PRODUCT_CATALOG">
           <Key>
@@ -2527,6 +2529,7 @@
           <EntitySetMapping Name="O_PRODUCT">
             <EntityTypeMapping TypeName="GJSModel.O_PRODUCT">
               <MappingFragment StoreEntitySet="O_PRODUCT">
+                <ScalarProperty Name="QUANTITY_GRANULES" ColumnName="QUANTITY_GRANULES" />
                 <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
                 <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />

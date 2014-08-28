@@ -55,18 +55,18 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Số lượng")]
         public Nullable<long> QUANTITY { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+    
         [DisplayFormat(DataFormatString="{0:0,0}")]
         [Display(Name = "Giá bán")]
-        public Nullable<decimal> PRICE { get; set; }
+        public string PRICE { get; set; }
         
         [DisplayFormat(DataFormatString = "{0:0,0}")]
         [Display(Name = "Giá khuyến mãi")]
-        public Nullable<decimal> PRICE_PROMOTION { get; set; }
+        public string PRICE_PROMOTION { get; set; }
         
         [DisplayFormat(DataFormatString = "{0:0,0}")]
         [Display(Name = "Tiền công")]
-        public Nullable<decimal> WAGES { get; set; }
+        public string WAGES { get; set; }
         
         [DataType(DataType.Text)]
         [Display(Name = "Đơn vị")]
@@ -80,10 +80,13 @@ namespace W_GJS.Models
         [DataType(DataType.Text)]
         [Display(Name = "Thẻ alt")]
         public string TAG_ALT { get; set; }
+        [DataType(DataType.Text)]
+        [Display(Name = "Số lượng hạt")]
+        public string QUANTITY_GRANULES { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }
-    
+      
         public virtual ICollection<D_ORDER_DETAIL> D_ORDER_DETAIL { get; set; }
         public virtual ICollection<D_PRODUCT_DETAIL> D_PRODUCT_DETAIL { get; set; }
         public virtual O_CATEGORY_GRANULES O_CATEGORY_GRANULES { get; set; }
