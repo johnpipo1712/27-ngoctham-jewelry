@@ -549,7 +549,7 @@ namespace W_GJS.Controllers
                 ordcheckout.DELIVERY_ADDRESS = ordcheckout.O_CUSTOMER.ADDRESS;
                 Db_gsj.Entry(ordcheckout).State = EntityState.Added;
                 Db_gsj.SaveChanges();
-                ordcheckout.ORDER_CODE = CodeConstants.ORDER_CODE + ordcheckout.ORDER_CODE.ToString();
+                ordcheckout.ORDER_CODE = CodeConstants.ORDER_CODE + ordcheckout.ORDER_CD.ToString();
                 Db_gsj.Entry(ordcheckout).State = EntityState.Modified;
                 Db_gsj.SaveChanges();
                 foreach (var item in ord.D_ORDER_DETAIL)
