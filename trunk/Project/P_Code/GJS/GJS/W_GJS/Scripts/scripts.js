@@ -1083,51 +1083,51 @@ function _toggle() {
 
 /** 16. Bottom Footer
  **************************************************************** **/
-	if(!jQuery("body").hasClass("boxed") && !jQuery("html").hasClass("ie")) {
+	//if(!jQuery("body").hasClass("boxed") && !jQuery("html").hasClass("ie")) {
 
-		jQuery(window).load(function() {
+	//	jQuery(window).load(function() {
 
-				function _bottomFooter() {
-					jQuery("#footer").removeClass("bottom");
+	//			function _bottomFooter() {
+	//				jQuery("#footer").removeClass("bottom");
 
-					var _h 	= parseInt(jQuery(document).height()),
-						_wh	= parseInt(jQuery("#wrapper").height());
-
-
-					if(_h > _wh) {
-
-						jQuery("#footer").addClass("bottom");
+	//				var _h 	= parseInt(jQuery(document).height()),
+	//					_wh	= parseInt(jQuery("#wrapper").height());
 
 
-					} else {
+	//				if(_h > _wh) {
 
-						jQuery("#footer").removeClass("bottom");
-
-					}
-
-				}	_bottomFooter();
+	//					jQuery("#footer").addClass("bottom");
 
 
-				// On Resize
-				jQuery(window).resize(function() {
+	//				} else {
 
-					if(window.afterResize) {
-						clearTimeout(window.afterResize);
-					}
+	//					jQuery("#footer").removeClass("bottom");
 
-					window.afterResize = setTimeout(function() {
+	//				}
 
-						/**
-							After Resize Code
-							.................
-						**/	_bottomFooter();
+	//			}	_bottomFooter();
 
-					}, 500);
 
-				});
+	//			// On Resize
+	//			jQuery(window).resize(function() {
 
-		});
-	}
+	//				if(window.afterResize) {
+	//					clearTimeout(window.afterResize);
+	//				}
+
+	//				window.afterResize = setTimeout(function() {
+
+	//					/**
+	//						After Resize Code
+	//						.................
+	//					**/	_bottomFooter();
+
+	//				}, 500);
+
+	//			});
+
+	//	});
+	//}
 
 
 
