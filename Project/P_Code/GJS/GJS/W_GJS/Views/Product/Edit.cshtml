@@ -141,6 +141,16 @@
                             {
                                 <input type="text" name="file1" value="" id="file1" />
                             }
+                            @if (Model.D_PRODUCT_DETAIL.Count() >= 1 && Model.D_PRODUCT_DETAIL.ToList()[0].SHOW_PRODUCT == true)
+                            {
+                                
+                                <input type="checkbox" checked="checked" name="show_product1" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="show_product1" />
+
+                            }
                         </div>
                     </div> <!-- / .form-group -->
 
@@ -154,6 +164,16 @@
                             else
                             {
                                 <input type="text" name="file2" value="" id="file2" />
+                            }
+                            @if (Model.D_PRODUCT_DETAIL.Count() >= 2 && Model.D_PRODUCT_DETAIL.ToList()[1].SHOW_PRODUCT == true)
+                            {
+                                
+                                <input type="checkbox" checked="checked" name="show_product2" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="show_product2" />
+
                             }
                         </div>
                     </div> <!-- / .form-group -->
@@ -169,6 +189,16 @@
                             {
                                 <input type="text" name="file3" value="" id="file3" />
                             }
+                            @if (Model.D_PRODUCT_DETAIL.Count() >= 3 && Model.D_PRODUCT_DETAIL.ToList()[2].SHOW_PRODUCT == true)
+                            {
+                                <input type="checkbox" checked="checked" name="show_product3" />
+                                
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="show_product3" />
+
+                            }
                         </div>
                     </div> <!-- / .form-group -->
 
@@ -183,6 +213,15 @@
                             {
                                 <input type="text" name="file4" value="" id="file4" />
                             }
+                            @if (Model.D_PRODUCT_DETAIL.Count() >= 4 && Model.D_PRODUCT_DETAIL.ToList()[3].SHOW_PRODUCT == true)
+                            {
+                                <input type="checkbox" checked="checked" name="show_product4" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="show_product4" />
+
+                            }
                         </div>
                     </div> <!-- / .form-group -->
 
@@ -196,6 +235,16 @@
                             else
                             {
                                 <input type="text" name="file5" value="" id="file5" />
+                            }
+                            @if (Model.D_PRODUCT_DETAIL.Count() >= 5 && Model.D_PRODUCT_DETAIL.ToList()[4].SHOW_PRODUCT == true)
+                            {
+                                
+                                <input type="checkbox" checked="checked" name="show_product5" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="show_product5" />
+
                             }
                         </div>
                     </div> <!-- / .form-group -->

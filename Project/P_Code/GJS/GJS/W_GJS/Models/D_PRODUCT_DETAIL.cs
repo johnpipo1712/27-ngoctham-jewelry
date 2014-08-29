@@ -15,14 +15,13 @@ namespace W_GJS.Models
     
     public partial class D_PRODUCT_DETAIL
     {
-        [Display(Name = "Chi tiết sản phẩm")]
+		[Display(Name = "Chi tiết sản phẩm")]
         public long PRODUCT_DETAIL_CD { get; set; }
-        [Display(Name = "Tên sản phẩm")]
+		[Display(Name = "Tên sản phẩm")]
         public Nullable<long> PRODUCT_CD { get; set; }
-        [DataType(DataType.Text)]
-        [Display(Name = "Tên hình")]
-        public string URL_IMAGE { get; set; }
-
+        public Nullable<bool> SHOW_PRODUCT { get; set; }
+		[DataType(DataType.Text)]
+        [Display(Name = "Tên hình")]        public string URL_IMAGE { get; set; }
         public Nullable<long> STATUS { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public Nullable<System.DateTime> CREATEDATE { get; set; }

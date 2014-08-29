@@ -35,11 +35,11 @@ namespace W_GJS.Controllers
         [ValidateInput(false)]
    
         public ActionResult Create(O_PRODUCT PRODUCT
-            , String file1
-            , String file2
-            , String file3
-            , String file4
-            , String file5)
+            , String file1, String show_product1
+            , String file2, String show_product2
+            , String file3, String show_product3
+            , String file4, String show_product4
+            , String file5, String show_product5)
         {
 
             if (ModelState.IsValid)
@@ -85,6 +85,7 @@ namespace W_GJS.Controllers
                         dproudct.ACTIVE = true;
                         dproudct.CREATEDATE = DateTime.Now;
                         dproudct.URL_IMAGE = file1;
+                        dproudct.SHOW_PRODUCT = show_product1 == "on" ? true : false;
                         Db_gsj.Entry(dproudct).State = EntityState.Added;
                         Db_gsj.SaveChanges();
                     }
@@ -96,6 +97,7 @@ namespace W_GJS.Controllers
                         dproudct.ACTIVE = true;
                         dproudct.CREATEDATE = DateTime.Now;
                         dproudct.URL_IMAGE = file2;
+                        dproudct.SHOW_PRODUCT = show_product2 == "on" ? true : false;
                         Db_gsj.Entry(dproudct).State = EntityState.Added;
                         Db_gsj.SaveChanges();
                     }
@@ -107,6 +109,7 @@ namespace W_GJS.Controllers
                         dproudct.ACTIVE = true;
                         dproudct.CREATEDATE = DateTime.Now;
                         dproudct.URL_IMAGE = file3;
+                        dproudct.SHOW_PRODUCT = show_product3 == "on" ? true : false;
                         Db_gsj.Entry(dproudct).State = EntityState.Added;
                        
                         Db_gsj.SaveChanges();
@@ -119,6 +122,7 @@ namespace W_GJS.Controllers
                         dproudct.ACTIVE = true;
                         dproudct.CREATEDATE = DateTime.Now;
                         dproudct.URL_IMAGE = file4;
+                        dproudct.SHOW_PRODUCT = show_product4 == "on" ? true : false;
                         Db_gsj.Entry(dproudct).State = EntityState.Added;
                        
                         Db_gsj.SaveChanges();
@@ -131,6 +135,7 @@ namespace W_GJS.Controllers
                         dproudct.ACTIVE = true;
                         dproudct.CREATEDATE = DateTime.Now;
                         dproudct.URL_IMAGE = file5;
+                        dproudct.SHOW_PRODUCT = show_product5 == "on" ? true : false;
                         Db_gsj.Entry(dproudct).State = EntityState.Added;
                        
                         Db_gsj.SaveChanges();
@@ -184,11 +189,11 @@ namespace W_GJS.Controllers
         [ValidateInput(false)]
    
         public ActionResult Edit(O_PRODUCT PRODUCT
-            , String file1
-            , String file2
-            , String file3
-            , String file4
-            , String file5)
+            , String file1, String show_product1
+            , String file2, String show_product2
+            , String file3, String show_product3
+            , String file4, String show_product4
+            , String file5, String show_product5)
         {
             if (ModelState.IsValid)
             {
@@ -247,6 +252,7 @@ namespace W_GJS.Controllers
                     dproudct.ACTIVE = true;
                     dproudct.CREATEDATE = DateTime.Now;
                     dproudct.URL_IMAGE = file1;
+                    dproudct.SHOW_PRODUCT = show_product1 == "on" ? true : false;
                     Db_gsj.Entry(dproudct).State = EntityState.Added;
                          
                     Db_gsj.SaveChanges();
@@ -261,6 +267,7 @@ namespace W_GJS.Controllers
                     dproudct.ACTIVE = true;
                     dproudct.CREATEDATE = DateTime.Now;
                     dproudct.URL_IMAGE = file2;
+                    dproudct.SHOW_PRODUCT = show_product2 == "on" ? true : false;
                     Db_gsj.Entry(dproudct).State = EntityState.Added;
                           
                     Db_gsj.SaveChanges();
@@ -273,6 +280,7 @@ namespace W_GJS.Controllers
                     dproudct.ACTIVE = true;
                     dproudct.CREATEDATE = DateTime.Now;
                     dproudct.URL_IMAGE = file3;
+                    dproudct.SHOW_PRODUCT = show_product3 == "on" ? true : false;
                     Db_gsj.Entry(dproudct).State = EntityState.Added;
                          
                     Db_gsj.SaveChanges();
@@ -285,6 +293,7 @@ namespace W_GJS.Controllers
                     dproudct.ACTIVE = true;
                     dproudct.CREATEDATE = DateTime.Now;
                     dproudct.URL_IMAGE = file4;
+                    dproudct.SHOW_PRODUCT = show_product4 == "on" ? true : false;
                     Db_gsj.Entry(dproudct).State = EntityState.Added;
                          
                     Db_gsj.SaveChanges();
@@ -297,6 +306,7 @@ namespace W_GJS.Controllers
                     dproudct.ACTIVE = true;
                     dproudct.CREATEDATE = DateTime.Now;
                     dproudct.URL_IMAGE = file5;
+                    dproudct.SHOW_PRODUCT = show_product5 == "on" ? true : false;
                     Db_gsj.Entry(dproudct).State = EntityState.Added;
                          
                     Db_gsj.SaveChanges();
