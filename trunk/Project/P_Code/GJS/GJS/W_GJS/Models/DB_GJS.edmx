@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GJSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="D_CITIES_DETAIL">
           <Key>
             <PropertyRef Name="CITIES_DETAIL_CD" />
@@ -37,6 +37,7 @@
           </Key>
           <Property Name="PRODUCT_DETAIL_CD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PRODUCT_CD" Type="bigint" />
+          <Property Name="SHOW_PRODUCT" Type="bit" />
           <Property Name="URL_IMAGE" Type="nvarchar(max)" />
           <Property Name="STATUS" Type="bigint" />
           <Property Name="ACTIVE" Type="bit" />
@@ -1030,6 +1031,7 @@
       <Schema Namespace="GJSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="GJSEntities" annotation:LazyLoadingEnabled="true">
           <FunctionImport Name="SP_STATISTICS_VISIT" ReturnType="Collection(GJSModel.SP_STATISTICS_VISIT_Result)" />
+          <FunctionImport Name="Report_Order" ReturnType="Collection(GJSModel.Report_Order_Result)" />
           <EntitySet Name="D_CITIES_DETAIL" EntityType="GJSModel.D_CITIES_DETAIL" />
           <EntitySet Name="D_ORDER_DETAIL" EntityType="GJSModel.D_ORDER_DETAIL" />
           <EntitySet Name="D_PRODUCT_DETAIL" EntityType="GJSModel.D_PRODUCT_DETAIL" />
@@ -1187,7 +1189,6 @@
             <End Role="S_USER" EntitySet="S_USER" />
             <End Role="O_USER_PST" EntitySet="O_USER_PST" />
           </AssociationSet>
-          <FunctionImport Name="Report_Order" ReturnType="Collection(GJSModel.Report_Order_Result)" />
           </EntityContainer>
         <ComplexType Name="SP_STATISTICS_VISIT_Result">
           <Property Type="Int64" Name="COUNTER_VISIT_GN" Nullable="true" />
@@ -1197,6 +1198,19 @@
           <Property Type="Int64" Name="COUNTER_VISIT_MONTH_TN" Nullable="true" />
           <Property Type="Int64" Name="COUNTER_VISIT_MONTH_TT" Nullable="true" />
           <Property Type="Int64" Name="COUNTER_VISIT_TOTAL" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Report_Order_Result">
+          <Property Type="String" Name="ORDER_CODE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CUSTOMER_NAME" Nullable="true" />
+          <Property Type="String" Name="PRODUCT_CODE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRODUCT_NAME" Nullable="true" />
+          <Property Type="String" Name="URL_IMAGE" Nullable="true" />
+          <Property Type="String" Name="PHONE" Nullable="true" />
+          <Property Type="String" Name="EMAIL" Nullable="true" />
+          <Property Type="String" Name="DELIVERY_ADDRESS" Nullable="true" />
+          <Property Type="String" Name="SIZE" Nullable="true" />
+          <Property Type="Int64" Name="QUANTITY" Nullable="true" />
+          <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="18" Scale="0" />
         </ComplexType>
         <EntityType Name="D_CITIES_DETAIL">
           <Key>
@@ -1234,6 +1248,7 @@
           </Key>
           <Property Name="PRODUCT_DETAIL_CD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PRODUCT_CD" Type="Int64" />
+          <Property Name="SHOW_PRODUCT" Type="Boolean" />
           <Property Name="URL_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="Int64" />
           <Property Name="ACTIVE" Type="Boolean" />
@@ -1598,10 +1613,11 @@
           <Property Name="CATEGORY_GRANULES_CD" Type="Int64" />
           <Property Name="CATEGORY_PRODUCT_DETAIL_CD" Type="Int64" />
           <Property Name="WEIGHT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QUANTITY_GRANULES" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="QUANTITY" Type="Int64" />
-          <Property Name="PRICE" Type="String" />
-          <Property Name="PRICE_PROMOTION" Type="String" />
-          <Property Name="WAGES" Type="String" />
+          <Property Name="PRICE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRICE_PROMOTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WAGES" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CURRENCY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="URL_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SIZE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1618,7 +1634,6 @@
           <NavigationProperty Name="O_PRODUCT_HIGHLIGHTS" Relationship="GJSModel.FK_O_PRODUCT_HIGHLIGHTS_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_HIGHLIGHTS" />
           <NavigationProperty Name="O_PRODUCT_NEW" Relationship="GJSModel.FK_O_PRODUCT_NEW_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_NEW" />
           <NavigationProperty Name="O_PRODUCT_SELLING" Relationship="GJSModel.FK_O_PRODUCT_SELLING_O_PRODUCT" FromRole="O_PRODUCT" ToRole="O_PRODUCT_SELLING" />
-          <Property Name="QUANTITY_GRANULES" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="O_PRODUCT_CATALOG">
           <Key>
@@ -2114,19 +2129,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="Report_Order_Result">
-          <Property Type="String" Name="ORDER_CODE" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CUSTOMER_NAME" Nullable="true" />
-          <Property Type="String" Name="PRODUCT_CODE" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="PRODUCT_NAME" Nullable="true" />
-          <Property Type="String" Name="URL_IMAGE" Nullable="true" />
-          <Property Type="String" Name="PHONE" Nullable="true" />
-          <Property Type="String" Name="EMAIL" Nullable="true" />
-          <Property Type="String" Name="DELIVERY_ADDRESS" Nullable="true" />
-          <Property Type="String" Name="SIZE" Nullable="true" />
-          <Property Type="Int64" Name="QUANTITY" Nullable="true" />
-          <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="18" Scale="0" />
-        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2143,6 +2145,23 @@
                 <ScalarProperty Name="COUNTER_VISIT_MONTH_TN" ColumnName="COUNTER_VISIT_MONTH_TN" />
                 <ScalarProperty Name="COUNTER_VISIT_MONTH_TT" ColumnName="COUNTER_VISIT_MONTH_TT" />
                 <ScalarProperty Name="COUNTER_VISIT_TOTAL" ColumnName="COUNTER_VISIT_TOTAL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Report_Order" FunctionName="GJSModel.Store.Report_Order">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GJSModel.Report_Order_Result">
+                <ScalarProperty Name="ORDER_CODE" ColumnName="ORDER_CODE" />
+                <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
+                <ScalarProperty Name="PRODUCT_CODE" ColumnName="PRODUCT_CODE" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="URL_IMAGE" ColumnName="URL_IMAGE" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DELIVERY_ADDRESS" ColumnName="DELIVERY_ADDRESS" />
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2181,6 +2200,7 @@
                 <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="URL_IMAGE" ColumnName="URL_IMAGE" />
+                <ScalarProperty Name="SHOW_PRODUCT" ColumnName="SHOW_PRODUCT" />
                 <ScalarProperty Name="PRODUCT_CD" ColumnName="PRODUCT_CD" />
                 <ScalarProperty Name="PRODUCT_DETAIL_CD" ColumnName="PRODUCT_DETAIL_CD" />
               </MappingFragment>
@@ -2529,7 +2549,6 @@
           <EntitySetMapping Name="O_PRODUCT">
             <EntityTypeMapping TypeName="GJSModel.O_PRODUCT">
               <MappingFragment StoreEntitySet="O_PRODUCT">
-                <ScalarProperty Name="QUANTITY_GRANULES" ColumnName="QUANTITY_GRANULES" />
                 <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
                 <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
@@ -2541,6 +2560,7 @@
                 <ScalarProperty Name="PRICE_PROMOTION" ColumnName="PRICE_PROMOTION" />
                 <ScalarProperty Name="PRICE" ColumnName="PRICE" />
                 <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="QUANTITY_GRANULES" ColumnName="QUANTITY_GRANULES" />
                 <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
                 <ScalarProperty Name="CATEGORY_PRODUCT_DETAIL_CD" ColumnName="CATEGORY_PRODUCT_DETAIL_CD" />
                 <ScalarProperty Name="CATEGORY_GRANULES_CD" ColumnName="CATEGORY_GRANULES_CD" />
@@ -2697,23 +2717,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Report_Order" FunctionName="GJSModel.Store.Report_Order">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GJSModel.Report_Order_Result">
-                <ScalarProperty Name="ORDER_CODE" ColumnName="ORDER_CODE" />
-                <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
-                <ScalarProperty Name="PRODUCT_CODE" ColumnName="PRODUCT_CODE" />
-                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
-                <ScalarProperty Name="URL_IMAGE" ColumnName="URL_IMAGE" />
-                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="DELIVERY_ADDRESS" ColumnName="DELIVERY_ADDRESS" />
-                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
-                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
-                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
