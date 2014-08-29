@@ -205,23 +205,7 @@
         }
      
         <!-- see the bottom of the page for the script -->
-        <section class="product-view-colors">
-            @for (int i = 0; i < @Model.D_PRODUCT_DETAIL.Count; i++)
-            {
-                if (Model.D_PRODUCT_DETAIL.ToList()[i].SHOW_PRODUCT == true)
-                { 
-                    if (i == 0)
-                    {
-                        <a data-color="white" data-stock="yes" data-src="@Model.D_PRODUCT_DETAIL.ToList()[i].URL_IMAGE" class="active" href="#"><img src="@Model.D_PRODUCT_DETAIL.ToList()[i].URL_IMAGE" height="70" alt=""></a>
-                    }
-                    else
-                    {
-                        <a data-color="white" data-stock="yes" data-src="@Model.D_PRODUCT_DETAIL.ToList()[i].URL_IMAGE" href="#"><img src="@Model.D_PRODUCT_DETAIL.ToList()[i].URL_IMAGE" height="70" alt=""></a>
-                    }
-                }
-            }
-        </section>
-
+      
         @using (Html.BeginForm("AddCartQuantity", "Home", new { PRODUCT_CD = "PRODUCT_CD", QUANTITY = "QUANTITY", SIZE = "SIZE" }, FormMethod.Post, new { @class = "form-inline margin-top30 nopadding clearfix" }))
         {
              <!-- see the bottom of the page for the script -->
