@@ -29,7 +29,7 @@
 }
 
 <div class="row">
-    <div class="table-primary">
+    <div class="table-primary table-hover table-striped">
         <div class="table-header">
             <div class="table-caption">
                 Danh sách
@@ -38,13 +38,13 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                   
+
                     <th>
                         @Html.DisplayNameFor(model => model.USER_NAME)
                     </th>
-                 
+
                     <th>
-                        Quyền 
+                        Quyền
                     </th>
                     <th></th>
                 </tr>
@@ -53,11 +53,11 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                       
+
                         <td>
                             @Html.DisplayFor(modelItem => item.USER_NAME)
                         </td>
-                        
+
                         <td>
                             @Html.DisplayFor(modelItem => item.O_USER_PST.ToList()[0].S_PST.PST_NAME)
                         </td>
