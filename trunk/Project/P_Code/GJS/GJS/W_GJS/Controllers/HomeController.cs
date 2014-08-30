@@ -74,7 +74,7 @@ namespace W_GJS.Controllers
         {
             Db_gsj = new GJSEntities();
             ProductCategoryModel model = new ProductCategoryModel();
-            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).ToList();
+            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD && t.ACTIVE == true).ToList();
 
             model.Identified = CATEGORY_PRODUCT_CD;
             model.TotalItems = productList.Count;
@@ -97,7 +97,7 @@ namespace W_GJS.Controllers
         {
             Db_gsj = new GJSEntities();
             ProductCategoryModel model = new ProductCategoryModel();
-            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL_CD).ToList();
+            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL_CD && t.ACTIVE == true).ToList();
 
             model.Identified = CATEGORY_PRODUCT_DETAIL_CD;
             model.TotalItems = productList.Count;
@@ -619,7 +619,7 @@ namespace W_GJS.Controllers
  
         {
             Db_gsj = new GJSEntities();
-            return Json(Db_gsj.D_CITIES_DETAIL.Where(t => t.CITIES_CD == CITIES_CD).ToList().Select(t => new { t.CITIES_DETAIL_CD, t.CITIES_DETAIL_NAME }).ToArray());
+            return Json(Db_gsj.D_CITIES_DETAIL.Where(t => t.ACTIVE == true && t.CITIES_CD == CITIES_CD).ToList().Select(t => new { t.CITIES_DETAIL_CD, t.CITIES_DETAIL_NAME }).ToArray());
  
         }
 
@@ -628,8 +628,8 @@ namespace W_GJS.Controllers
         public JsonResult GetBrancheslByCityAJAX(long? CITIES_CD)
         {
             Db_gsj = new GJSEntities();
-            return Json(Db_gsj.O_BRANCH.Where(t => t.CITIES_CD == CITIES_CD).ToList().Select(t=> new{t.BRANCH_NAME,t.ADDRESS,t.PHONE,t.LATITUDE,t.LONGITUDE}).ToArray());
- 
+            return Json(Db_gsj.O_BRANCH.Where(t => t.ACTIVE == true && t.CITIES_CD == CITIES_CD).ToList().Select(t => new { t.BRANCH_NAME, t.ADDRESS, t.PHONE, t.LATITUDE, t.LONGITUDE }).ToArray());
+
         }
 
          [HttpPost]
@@ -637,7 +637,7 @@ namespace W_GJS.Controllers
          public JsonResult GetBrancheslByDCityAJAX(long? CITIES_DETAIL_CD)
          {
              Db_gsj = new GJSEntities();
-             return Json(Db_gsj.O_BRANCH.Where(t => t.CITIES_DETAIL_CD == CITIES_DETAIL_CD).ToList().Select(t => new { t.BRANCH_NAME, t.ADDRESS, t.PHONE, t.LATITUDE, t.LONGITUDE }).ToArray());
+             return Json(Db_gsj.O_BRANCH.Where(t => t.ACTIVE == true && t.CITIES_DETAIL_CD == CITIES_DETAIL_CD).ToList().Select(t => new { t.BRANCH_NAME, t.ADDRESS, t.PHONE, t.LATITUDE, t.LONGITUDE }).ToArray());
 
          }
          public ActionResult ShowCategoryAlbum(long CATEGORY_ALBUM_CD)
