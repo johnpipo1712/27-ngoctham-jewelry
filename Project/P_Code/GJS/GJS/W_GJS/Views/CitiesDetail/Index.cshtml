@@ -35,10 +35,10 @@
                 Danh sách
             </div>
         </div>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover table-striped">
             <thead>
                 <tr>
-                 
+
                     <th>
                         @Html.DisplayNameFor(model => model.CITIES_DETAIL_NAME)
                     </th>
@@ -52,14 +52,14 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                       
+
                         <td>
                             @Html.DisplayFor(modelItem => item.CITIES_DETAIL_NAME)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.O_CITIES.CITIES_NAME)
                         </td>
-                       
+
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { CITIES_DETAIL_CD = item.CITIES_DETAIL_CD }) |
                             @if (item.ACTIVE == false)
