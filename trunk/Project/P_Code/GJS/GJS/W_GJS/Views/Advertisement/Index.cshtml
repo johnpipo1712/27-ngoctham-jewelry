@@ -35,14 +35,14 @@
                 Danh sách
             </div>
         </div>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover table-striped">
             <thead>
                 <tr>
-                   
+
                     <th>
                         @Html.DisplayNameFor(model => model.ADVERTISEMENT)
                     </th>
-                  
+
                     <th></th>
                 </tr>
             </thead>
@@ -50,11 +50,11 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                      
+
                         <td>
                             @Html.Raw(item.ADVERTISEMENT)
                         </td>
-                       
+
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { CD = item.CD }) |
                             @if (item.ACTIVE == false)

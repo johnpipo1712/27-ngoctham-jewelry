@@ -36,17 +36,17 @@
                 Danh sách
             </div>
         </div>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover table-striped">
             <thead>
                 <tr>
-                    
+
                     <th>
                         @Html.DisplayNameFor(model => model.CATEGORY_PRODUCT_CODE)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.CATEGORY_PRODUCT_NAME)
                     </th>
-                  
+
                     <th></th>
                 </tr>
             </thead>
@@ -54,14 +54,14 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                       
+
                         <td>
                             @Html.DisplayFor(modelItem => item.CATEGORY_PRODUCT_CODE)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CATEGORY_PRODUCT_NAME)
                         </td>
-                      
+
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD }) |
                             @if (item.ACTIVE == false)

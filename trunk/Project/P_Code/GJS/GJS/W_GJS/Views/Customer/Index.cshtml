@@ -40,18 +40,18 @@
                 Danh sách
             </div>
         </div>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover table-striped">
             <thead>
                 <tr>
-                 
-                 
+
+
                     <th>
                         @Html.DisplayNameFor(model => model.CUSTOMER_NAME)
                     </th>
                     <th>
                         Tên đăng nhập
                     </th>
-                 
+
                     <th>
                         @Html.DisplayNameFor(model => model.PHONE)
                     </th>
@@ -71,15 +71,15 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                       
-                       
+
+
                         <td>
                             @Html.DisplayFor(modelItem => item.CUSTOMER_NAME)
                         </td>
                         <td>
                             @item.O_USER_CUSTOMER.ToList()[0].S_USER.USER_NAME
                         </td>
-                      
+
                         <td>
                             @Html.DisplayFor(modelItem => item.PHONE)
                         </td>
@@ -118,10 +118,10 @@
 
                                 }
                             </select>
-                         
+
                         </th>
                         <td>
-                          @*//  @Html.ActionLink("Sửa", "Edit", new { CUSTOMER_CD = item.CUSTOMER_CD }) |*@
+                            @*//  @Html.ActionLink("Sửa", "Edit", new { CUSTOMER_CD = item.CUSTOMER_CD }) |*@
                             @if (item.ACTIVE == false)
                             {
                                 @Html.ActionLink("Kích hoạt", "Active", new { CUSTOMER_CD = item.CUSTOMER_CD })

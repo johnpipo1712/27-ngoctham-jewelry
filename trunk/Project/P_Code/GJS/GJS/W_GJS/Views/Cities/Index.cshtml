@@ -36,7 +36,7 @@
                 Danh sách
             </div>
         </div>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover table-striped">
             <thead>
                 <tr>
                     <th>
@@ -45,7 +45,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.CITIES_NAME)
                     </th>
-                 
+
                     <th></th>
                 </tr>
             </thead>
@@ -60,7 +60,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.CITIES_NAME)
                         </td>
-                    
+
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { CITIES_CD = item.CITIES_CD }) |
                             @if (item.ACTIVE == false)
