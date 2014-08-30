@@ -17,7 +17,7 @@ namespace W_GJS.Controllers
         public ActionResult Index()
         {
             Db_gsj = new GJSEntities();
-            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL);
+            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.OrderByDescending(x => x.CREATEDATE));
         }
         [HttpGet]
         public ActionResult Create()
