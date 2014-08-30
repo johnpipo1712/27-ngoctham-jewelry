@@ -70,15 +70,7 @@
                         </td>
 
                         <td>
-                            @Html.ActionLink("Sửa", "Edit", new { /* id=item.PrimaryKey */ }) |
-                            @if (item.ACTIVE == false)
-                            {
-                                @Html.ActionLink("Kích hoạt", "Active", new { CD = item.CD })
-                            }
-                            else
-                            {
-                                @Html.ActionLink("Xóa", "Deactive", new { CD = item.CD })
-                            }
+                            @Html.ActionLink("Sửa", "Edit", new { CD = item.CD }) 
                         </td>
                     </tr>
                 }
