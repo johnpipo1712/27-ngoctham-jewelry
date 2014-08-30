@@ -68,18 +68,16 @@ $("#form-register").submit(function (event) {
 });
 
 // CONTACT
-inProgressContact = false;
-$("#contact-button").click(function () {
+function sendContact() {
     if (!inProgressContact) {
         inProgressContact = true;
         $("#loadingDivContact").show();
         $("#error-contact").hide();
-        $.post($(this).data("action"), $('#form-contact').serialize(),
+        $.post($("#contact-button").data("action"), $('#form-contact').serialize(),
             function (data) {
                 if (data.HasError) {
                     $("#error-contact").html(data.ErrorString);
                     $("#loadingDivContact").hide();
-                    inProgressContact = false;
                     $("#error-contact").show();
 
                 } else {
@@ -87,10 +85,19 @@ $("#contact-button").click(function () {
                     $("#BookingModal").modal('hide');
                     $("#ContactSuccesfully").modal('show');
                 }
+                inProgressContact = false;
             });
     }
-});
+}
 
+inProgressContact = false;
+$("#contact-button").click(function () {
+    sendContact();
+});
+$("#form-contact").submit(function (event) {
+    sendContact();
+    event.preventDefault();
+});
 
 // LOGOUT
 inProgressLogout = false;
