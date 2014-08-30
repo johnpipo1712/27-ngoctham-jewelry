@@ -1,11 +1,11 @@
 ﻿// LOGIN
-inProgressLogin = false;
-$( "#login-button" ).click(function() {
+
+function login() {
     if (!inProgressLogin) {
         inProgressLogin = true;
         $("#loadingDivLogin").show();
         $("#error-login").hide();
-        $.post($(this).data("action"), $('#form-login').serialize(),
+        $.post($("#login-button").data("action"), $('#form-login').serialize(),
             function (data) {
                 if (data.RoleOrFailed == 0) {
                     $("#error-login").html(data.ErrorString);
@@ -17,8 +17,19 @@ $( "#login-button" ).click(function() {
                     $("#loadingDivLogin").hide();
                     window.location.href = $("#login-button").data("success-action");
                 }
-        });
+            });
     }
+    return false; //stop submit form.
+}
+
+inProgressLogin = false;
+$( "#login-button" ).click(function() {
+    login();
+});
+
+$("#form-login").submit(function (event) {
+    login();
+    event.preventDefault();
 });
 
 // REGISTER
