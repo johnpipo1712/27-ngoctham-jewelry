@@ -32,6 +32,11 @@ $("#form-login").submit(function (event) {
     event.preventDefault();
 });
 
+$('#LoginModal').on('shown.bs.modal', function () {
+    $("#form-login").find("input[type=text], input[type=password], textarea").val("");
+})
+
+
 // REGISTER
 function registerAccount()
 {
@@ -68,6 +73,11 @@ $("#form-register").submit(function (event) {
     event.preventDefault();
 });
 
+$('#RegisterModal').on('shown.bs.modal', function () {
+    $("#form-register").find("input[type=text], input[type=password], textarea").val("");
+    $("#form-register").find("select[name=sex]").val(0);
+})
+
 // CONTACT
 function sendContact() {
     if (!inProgressContact) {
@@ -99,7 +109,10 @@ $("#contact-button").click(function () {
 $("#form-contact").submit(function (event) {
     sendContact();
     event.preventDefault();
-});
+}); 
+$('#BookingModal').on('shown.bs.modal', function () {
+    $("#form-contact").find("input[type=text], input[type=Email], textarea").val("");
+})
 
 // LOGOUT
 inProgressLogout = false;
