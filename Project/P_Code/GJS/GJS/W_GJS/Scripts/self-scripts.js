@@ -55,6 +55,7 @@ function registerAccount()
                 }
             });
     }
+    return false; //stop submit form.
 }
 
 inProgressRegister = false;
@@ -83,11 +84,12 @@ function sendContact() {
                 } else {
                     $("#loadingDivContact").hide();
                     $("#BookingModal").modal('hide');
-                    $("#ContactSuccesfully").modal('show');
+                    $("#contactSuccesfully").modal('show');
                 }
                 inProgressContact = false;
             });
     }
+    return false; //stop submit form.
 }
 
 inProgressContact = false;
