@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "Trang chủ";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
-    List<W_GJS.Models.O_PRODUCT_NEW> listproduct_new = gjs.O_PRODUCT_NEW.Where(t => t.O_PRODUCT.ACTIVE == true && t.STATUS == 1).ToList();
-    List<W_GJS.Models.O_PRODUCT_HIGHLIGHTS> listproduct_hightlights = gjs.O_PRODUCT_HIGHLIGHTS.Where(t => t.O_PRODUCT.ACTIVE == true && t.O_PRODUCT.STATUS == 1).ToList();
-    List<W_GJS.Models.O_PRODUCT_SELLING> listproduct_selling = gjs.O_PRODUCT_SELLING.Where(t => t.O_PRODUCT.ACTIVE == true && t.O_PRODUCT.STATUS == 1).ToList();
-    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_PRODUCT_NEW> listproduct_new = gjs.O_PRODUCT_NEW.Where(t => t.O_PRODUCT.ACTIVE == true && t.STATUS == 1).OrderByDescending(x => x.CREATEDATE).ToList();
+    List<W_GJS.Models.O_PRODUCT_HIGHLIGHTS> listproduct_hightlights = gjs.O_PRODUCT_HIGHLIGHTS.Where(t => t.O_PRODUCT.ACTIVE == true && t.O_PRODUCT.STATUS == 1).OrderByDescending(x => x.CREATEDATE).ToList();
+    List<W_GJS.Models.O_PRODUCT_SELLING> listproduct_selling = gjs.O_PRODUCT_SELLING.Where(t => t.O_PRODUCT.ACTIVE == true && t.O_PRODUCT.STATUS == 1).OrderByDescending(x => x.CREATEDATE).ToList();
+    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
 }
 
 @*@section Slide {

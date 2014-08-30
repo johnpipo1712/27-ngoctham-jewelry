@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Product_Category";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
-    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).ToList();
+    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).OrderByDescending(x => x.CREATEDATE).ToList();
 
 }
 
@@ -52,7 +52,7 @@
                     @if (item.O_CATEGORY_PRODUCT_DETAIL != null && item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList().Count > 0)
                     {
                         <ul id="collapse-@item.CATEGORY_PRODUCT_CODE" class="collapse">
-                            @foreach (var item_detail in item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList())
+                            @foreach (var item_detail in item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList())
                             {
                                 <li><a href="@Url.Action("Product_Category_Detail", new { CATEGORY_PRODUCT_DETAIL_CD = item_detail.CATEGORY_PRODUCT_DETAIL_CD })"><i class="fa fa-angle-right"></i> @item_detail.CATEGORY_PRODUCT_DETAIL_NAME</a></li>
                             }

@@ -3,8 +3,8 @@
     ViewBag.Title = "NewsDetail";
     Layout = "~/Views/Shared/_ShopLayout.cshtml";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
-    List<W_GJS.Models.O_NEWS_HIGHLIGHTS> listNews_Hight_Light = gjs.O_NEWS_HIGHLIGHTS.Where(t => t.ACTIVE == true).ToList();
-    List<W_GJS.Models.O_NEWS_NEW> listNews_NEW = gjs.O_NEWS_NEW.Where(t => t.ACTIVE == true).ToList();
+    List<W_GJS.Models.O_NEWS_HIGHLIGHTS> listNews_Hight_Light = gjs.O_NEWS_HIGHLIGHTS.Where(t => t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
+    List<W_GJS.Models.O_NEWS_NEW> listNews_NEW = gjs.O_NEWS_NEW.Where(t => t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
     W_GJS.Models.O_INFORMATION Infomation = gjs.O_INFORMATION.Single(t => t.CD == 1);
   
 }

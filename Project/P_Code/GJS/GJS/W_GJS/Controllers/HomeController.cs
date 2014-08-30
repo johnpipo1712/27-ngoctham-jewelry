@@ -303,7 +303,7 @@ namespace W_GJS.Controllers
         {
             Db_gsj = new GJSEntities();
             SearchNewsResultModel resultModel = new SearchNewsResultModel();
-            List<O_NEWS> list = Db_gsj.O_NEWS.Where(t => t.ACTIVE == true).ToList();
+            List<O_NEWS> list = Db_gsj.O_NEWS.Where(t => t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
             resultModel.ResultList = list;
             resultModel.IsSearching = false;
             resultModel.NumberOfItemFound = list.Count;
@@ -323,7 +323,7 @@ namespace W_GJS.Controllers
                 || t.TAG_ALT.Contains(keyword)
                 || t.M_EMPLOYEE.EMPLOYEE_NAME.Contains(keyword)
                 || t.O_CATEGORY_NEWS.CATEGORY_NEWS_CODE.Contains(keyword)
-                || t.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME.Contains(keyword))).ToList();
+                || t.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME.Contains(keyword))).OrderByDescending(x => x.CREATEDATE).ToList();
             resultModel.ResultList = list;
             resultModel.IsSearching = true;
             resultModel.NumberOfItemFound = list.Count;
@@ -341,7 +341,7 @@ namespace W_GJS.Controllers
         public ActionResult Category_News([Bind(Include = "CATEGORY_NEWS_CD")]O_CATEGORY_NEWS CATEGORY_NEWS)
         {
             Db_gsj = new GJSEntities();
-            return View(Db_gsj.O_NEWS.Where(t => t.CATEGORY_NEWS_CD == CATEGORY_NEWS.CATEGORY_NEWS_CD && t.ACTIVE == true).ToList());
+            return View(Db_gsj.O_NEWS.Where(t => t.CATEGORY_NEWS_CD == CATEGORY_NEWS.CATEGORY_NEWS_CD && t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList());
         }
 
        
@@ -416,15 +416,15 @@ namespace W_GJS.Controllers
         {
             Db_gsj = new GJSEntities();
             ViewBag.Name = Db_gsj.O_CATEGORY_PRODUCT.Single(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD).CATEGORY_PRODUCT_NAME;
-          
-            return View(Db_gsj.O_PRODUCT.Where(t=>t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD && t.STATUS == 1 && t.ACTIVE == true));
+
+            return View(Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD && t.STATUS == 1 && t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE));
         }
 
         public ActionResult Product_Category_Detail([Bind(Include = "CATEGORY_PRODUCT_DETAIL_CD")]O_CATEGORY_PRODUCT_DETAIL CATEGORY_PRODUCT_DETAIL)
         {
             Db_gsj = new GJSEntities();
             ProductCategoryDetailModel detailModel = new ProductCategoryDetailModel();
-            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_CD && t.STATUS == 1 && t.ACTIVE == true).ToList();
+            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_CD && t.STATUS == 1 && t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
             detailModel.HtmlProductListString = RenderPartialViewToString("ProductLazyList", productList);
             if (productList.Count > 0)
             {

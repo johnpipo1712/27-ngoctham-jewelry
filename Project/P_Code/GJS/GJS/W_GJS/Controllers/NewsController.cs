@@ -16,7 +16,7 @@ namespace W_GJS.Controllers
         public ActionResult Index()
         {
             Db_gsj = new GJSEntities();
-            return View(Db_gsj.O_NEWS);
+            return View(Db_gsj.O_NEWS.OrderByDescending(x => x.CREATEDATE));
         }
         [HttpGet]
         public ActionResult Create()
@@ -137,14 +137,21 @@ namespace W_GJS.Controllers
             if (CHECK == "true")
             {
                 O_NEWS NEWS = Db_gsj.O_NEWS.Single(t => t.NEWS_CD == NEWS_CD);
+
                 O_NEWS_NEW NEWSNEW = new O_NEWS_NEW();
                 NEWSNEW.O_NEWS = NEWS;
                 NEWSNEW.NEWS_CD = NEWS.NEWS_CD;
                 NEWSNEW.ACTIVE = true;
                 NEWSNEW.STATUS = 0;
                 NEWSNEW.CREATEDATE = DateTime.Now;
+
+                NEWS.O_NEWS_NEW.Add(NEWSNEW);
                 Db_gsj.Entry(NEWSNEW).State = EntityState.Added;
                 Db_gsj.SaveChanges();
+
+                //NEWS.CREATEDATE = DateTime.Now;
+                //Db_gsj.Entry(NEWS).State = EntityState.Modified;
+                //Db_gsj.SaveChanges();
             }
             else
             {
