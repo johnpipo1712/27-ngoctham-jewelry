@@ -33,13 +33,13 @@ $("#form-login").submit(function (event) {
 });
 
 // REGISTER
-inProgressRegister = false;
-$( "#register-button" ).click(function() {
+function registerAccount()
+{
     if (!inProgressRegister) {
         inProgressRegister = true;
         $("#loadingDivRegister").show();
         $("#error-register").hide();
-        $.post($(this).data("action"), $('#form-register').serialize(),
+        $.post($("#register-button").data("action"), $('#form-register').serialize(),
             function (data) {
                 if (data.HasError) {
                     $("#error-register").html(data.ErrorString);
@@ -53,8 +53,18 @@ $( "#register-button" ).click(function() {
                     $("#registerSuccesfully").modal('show');
                     window.location.href = $("#register-button").data("success-action");
                 }
-        });
+            });
     }
+}
+
+inProgressRegister = false;
+$( "#register-button" ).click(function() {
+    registerAccount();
+});
+
+$("#form-register").submit(function (event) {
+    registerAccount();
+    event.preventDefault();
 });
 
 // CONTACT
