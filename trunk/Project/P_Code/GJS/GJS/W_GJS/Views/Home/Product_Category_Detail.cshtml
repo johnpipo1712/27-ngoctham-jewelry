@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Product_Category_Detail";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
-    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).ToList();
+    List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).OrderByDescending(x => x.CREATEDATE).ToList();
     
 }
 

@@ -17,8 +17,6 @@ namespace W_GJS.Controllers
         public ActionResult Index()
         {
             Db_gsj = new GJSEntities();
-            List<O_PRODUCT> d = Db_gsj.O_PRODUCT.OrderByDescending(x => x.CREATEDATE).ToList();
-            List<O_PRODUCT> d1 = Db_gsj.O_PRODUCT.OrderBy(x => x.CREATEDATE).ToList();
             return View(Db_gsj.O_PRODUCT.OrderByDescending(x => x.CREATEDATE));
         }
         [HttpGet]
@@ -364,10 +362,13 @@ namespace W_GJS.Controllers
             if(CHECK == "true")
             {
                 O_PRODUCT Product = Db_gsj.O_PRODUCT.Single(t => t.PRODUCT_CD == PRODUCT_CD);
+                Product.CREATEDATE = DateTime.Now;
                 O_PRODUCT_NEW PRODUCTNEW = new O_PRODUCT_NEW();
                 PRODUCTNEW.O_PRODUCT = Product;
                 PRODUCTNEW.PRODUCT_CD = Product.PRODUCT_CD;
+                PRODUCTNEW.CREATEDATE = DateTime.Now;
                 Db_gsj.Entry(PRODUCTNEW).State = EntityState.Added;
+                Db_gsj.Entry(Product).State = EntityState.Modified;
                 Db_gsj.SaveChanges();
             }
             else
