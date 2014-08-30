@@ -29,7 +29,7 @@
 }
 
 <div class="row">
-    <div class="table-primary">
+    <div class="table-primary table-hover table-striped">
         <div class="table-header">
             <div class="table-caption">
                 Danh sách
@@ -38,14 +38,14 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                   
+
                     <th>
                         @Html.DisplayNameFor(model => model.PST_CODE)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.PST_NAME)
                     </th>
-                   
+
                     <th></th>
                 </tr>
             </thead>
@@ -53,14 +53,14 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                       
+
                         <td>
                             @Html.DisplayFor(modelItem => item.PST_CODE)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.PST_NAME)
                         </td>
-                        
+
                         <td>
                             @if (item.ACTIVE == false)
                             {

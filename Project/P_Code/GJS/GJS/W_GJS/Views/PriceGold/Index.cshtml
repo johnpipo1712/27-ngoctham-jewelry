@@ -33,7 +33,7 @@
 }
 
 <div class="row">
-    <div class="table-primary">
+    <div class="table-primary table-hover table-striped">
         <div class="table-header">
             <div class="table-caption">
                 Danh sách
@@ -54,8 +54,8 @@
                     <th>
                         @Html.DisplayNameFor(model => model.PRICE_BUY)
                     </th>
-                   
-                   
+
+
                     <th></th>
                 </tr>
             </thead>
@@ -76,13 +76,13 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.PRICE_BUY)
                         </td>
-                        
+
                         <td>
                             @Html.ActionLink("Sửa", "Edit", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
                             |
                             @if ((int)Session[W_GJS.General.SessionConstants.LOGINED_ADMIN_ROLE_KEY] == 1)
                             {
-                                
+
                                 if (item.ACTIVE == false)
                                 {
                                     @Html.ActionLink("Kích hoạt", "Active", new { PRICE_GOLD_CD = item.PRICE_GOLD_CD })
@@ -101,5 +101,6 @@
 
         </div>
     </div>
+
 </div>
 

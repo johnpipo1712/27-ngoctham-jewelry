@@ -30,7 +30,7 @@
 
 <script src="~/ckeditor/ckeditor.js" type="text/javascript"></script>
 <div class="row">
-    <div class="table-primary">
+    <div class="table-primary table-hover table-striped">
         <div class="table-header">
             <div class="table-caption">
                 Danh sách
@@ -39,11 +39,11 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-               
+
                     <th>
                         @Html.DisplayNameFor(model => model.PAGE_COTRACT_TITLE)
                     </th>
-                   
+
                     <th></th>
                 </tr>
             </thead>
@@ -51,20 +51,20 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        
+
                         <td>
                             @Html.DisplayFor(modelItem => item.PAGE_COTRACT_TITLE)
                         </td>
                         <td>
-                            @Html.ActionLink("Sửa", "Edit", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD }) 
+                            @Html.ActionLink("Sửa", "Edit", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
                             @*@if (item.ACTIVE == false)
-                            {
-                                @Html.ActionLink("Kích hoạt", "Active", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
-                            }
-                            else
-                            {
-                                @Html.ActionLink("Xóa", "Deactive", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
-                            }*@
+                                {
+                                    @Html.ActionLink("Kích hoạt", "Active", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Xóa", "Deactive", new { PAGE_COTRACT_CD = item.PAGE_COTRACT_CD })
+                                }*@
                         </td>
                     </tr>
                 }
