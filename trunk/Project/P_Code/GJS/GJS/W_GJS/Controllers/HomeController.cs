@@ -123,7 +123,7 @@ namespace W_GJS.Controllers
             List<W_GJS.Models.O_NEWS> newsList = null;
             if (String.IsNullOrEmpty(keyword))
             {
-                newsList = Db_gsj.O_NEWS.Where(t => t.ACTIVE == true).ToList();
+                newsList = Db_gsj.O_NEWS.Where(t => t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
             }
             else
 	        {
@@ -136,7 +136,7 @@ namespace W_GJS.Controllers
                         || t.TAG_ALT.Contains(keyword)
                         || t.M_EMPLOYEE.EMPLOYEE_NAME.Contains(keyword)
                         || t.O_CATEGORY_NEWS.CATEGORY_NEWS_CODE.Contains(keyword)
-                        || t.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME.Contains(keyword))).ToList();
+                        || t.O_CATEGORY_NEWS.CATEGORY_NEWS_NAME.Contains(keyword))).OrderByDescending(x => x.CREATEDATE).ToList();
 	        }
             model.TotalItems = newsList.Count;
             model.CurrentPage = currentPage;
