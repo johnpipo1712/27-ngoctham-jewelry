@@ -613,6 +613,15 @@ namespace W_GJS.Controllers
            
             return View();
         }
+
+        public ActionResult GoogleMap(long CD)
+        {
+            Db_gsj = new GJSEntities();
+            O_BRANCH branch = Db_gsj.O_BRANCH.Single(t => t.BRANCH_CD == CD);
+            ViewBag.LATITUDE = branch.LATITUDE;
+            ViewBag.LONGITUDE = branch.LONGITUDE;
+            return View();
+        }
         [HttpPost]
 
         public JsonResult GetDetailByCityAJAX(long? CITIES_CD)
@@ -628,7 +637,7 @@ namespace W_GJS.Controllers
         public JsonResult GetBrancheslByCityAJAX(long? CITIES_CD)
         {
             Db_gsj = new GJSEntities();
-            return Json(Db_gsj.O_BRANCH.Where(t => t.ACTIVE == true && t.CITIES_CD == CITIES_CD).ToList().Select(t => new { t.BRANCH_NAME, t.ADDRESS, t.PHONE, t.LATITUDE, t.LONGITUDE }).ToArray());
+            return Json(Db_gsj.O_BRANCH.Where(t => t.ACTIVE == true && t.CITIES_CD == CITIES_CD).ToList().Select(t => new { BRANCH_CODE = Url.Action("GoogleMap", new { CD = t.BRANCH_CD }), t.BRANCH_NAME, t.ADDRESS, t.PHONE, t.LATITUDE, t.LONGITUDE }).ToArray());
 
         }
 
@@ -637,7 +646,10 @@ namespace W_GJS.Controllers
          public JsonResult GetBrancheslByDCityAJAX(long? CITIES_DETAIL_CD)
          {
              Db_gsj = new GJSEntities();
-             return Json(Db_gsj.O_BRANCH.Where(t => t.ACTIVE == true && t.CITIES_DETAIL_CD == CITIES_DETAIL_CD).ToList().Select(t => new { t.BRANCH_NAME, t.ADDRESS, t.PHONE, t.LATITUDE, t.LONGITUDE }).ToArray());
+             var blogs = from b in Db_gsj.O_BRANCH
+                         where b.ACTIVE == true && b.CITIES_DETAIL_CD == CITIES_DETAIL_CD
+                         select b; 
+             return Json(Db_gsj.O_BRANCH.Where(t => t.ACTIVE == true && t.CITIES_DETAIL_CD == CITIES_DETAIL_CD).ToList().Select(t => new { BRANCH_CODE = Url.Action("GoogleMap", new {CD = t.BRANCH_CD}), t.BRANCH_NAME, t.ADDRESS, t.PHONE, t.LATITUDE, t.LONGITUDE }).ToArray());
 
          }
          public ActionResult ShowCategoryAlbum(long CATEGORY_ALBUM_CD)
