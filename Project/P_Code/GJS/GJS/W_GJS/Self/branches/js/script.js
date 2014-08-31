@@ -68,14 +68,14 @@
 
                     for (var i = 0; i < results.length; i++) {
                         if (i % 2 == 0) {
-                            $("#table-branches").append("<tr class=\"hand-cursor\" data-toggle=\"modal\" data-target=\"#mapView\" onclick=\"getgooglegmap(" + results[i].LONGITUDE + "," + results[i].LATITUDE + ")\">" +
+                            $("#table-branches").append("<tr class=\"hand-cursor\" onclick='window.open(\""+ results[i].BRANCH_CODE + "\", \" mywindow\", \"status=1\" );'>" +
                                         "<td class=\"sys1\">" + results[i].BRANCH_NAME + "</td>" +
                                         "<td class=\"sys2\">" + results[i].ADDRESS + "</td>" +
                                         "<td class=\"sys3\">" + results[i].PHONE + "</td>" +
                                     "</tr>");
                         }
                         else {
-                            $("#table-branches").append("<tr class=\"even hand-cursor\" data-toggle=\"modal\" data-target=\"#mapView\" onclick=\"getgooglegmap(" + results[i].LONGITUDE + "," + results[i].LATITUDE + ")\">" +
+                            $("#table-branches").append("<tr class=\"even hand-cursor\" onclick='window.open(\""+ results[i].BRANCH_CODE + "\", \" mywindow\", \"status=1\" );'>" +
                                         "<td class=\"sys1\">" + results[i].BRANCH_NAME + "</td>" +
                                         "<td class=\"sys2\">" + results[i].ADDRESS + "</td>" +
                                         "<td class=\"sys3\">" + results[i].PHONE + "</td>" +
@@ -113,14 +113,14 @@
 
                     for (var i = 0; i < results.length; i++) {
                         if (i % 2 == 0) {
-                            $("#table-branches").append("<tr class=\"hand-cursor\" data-toggle=\"modal\" data-target=\"#mapView\" onclick=\"getgooglegmap(" + results[i].LONGITUDE + "," + results[i].LATITUDE + ")\">" +
+                            $("#table-branches").append("<tr class=\"hand-cursor\"  onclick='window.open(\""+ results[i].BRANCH_CODE + "\", \" mywindow\", \"status=1\" );'>" +
                                         "<td class=\"sys1\">" + results[i].BRANCH_NAME + "</td>" +
                                         "<td class=\"sys2\">" + results[i].ADDRESS + "</td>" +
                                         "<td class=\"sys3\">" + results[i].PHONE + "</td>" +
                                     "</tr>");
                         }
                         else {
-                            $("#table-branches").append("<tr class=\"even hand-cursor\" data-toggle=\"modal\" data-target=\"#mapView\" onclick=\"getgooglegmap(" + results[i].LONGITUDE + "," + results[i].LATITUDE + ")\">" +
+                            $("#table-branches").append("<tr class=\"even hand-cursor\"  onclick='window.open(\""+ results[i].BRANCH_CODE + "\", \" mywindow\", \"status=1\" );'>" +
                                         "<td class=\"sys1\">" + results[i].BRANCH_NAME + "</td>" +
                                         "<td class=\"sys2\">" + results[i].ADDRESS + "</td>" +
                                         "<td class=\"sys3\">" + results[i].PHONE + "</td>" +
@@ -188,14 +188,14 @@
 
                 for (var i = 0; i < results.length; i++) {
                     if (i % 2 == 0) {
-                        $("#table-branches").append("<tr class=\"hand-cursor\" data-toggle=\"modal\" data-target=\"#mapView\" onclick=\"getgooglegmap(" + results[i].LONGITUDE + "," + results[i].LATITUDE + ")\">" +
+                        $("#table-branches").append("<tr class=\"hand-cursor\" onclick='window.open(\""+ results[i].BRANCH_CODE + "\", \" mywindow\", \"status=1\" );'>" +
                                     "<td class=\"sys1\">" + results[i].BRANCH_NAME + "</td>" +
                                     "<td class=\"sys2\">" + results[i].ADDRESS + "</td>" +
                                     "<td class=\"sys3\">" + results[i].PHONE + "</td>" +
                                 "</tr>");
                     }
                     else {
-                        $("#table-branches").append("<tr class=\"even hand-cursor\" data-toggle=\"modal\" data-target=\"#mapView\" onclick=\"getgooglegmap(" + results[i].LONGITUDE + "," + results[i].LATITUDE + ")\">" +
+                        $("#table-branches").append("<tr class=\"even hand-cursor\" onclick='window.open(\""+ results[i].BRANCH_CODE + "\", \" mywindow\", \"status=1\" );'>" +
                                     "<td class=\"sys1\">" + results[i].BRANCH_NAME + "</td>" +
                                     "<td class=\"sys2\">" + results[i].ADDRESS + "</td>" +
                                     "<td class=\"sys3\">" + results[i].PHONE + "</td>" +

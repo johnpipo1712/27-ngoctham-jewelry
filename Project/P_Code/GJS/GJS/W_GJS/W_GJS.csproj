@@ -1339,6 +1339,7 @@
     <Content Include="Views\HomeGroupPhoto\Edit.cshtml" />
     <Content Include="Views\Home\ProductDetailCatalog.cshtml" />
     <Content Include="Views\Home\ProductLazyCatalogList.cshtml" />
+    <Content Include="Views\Home\GoogleMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

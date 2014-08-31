@@ -71,7 +71,7 @@
 {
     if (i % 2 != 0)
     {
-        <tr class="hand-cursor" data-toggle="modal" data-target="#mapView" onclick="getgooglegmap(@Model.ToList()[i].LATITUDE,@Model.ToList()[i].LONGITUDE)">
+        <tr class="hand-cursor" onclick='window.open("@Url.Action("GoogleMap", "Home", new { CD = @Model.ToList()[i].BRANCH_CD }) ", " mywindow", "status=1" );'>
             <td class="sys1">@Model.ToList()[i].BRANCH_NAME</td>
             <td class="sys2">@Model.ToList()[i].ADDRESS</td>
             <td class="sys3">@Model.ToList()[i].PHONE</td>
@@ -79,8 +79,9 @@
     }
     else
     {
-                                <tr class="even hand-cursor" data-toggle="modal" data-target="#mapView" onclick="getgooglegmap(@Model.ToList()[i].LATITUDE,@Model.ToList()[i].LONGITUDE)">
-                                    <td class="sys1">@Model.ToList()[i].BRANCH_NAME</td>
+                    <tr class="even hand-cursor" onclick='window.open("@Url.Action("GoogleMap", "Home", new { CD = @Model.ToList()[i].BRANCH_CD }) ", " mywindow", "status=1" );'>
+                                    <td class=" sys1">
+                        @Model.ToList()[i].BRANCH_NAME</td>
                                     <td class="sys2">@Model.ToList()[i].ADDRESS</td>
                                     <td class="sys3">@Model.ToList()[i].PHONE</td>
                                 </tr>
