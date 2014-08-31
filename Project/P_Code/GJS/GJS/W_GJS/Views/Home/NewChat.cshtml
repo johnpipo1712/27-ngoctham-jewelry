@@ -63,7 +63,9 @@
         <div id="welcome"></div>
         <input type="hidden" value="" id="displayname" />
         <div id="divMessage" style="height: 350px; overflow-y: scroll;" class="row">
+            <ul id="discussion">
 
+            </ul>
         </div>
         <div class="row well">
             <div class="col-md-11">
@@ -141,6 +143,8 @@
     <script src="@Url.Content("~/Scripts/jquery.infinitescroll.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/scripts.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/self-scripts.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/buzz.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/buzz.min.js")" type="text/javascript"></script>
 
     <!--Script references. -->
     <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
@@ -232,12 +236,13 @@
             }
 
             objHub.client.getMessages = function (userName, message) {
-
+                var mySound = new buzz.sound("../Sound/sound.ogg");
                 $("#txtMessage").val('');
-                $('#divMessage').append(' <ul id="discussion">' + userName + ': ' + message + '</ul>');
+                $('#discussion').append(' <li><strong>' + userName + '</strong>: ' + message + '</li>');
 
                 var height = $('#divMessage')[0].scrollHeight;
                 $('#divMessage').scrollTop(height);
+                mySound.play();
             }
 
             objHub.client.onConnected = function (id, userName, UserID, userGroup) {

@@ -1096,6 +1096,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\buzz.js" />
+    <Content Include="Scripts\buzz.min.js" />
     <Content Include="Scripts\jquery.carouFredSel-6.2.0-packed.js" />
     <Content Include="SGallery\js\css\demo-styles.css" />
     <Content Include="SGallery\js\css\styles.css" />
@@ -1340,6 +1342,7 @@
     <Content Include="Views\Home\ProductDetailCatalog.cshtml" />
     <Content Include="Views\Home\ProductLazyCatalogList.cshtml" />
     <Content Include="Views\Home\GoogleMap.cshtml" />
+    <Content Include="Sound\sound.ogg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
