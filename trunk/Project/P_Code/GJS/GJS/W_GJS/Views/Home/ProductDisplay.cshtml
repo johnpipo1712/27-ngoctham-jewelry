@@ -81,7 +81,7 @@
                 </a>
                 <div class="owl-featured-detail">
                     <a class="featured-title" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">@item.O_PRODUCT.PRODUCT_NAME</a>
-                    <span class="price"><span class="line-through styleColor">@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE)</span> <strong>@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE_PROMOTION)</strong></span>
+                    <span class="price"><span class="line-through styleColor">@item.O_PRODUCT.PRICE</span> <strong>@item.O_PRODUCT.PRICE_PROMOTION</strong></span>
                     <a href="@Url.Action("AddCart", new { PRODUCT_CD = item.PRODUCT_CD, QUANTITY = "1",SIZE = "5" })" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
 
                 </div>
@@ -116,7 +116,7 @@
                 </a>
                 <div class="owl-featured-detail">
                     <a class="featured-title" href="@Url.Action("ProductDetail", new { PRODUCT_CD = item.PRODUCT_CD })">@item.O_PRODUCT.PRODUCT_NAME</a>
-                    <span class="price"><span class="line-through styleColor">@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE)</span> <strong>@String.Format("{0:0,0 " + item.O_PRODUCT.CURRENCY + "}", item.O_PRODUCT.PRICE_PROMOTION)</strong></span>
+                    <span class="price"><span class="line-through styleColor">@item.O_PRODUCT.PRICE</span> <strong>@item.O_PRODUCT.PRICE_PROMOTION</strong></span>
                     <a href="@Url.Action("AddCart", new { PRODUCT_CD = item.PRODUCT_CD, QUANTITY = "1",SIZE = "5" })" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
                 </div>
                 @if (item.O_PRODUCT.O_PRODUCT_NEW != null && item.O_PRODUCT.O_PRODUCT_NEW.ToList().Count > 0)
