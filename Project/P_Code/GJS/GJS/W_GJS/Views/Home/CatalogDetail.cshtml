@@ -54,7 +54,7 @@
         inProgress_@(item.CATEGORY_PRODUCT_DETAIL_CD) = true;
         $("#loadingDiv-@(@item.CATEGORY_PRODUCT_DETAIL_CD)").show();
 
-        $.post("@Url.Action("CategoryProducDetailtListPaging", "Home")", { "CATEGORY_PRODUCT_DETAIL_CD": @item.CATEGORY_PRODUCT_DETAIL_CD ,"numberOfItemsInPage": 6, "currentPage": currentPage },
+        $.post("@Url.Action("CategoryProducDetailtListPaging", "Home")", { "CATEGORY_PRODUCT_DETAIL_CD": @item.CATEGORY_PRODUCT_DETAIL_CD ,"productMenu": false,"numberOfItemsInPage": 6, "currentPage": currentPage },
         function (data) {
             $("#ProductList-@(item.CATEGORY_PRODUCT_DETAIL_CD)").html(data);
             $("#loadingDiv-@(item.CATEGORY_PRODUCT_DETAIL_CD)").hide();
