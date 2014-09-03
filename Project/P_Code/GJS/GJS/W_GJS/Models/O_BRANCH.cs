@@ -35,11 +35,11 @@ namespace W_GJS.Models
         public string ADDRESS { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
-        [Display(Name = "Vị độ")]
+        [Display(Name = "Kinh độ")]
         public string LONGITUDE { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
-        [Display(Name = "Kinh độ")]
+        [Display(Name = "Vĩ độ")]
         public string LATITUDE { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
         [DataType(DataType.Text)]
