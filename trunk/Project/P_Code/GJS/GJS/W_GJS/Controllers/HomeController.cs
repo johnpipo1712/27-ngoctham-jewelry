@@ -208,7 +208,7 @@ namespace W_GJS.Controllers
                 }
                 // calc beginPos
                 int beginPos = numItemsInBlock * blockNumber;
-                listproduct = Db_gsj.O_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).ToList().Skip(beginPos).Take(numItemsInBlock).ToList();
+                listproduct = Db_gsj.O_PRODUCT.Where(t => t.ACTIVE == true && t.STATUS == 1).OrderByDescending(x => x.CREATEDATE).ToList().Skip(beginPos).Take(numItemsInBlock).ToList();
             //}
 
             
