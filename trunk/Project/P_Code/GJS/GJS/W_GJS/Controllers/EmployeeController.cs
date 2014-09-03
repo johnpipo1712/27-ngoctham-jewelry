@@ -17,7 +17,7 @@ namespace W_GJS.Controllers
         public ActionResult Index()
         {
             Db_gsj = new GJSEntities();
-            return View(Db_gsj.M_EMPLOYEE);
+            return View(Db_gsj.M_EMPLOYEE.OrderByDescending(x => x.EMPLOYEE_CD));
         }
         [HttpGet]
         public ActionResult Create()
