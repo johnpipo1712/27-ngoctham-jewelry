@@ -272,7 +272,9 @@ h2.owl-featured {
 }
 
 .breadcrumb > .active {
-    color: #fff;
+    color: #FFE345;
+    text-shadow: 2px 3px 3px #222;
+    font-weight: bold;
 }
 
 .breadcrumb a {

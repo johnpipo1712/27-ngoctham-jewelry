@@ -30,11 +30,45 @@
 
         </div>
     </section>
+
 }
 
 @section Scripts {
     <script type="text/javascript" src="@Url.Content("~/Self/catalog/js/script.js")"></script>
 }
+
+
+<!-- options -->
+<div class="row shop-top-options">
+
+    <div class="col-sm-9 col-md-9">
+
+
+        <h2><strong>@ViewBag.Name</strong></h2>
+
+        <ul class="breadcrumb">
+            <!-- breadcrumb -->
+            <li><a href="#">Trang chủ</a></li>
+            <li class="active">Danh sách sản phẩm</li>
+        </ul><!-- /breadcrumb -->
+
+    </div>
+
+    <div class=" col-sm-3 col-md-3">
+
+        @*<select class="form-control pointer fsize13 pull-right" name="orderby">
+                <option value="menu_order" selected="selected">Sắp xếp mặc định</option>
+                <option value="popularity">Sắp xếp theo độ phổ biến</option>
+                <option value="rating">Sắp xếp theo điểm đánh giá</option>
+                <option value="date">Sắp xếp theo thời gian</option>
+                <option value="price">Sắp xếp theo price: thấp tới cao</option>
+                <option value="price-desc">Sắp xếp theo price: cao xuống thấp</option>
+            </select>*@
+
+    </div>
+</div>
+<!-- /options -->
+
 
 @foreach (var item in Model)
 {
