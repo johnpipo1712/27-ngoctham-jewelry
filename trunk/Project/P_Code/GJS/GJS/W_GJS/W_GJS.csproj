@@ -1343,6 +1343,7 @@
     <Content Include="Views\Home\ProductLazyCatalogList.cshtml" />
     <Content Include="Views\Home\GoogleMap.cshtml" />
     <Content Include="Sound\sound.ogg" />
+    <Content Include="Views\Home\SubCategoryProducDetailtListPaging.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

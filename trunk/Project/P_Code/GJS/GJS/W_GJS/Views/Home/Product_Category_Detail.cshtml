@@ -1,4 +1,4 @@
-﻿@model W_GJS.Models.ProductCategoryDetailModel
+﻿@model W_GJS.Models.O_CATEGORY_PRODUCT_DETAIL
 @{
     ViewBag.Title = "Product_Category_Detail";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
@@ -14,7 +14,7 @@
 
     <div class="col-sm-9 col-md-9">
 
-        <h2><strong>@Model.ProductCategoryDetailName</strong></h2>
+        <h2><strong>@Model.CATEGORY_PRODUCT_DETAIL_NAME</strong></h2>
         <ul class="breadcrumb">
             <!-- breadcrumb -->
             <li><a href="#">Trang chủ</a></li>
@@ -79,7 +79,35 @@
         <!-- PRODUCT LIST -->
         <div class="row">
 
-            @Html.Raw(Model.HtmlProductListString)
+            <div id="ProductList-@Model.CATEGORY_PRODUCT_DETAIL_CD"></div>
+
+
+            <script>
+
+    function loadProducts_@(Model.CATEGORY_PRODUCT_DETAIL_CD)(currentPage) {
+        inProgress_@(Model.CATEGORY_PRODUCT_DETAIL_CD) = true;
+        $("#loadingDiv-@(@Model.CATEGORY_PRODUCT_DETAIL_CD)").show();
+
+        $.post("@Url.Action("SubCategoryProducDetailtListPaging", "Home")", { "CATEGORY_PRODUCT_DETAIL_CD": @Model.CATEGORY_PRODUCT_DETAIL_CD ,"productMenu": true,"numberOfItemsInPage": 6, "currentPage": currentPage },
+        function (data) {
+            $("#ProductList-@(Model.CATEGORY_PRODUCT_DETAIL_CD)").html(data);
+            $("#loadingDiv-@(Model.CATEGORY_PRODUCT_DETAIL_CD)").hide();
+            inProgress_@(Model.CATEGORY_PRODUCT_DETAIL_CD) = false;
+        });
+    }
+
+    //$(document).ready(function () {
+    loadProducts_@(Model.CATEGORY_PRODUCT_DETAIL_CD)(1);
+    //});
+
+    @*$(".paging-@(item.CATEGORY_PRODUCT_CD)").click(function () {
+        if (!inProgress@(item.CATEGORY_PRODUCT_CD)) {
+            loadProducts@(@item.CATEGORY_PRODUCT_CD)();
+        }
+    });*@
+
+
+            </script>
 
         </div>
         <!-- /PRODUCT LIST -->

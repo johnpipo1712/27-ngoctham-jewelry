@@ -103,6 +103,39 @@ namespace W_GJS.Controllers
             return PartialView(model);
         }
         [HttpPost]
+        public ActionResult SubCategoryProducDetailtListPaging(long CATEGORY_PRODUCT_DETAIL_CD, bool productMenu, long numberOfItemsInPage, long currentPage)
+        {
+            Db_gsj = new GJSEntities();
+            ProductCategoryModel model = new ProductCategoryModel();
+            List<W_GJS.Models.O_PRODUCT> productList = new List<O_PRODUCT>();
+
+            if (productMenu)
+            {
+                productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL_CD && t.ACTIVE == true && t.STATUS == 1).OrderByDescending(x => x.CREATEDATE).ToList();
+            }
+            else
+            {
+                productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL_CD && t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
+            }
+
+            model.Identified = CATEGORY_PRODUCT_DETAIL_CD;
+            model.TotalItems = productList.Count;
+            model.CurrentPage = currentPage;
+            model.TotalPages = productList.Count / numberOfItemsInPage;
+            if (productList.Count % numberOfItemsInPage != 0)
+            {
+                model.TotalPages++;
+            }
+            model.ItemOrderFrom = (currentPage - 1) * numberOfItemsInPage;
+            List<W_GJS.Models.O_PRODUCT> list = productList.Skip((int)model.ItemOrderFrom).Take((int)numberOfItemsInPage).ToList();
+            model.ItemOrderTo = model.ItemOrderFrom + list.Count;
+            model.ItemOrderFrom++;
+            model.HtmlListString = RenderPartialViewToString("ProductLazyCatalogList", list);
+
+            return PartialView(model);
+        }
+
+        [HttpPost]
         public ActionResult CategoryProducDetailtListPaging(long CATEGORY_PRODUCT_DETAIL_CD, bool productMenu, long numberOfItemsInPage, long currentPage)
         {
             Db_gsj = new GJSEntities();
@@ -134,6 +167,7 @@ namespace W_GJS.Controllers
 
             return PartialView(model);
         }
+
         [HttpPost]
         public ActionResult NewsHomePaging(long numberOfItemsInPage, long currentPage, string keyword)
         {
@@ -442,15 +476,8 @@ namespace W_GJS.Controllers
         public ActionResult Product_Category_Detail([Bind(Include = "CATEGORY_PRODUCT_DETAIL_CD")]O_CATEGORY_PRODUCT_DETAIL CATEGORY_PRODUCT_DETAIL)
         {
             Db_gsj = new GJSEntities();
-            ProductCategoryDetailModel detailModel = new ProductCategoryDetailModel();
-            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_CD && t.STATUS == 1 && t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
-            detailModel.HtmlProductListString = RenderPartialViewToString("ProductLazyList", productList);
-            if (productList.Count > 0)
-            {
-                detailModel.ProductCategoryDetailName = productList[0].O_CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_NAME;
-            }
             
-            return View(detailModel);
+            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Single(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_CD));
         }
         public ActionResult ProductList()
         {
@@ -471,6 +498,7 @@ namespace W_GJS.Controllers
         public ActionResult CatalogDetail(long CATEGORY_PRODUCT_CD)
         {
             Db_gsj = new GJSEntities();
+            ViewBag.Name = Db_gsj.O_CATEGORY_PRODUCT.Single(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).CATEGORY_PRODUCT_NAME;
             return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).ToList());
         }
         public ActionResult Cart()
