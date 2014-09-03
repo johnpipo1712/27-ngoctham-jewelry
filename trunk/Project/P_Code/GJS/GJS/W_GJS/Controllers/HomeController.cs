@@ -70,11 +70,21 @@ namespace W_GJS.Controllers
             return PartialView(Model);
         }
         [HttpPost]
-        public ActionResult CategoryProductListPaging(long CATEGORY_PRODUCT_CD, long numberOfItemsInPage, long currentPage)
+        public ActionResult CategoryProductListPaging(long CATEGORY_PRODUCT_CD, bool productMenu, long numberOfItemsInPage, long currentPage)
         {
             Db_gsj = new GJSEntities();
             ProductCategoryModel model = new ProductCategoryModel();
-            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD && t.ACTIVE == true).ToList();
+
+            List<W_GJS.Models.O_PRODUCT> productList = new List<O_PRODUCT>();
+            if (productMenu)
+            {
+                productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD && t.STATUS == 1 && t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
+            }
+            else
+	        {
+                productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD && t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
+	        }
+
 
             model.Identified = CATEGORY_PRODUCT_CD;
             model.TotalItems = productList.Count;
@@ -93,11 +103,20 @@ namespace W_GJS.Controllers
             return PartialView(model);
         }
         [HttpPost]
-        public ActionResult CategoryProducDetailtListPaging(long CATEGORY_PRODUCT_DETAIL_CD, long numberOfItemsInPage, long currentPage)
+        public ActionResult CategoryProducDetailtListPaging(long CATEGORY_PRODUCT_DETAIL_CD, bool productMenu, long numberOfItemsInPage, long currentPage)
         {
             Db_gsj = new GJSEntities();
             ProductCategoryModel model = new ProductCategoryModel();
-            List<W_GJS.Models.O_PRODUCT> productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL_CD && t.ACTIVE == true).ToList();
+            List<W_GJS.Models.O_PRODUCT> productList = new List<O_PRODUCT>();
+
+            if (productMenu)
+            {
+                productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL_CD && t.ACTIVE == true && t.STATUS == 1).OrderByDescending(x => x.CREATEDATE).ToList();
+            }
+            else
+            {
+                productList = Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL_CD && t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
+            }
 
             model.Identified = CATEGORY_PRODUCT_DETAIL_CD;
             model.TotalItems = productList.Count;
@@ -417,7 +436,7 @@ namespace W_GJS.Controllers
             Db_gsj = new GJSEntities();
             ViewBag.Name = Db_gsj.O_CATEGORY_PRODUCT.Single(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD).CATEGORY_PRODUCT_NAME;
 
-            return View(Db_gsj.O_PRODUCT.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD && t.STATUS == 1 && t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE));
+            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD).ToList());
         }
 
         public ActionResult Product_Category_Detail([Bind(Include = "CATEGORY_PRODUCT_DETAIL_CD")]O_CATEGORY_PRODUCT_DETAIL CATEGORY_PRODUCT_DETAIL)

@@ -54,7 +54,7 @@
         inProgress_@(item.CATEGORY_PRODUCT_CD) = true;
         $("#loadingDiv-@(@item.CATEGORY_PRODUCT_CD)").show();
 
-        $.post("@Url.Action("CategoryProductListPaging", "Home")", { "CATEGORY_PRODUCT_CD": @item.CATEGORY_PRODUCT_CD ,"numberOfItemsInPage": 6, "currentPage": currentPage },
+        $.post("@Url.Action("CategoryProductListPaging", "Home")", { "CATEGORY_PRODUCT_CD": @item.CATEGORY_PRODUCT_CD , "productMenu": false, "numberOfItemsInPage": 6, "currentPage": currentPage },
         function (data) {
             $("#ProductList-@(item.CATEGORY_PRODUCT_CD)").html(data);
             $("#loadingDiv-@(item.CATEGORY_PRODUCT_CD)").hide();
@@ -62,15 +62,7 @@
         });
     }
 
-    //$(document).ready(function () {
     loadProducts_@(item.CATEGORY_PRODUCT_CD)(1);
-    //});
-
-    @*$(".paging-@(item.CATEGORY_PRODUCT_CD)").click(function () {
-        if (!inProgress@(item.CATEGORY_PRODUCT_CD)) {
-            loadProducts@(@item.CATEGORY_PRODUCT_CD)();
-        }
-    });*@
 
 
 </script>

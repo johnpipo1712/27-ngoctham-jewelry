@@ -1,4 +1,4 @@
-﻿@model IEnumerable<W_GJS.Models.O_PRODUCT>
+﻿@model IEnumerable<W_GJS.Models.O_CATEGORY_PRODUCT_DETAIL>
 @{
     ViewBag.Title = "Product_Category";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
@@ -80,58 +80,48 @@
         <!-- PRODUCT LIST -->
         <div class="row">
 
-            @foreach (var item in Model)
+        @foreach (var item in Model)
+        {
+            <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>@item.CATEGORY_PRODUCT_DETAIL_NAME</strong></h2>
+            if (item.O_PRODUCT.Count == 0)
             {
-                <div class="col-md-4 col-sm-4">
-                    <!-- item -->
-                    <a class="shop-item-list" href="@Url.Action("ProductDetail",new { PRODUCT_CD = item.PRODUCT_CD })">
-                        <figure>
-                            <!-- image -->
-                            <img class="img-responsive" src="@item.URL_IMAGE" alt="@item.TAG_ALT" />
-                        </figure><!-- /image -->
-                        @if (item.QUANTITY <= 0)
-                        {
-                            <span class="shop-stock-info stock-no">
-                                <!-- stock -->
-                                <i class="fa fa-times"></i> hết hàng
-                            </span><!-- /stock -->
-
-                        }
-                        else
-                        {
-                            <span class="shop-stock-info stock-yes">
-                                <!-- stock -->
-                                <i class="fa fa-check"></i> còn hàng
-                            </span><!-- /stock -->
-
-                        }
-                        <div class="product-info">
-                            <!-- title and price -->
-                            <h2>
-                                <span class="product-name">@item.PRODUCT_NAME</span>
-                                @if (item.PRICE_PROMOTION != null)
-                                {
-                                    <span class="bold">@item.PRICE_PROMOTION)</span> <span class="line-through">@item.PRICE</span>
-
-                                }
-                                else
-                                {
-                                    <span class="bold">@item.PRICE</span>
-
-                                }
-                                </h2>
-                        </div><!-- /title and price -->
-                        @if (item.O_PRODUCT_NEW != null && item.O_PRODUCT_NEW.ToList().Count > 0)
-                        {
-                            <div class="sb-gdv-disc">
-                                <div class="sb-gdv-disc__content">Mới</div>
-                            </div>
-                        }
-                    </a>
-                    <a href="@Url.Action("AddCart", new { PRODUCT_CD = item.PRODUCT_CD, QUANTITY = "1",SIZE = "5" })" class="btn btn-primary btn-sm addtocart"><i class="fa fa-shopping-cart"></i> THÊM VÀO GIỎ HÀNG</a>
-                </div><!-- /item -->
+                <p>Không tìm thấy sản phẩm nào.</p>
             }
+            else
+            {
+                <div id="ProductList-@item.CATEGORY_PRODUCT_DETAIL_CD"></div>
 
+
+                <script>
+
+                    function loadProducts_@(item.CATEGORY_PRODUCT_DETAIL_CD)(currentPage) {
+                        inProgress_@(item.CATEGORY_PRODUCT_DETAIL_CD) = true;
+                        $("#loadingDiv-@(@item.CATEGORY_PRODUCT_DETAIL_CD)").show();
+
+                        $.post("@Url.Action("CategoryProducDetailtListPaging", "Home")", { "CATEGORY_PRODUCT_DETAIL_CD": @item.CATEGORY_PRODUCT_DETAIL_CD , "productMenu": true, "numberOfItemsInPage": 6, "currentPage": currentPage },
+                        function (data) {
+                            $("#ProductList-@(item.CATEGORY_PRODUCT_DETAIL_CD)").html(data);
+                            $("#loadingDiv-@(item.CATEGORY_PRODUCT_DETAIL_CD)").hide();
+                            inProgress_@(item.CATEGORY_PRODUCT_DETAIL_CD) = false;
+                        });
+                    }
+
+                    //$(document).ready(function () {
+                    loadProducts_@(item.CATEGORY_PRODUCT_DETAIL_CD)(1);
+                    //});
+
+                    @*$(".paging-@(item.CATEGORY_PRODUCT_CD)").click(function () {
+        if (!inProgress@(item.CATEGORY_PRODUCT_CD)) {
+            loadProducts@(@item.CATEGORY_PRODUCT_CD)();
+        }
+    });*@
+
+
+                </script>
+
+
+            }
+        }
         </div>
         <!-- /PRODUCT LIST -->
         <!-- PAGINATION -->
