@@ -22,19 +22,19 @@ namespace W_GJS.Models
         }
         [Display(Name = "Tin tức")]
         public long NEWS_CD { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+     
         [DataType(DataType.Text)]
         [Display(Name = "Tiêu đề")]
         public string NEWS_TITLE { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+        
         [DataType(DataType.Text)]
         [Display(Name = "Mô tả ngắn gọn")]
         public string NEW_DESCRIPTIONS { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+    
         [DataType(DataType.Text)]
         [Display(Name = "Nội dụng")]
         public string NEWS_CONTENT { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập thông tin !!!")]
+   
         [DataType(DataType.Text)]
         [Display(Name = "Hình ảnh")]
         public string IMAGE_NEWS { get; set; }
