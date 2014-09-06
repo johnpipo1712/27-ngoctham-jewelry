@@ -14,7 +14,7 @@ namespace W_GJS.Hubs
         static List<MessageModel> MessageList = new List<MessageModel>();
 
         //-->>>>> ***** Receive Request From Client [  Connect  ] *****
-        public void Connect(string Name, string Email, string Phone)
+        public void Connect(string Name,string Password, string Email, string Phone,string status)
         {
             var id = Context.ConnectionId;
             string userGroup = "";
@@ -27,8 +27,11 @@ namespace W_GJS.Hubs
 
 
             GJSEntities db_gjs = new GJSEntities();
-
-            S_USER User = db_gjs.S_USER.Where(t => t.USER_NAME == Name).FirstOrDefault();
+            S_USER User = null;
+            if (status == "1")
+            {
+                 User = db_gjs.S_USER.Where(t => t.USER_NAME == Name && t.USER_PASS == Password).FirstOrDefault();
+            }
 
 
 
@@ -40,7 +43,7 @@ namespace W_GJS.Hubs
                 //Here you check if there is no userGroup which is same DepID --> this is User otherwise this is Admin
                 //userGroup = DepID
 
-                if (User == null)
+                if (status == "0")
                 {
 
                     //now we encounter ordinary user which needs userGroup and at this step, system assigns the first of free Admin among UsersList
@@ -60,32 +63,47 @@ namespace W_GJS.Hubs
                 }
                 else
                 {
-                    if ((int)User.STATUS == 5)
+                    if (User != null)
                     {
-                        //If user has admin code so admin code is same userGroup
-                        //now add ADMIN to UsersList
-                        UsersList.Add(new UserModel { ConnectionId = id, AdminID = User.USER_CD, UserName = Name, UserGroup = User.USER_CD.ToString(), freeflag = "1", tpflag = "1" });
-                        //whether it is Admin or User now both of them has userGroup and I Join this user or admin to specific group 
-                        Groups.Add(Context.ConnectionId, User.USER_CD.ToString());
-                        Clients.Caller.onConnected(id, Name, User.USER_CD,User.USER_CD.ToString());
+                        if ((int)User.STATUS == 5)
+                        {
+                            //If user has admin code so admin code is same userGroup
+                            //now add ADMIN to UsersList
+                            UsersList.Add(new UserModel { ConnectionId = id, AdminID = User.USER_CD, UserName = Name, UserGroup = User.USER_CD.ToString(), freeflag = "1", tpflag = "1" });
+                            //whether it is Admin or User now both of them has userGroup and I Join this user or admin to specific group 
+                            Groups.Add(Context.ConnectionId, User.USER_CD.ToString());
+                            Clients.Caller.onConnected(id, Name, User.USER_CD, User.USER_CD.ToString());
 
+                        }
+                        else
+                        {
+                            string msg = "Bạn không có quyền truy cập vào trang này";
+                            //***** Return to Client *****
+                            Clients.Caller.NoExistAdmin();
+                        }
                     }
                     else
                     {
-                        //now we encounter ordinary user which needs userGroup and at this step, system assigns the first of free Admin among UsersList
-                        UserModel strg = UsersList.Where(t => t.freeflag == "1" && t.tpflag == "1").FirstOrDefault();
-                        userGroup = strg.UserGroup;
-
-                        //Admin becomes busy so we assign zero to freeflag which is shown admin is busy
-                        strg.freeflag = "0";
-
-                        //now add USER to UsersList
-                        UsersList.Add(new UserModel { ConnectionId = id, UserID = Name, UserName = Name, UserGroup = userGroup, freeflag = "0", tpflag = "0", });
-                        //whether it is Admin or User now both of them has userGroup and I Join this user or admin to specific group 
-                        Groups.Add(Context.ConnectionId, userGroup);
-                        Clients.Caller.onConnected(id, Name, Name, userGroup);
-
+                        string msg = "Bạn không có quyền truy cập vào trang này";
+                        //***** Return to Client *****
+                        Clients.Caller.NoExistAdmin();
                     }
+                    //else
+                    //{
+                    //    //now we encounter ordinary user which needs userGroup and at this step, system assigns the first of free Admin among UsersList
+                    //    UserModel strg = UsersList.Where(t => t.freeflag == "1" && t.tpflag == "1").FirstOrDefault();
+                    //    userGroup = strg.UserGroup;
+
+                    //    //Admin becomes busy so we assign zero to freeflag which is shown admin is busy
+                    //    strg.freeflag = "0";
+
+                    //    //now add USER to UsersList
+                    //    UsersList.Add(new UserModel { ConnectionId = id, UserID = Name, UserName = Name, UserGroup = userGroup, freeflag = "0", tpflag = "0", });
+                    //    //whether it is Admin or User now both of them has userGroup and I Join this user or admin to specific group 
+                    //    Groups.Add(Context.ConnectionId, userGroup);
+                    //    Clients.Caller.onConnected(id, Name, Name, userGroup);
+
+                    //}
                 }
 
 

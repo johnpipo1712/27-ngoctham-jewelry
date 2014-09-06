@@ -638,7 +638,7 @@ namespace W_GJS.Controllers
             return View();
         }
 
-        public ActionResult NewChat()
+        public ActionResult ChatAdmin()
         {
             return View();
         }

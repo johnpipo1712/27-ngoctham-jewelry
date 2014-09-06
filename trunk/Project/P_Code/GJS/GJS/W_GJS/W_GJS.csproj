@@ -1333,7 +1333,7 @@
     <Content Include="Views\Home\CatalogDetail.cshtml" />
     <Content Include="Views\Home\CategoryProducDetailtListPaging.cshtml" />
     <Content Include="Views\Home\ProductDisplay.cshtml" />
-    <Content Include="Views\Home\NewChat.cshtml" />
+    <Content Include="Views\Home\ChatAdmin.cshtml" />
     <Content Include="Views\Home\Recruitment.cshtml" />
     <Content Include="Views\HomeGroupPhoto\Index.cshtml" />
     <Content Include="Views\HomeIntroduction\Index.cshtml" />
