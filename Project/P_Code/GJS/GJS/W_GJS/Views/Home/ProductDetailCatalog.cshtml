@@ -237,60 +237,21 @@
         {
              <!-- see the bottom of the page for the script -->
             <input type="hidden" id="color" name="color" value="white">
-            <input type="hidden" id="qty" name="QUANTITY" value="1">
-            <input type="hidden" id="size" name="SIZE" value="5">
             <input type="hidden" name="PRODUCT_CD" value="@Model.PRODUCT_CD">
 
                 <!-- see the bottom of the page for the script -->
 
-            <div class="btn-group pull-left product-opt-size">
-                <button type="button" class="btn btn-default dropdown-toggle product-size-dd" data-toggle="dropdown">
-                    Kích cỡ <small id="product-selected-size">(<span>5</span>)</small>
-                    <span class="caret"></span>
-                </button>
+        <div class="btn-group pull-left product-opt-size">
+            Kích cỡ
+            <input type="number" step="0.1" class="small-width" name="SIZE" value="5" placeholder="Kích cỡ" />
+        </div><!-- /btn-group -->
 
-                <ul id="product-size-dd" class="dropdown-menu" role="menu">
-                    <li class="active"><a data-val="5" href="#">5</a></li>
-                    <li><a data-val="5.5" href="#">5.5</a></li>
-                    <li><a data-val="6" href="#">6</a></li>
-                    <li><a data-val="6.5" href="#">6.5</a></li>
-                    <li><a data-val="7" href="#">7</a></li>
-                    <li><a data-val="7.5" href="#">7.7</a></li>
-                    <li><a data-val="8" href="#">8</a></li>
-                    <li><a data-val="8.5" href="#">8.5</a></li>
-                    <li><a data-val="9" href="#">9</a></li>
-                    <li><a data-val="9.5" href="#">9.5</a></li>
-                    <li><a data-val="10" href="#">10</a></li>
-                    <li><a data-val="10.5" href="#">10.5</a></li>
-                    <li><a data-val="11" href="#">11</a></li>
-                    <li><a data-val="11.5" href="#">11.5</a></li>
-                    <li><a data-val="12" href="#">12</a></li>
-                    <li><a data-val="13" href="#">13</a></li>
-                    <li><a data-val="14" href="#">14</a></li>
-                </ul>
-            </div><!-- /btn-group -->
+        <div class="btn-group pull-left product-opt-qty">
+            Số lượng
+            <input type="number" class="small-width" name="QUANTITY" value="1" placeholder="Số lượng" />
+        </div>
 
-            <div class="btn-group pull-left product-opt-qty">
-                <button type="button" class="btn btn-default dropdown-toggle product-qty-dd" data-toggle="dropdown">
-                    Số Lượng <small id="product-selected-qty">(<span>1</span>)</small>
-                    <span class="caret"></span>
-                </button>
-
-                <ul id="product-qty-dd" class="dropdown-menu clearfix" role="menu">
-                    <li class="active"><a data-val="1" href="#">1</a></li>
-                    <li><a data-val="2" href="#">2</a></li>
-                    <li><a data-val="3" href="#">3</a></li>
-                    <li><a data-val="4" href="#">4</a></li>
-                    <li><a data-val="5" href="#">5</a></li>
-                    <li><a data-val="6" href="#">6</a></li>
-                    <li><a data-val="7" href="#">7</a></li>
-                    <li><a data-val="8" href="#">8</a></li>
-                    <li><a data-val="9" href="#">9</a></li>
-                    <li><a data-val="10" href="#">10</a></li>
-                </ul>
-            </div><!-- /btn-group -->
-
-            <button type="submit" class="btn btn-primary pull-left">THÊM VÀO GIỎ HÀNG</button>
+        <button type="submit" class="btn btn-primary pull-left">THÊM VÀO GIỎ HÀNG</button>
 
 
         }
