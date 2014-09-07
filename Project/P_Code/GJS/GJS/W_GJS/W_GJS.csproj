@@ -186,6 +186,7 @@
     <Compile Include="Models\ContractModel.cs" />
     <Compile Include="Models\JsonResultContactModel.cs" />
     <Compile Include="Models\JsonResultChangePasswordModel.cs" />
+    <Compile Include="Models\JsonResultForgotPasswordModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\O_HOME_GROUP_PHOTO.cs">
       <DependentUpon>DB_GJS.tt</DependentUpon>
@@ -1346,6 +1347,10 @@
     <Content Include="Sound\sound.ogg" />
     <Content Include="Views\Home\SubCategoryProducDetailtListPaging.cshtml" />
     <Content Include="Views\Home\UserInformation.cshtml" />
+    <Content Include="Views\Administrator\ForgotPassword.cshtml" />
+    <Content Include="Views\Administrator\ForgotPasswordEmailSuccessful.cshtml" />
+    <Content Include="Views\Administrator\ChangePassword.cshtml" />
+    <Content Include="Views\Administrator\ChangePasswordEmailSuccessful.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
