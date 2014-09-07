@@ -49,13 +49,15 @@ function changePassword() {
                 if (data.HasError) {
                     $("#error-change-password").html(data.ErrorString);
                     $("#loadingDivChangePassword").hide();
-                    inProgressChangePassword = false;
                     $("#error-change-password").show();
 
                 } else {
                     $("#loadingDivChangePassword").hide();
+                    $("#ChangePasswordModal").modal('hide');
                     $("#changePasswordSuccesfully").modal('show');
+                    
                 }
+                inProgressChangePassword = false;
             });
     }
     return false; //stop submit form.
@@ -88,12 +90,12 @@ function userInformationUpdate() {
                 if (data.HasError) {
                     $("#error-user-information-update").html(data.ErrorString);
                     $("#loadingDivUserInformationUpdate").hide();
-                    inProgressUserInformationUpdate = false;
                     $("#error-user-information-update").show();
                 } else {
                     $("#loadingDivUserInformationUpdate").hide();
                     $("#userInformationUpdateSuccesfully").modal('show');
                 }
+                inProgressUserInformationUpdate = false;
             });
     }
     return false; //stop submit form.

@@ -37,7 +37,7 @@ namespace W_GJS.Models
             try
             {
                 S_USER USER = gjs.S_USER.Single(t => t.USER_NAME == MODEL.USER_NAME);
-                USER.USER_PASS = USER.USER_PASS;
+                USER.USER_PASS = MODEL.USER_PASS_NEW;
                 gjs.Entry(USER).State = EntityState.Modified;
                 gjs.SaveChanges();
             }
@@ -55,6 +55,15 @@ namespace W_GJS.Models
             {
                 jsonModel.ErrorString += "<li>Vui lòng nhập mật khẩu hiện tài.</li>";
                 jsonModel.HasError = true;
+            }
+            else
+            {
+                S_USER USER = Db_gsj.S_USER.Single(t => t.USER_NAME == MODEL.USER_NAME);
+                if (USER.USER_PASS != MODEL.USER_PASS_OLD)
+                {
+                    jsonModel.ErrorString += "<li>Mật khẩu hiện tại không đúng.</li>";
+                    jsonModel.HasError = true;
+                }
             }
 
             if (String.IsNullOrEmpty(MODEL.USER_PASS_NEW))
