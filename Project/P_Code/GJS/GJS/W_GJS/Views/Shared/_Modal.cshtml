@@ -17,14 +17,14 @@
                 <!-- modal body -->
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Tên đăng nhập</label>
-                        <div class="col-sm-10">
+                        <label for="inputEmail3" class="col-sm-3 control-label">Tên đăng nhập</label>
+                        <div class="col-sm-9">
                             <input type="text" class="form-control" name="username" placeholder="Tên đăng nhập">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">Mật khẩu</label>
-                        <div class="col-sm-10">
+                        <label for="inputPassword3" class="col-sm-3 control-label">Mật khẩu</label>
+                        <div class="col-sm-9">
                             <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
                         </div>
                     </div>
@@ -57,7 +57,93 @@
     </div>
 </div>
 
+<!-- modal Change password -->
+<div class="modal fade" id="ChangePasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
+            <div class="modal-header">
+                <!-- modal header -->
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Đổi Mật Khẩu</h4>
+            </div><!-- /modal header -->
+
+
+            <form id="form-change-password" class="form-horizontal" role="form" action="@Url.Action("ChangePassword")" method="post">
+                <!-- modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label required">Mật khẩu hiện tại</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" name="USER_PASS_OLD" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-4 control-label required">Mật khẩu mới</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" name="USER_PASS_NEW" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-4 control-label required">Nhập lại mật khẩu mới</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" name="USER_PASS_CONFIRM" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div id="error-change-password"></div>
+                    </div>
+                    <!-- /modal body -->
+                </div>
+                <div class="modal-footer">
+                    <!-- modal footer -->
+                    <span id="loadingDivChangePassword" style="display: none;">
+                        <img alt="Loading" src="@Url.Content("~/Content/Images/ajax-loader.gif")" />
+                    </span>
+                    <a class="btn btn-default" data-dismiss="modal">Đóng</a>
+                    <button id="change-password-button" data-success-action="@Url.Action("UserInformation", "Home")" data-action="@Url.Action("ChangePassword", "Home")" type="button" class="btn btn-primary">Thay đổi</button>
+                    <input type="submit" style="display:none" />
+                </div><!-- /modal footer -->
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- modal Update User Information Successfully -->
+<div class="modal fade" id="userInformationUpdateSuccesfully" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 800px; height:600px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: none; border-bottom: none;">
+                <!-- modal header -->
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div><!-- /modal header -->
+            <!-- modal body -->
+            <div class="modal-body">
+                <h2 class="owl-caption"><strong>CẬP NHẬT THÔNG TIN THÀNH CÔNG.</strong></h2>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- modal Change Password Successfully -->
+<div class="modal fade" id="changePasswordSuccesfully" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 800px; height:600px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: none; border-bottom: none;">
+                <!-- modal header -->
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div><!-- /modal header -->
+            <!-- modal body -->
+            <div class="modal-body">
+                <h2 class="owl-caption"><strong>ĐỔI MẬT KHẨU THÀNH CÔNG.</strong></h2>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <!-- modal Register -->
 <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -114,7 +200,7 @@
                                 <b class="tooltip tooltip-bottom-right">Chỉ chấp nhận số</b>
                             </label>
                         </section>
-                        <section>
+                        <section class="required-before">
                             <label class="input">
                                 <i class="icon-append fa fa-university"></i>
                                 <input type="text" name="address" placeholder="Địa chỉ">
@@ -153,7 +239,7 @@
                         </section>
                     </fieldset>
                     <fieldset>
-                        <div id="error-register" class="row"> </div>
+                        <div id="error-register" class="row"></div>
                     </fieldset>
                 </div>
                 <div class="modal-footer">

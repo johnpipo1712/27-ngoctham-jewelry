@@ -37,6 +37,78 @@ $('#LoginModal').on('shown.bs.modal', function () {
 })
 
 
+// CHANGE PASSWORD
+
+function changePassword() {
+    if (!inProgressChangePassword) {
+        inProgressChangePassword = true;
+        $("#loadingDivChangePassword").show();
+        $("#error-change-password").hide();
+        $.post($("#change-password-button").data("action"), $('#form-change-password').serialize(),
+            function (data) {
+                if (data.HasError) {
+                    $("#error-change-password").html(data.ErrorString);
+                    $("#loadingDivChangePassword").hide();
+                    inProgressChangePassword = false;
+                    $("#error-change-password").show();
+
+                } else {
+                    $("#loadingDivChangePassword").hide();
+                    $("#changePasswordSuccesfully").modal('show');
+                }
+            });
+    }
+    return false; //stop submit form.
+}
+
+inProgressChangePassword = false;
+$("#change-password-button").click(function () {
+    changePassword();
+});
+
+$("#form-change-password").submit(function (event) {
+    changePassword();
+    event.preventDefault();
+});
+
+$('#ChangePasswordModal').on('shown.bs.modal', function () {
+    $("#form-change-password").find("input[type=text], input[type=password]").val("");
+})
+
+
+// Update user information
+
+function userInformationUpdate() {
+    if (!inProgressUserInformationUpdate) {
+        inProgressUserInformationUpdate = true;
+        $("#loadingDivUserInformationUpdate").show();
+        $("#error-user-information-update").hide();
+        $.post($("#information-update-button").data("action"), $('#form-user-information-update').serialize(),
+            function (data) {
+                if (data.HasError) {
+                    $("#error-user-information-update").html(data.ErrorString);
+                    $("#loadingDivUserInformationUpdate").hide();
+                    inProgressUserInformationUpdate = false;
+                    $("#error-user-information-update").show();
+                } else {
+                    $("#loadingDivUserInformationUpdate").hide();
+                    $("#userInformationUpdateSuccesfully").modal('show');
+                }
+            });
+    }
+    return false; //stop submit form.
+}
+
+inProgressUserInformationUpdate = false;
+$("#information-update-button").click(function () {
+    userInformationUpdate();
+});
+
+$("#form-user-information-update").submit(function (event) {
+    userInformationUpdate();
+    event.preventDefault();
+});
+
 // REGISTER
 function registerAccount()
 {

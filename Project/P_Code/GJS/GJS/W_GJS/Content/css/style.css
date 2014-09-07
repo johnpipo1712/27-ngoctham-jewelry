@@ -346,7 +346,7 @@ div.slider {
     content: " lượt";
 }
 
-#error-login, #error-register, #error-contact {
+#error-login, #error-register, #error-contact, #error-user-information-update, #error-change-password {
     color: red;
 }
 
@@ -354,7 +354,7 @@ div.slider {
     margin-left: 1em;
 }
 
-#loadingDivLogin img, #loadingDivRegister img, #loadingDivContact img {
+#loadingDivLogin img, #loadingDivRegister img, #loadingDivContact img, #loadingDivChangePassword img, #loadingDivUserInformationUpdate img {
     width: 30px;
     height: 30px;
 }
@@ -452,4 +452,24 @@ div.slider {
 #discussion li:nth-child(even) {
     background-color: #999;
     color: #fff;
+}
+
+.required::after {
+    content: "*";
+    color:red;
+}
+
+required-before::before {
+    content: "*";
+    color:red;
+}
+
+.hightlight {
+    font-size: 20px;
+    font-weight: 700 !important;
+}
+
+.hightlight-small {
+    font-size: 13px;
+    font-weight: 700 !important;
 }

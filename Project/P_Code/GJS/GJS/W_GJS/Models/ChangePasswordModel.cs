@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 
 namespace W_GJS.Models
 {
@@ -30,5 +31,62 @@ namespace W_GJS.Models
         [Display(Name = "Nhập lại mật khẩu mới")]
         [DataType(DataType.Password)]
         public string USER_PASS_CONFIRM { get; set; }
+
+        public static bool changePassword(ChangePasswordModel MODEL, JsonResultChangePasswordModel jsonResult, GJSEntities gjs)
+        {
+            try
+            {
+                S_USER USER = gjs.S_USER.Single(t => t.USER_NAME == MODEL.USER_NAME);
+                USER.USER_PASS = USER.USER_PASS;
+                gjs.Entry(USER).State = EntityState.Modified;
+                gjs.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static bool checkValidation(ChangePasswordModel MODEL, JsonResultChangePasswordModel jsonModel, GJSEntities Db_gsj)
+        {
+
+            if (String.IsNullOrEmpty(MODEL.USER_PASS_OLD))
+            {
+                jsonModel.ErrorString += "<li>Vui lòng nhập mật khẩu hiện tài.</li>";
+                jsonModel.HasError = true;
+            }
+
+            if (String.IsNullOrEmpty(MODEL.USER_PASS_NEW))
+            {
+                jsonModel.ErrorString += "<li>Vui lòng nhập mật khẩu mới.</li>";
+                jsonModel.HasError = true;
+            }
+            else
+            {
+                if (MODEL.USER_PASS_NEW.Length < 6)
+                {
+                    jsonModel.ErrorString += "<li>Mật khẩu phải có từ 6 kí tự trở lên.</li>";
+                    jsonModel.HasError = true;
+                }
+            }
+
+            if (String.IsNullOrEmpty(MODEL.USER_PASS_CONFIRM))
+            {
+                jsonModel.ErrorString += "<li>Vui lòng nhập mật khẩu xác nhận.</li>";
+                jsonModel.HasError = true;
+            }
+
+            // Re-password matching.
+            if (MODEL.USER_PASS_NEW != MODEL.USER_PASS_CONFIRM)
+            {
+                jsonModel.ErrorString += "<li>Mật khẩu nhập lại phải khớp với mật khẩu mới.</li>";
+                jsonModel.HasError = true;
+            }
+
+
+
+            return true;
+        }
     }
 }

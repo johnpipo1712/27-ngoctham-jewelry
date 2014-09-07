@@ -25,6 +25,61 @@ namespace W_GJS.Controllers
             return View();
         }
 
+
+
+        [HttpPost]
+        public ActionResult ChangePassword(string USER_PASS_OLD, string USER_PASS_NEW, string USER_PASS_CONFIRM)
+        {
+            Db_gsj = new GJSEntities();
+            ChangePasswordModel MODEL = new ChangePasswordModel();
+            MODEL.USER_PASS_CONFIRM = USER_PASS_CONFIRM;
+            MODEL.USER_PASS_NEW = USER_PASS_NEW;
+            MODEL.USER_PASS_OLD = USER_PASS_OLD;
+            if (!String.IsNullOrEmpty((String)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]))
+            {
+                MODEL.USER_NAME = (string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY];
+            }
+            JsonResultChangePasswordModel jsonModel = new JsonResultChangePasswordModel();
+            jsonModel.HasError = false;
+            ChangePasswordModel.checkValidation(MODEL, jsonModel, Db_gsj);
+            if (!jsonModel.HasError) 
+            {
+                ChangePasswordModel.changePassword(MODEL, jsonModel, Db_gsj);
+            }
+            return Json(jsonModel);
+        }
+
+        [HttpPost]
+        public ActionResult UserInformationUpdate(RegisterModel MODEL)
+        {
+            JsonResultRegisterModel jsonModel = new JsonResultRegisterModel();
+            jsonModel.HasError = false;
+
+            Db_gsj = new GJSEntities();
+            if (!String.IsNullOrEmpty((String)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY]))
+            {
+                MODEL.USER_NAME = (string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY];
+            }
+            RegisterModel.checkValidation(MODEL, jsonModel, Db_gsj, false);
+
+            if (!jsonModel.HasError)
+            {
+                RegisterModel.UpdateInformation(MODEL, jsonModel, Db_gsj);
+                
+            }
+            return Json(jsonModel);
+        }
+
+        public ActionResult UserInformation()
+        {
+            string USERNAME = (string)Session[W_GJS.General.SessionConstants.LOGINED_USER_KEY];
+            if (String.IsNullOrEmpty(USERNAME))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Db_gsj = new GJSEntities();
+            return View(Db_gsj.S_USER.Single(t=>t.USER_NAME == USERNAME).O_USER_CUSTOMER.First().O_CUSTOMER);
+        }
         public ActionResult SearchProducts(string keyword)
         {
             Db_gsj = new GJSEntities();
@@ -325,7 +380,7 @@ namespace W_GJS.Controllers
 
             Db_gsj = new GJSEntities();
 
-            RegisterModel.checkValidation(MODEL, jsonModel, Db_gsj);
+            RegisterModel.checkValidation(MODEL, jsonModel, Db_gsj, true);
 
             if (!jsonModel.HasError)
             {
