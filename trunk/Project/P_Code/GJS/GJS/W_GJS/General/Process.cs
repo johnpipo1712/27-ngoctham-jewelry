@@ -5,6 +5,8 @@ using System.Web;
 using System.Net.Mail;
 using System.Net;
 using W_GJS.Models;
+using System.Security.Cryptography;
+using System.Text;
 namespace W_GJS.General
 {
     public class Process
@@ -57,10 +59,52 @@ namespace W_GJS.General
 
             }
 
+            public static bool SendMail_ForgotPassword(string email, string urlChangePassword)
+            {
+                string Subject = "Lấy lại mật khẩu Admin | NgocThamGold.com.vn";
+
+
+                string str = "<html>"
+                           + "Click vào đường dẫn bên dưới đề tiến hành thay đổi mật khẩu của bạn :"
+                           + urlChangePassword
+                           + "</html>";
+
+                MailMessage mail = new MailMessage(MailGmail, email, Subject, str);
+                mail.IsBodyHtml = true;
+                try
+                {
+                    SmtpClient client = new SmtpClient();
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.EnableSsl = true;
+                    client.Host = "smtp.gmail.com";
+                    client.Port = 587;
+                    // setup Smtp authentication
+                    NetworkCredential credentials = new NetworkCredential(MailGmail, Pass);
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = credentials;
+                    client.Send(mail);
+
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+
+            }
 
             public static readonly string MailGmail = "ngocthamgold@gmail.com";
             public static readonly string Pass = "john@0938613461";
 
+        }
+
+        public static string HashMD5(string key)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            Byte[] originalBytes = ASCIIEncoding.Default.GetBytes(key);
+            Byte[] encodedBytes = md5.ComputeHash(originalBytes);
+
+            return BitConverter.ToString(encodedBytes);
         }
 
         public static bool CheckExtensionImg(string extension)
