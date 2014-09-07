@@ -126,31 +126,57 @@ namespace W_GJS.Models
             return true;
         }
 
-        public static bool checkValidation(RegisterModel MODEL, JsonResultRegisterModel jsonModel, GJSEntities Db_gsj)
+        public static bool UpdateInformation(RegisterModel MODEL, JsonResultRegisterModel jsonModel, GJSEntities Db_gsj)
         {
-            if (String.IsNullOrEmpty(MODEL.USER_NAME))
+
+            try
             {
-                jsonModel.ErrorString += "<li>Vui lòng nhập tên đăng nhập.</li>";
-                jsonModel.HasError = true;
+
+                O_CUSTOMER CUSTOMER = Db_gsj.S_USER.Single(t => t.USER_NAME == MODEL.USER_NAME).O_USER_CUSTOMER.First().O_CUSTOMER;
+                CUSTOMER.EMAIL = MODEL.EMAIL;
+                CUSTOMER.PHONE = MODEL.PHONE_NUMBER;
+                CUSTOMER.CUSTOMER_NAME = MODEL.FIRST_NAME + " " + MODEL.LAST_NAME;
+                CUSTOMER.CUSTOMER_FIRST_NAME = MODEL.FIRST_NAME;
+                CUSTOMER.CUSTOMER_LAST_NAME = MODEL.LAST_NAME;
+                CUSTOMER.ADDRESS = MODEL.ADDRESS;
+                CUSTOMER.SEX = MODEL.SEX;
+                Db_gsj.Entry(CUSTOMER).State = EntityState.Modified;
+                Db_gsj.SaveChanges();
+
             }
-            else
+            catch (Exception e)
             {
-                // Username must be not existing.
-                S_USER USER_found = Db_gsj.S_USER.FirstOrDefault(t => t.USER_NAME == MODEL.USER_NAME);
-                if (USER_found != null)
+                return false;
+            }
+            return true;
+        }
+
+        public static bool checkValidation(RegisterModel MODEL, JsonResultRegisterModel jsonModel, GJSEntities Db_gsj, bool forRegister)
+        {
+            if (forRegister)
+            {
+                if (String.IsNullOrEmpty(MODEL.USER_NAME))
                 {
-                    jsonModel.ErrorString += "<li>Tên đăng nhập phải không được trùng.</li>";
+                    jsonModel.ErrorString += "<li>Vui lòng nhập tên đăng nhập.</li>";
                     jsonModel.HasError = true;
                 }
+                else
+                {
+                    // Username must be not existing.
+                    S_USER USER_found = Db_gsj.S_USER.FirstOrDefault(t => t.USER_NAME == MODEL.USER_NAME);
+                    if (USER_found != null)
+                    {
+                        jsonModel.ErrorString += "<li>Tên đăng nhập phải không được trùng.</li>";
+                        jsonModel.HasError = true;
+                    }
+                }
             }
-
             
             if (String.IsNullOrEmpty(MODEL.EMAIL))
             {
                 jsonModel.ErrorString += "<li>Vui lòng nhập email.</li>";
                 jsonModel.HasError = true;
             }
-            
             else
             {
                 // Kiểm tra dạng email
@@ -161,36 +187,45 @@ namespace W_GJS.Models
                 }
                 else
                 {
-                    // Email must be not existing.
-                    O_CUSTOMER CUSTOMER_found = Db_gsj.O_CUSTOMER.FirstOrDefault(t => t.EMAIL == MODEL.EMAIL);
-                    if (CUSTOMER_found != null)
+                    if (forRegister)
                     {
-                        jsonModel.ErrorString += "<li>Email phải không được trùng.</li>";
-                        jsonModel.HasError = true;
+                        // Email must be not existing.
+                        O_CUSTOMER CUSTOMER_found = Db_gsj.O_CUSTOMER.FirstOrDefault(t => t.EMAIL == MODEL.EMAIL);
+                        if (CUSTOMER_found != null)
+                        {
+                            jsonModel.ErrorString += "<li>Email phải không được trùng.</li>";
+                            jsonModel.HasError = true;
+                        }
                     }
                 }
                 
             }
 
-            if (String.IsNullOrEmpty(MODEL.USER_PASS))
+            if (forRegister)
             {
-                jsonModel.ErrorString += "<li>Vui lòng nhập password.</li>";
-                jsonModel.HasError = true;
-            }
-            else
-            {
-                if (MODEL.USER_PASS.Length < 6)
+                if (String.IsNullOrEmpty(MODEL.USER_PASS))
                 {
-                    jsonModel.ErrorString += "<li>Mật khẩu phải có từ 6 kí tự trở lên.</li>";
+                    jsonModel.ErrorString += "<li>Vui lòng nhập password.</li>";
                     jsonModel.HasError = true;
+                }
+                else
+                {
+                    if (MODEL.USER_PASS.Length < 6)
+                    {
+                        jsonModel.ErrorString += "<li>Mật khẩu phải có từ 6 kí tự trở lên.</li>";
+                        jsonModel.HasError = true;
+                    }
                 }
             }
 
-            // Re-password matching.
-            if (MODEL.USER_PASS != MODEL.USER_RE_PASS)
+            if (forRegister)
             {
-                jsonModel.ErrorString += "<li>Mật khẩu nhập lại phải chính xác.</li>";
-                jsonModel.HasError = true;
+                // Re-password matching.
+                if (MODEL.USER_PASS != MODEL.USER_RE_PASS)
+                {
+                    jsonModel.ErrorString += "<li>Mật khẩu nhập lại phải chính xác.</li>";
+                    jsonModel.HasError = true;
+                }
             }
 
             if (String.IsNullOrEmpty(MODEL.PHONE_NUMBER))
