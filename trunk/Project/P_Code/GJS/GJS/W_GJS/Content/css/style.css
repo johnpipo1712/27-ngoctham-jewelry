@@ -473,3 +473,7 @@ required-before::before {
     font-size: 13px;
     font-weight: 700 !important;
 }
+
+.small-width {
+    width: 90px;
+}
