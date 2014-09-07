@@ -65,13 +65,9 @@
                     </label>
                 </section>
                 <script>
-                    $(document).ready(function () {
-                        if ('@Model.SEX' === 'Nam') {
-                            $("select[name=sex]").val("1");
-                        } else {
-                            $("select[name=sex]").val("2");
-                        }
-                    });
+                $(document).ready(function () {
+                        $("select[name=sex]").val(@Model.SEX);
+                });
                 </script>
             </div>
             <div class="form-group">
