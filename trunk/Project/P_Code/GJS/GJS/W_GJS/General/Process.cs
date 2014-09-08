@@ -35,7 +35,7 @@ namespace W_GJS.General
 
                            + "</html>";
 
-                MailMessage mail = new MailMessage(MailGmail, "ngocthamso1@yahoo.com", Subject, str);
+                MailMessage mail = new MailMessage(MailGmail, "ngoctham01@ntj.vn", Subject, str);
                 mail.IsBodyHtml = true;
                 try
                 {
