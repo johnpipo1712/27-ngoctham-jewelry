@@ -444,15 +444,7 @@ div.slider {
     padding: 5px;
 }
 
-#discussion li:nth-child(odd) {
-    background-color: #fff;
-    color: #333;
-}
 
-#discussion li:nth-child(even) {
-    background-color: #999;
-    color: #fff;
-}
 
 .required::after {
     content: "*";
@@ -476,4 +468,46 @@ required-before::before {
 
 .small-width {
     width: 90px;
+}
+
+/*#discussion li:nth-child(odd) {
+    text-align: left;
+}
+
+#discussion li:nth-child(even) {
+    text-align: right;
+}*/
+
+.top-chat-img-wrapper {
+    background: linear-gradient(to top, #FFFB9C, #FFE832);
+    text-align: center;
+}
+
+.top-chat-img {
+    width: 70%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chat-send {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    margin: 0;
+}
+
+#welcome {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.btn-send-chat {
+    text-align: center;
+}
+
+.btn-send-chat input {
+    width: 10%;
 }

@@ -59,19 +59,24 @@
     <![endif]-->
 </head>
 <body>
-    <div id="divChat" class="container">
-        <div id="welcome"></div>
+    <div id="divChat">
+        <div class="top-chat-img-wrapper">
+            <img class="top-chat-img" src="@Url.Content("~/Content/images/top.png")" alt="Top" />
+        </div>
+        <div id="welcome">
+            Công ty TNHH vàng bạc đá quý Ngọc Thẫm xin kính chào quý khách! Chúng tôi giúp được gì cho quý khách không ạ!
+        </div>
         <input type="hidden" value="" id="displayname" />
         <div id="divMessage" style="height: 350px; overflow-y: scroll;" class="row">
             <ul id="discussion">
 
             </ul>
         </div>
-        <div class="row well">
-            <div class="col-md-11">
+        <div class="row well chat-send">
+            <div class="col-md-12">
                 <input type="text" id="txtMessage" class="form-control" />
             </div>
-            <div class="col-md-1">
+            <div class="btn-send-chat">
                 <input type="button" id="btnSendMessage" value="Gửi" class="btn btn-primary" />
             </div>
         </div>
@@ -245,7 +250,7 @@
 
 
                 var strWelcome = 'Xin chào :' + userName;
-                $('#welcome').append('<div><p> Xin chào :' + userName + '</p></div>');
+                //$('#welcome').append('<div><p> Xin chào :' + userName + '</p></div>');
                 $('#hId').val(id);
                 $('#hUserId').val(UserID);
                 $('#hUserName').val(userName);
