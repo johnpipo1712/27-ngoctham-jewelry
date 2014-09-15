@@ -93,14 +93,33 @@
                     }
 
                     @if ((currentController == "Home" && currentAction == "Product_Category") ||
-                        (currentController == "Home" && currentAction == "ProductDisplay" ))
+                        (currentController == "Home" && currentAction == "ProductDisplay" ) ||
+                        (currentController == "Home" && currentAction == "Product_Category_Detail"))
                     {
                         <li class="dropdown active">
                             <a href="@Url.Action("ProductDisplay", "Home")">SẢN PHẨM <span>products</span></a>
                             <ul class="dropdown-menu">
                                 @foreach (var item in listCategory)
                                 {
-                                    <li>@Html.ActionLink(item.CATEGORY_PRODUCT_NAME, "Product_Category", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD }, new { @alt = item.TAG_ALT })</li>
+                                    <li>
+                                        
+                                        @if (item.O_CATEGORY_PRODUCT_DETAIL != null && item.O_CATEGORY_PRODUCT_DETAIL.Where(t=>t.ACTIVE == true).ToList().Count > 0)
+                                        {
+                                        @Html.ActionLink(item.CATEGORY_PRODUCT_NAME, "Product_Category", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD }, new { @alt = item.TAG_ALT, @class = "dropdown-next" })
+                                        <ul class="dropdown-menu">
+                                            @foreach (var item_detail in item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList())
+                                            {
+                                            <li>
+                                                <a href="@Url.Action("Product_Category_Detail", new { CATEGORY_PRODUCT_DETAIL_CD = item_detail.CATEGORY_PRODUCT_DETAIL_CD })"> @item_detail.CATEGORY_PRODUCT_DETAIL_NAME</a>
+                                            </li>
+                                            }
+                                        </ul>
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink(item.CATEGORY_PRODUCT_NAME, "Product_Category", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD }, new { @alt = item.TAG_ALT })
+                                        }
+                                    </li>
                                 }
                             </ul>
                         </li>
@@ -112,7 +131,24 @@
                             <ul class="dropdown-menu">
                                 @foreach (var item in listCategory)
                                 {
-                                    <li>@Html.ActionLink(item.CATEGORY_PRODUCT_NAME, "Product_Category", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD }, new { @alt = item.TAG_ALT })</li>
+                                    <li>
+                                        @if (item.O_CATEGORY_PRODUCT_DETAIL != null && item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList().Count > 0)
+                                        {
+                                            @Html.ActionLink(item.CATEGORY_PRODUCT_NAME, "Product_Category", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD }, new { @alt = item.TAG_ALT, @class = "dropdown-next" })
+                                            <ul class="dropdown-menu">
+                                                @foreach (var item_detail in item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList())
+                                                {
+                                                    <li>
+                                                        <a href="@Url.Action("Product_Category_Detail", new { CATEGORY_PRODUCT_DETAIL_CD = item_detail.CATEGORY_PRODUCT_DETAIL_CD })"> @item_detail.CATEGORY_PRODUCT_DETAIL_NAME</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink(item.CATEGORY_PRODUCT_NAME, "Product_Category", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD }, new { @alt = item.TAG_ALT })
+                                        }
+                                    </li>
                                 }
                             </ul>
                         </li>
@@ -162,6 +198,7 @@
                     {
 
                         if ((currentController == "Home" && currentAction == "Catalog")
+                            || (currentController == "Home" && currentAction == "CatalogDetail")
                             || (currentController == "Home" && currentAction == "CatalogDetail"))
                         {
                             <li class="active dropdown">
@@ -169,7 +206,9 @@
                                 <ul class="dropdown-menu">
                                     @foreach (var item in listCategory)
                                     {
-                                        <li><a href="@Url.Action("CatalogDetail", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a></li>
+                                        <li>
+                                            <a href="@Url.Action("CatalogDetail", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a>
+                                        </li>
 
                                     }
                                 </ul>
