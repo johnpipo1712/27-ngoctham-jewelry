@@ -509,5 +509,5 @@ required-before::before {
 }
 
 .btn-send-chat input {
-    width: 10%;
+    width: 200px;
 }
