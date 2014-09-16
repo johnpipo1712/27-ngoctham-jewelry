@@ -165,6 +165,16 @@ a.logo {
 	color:#999;
 }
 
+.submenu_next:after {
+	content: "\f105";
+	font-family: FontAwesome;
+	position: absolute;
+	font-size: 15px;
+	right: 10px;
+	top: 9px;
+	color:#999;
+}
+
 #topNav .dropdown-submenu > a:after {
 	display: block;
 	content: " ";

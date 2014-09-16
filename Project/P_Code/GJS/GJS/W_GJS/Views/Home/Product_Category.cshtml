@@ -80,46 +80,53 @@
         <!-- PRODUCT LIST -->
         <div class="row">
 
-        @foreach (var item in Model)
+        @if (Model.ToList().Count == 0)
         {
-            <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>@item.CATEGORY_PRODUCT_DETAIL_NAME</strong></h2>
-            if (item.O_PRODUCT.Count == 0)
-            {
-                <p>Không tìm thấy sản phẩm nào.</p>
-            }
-            else
-            {
-                <div id="ProductList-@item.CATEGORY_PRODUCT_DETAIL_CD"></div>
-
-
-                <script>
-
-                    function loadProducts_@(item.CATEGORY_PRODUCT_DETAIL_CD)(currentPage) {
-                        inProgress_@(item.CATEGORY_PRODUCT_DETAIL_CD) = true;
-                        $("#loadingDiv-@(@item.CATEGORY_PRODUCT_DETAIL_CD)").show();
-
-                        $.post("@Url.Action("CategoryProducDetailtListPaging", "Home")", { "CATEGORY_PRODUCT_DETAIL_CD": @item.CATEGORY_PRODUCT_DETAIL_CD , "productMenu": true, "numberOfItemsInPage": 6, "currentPage": currentPage },
-                        function (data) {
-                            $("#ProductList-@(item.CATEGORY_PRODUCT_DETAIL_CD)").html(data);
-                            $("#loadingDiv-@(item.CATEGORY_PRODUCT_DETAIL_CD)").hide();
-                            inProgress_@(item.CATEGORY_PRODUCT_DETAIL_CD) = false;
-                        });
-                    }
-
-                    //$(document).ready(function () {
-                    loadProducts_@(item.CATEGORY_PRODUCT_DETAIL_CD)(1);
-                    //});
-
-                    @*$(".paging-@(item.CATEGORY_PRODUCT_CD)").click(function () {
-        if (!inProgress@(item.CATEGORY_PRODUCT_CD)) {
-            loadProducts@(@item.CATEGORY_PRODUCT_CD)();
+            <p>Không tìm thấy sản phẩm nào.</p>
         }
-    });*@
+        else
+        { 
+            foreach (var item in Model)
+            {
+                <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>@item.CATEGORY_PRODUCT_DETAIL_NAME</strong></h2>
+                if (item.O_PRODUCT.Count == 0)
+                {
+                    <p>Không tìm thấy sản phẩm nào.</p>
+                }
+                else
+                {
+                    <div id="ProductList-@item.CATEGORY_PRODUCT_DETAIL_CD"></div>
 
 
-                </script>
+                    <script>
+
+                        function loadProducts_@(item.CATEGORY_PRODUCT_DETAIL_CD)(currentPage) {
+                            inProgress_@(item.CATEGORY_PRODUCT_DETAIL_CD) = true;
+                            $("#loadingDiv-@(@item.CATEGORY_PRODUCT_DETAIL_CD)").show();
+
+                            $.post("@Url.Action("CategoryProducDetailtListPaging", "Home")", { "CATEGORY_PRODUCT_DETAIL_CD": @item.CATEGORY_PRODUCT_DETAIL_CD , "productMenu": true, "numberOfItemsInPage": 6, "currentPage": currentPage },
+                            function (data) {
+                                $("#ProductList-@(item.CATEGORY_PRODUCT_DETAIL_CD)").html(data);
+                                $("#loadingDiv-@(item.CATEGORY_PRODUCT_DETAIL_CD)").hide();
+                                inProgress_@(item.CATEGORY_PRODUCT_DETAIL_CD) = false;
+                            });
+                        }
+
+                        //$(document).ready(function () {
+                        loadProducts_@(item.CATEGORY_PRODUCT_DETAIL_CD)(1);
+                        //});
+
+                        @*$(".paging-@(item.CATEGORY_PRODUCT_CD)").click(function () {
+            if (!inProgress@(item.CATEGORY_PRODUCT_CD)) {
+                loadProducts@(@item.CATEGORY_PRODUCT_CD)();
+            }
+        });*@
 
 
+                    </script>
+
+
+                }
             }
         }
         </div>
