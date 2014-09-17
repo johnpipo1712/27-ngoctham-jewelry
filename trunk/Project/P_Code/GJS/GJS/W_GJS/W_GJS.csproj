@@ -1351,6 +1351,7 @@
     <Content Include="Views\Administrator\ForgotPasswordEmailSuccessful.cshtml" />
     <Content Include="Views\Administrator\ChangePassword.cshtml" />
     <Content Include="Views\Administrator\ChangePasswordEmailSuccessful.cshtml" />
+    <Content Include="Views\Home\Catalog_Category_Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

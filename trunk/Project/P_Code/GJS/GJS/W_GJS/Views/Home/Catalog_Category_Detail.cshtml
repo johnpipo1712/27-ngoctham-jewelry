@@ -1,9 +1,9 @@
 ﻿@model W_GJS.Models.O_CATEGORY_PRODUCT_DETAIL
 @{
-    ViewBag.Title = "Product_Category_Detail";
+    ViewBag.Title = "Catalog_Category_Detail";
     W_GJS.Models.GJSEntities gjs = new W_GJS.Models.GJSEntities();
     List<W_GJS.Models.O_CATEGORY_PRODUCT> listcategory = gjs.O_CATEGORY_PRODUCT.Where(t => t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE).ToList();
-    
+
 }
 
 @section PageTitle {
@@ -14,18 +14,20 @@
 
                 <ul class="breadcrumb">
                     <!-- breadcrumb -->
-                    <li><a href="@Url.Action("Index")">Trang sản phẩm</a></li>
+                    <li><a href="@Url.Action("Index")">Trang Chủ</a></li>
+                    <li class="active">Catalog</li>
                 </ul><!-- /breadcrumb -->
 
                 <h2>
                     <!-- Page Title -->
-                    <strong>Trang Sản Phẩm</strong>
+                    <strong>Catalog</strong>
                 </h2><!-- /Page Title -->
 
             </header>
 
         </div>
     </section>
+
 }
 
 <h2 class="owl-featured margin-bottom-30 margin-top20"><strong>Danh Sách Sản Phẩm</strong></h2>
@@ -41,19 +43,19 @@
             <li><a href="#">Trang chủ</a></li>
             <li class="active">Danh sách sản phẩm</li>
         </ul><!-- /breadcrumb -->
-        a
+
     </div>
 
     <div class=" col-sm-3 col-md-3">
 
         @*<select class="form-control pointer fsize13 pull-right" name="orderby">
-            <option value="menu_order" selected="selected">Sắp xếp mặc định</option>
-            <option value="popularity">Sắp xếp theo độ phổ biến</option>
-            <option value="rating">Sắp xếp theo điểm đánh giá</option>
-            <option value="date">Sắp xếp theo thời gian</option>
-            <option value="price">Sắp xếp theo price: thấp tới cao</option>
-            <option value="price-desc">Sắp xếp theo price: cao xuống thấp</option>
-        </select>*@
+                <option value="menu_order" selected="selected">Sắp xếp mặc định</option>
+                <option value="popularity">Sắp xếp theo độ phổ biến</option>
+                <option value="rating">Sắp xếp theo điểm đánh giá</option>
+                <option value="date">Sắp xếp theo thời gian</option>
+                <option value="price">Sắp xếp theo price: thấp tới cao</option>
+                <option value="price-desc">Sắp xếp theo price: cao xuống thấp</option>
+            </select>*@
 
     </div>
 </div>

@@ -556,6 +556,12 @@ namespace W_GJS.Controllers
             ViewBag.Name = Db_gsj.O_CATEGORY_PRODUCT.Single(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).CATEGORY_PRODUCT_NAME;
             return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).ToList());
         }
+        public ActionResult Catalog_Category_Detail([Bind(Include = "CATEGORY_PRODUCT_DETAIL_CD")]O_CATEGORY_PRODUCT_DETAIL CATEGORY_PRODUCT_DETAIL)
+        {
+            Db_gsj = new GJSEntities();
+
+            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Single(t => t.CATEGORY_PRODUCT_DETAIL_CD == CATEGORY_PRODUCT_DETAIL.CATEGORY_PRODUCT_DETAIL_CD));
+        }
         public ActionResult Cart()
         {
             return View();
