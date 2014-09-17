@@ -198,7 +198,8 @@
                     {
 
                         if ((currentController == "Home" && currentAction == "Catalog")
-                            || (currentController == "Home" && currentAction == "CatalogDetail"))
+                            || (currentController == "Home" && currentAction == "CatalogDetail")
+                            || (currentController == "Home" && currentAction == "Catalog_Category_Detail"))
                         {
                             <li class="active dropdown">
                                 <a href="@Url.Action("Catalog", "Home")">CATALOG <span>catalog</span></a>
@@ -206,7 +207,24 @@
                                     @foreach (var item in listCategory)
                                     {
                                         <li>
-                                            <a href="@Url.Action("CatalogDetail", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a>
+                                            
+                                            @if (item.O_CATEGORY_PRODUCT_DETAIL != null && item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList().Count > 0)
+                                            {
+                                                <a class="submenu_next" href="@Url.Action("CatalogDetail", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a>
+                                                <ul class="dropdown-menu">
+                                                    @foreach (var item_detail in item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList())
+                                                    {
+                                                        <li>
+                                                            <a href="@Url.Action("Catalog_Category_Detail", new { CATEGORY_PRODUCT_DETAIL_CD = item_detail.CATEGORY_PRODUCT_DETAIL_CD })"> @item_detail.CATEGORY_PRODUCT_DETAIL_NAME</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("CatalogDetail", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a>
+                                            
+                                            }
                                         </li>
 
                                     }
@@ -221,8 +239,26 @@
                                 <ul class="dropdown-menu">
                                     @foreach (var item in listCategory)
                                     {
-                                        <li><a href="@Url.Action("CatalogDetail", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a></li>
+                                        <li>
+                                            @if (item.O_CATEGORY_PRODUCT_DETAIL != null && item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList().Count > 0)
+                                            {
+                                                <a class="submenu_next" href="@Url.Action("CatalogDetail", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a>
+                                                <ul class="dropdown-menu">
+                                                    @foreach (var item_detail in item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList())
+                                                    {
+                                                        <li>
+                                                            <a href="@Url.Action("Catalog_Category_Detail", new { CATEGORY_PRODUCT_DETAIL_CD = item_detail.CATEGORY_PRODUCT_DETAIL_CD })"> @item_detail.CATEGORY_PRODUCT_DETAIL_NAME</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("CatalogDetail", new { CATEGORY_PRODUCT_CD = item.CATEGORY_PRODUCT_CD })">@item.CATEGORY_PRODUCT_NAME</a>
 
+                                            }
+                                        </li>
+                                        
                                     }
                                 </ul>
                             </li>
