@@ -126,7 +126,7 @@ namespace W_GJS.Hubs
 
 
         //--group ***** Receive Request From Client [  SendMessageToGroup  ] *****
-        public void SendMessageToGroup(string userName, string message)
+        public void SendMessageToGroup(string userName, string message,string pst)
         {
 
             if (UsersList.Count != 0)
@@ -139,7 +139,7 @@ namespace W_GJS.Hubs
 
                 //If you want to establish peer to peer connection use below line so message will be send just for user and admin who are in same group
                 //***** Return to Client *****
-                Clients.Group(strgroup).getMessages(userName, message);
+                Clients.Group(strgroup).getMessages(userName, message,pst);
             }
 
         }

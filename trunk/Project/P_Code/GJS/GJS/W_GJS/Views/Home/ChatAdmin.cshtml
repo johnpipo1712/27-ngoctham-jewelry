@@ -69,12 +69,11 @@
         <input type="hidden" value="" id="displayname" />
         <div id="divMessage" style="height: 350px; overflow-y: scroll;" class="row">
             <ul id="discussion">
-
             </ul>
         </div>
         <div class="row well chat-send">
             <div class="col-md-12">
-                <input type="text" id="txtMessage" class="form-control" />
+                <input type="text" id="txtMessageAdmin" class="form-control" />
             </div>
             <div class="btn-send-chat">
                 <input type="button" id="btnSendMessage" value="Gửi" class="btn btn-primary" />
@@ -194,13 +193,14 @@
 
             $('#btnSendMessage').click(function () {
 
-                var msg = $("#txtMessage").val();
+                var msg = $("#txtMessageAdmin").val();
 
                 if (msg.length > 0) {
 
                     var userName = $('#hUserName').val();
+                    var pst = "1";
                     // <<<<<-- ***** Return to Server [  SendMessageToGroup  ] *****
-                    objHub.server.sendMessageToGroup(userName, msg);
+                    objHub.server.sendMessageToGroup(userName, msg,pst);
 
                 }
             });
@@ -212,7 +212,7 @@
                 }
             });
 
-            $("#txtMessage").keypress(function (e) {
+            $("#txtMessageAdmin").keypress(function (e) {
                 if (e.which == 13) {
                     $('#btnSendMessage').click();
                 }
@@ -236,11 +236,16 @@
                 
             }
 
-            objHub.client.getMessages = function (userName, message) {
+            objHub.client.getMessages = function (userName, message,pst) {
                 var mySound = new buzz.sound("../Sound/sound.ogg");
-                $("#txtMessage").val('');
-                $('#discussion').append(' <li><strong>' + userName + '</strong>: ' + message + '</li>');
-
+             
+                if (pst == '0') {
+                    $('#discussion').append(' <li class="text-right"><strong>' + userName + '</strong>: ' + message + '</li>');
+                }
+                else {
+                    $("#txtMessageAdmin").val('');
+                    $('#discussion').append(' <li><strong>' + userName + '</strong>: ' + message + '</li>');
+                }
                 var height = $('#divMessage')[0].scrollHeight;
                 $('#divMessage').scrollTop(height);
                 mySound.play();
