@@ -1,0 +1,11 @@
+D:\hotro\GSK\GSK\bin\Debug\GSK.exe.config
+D:\hotro\GSK\GSK\bin\Debug\GSK.exe
+D:\hotro\GSK\GSK\bin\Debug\GSK.pdb
+D:\hotro\GSK\GSK\obj\Debug\GSK.csprojResolveAssemblyReference.cache
+D:\hotro\GSK\GSK\obj\Debug\GSK.FrmGJK.resources
+D:\hotro\GSK\GSK\obj\Debug\GSK.Properties.Resources.resources
+D:\hotro\GSK\GSK\obj\Debug\GSK.csproj.GenerateResource.Cache
+D:\hotro\GSK\GSK\obj\Debug\GSK.exe
+D:\hotro\GSK\GSK\obj\Debug\GSK.pdb
+D:\hotro\GSK\GSK\bin\Debug\EPPlus.dll
+D:\hotro\GSK\GSK\bin\Debug\EPPlus.xml
