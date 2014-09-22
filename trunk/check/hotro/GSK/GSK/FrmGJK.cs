@@ -18,13 +18,15 @@ namespace GSK
     {
         protected string _url;
         string html = "";
-        static string FilePath;
+        string FilePath;
         bool login = false;
-        static int rows = 2;
+        int rows = 2;
+        bool flag = false;
         public FrmGJK()
         {
             InitializeComponent();
             GetWebpage("http://118.69.32.45:1111/Default.aspx");
+           
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -97,12 +99,25 @@ namespace GSK
                 MessageBox.Show("Vui lòng chọn file");
                 return;
             }
-           
-         
+            HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
+
+            ElBtnNew.AttachEventHandler("onclick", BtnElmentNew_Click);
+            ElBtnNew.InvokeMember("click");
+           // button1_Click(sender, e);
       
         }
-        
+        private void BtnElmentNew_Click(object sender, EventArgs e)
+        {
+            setvalue();
+       
+        }
+        private void BtnElmentInsert_Click(object sender, EventArgs e)
+        {
+            HtmlElement ElBtnInsert = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnInsert");
+            HtmlElement el = webBrowserGJK.Document.ActiveElement;
+            ElBtnInsert.InvokeMember("click");
 
+        }
         public string GetWebpage(string url)
         {
             _url = url;
@@ -123,6 +138,7 @@ namespace GSK
                 //  browser.ClientSize = new Size(_width, _height);
                 webBrowserGJK.ScrollBarsEnabled = false;
                 webBrowserGJK.ScriptErrorsSuppressed = true;
+                webBrowserGJK.CausesValidation = false;
                 webBrowserGJK.Navigate(_url);
 
                 //// Wait for control to load page
@@ -138,27 +154,42 @@ namespace GSK
             GetWebpage("http://118.69.32.45:1111/Default.aspx");
         }
 
-        private void webBrowserGJK_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        private void webBrowserGJK_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)   
         {
-            if (login == true)
+            webBrowserGJK.Document.Click += new HtmlElementEventHandler(Document_Click);
+           
+          
+            //if (login == true)
+            //{
+            //    HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
+            //    if (ElBtnNew != null)
+            //    {
+            //        ElBtnNew.InvokeMember("click");
+            //    }
+            //    else
+            //    {
+            //        login = false;
+            //        GetWebpage("http://118.69.32.45:1111/Default.aspx");
+
+            //    }
+
+            //}
+        }
+        void Document_Click(object sender, HtmlElementEventArgs e)
+        {
+            //Check Element is Button 
+            if (webBrowserGJK.Document.ActiveElement.TagName == "A")
             {
-                HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
-                if (ElBtnNew != null)
+                if (webBrowserGJK.Document.ActiveElement.Id == "ctl00_BodyContentPlaceHolder_J5sLbtnInsert")
                 {
-                    ElBtnNew.InvokeMember("click");
+                    string a;
                 }
-                else
-                {
-                    login = false;
-                    GetWebpage("http://118.69.32.45:1111/Default.aspx");
-
-                }
-
             }
         }
         public void setvalue()
         {
-           
+
+               
                 HtmlElement ElTxtPCode = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5stxtProductCode");
                 HtmlElement ElTxtPName = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5stxtProductName");
                 HtmlElement ElDropdownProduct_Type = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sddlProductType");
@@ -167,6 +198,8 @@ namespace GSK
                 HtmlElement ElBtnInsert = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnInsert");
                 if (ElBtnInsert != null)
                 {
+                    ElBtnInsert.AttachEventHandler("onclick", BtnElmentInsert_Click);
+           
                     var existingFile = new FileInfo(FilePath);
                     // Open and read the XlSX file.
                     using (var package = new ExcelPackage(existingFile))
@@ -198,11 +231,15 @@ namespace GSK
                                     }
                                 }
                                 rows++;
-                                if (rows <= currentWorksheet.Dimension.Rows)
-                                {
-                                    ElBtnInsert.InvokeMember("click");
-                                }
-
+                              if(rows<=currentWorksheet.Dimension.Rows)
+                              {
+                                  ElBtnInsert.InvokeMember("click");
+                                  HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
+                                  if (ElBtnNew != null)
+                                  {
+                                      ElBtnNew.InvokeMember("click");
+                                  }
+                              }
                             }
                         }
                     }
@@ -215,13 +252,23 @@ namespace GSK
         
         private void webBrowserGJK_FileDownload(object sender, EventArgs e)
         {
-            if (login == true)
-            {
-                setvalue();
+            //if (login == true)
+            //{
+            //    if (flag == true)
+            //    {
+            //        flag = false;
+            //        setvalue();
+            //    }
+            //    else
+            //    {
+            //        flag = true;
+            //    }
                 
-            }
+            //}
                  
         }
+
+     
 
        
        
