@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BtnSave = new System.Windows.Forms.Button();
-            this.BtnFile = new System.Windows.Forms.Button();
-            this.TxtfileExcel = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Btnback = new System.Windows.Forms.Button();
             this.TxtUserName = new System.Windows.Forms.TextBox();
@@ -40,11 +36,15 @@
             this.BtnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtPass = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BtnSave = new System.Windows.Forms.Button();
+            this.BtnFile = new System.Windows.Forms.Button();
+            this.TxtfileExcel = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.webBrowserGJK = new System.Windows.Forms.WebBrowser();
             this.panel1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,47 +57,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(274, 413);
             this.panel1.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.BtnSave);
-            this.groupBox2.Controls.Add(this.BtnFile);
-            this.groupBox2.Controls.Add(this.TxtfileExcel);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(274, 82);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Chọn file";
-            // 
-            // BtnSave
-            // 
-            this.BtnSave.Location = new System.Drawing.Point(187, 48);
-            this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(75, 23);
-            this.BtnSave.TabIndex = 8;
-            this.BtnSave.Text = "Đồng ý";
-            this.BtnSave.UseVisualStyleBackColor = true;
-            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
-            // BtnFile
-            // 
-            this.BtnFile.Location = new System.Drawing.Point(187, 19);
-            this.BtnFile.Name = "BtnFile";
-            this.BtnFile.Size = new System.Drawing.Size(75, 23);
-            this.BtnFile.TabIndex = 6;
-            this.BtnFile.Text = "Chọn file";
-            this.BtnFile.UseVisualStyleBackColor = true;
-            this.BtnFile.Click += new System.EventHandler(this.BtnFile_Click);
-            // 
-            // TxtfileExcel
-            // 
-            this.TxtfileExcel.Location = new System.Drawing.Point(13, 21);
-            this.TxtfileExcel.Name = "TxtfileExcel";
-            this.TxtfileExcel.ReadOnly = true;
-            this.TxtfileExcel.Size = new System.Drawing.Size(168, 20);
-            this.TxtfileExcel.TabIndex = 7;
             // 
             // groupBox1
             // 
@@ -169,6 +128,47 @@
             this.TxtPass.TabIndex = 2;
             this.TxtPass.UseSystemPasswordChar = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.BtnSave);
+            this.groupBox2.Controls.Add(this.BtnFile);
+            this.groupBox2.Controls.Add(this.TxtfileExcel);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(274, 82);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Chọn file";
+            // 
+            // BtnSave
+            // 
+            this.BtnSave.Location = new System.Drawing.Point(187, 48);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(75, 23);
+            this.BtnSave.TabIndex = 8;
+            this.BtnSave.Text = "Đồng ý";
+            this.BtnSave.UseVisualStyleBackColor = true;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
+            // BtnFile
+            // 
+            this.BtnFile.Location = new System.Drawing.Point(187, 19);
+            this.BtnFile.Name = "BtnFile";
+            this.BtnFile.Size = new System.Drawing.Size(75, 23);
+            this.BtnFile.TabIndex = 6;
+            this.BtnFile.Text = "Chọn file";
+            this.BtnFile.UseVisualStyleBackColor = true;
+            this.BtnFile.Click += new System.EventHandler(this.BtnFile_Click);
+            // 
+            // TxtfileExcel
+            // 
+            this.TxtfileExcel.Location = new System.Drawing.Point(13, 21);
+            this.TxtfileExcel.Name = "TxtfileExcel";
+            this.TxtfileExcel.ReadOnly = true;
+            this.TxtfileExcel.Size = new System.Drawing.Size(168, 20);
+            this.TxtfileExcel.TabIndex = 7;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.webBrowserGJK);
@@ -200,10 +200,10 @@
             this.Name = "FrmGJK";
             this.Text = "Nhập liệu GJK";
             this.panel1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -213,7 +213,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.WebBrowser webBrowserGJK;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox TxtUserName;
         private System.Windows.Forms.Label label2;
@@ -225,6 +224,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.Button Btnback;
+        private System.Windows.Forms.WebBrowser webBrowserGJK;
     }
 }
 
