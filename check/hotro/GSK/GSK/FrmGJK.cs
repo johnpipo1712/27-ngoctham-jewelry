@@ -29,21 +29,27 @@ namespace GSK
            
         }
 
-        private void BtnLogin_Click(object sender, EventArgs e)
+        private  void BtnLogin_Click(object sender, EventArgs e)
         {
            
             HtmlElement ElTxtUserName = this.webBrowserGJK.Document.Body.Document.GetElementById("L5sUsrNm");
             HtmlElement ELTxtPass = this.webBrowserGJK.Document.Body.Document.GetElementById("L5sPwrd");
             HtmlElement ELBtnLogin = this.webBrowserGJK.Document.Body.Document.GetElementById("L5sOK");
-            ElTxtUserName.InnerText = TxtUserName.Text;
-            ELTxtPass.InnerText = TxtPass.Text;
-            ELBtnLogin.InvokeMember("click");
-            if (this.webBrowserGJK.ReadyState == WebBrowserReadyState.Complete)
+            if (ELBtnLogin != null)
             {
-                GetWebpage("http://118.69.32.45:1111/Product/ProductManagement.aspx");
-                login = true;
+                ElTxtUserName.InnerText = TxtUserName.Text;
+                ELTxtPass.InnerText = TxtPass.Text;
+                ELBtnLogin.InvokeMember("click");
+                if (this.webBrowserGJK.ReadyState == WebBrowserReadyState.Complete)
+                {
+                    GetWebpage("http://118.69.32.45:1111/Product/ProductManagement.aspx");
+                    login = true;
+                }
             }
-  
+            else
+            {
+                GetWebpage("http://118.69.32.45:1111/Default.aspx");
+            }
             //Uri uri = new Uri("");
             //webBrowserGJK.Url = uri;
          
@@ -92,31 +98,29 @@ namespace GSK
             }
         }
 
-        private void BtnSave_Click(object sender, EventArgs e)
+        private  void BtnSave_Click(object sender, EventArgs e)
         {
             if (TxtfileExcel.Text.Trim() == "")
             {
                 MessageBox.Show("Vui lòng chọn file");
                 return;
             }
-            HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
-
-            ElBtnNew.AttachEventHandler("onclick", BtnElmentNew_Click);
-            ElBtnNew.InvokeMember("click");
+           
+            BtnElmentNew_Click(sender, e);
            // button1_Click(sender, e);
       
         }
-        private void BtnElmentNew_Click(object sender, EventArgs e)
+        private async void BtnElmentNew_Click(object sender, EventArgs e)
         {
             setvalue();
-       
+            
         }
-        private void BtnElmentInsert_Click(object sender, EventArgs e)
+        private async void BtnElmentInsert_Click(object sender, EventArgs e)
         {
             HtmlElement ElBtnInsert = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnInsert");
-            HtmlElement el = webBrowserGJK.Document.ActiveElement;
             ElBtnInsert.InvokeMember("click");
-
+            Thread.Sleep(5000);
+         
         }
         public string GetWebpage(string url)
         {
@@ -156,37 +160,10 @@ namespace GSK
 
         private void webBrowserGJK_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)   
         {
-            webBrowserGJK.Document.Click += new HtmlElementEventHandler(Document_Click);
-           
-          
-            //if (login == true)
-            //{
-            //    HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
-            //    if (ElBtnNew != null)
-            //    {
-            //        ElBtnNew.InvokeMember("click");
-            //    }
-            //    else
-            //    {
-            //        login = false;
-            //        GetWebpage("http://118.69.32.45:1111/Default.aspx");
-
-            //    }
-
-            //}
+         
         }
-        void Document_Click(object sender, HtmlElementEventArgs e)
-        {
-            //Check Element is Button 
-            if (webBrowserGJK.Document.ActiveElement.TagName == "A")
-            {
-                if (webBrowserGJK.Document.ActiveElement.Id == "ctl00_BodyContentPlaceHolder_J5sLbtnInsert")
-                {
-                    string a;
-                }
-            }
-        }
-        public void setvalue()
+
+        public  void setvalue()
         {
 
                
@@ -198,8 +175,7 @@ namespace GSK
                 HtmlElement ElBtnInsert = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnInsert");
                 if (ElBtnInsert != null)
                 {
-                    ElBtnInsert.AttachEventHandler("onclick", BtnElmentInsert_Click);
-           
+                 
                     var existingFile = new FileInfo(FilePath);
                     // Open and read the XlSX file.
                     using (var package = new ExcelPackage(existingFile))
@@ -212,34 +188,37 @@ namespace GSK
                             {
                                 // Get the first worksheet
                                 ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
-                                // read some data
-                                object TenSP = currentWorksheet.Cells[rows, 1].Value;
-                                object MaSP = currentWorksheet.Cells[rows, 2].Value;
-                                object Loai = currentWorksheet.Cells[rows, 3].Value;
-                                object MaNhan = currentWorksheet.Cells[rows, 4].Value;
-                                object TenNhan = currentWorksheet.Cells[rows, 5].Value;
-                                ElTxtPCode.InnerText = MaSP.ToString();
-                                ElTxtPName.InnerText = TenSP.ToString();
-                                ElTxtProductBrand_Code.InnerText = MaNhan.ToString();
-                                ElTxtProductBrand_Name.InnerText = TenNhan.ToString();
-                                HtmlElementCollection eloptiton = ElDropdownProduct_Type.GetElementsByTagName("option");
-                                foreach (HtmlElement item in eloptiton)
+                                if (rows <= currentWorksheet.Dimension.Rows)
                                 {
-                                    if (item.GetAttribute("text").Trim() == Loai.ToString().Trim())
+                                    // read some data
+                                    object TenSP = currentWorksheet.Cells[rows, 1].Value;
+                                    object MaSP = currentWorksheet.Cells[rows, 2].Value;
+                                    object Loai = currentWorksheet.Cells[rows, 3].Value;
+                                    object MaNhan = currentWorksheet.Cells[rows, 4].Value;
+                                    object TenNhan = currentWorksheet.Cells[rows, 5].Value;
+                                    ElTxtPCode.InnerText = MaSP.ToString();
+                                    ElTxtPName.InnerText = TenSP.ToString();
+                                    ElTxtProductBrand_Code.InnerText = MaNhan.ToString();
+                                    ElTxtProductBrand_Name.InnerText = TenNhan.ToString();
+                                    HtmlElementCollection eloptiton = ElDropdownProduct_Type.GetElementsByTagName("option");
+                                    foreach (HtmlElement item in eloptiton)
                                     {
-                                        item.SetAttribute("selected", "selected");
+                                        if (item.GetAttribute("text").Trim() == Loai.ToString().Trim())
+                                        {
+                                            item.SetAttribute("selected", "selected");
+                                        }
                                     }
+                                    rows++;
+
+                                    ElBtnInsert.InvokeMember("click");
+                                    Thread.Sleep(3000);
+                                    BtnSave_Click(null, null);
+                                    //HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
+                                    //if (ElBtnNew != null)
+                                    //{
+                                    //    ElBtnNew.InvokeMember("click");
+                                    //}
                                 }
-                                rows++;
-                              if(rows<=currentWorksheet.Dimension.Rows)
-                              {
-                                  ElBtnInsert.InvokeMember("click");
-                                  HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
-                                  if (ElBtnNew != null)
-                                  {
-                                      ElBtnNew.InvokeMember("click");
-                                  }
-                              }
                             }
                         }
                     }
@@ -249,22 +228,24 @@ namespace GSK
 
         
 
-        
+       
         private void webBrowserGJK_FileDownload(object sender, EventArgs e)
         {
-            //if (login == true)
-            //{
-            //    if (flag == true)
-            //    {
-            //        flag = false;
-            //        setvalue();
-            //    }
-            //    else
-            //    {
-            //        flag = true;
-            //    }
-                
-            //}
+            if (login == true)
+            {
+                if (flag == true)
+                {
+                    flag = false;
+                    HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
+
+                    ElBtnNew.InvokeMember("click");
+                }
+                else
+                {
+                    flag = true;
+                }
+
+            }
                  
         }
 
