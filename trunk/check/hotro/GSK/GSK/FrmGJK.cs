@@ -17,16 +17,74 @@ namespace GSK
     public partial class FrmGJK : Form
     {
         protected string _url;
+        System.Windows.Forms.Timer myTimerLogin = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer myTimerNew = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer myTimerSetValue = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer myTimerInsert = new System.Windows.Forms.Timer();
+          
         string html = "";
         string FilePath;
         bool login = false;
         int rows = 2;
-        bool flag = false;
+        int flag = 1;
+       
         public FrmGJK()
         {
             InitializeComponent();
             GetWebpage("http://118.69.32.45:1111/Default.aspx");
            
+        }
+        private void TimerEventLogin(Object myObject, EventArgs myEventArgs)
+        {
+            myTimerLogin.Stop();
+            GetWebpage("http://118.69.32.45:1111/Product/ProductManagement.aspx");
+
+        }
+        private void TimerEventNew(Object myObject,EventArgs myEventArgs)
+        {
+
+            HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
+           
+            if (ElBtnNew != null )
+            {
+                if (flag == 1)
+                {
+                    flag = 2;
+                    ElBtnNew.InvokeMember("click");
+                }
+            }
+        }
+        private void TimerEventSetValue(Object myObject,EventArgs myEventArgs)
+        {
+             HtmlElement ElBtnInsert = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnInsert");
+             if (ElBtnInsert != null)
+             {
+                 if (flag == 2)
+                 {
+                     setvalue();
+                     flag = 3;
+                 }
+                
+             }
+        }
+        private void TimerEventInsert(Object myObject,EventArgs myEventArgs)
+        {
+            HtmlElement ElTxtPCode = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5stxtProductCode");
+            if (ElTxtPCode != null)
+            {
+                
+                HtmlElement ElBtnInsert = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnInsert");
+                if (ElBtnInsert != null)
+                {
+                    if (flag == 3)
+                    {
+                        
+                        flag = 1;
+                    }
+                        
+                }
+               
+            }
         }
 
         private  void BtnLogin_Click(object sender, EventArgs e)
@@ -40,11 +98,34 @@ namespace GSK
                 ElTxtUserName.InnerText = TxtUserName.Text;
                 ELTxtPass.InnerText = TxtPass.Text;
                 ELBtnLogin.InvokeMember("click");
-                if (this.webBrowserGJK.ReadyState == WebBrowserReadyState.Complete)
-                {
-                    GetWebpage("http://118.69.32.45:1111/Product/ProductManagement.aspx");
-                    login = true;
-                }
+              
+                myTimerLogin.Tick += new EventHandler(TimerEventLogin);
+                myTimerLogin.Interval = 3000;
+                myTimerLogin.Start();
+
+                // Sets the timer interval to 5 seconds.
+               
+                myTimerNew.Tick += new EventHandler(TimerEventNew);
+                myTimerNew.Interval = 5000;
+                myTimerNew.Start();
+
+               
+              
+
+                // Sets the timer interval to 5 seconds.
+               
+                myTimerSetValue.Tick += new EventHandler(TimerEventSetValue);
+                myTimerSetValue.Interval = 5000;
+                myTimerSetValue.Start();
+
+                // Sets the timer interval to 5 seconds.
+
+                myTimerInsert.Tick += new EventHandler(TimerEventInsert);
+                myTimerInsert.Interval = 10000;
+                myTimerInsert.Start();
+               
+              
+               
             }
             else
             {
@@ -106,22 +187,10 @@ namespace GSK
                 return;
             }
            
-            BtnElmentNew_Click(sender, e);
            // button1_Click(sender, e);
       
         }
-        private async void BtnElmentNew_Click(object sender, EventArgs e)
-        {
-            setvalue();
-            
-        }
-        private async void BtnElmentInsert_Click(object sender, EventArgs e)
-        {
-            HtmlElement ElBtnInsert = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnInsert");
-            ElBtnInsert.InvokeMember("click");
-            Thread.Sleep(5000);
-         
-        }
+      
         public string GetWebpage(string url)
         {
             _url = url;
@@ -209,15 +278,15 @@ namespace GSK
                                         }
                                     }
                                     rows++;
-
                                     ElBtnInsert.InvokeMember("click");
-                                    Thread.Sleep(3000);
-                                    BtnSave_Click(null, null);
-                                    //HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
-                                    //if (ElBtnNew != null)
-                                    //{
-                                    //    ElBtnNew.InvokeMember("click");
-                                    //}
+                                   
+
+                                }
+                                else
+                                {
+                                    myTimerInsert.Stop();
+                                    myTimerNew.Stop();
+                                    myTimerSetValue.Stop();
                                 }
                             }
                         }
@@ -231,21 +300,21 @@ namespace GSK
        
         private void webBrowserGJK_FileDownload(object sender, EventArgs e)
         {
-            if (login == true)
-            {
-                if (flag == true)
-                {
-                    flag = false;
-                    HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
+            //if (login == true)
+            //{
+            //    if (flag == true)
+            //    {
+            //        flag = false;
+            //        HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
 
-                    ElBtnNew.InvokeMember("click");
-                }
-                else
-                {
-                    flag = true;
-                }
+            //        ElBtnNew.InvokeMember("click");
+            //    }
+            //    else
+            //    {
+            //        flag = true;
+            //    }
 
-            }
+            //}
                  
         }
 
