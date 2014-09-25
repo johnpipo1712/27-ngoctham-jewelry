@@ -1,0 +1,5 @@
+C:\Users\Sid\Desktop\SetupAAA\5StarsAAAInstaller\5StarsAAAInstaller\bin\Debug\5StarsAAAInstaller.exe
+C:\Users\Sid\Desktop\SetupAAA\5StarsAAAInstaller\5StarsAAAInstaller\bin\Debug\5StarsAAAInstaller.pdb
+C:\Users\Sid\Desktop\SetupAAA\5StarsAAAInstaller\5StarsAAAInstaller\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Sid\Desktop\SetupAAA\5StarsAAAInstaller\5StarsAAAInstaller\obj\Debug\5StarsAAAInstaller.exe
+C:\Users\Sid\Desktop\SetupAAA\5StarsAAAInstaller\5StarsAAAInstaller\obj\Debug\5StarsAAAInstaller.pdb
