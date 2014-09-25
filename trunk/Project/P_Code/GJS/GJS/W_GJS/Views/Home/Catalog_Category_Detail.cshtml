@@ -40,7 +40,7 @@
         <h2><strong>@Model.CATEGORY_PRODUCT_DETAIL_NAME</strong></h2>
         <ul class="breadcrumb">
             <!-- breadcrumb -->
-            <li><a href="#">Trang chủ</a></li>
+            <li><a href="@Url.Action("Index")">Trang chủ</a></li>
             <li class="active">Danh sách sản phẩm</li>
         </ul><!-- /breadcrumb -->
 
@@ -76,7 +76,7 @@
                         <ul id="collapse-@item.CATEGORY_PRODUCT_CODE" class="collapse">
                             @foreach (var item_detail in item.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList())
                             {
-                                <li><a href="@Url.Action("Product_Category_Detail", new { CATEGORY_PRODUCT_DETAIL_CD = item_detail.CATEGORY_PRODUCT_DETAIL_CD })"><i class="fa fa-angle-right"></i> @item_detail.CATEGORY_PRODUCT_DETAIL_NAME</a></li>
+                                <li><a href="@Url.Action("Catalog_Category_Detail", new { CATEGORY_PRODUCT_DETAIL_CD = item_detail.CATEGORY_PRODUCT_DETAIL_CD })"><i class="fa fa-angle-right"></i> @item_detail.CATEGORY_PRODUCT_DETAIL_NAME</a></li>
                             }
                         </ul>
                     }
