@@ -17,156 +17,132 @@ namespace GSK
     public partial class FrmGJK : Form
     {
         protected string _url;
-        System.Windows.Forms.Timer myTimerLogin = new System.Windows.Forms.Timer();
-        System.Windows.Forms.Timer myTimerNew = new System.Windows.Forms.Timer();
-        System.Windows.Forms.Timer myTimerSetValue = new System.Windows.Forms.Timer();
-        System.Windows.Forms.Timer myTimerInsert = new System.Windows.Forms.Timer();
-          
+        System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
+           
         string html = "";
         string FilePath;
         bool login = false;
         int rows = 2;
-        int flag = 1;
+        int flag = 0;
        
         public FrmGJK()
         {
             InitializeComponent();
-            GetWebpage("http://118.69.32.45:1111/Default.aspx");
+            
+            GetWebpage("https://uat.gsk.dmsone.biz:1443/dms_vn/Logon.aspx");
            
         }
-        private void TimerEventLogin(Object myObject, EventArgs myEventArgs)
+        private void TimerEvent(Object myObject, EventArgs myEventArgs)
         {
-            myTimerLogin.Stop();
-            GetWebpage("http://118.69.32.45:1111/Product/ProductManagement.aspx");
-
-        }
-        private void TimerEventNew(Object myObject,EventArgs myEventArgs)
-        {
-
-            HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
-           
-            if (ElBtnNew != null )
+            if (flag == 0) // Login
             {
-                if (flag == 1)
+                HtmlElement ELBtnMenuKH = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MasterRoot_tab_Main_itm_Cust");
+                if (ELBtnMenuKH != null)
                 {
+                    ELBtnMenuKH.InvokeMember("click");
+                    flag = 1;
+                    return;
+                }
+            }
+            if (flag == 1) // Menu KH
+            {
+                
+                HtmlElement ELBtnThem = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_M_Cust_btn_Add_Value");
+                if (ELBtnThem != null)
+                {
+                    ELBtnThem.InvokeMember("click");
                     flag = 2;
-                    ElBtnNew.InvokeMember("click");
+                    return;
                 }
-            }
-        }
-        private void TimerEventSetValue(Object myObject,EventArgs myEventArgs)
-        {
-             HtmlElement ElBtnInsert = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnInsert");
-             if (ElBtnInsert != null)
-             {
-                 if (flag == 2)
-                 {
-                     setvalue();
-                     flag = 3;
-                 }
-                
-             }
-        }
-        private void TimerEventInsert(Object myObject,EventArgs myEventArgs)
-        {
-            HtmlElement ElTxtPCode = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5stxtProductCode");
-            if (ElTxtPCode != null)
-            {
-                
-                HtmlElement ElBtnInsert = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnInsert");
-                if (ElBtnInsert != null)
+                else
                 {
-                    if (flag == 3)
+                    HtmlElement ELBtnThem2 = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_M_Cust_btn_Dtl_Add_Value");
+                    if (ELBtnThem2 != null)
                     {
-                        
-                        flag = 1;
+                        ELBtnThem2.InvokeMember("click");
+                        flag = 2;
+                        return;
                     }
-                        
                 }
-               
             }
+            if (flag == 2) // Click Tự phát sinh
+            {
+                HtmlElement ELBtnTuPhatSinh = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_btn_Gen_custCd_Value");
+                if (ELBtnTuPhatSinh != null)
+                {
+                    ELBtnTuPhatSinh.InvokeMember("click");
+                    flag = 3;
+                    return;
+                }
+            }
+            if (flag == 3) // Set Value
+            {
+                HtmlElement ELBtnMaKH = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_txt_n_CUST_CD_Value");
+                if (ELBtnMaKH != null)
+                {
+                    string MaKH =  ELBtnMaKH.GetAttribute("value");
+                    if(MaKH !=  "")
+                    {
+                        setvalue();
+                        flag = 4;
+                        return;
+                    }
+                }
+            }
+            if (flag == 4) // Click Lưu
+            {
+                HtmlElement ELBtnLuuKH = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_frm_Detail_Save_Value");
+                if (ELBtnLuuKH != null)
+                {
+                    ELBtnLuuKH.InvokeMember("click");
+                    flag = 5;
+                    return;
+                }
+            }
+            if (flag == 5) // Click Close
+            {
+                HtmlElement ELBtnHuyKH = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_AssignRoute_frm_Detail_Cancel_Value");
+                if (ELBtnHuyKH != null)
+                {
+                    ELBtnHuyKH.InvokeMember("click");
+                    flag = 0;
+                    return;
+                }
+            }
+
         }
+      
+ 
 
         private  void BtnLogin_Click(object sender, EventArgs e)
         {
-           
-            HtmlElement ElTxtUserName = this.webBrowserGJK.Document.Body.Document.GetElementById("L5sUsrNm");
-            HtmlElement ELTxtPass = this.webBrowserGJK.Document.Body.Document.GetElementById("L5sPwrd");
-            HtmlElement ELBtnLogin = this.webBrowserGJK.Document.Body.Document.GetElementById("L5sOK");
+            if (TxtfileExcel.Text.Trim() == "")
+            {
+                MessageBox.Show("Vui lòng chọn file");
+                return;
+            }
+            HtmlElement ElTxtUserName = this.webBrowserGJK.Document.Body.Document.GetElementById("txtUserid");
+            HtmlElement ELTxtPass = this.webBrowserGJK.Document.Body.Document.GetElementById("txtPasswd");
+            HtmlElement ELBtnLogin = this.webBrowserGJK.Document.Body.Document.GetElementById("btnLogin");
             if (ELBtnLogin != null)
             {
                 ElTxtUserName.InnerText = TxtUserName.Text;
                 ELTxtPass.InnerText = TxtPass.Text;
                 ELBtnLogin.InvokeMember("click");
               
-                myTimerLogin.Tick += new EventHandler(TimerEventLogin);
-                myTimerLogin.Interval = 3000;
-                myTimerLogin.Start();
-
-                // Sets the timer interval to 5 seconds.
-               
-                myTimerNew.Tick += new EventHandler(TimerEventNew);
-                myTimerNew.Interval = 5000;
-                myTimerNew.Start();
-
-               
-              
-
-                // Sets the timer interval to 5 seconds.
-               
-                myTimerSetValue.Tick += new EventHandler(TimerEventSetValue);
-                myTimerSetValue.Interval = 5000;
-                myTimerSetValue.Start();
-
-                // Sets the timer interval to 5 seconds.
-
-                myTimerInsert.Tick += new EventHandler(TimerEventInsert);
-                myTimerInsert.Interval = 10000;
-                myTimerInsert.Start();
-               
-              
-               
+                myTimer.Tick += new EventHandler(TimerEvent);
+                myTimer.Interval = 10000;
+                myTimer.Start();
             }
             else
             {
-                GetWebpage("http://118.69.32.45:1111/Default.aspx");
+                GetWebpage("https://uat.gsk.dmsone.biz:1443/dms_vn/Logon.aspx");
+           
             }
             //Uri uri = new Uri("");
             //webBrowserGJK.Url = uri;
          
         }
-        private DataTable ReadDataFromExcelFile(string G5sFilePath)
-        {
-            //Excel 03
-            string G5sconStr = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0}; Extended Properties='Excel 8.0; IMEX=1;ImportMixedTypes=Text'";
-
-            //Excel 07
-            if (G5sFilePath.Substring(G5sFilePath.LastIndexOf(".")) == ".xlsx")
-                G5sconStr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0}; Extended Properties='Excel 8.0; IMEX=1;ImportMixedTypes=Text'";
-            G5sconStr = String.Format(G5sconStr, G5sFilePath);
-            OleDbConnection connExcel = new OleDbConnection(G5sconStr);
-            OleDbCommand cmdExcel = new OleDbCommand();
-            OleDbDataAdapter oda = new OleDbDataAdapter();
-            DataTable dt = new DataTable();
-            cmdExcel.Connection = connExcel;
-
-            //Get the name of First Sheet
-            connExcel.Open();
-            DataTable dtExcelSchema;
-            dtExcelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-            string G5sSheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
-            connExcel.Close();
-
-            //Read Data from First Sheet
-            connExcel.Open();
-            cmdExcel.CommandText = "SELECT * From [" + G5sSheetName + "]";
-            oda.SelectCommand = cmdExcel;
-            oda.Fill(dt);
-            connExcel.Close();
-            return dt;
-
-        }
-
         private void BtnFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog MoThoai = new OpenFileDialog();
@@ -179,17 +155,7 @@ namespace GSK
             }
         }
 
-        private  void BtnSave_Click(object sender, EventArgs e)
-        {
-            if (TxtfileExcel.Text.Trim() == "")
-            {
-                MessageBox.Show("Vui lòng chọn file");
-                return;
-            }
-           
-           // button1_Click(sender, e);
-      
-        }
+    
       
         public string GetWebpage(string url)
         {
@@ -224,100 +190,124 @@ namespace GSK
 
         private void Btnback_Click(object sender, EventArgs e)
         {
-            GetWebpage("http://118.69.32.45:1111/Default.aspx");
+
+            Application.Restart();
         }
 
-        private void webBrowserGJK_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)   
-        {
-         
-        }
-
+    
         public  void setvalue()
         {
 
-               
-                HtmlElement ElTxtPCode = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5stxtProductCode");
-                HtmlElement ElTxtPName = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5stxtProductName");
-                HtmlElement ElDropdownProduct_Type = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sddlProductType");
-                HtmlElement ElTxtProductBrand_Code = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5stxtProductBrand_CODE");
-                HtmlElement ElTxtProductBrand_Name = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5stxtProductBrand");
-                HtmlElement ElBtnInsert = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnInsert");
-                if (ElBtnInsert != null)
-                {
-                 
-                    var existingFile = new FileInfo(FilePath);
-                    // Open and read the XlSX file.
-                    using (var package = new ExcelPackage(existingFile))
-                    {
-                        // Get the work book in the file
-                        ExcelWorkbook workBook = package.Workbook;
-                        if (workBook != null)
-                        {
-                            if (workBook.Worksheets.Count > 0)
-                            {
-                                // Get the first worksheet
-                                ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
-                                if (rows <= currentWorksheet.Dimension.Rows)
-                                {
-                                    // read some data
-                                    object TenSP = currentWorksheet.Cells[rows, 1].Value;
-                                    object MaSP = currentWorksheet.Cells[rows, 2].Value;
-                                    object Loai = currentWorksheet.Cells[rows, 3].Value;
-                                    object MaNhan = currentWorksheet.Cells[rows, 4].Value;
-                                    object TenNhan = currentWorksheet.Cells[rows, 5].Value;
-                                    ElTxtPCode.InnerText = MaSP.ToString();
-                                    ElTxtPName.InnerText = TenSP.ToString();
-                                    ElTxtProductBrand_Code.InnerText = MaNhan.ToString();
-                                    ElTxtProductBrand_Name.InnerText = TenNhan.ToString();
-                                    HtmlElementCollection eloptiton = ElDropdownProduct_Type.GetElementsByTagName("option");
-                                    foreach (HtmlElement item in eloptiton)
-                                    {
-                                        if (item.GetAttribute("text").Trim() == Loai.ToString().Trim())
-                                        {
-                                            item.SetAttribute("selected", "selected");
-                                        }
-                                    }
-                                    rows++;
-                                    ElBtnInsert.InvokeMember("click");
-                                   
 
-                                }
-                                else
+                HtmlElement ElMaKH = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_txt_n_CUST_CD_Value");
+                HtmlElement ElTexKH = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_txt_n_CUST_NAME_Value");
+                HtmlElement ElDropNhomGia = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_drp_n_PRICEGRP_CD_Value");
+                HtmlElement ElDropKhuVucNPP = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_drp_n_AREA_CD_Value");
+                HtmlElement ElDropKenhPhu = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_drp_n_CUST_HIER3_Value");
+                HtmlElement ElDiaChiMuaHang = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_txt_n_ADDR1_Value");
+                HtmlElement ElMaBuuDien = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_txt_n_ADDR_POSTAL_Value");
+                HtmlElement ElTenNguoiLienLac = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_txt_n_CONT_PR_Value");
+                HtmlElement ElSoDienThoai = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_txt_n_CONT_NO_Value");
+                HtmlElement ElDropSoTonKho = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_drp_n_INVTERM_CD_Value");
+                HtmlElement ElHanMucTinDung = this.webBrowserGJK.Document.Body.Document.GetElementById("pag_MC_NewGeneral_txt_n_CUST_CRDLMT_Value");
+              
+                var existingFile = new FileInfo(FilePath);
+                // Open and read the XlSX file.
+                using (var package = new ExcelPackage(existingFile))
+                {
+                    // Get the work book in the file
+                    ExcelWorkbook workBook = package.Workbook;
+                    if (workBook != null)
+                    {
+                        if (workBook.Worksheets.Count > 0)
+                        {
+                            // Get the first worksheet
+                            ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
+                            if (rows <= currentWorksheet.Dimension.Rows)
+                            {
+                                currentWorksheet.Cells[rows, 1].Value = ElMaKH.GetAttribute("value");
+                                package.Save();
+                                // read some data
+                                object TenKH = currentWorksheet.Cells[rows, 2].Value;
+                                object NhomGia = currentWorksheet.Cells[rows, 3].Value;
+                                object KhuvucNPP = currentWorksheet.Cells[rows, 4].Value;
+                                object KenhPhu = currentWorksheet.Cells[rows, 5].Value;
+                                object DiaChiMuaHang = currentWorksheet.Cells[rows, 6].Value;
+                                object MaBuuDien = currentWorksheet.Cells[rows, 7].Value;
+                                object TenNguoiLienLac = currentWorksheet.Cells[rows, 8].Value;
+                                object SoDienThoai = currentWorksheet.Cells[rows, 9].Value;
+                                object SoTonKho = currentWorksheet.Cells[rows, 10].Value;
+                                object HanMucTinDung = currentWorksheet.Cells[rows, 11].Value;
+                                   
+                                ElTexKH.InnerText = TenKH.ToString().Trim();
+                                ElDiaChiMuaHang.InnerText = DiaChiMuaHang.ToString().Trim();
+                                ElMaBuuDien.InnerText = MaBuuDien.ToString().Trim();
+                                ElTenNguoiLienLac.InnerText = TenNguoiLienLac.ToString().Trim();
+                                ElSoDienThoai.InnerText = SoDienThoai.ToString().Trim();
+                                ElHanMucTinDung.InnerText = HanMucTinDung.ToString().Trim();
+
+                                HtmlElementCollection eloptiton = ElDropNhomGia.GetElementsByTagName("option");
+                                foreach (HtmlElement item in eloptiton)
                                 {
-                                    myTimerInsert.Stop();
-                                    myTimerNew.Stop();
-                                    myTimerSetValue.Stop();
+                                    if (item.GetAttribute("text").ToUpper() == NhomGia.ToString().Trim().ToUpper())
+                                    {
+                                        item.SetAttribute("selected", "selected");
+                                    }
                                 }
+                                HtmlElementCollection eloptiton2 = ElDropKhuVucNPP.GetElementsByTagName("option");
+                                foreach (HtmlElement item in eloptiton2)
+                                {
+                                    if (item.GetAttribute("text").ToUpper() == KhuvucNPP.ToString().Trim().ToUpper())
+                                    {
+                                        item.SetAttribute("selected", "selected");
+                                    }
+                                }
+                                HtmlElementCollection eloptiton3 = ElDropKenhPhu.GetElementsByTagName("option");
+                                foreach (HtmlElement item in eloptiton3)
+                                {
+                                    if (item.GetAttribute("text").ToUpper() == KenhPhu.ToString().Trim().ToUpper())
+                                    {
+                                        item.SetAttribute("selected", "selected");
+                                    }
+                                }
+                                HtmlElementCollection eloptiton4 = ElDropSoTonKho.GetElementsByTagName("option");
+                                foreach (HtmlElement item in eloptiton4)
+                                {
+                                    if (item.GetAttribute("text").ToUpper() == SoTonKho.ToString().Trim())
+                                    {
+                                        item.SetAttribute("selected", "selected");
+                                    }
+                                }
+                                rows++;
+                                
+
+                            }
+                            else
+                            {
+                                myTimer.Stop();
+
                             }
                         }
                     }
+                    
                 }
             
+        }
+
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            myTimer.Stop();
+        }
+
+        private void BtnTiepTuc_Click(object sender, EventArgs e)
+        {
+            myTimer.Start();
         }
 
         
 
        
-        private void webBrowserGJK_FileDownload(object sender, EventArgs e)
-        {
-            //if (login == true)
-            //{
-            //    if (flag == true)
-            //    {
-            //        flag = false;
-            //        HtmlElement ElBtnNew = this.webBrowserGJK.Document.Body.Document.GetElementById("ctl00_BodyContentPlaceHolder_J5sLbtnNew");
-
-            //        ElBtnNew.InvokeMember("click");
-            //    }
-            //    else
-            //    {
-            //        flag = true;
-            //    }
-
-            //}
-                 
-        }
-
+     
      
 
        
