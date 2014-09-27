@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnTiepTuc = new System.Windows.Forms.Button();
+            this.BtnNext = new System.Windows.Forms.Button();
             this.Btnback = new System.Windows.Forms.Button();
             this.TxtUserName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtPass = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BtnSave = new System.Windows.Forms.Button();
             this.BtnFile = new System.Windows.Forms.Button();
             this.TxtfileExcel = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -60,6 +61,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.BtnTiepTuc);
+            this.groupBox1.Controls.Add(this.BtnNext);
             this.groupBox1.Controls.Add(this.Btnback);
             this.groupBox1.Controls.Add(this.TxtUserName);
             this.groupBox1.Controls.Add(this.label2);
@@ -67,16 +70,37 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.TxtPass);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 82);
+            this.groupBox1.Location = new System.Drawing.Point(0, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(274, 140);
+            this.groupBox1.Size = new System.Drawing.Size(274, 188);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đăng nhập";
             // 
+            // BtnTiepTuc
+            // 
+            this.BtnTiepTuc.Location = new System.Drawing.Point(187, 146);
+            this.BtnTiepTuc.Name = "BtnTiepTuc";
+            this.BtnTiepTuc.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.BtnTiepTuc.Size = new System.Drawing.Size(75, 23);
+            this.BtnTiepTuc.TabIndex = 9;
+            this.BtnTiepTuc.Text = "Tiếp tục";
+            this.BtnTiepTuc.UseVisualStyleBackColor = true;
+            this.BtnTiepTuc.Click += new System.EventHandler(this.BtnTiepTuc_Click);
+            // 
+            // BtnNext
+            // 
+            this.BtnNext.Location = new System.Drawing.Point(97, 146);
+            this.BtnNext.Name = "BtnNext";
+            this.BtnNext.Size = new System.Drawing.Size(75, 23);
+            this.BtnNext.TabIndex = 8;
+            this.BtnNext.Text = "Dừng";
+            this.BtnNext.UseVisualStyleBackColor = true;
+            this.BtnNext.Click += new System.EventHandler(this.BtnNext_Click);
+            // 
             // Btnback
             // 
-            this.Btnback.Location = new System.Drawing.Point(97, 103);
+            this.Btnback.Location = new System.Drawing.Point(187, 106);
             this.Btnback.Name = "Btnback";
             this.Btnback.Size = new System.Drawing.Size(75, 23);
             this.Btnback.TabIndex = 5;
@@ -102,7 +126,7 @@
             // 
             // BtnLogin
             // 
-            this.BtnLogin.Location = new System.Drawing.Point(187, 103);
+            this.BtnLogin.Location = new System.Drawing.Point(97, 106);
             this.BtnLogin.Name = "BtnLogin";
             this.BtnLogin.Size = new System.Drawing.Size(75, 23);
             this.BtnLogin.TabIndex = 0;
@@ -130,26 +154,15 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.BtnSave);
             this.groupBox2.Controls.Add(this.BtnFile);
             this.groupBox2.Controls.Add(this.TxtfileExcel);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(274, 82);
+            this.groupBox2.Size = new System.Drawing.Size(274, 56);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chọn file";
-            // 
-            // BtnSave
-            // 
-            this.BtnSave.Location = new System.Drawing.Point(187, 48);
-            this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(75, 23);
-            this.BtnSave.TabIndex = 8;
-            this.BtnSave.Text = "Đồng ý";
-            this.BtnSave.UseVisualStyleBackColor = true;
-            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // BtnFile
             // 
@@ -187,8 +200,6 @@
             this.webBrowserGJK.Size = new System.Drawing.Size(504, 413);
             this.webBrowserGJK.TabIndex = 0;
             this.webBrowserGJK.Url = new System.Uri("", System.UriKind.Relative);
-            this.webBrowserGJK.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowserGJK_DocumentCompleted);
-            this.webBrowserGJK.FileDownload += new System.EventHandler(this.webBrowserGJK_FileDownload);
             // 
             // FrmGJK
             // 
@@ -222,9 +233,10 @@
         private System.Windows.Forms.TextBox TxtfileExcel;
         private System.Windows.Forms.Button BtnFile;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button BtnSave;
+        private System.Windows.Forms.Button BtnNext;
         private System.Windows.Forms.Button Btnback;
         private System.Windows.Forms.WebBrowser webBrowserGJK;
+        private System.Windows.Forms.Button BtnTiepTuc;
     }
 }
 
