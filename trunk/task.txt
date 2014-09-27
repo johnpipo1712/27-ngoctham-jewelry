@@ -1,7 +1,9 @@
-rất gấp: frame chat, phần giao diện.
+﻿rất gấp: frame chat, phần giao diện.
 Quan trọng: chỉnh hiệu ứng cho photo.
 Không gấp lắm: chỉnh layout cho administrator.
 
 Quan trọng: đưa vào giao diện lúc user đã login vào (đã có có thể đăng nhập được)
 Quan trọng: thêm xóa sửa các field trong backend.
 Quan trong: cái menu hover vào ko được.
+
+Da hoan thanh
