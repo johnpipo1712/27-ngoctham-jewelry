@@ -28,8 +28,8 @@ namespace GSK
         public FrmGJK()
         {
             InitializeComponent();
-            
-            GetWebpage("https://uat.gsk.dmsone.biz:1443/dms_vn/Logon.aspx");
+
+            GetWebpage("https://vn.gsk.dmsone.biz/dms_vn/Logon.aspx");
            
         }
         private void TimerEvent(Object myObject, EventArgs myEventArgs)
@@ -136,7 +136,7 @@ namespace GSK
             }
             else
             {
-                GetWebpage("https://uat.gsk.dmsone.biz:1443/dms_vn/Logon.aspx");
+                GetWebpage("https://vn.gsk.dmsone.biz/dms_vn/Logon.aspx");
            
             }
             //Uri uri = new Uri("");
@@ -147,7 +147,7 @@ namespace GSK
         {
             OpenFileDialog MoThoai = new OpenFileDialog();
             MoThoai.Filter = "Excel 2007|*.xlsx";
-            MoThoai.Title = "Chen Hinh";
+            MoThoai.Title = "Chèn file Excel 2007";
             if (MoThoai.ShowDialog() == DialogResult.OK)
             {
                 FilePath = MoThoai.FileName;
@@ -305,6 +305,8 @@ namespace GSK
         {
             myTimer.Start();
         }
+
+      
 
         
 

@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BtnTiepTuc = new System.Windows.Forms.Button();
             this.BtnNext = new System.Windows.Forms.Button();
@@ -43,21 +47,65 @@
             this.TxtfileExcel = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.webBrowserGJK = new System.Windows.Forms.WebBrowser();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(504, 0);
+            this.panel1.Location = new System.Drawing.Point(482, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(274, 413);
+            this.panel1.Size = new System.Drawing.Size(296, 413);
             this.panel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 368);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(296, 45);
+            this.panel3.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(156, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Liên hệ : nhtai1712@gmail.com";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(138, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Người thực hiện : JohnPipo ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(14, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(270, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Công cụ hổ trợ thêm khách hàng";
             // 
             // groupBox1
             // 
@@ -70,9 +118,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.TxtPass);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 56);
+            this.groupBox1.Location = new System.Drawing.Point(0, 95);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(274, 188);
+            this.groupBox1.Size = new System.Drawing.Size(296, 181);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đăng nhập";
@@ -157,9 +205,9 @@
             this.groupBox2.Controls.Add(this.BtnFile);
             this.groupBox2.Controls.Add(this.TxtfileExcel);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Location = new System.Drawing.Point(0, 39);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(274, 56);
+            this.groupBox2.Size = new System.Drawing.Size(296, 56);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chọn file";
@@ -188,7 +236,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(504, 413);
+            this.panel2.Size = new System.Drawing.Size(482, 413);
             this.panel2.TabIndex = 1;
             // 
             // webBrowserGJK
@@ -197,9 +245,18 @@
             this.webBrowserGJK.Location = new System.Drawing.Point(0, 0);
             this.webBrowserGJK.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserGJK.Name = "webBrowserGJK";
-            this.webBrowserGJK.Size = new System.Drawing.Size(504, 413);
+            this.webBrowserGJK.Size = new System.Drawing.Size(482, 413);
             this.webBrowserGJK.TabIndex = 0;
             this.webBrowserGJK.Url = new System.Uri("", System.UriKind.Relative);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(296, 39);
+            this.panel4.TabIndex = 10;
             // 
             // FrmGJK
             // 
@@ -211,11 +268,15 @@
             this.Name = "FrmGJK";
             this.Text = "Nhập liệu GJK";
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -237,6 +298,11 @@
         private System.Windows.Forms.Button Btnback;
         private System.Windows.Forms.WebBrowser webBrowserGJK;
         private System.Windows.Forms.Button BtnTiepTuc;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel4;
     }
 }
 
