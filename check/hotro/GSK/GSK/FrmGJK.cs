@@ -284,6 +284,8 @@ namespace GSK
                             }
                             else
                             {
+                                MessageBox.Show("Đã hoàn thành nhập liệu !!!");
+                                Application.Restart();
                                 myTimer.Stop();
 
                             }
