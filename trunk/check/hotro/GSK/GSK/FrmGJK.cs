@@ -84,7 +84,6 @@ namespace GSK
                     if(MaKH !=  "")
                     {
                         setvalue();
-                        flag = 4;
                         return;
                     }
                 }
@@ -225,8 +224,9 @@ namespace GSK
                             ExcelWorksheet currentWorksheet = workBook.Worksheets.First();
                             if (rows <= currentWorksheet.Dimension.Rows)
                             {
-                                currentWorksheet.Cells[rows, 1].Value = ElMaKH.GetAttribute("value");
-                                package.Save();
+
+                                string textloi = "";
+                                bool loi = true;
                                 // read some data
                                 object TenKH = currentWorksheet.Cells[rows, 2].Value;
                                 object NhomGia = currentWorksheet.Cells[rows, 3].Value;
@@ -252,35 +252,78 @@ namespace GSK
                                     if (item.GetAttribute("text").ToUpper() == NhomGia.ToString().Trim().ToUpper())
                                     {
                                         item.SetAttribute("selected", "selected");
+                                        loi = false;
                                     }
+
                                 }
+                                if(loi == true)
+                                {
+                                    textloi = "Tên chọn nhóm giá không đúng";
+                                }
+                                loi = true;
                                 HtmlElementCollection eloptiton2 = ElDropKhuVucNPP.GetElementsByTagName("option");
                                 foreach (HtmlElement item in eloptiton2)
                                 {
                                     if (item.GetAttribute("text").ToUpper() == KhuvucNPP.ToString().Trim().ToUpper())
                                     {
                                         item.SetAttribute("selected", "selected");
+                                        loi = false;
                                     }
                                 }
+                                if (loi == true)
+                                {
+                                    if (textloi == "")
+                                        textloi = "Tên chọn khu vực NPP không đúng";
+                                    else
+                                        textloi += ",Tên chọn khu vực NPP không đúng";
+                                }
+                                loi = true;
                                 HtmlElementCollection eloptiton3 = ElDropKenhPhu.GetElementsByTagName("option");
                                 foreach (HtmlElement item in eloptiton3)
                                 {
                                     if (item.GetAttribute("text").ToUpper() == KenhPhu.ToString().Trim().ToUpper())
                                     {
                                         item.SetAttribute("selected", "selected");
+                                        loi = false;
                                     }
                                 }
+                                if (loi == true)
+                                {
+                                    if (textloi == "")
+                                        textloi = "Tên chọn kênh phụ không đúng";
+                                    else
+                                        textloi += ",Tên chọn kênh không đúng";
+                                }
+                                loi = true;
                                 HtmlElementCollection eloptiton4 = ElDropSoTonKho.GetElementsByTagName("option");
                                 foreach (HtmlElement item in eloptiton4)
                                 {
                                     if (item.GetAttribute("text").ToUpper() == SoTonKho.ToString().Trim())
                                     {
                                         item.SetAttribute("selected", "selected");
+                                        loi = false;
                                     }
                                 }
+                                if (loi == true)
+                                {
+                                    if (textloi == "")
+                                       textloi = "Tên chọn số tồn kho không đúng";
+                                    else
+                                        textloi += ",Tên chọn số tồn kho không đúng";
+                                }
+                                if(textloi == "")
+                                {
+                                    currentWorksheet.Cells[rows, 1].Value = ElMaKH.GetAttribute("value");
+                                    package.Save();
+                                    flag = 4;
+                               
+                                }
+                                else
+                                {
+                                    currentWorksheet.Cells[rows, 1].Value = textloi;
+                                    package.Save();
+                                }
                                 rows++;
-                                
-
                             }
                             else
                             {
