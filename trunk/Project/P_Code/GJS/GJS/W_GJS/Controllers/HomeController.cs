@@ -520,12 +520,13 @@ namespace W_GJS.Controllers
             Db_gsj = new GJSEntities();
             return View(Db_gsj.O_PRODUCT.Single(t => t.PRODUCT_CD == PRODUCT.PRODUCT_CD));
         }
+
         public ActionResult Product_Category([Bind(Include = "CATEGORY_PRODUCT_CD")]O_CATEGORY_PRODUCT CATEGORY_PRODUCT)
         {
             Db_gsj = new GJSEntities();
             ViewBag.Name = Db_gsj.O_CATEGORY_PRODUCT.Single(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD).CATEGORY_PRODUCT_NAME;
 
-            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD).ToList());
+            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT.CATEGORY_PRODUCT_CD && t.ACTIVE == true).ToList());
         }
 
         public ActionResult Product_Category_Detail([Bind(Include = "CATEGORY_PRODUCT_DETAIL_CD")]O_CATEGORY_PRODUCT_DETAIL CATEGORY_PRODUCT_DETAIL)
@@ -554,7 +555,7 @@ namespace W_GJS.Controllers
         {
             Db_gsj = new GJSEntities();
             ViewBag.Name = Db_gsj.O_CATEGORY_PRODUCT.Single(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).CATEGORY_PRODUCT_NAME;
-            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD).ToList());
+            return View(Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.CATEGORY_PRODUCT_CD == CATEGORY_PRODUCT_CD && t.ACTIVE == true).ToList());
         }
         public ActionResult Catalog_Category_Detail([Bind(Include = "CATEGORY_PRODUCT_DETAIL_CD")]O_CATEGORY_PRODUCT_DETAIL CATEGORY_PRODUCT_DETAIL)
         {
