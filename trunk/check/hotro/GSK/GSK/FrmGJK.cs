@@ -29,7 +29,7 @@ namespace GSK
         {
             InitializeComponent();
 
-            GetWebpage("https://vn.gsk.dmsone.biz/dms_vn/Logon.aspx");
+            GetWebpage(TxtUrl.Text);
            
         }
         private void TimerEvent(Object myObject, EventArgs myEventArgs)
@@ -135,7 +135,7 @@ namespace GSK
             }
             else
             {
-                GetWebpage("https://vn.gsk.dmsone.biz/dms_vn/Logon.aspx");
+                GetWebpage(TxtUrl.Text);
            
             }
             //Uri uri = new Uri("");
@@ -174,7 +174,6 @@ namespace GSK
         {
           
                 //  browser.ClientSize = new Size(_width, _height);
-                webBrowserGJK.ScrollBarsEnabled = false;
                 webBrowserGJK.ScriptErrorsSuppressed = true;
                 webBrowserGJK.CausesValidation = false;
                 webBrowserGJK.Navigate(_url);
@@ -348,6 +347,13 @@ namespace GSK
         {
             myTimer.Start();
         }
+
+        private void BtnGo_Click(object sender, EventArgs e)
+        {
+            GetWebpage(TxtUrl.Text);
+        }
+
+      
 
       
 
