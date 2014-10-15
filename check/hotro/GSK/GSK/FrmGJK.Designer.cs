@@ -32,7 +32,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BtnTiepTuc = new System.Windows.Forms.Button();
             this.BtnNext = new System.Windows.Forms.Button();
@@ -45,15 +44,20 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnFile = new System.Windows.Forms.Button();
             this.TxtfileExcel = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.webBrowserGJK = new System.Windows.Forms.WebBrowser();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.BtnGo = new System.Windows.Forms.Button();
+            this.TxtUrl = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -93,19 +97,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 13);
+            this.label4.Size = new System.Drawing.Size(169, 13);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Người thực hiện : JohnPipo ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(14, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(270, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Công cụ hổ trợ thêm khách hàng";
+            this.label4.Text = "Người thực hiện : Nguyễn Hữu Tài";
             // 
             // groupBox1
             // 
@@ -230,25 +224,6 @@
             this.TxtfileExcel.Size = new System.Drawing.Size(168, 20);
             this.TxtfileExcel.TabIndex = 7;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.webBrowserGJK);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(482, 413);
-            this.panel2.TabIndex = 1;
-            // 
-            // webBrowserGJK
-            // 
-            this.webBrowserGJK.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserGJK.Location = new System.Drawing.Point(0, 0);
-            this.webBrowserGJK.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserGJK.Name = "webBrowserGJK";
-            this.webBrowserGJK.Size = new System.Drawing.Size(482, 413);
-            this.webBrowserGJK.TabIndex = 0;
-            this.webBrowserGJK.Url = new System.Uri("", System.UriKind.Relative);
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.label3);
@@ -258,6 +233,66 @@
             this.panel4.Size = new System.Drawing.Size(296, 39);
             this.panel4.TabIndex = 10;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(14, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(270, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Công cụ hổ trợ thêm khách hàng";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.webBrowserGJK);
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(482, 413);
+            this.panel2.TabIndex = 1;
+            // 
+            // webBrowserGJK
+            // 
+            this.webBrowserGJK.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowserGJK.Location = new System.Drawing.Point(0, 20);
+            this.webBrowserGJK.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserGJK.Name = "webBrowserGJK";
+            this.webBrowserGJK.Size = new System.Drawing.Size(482, 393);
+            this.webBrowserGJK.TabIndex = 0;
+            this.webBrowserGJK.Url = new System.Uri("", System.UriKind.Relative);
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.TxtUrl);
+            this.panel5.Controls.Add(this.BtnGo);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(482, 20);
+            this.panel5.TabIndex = 1;
+            // 
+            // BtnGo
+            // 
+            this.BtnGo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnGo.Location = new System.Drawing.Point(449, 0);
+            this.BtnGo.Name = "BtnGo";
+            this.BtnGo.Size = new System.Drawing.Size(33, 20);
+            this.BtnGo.TabIndex = 2;
+            this.BtnGo.Text = "Go";
+            this.BtnGo.UseVisualStyleBackColor = true;
+            this.BtnGo.Click += new System.EventHandler(this.BtnGo_Click);
+            // 
+            // TxtUrl
+            // 
+            this.TxtUrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TxtUrl.Location = new System.Drawing.Point(0, 0);
+            this.TxtUrl.Name = "TxtUrl";
+            this.TxtUrl.Size = new System.Drawing.Size(449, 20);
+            this.TxtUrl.TabIndex = 0;
+            this.TxtUrl.Text = "https://vn.gsk.dmsone.biz/dms_vn/Logon.aspx";
+            // 
             // FrmGJK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,7 +301,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmGJK";
-            this.Text = "Nhập liệu GJK";
+            this.Text = "Nhập liệu GSK";
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -274,9 +309,11 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -303,6 +340,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button BtnGo;
+        private System.Windows.Forms.TextBox TxtUrl;
     }
 }
 
