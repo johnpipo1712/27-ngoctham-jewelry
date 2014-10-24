@@ -17,15 +17,15 @@ namespace W_GJS.Controllers
         public ActionResult Index()
         {
             Db_gsj = new GJSEntities();
-            return View(Db_gsj.O_PRODUCT.OrderByDescending(x => x.CREATEDATE));
+            return View(Db_gsj.O_PRODUCT.Where(t => t.ACTIVE == true).OrderByDescending(x => x.CREATEDATE));
         }
         [HttpGet]
         public ActionResult Create()
         {
             Db_gsj = new GJSEntities();
-            var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.ToList();
+            var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList();
             ViewBag.Dropdownlist = new SelectList(query.AsEnumerable(), "CATEGORY_PRODUCT_DETAIL_CD", "CATEGORY_PRODUCT_DETAIL_NAME", 1);
-            var queryG = Db_gsj.O_CATEGORY_GRANULES.ToList();
+            var queryG = Db_gsj.O_CATEGORY_GRANULES.Where(t => t.ACTIVE == true).ToList();
             ViewBag.DropdownlistG = new SelectList(queryG.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", 1);
       
             return View();
@@ -141,9 +141,9 @@ namespace W_GJS.Controllers
                 {
                     Db_gsj = new GJSEntities();
                     ModelState.AddModelError("", "Vui lòng kiểm tra các đường dẫn hình ảnh");
-                    var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.ToList();
+                    var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList();
                     ViewBag.Dropdownlist = new SelectList(query.AsEnumerable(), "CATEGORY_PRODUCT_DETAIL_CD", "CATEGORY_PRODUCT_DETAIL_NAME", PRODUCT.CATEGORY_PRODUCT_DETAIL_CD);
-                    var queryG = Db_gsj.O_CATEGORY_GRANULES.ToList();
+                    var queryG = Db_gsj.O_CATEGORY_GRANULES.Where(t => t.ACTIVE == true).ToList();
                     ViewBag.DropdownlistG = new SelectList(queryG.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", PRODUCT.CATEGORY_GRANULES_CD);
     
                     return View(PRODUCT);
@@ -152,9 +152,9 @@ namespace W_GJS.Controllers
             else
             {
                 Db_gsj = new GJSEntities();
-                var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.ToList();
+                var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList();
                 ViewBag.Dropdownlist = new SelectList(query.AsEnumerable(), "CATEGORY_PRODUCT_DETAIL_CD", "CATEGORY_PRODUCT_DETAIL_NAME", PRODUCT.CATEGORY_PRODUCT_DETAIL_CD);
-                var queryG = Db_gsj.O_CATEGORY_GRANULES.ToList();
+                var queryG = Db_gsj.O_CATEGORY_GRANULES.Where(t => t.ACTIVE == true).ToList();
                 ViewBag.DropdownlistG = new SelectList(queryG.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", PRODUCT.CATEGORY_GRANULES_CD);
     
                 return View(PRODUCT);
@@ -168,10 +168,10 @@ namespace W_GJS.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Db_gsj = new GJSEntities();
-            O_PRODUCT PRODUCT_edit = Db_gsj.O_PRODUCT.Single(t => t.PRODUCT_CD == PRODUCT_CD);
-            var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.ToList();
+            O_PRODUCT PRODUCT_edit = Db_gsj.O_PRODUCT.Single(t => t.PRODUCT_CD == PRODUCT_CD && t.ACTIVE == true);
+            var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList();
             ViewBag.Dropdownlist = new SelectList(query.AsEnumerable(), "CATEGORY_PRODUCT_DETAIL_CD", "CATEGORY_PRODUCT_DETAIL_NAME", PRODUCT_edit.CATEGORY_PRODUCT_DETAIL_CD);
-            var queryG = Db_gsj.O_CATEGORY_GRANULES.ToList();
+            var queryG = Db_gsj.O_CATEGORY_GRANULES.Where(t => t.ACTIVE == true).ToList();
             ViewBag.DropdownlistG = new SelectList(queryG.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", PRODUCT_edit.CATEGORY_GRANULES_CD);
       
             if (PRODUCT_edit == null)
@@ -307,9 +307,9 @@ namespace W_GJS.Controllers
                 {
                     Db_gsj = new GJSEntities();
                     ModelState.AddModelError("", "Vui lòng kiểm tra các đường dẫn hình ảnh");
-                    var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.ToList();
+                    var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList();
                     ViewBag.Dropdownlist = new SelectList(query.AsEnumerable(), "CATEGORY_PRODUCT_DETAIL_CD", "CATEGORY_PRODUCT_DETAIL_NAME", PRODUCT.CATEGORY_PRODUCT_DETAIL_CD);
-                    var queryG = Db_gsj.O_CATEGORY_GRANULES.ToList();
+                    var queryG = Db_gsj.O_CATEGORY_GRANULES.Where(t => t.ACTIVE == true).ToList();
                     ViewBag.DropdownlistG = new SelectList(queryG.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", PRODUCT.CATEGORY_GRANULES_CD);
     
                     return View(PRODUCT);
@@ -318,9 +318,9 @@ namespace W_GJS.Controllers
             else
             {
                 Db_gsj = new GJSEntities();
-                var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.ToList();
+                var query = Db_gsj.O_CATEGORY_PRODUCT_DETAIL.Where(t => t.ACTIVE == true).ToList();
                 ViewBag.Dropdownlist = new SelectList(query.AsEnumerable(), "CATEGORY_PRODUCT_DETAIL_CD", "CATEGORY_PRODUCT_DETAIL_NAME", PRODUCT.CATEGORY_PRODUCT_DETAIL_CD);
-                var queryG = Db_gsj.O_CATEGORY_GRANULES.ToList();
+                var queryG = Db_gsj.O_CATEGORY_GRANULES.Where(t => t.ACTIVE == true).ToList();
                 ViewBag.DropdownlistG = new SelectList(queryG.AsEnumerable(), "CATEGORY_GRANULES_CD", "CATEGORY_GRANULES_NAME", PRODUCT.CATEGORY_GRANULES_CD);
     
                 return View(PRODUCT);
