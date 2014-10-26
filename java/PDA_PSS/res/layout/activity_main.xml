@@ -1,0 +1,591 @@
+
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      tools:context="${relativePackage}.${activityClass}" >
+
+   <ScrollView 
+    android:id="@+id/layout" 
+    android:layout_height="match_parent"         
+    android:scrollbars="horizontal|vertical" 
+    android:layout_width="match_parent"   
+    android:fillViewport="true"> 
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+                </LinearLayout>
+        </LinearLayout>
+          <HorizontalScrollView 
+		      android:id="@+id/horizontalViewListView" 
+		      android:layout_height="wrap_content"     
+		      android:scrollbars="horizontal" 
+		      android:layout_width="wrap_content">
+		          <LinearLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignParentLeft="true"
+		            android:layout_alignParentTop="true"
+		            android:orientation="vertical" >
+		             <LinearLayout
+		                 android:id="@+id/PanelThem"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_alignParentLeft="true"
+			            android:layout_alignParentTop="true"
+			            android:orientation="vertical" >
+					 <TableRow
+		                      android:id="@+id/tblRowTT"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content"
+		                      android:width="580dp">
+	                          <TextView
+			                  android:id="@+id/txtVTextTT"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:width="580dp"
+			                  android:gravity="center"
+			                  android:text="Thông tin" />
+		              </TableRow>
+		              <TableLayout
+		                  android:layout_width="wrap_content"
+		                  android:layout_height="wrap_content"
+		                  android:width="580dp"
+		                  android:background="@layout/boder" >
+
+		                  <TableRow
+		                      android:id="@+id/tblRowTTKH1"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content">
+					            <TextView
+				                  android:id="@+id/txtVTextCKH"
+				                  android:layout_width="wrap_content"
+				                  android:layout_height="wrap_content"
+				                  android:layout_column="2"
+				                  android:background="@layout/boder"
+				                  android:text="Mã KH" />
+					             <TextView
+				                      android:id="@+id/txtVShop_Code"
+				                      android:layout_width="wrap_content"
+				                      android:layout_height="wrap_content"
+				                      android:layout_column="3"
+				                       android:background="@layout/boder"
+				                      android:text="" />
+		                  </TableRow>
+
+		                  <TableRow
+		                      android:id="@+id/tblRowTTKH2"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content" >
+					               <TextView
+					                  android:id="@+id/txtVTextKH"
+					                  android:layout_width="wrap_content"
+					                  android:layout_height="wrap_content"
+					                  android:layout_column="1"
+					                  android:width="100dp"
+					                  android:gravity="center"
+					                  android:text="Khách hàng" />
+						          <TextView
+					                  android:id="@+id/txtVTextTKH"
+					                  android:layout_width="wrap_content"
+					                  android:layout_height="wrap_content"
+					                  android:layout_column="2"
+					                  android:width="100dp"
+					                  android:background="@layout/boder"
+					                  android:text="Tên KH" />
+					              <TextView
+				                      android:id="@+id/txtVShop_Name"
+				                      android:layout_width="wrap_content"
+				                      android:layout_height="wrap_content"
+				                      android:layout_column="3"
+				                       android:width="380dp"
+				                       android:background="@layout/boder"
+				                      android:text="" />
+		                  </TableRow>
+
+		                  <TableRow
+		                      android:id="@+id/tblRowTTKH3"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content" >
+					             <TextView
+					                  android:id="@+id/txtVTextStreet"
+					                  android:layout_width="wrap_content"
+					                  android:layout_height="wrap_content"
+					                  android:layout_column="2"
+					                   android:background="@layout/boder"
+					                  android:text="Đường" />
+					              <TextView
+				                      android:id="@+id/txtVShop_Street"
+				                      android:layout_width="wrap_content"
+				                      android:layout_height="wrap_content"
+				                      android:layout_column="3"
+				                      android:background="@layout/boder"
+				                      android:text="" />
+		                  </TableRow>
+
+		              </TableLayout>
+		            
+		              
+		             <TableRow
+		                      android:id="@+id/tblRowDG"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content"
+		                      android:width="580dp">
+	                          <TextView
+			                  android:id="@+id/txtVTexDG"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:width="580dp"
+			                  android:gravity="center"
+			                  android:text="Đánh giá" />
+	                       
+		              </TableRow>
+
+		            
+		              <TableLayout
+		                  android:layout_width="wrap_content"
+		                  android:layout_height="wrap_content"
+		                  android:width="580dp"
+		                  android:background="@layout/boder" >
+                        <TableRow
+		                      android:id="@+id/tblRowColPOSMDG"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content" >
+	                       <TextView
+			                  android:id="@+id/txtVTitleColPOSMDG1"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:gravity="center"
+			                  android:layout_column="2"  />
+	                        <TextView
+			                  android:id="@+id/txtVTitleColPOSMDG2"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:gravity="center"
+			                  android:layout_column="3"
+			                  android:width="80dp"
+			                  android:text="Đúng/Sai" />
+	                         <TextView
+			                  android:id="@+id/txtVTitleColPOSMDG3"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:gravity="center"
+			                  android:layout_column="4"
+			                  android:width="120dp"
+			                  android:text="Tình trạng" />
+	                         <TextView
+			                  android:id="@+id/txtVTileColPOSMDG4"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:layout_column="5"
+			                  android:text="Ghi chú" />
+		              </TableRow>
+		              <TableRow
+		                      android:id="@+id/tblRowPOSMDG2"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content">
+					           <TextView
+					                  android:id="@+id/txtVPOSM"
+					                  android:layout_width="wrap_content"
+					                  android:layout_height="wrap_content"
+					                  android:layout_column="1"
+					                  android:width="100dp"
+					                  android:gravity="center"
+					                  android:text="Vật phẩm" />
+					            <TextView
+				                  android:id="@+id/txtVTextPOSM"
+				                  android:layout_width="wrap_content"
+				                  android:layout_height="wrap_content"
+				                  android:layout_column="2"
+				                   android:width="100dp"
+				                   android:gravity="center"
+				                  android:background="@layout/boder"
+				                  android:text="" />
+
+					            <Spinner
+					                android:id="@+id/spinnerPOSM"
+					                android:layout_width="wrap_content"
+					                android:layout_height="wrap_content"
+					                android:layout_column="3"
+					                 android:background="@layout/boder" />
+                                <Spinner
+					                android:id="@+id/spinnerSTATUSPOSM"
+					                android:layout_width="wrap_content"
+					                android:layout_height="wrap_content"
+					                android:layout_column="4"
+					                android:background="@layout/boder" />
+					            <EditText
+					                 android:id="@+id/txtVNotePOSM"
+					                 android:layout_width="wrap_content"
+					                 android:layout_height="wrap_content" 
+					                 android:layout_column="5"
+					                 android:width="180dp"
+					                 android:textSize="14dp"
+					                 android:background="@layout/boder" >
+					             </EditText>
+					            
+					            
+		                  </TableRow>
+
+		          
+
+		              </TableLayout>
+		              
+		              <TableLayout
+		                  android:layout_width="wrap_content"
+		                  android:layout_height="wrap_content"
+		                  android:width="580dp"
+		                  android:background="@layout/boder" >
+                        <TableRow
+		                      android:id="@+id/tblRowColDG"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content" >
+	                       <TextView
+			                  android:id="@+id/txtVTitleColDG1"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:gravity="center"
+			                  android:layout_column="2"  />
+	                        <TextView
+			                  android:id="@+id/txtVTitleColDG2"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:gravity="center"
+			                  android:layout_column="3"
+			                  android:width="80dp"
+			                  android:text="Đúng/Sai" />
+	                         <TextView
+			                  android:id="@+id/txtVTileColDG3"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:layout_column="4"
+			                  android:text="Ghi chú" />
+		              </TableRow>
+		              <TableRow
+		                      android:id="@+id/tblRowDG2"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content">
+					           <TextView
+					                  android:id="@+id/txtVTB"
+					                  android:layout_width="wrap_content"
+					                  android:layout_height="wrap_content"
+					                  android:layout_column="1"
+					                  android:width="100dp"
+					                  android:gravity="center"
+					                  android:text="Trưng bày" />
+					            <TextView
+				                  android:id="@+id/txtVTextSM"
+				                  android:layout_width="wrap_content"
+				                  android:layout_height="wrap_content"
+				                  android:layout_column="2"
+				                   android:width="100dp"
+				                   android:gravity="center"
+				                  android:background="@layout/boder"
+				                  android:text="" />
+
+					            <Spinner
+					                android:id="@+id/spinnerSMTB"
+					                android:layout_width="wrap_content"
+					                android:layout_height="wrap_content"
+					                android:layout_column="3"
+					                 android:background="@layout/boder" />
+
+					            <EditText
+					                 android:id="@+id/txtVEditSM"
+					                 android:layout_width="wrap_content"
+					                 android:layout_height="wrap_content" 
+					                 android:layout_column="4"
+					                 android:width="300dp"
+					                 android:textSize="14dp"
+					                 android:background="@layout/boder" >
+					             </EditText>
+					            
+					            
+		                  </TableRow>
+
+		                  <TableRow
+		                      android:id="@+id/tblRowDG3"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content" >
+					             
+						          <TextView
+					                  android:id="@+id/txtVVT"
+					                  android:layout_width="wrap_content"
+					                  android:layout_height="wrap_content"
+					                  android:layout_column="2"
+					               android:gravity="center"
+					                  android:background="@layout/boder"
+					                  android:text="" />
+						            <Spinner
+					                 android:id="@+id/spinnerVTTB"
+					                 android:layout_width="wrap_content"
+					                 android:layout_height="wrap_content"
+					                 android:layout_column="3"
+					                 android:background="@layout/boder" />
+						          <EditText
+					                 android:id="@+id/txtVEditVT"
+					                 android:layout_width="wrap_content"
+					                 android:layout_column="4"
+					                 android:layout_height="wrap_content" 
+					                 android:textSize="14dp"
+					                 android:background="@layout/boder" >
+					             </EditText>
+						          
+		                  </TableRow>
+
+		          
+
+		              </TableLayout>
+		         		              <TableLayout
+		                  android:layout_width="wrap_content"
+		                  android:layout_height="wrap_content"
+		                  android:width="580dp"
+		                  android:background="@layout/boder" >
+                        <TableRow
+		                      android:id="@+id/tblRowColKD"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content" >
+	                       <TextView
+			                  android:id="@+id/txtVTitleColKD1"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:gravity="center"
+			                  android:layout_column="2"  />
+	                        <TextView
+			                  android:id="@+id/txtVTitleColKD2"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:gravity="center"
+			                  android:layout_column="3"
+			                  android:width="80dp"
+			                  android:text="" />
+	                         <TextView
+			                  android:id="@+id/txtVTileColKD3"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:layout_column="4"
+			                  android:text="Ghi chú" />
+		              </TableRow>
+		              <TableRow
+		                      android:id="@+id/tblRowKD2"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content">
+					           <TextView
+					                  android:id="@+id/txtVKD"
+					                  android:layout_width="wrap_content"
+					                  android:layout_height="wrap_content"
+					                  android:layout_column="1"
+					                  android:width="100dp"
+					                  android:gravity="center"
+					                  android:text="Kinh doanh" />
+					            <TextView
+				                  android:id="@+id/txtVTextKD"
+				                  android:layout_width="wrap_content"
+				                  android:layout_height="wrap_content"
+				                  android:layout_column="2"
+				                   android:width="100dp"
+				                  android:background="@layout/boder"
+				                  android:text="Doanh số" />
+							   <TextView
+				                  android:id="@+id/txtVTextDS"
+				                  android:layout_width="wrap_content"
+				                  android:layout_height="wrap_content"
+				                  android:layout_column="2"
+				                   android:width="80dp"
+				                  android:background="@layout/boder"
+				                  android:text="" />
+					           
+
+					            <EditText
+					                 android:id="@+id/txtVNoteDS"
+					                 android:layout_width="wrap_content"
+					                 android:layout_height="wrap_content" 
+					                 android:layout_column="4"
+					                 android:width="300dp"
+					                 android:textSize="14dp"
+					                 android:background="@layout/boder" >
+					             </EditText>
+					            
+					            
+		                  </TableRow>
+		                  <TableRow
+		                      android:id="@+id/tblRowKD3"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content" >
+						          <TextView
+					                  android:id="@+id/txtVCHMHHT"
+					                  android:layout_width="wrap_content"
+					                  android:layout_height="wrap_content"
+					                  android:layout_column="2"
+					                  android:background="@layout/boder"
+					                  android:text="MH hiện tại" />
+						           <TextView
+					                  android:id="@+id/txtVKDHHT"
+					                  android:layout_width="wrap_content"
+					                  android:layout_height="wrap_content"
+					                  android:layout_column="2"
+					               
+					                  android:background="@layout/boder"
+					                  android:text="" />
+						          <EditText
+					                 android:id="@+id/txtVEditCHMHT"
+					                 android:layout_width="wrap_content"
+					                 android:layout_column="4"
+					                 android:layout_height="wrap_content" 
+					                 android:textSize="14dp"
+					                 android:background="@layout/boder" >
+					             </EditText>
+		                  </TableRow>
+		                  <TableRow
+		                      android:id="@+id/tblRowKD4"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content" >
+						          <TextView
+					                  android:id="@+id/txtVCHCPP"
+					                  android:layout_width="wrap_content"
+					                  android:layout_height="wrap_content"
+					                  android:layout_column="2"
+					                  android:background="@layout/boder"
+					                  android:text="Có phân phối" />
+						          <Spinner
+					                 android:id="@+id/spinnerCPP"
+					                 android:layout_width="wrap_content"
+					                 android:layout_height="wrap_content"
+					                 android:layout_column="3"
+					                 android:background="@layout/boder" />
+						          <EditText
+					                 android:id="@+id/txtVEditCHPP"
+					                 android:layout_width="wrap_content"
+					                 android:layout_column="4"
+					                 android:layout_height="wrap_content" 
+					                 android:textSize="14dp"
+					                 android:background="@layout/boder" >
+					             </EditText>
+		                  </TableRow>
+		              </TableLayout>
+		         <TableRow
+		                      android:id="@+id/tblRowDGT"
+		                      android:layout_width="wrap_content"
+		                      android:layout_height="wrap_content"
+		                      android:width="580dp">
+	                          <TextView
+			                  android:id="@+id/txtVTexDGT"
+			                  android:layout_width="wrap_content"
+			                  android:layout_height="wrap_content"
+			                  android:background="@layout/boder"
+			                  android:width="580dp"
+			                  android:gravity="center"
+			                  android:text="Đánh giá Tổng" />
+	                       
+		         </TableRow> 
+		            <EditText
+			                 android:id="@+id/txtVDGT"
+			                 android:layout_width="wrap_content"
+			                 android:layout_height="wrap_content" 
+			                 android:textSize="14dp"
+			                 android:width="580dp"
+			                 android:background="@layout/boder" >
+			             </EditText>
+			           <LinearLayout
+		                 android:layout_width="wrap_content"
+		                 android:layout_height="wrap_content"
+		                 android:orientation="horizontal"
+		                 >
+			            <Button
+						       android:id="@+id/btnLuu"
+						       android:layout_width="wrap_content"
+						       android:layout_height="35dp"
+						       android:layout_alignParentBottom="true"
+						       android:layout_alignParentLeft="true"
+						       android:textSize="14dp"
+						       android:onClick="Save"
+						       android:text="Lưu" />
+			              <Button
+						       android:id="@+id/btnThoat"
+						       android:layout_width="wrap_content"
+						       android:layout_height="35dp"
+						       android:layout_alignParentBottom="true"
+						       android:layout_alignParentLeft="true"
+						       android:textSize="14dp"
+						       android:onClick="Exit"
+						       android:text="Thoát" />
+			             </LinearLayout>
+		           </LinearLayout>
+			     <LinearLayout
+		                 android:layout_width="wrap_content"
+		                 android:layout_height="wrap_content"
+		                 android:orientation="horizontal"
+		                >
+		
+		                <TextView
+		                    android:id="@+id/txtVcodecus"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="wrap_content"
+		                    android:width="130dp"
+		                    android:text="@string/codecus" />
+		
+		                <TextView
+		                    android:id="@+id/txtVnamecus"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="30dp"
+		                    android:width="250dp"
+		                    android:text="@string/namecus" />
+		
+		                <TextView
+		                    android:id="@+id/txtVstreet"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="50dp"
+		                    android:width="300dp"
+		                    android:text="@string/street" />
+		            </LinearLayout>
+	                  <ListView
+				        android:id="@+id/lvitem"
+				        android:layout_width="780dp"
+				        android:layout_height="500dp"
+				        android:layout_alignParentRight="true"
+				        android:layout_marginTop="5dp" >
+			         </ListView>
+			        </LinearLayout>
+              </HorizontalScrollView>
+         
+			  
+	  
+    
+    </LinearLayout>
+
+</ScrollView>
+
+
+
+</RelativeLayout>
