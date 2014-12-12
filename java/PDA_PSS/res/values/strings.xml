@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">PDA_PSS</string>
+    <string name="app_name">Danh sách KH</string>
     <string name="hello_world">Hello world!</string>
     <string name="codecus">Mã KH</string>
     <string name="namecus">Tên KH</string>
     <string name="street">Đường</string>
     <string name="textitem">textitem</string>
+    <string name="chamdiem">Chấm điểm</string>
+    <string name="title_activity_layout_dialog">Chấm điểm</string>
+    <string name="title_activity_layout_dialog_table">Chấm điểm</string>
+    <string name="title_activity_login">Login</string>
 
 </resources>

@@ -12,35 +12,77 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int infomation=0x7f020001;
+        public static final int search=0x7f020002;
+        public static final int v2_200=0x7f020003;
+        public static final int v2wslogan_200=0x7f020004;
     }
     public static final class id {
+        public static final int EditTxtSearch=0x7f060071;
+        public static final int Panel=0x7f060043;
         public static final int PanelThem=0x7f060003;
-        public static final int btnLuu=0x7f06003e;
-        public static final int btnThoat=0x7f06003f;
-        public static final int horizontalViewListView=0x7f060002;
-        public static final int layout=0x7f060000;
-        public static final int linearLayout1=0x7f060001;
-        public static final int lvitem=0x7f060043;
+        public static final int btnChuphinh=0x7f060040;
+        public static final int btnLuu=0x7f060042;
+        public static final int btnThoat=0x7f060041;
+        public static final int edittxtMatkhau=0x7f060067;
+        public static final int edittxtTendn=0x7f060064;
+        public static final int footer=0x7f06003f;
+        public static final int header=0x7f060061;
+        public static final int header1=0x7f060002;
+        public static final int header2=0x7f060069;
+        public static final int header3=0x7f060044;
+        public static final int horizontalViewListView=0x7f060072;
+        public static final int horizontalViewListView2=0x7f060001;
+        public static final int imageView1=0x7f06003e;
+        public static final int imageView2=0x7f06006a;
+        public static final int imageView3=0x7f060046;
+        public static final int layout=0x7f06006d;
+        public static final int layoutviewscroll=0x7f060000;
+        public static final int linearLayout1=0x7f06006e;
+        public static final int lvitem=0x7f060076;
+        public static final int panelDGTQ=0x7f06005e;
         public static final int spinnerCPP=0x7f060039;
         public static final int spinnerPOSM=0x7f06001a;
         public static final int spinnerSMTB=0x7f060024;
         public static final int spinnerSTATUSPOSM=0x7f06001b;
         public static final int spinnerVTTB=0x7f060028;
+        public static final int tableRow1=0x7f060062;
+        public static final int tableRow2=0x7f060065;
+        public static final int tableRow4=0x7f060068;
         public static final int tblRowColDG=0x7f06001d;
+        public static final int tblRowColDGVT=0x7f06004c;
         public static final int tblRowColKD=0x7f06002a;
         public static final int tblRowColPOSMDG=0x7f060012;
         public static final int tblRowDG=0x7f060010;
         public static final int tblRowDG2=0x7f060021;
         public static final int tblRowDG3=0x7f060026;
+        public static final int tblRowDGKD=0x7f060051;
         public static final int tblRowDGT=0x7f06003b;
+        public static final int tblRowDGTB=0x7f060049;
+        public static final int tblRowDGTBSM3=0x7f06004b;
+        public static final int tblRowDGVTSM3=0x7f06004f;
+        public static final int tblRowDVTG2=0x7f06004d;
         public static final int tblRowKD2=0x7f06002e;
         public static final int tblRowKD3=0x7f060033;
         public static final int tblRowKD4=0x7f060037;
+        public static final int tblRowKDDS3=0x7f060053;
+        public static final int tblRowKDMHHT2=0x7f060054;
+        public static final int tblRowKDMHHT3=0x7f060055;
+        public static final int tblRowKDMHHT5=0x7f060057;
+        public static final int tblRowKDMHHT6=0x7f06005a;
+        public static final int tblRowKDMHHT7=0x7f060058;
         public static final int tblRowPOSMDG2=0x7f060017;
+        public static final int tblRowPOSMDG3=0x7f060047;
+        public static final int tblRowPOSMDG4=0x7f060048;
+        public static final int tblRowT2=0x7f06005f;
+        public static final int tblRowT3=0x7f06005c;
         public static final int tblRowTT=0x7f060004;
         public static final int tblRowTTKH1=0x7f060006;
         public static final int tblRowTTKH2=0x7f060009;
         public static final int tblRowTTKH3=0x7f06000d;
+        public static final int textView1=0x7f06006f;
+        public static final int textView3=0x7f060045;
+        public static final int txtSearch=0x7f060070;
         public static final int txtVCHCPP=0x7f060038;
         public static final int txtVCHMHHT=0x7f060034;
         public static final int txtVDGT=0x7f06003d;
@@ -60,6 +102,8 @@ public final class R {
         public static final int txtVTexDG=0x7f060011;
         public static final int txtVTexDGT=0x7f06003c;
         public static final int txtVTextCKH=0x7f060007;
+        public static final int txtVTextDGKD=0x7f060052;
+        public static final int txtVTextDGTB=0x7f06004a;
         public static final int txtVTextDS=0x7f060031;
         public static final int txtVTextKD=0x7f060030;
         public static final int txtVTextKH=0x7f06000a;
@@ -68,37 +112,56 @@ public final class R {
         public static final int txtVTextStreet=0x7f06000e;
         public static final int txtVTextTKH=0x7f06000b;
         public static final int txtVTextTT=0x7f060005;
+        public static final int txtVTextTT2=0x7f060060;
+        public static final int txtVTextTT3=0x7f06005d;
         public static final int txtVTileColDG3=0x7f060020;
+        public static final int txtVTileColDGVT3=0x7f060050;
         public static final int txtVTileColKD3=0x7f06002d;
+        public static final int txtVTileColKD4=0x7f060056;
+        public static final int txtVTileColKD5=0x7f060059;
+        public static final int txtVTileColKD6=0x7f06005b;
         public static final int txtVTileColPOSMDG4=0x7f060016;
         public static final int txtVTitleColDG1=0x7f06001e;
         public static final int txtVTitleColDG2=0x7f06001f;
+        public static final int txtVTitleColDGVT2=0x7f06004e;
         public static final int txtVTitleColKD1=0x7f06002b;
         public static final int txtVTitleColKD2=0x7f06002c;
         public static final int txtVTitleColPOSMDG1=0x7f060013;
         public static final int txtVTitleColPOSMDG2=0x7f060014;
         public static final int txtVTitleColPOSMDG3=0x7f060015;
         public static final int txtVVT=0x7f060027;
-        public static final int txtVcodecus=0x7f060040;
-        public static final int txtVcodecusitem=0x7f060044;
-        public static final int txtVnamecus=0x7f060041;
-        public static final int txtVnamecusitem=0x7f060045;
-        public static final int txtVstreet=0x7f060042;
-        public static final int txtVstreetitem=0x7f060046;
+        public static final int txtVcodecus=0x7f060073;
+        public static final int txtVcodecusitem=0x7f060077;
+        public static final int txtVnamecus=0x7f060074;
+        public static final int txtVnamecusitem=0x7f060078;
+        public static final int txtVstreet=0x7f060075;
+        public static final int txtVstreetitem=0x7f060079;
+        public static final int txtactdn=0x7f06006c;
+        public static final int txtmatkhau=0x7f060066;
+        public static final int txttendn=0x7f060063;
+        public static final int txtversion=0x7f06006b;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int boder=0x7f030001;
-        public static final int item_combox=0x7f030002;
-        public static final int item_list=0x7f030003;
+        public static final int activity_layout_dialog=0x7f030000;
+        public static final int activity_layout_dialog_table=0x7f030001;
+        public static final int activity_login=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int boder=0x7f030004;
+        public static final int boderheader=0x7f030005;
+        public static final int item_combox=0x7f030006;
+        public static final int item_list=0x7f030007;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int chamdiem=0x7f040006;
         public static final int codecus=0x7f040002;
         public static final int hello_world=0x7f040001;
         public static final int namecus=0x7f040003;
         public static final int street=0x7f040004;
         public static final int textitem=0x7f040005;
+        public static final int title_activity_layout_dialog=0x7f040007;
+        public static final int title_activity_layout_dialog_table=0x7f040008;
+        public static final int title_activity_login=0x7f040009;
     }
     public static final class style {
         /** 
@@ -123,6 +186,7 @@ public final class R {
  API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f050000;
+        public static final int AppDialog=0x7f050002;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */

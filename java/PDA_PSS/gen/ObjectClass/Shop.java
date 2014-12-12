@@ -1,6 +1,8 @@
 package ObjectClass;
 
-public class Shop {
+import java.io.Serializable;
+
+public class Shop implements Serializable {
 	private int Shop_CD;
 	private String CodeShop;
     private String NameShop;
@@ -9,7 +11,14 @@ public class Shop {
     private String Shop_VT;
     private String Shop_POSM;
     private String Shop_DS;
-    public int getShop_CD() {
+    private String Shop_Street_VI;
+    public String getShop_Street_VI() {
+		return Shop_Street_VI;
+	}
+	public void setShop_Street_VI(String shop_Street_VI) {
+		Shop_Street_VI = shop_Street_VI;
+	}
+	public int getShop_CD() {
 		return Shop_CD;
 	}
 	public void setShop_CD(int shop_CD) {
