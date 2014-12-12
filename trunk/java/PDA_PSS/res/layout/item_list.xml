@@ -10,6 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="130dp"
+        android:gravity="center_vertical" 
+        android:height="40dp"
         android:text=""
       />
 
@@ -17,8 +19,10 @@
         android:id="@+id/txtVnamecusitem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
         android:width="250dp"
+        android:gravity="center_vertical" 
+       
+        android:height="40dp"
         android:text=""
      />
 
@@ -26,8 +30,10 @@
         android:id="@+id/txtVstreetitem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:width="300dp" 
+       
+        android:width="300dp"
+        android:height="40dp"
+        android:gravity="center_vertical" 
         android:text=""
      />
     

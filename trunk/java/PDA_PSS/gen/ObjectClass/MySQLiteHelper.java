@@ -35,7 +35,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 "SHOP_SM TEXT,"+
                 "SHOP_VT TEXT,"+
                 "SHOP_POSM TEXT,"+
-                "SHOP_DS TEXT"+  
+                "SHOP_DS TEXT,"+  
+                "SHOP_STREET_VI TEXT"+  
                 " )";
         String CREATE_Maket_Visit_TABLE = "CREATE TABLE O_MAKET_VISIT ( " +
                 "MAKET_VISIT_CD INTEGER PRIMARY KEY AUTOINCREMENT, " + 
@@ -80,6 +81,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String KEY_SHOP_VT = "SHOP_VT";
     private static final String KEY_SHOP_POSM = "SHOP_POSM";
     private static final String KEY_SHOP_DS = "SHOP_DS";
+    private static final String KEY_SHOP_STREET_VI = "SHOP_STREET_VI";
     private static final String[] COLUMNS_M_SHOP =
     	{KEY_SHOP_CD
     	,KEY_SHOP_CODE
@@ -88,7 +90,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     	,KEY_SHOP_SM
     	,KEY_SHOP_VT
     	,KEY_SHOP_POSM
-    	,KEY_SHOP_DS};
+    	,KEY_SHOP_DS
+    	,KEY_SHOP_STREET_VI};
     
     
    
@@ -229,7 +232,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 				        maketvisit.setIsTrueSMTB(Integer.parseInt(cursor.getString(10)));
 				        maketvisit.setIsTrueCHCPP(Integer.parseInt(cursor.getString(11)));
 				        maketvisit.setStatusPOSM(cursor.getString(12));
-				        maketvisit.setUrlImage(cursor.getString(13));
+				        maketvisit.setNoteDGT(cursor.getString(13));
+				        maketvisit.setUrlImage(cursor.getString(14));
 				        Log.d("getMaket_Visit("+SHOP_CD+")", maketvisit.toString());
 		            
 	            }
@@ -290,6 +294,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	                shop.setShop_VT(cursor.getString(5));
 	                shop.setShop_POSM(cursor.getString(6));
 	                shop.setShop_DS(cursor.getString(7));
+	                shop.setShop_Street_VI(cursor.getString(8));
 	                // Add book to books
 	            	shops.add(shop);
 	            } while (cursor.moveToNext());
@@ -317,6 +322,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         values.put(KEY_SHOP_VT, shop.getShop_VT()); 
         values.put(KEY_SHOP_POSM, shop.getShop_POSM()); 
         values.put(KEY_SHOP_DS, shop.getShop_DS()); 
+        values.put(KEY_SHOP_STREET_VI, shop.getShop_Street_VI()); 
         // 3. insert
         db.insert(TABLE_M_SHOP, // table
                 null, //nullColumnHack
@@ -348,6 +354,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 shop.setShop_VT(cursor.getString(5));
                 shop.setShop_POSM(cursor.getString(6));
                 shop.setShop_DS(cursor.getString(7));
+                shop.setShop_Street_VI(cursor.getString(8));
                 // Add book to books
             	shops.add(shop);
             } while (cursor.moveToNext());

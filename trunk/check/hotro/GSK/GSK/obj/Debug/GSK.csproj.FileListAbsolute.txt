@@ -9,3 +9,16 @@ D:\hotro\GSK\GSK\obj\Debug\GSK.exe
 D:\hotro\GSK\GSK\obj\Debug\GSK.pdb
 D:\hotro\GSK\GSK\bin\Debug\EPPlus.dll
 D:\hotro\GSK\GSK\bin\Debug\EPPlus.xml
+E:\gjs\GJS\check\hotro\GSK\GSK\bin\Debug\GSK.exe.config
+E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.exe
+E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.pdb
+E:\gjs\GJS\check\hotro\GSK\GSK\bin\Debug\GSK.exe
+E:\gjs\GJS\check\hotro\GSK\GSK\bin\Debug\GSK.pdb
+E:\gjs\GJS\check\hotro\GSK\GSK\bin\Debug\EPPlus.dll
+E:\gjs\GJS\check\hotro\GSK\GSK\bin\Debug\EPPlus.xml
+E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.csprojResolveAssemblyReference.cache
+E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.FrmGJK.resources
+E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.Properties.Resources.resources
+E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.csproj.GenerateResource.Cache
+E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.FrmChangePass.resources
+E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.FrmMainGJK.resources
