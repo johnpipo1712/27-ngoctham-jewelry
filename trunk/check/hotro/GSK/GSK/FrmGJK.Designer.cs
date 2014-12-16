@@ -29,13 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BtnTiepTuc = new System.Windows.Forms.Button();
-            this.BtnNext = new System.Windows.Forms.Button();
-            this.Btnback = new System.Windows.Forms.Button();
             this.TxtUserName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnLogin = new System.Windows.Forms.Button();
@@ -49,10 +43,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.webBrowserGJK = new System.Windows.Forms.WebBrowser();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.BtnGo = new System.Windows.Forms.Button();
             this.TxtUrl = new System.Windows.Forms.TextBox();
+            this.BtnGo = new System.Windows.Forms.Button();
+            this.Btnback = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -62,7 +56,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.panel4);
@@ -72,39 +65,8 @@
             this.panel1.Size = new System.Drawing.Size(296, 413);
             this.panel1.TabIndex = 0;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 368);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(296, 45);
-            this.panel3.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(156, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Liên hệ : nhtai1712@gmail.com";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(169, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Người thực hiện : Nguyễn Hữu Tài";
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.BtnTiepTuc);
-            this.groupBox1.Controls.Add(this.BtnNext);
             this.groupBox1.Controls.Add(this.Btnback);
             this.groupBox1.Controls.Add(this.TxtUserName);
             this.groupBox1.Controls.Add(this.label2);
@@ -114,41 +76,10 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 95);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 181);
+            this.groupBox1.Size = new System.Drawing.Size(296, 140);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đăng nhập";
-            // 
-            // BtnTiepTuc
-            // 
-            this.BtnTiepTuc.Location = new System.Drawing.Point(187, 146);
-            this.BtnTiepTuc.Name = "BtnTiepTuc";
-            this.BtnTiepTuc.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.BtnTiepTuc.Size = new System.Drawing.Size(75, 23);
-            this.BtnTiepTuc.TabIndex = 9;
-            this.BtnTiepTuc.Text = "Tiếp tục";
-            this.BtnTiepTuc.UseVisualStyleBackColor = true;
-            this.BtnTiepTuc.Click += new System.EventHandler(this.BtnTiepTuc_Click);
-            // 
-            // BtnNext
-            // 
-            this.BtnNext.Location = new System.Drawing.Point(97, 146);
-            this.BtnNext.Name = "BtnNext";
-            this.BtnNext.Size = new System.Drawing.Size(75, 23);
-            this.BtnNext.TabIndex = 8;
-            this.BtnNext.Text = "Dừng";
-            this.BtnNext.UseVisualStyleBackColor = true;
-            this.BtnNext.Click += new System.EventHandler(this.BtnNext_Click);
-            // 
-            // Btnback
-            // 
-            this.Btnback.Location = new System.Drawing.Point(187, 106);
-            this.Btnback.Name = "Btnback";
-            this.Btnback.Size = new System.Drawing.Size(75, 23);
-            this.Btnback.TabIndex = 5;
-            this.Btnback.Text = "Trở về";
-            this.Btnback.UseVisualStyleBackColor = true;
-            this.Btnback.Click += new System.EventHandler(this.Btnback_Click);
             // 
             // TxtUserName
             // 
@@ -273,6 +204,15 @@
             this.panel5.Size = new System.Drawing.Size(482, 20);
             this.panel5.TabIndex = 1;
             // 
+            // TxtUrl
+            // 
+            this.TxtUrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TxtUrl.Location = new System.Drawing.Point(0, 0);
+            this.TxtUrl.Name = "TxtUrl";
+            this.TxtUrl.Size = new System.Drawing.Size(449, 20);
+            this.TxtUrl.TabIndex = 0;
+            this.TxtUrl.Text = "https://vn.gsk.dmsone.biz/dms_vn/Logon.aspx";
+            // 
             // BtnGo
             // 
             this.BtnGo.Dock = System.Windows.Forms.DockStyle.Right;
@@ -284,27 +224,33 @@
             this.BtnGo.UseVisualStyleBackColor = true;
             this.BtnGo.Click += new System.EventHandler(this.BtnGo_Click);
             // 
-            // TxtUrl
+            // Btnback
             // 
-            this.TxtUrl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TxtUrl.Location = new System.Drawing.Point(0, 0);
-            this.TxtUrl.Name = "TxtUrl";
-            this.TxtUrl.Size = new System.Drawing.Size(449, 20);
-            this.TxtUrl.TabIndex = 0;
-            this.TxtUrl.Text = "https://vn.gsk.dmsone.biz/dms_vn/Logon.aspx";
+            this.Btnback.Location = new System.Drawing.Point(187, 106);
+            this.Btnback.Name = "Btnback";
+            this.Btnback.Size = new System.Drawing.Size(75, 23);
+            this.Btnback.TabIndex = 5;
+            this.Btnback.Text = "Thoát";
+            this.Btnback.UseVisualStyleBackColor = true;
+            this.Btnback.Click += new System.EventHandler(this.Btnback_Click);
             // 
             // FrmGJK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(778, 413);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmGJK";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nhập liệu GSK";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -331,18 +277,13 @@
         private System.Windows.Forms.TextBox TxtfileExcel;
         private System.Windows.Forms.Button BtnFile;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button BtnNext;
-        private System.Windows.Forms.Button Btnback;
         private System.Windows.Forms.WebBrowser webBrowserGJK;
-        private System.Windows.Forms.Button BtnTiepTuc;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button BtnGo;
         private System.Windows.Forms.TextBox TxtUrl;
+        private System.Windows.Forms.Button Btnback;
     }
 }
 

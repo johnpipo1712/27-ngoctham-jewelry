@@ -15,18 +15,40 @@ namespace GSK
         public FrmMainGJK()
         {
             InitializeComponent();
+            FrmDisplayMain frm = new FrmDisplayMain();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
-
+       
+        public void CleanerFrm()
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                frm.Close();
+            }
+        }
         private void DMKToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CleanerFrm();
+         
             FrmChangePass frm = new FrmChangePass();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
+         
         }
 
         private void ThemKHToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CleanerFrm();
             FrmGJK frm = new FrmGJK();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
+
+          
+          
         }
     }
 }

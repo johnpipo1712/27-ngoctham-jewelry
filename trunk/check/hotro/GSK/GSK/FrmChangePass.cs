@@ -99,16 +99,12 @@ namespace GSK
                         HtmlElement ELBSave = this.webBrowserGJK.Document.Body.Document.GetElementById("btnSave");
                         ELBSave.InvokeMember("click");
                         GetWebpage(TxtUrl.Text);
-                        IntPtr hwnd = FindWindow(null, "Message from webpage");
-                        hwnd = FindWindowEx(hwnd, IntPtr.Zero, "Button", "OK");
-                        uint message = 0xf5;
-                        SendMessage(hwnd, message, IntPtr.Zero, IntPtr.Zero);
                         flag = 0;
                         return;
                     }
                 }
             }
-          
+            
           
 
         }
@@ -117,7 +113,7 @@ namespace GSK
 
         private  void BtnLogin_Click(object sender, EventArgs e)
         {
-           
+            BtnLogin.Enabled = false;
             myTimer.Tick += new EventHandler(TimerEvent);
             myTimer.Interval = 10000;
             myTimer.Start();
@@ -205,6 +201,8 @@ namespace GSK
                             ElTxtOldPassword.InnerText = OldPassword.ToString().Trim();
                             ELTxtNewPassword.InnerText = NewPassword.ToString().Trim();
                             ELBtnConfirm.InnerText = NewPassword.ToString().Trim();
+                            currentWorksheet.Cells[rows, 4].Value = "Read";
+                            package.Save();
                             rows++;
                         }
                         else
@@ -247,8 +245,10 @@ namespace GSK
                             }
                             else
                             {
-                                myTimer.Stop();
-                                Application.Restart();
+                                object Username = currentWorksheet.Cells[rows - 1, 1].Value;
+                                object Pass = currentWorksheet.Cells[rows - 1, 3].Value;
+                                ElTxtUserName.InnerText = Username.ToString().Trim();
+                                ELTxtPass.InnerText = Pass.ToString().Trim();
                             }
                         }
                     }
@@ -272,10 +272,7 @@ namespace GSK
             GetWebpage(TxtUrl.Text);
         }
 
-        private void BtnLogin_Click_1(object sender, EventArgs e)
-        {
-
-        }
+      
         [DllImport("user32.dll", SetLastError = true)]
         static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
         [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
@@ -284,10 +281,7 @@ namespace GSK
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
 
-        private void Form1_Deactivate(object sender, EventArgs e)
-        {
-            
-        }
+       
    
 
       
