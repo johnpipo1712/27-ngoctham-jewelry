@@ -56,6 +56,18 @@
     <Compile Include="FrmChangePass.Designer.cs">
       <DependentUpon>FrmChangePass.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDisplayMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDisplayMain.Designer.cs">
+      <DependentUpon>FrmDisplayMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDivCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDivCustomer.Designer.cs">
+      <DependentUpon>FrmDivCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGJK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +85,12 @@
     <EmbeddedResource Include="FrmChangePass.resx">
       <DependentUpon>FrmChangePass.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDisplayMain.resx">
+      <DependentUpon>FrmDisplayMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDivCustomer.resx">
+      <DependentUpon>FrmDivCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmGJK.resx">
       <DependentUpon>FrmGJK.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,6 +105,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -100,6 +119,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HelpDeskSupport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

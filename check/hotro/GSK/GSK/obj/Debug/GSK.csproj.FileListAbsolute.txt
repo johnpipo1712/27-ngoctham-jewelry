@@ -22,3 +22,5 @@ E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.Properties.Resources.resources
 E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.csproj.GenerateResource.Cache
 E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.FrmChangePass.resources
 E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.FrmMainGJK.resources
+E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.FrmDivCustomer.resources
+E:\gjs\GJS\check\hotro\GSK\GSK\obj\Debug\GSK.FrmDisplayMain.resources

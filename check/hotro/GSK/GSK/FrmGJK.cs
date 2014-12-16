@@ -115,6 +115,7 @@ namespace GSK
 
         private  void BtnLogin_Click(object sender, EventArgs e)
         {
+            BtnLogin.Enabled = false;
             if (TxtfileExcel.Text.Trim() == "")
             {
                 MessageBox.Show("Vui lòng chọn file");
