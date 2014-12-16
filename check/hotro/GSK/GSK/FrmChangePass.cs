@@ -114,6 +114,11 @@ namespace GSK
         private  void BtnLogin_Click(object sender, EventArgs e)
         {
             BtnLogin.Enabled = false;
+            if (TxtfileExcel.Text.Trim() == "")
+            {
+                MessageBox.Show("Vui lòng chọn file");
+                return;
+            }
             myTimer.Tick += new EventHandler(TimerEvent);
             myTimer.Interval = 10000;
             myTimer.Start();
