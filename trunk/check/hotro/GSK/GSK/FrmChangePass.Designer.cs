@@ -55,7 +55,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(454, 429);
+            this.panel2.Size = new System.Drawing.Size(980, 911);
             this.panel2.TabIndex = 3;
             // 
             // webBrowserGJK
@@ -64,7 +64,7 @@
             this.webBrowserGJK.Location = new System.Drawing.Point(0, 20);
             this.webBrowserGJK.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserGJK.Name = "webBrowserGJK";
-            this.webBrowserGJK.Size = new System.Drawing.Size(454, 409);
+            this.webBrowserGJK.Size = new System.Drawing.Size(980, 891);
             this.webBrowserGJK.TabIndex = 0;
             this.webBrowserGJK.Url = new System.Uri("", System.UriKind.Relative);
             // 
@@ -75,7 +75,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(454, 20);
+            this.panel5.Size = new System.Drawing.Size(980, 20);
             this.panel5.TabIndex = 1;
             // 
             // TxtUrl
@@ -83,14 +83,14 @@
             this.TxtUrl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TxtUrl.Location = new System.Drawing.Point(0, 0);
             this.TxtUrl.Name = "TxtUrl";
-            this.TxtUrl.Size = new System.Drawing.Size(421, 20);
+            this.TxtUrl.Size = new System.Drawing.Size(947, 20);
             this.TxtUrl.TabIndex = 0;
             this.TxtUrl.Text = "https://gsk-uat.np.accenture.com/dms_vn/logon.aspx";
             // 
             // BtnGo
             // 
             this.BtnGo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnGo.Location = new System.Drawing.Point(421, 0);
+            this.BtnGo.Location = new System.Drawing.Point(947, 0);
             this.BtnGo.Name = "BtnGo";
             this.BtnGo.Size = new System.Drawing.Size(33, 20);
             this.BtnGo.TabIndex = 2;
@@ -103,9 +103,9 @@
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(454, 0);
+            this.panel1.Location = new System.Drawing.Point(980, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(296, 429);
+            this.panel1.Size = new System.Drawing.Size(296, 911);
             this.panel1.TabIndex = 2;
             // 
             // groupBox2
@@ -183,10 +183,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(750, 429);
+            this.ClientSize = new System.Drawing.Size(1276, 911);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmChangePass";
