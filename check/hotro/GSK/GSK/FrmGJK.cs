@@ -24,7 +24,7 @@ namespace GSK
         bool login = false;
         int rows = 2;
         int flag = 0;
-       
+      
         public FrmGJK()
         {
             InitializeComponent();

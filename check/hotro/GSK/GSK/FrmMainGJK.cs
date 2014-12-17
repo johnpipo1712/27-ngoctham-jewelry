@@ -17,7 +17,7 @@ namespace GSK
             InitializeComponent();
             FrmDisplayMain frm = new FrmDisplayMain();
             frm.MdiParent = this;
-            frm.Dock = DockStyle.Fill;
+           
             frm.Show();
         }
        
@@ -34,7 +34,6 @@ namespace GSK
          
             FrmChangePass frm = new FrmChangePass();
             frm.MdiParent = this;
-            frm.Dock = DockStyle.Fill;
             frm.Show();
          
         }
@@ -44,7 +43,6 @@ namespace GSK
             CleanerFrm();
             FrmGJK frm = new FrmGJK();
             frm.MdiParent = this;
-            frm.Dock = DockStyle.Fill;
             frm.Show();
 
           
