@@ -39,6 +39,12 @@ namespace GSK
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
+            BtnLogin.Enabled = false;
+            if(TxtfileExcelDMS.Text == "" || TxtfileExcelDMSReport.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập thông tin chọn đầy đủ 2 file");
+                return;
+            }
             SqlExecuteNonQuery(@"TRUNCATE TABLE DMS;TRUNCATE TABLE DMS_Report;", 10000);
             #region Insert score
             DataTable dtToInsertDMS = new DataTable();
@@ -141,20 +147,31 @@ namespace GSK
                 ws.Cells["E1"].Value = "Tên NVBH";
                 ws.Cells["F1"].Value = "Mã KH";
                 ws.Cells["G1"].Value = "Tên KH";
+                ws.Cells["A1:G1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                ws.Cells["A1:G1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(253, 247, 7)); 
                 ws.Cells["H1"].Value = "Tên KH chỉnh sửa";
+                ws.Cells["H1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                ws.Cells["H1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(255, 210, 121)); 
                 ws.Cells["I1"].Value = "Kênh BH";
+                ws.Cells["I1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                ws.Cells["I1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(253, 247, 7)); 
                 ws.Cells["J1"].Value = "Kênh mới";
+                ws.Cells["J1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                ws.Cells["J1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(255, 210, 121)); 
                 ws.Cells["K1"].Value = "Địa chỉ";
+                ws.Cells["K1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                ws.Cells["K1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(253, 247, 7)); 
                 ws.Cells["L1:O1"].Value = "Địa chỉ chỉnh sửa";
                 ws.Cells["L1:O1"].Merge = true;
-                ws.Cells["L1:O1"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                ws.Cells["L1:O1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                ws.Cells["L1:O1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(255, 210, 121)); 
                 ws.Cells["L2"].Value = "Số nhà";
                 ws.Cells["M2"].Value = "Tên đường";
                 ws.Cells["N2"].Value = "Phường/Xã";
                 ws.Cells["O2"].Value = "Quận/Huyện";
                 for (int i = 0; i < TableTongQuat.Rows.Count; i++)
                 {
-                    ws.Cells["A" +  (i+3).ToString()].Value = TableTongQuat.Rows[i][0];
+                    ws.Cells["A" + (i + 3).ToString()].Value = TableTongQuat.Rows[i][0];
                     ws.Cells["B" + (i + 3).ToString()].Value = TableTongQuat.Rows[i][1];
                     ws.Cells["C" + (i + 3).ToString()].Value = TableTongQuat.Rows[i][2];
                     ws.Cells["D" + (i + 3).ToString()].Value = TableTongQuat.Rows[i][3];
@@ -164,35 +181,45 @@ namespace GSK
                     ws.Cells["I" + (i + 3).ToString()].Value = TableTongQuat.Rows[i][7];
                     ws.Cells["K" + (i + 3).ToString()].Value = TableTongQuat.Rows[i][8];
                 }
+                ws.Cells["A2:O2"].AutoFilter = true;
                 ws.Cells["A1:O" + (TableTongQuat.Rows.Count + 2).ToString()].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                 ws.Cells["A1:O" + (TableTongQuat.Rows.Count + 2).ToString()].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                 ws.Cells["A1:O" + (TableTongQuat.Rows.Count + 2).ToString()].Style.Border.Bottom.Style = ExcelBorderStyle.Thin; 
                 ws.Cells["A1:O" + (TableTongQuat.Rows.Count + 2).ToString()].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                ws.Cells["A1:O2"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                ws.Cells["A1:O2"].Style.Font.Size = 12;
                 ws.Cells["A1:O" + (TableTongQuat.Rows.Count + 2).ToString()].AutoFitColumns();
-           
-                ws = package.Workbook.Worksheets.Add("SLSK");
+               ws = package.Workbook.Worksheets.Add("SLSK");
 
-               ws.Cells["A1"].Value = "Mã NVBH";
-               ws.Cells["B1"].Value = "Tên NVBH";
+                ws.Cells["A1"].Value = "Mã NVBH";
+                ws.Cells["B1"].Value = "Tên NVBH";
+                ws.Cells["A1:B1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                ws.Cells["A1:B1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(253, 247, 7)); 
                 ws.Cells["C1"].Value = "Số lượng KH";
+                ws.Cells["C1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                ws.Cells["C1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(255, 210, 121));
+                
                 for (int i = 0; i < TableSLKH.Rows.Count; i++)
                 {
                     ws.Cells["A" + (i + 3).ToString()].Value = TableSLKH.Rows[i][0];
                     ws.Cells["B" + (i + 3).ToString()].Value = TableSLKH.Rows[i][1];
                     ws.Cells["C" + (i + 3).ToString()].Value = TableSLKH.Rows[i][2];
                 }
-                ws.Cells["A1:O" + (TableSLKH.Rows.Count + 2).ToString()].Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                ws.Cells["A1:O" + (TableSLKH.Rows.Count + 2).ToString()].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                ws.Cells["A1:O" + (TableSLKH.Rows.Count + 2).ToString()].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
-                ws.Cells["A1:O" + (TableSLKH.Rows.Count + 2).ToString()].Style.Border.Top.Style = ExcelBorderStyle.Thin;
-                ws.Cells["A1:O" + (TableSLKH.Rows.Count + 2).ToString()].AutoFitColumns();
-           
+                ws.Cells["A2:C2"].AutoFilter = true;
+                ws.Cells["A1:C" + (TableSLKH.Rows.Count + 2).ToString()].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                ws.Cells["A1:C" + (TableSLKH.Rows.Count + 2).ToString()].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                ws.Cells["A1:C" + (TableSLKH.Rows.Count + 2).ToString()].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                ws.Cells["A1:C" + (TableSLKH.Rows.Count + 2).ToString()].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                ws.Cells["A1:C1"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                ws.Cells["A1:C1"].Style.Font.Size = 12;
+                ws.Cells["A1:C" + (TableSLKH.Rows.Count + 2).ToString()].AutoFitColumns();
+                ws.Cells["C" + (TableSLKH.Rows.Count + 3).ToString()].Formula = "=SUM(C3:C" + (TableSLKH.Rows.Count + 2).ToString() + ")";
                 for (int i = 0; i < TableSLKH.Rows.Count; i++)
                 {
-                    if(i+1<10)
-                        ws = package.Workbook.Worksheets.Add("ChiTiet-0" + (i+1));
+                    if (i + 1 < 10)
+                        ws = package.Workbook.Worksheets.Add("0" + (i + 1) + "-" + TableSLKH.Rows[i][0].ToString());
                     else
-                        ws = package.Workbook.Worksheets.Add("ChiTiet-" + (i + 1));
+                        ws = package.Workbook.Worksheets.Add((i + 1) + "-" + TableSLKH.Rows[i][0].ToString());
                     ws.Cells["A1"].Value = "STT";
                     ws.Cells["B1"].Value = "Mã Tuyến BH";
                     ws.Cells["C1"].Value = "Tên Tuyến BH";
@@ -200,13 +227,24 @@ namespace GSK
                     ws.Cells["E1"].Value = "Tên NVBH";
                     ws.Cells["F1"].Value = "Mã KH";
                     ws.Cells["G1"].Value = "Tên KH";
+                    ws.Cells["A1:G1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    ws.Cells["A1:G1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(253, 247, 7));
                     ws.Cells["H1"].Value = "Tên KH chỉnh sửa";
+                    ws.Cells["H1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    ws.Cells["H1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(255, 210, 121));
                     ws.Cells["I1"].Value = "Kênh BH";
+                    ws.Cells["I1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    ws.Cells["I1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(253, 247, 7));
                     ws.Cells["J1"].Value = "Kênh mới";
+                    ws.Cells["J1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    ws.Cells["J1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(255, 210, 121));
                     ws.Cells["K1"].Value = "Địa chỉ";
+                    ws.Cells["K1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    ws.Cells["K1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(253, 247, 7));
                     ws.Cells["L1:O1"].Value = "Địa chỉ chỉnh sửa";
                     ws.Cells["L1:O1"].Merge = true;
-                    ws.Cells["L1:O1"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    ws.Cells["L1:O1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    ws.Cells["L1:O1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(255, 210, 121));
                     ws.Cells["L2"].Value = "Số nhà";
                     ws.Cells["M2"].Value = "Tên đường";
                     ws.Cells["N2"].Value = "Phường/Xã";
@@ -226,25 +264,31 @@ namespace GSK
                         ws.Cells["E" + (j + 3).ToString()].Value = TableTongQuatChiTiet.Rows[j][4];
                         ws.Cells["F" + (j + 3).ToString()].Value = TableTongQuatChiTiet.Rows[j][5];
                         ws.Cells["G" + (j + 3).ToString()].Value = TableTongQuatChiTiet.Rows[j][6];
-                        ws.Cells["j" + (j + 3).ToString()].Value = TableTongQuatChiTiet.Rows[j][7];
+                        ws.Cells["I" + (j + 3).ToString()].Value = TableTongQuatChiTiet.Rows[j][7];
                         ws.Cells["K" + (j + 3).ToString()].Value = TableTongQuatChiTiet.Rows[j][8];
                     }
+                    ws.Cells["A2:O2"].AutoFilter = true;
                     ws.Cells["A1:O" + (TableTongQuatChiTiet.Rows.Count + 2).ToString()].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                     ws.Cells["A1:O" + (TableTongQuatChiTiet.Rows.Count + 2).ToString()].Style.Border.Right.Style = ExcelBorderStyle.Thin;
                     ws.Cells["A1:O" + (TableTongQuatChiTiet.Rows.Count + 2).ToString()].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
                     ws.Cells["A1:O" + (TableTongQuatChiTiet.Rows.Count + 2).ToString()].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    ws.Cells["A1:O2"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    ws.Cells["A1:O2"].Style.Font.Size = 12;
                     ws.Cells["A1:O" + (TableTongQuatChiTiet.Rows.Count + 2).ToString()].AutoFitColumns();
+                  
                 }
 
                 //newFile.Create();
                 //newFile.MoveTo(@"C:/testSheet.xlsx");
                 //package.SaveAs(newFile);
                 package.SaveAs(new System.IO.FileInfo(path));
-             
+               
 
                
             }
+            BtnLogin.Enabled = true;
             MessageBox.Show("Đã cập nhật dữ liệu thành công");
+            System.Diagnostics.Process.Start(path);
         }
         public DataTable SqlDatatableTimeout(string selectsql, int timeout)
         {
