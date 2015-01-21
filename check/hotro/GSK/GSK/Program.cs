@@ -16,7 +16,7 @@ namespace GSK
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmDivCustomer());
+            Application.Run(new FrmMainGJK());
         }
     }
 }

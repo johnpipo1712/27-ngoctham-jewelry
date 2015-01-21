@@ -121,7 +121,7 @@ namespace GSK
             }
             #endregion
             String FilePathSave  = "DSKH_DMS_" + DateTime.Now.ToString("MMddyyyyhhmmssf.ff");
-            DataTable TableTongQuat = SqlDatatableTimeout(@"SELECT ROW_NUMBER() OVER(ORDER BY d2.Name Asc) AS Row,d2.[Route Code],d2.[Description],d2.[Sales Man Code],d2.Name,d2.[Cust Code],d2.Name1,d2.[Chain Code],d2.Add1
+            DataTable TableTongQuat = SqlDatatableTimeout(@"SELECT ROW_NUMBER() OVER(ORDER BY d2.[Sales Man Code] Asc) AS Row,d2.[Route Code],d2.[Description],d2.[Sales Man Code],d2.Name,d2.[Cust Code],d2.Name1,d2.[Chain Code],d2.Add1
                                                                 FROM DMS_Report d
                                                             LEFT JOIN DMS d2
                                                             ON d.[Cust Code] = d2.[Cust Code] 
@@ -133,8 +133,9 @@ namespace GSK
                                                         ON d.[Cust Code] = d2.[Cust Code] 
                                                         WHERE LOWER(d2.[Description]) NOT LIKE '%kh%'
                                                         AND LOWER([Status]) = 'y'
-                                                        GROUP BY d2.[Sales Man Code],d2.Name", 10000);
-            String path = Application.StartupPath + FilePathSave + ".xlsx";
+                                                        GROUP BY d2.[Sales Man Code],d2.Name
+                                                        ORDER BY  d2.[Sales Man Code]", 10000);
+            String path = Application.StartupPath + "\\" + FilePathSave + ".xlsx";
 
             using (ExcelPackage package = new ExcelPackage())
             {
@@ -189,7 +190,7 @@ namespace GSK
                 ws.Cells["A1:O2"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                 ws.Cells["A1:O2"].Style.Font.Size = 12;
                 ws.Cells["A1:O" + (TableTongQuat.Rows.Count + 2).ToString()].AutoFitColumns();
-               ws = package.Workbook.Worksheets.Add("SLSK");
+               ws = package.Workbook.Worksheets.Add("SLKH");
 
                 ws.Cells["A1"].Value = "Mã NVBH";
                 ws.Cells["B1"].Value = "Tên NVBH";
@@ -287,7 +288,7 @@ namespace GSK
                
             }
             BtnLogin.Enabled = true;
-            MessageBox.Show("Đã cập nhật dữ liệu thành công");
+            MessageBox.Show("Đã hoàn tất chia KH");
             System.Diagnostics.Process.Start(path);
         }
         public DataTable SqlDatatableTimeout(string selectsql, int timeout)

@@ -48,5 +48,14 @@ namespace GSK
           
           
         }
+
+       
+        private void chiaKHToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            CleanerFrm();
+            FrmDivCustomer frm = new FrmDivCustomer();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
