@@ -36,6 +36,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.cPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chiaKHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -45,10 +47,11 @@
             // 
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gJKToolStripMenuItem});
+            this.gJKToolStripMenuItem,
+            this.cPToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(48, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(174, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -64,14 +67,14 @@
             // DMKToolStripMenuItem
             // 
             this.DMKToolStripMenuItem.Name = "DMKToolStripMenuItem";
-            this.DMKToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.DMKToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.DMKToolStripMenuItem.Text = "Đổi mật khẩu";
             this.DMKToolStripMenuItem.Click += new System.EventHandler(this.DMKToolStripMenuItem_Click);
             // 
             // ThemKHToolStripMenuItem
             // 
             this.ThemKHToolStripMenuItem.Name = "ThemKHToolStripMenuItem";
-            this.ThemKHToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.ThemKHToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ThemKHToolStripMenuItem.Text = "Thêm KH";
             this.ThemKHToolStripMenuItem.Click += new System.EventHandler(this.ThemKHToolStripMenuItem_Click);
             // 
@@ -113,6 +116,21 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Người thực hiện : Nguyễn Hữu Tài";
             // 
+            // cPToolStripMenuItem
+            // 
+            this.cPToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chiaKHToolStripMenuItem});
+            this.cPToolStripMenuItem.Name = "cPToolStripMenuItem";
+            this.cPToolStripMenuItem.Size = new System.Drawing.Size(34, 20);
+            this.cPToolStripMenuItem.Text = "CP";
+            // 
+            // chiaKHToolStripMenuItem
+            // 
+            this.chiaKHToolStripMenuItem.Name = "chiaKHToolStripMenuItem";
+            this.chiaKHToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.chiaKHToolStripMenuItem.Text = "Chia KH";
+            this.chiaKHToolStripMenuItem.Click += new System.EventHandler(this.chiaKHToolStripMenuItem_Click_1);
+            // 
             // FrmMainGJK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,6 +164,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripMenuItem cPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chiaKHToolStripMenuItem;
 
     }
 }
