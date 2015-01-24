@@ -781,6 +781,7 @@
     <Content Include="Content\css\weather-icons.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\shop_banner.png" />
     <Content Include="Content\images\1x1.png" />
     <Content Include="Content\images\admin\demo\avatars\1.jpg" />
     <Content Include="Content\images\admin\demo\avatars\2.jpg" />
@@ -1021,7 +1022,6 @@
     <Content Include="Content\images\services\thang_mau.bmp" />
     <Content Include="Content\images\services\thang_tinh_khiet.bmp" />
     <Content Include="Content\images\services\weight.jpg" />
-    <Content Include="Content\images\shop_banner.png" />
     <Content Include="Content\images\skulls.png" />
     <Content Include="Content\images\skype-logo.png" />
     <Content Include="Content\images\slide\01.jpg" />
